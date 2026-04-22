@@ -1,0 +1,61 @@
+type: object
+required: [ fromProperty, toProperty, weight, model ]
+properties:
+  id:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: Identifier (IRI or CURIE) for the relationship, if any
+  type:
+    const: PropertyRelationship
+  fromProperty:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: IRI or CURIE of the source property in the relationship.
+  toProperty:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: IRI or CURIE of the target property in the relationship.
+  weight:
+    description: Quantified strength of the relationship between the two properties (qudt:numericValue).
+    type: object
+    required: [ value ]
+    properties:
+      value:
+        type: number
+        description: Numeric value of the weight.
+
+  model:
+    description: Model that generated this relationship (prov:wasAttributedTo).
+    type: object
+    required: [ id ]
+    properties:
+      id:
+        type: string
+        description: Identifier of the model (dct:identifier).
+      name:
+        type: string
+        description: Human-readable label of the model (rdfs:label).
+      uri:
+        type: string
+        description: URI of the model resource.
+  experiment:
+    description: Experiment activity that produced this relationship (prov:wasGeneratedBy).
+    type: object
+    required: [ id ]
+    properties:
+      id:
+        type: string
+        description: Identifier of the experiment (dct:identifier).
+      name:
+        type: string
+        description: Human-readable label of the experiment (rdfs:label).
+      uri:
+        type: string
+        description: URI of the experiment resource.
+      start:
+        type: string
+        format: date-time
+        pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$'
+        description: Date and time when the experiment started (prov:startedAtTime).
+      end:
+        type: string
+        format: date-time
+        pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$'
+        description: Date and time when the experiment ended (prov:endedAtTime).

@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "id": "@id",
+    "type": "@type",
+    "name": "rdfs:label",
+    "PropertyRelationship": "prop-rel:PropertyRelationship",
+    "fromProperty": {
+      "@id": "prop-rel:fromProperty",
+      "@type": "@id"
+    },
+    "toProperty": {
+      "@id": "prop-rel:toProperty",
+      "@type": "@id"
+    },
+    "weight": {
+      "@id": "prop-rel:hasWeight",
+      "@type": "@id",
+      "@context": {
+        "value": "qudt:numericValue"
+      }
+    },
+    "model": {
+      "@id": "prov:wasAttributedTo",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id"
+      }
+    },
+    "experiment": {
+      "@id": "prov:wasGeneratedBy",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

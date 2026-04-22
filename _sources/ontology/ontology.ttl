@@ -1,0 +1,30 @@
+@prefix : <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#>.
+@prefix dct:  <http://purl.org/dc/terms/>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+
+:PropertyRelationship a owl:Class ;
+  skos:prefLabel "Property relationship" ;
+.
+
+:fromProperty a owl:ObjectProperty ;
+  skos:prefLabel "from property" ;
+  rdfs:domain :PropertyRelationship ;
+  rdfs:range :PropertyRelationship ;
+.
+
+:toProperty a owl:ObjectProperty ;
+  skos:prefLabel "to property" ;
+  rdfs:domain :PropertyRelationship ;
+  rdfs:range :PropertyRelationship ;
+.
+
+:hasWeight a owl:ObjectProperty ;
+  skos:prefLabel "has estimate" ;
+  rdfs:domain :PropertyRelationship ;
+  rdfs:range qudt:QuantityValue ;
+.

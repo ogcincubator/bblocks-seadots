@@ -1,0 +1,32 @@
+prefixes:
+  utsira: https://example.org/seadots/utsira/
+
+examples:
+  - title: Minimal relationship
+    content: |
+      A minimal property relationship with only the required fields: source property,
+      target property, weight value, and model identifier. Derived from the Utsira wind
+      farm toy dataset, expressing that fisheries production has a positive relationship
+      (weight 0.5) with the number of turbines.
+    snippets:
+      - language: json
+        ref: examples/minimal.json
+
+  - title: Relationship with model attribution
+    content: |
+      A property relationship that includes full model attribution metadata — name and URI
+      in addition to the model identifier. The negative weight (-0.5) expresses that
+      increasing the area used by the wind park has an adverse effect on fisheries production.
+    snippets:
+      - language: json
+        ref: examples/with-model.json
+
+  - title: Relationship with model and experiment provenance
+    content: |
+      A fully annotated property relationship including both model attribution and the
+      experiment that generated it, with start and end timestamps. This example expresses
+      a positive relationship (weight 0.52) between the number of jobs and bird tourism
+      at the Utsira site, as produced by a named cross-impact analysis experiment.
+    snippets:
+      - language: json
+        ref: examples/with-experiment.json
