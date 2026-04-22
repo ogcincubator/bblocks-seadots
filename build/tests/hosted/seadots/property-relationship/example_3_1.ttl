@@ -1,0 +1,21 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix utsira: <https://example.org/seadots/utsira/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/seadots/utsira/runs/e7c5de87-940b-458c-b9b2-1bd000ec4328> a prop-rel:PropertyRelationship ;
+    prov:wasAttributedTo <https://example.org/seadots/models/crossImpact-v1> ;
+    prov:wasGeneratedBy [ rdfs:label "Utsira Wind Farm Impact Assessment" ;
+            dct:identifier "utsira:exp-2024-01" ;
+            prov:endedAtTime "2024-01-15T17:30:00+00:00"^^xsd:dateTime ;
+            prov:startedAtTime "2024-01-15T08:00:00+00:00"^^xsd:dateTime ] ;
+    prop-rel:fromProperty utsira:number-of-jobs ;
+    prop-rel:hasWeight [ qudt:numericValue 5.2e-01 ] ;
+    prop-rel:toProperty utsira:bird-tourism .
+
+<https://example.org/seadots/models/crossImpact-v1> rdfs:label "Cross-Impact Analysis Model" ;
+    dct:identifier "utsira:crossImpact-v1" .
+

@@ -1,0 +1,125 @@
+{
+  "type": "object",
+  "required": [
+    "fromProperty",
+    "toProperty",
+    "weight",
+    "model"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.json",
+      "description": "Identifier (IRI or CURIE) for the relationship, if any",
+      "x-jsonld-id": "@id"
+    },
+    "type": {
+      "const": "PropertyRelationship",
+      "x-jsonld-id": "@type"
+    },
+    "fromProperty": {
+      "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.json",
+      "description": "IRI or CURIE of the source property in the relationship.",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/prop-rel/fromProperty",
+      "x-jsonld-type": "@id"
+    },
+    "toProperty": {
+      "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.json",
+      "description": "IRI or CURIE of the target property in the relationship.",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/prop-rel/toProperty",
+      "x-jsonld-type": "@id"
+    },
+    "weight": {
+      "description": "Quantified strength of the relationship between the two properties (qudt:numericValue).",
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Numeric value of the weight.",
+          "x-jsonld-id": "http://qudt.org/schema/qudt/numericValue"
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/prop-rel/hasWeight",
+      "x-jsonld-type": "@id"
+    },
+    "model": {
+      "description": "Model that generated this relationship (prov:wasAttributedTo).",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the model (dct:identifier).",
+          "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable label of the model (rdfs:label).",
+          "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#label"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI of the model resource.",
+          "x-jsonld-id": "@id"
+        }
+      },
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasAttributedTo"
+    },
+    "experiment": {
+      "description": "Experiment activity that produced this relationship (prov:wasGeneratedBy).",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the experiment (dct:identifier).",
+          "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable label of the experiment (rdfs:label).",
+          "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#label"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI of the experiment resource.",
+          "x-jsonld-id": "@id"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+          "description": "Date and time when the experiment started (prov:startedAtTime).",
+          "x-jsonld-id": "http://www.w3.org/ns/prov#startedAtTime",
+          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
+          "description": "Date and time when the experiment ended (prov:endedAtTime).",
+          "x-jsonld-id": "http://www.w3.org/ns/prov#endedAtTime",
+          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        }
+      },
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy"
+    }
+  },
+  "x-jsonld-extra-terms": {
+    "PropertyRelationship": "https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship"
+  },
+  "x-jsonld-prefixes": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}
