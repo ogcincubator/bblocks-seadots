@@ -4,7 +4,7 @@ This template provides a working example of an [OGC Building Block](https:blocks
 
 This template is a working automation recipe to define, test and document a set of Building Blocks.
 
-The automation-generated documentation for this example is here: [https://opengeospatial.github.io/bblock-template/](https://opengeospatial.github.io/bblock-template/)
+The automation-generated documentation for this example is here: [https://ogcincubator.github.io/bblocks-seadots/](https://ogcincubator.github.io/bblocks-seadots/)
 
 [Examples of using this with typical applications of OGC standards](https://github.com/ogcincubator/bblocks-examples)
 
