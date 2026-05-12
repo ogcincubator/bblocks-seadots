@@ -1,30 +1,254 @@
-@prefix : <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#>.
-@prefix dct:  <http://purl.org/dc/terms/>.
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix :     <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
 
-:PropertyRelationship a owl:Class ;
+# ── Property relationship (base) ────────────────────────────────────
+
+:PropertyRelationship a owl:Class, skos:Concept ;
   skos:prefLabel "Property relationship" ;
-.
+  skos:definition "Directed, weighted relationship between two observed properties or indicators." .
 
-:fromProperty a owl:ObjectProperty ;
+:fromProperty a owl:ObjectProperty, skos:Concept ;
   skos:prefLabel "from property" ;
   rdfs:domain :PropertyRelationship ;
-  rdfs:range :PropertyRelationship ;
-.
+  rdfs:range :PropertyRelationship .
 
-:toProperty a owl:ObjectProperty ;
+:toProperty a owl:ObjectProperty, skos:Concept ;
   skos:prefLabel "to property" ;
   rdfs:domain :PropertyRelationship ;
-  rdfs:range :PropertyRelationship ;
-.
+  rdfs:range :PropertyRelationship .
 
-:hasWeight a owl:ObjectProperty ;
-  skos:prefLabel "has estimate" ;
+:hasWeight a owl:ObjectProperty, skos:Concept ;
+  skos:prefLabel "has weight" ;
   rdfs:domain :PropertyRelationship ;
-  rdfs:range qudt:QuantityValue ;
-.
+  rdfs:range qudt:QuantityValue .
+
+# ── Equation property relationship ─────────────────────────────────
+
+:EquationPropertyRelationship a owl:Class, skos:Concept ;
+  rdfs:subClassOf :PropertyRelationship ;
+  skos:prefLabel "Equation property relationship" ;
+  skos:definition "A property relationship in which fromProperty is an explicit term in the canonical equation of toProperty." .
+
+:hasEquation a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :EquationPropertyRelationship ;
+  rdfs:range xsd:string ;
+  owl:equivalentProperty schema:mathExpression ;
+  skos:prefLabel "has equation" ;
+  skos:definition "Canonical mathematical expression. Should be byte-identical to schema:mathExpression on toProperty." .
+
+:hasEquationRole a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range :EquationRole ;
+  skos:prefLabel "has equation role" .
+
+:hasOperator a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range :EquationOperator ;
+  skos:prefLabel "has operator" .
+
+:hasSymbol a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has symbol" ;
+  skos:definition "LaTeX symbol used for the entry's fromProperty in the equation string (e.g. A_{sub}, D_{pre,i}). Must appear literally inside the parent relationship's :hasEquation." .
+
+:isIndexed a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range xsd:boolean ;
+  skos:prefLabel "is indexed" ;
+  skos:definition "True if the symbol is iterated under the aggregation index of the parent relationship's :toProperty." .
+
+:hasIndex a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has index" ;
+  skos:definition "Index symbol used by the aggregator (e.g. i)." .
+
+# ── Equation-role enumeration (named individuals) ──────────────────
+
+:EquationRole       a owl:Class, skos:Concept ; skos:prefLabel "Equation role" .
+:Input              a :EquationRole, skos:Concept ; skos:prefLabel "input" .
+:Coefficient        a :EquationRole, skos:Concept ; skos:prefLabel "coefficient" .
+:Normaliser         a :EquationRole, skos:Concept ; skos:prefLabel "normaliser" .
+:LossTerm           a :EquationRole, skos:Concept ; skos:prefLabel "loss term" .
+:UncertaintyTerm    a :EquationRole, skos:Concept ; skos:prefLabel "uncertainty term" .
+:QualityTerm        a :EquationRole, skos:Concept ; skos:prefLabel "quality term" .
+:Output             a :EquationRole, skos:Concept ; skos:prefLabel "output" .
+:OtherRole          a :EquationRole, skos:Concept ; skos:prefLabel "other" .
+
+# ── Equation-operator enumeration (named individuals) ──────────────
+
+:EquationOperator   a owl:Class, skos:Concept ; skos:prefLabel "Equation operator" .
+:Sum                a :EquationOperator, skos:Concept ; skos:prefLabel "sum" .
+:Product            a :EquationOperator, skos:Concept ; skos:prefLabel "product" .
+:Subtract           a :EquationOperator, skos:Concept ; skos:prefLabel "subtract" .
+:Divide             a :EquationOperator, skos:Concept ; skos:prefLabel "divide" .
+:Transform          a :EquationOperator, skos:Concept ; skos:prefLabel "transform" .
+:WeightedSum        a :EquationOperator, skos:Concept ; skos:prefLabel "weighted sum" .
+:OtherOperator      a :EquationOperator, skos:Concept ; skos:prefLabel "other" .
+
+# ── Aggregation (carried by the derived concept, not by the edge) ──
+
+:Aggregation a owl:Class, skos:Concept ;
+  skos:prefLabel "Aggregation" ;
+  skos:definition "Aggregation declaration carried by a derived (composite) variable: operator, entity type iterated, and index symbol." .
+
+:hasAggregation a owl:ObjectProperty, skos:Concept ;
+  rdfs:range :Aggregation ;
+  skos:prefLabel "has aggregation" ;
+  rdfs:comment "Attached to a derived variable (oim:CompositeVariable); not to the equation edge." .
+
+:aggregationOperator a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :Aggregation ;
+  rdfs:range :EquationOperator ;
+  skos:prefLabel "aggregation operator" .
+
+:aggregatesOver a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :Aggregation ;
+  rdfs:range owl:Class ;
+  skos:prefLabel "aggregates over" ;
+  rdfs:comment "Entity type whose instances are iterated (e.g. odd:TaxonGroup)." .
+
+:indexSymbol a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :Aggregation ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "index symbol" .
+
+# ── Symbol aliases ─────────────────────────────────────────────────
+
+:hasSymbolAlias a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has symbol alias" ;
+  skos:definition "Alternative rendering of :hasSymbol (e.g. ASCII variant 'A_sub' for canonical 'A_{sub}'). Not required to occur in :hasEquation." .
+
+# ── Bindings ───────────────────────────────────────────────────────
+
+:Binding a owl:Class, skos:Concept ;
+  skos:prefLabel "Binding" ;
+  skos:definition "Concrete realisation of the abstract Rainbow concept named by the parent SymbolEntry's :fromProperty (per taxon, scenario, region, or alternate measurement)." .
+
+:hasBinding a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range :Binding ;
+  skos:prefLabel "has binding" .
+
+:bindingVariable a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :Binding ;
+  skos:prefLabel "binding variable" ;
+  skos:definition "Concrete Rainbow IRI that realises the abstract :fromProperty." .
+
+:bindingIndexValue a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :Binding ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "binding index value" ;
+  skos:definition "Value of the equation index variable (e.g. taxon name 'Mytilus' for index 'i') for which this binding applies." .
+
+:bindingValidityScope a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain :Binding ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "binding validity scope" .
+
+:bindingRole a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :Binding ;
+  rdfs:range :BindingRole ;
+  skos:prefLabel "binding role" .
+
+:BindingRole a owl:Class, skos:Concept ; skos:prefLabel "Binding role" .
+:Primary     a :BindingRole, skos:Concept ; skos:prefLabel "primary"   .
+:Alternate   a :BindingRole, skos:Concept ; skos:prefLabel "alternate" .
+:Fallback    a :BindingRole, skos:Concept ; skos:prefLabel "fallback"  .
+:Expansion   a :BindingRole, skos:Concept ; skos:prefLabel "expansion" .
+
+# ── Symbol table (carried by the derived concept) ──────────────────
+
+:hasSymbolTable a owl:ObjectProperty, skos:Concept ;
+  rdfs:range :SymbolTable ;
+  skos:prefLabel "has symbol table" ;
+  rdfs:comment "Attached to a derived variable (oim:CompositeVariable) to enumerate every symbol of its canonical equation independently of any data binding." .
+
+:SymbolTable a owl:Class, skos:Concept ;
+  skos:prefLabel "Symbol table" ;
+  skos:definition "Set of symbol entries that explain every term of a canonical equation; the union of EquationPropertyRelationship rows for a given toProperty materialises one SymbolTable." .
+
+:hasSymbolEntry a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolTable ;
+  rdfs:range :SymbolEntry ;
+  skos:prefLabel "has symbol entry" .
+
+:SymbolEntry a owl:Class, skos:Concept ;
+  skos:prefLabel "Symbol entry" ;
+  skos:definition "One row of an equation's symbol table: symbol, abstract variable (via :fromProperty), kind, dimension kind, indexing, role, operator and bindings. Attached to a :SymbolTable or directly to an :EquationPropertyRelationship via :hasEquationSymbol." .
+
+# ── Variable kinds (semantic role in an equation) ──────────────────
+
+:VariableKind a owl:Class, skos:Concept ; skos:prefLabel "Variable kind" .
+
+:FeatureOfInterest a :VariableKind, skos:Concept ;
+  skos:prefLabel "feature of interest" ;
+  skos:definition "Quantitative property of the system or object being measured (e.g. area, volume, count of structural components)." .
+
+:IntensiveQuantity a :VariableKind, skos:Concept ;
+  skos:prefLabel "intensive quantity" ;
+  skos:definition "Quantity normalised per unit area, volume, time or other extensive measure (e.g. mass density)." .
+
+:ExtensiveQuantity a :VariableKind, skos:Concept ;
+  skos:prefLabel "extensive quantity" ;
+  skos:definition "Quantity that scales with system size (e.g. total mass, total count)." .
+
+:AdjustmentFactor a :VariableKind, skos:Concept ;
+  skos:prefLabel "adjustment factor" ;
+  skos:definition "Dimensionless multiplier representing a correction, ratio, or amplification (e.g. aggregation index). May evolve into a rate (per time) in extended models." .
+
+:TimeCoefficient a :VariableKind, skos:Concept ;
+  skos:prefLabel "time coefficient" ;
+  skos:definition "Time-dependent factor; may be dimensionless or carry an explicit time unit. Decoupled from unit choice via :entryDimensionKind." .
+
+:RateCoefficient a :VariableKind, skos:Concept ;
+  skos:prefLabel "rate coefficient" ;
+  skos:definition "Quantity with inverse-time dimensions (per year, per second, ...)." .
+
+:UncertaintyFactor a :VariableKind, skos:Concept ;
+  skos:prefLabel "uncertainty factor" ;
+  skos:definition "Dimensionless discount applied for data-quality or model-quality uncertainty." .
+
+:AggregationIndex a :VariableKind, skos:Concept ;
+  skos:prefLabel "aggregation index" ;
+  skos:definition "Counter or index variable in a summation/integral; not a measured quantity." .
+
+# ── SymbolEntry-scoped properties ──────────────────────────────────
+
+:hasVariableKind a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range :VariableKind ;
+  skos:prefLabel "has variable kind" ;
+  rdfs:comment "Semantic role of the symbol in the equation." .
+
+:hasDimensionKind a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range qudt:QuantityKind ;
+  skos:prefLabel "has dimension kind" ;
+  rdfs:comment "References a QUDT QuantityKind; unit-abstract." .
+
+:hasIndexedBy a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :SymbolEntry ;
+  rdfs:range owl:Class ;
+  skos:prefLabel "has indexed by" ;
+  rdfs:comment "Entity class whose instances enumerate :hasIndex (e.g. odd:TaxonGroup). Required when :isIndexed is true." .
+
+# ── Equation symbols (every row of the equation's symbol table) ────
+
+:hasEquationSymbol a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain :EquationPropertyRelationship ;
+  rdfs:range :SymbolEntry ;
+  skos:prefLabel "has equation symbol" ;
+  rdfs:comment "Complete symbol table of the equation: one SymbolEntry per symbol, including the primary one identified by matching the entry's :fromProperty to the relationship's :fromProperty. Each entry carries its own bindings, kind, dimension and indexing — no per-symbol data is duplicated on the EquationPropertyRelationship itself." .

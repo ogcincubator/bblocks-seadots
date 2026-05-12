@@ -1,0 +1,83 @@
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix :      <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix schema:<https://schema.org/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+# Every symbol declared inside an EquationPropertyRelationship's symbol
+# table must occur literally in the equation string.
+:SymbolInEquationShape a sh:NodeShape ;
+  sh:targetClass :EquationPropertyRelationship ;
+  sh:sparql [
+    sh:message "symbol '{?s}' must occur literally in the equation string." ;
+    sh:select """
+      PREFIX : <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+      SELECT $this ?s ?eq WHERE {
+        $this :hasEquation ?eq ; :hasEquationSymbol ?entry .
+        ?entry :hasSymbol ?s .
+        FILTER( !CONTAINS( ?eq, ?s ) )
+      } """
+  ] .
+
+# Every SymbolEntry's fromProperty must appear in prov:wasDerivedFrom
+# of the parent relationship's toProperty (mathematical lineage closure).
+:ProvClosureShape a sh:NodeShape ;
+  sh:targetClass :EquationPropertyRelationship ;
+  sh:sparql [
+    sh:message "Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty." ;
+    sh:select """
+      PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      SELECT $this ?from ?to WHERE {
+        $this :toProperty ?to ; :hasEquationSymbol ?entry .
+        ?entry :fromProperty ?from .
+        FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }
+      } """
+  ] .
+
+# equation must equal schema:mathExpression on toProperty.
+:EquationByteEqualityShape a sh:NodeShape ;
+  sh:targetClass :EquationPropertyRelationship ;
+  sh:sparql [
+    sh:message "equation must equal schema:mathExpression on toProperty." ;
+    sh:select """
+      PREFIX :      <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+      PREFIX schema:<https://schema.org/>
+      SELECT $this ?eq ?canon WHERE {
+        $this :hasEquation ?eq ; :toProperty ?to .
+        ?to schema:mathExpression ?canon .
+        FILTER( STR(?eq) != STR(?canon) )
+      } """
+  ] .
+
+# An indexed SymbolEntry requires toProperty to declare an :Aggregation.
+:IndexedTermShape a sh:NodeShape ;
+  sh:targetClass :EquationPropertyRelationship ;
+  sh:sparql [
+    sh:message "indexed=true requires toProperty to declare an :Aggregation." ;
+    sh:select """
+      PREFIX : <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+      SELECT $this ?to WHERE {
+        $this :toProperty ?to ; :hasEquationSymbol ?entry .
+        ?entry :isIndexed true .
+        FILTER NOT EXISTS { ?to :hasAggregation ?a }
+      } """
+  ] .
+
+# When the record has a top-level :fromProperty (symbol-edge focus mode),
+# it must equal exactly one entry's :fromProperty. Equation-level records
+# without a top-level :fromProperty are exempt.
+:PrimaryEntryShape a sh:NodeShape ;
+  sh:targetClass :EquationPropertyRelationship ;
+  sh:sparql [
+    sh:message "When present, top-level fromProperty must match exactly one symbols[].fromProperty." ;
+    sh:select """
+      PREFIX : <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+      SELECT $this ?top WHERE {
+        $this :fromProperty ?top .
+        FILTER NOT EXISTS {
+          $this :hasEquationSymbol ?entry .
+          ?entry :fromProperty ?top .
+        }
+      } """
+  ] .

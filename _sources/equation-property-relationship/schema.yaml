@@ -1,0 +1,197 @@
+type: object
+required:
+  - toProperty
+  - equation
+  - symbols
+  - model
+properties:
+  id:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: Identifier (IRI or CURIE) for this equation record.
+  type:
+    description: Relationship type. Use EquationPropertyRelationship, optionally alongside PropertyRelationship.
+    oneOf:
+      - const: EquationPropertyRelationship
+      - type: array
+        contains:
+          const: EquationPropertyRelationship
+        items:
+          type: string
+  relationshipKind:
+    const: equation
+    description: Discriminator for equation-based relationships.
+  fromProperty:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: >
+      Optional. Use when the record focuses on one specific symbol-edge
+      of the equation (a sensitivity / cross-impact reading); it must
+      then match exactly one entry in `symbols[]` by its `fromProperty`.
+      Omit when the record describes the equation as a whole — the full
+      table is in `symbols[]` and there is no single "from".
+  toProperty:
+    $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: IRI or CURIE of the derived target property calculated by the equation.
+  equation:
+    type: string
+    minLength: 1
+    description: Canonical mathematical expression. It should match schema:mathExpression on the target property definition.
+  symbols:
+    type: array
+    minItems: 1
+    description: >
+      Complete symbol table for `equation`: one entry per symbol used in
+      the expression. The primary symbol (the one this record is about)
+      is the entry whose `fromProperty` equals the top-level
+      `fromProperty`. The other entries are the rest of the table, with
+      their own bindings, so the record is computationally self-contained.
+    items:
+      type: object
+      required: [symbol, fromProperty, bindings]
+      properties:
+        symbol:
+          type: string
+          minLength: 1
+          description: LaTeX symbol as it occurs literally in `equation`.
+        symbolAliases:
+          type: array
+          description: Alternative renderings (ASCII variants, plain forms).
+          items: { type: string, minLength: 1 }
+        fromProperty:
+          $ref: bblocks://ogc.ogc-utils.iri-or-curie
+          description: Abstract Rainbow IRI for this symbol.
+        variableKind:
+          type: string
+          enum:
+            - featureOfInterest
+            - intensiveQuantity
+            - extensiveQuantity
+            - adjustmentFactor
+            - timeCoefficient
+            - rateCoefficient
+            - uncertaintyFactor
+            - aggregationIndex
+          description: >
+            Semantic role of the symbol in the equation.
+        dimensionKind:
+          $ref: bblocks://ogc.ogc-utils.iri-or-curie
+          description: >
+            Unit-abstract dimensional type as a QUDT QuantityKind URI
+            (e.g. `quantitykind:Area`, `quantitykind:AreaDensity`,
+            `quantitykind:Dimensionless`, `quantitykind:Time`,
+            `quantitykind:Frequency`). Decouples dimensional analysis
+            from unit selection.
+        indexed:
+          type: boolean
+          default: false
+          description: >
+            True if the term is iterated under the aggregation index of
+            toProperty (e.g. per-taxon `D_{pre,i}`).
+        index:
+          type: string
+          description: Index symbol, e.g. "i". Only meaningful when `indexed` is true.
+        indexedBy:
+          $ref: bblocks://ogc.ogc-utils.iri-or-curie
+          description: >
+            IRI of the entity class whose instances enumerate the index
+            (e.g. `odd:TaxonGroup`). Required when `indexed` is true.
+        equationRole:
+          type: string
+          enum: [input, coefficient, normaliser, lossTerm, uncertaintyTerm, qualityTerm, output, other]
+          description: Role this symbol plays in the equation.
+        operator:
+          type: string
+          enum: [sum, product, subtract, divide, transform, weightedSum, other]
+          description: Main operation connecting this symbol to the equation.
+        bindings:
+          type: array
+          minItems: 1
+          description: >
+            Concrete vocabulary IRIs that realise the abstract
+            `fromProperty` of this symbol. Use when one symbol expands
+            over an index (per-taxon, per-region), or when alternate /
+            fallback measurements exist.
+          items:
+            type: object
+            required: [variable]
+            properties:
+              variable:
+                $ref: bblocks://ogc.ogc-utils.iri-or-curie
+                description: Concrete Rainbow IRI realising the entry's fromProperty.
+              indexValue:
+                type: string
+                description: Value of the equation index variable (e.g. "Mytilus edulis").
+              bindingRole:
+                type: string
+                enum: [primary, alternate, fallback, expansion]
+                default: primary
+              validityScope:
+                type: string
+                description: Short scope note (region, scenario, season).
+              evidence:
+                oneOf:
+                  - $ref: bblocks://ogc.ogc-utils.iri-or-curie
+                  - type: array
+                    items: { $ref: bblocks://ogc.ogc-utils.iri-or-curie }
+        explanation:
+          type: string
+          description: Human-readable note about this symbol.
+  weight:
+    description: Optional sensitivity or coefficient value. In this profile it is not a causal cross-impact weight.
+    type: object
+    required:
+      - value
+    properties:
+      value:
+        type: number
+        description: Numeric sensitivity or coefficient value.
+  model:
+    description: Model that defines or evaluates this equation relationship (prov:wasAttributedTo).
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: Identifier of the model (dct:identifier).
+      name:
+        type: string
+        description: Human-readable label of the model (rdfs:label).
+      uri:
+        type: string
+        description: URI of the model resource.
+  experiment:
+    description: Experiment activity that evaluated this relationship (prov:wasGeneratedBy).
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: Identifier of the experiment (dct:identifier).
+      name:
+        type: string
+        description: Human-readable label of the experiment (rdfs:label).
+      uri:
+        type: string
+        description: URI of the experiment resource.
+      start:
+        type: string
+        format: date-time
+        pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$'
+        description: Date and time when the experiment started (prov:startedAtTime).
+      end:
+        type: string
+        format: date-time
+        pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$'
+        description: Date and time when the experiment ended (prov:endedAtTime).
+  evidence:
+    oneOf:
+      - $ref: bblocks://ogc.ogc-utils.iri-or-curie
+      - type: array
+        items:
+          $ref: bblocks://ogc.ogc-utils.iri-or-curie
+    description: Evidence or definition source for the equation relationship.
+  explanation:
+    type: string
+    description: Human-readable explanation of how the primary fromProperty participates in the equation.
+additionalProperties: true

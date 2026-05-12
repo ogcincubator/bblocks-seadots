@@ -1,0 +1,25 @@
+prefixes:
+  no-wfa: https://example.org/reference-cases/windfloat-atlantic/
+  indo: https://id3.seadots.eu/indicator/
+  ind: https://id3.seadots.eu/computation/
+
+examples:
+  - title: Reef-biomass equation (equation-level record)
+    content: |
+      Equation-level record for `B_{reef} = \sum_i (A_{sub} \cdot D_{pre,i} \cdot AF_i \cdot C_t)`.
+      `symbols[]` carries the full computable table: A_{sub} (feature of interest, Area),
+      D_{pre,i} (intensive density per taxon, AreaDensity), AF_i (per-taxon adjustment factor,
+      Dimensionless), C_t (time coefficient, Dimensionless). Top-level `fromProperty` is omitted
+      because the record describes the equation as a whole, not a single symbol-edge.
+    snippets:
+      - language: json
+        ref: examples/reef-biomass-equation.json
+
+  - title: Quality-adjusted biomass equation (equation-level record)
+    content: |
+      Equation-level record for `B_{qa} = B_{total} \cdot (1 - U)`. `symbols[]` carries the two
+      terms: B_{total} chained from a sibling equation (`ind:wind-park-biomass-effect`) and U the
+      data-quality uncertainty factor computed at run-time from QI_* scores.
+    snippets:
+      - language: json
+        ref: examples/quality-adjusted-biomass-equation.json

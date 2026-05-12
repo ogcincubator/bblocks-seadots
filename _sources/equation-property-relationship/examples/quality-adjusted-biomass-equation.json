@@ -1,0 +1,52 @@
+{
+  "id": "no-wfa:eqrel/quality-adjusted-biomass-equation",
+  "type": [
+    "PropertyRelationship",
+    "EquationPropertyRelationship"
+  ],
+  "relationshipKind": "equation",
+  "toProperty": "ind:quality-adjusted-biomass-effect",
+  "equation": "B_{qa} = B_{total} \\cdot (1 - U)",
+  "symbols": [
+    {
+      "symbol": "B_{total}",
+      "symbolAliases": ["B_total"],
+      "fromProperty": "ind:wind-park-biomass-effect",
+      "variableKind": "extensiveQuantity",
+      "dimensionKind": "quantitykind:Mass",
+      "indexed": false,
+      "equationRole": "input",
+      "operator": "product",
+      "bindings": [
+        { "variable": "ind:wind-park-biomass-effect",
+          "bindingRole": "primary",
+          "validityScope": "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input.",
+          "evidence": "ind:wind-park-biomass-effect" }
+      ],
+      "explanation": "Chained input: B_total is itself a derived indicator computed by a sibling equation."
+    },
+    {
+      "symbol": "U",
+      "symbolAliases": ["U_{data}", "U_data"],
+      "fromProperty": "indo:data-quality-uncertainty-factor",
+      "variableKind": "uncertaintyFactor",
+      "dimensionKind": "quantitykind:Dimensionless",
+      "indexed": false,
+      "equationRole": "uncertaintyTerm",
+      "operator": "product",
+      "bindings": [
+        { "variable": "indo:data-quality-uncertainty-factor",
+          "bindingRole": "primary",
+          "validityScope": "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values.",
+          "evidence": "ind:quality-adjusted-biomass-effect" }
+      ]
+    }
+  ],
+  "model": {
+    "id": "utsira-biomass-upscaler-v1",
+    "name": "Utsira biomass upscaler v1",
+    "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
+  },
+  "evidence": "ind:quality-adjusted-biomass-effect",
+  "explanation": "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole."
+}
