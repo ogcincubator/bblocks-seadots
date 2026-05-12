@@ -1,0 +1,130 @@
+{
+  "@context": [
+    {
+      "no-wfa": "https://example.org/reference-cases/windfloat-atlantic/",
+      "indo": "https://id3.seadots.eu/indicator/",
+      "ind": "https://id3.seadots.eu/computation/"
+    },
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld"
+  ],
+  "id": "no-wfa:eqrel/reef-biomass-equation",
+  "type": [
+    "PropertyRelationship",
+    "EquationPropertyRelationship"
+  ],
+  "relationshipKind": "equation",
+  "toProperty": "ind:floating-wind-reef-biomass",
+  "equation": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
+  "symbols": [
+    {
+      "symbol": "A_{sub}",
+      "symbolAliases": [
+        "A_sub",
+        "A_s"
+      ],
+      "fromProperty": "indo:submerged-infrastructure-area",
+      "variableKind": "featureOfInterest",
+      "dimensionKind": "quantitykind:Area",
+      "indexed": false,
+      "equationRole": "input",
+      "operator": "product",
+      "bindings": [
+        {
+          "variable": "indo:submerged-infrastructure-area-utsira-design",
+          "bindingRole": "primary",
+          "validityScope": "Utsira Nord engineering design (60 \u00d7 15 MW units, wetted hull + mooring + anchor surfaces)",
+          "evidence": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/"
+        }
+      ]
+    },
+    {
+      "symbol": "D_{pre,i}",
+      "symbolAliases": [
+        "D_pre_i",
+        "D_pre,i",
+        "D_pre"
+      ],
+      "fromProperty": "indo:baseline-benthic-biomass-density",
+      "variableKind": "intensiveQuantity",
+      "dimensionKind": "quantitykind:AreaDensity",
+      "indexed": true,
+      "index": "i",
+      "indexedBy": "odd:TaxonGroup",
+      "equationRole": "input",
+      "operator": "product",
+      "bindings": [
+        {
+          "variable": "indo:benthic-biomass-density-mareano",
+          "bindingRole": "primary",
+          "validityScope": "Norwegian shelf, MAREANO programme",
+          "evidence": "https://mareano.no/"
+        },
+        {
+          "variable": "indo:benthic-biomass-density-imr-baseline",
+          "bindingRole": "fallback",
+          "validityScope": "regional default when MAREANO has no taxon coverage at i",
+          "evidence": "https://www.hi.no/"
+        }
+      ]
+    },
+    {
+      "symbol": "AF_i",
+      "fromProperty": "indo:reef-aggregation-index",
+      "variableKind": "adjustmentFactor",
+      "dimensionKind": "quantitykind:Dimensionless",
+      "indexed": true,
+      "index": "i",
+      "indexedBy": "odd:TaxonGroup",
+      "equationRole": "coefficient",
+      "operator": "product",
+      "bindings": [
+        {
+          "variable": "indo:reef-aggregation-index-mytilus",
+          "indexValue": "Mytilus edulis",
+          "bindingRole": "expansion",
+          "validityScope": "North Sea, depth 0-30 m",
+          "evidence": "https://doi.org/10.5670/oceanog.2020.405"
+        },
+        {
+          "variable": "indo:reef-aggregation-index-buccinum",
+          "indexValue": "Buccinum undatum",
+          "bindingRole": "expansion",
+          "evidence": "https://www.windfloat-atlantic.com/"
+        },
+        {
+          "variable": "indo:reef-aggregation-index-asterias",
+          "indexValue": "Asterias rubens",
+          "bindingRole": "expansion"
+        }
+      ]
+    },
+    {
+      "symbol": "C_t",
+      "symbolAliases": [
+        "C_{t}",
+        "C_time"
+      ],
+      "fromProperty": "indo:colonisation-time-factor",
+      "variableKind": "timeCoefficient",
+      "dimensionKind": "quantitykind:Dimensionless",
+      "indexed": false,
+      "equationRole": "coefficient",
+      "operator": "product",
+      "bindings": [
+        {
+          "variable": "indo:colonisation-time-factor-default",
+          "bindingRole": "primary",
+          "validityScope": "default sigmoid colonisation curve, saturating at t = 24 months",
+          "evidence": "https://doi.org/10.5670/oceanog.2020.405"
+        }
+      ]
+    }
+  ],
+  "model": {
+    "id": "utsira-biomass-upscaler-v1",
+    "name": "Utsira biomass upscaler v1",
+    "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
+  },
+  "evidence": "ind:floating-wind-reef-biomass",
+  "explanation": "Equation-level record for the reef-biomass equation. `symbols[]` enumerates every term (A_{sub} feature-of-interest, D_{pre,i} intensive density per taxon, AF_i adjustment factor per taxon, C_t time coefficient) with its abstract Rainbow IRI, kind, dimension and concrete bindings. No top-level `fromProperty`: the record describes the equation as a whole."
+}

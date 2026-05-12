@@ -1,0 +1,298 @@
+type: object
+required:
+- toProperty
+- equation
+- symbols
+- model
+properties:
+  id:
+    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    description: Identifier (IRI or CURIE) for this equation record.
+    x-jsonld-id: '@id'
+  type:
+    description: Relationship type. Use EquationPropertyRelationship, optionally alongside
+      PropertyRelationship.
+    oneOf:
+    - const: EquationPropertyRelationship
+    - type: array
+      contains:
+        const: EquationPropertyRelationship
+      items:
+        type: string
+    x-jsonld-id: '@type'
+  relationshipKind:
+    const: equation
+    description: Discriminator for equation-based relationships.
+    x-jsonld-id: https://schema.org/additionalType
+  fromProperty:
+    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    description: "Optional. Use when the record focuses on one specific symbol-edge
+      of the equation (a sensitivity / cross-impact reading); it must then match exactly
+      one entry in `symbols[]` by its `fromProperty`. Omit when the record describes
+      the equation as a whole \u2014 the full table is in `symbols[]` and there is
+      no single \"from\".\n"
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/fromProperty
+    x-jsonld-type: '@id'
+  toProperty:
+    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    description: IRI or CURIE of the derived target property calculated by the equation.
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/toProperty
+    x-jsonld-type: '@id'
+  equation:
+    type: string
+    minLength: 1
+    description: Canonical mathematical expression. It should match schema:mathExpression
+      on the target property definition.
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasEquation
+  symbols:
+    type: array
+    minItems: 1
+    description: 'Complete symbol table for `equation`: one entry per symbol used
+      in the expression. The primary symbol (the one this record is about) is the
+      entry whose `fromProperty` equals the top-level `fromProperty`. The other entries
+      are the rest of the table, with their own bindings, so the record is computationally
+      self-contained.
+
+      '
+    items:
+      type: object
+      required:
+      - symbol
+      - fromProperty
+      - bindings
+      properties:
+        symbol:
+          type: string
+          minLength: 1
+          description: LaTeX symbol as it occurs literally in `equation`.
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasSymbol
+        symbolAliases:
+          type: array
+          description: Alternative renderings (ASCII variants, plain forms).
+          items:
+            type: string
+            minLength: 1
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasSymbolAlias
+          x-jsonld-container: '@set'
+        fromProperty:
+          $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+          description: Abstract Rainbow IRI for this symbol.
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/fromProperty
+          x-jsonld-type: '@id'
+        variableKind:
+          type: string
+          enum:
+          - featureOfInterest
+          - intensiveQuantity
+          - extensiveQuantity
+          - adjustmentFactor
+          - timeCoefficient
+          - rateCoefficient
+          - uncertaintyFactor
+          - aggregationIndex
+          description: 'Semantic role of the symbol in the equation.
+
+            '
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasVariableKind
+          x-jsonld-type: '@vocab'
+        dimensionKind:
+          $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+          description: 'Unit-abstract dimensional type as a QUDT QuantityKind URI
+            (e.g. `quantitykind:Area`, `quantitykind:AreaDensity`, `quantitykind:Dimensionless`,
+            `quantitykind:Time`, `quantitykind:Frequency`). Decouples dimensional
+            analysis from unit selection.
+
+            '
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasDimensionKind
+          x-jsonld-type: '@id'
+        indexed:
+          type: boolean
+          default: false
+          description: 'True if the term is iterated under the aggregation index of
+            toProperty (e.g. per-taxon `D_{pre,i}`).
+
+            '
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/isIndexed
+        index:
+          type: string
+          description: Index symbol, e.g. "i". Only meaningful when `indexed` is true.
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasIndex
+        indexedBy:
+          $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+          description: 'IRI of the entity class whose instances enumerate the index
+            (e.g. `odd:TaxonGroup`). Required when `indexed` is true.
+
+            '
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasIndexedBy
+          x-jsonld-type: '@id'
+        equationRole:
+          type: string
+          enum:
+          - input
+          - coefficient
+          - normaliser
+          - lossTerm
+          - uncertaintyTerm
+          - qualityTerm
+          - output
+          - other
+          description: Role this symbol plays in the equation.
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasEquationRole
+          x-jsonld-type: '@vocab'
+        operator:
+          type: string
+          enum:
+          - sum
+          - product
+          - subtract
+          - divide
+          - transform
+          - weightedSum
+          - other
+          description: Main operation connecting this symbol to the equation.
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasOperator
+          x-jsonld-type: '@vocab'
+        bindings:
+          type: array
+          minItems: 1
+          description: 'Concrete vocabulary IRIs that realise the abstract `fromProperty`
+            of this symbol. Use when one symbol expands over an index (per-taxon,
+            per-region), or when alternate / fallback measurements exist.
+
+            '
+          items:
+            type: object
+            required:
+            - variable
+            properties:
+              variable:
+                $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+                description: Concrete Rainbow IRI realising the entry's fromProperty.
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/bindingVariable
+                x-jsonld-type: '@id'
+              indexValue:
+                type: string
+                description: Value of the equation index variable (e.g. "Mytilus edulis").
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/bindingIndexValue
+              bindingRole:
+                type: string
+                enum:
+                - primary
+                - alternate
+                - fallback
+                - expansion
+                default: primary
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/bindingRole
+                x-jsonld-type: '@vocab'
+              validityScope:
+                type: string
+                description: Short scope note (region, scenario, season).
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/bindingValidityScope
+              evidence:
+                oneOf:
+                - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+                - type: array
+                  items:
+                    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+                x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+                x-jsonld-type: '@id'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasBinding
+          x-jsonld-container: '@set'
+        explanation:
+          type: string
+          description: Human-readable note about this symbol.
+          x-jsonld-id: https://schema.org/explanation
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasEquationSymbol
+    x-jsonld-container: '@set'
+  weight:
+    description: Optional sensitivity or coefficient value. In this profile it is
+      not a causal cross-impact weight.
+    type: object
+    required:
+    - value
+    properties:
+      value:
+        type: number
+        description: Numeric sensitivity or coefficient value.
+        x-jsonld-id: http://qudt.org/schema/qudt/numericValue
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/prop-rel/hasWeight
+    x-jsonld-type: '@id'
+  model:
+    description: Model that defines or evaluates this equation relationship (prov:wasAttributedTo).
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+        description: Identifier of the model (dct:identifier).
+        x-jsonld-id: http://purl.org/dc/terms/identifier
+      name:
+        type: string
+        description: Human-readable label of the model (rdfs:label).
+        x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#label
+      uri:
+        type: string
+        description: URI of the model resource.
+        x-jsonld-id: '@id'
+    x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
+  experiment:
+    description: Experiment activity that evaluated this relationship (prov:wasGeneratedBy).
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+        description: Identifier of the experiment (dct:identifier).
+        x-jsonld-id: http://purl.org/dc/terms/identifier
+      name:
+        type: string
+        description: Human-readable label of the experiment (rdfs:label).
+        x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#label
+      uri:
+        type: string
+        description: URI of the experiment resource.
+        x-jsonld-id: '@id'
+      start:
+        type: string
+        format: date-time
+        pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
+        description: Date and time when the experiment started (prov:startedAtTime).
+        x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+      end:
+        type: string
+        format: date-time
+        pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
+        description: Date and time when the experiment ended (prov:endedAtTime).
+        x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+  evidence:
+    oneOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    - type: array
+      items:
+        $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    description: Evidence or definition source for the equation relationship.
+    x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+    x-jsonld-type: '@id'
+  explanation:
+    type: string
+    description: Human-readable explanation of how the primary fromProperty participates
+      in the equation.
+    x-jsonld-id: https://schema.org/explanation
+additionalProperties: true
+x-jsonld-extra-terms:
+  PropertyRelationship: https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship
+  EquationPropertyRelationship: https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship
+x-jsonld-prefixes:
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  prop-rel: https://w3id.org/ogc/hosted/seadots/prop-rel/
+  schema: https://schema.org/
+  prov: http://www.w3.org/ns/prov#
+  qudt: http://qudt.org/schema/qudt/
+  dct: http://purl.org/dc/terms/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  quantitykind: http://qudt.org/vocab/quantitykind/

@@ -1,0 +1,215 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.equation-property-relationship - Equation property relationship",
+  "bblockName": "Equation property relationship",
+  "bblockId": "ogc.hosted.seadots.equation-property-relationship",
+  "generated": "2026-05-12T21:20:13.819974+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/equation-property-relationship/example_1_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/equation-property-relationship/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/reef-biomass-equation.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 88,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix : <https://w3id.org/ogc/hosted/seadots/prop-rel/> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation> ;\n            sh:resultMessage \"indexed=true requires toProperty to declare an :Aggregation.\" ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraint [ sh:message \"indexed=true requires toProperty to declare an :Aggregation.\" ;\n                    sh:select \"\"\"\n      PREFIX : <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n      SELECT $this ?to WHERE {\n        $this :toProperty ?to ; :hasEquationSymbol ?entry .\n        ?entry :isIndexed true .\n        FILTER NOT EXISTS { ?to :hasAggregation ?a }\n      } \"\"\" ] ;\n            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;\n            sh:sourceShape :IndexedTermShape ;\n            sh:value <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation> ;\n            sh:resultMessage \"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\" ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraint [ sh:message \"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\" ;\n                    sh:select \"\"\"\n      PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n      PREFIX prov: <http://www.w3.org/ns/prov#>\n      SELECT $this ?from ?to WHERE {\n        $this :toProperty ?to ; :hasEquationSymbol ?entry .\n        ?entry :fromProperty ?from .\n        FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }\n      } \"\"\" ] ;\n            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;\n            sh:sourceShape :ProvClosureShape ;\n            sh:value <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation> ] .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: False\n  Results (2):\n  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: :ProvClosureShape\n  \tFocus Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n  \tValue Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n  \tSource Constraint: [ sh:message Literal(\"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\") ; sh:select Literal(\"\n        PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n        PREFIX prov: <http://www.w3.org/ns/prov#>\n        SELECT $this ?from ?to WHERE {\n          $this :toProperty ?to ; :hasEquationSymbol ?entry .\n          ?entry :fromProperty ?from .\n          FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }\n        } \") ]\n  \tMessage: Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\n  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: :IndexedTermShape\n  \tFocus Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n  \tValue Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n  \tSource Constraint: [ sh:message Literal(\"indexed=true requires toProperty to declare an :Aggregation.\") ; sh:select Literal(\"\n        PREFIX : <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n        SELECT $this ?to WHERE {\n          $this :toProperty ?to ; :hasEquationSymbol ?entry .\n          ?entry :isIndexed true .\n          FILTER NOT EXISTS { ?to :hasAggregation ?a }\n        } \") ]\n  \tMessage: indexed=true requires toProperty to declare an :Aggregation.\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":EquationByteEqualityShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>"
+                  ]
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>"
+                  ]
+                },
+                ":SymbolInEquationShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>"
+                  ]
+                },
+                ":ProvClosureShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>"
+                  ]
+                },
+                ":IndexedTermShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :EquationByteEqualityShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n - Shape :PrimaryEntryShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n - Shape :SymbolInEquationShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n - Shape :ProvClosureShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n - Shape :IndexedTermShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/reef-biomass-equation>\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/equation-property-relationship/example_2_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/equation-property-relationship/example_2_1.json",
+        "exampleIndex": 2,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/quality-adjusted-biomass-equation.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_2_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_2_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_2_1.ttl",
+              "size": 40,
+              "isError": false,
+              "message": "Output Turtle example_2_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix : <https://w3id.org/ogc/hosted/seadots/prop-rel/> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation> ;\n            sh:resultMessage \"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\" ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraint [ sh:message \"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\" ;\n                    sh:select \"\"\"\n      PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n      PREFIX prov: <http://www.w3.org/ns/prov#>\n      SELECT $this ?from ?to WHERE {\n        $this :toProperty ?to ; :hasEquationSymbol ?entry .\n        ?entry :fromProperty ?from .\n        FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }\n      } \"\"\" ] ;\n            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;\n            sh:sourceShape :ProvClosureShape ;\n            sh:value <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation> ] .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: :ProvClosureShape\n  \tFocus Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n  \tValue Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n  \tSource Constraint: [ sh:message Literal(\"Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\") ; sh:select Literal(\"\n        PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>\n        PREFIX prov: <http://www.w3.org/ns/prov#>\n        SELECT $this ?from ?to WHERE {\n          $this :toProperty ?to ; :hasEquationSymbol ?entry .\n          ?entry :fromProperty ?from .\n          FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }\n        } \") ]\n  \tMessage: Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":EquationByteEqualityShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>"
+                  ]
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>"
+                  ]
+                },
+                ":SymbolInEquationShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>"
+                  ]
+                },
+                ":ProvClosureShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>"
+                  ]
+                },
+                ":IndexedTermShape": {
+                  "nodes": [
+                    "<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :EquationByteEqualityShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n - Shape :PrimaryEntryShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n - Shape :SymbolInEquationShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n - Shape :ProvClosureShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n - Shape :IndexedTermShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  }
+}
