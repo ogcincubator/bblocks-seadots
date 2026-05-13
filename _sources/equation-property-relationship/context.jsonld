@@ -8,6 +8,10 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "qudt": "http://qudt.org/schema/qudt/",
     "quantitykind": "http://qudt.org/vocab/quantitykind/",
+    "odd": "https://w3id.org/iliad/odd#",
+    "tc": "http://rs.tdwg.org/ontology/voc/TaxonConcept#",
+    "indo": "https://id3.seadots.eu/indicator/",
+    "ind": "https://id3.seadots.eu/computation/",
     "id": "@id",
     "type": "@type",
     "name": "rdfs:label",
@@ -21,6 +25,35 @@
     "toProperty": {
       "@id": "prop-rel:toProperty",
       "@type": "@id"
+    },
+    "targetDefinition": {
+      "@id": "prop-rel:targetDefinition",
+      "@context": {
+        "id": "@id",
+        "type": "@type",
+        "name": "rdfs:label",
+        "mathExpression": "schema:mathExpression",
+        "wasDerivedFrom": {
+          "@id": "prov:wasDerivedFrom",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "aggregation": {
+          "@id": "prop-rel:hasAggregation",
+          "@context": {
+            "type": "@type",
+            "operator": {
+              "@id": "prop-rel:aggregationOperator",
+              "@type": "@id"
+            },
+            "aggregatesOver": {
+              "@id": "prop-rel:aggregatesOver",
+              "@type": "@id"
+            },
+            "indexSymbol": "prop-rel:indexSymbol"
+          }
+        }
+      }
     },
     "equation": "prop-rel:hasEquation",
     "symbols": {
@@ -48,10 +81,10 @@
             "evidence":      { "@id": "prov:wasDerivedFrom", "@type": "@id" }
           }
         },
-        "explanation": "schema:explanation"
+        "explanation": "rdfs:comment"
       }
     },
-    "explanation": "schema:explanation",
+    "explanation": "rdfs:comment",
     "evidence": {
       "@id": "prov:wasDerivedFrom",
       "@type": "@id"

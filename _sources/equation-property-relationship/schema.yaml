@@ -40,10 +40,11 @@ properties:
     minItems: 1
     description: >
       Complete symbol table for `equation`: one entry per symbol used in
-      the expression. The primary symbol (the one this record is about)
-      is the entry whose `fromProperty` equals the top-level
-      `fromProperty`. The other entries are the rest of the table, with
-      their own bindings, so the record is computationally self-contained.
+      the expression. For equation-level records, top-level `fromProperty`
+      is omitted and `symbols[]` is the full computable table. For
+      symbol-centred records, the primary symbol is the entry whose
+      `fromProperty` equals top-level `fromProperty`; the other entries
+      remain in the table so the record is computationally self-contained.
     items:
       type: object
       required: [symbol, fromProperty, bindings]
@@ -76,7 +77,7 @@ properties:
           $ref: bblocks://ogc.ogc-utils.iri-or-curie
           description: >
             Unit-abstract dimensional type as a QUDT QuantityKind URI
-            (e.g. `quantitykind:Area`, `quantitykind:AreaDensity`,
+            (e.g. `quantitykind:Area`, `quantitykind:SurfaceDensity`,
             `quantitykind:Dimensionless`, `quantitykind:Time`,
             `quantitykind:Frequency`). Decouples dimensional analysis
             from unit selection.
