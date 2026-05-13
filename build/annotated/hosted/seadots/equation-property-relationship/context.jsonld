@@ -1,0 +1,112 @@
+{
+  "@context": {
+    "PropertyRelationship": "prop-rel:PropertyRelationship",
+    "EquationPropertyRelationship": "prop-rel:EquationPropertyRelationship",
+    "id": "@id",
+    "type": "@type",
+    "relationshipKind": "schema:additionalType",
+    "fromProperty": {
+      "@id": "prop-rel:fromProperty",
+      "@type": "@id"
+    },
+    "toProperty": {
+      "@id": "prop-rel:toProperty",
+      "@type": "@id"
+    },
+    "equation": "prop-rel:hasEquation",
+    "symbols": {
+      "@context": {
+        "symbol": "prop-rel:hasSymbol",
+        "symbolAliases": {
+          "@id": "prop-rel:hasSymbolAlias",
+          "@container": "@set"
+        },
+        "variableKind": {
+          "@id": "prop-rel:hasVariableKind",
+          "@type": "@vocab"
+        },
+        "dimensionKind": {
+          "@id": "prop-rel:hasDimensionKind",
+          "@type": "@id"
+        },
+        "indexed": "prop-rel:isIndexed",
+        "index": "prop-rel:hasIndex",
+        "indexedBy": {
+          "@id": "prop-rel:hasIndexedBy",
+          "@type": "@id"
+        },
+        "equationRole": {
+          "@id": "prop-rel:hasEquationRole",
+          "@type": "@vocab"
+        },
+        "operator": {
+          "@id": "prop-rel:hasOperator",
+          "@type": "@vocab"
+        },
+        "bindings": {
+          "@context": {
+            "variable": {
+              "@id": "prop-rel:bindingVariable",
+              "@type": "@id"
+            },
+            "indexValue": "prop-rel:bindingIndexValue",
+            "bindingRole": {
+              "@id": "prop-rel:bindingRole",
+              "@type": "@vocab"
+            },
+            "validityScope": "prop-rel:bindingValidityScope"
+          },
+          "@id": "prop-rel:hasBinding",
+          "@container": "@set"
+        }
+      },
+      "@id": "prop-rel:hasEquationSymbol",
+      "@container": "@set"
+    },
+    "weight": {
+      "@context": {
+        "value": "qudt:numericValue"
+      },
+      "@id": "prop-rel:hasWeight",
+      "@type": "@id"
+    },
+    "model": {
+      "@context": {
+        "id": "dct:identifier",
+        "name": "rdfs:label",
+        "uri": "@id"
+      },
+      "@id": "prov:wasAttributedTo"
+    },
+    "experiment": {
+      "@context": {
+        "id": "dct:identifier",
+        "name": "rdfs:label",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
+        }
+      },
+      "@id": "prov:wasGeneratedBy"
+    },
+    "evidence": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "explanation": "schema:explanation",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "quantitykind": "http://qudt.org/vocab/quantitykind/",
+    "@version": 1.1
+  }
+}

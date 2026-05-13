@@ -1,0 +1,44 @@
+Validation report for ogc.hosted.seadots.equation-property-relationship - Equation property relationship
+Generated 2026-05-12T21:20:13.819904+00:00
+=== Files ===
+Using examples/quality-adjusted-biomass-equation.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_2_1.jsonld created
+Output Turtle example_2_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+
+** Validation error **
+Validation result for _sources/ontology/rules.shacl:
+  Validation Report
+  Conforms: False
+  Results (1):
+  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: :ProvClosureShape
+  	Focus Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+  	Value Node: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+  	Source Constraint: [ sh:message Literal("Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.") ; sh:select Literal("
+        PREFIX :     <https://w3id.org/ogc/hosted/seadots/prop-rel/>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        SELECT $this ?from ?to WHERE {
+          $this :toProperty ?to ; :hasEquationSymbol ?entry .
+          ?entry :fromProperty ?from .
+          FILTER NOT EXISTS { ?to prov:wasDerivedFrom ?from }
+        } ") ]
+  	Message: Every symbol entry's fromProperty must be listed in prov:wasDerivedFrom of toProperty.
+  
+Focus nodes for _sources/ontology/rules.shacl:
+ - Shape :EquationByteEqualityShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+ - Shape :PrimaryEntryShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+ - Shape :SymbolInEquationShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+ - Shape :ProvClosureShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+ - Shape :IndexedTermShape: <https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation>
+
+=== End SHACL ===
+
