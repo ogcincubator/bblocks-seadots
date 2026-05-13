@@ -8,14 +8,14 @@
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/reference-cases/windfloat-atlantic/eqrel/quality-adjusted-biomass-equation> a prop-rel:EquationPropertyRelationship,
+<https://id3.seadots.eu/indicator/eqrel/quality-adjusted-biomass-effect> a prop-rel:EquationPropertyRelationship,
         prop-rel:PropertyRelationship ;
+    rdfs:comment "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole." ;
     prov:wasAttributedTo <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ;
     prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
     schema:additionalType "equation" ;
-    schema:explanation "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole." ;
     prop-rel:hasEquation "B_{qa} = B_{total} \\cdot (1 - U)" ;
-    prop-rel:hasEquationSymbol [ schema:explanation "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
+    prop-rel:hasEquationSymbol [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
             prop-rel:fromProperty ind:wind-park-biomass-effect ;
             prop-rel:hasBinding [ prov:wasDerivedFrom ind:wind-park-biomass-effect ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
@@ -41,8 +41,14 @@
                 "U_{data}" ;
             prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
             prop-rel:isIndexed false ] ;
+    prop-rel:targetDefinition ind:quality-adjusted-biomass-effect ;
     prop-rel:toProperty ind:quality-adjusted-biomass-effect .
 
 <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> rdfs:label "Utsira biomass upscaler v1" ;
     dct:identifier "utsira-biomass-upscaler-v1" .
+
+ind:quality-adjusted-biomass-effect a prov:Entity ;
+    prov:wasDerivedFrom ind:wind-park-biomass-effect,
+        indo:data-quality-uncertainty-factor ;
+    schema:mathExpression "B_{qa} = B_{total} \\cdot (1 - U)" .
 

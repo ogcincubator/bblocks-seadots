@@ -1,0 +1,103 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix odd: <https://w3id.org/iliad/odd#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix thns: <https://w3id.org/ogc/stac/themes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<doi:10.18564/jasss.4259> a <file:///github/workspace/ScholarlyArticle>,
+        geojson:Feature ;
+    dcterms:created "2020-03-31" ;
+    dcterms:description "The ODD (Overview, Design concepts, Details) protocol for describing agent-based and individual-based models is now widely used but has persistent weaknesses. This second update addresses those limitations through improved guidance, summary templates, hierarchical approaches for complex models, code-linking recommendations, and explicit pattern-oriented modeling integration." ;
+    dcterms:modified "2020-03-31" ;
+    dcterms:temporal [ ] ;
+    dcterms:title "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism" ;
+    rdfs:seeAlso [ rdfs:label "Supplement S2 — Summary ODD templates" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
+        [ rdfs:label "DOI" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
+        [ rdfs:label "JASSS 23(2)7 — journal article" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
+        [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
+        [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ],
+        [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ] ;
+    dcat:contactPoint [ ],
+        [ ],
+        [ ],
+        [ ] ;
+    dcat:keyword "ODD",
+        "TRACE",
+        "agent-based model",
+        "individual-based model",
+        "model documentation",
+        "pattern-oriented modeling",
+        "protocol",
+        "replication",
+        "simulation" ;
+    dcat:license "https://creativecommons.org/licenses/by/3.0/" ;
+    odd: [ odd:designConcepts [ odd:adaptation "What adaptive traits do agents have? What environmental or internal information drives adaptive decisions? Describe the decision algorithm (e.g. if-then rules, utility maximisation, evolved strategies)." ;
+                    odd:basicPrinciples "What general theoretical or empirical frame underlies the model? Examples: evolutionary optimisation, decision-field theory, patch dynamics, social norms. Reference the theories explicitly." ;
+                    odd:collectives "Are agents aggregated into groups, populations, or networks that exhibit their own behaviours? How do collectives emerge or are they predefined? How do they affect individual agent behaviour?" ;
+                    odd:emergence "Which key results emerge from individual agent behaviours and interactions rather than being encoded directly as global model rules? Emergence should be identified and justified, not just asserted." ;
+                    odd:interaction "What direct interactions occur (e.g. competition, predation, communication, trade)? What indirect interactions occur through shared environmental resources or global variables?" ;
+                    odd:learning "Do agents modify their behaviour based on accumulated experience? If so, describe the learning algorithm (reinforcement learning, genetic algorithms, imitation, memory decay)." ;
+                    odd:objectives "What objectives do agents attempt to satisfy? How are objectives measured (fitness proxy, utility function, simple rule)? Objectives need not be explicit if only implicit in adaptive behaviour." ;
+                    odd:observation "How are model outputs collected for analysis? What state variables, aggregated statistics, or emergent patterns are recorded, at what frequency, and at what level of organisation?" ;
+                    odd:prediction "Do agents anticipate future conditions to make decisions? Describe the prediction horizon, method, and any assumptions about agent cognitive capacity." ;
+                    odd:sensing "What information about the environment and other agents can an agent perceive? Are all sensing assumptions realistic and justified? Consider information cost and error." ;
+                    odd:stochasticity "Which processes use random numbers and why? What probability distributions are used? Is stochasticity used to represent true variability or to represent uncertainty?" ] ;
+            odd:entities ( [ dcterms:title "Simulation Model (abstract template)" ;
+                        odd:entityType "abstract" ;
+                        odd:scales [ odd:spatialScale "Domain-specific — must be stated explicitly in the implementing ODD" ;
+                                odd:temporalScale "Domain-specific — must state time step unit and total simulation duration" ] ;
+                        odd:stateVariables () ] ) ;
+            odd:initialization [ dcterms:description "ODD requires: the number and type of agents at t=0, their initial attribute values (means, distributions, or exact values), spatial configuration, and the rationale for the chosen initial state. For stochastic initialisation, describe how seeds are set." ;
+                    rdfs:seeAlso () ;
+                    odd:randomSeed "Random seeds for initialisation must be reported. State whether results are averaged over multiple seeds or whether a single seed is used for all analyses." ] ;
+            odd:inputData () ;
+            odd:patterns ( [ dcterms:description "A strategy for using multiple observed patterns — at different levels of organisation and for different model structural elements — to constrain, parameterise, and validate a model. Patterns that a model must reproduce become explicit design criteria documented under Purpose." ;
+                        dcterms:references <https://doi.org/10.1371/journal.pcbi.1000356> ;
+                        dcterms:title "Pattern-Oriented Modeling (POM)" ] ) ;
+            odd:processOverview [ odd:processes ( [ dcterms:description "Each process listed in the process overview is executed per step according to the scheduling rules. All processes are detailed in the Submodels section." ;
+                                dcterms:title "Submodel execution" ;
+                                odd:executedBy "Simulation engine / scheduling loop" ] ) ;
+                    odd:scheduling "ODD requires an explicit description of temporal ordering: which processes run within each time step, in what order, and whether agent execution is synchronous, asynchronous, or in randomised order. Scheduling must match the implementation exactly." ] ;
+            odd:purpose "The ODD protocol provides a standardised, community-agreed framework for describing agent-based and individual-based simulation models (ABMs/IBMs). Its purpose is to enable model replication, understanding, and comparison by enforcing complete and logically ordered documentation. This second update improves clarity, supports replication of complex models, and strengthens linkage to Pattern-Oriented Modeling (POM) and the TRACE evaluation framework." ;
+            odd:submodels ( [ dcterms:description "Each submodel in an implementing ODD must describe: (1) purpose and relationship to the process overview, (2) mathematical equations or algorithmic pseudocode, (3) all parameters with units, values, ranges, and sources, (4) simplifying assumptions and their justification." ;
+                        dcterms:title "Generic Submodel Documentation Template" ;
+                        rdfs:seeAlso () ;
+                        odd:equations "Provide full mathematical specification. Where equations come from published literature, cite sources. Where parameterised empirically, describe the calibration procedure." ;
+                        odd:parameterization "All parameters must be listed with: symbol, description, value, unit, source (empirical data, literature, or calibration). Calibrated parameters must reference Supplement S7 for experiment design." ] ) ] ;
+    rec:format [ rec:mediaType "text/html" ] ;
+    rec:language "en" ;
+    rec:scopedIdentifier [ rec:id "1460-7425" ;
+            rec:scheme "issn" ],
+        [ rec:id "10.18564/jasss.4259" ;
+            rec:scheme "doi" ] ;
+    rec:themes [ thns:concepts [ thns:id "protocol"^^xsd:string ],
+                [ thns:id "model-documentation"^^xsd:string ],
+                [ thns:id "simulation"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
+                [ thns:id "agent-based-model"^^xsd:string ] ;
+            thns:scheme "https://vocabularies.jasss.org/themes" ] .
+

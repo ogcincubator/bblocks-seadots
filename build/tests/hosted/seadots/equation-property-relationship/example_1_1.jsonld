@@ -1,13 +1,12 @@
 {
   "@context": [
     {
-      "no-wfa": "https://example.org/reference-cases/windfloat-atlantic/",
       "indo": "https://id3.seadots.eu/indicator/",
       "ind": "https://id3.seadots.eu/computation/"
     },
     "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld"
   ],
-  "id": "no-wfa:eqrel/reef-biomass-equation",
+  "id": "indo:eqrel/reef-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
@@ -15,6 +14,23 @@
   "relationshipKind": "equation",
   "toProperty": "ind:floating-wind-reef-biomass",
   "equation": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
+  "targetDefinition": {
+    "id": "ind:floating-wind-reef-biomass",
+    "type": "prov:Entity",
+    "mathExpression": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
+    "wasDerivedFrom": [
+      "indo:submerged-infrastructure-area",
+      "indo:baseline-benthic-biomass-density",
+      "indo:reef-aggregation-index",
+      "indo:colonisation-time-factor"
+    ],
+    "aggregation": {
+      "type": "prop-rel:Aggregation",
+      "operator": "prop-rel:Sum",
+      "aggregatesOver": "tc:TaxonConcept",
+      "indexSymbol": "i"
+    }
+  },
   "symbols": [
     {
       "symbol": "A_{sub}",
@@ -46,10 +62,10 @@
       ],
       "fromProperty": "indo:baseline-benthic-biomass-density",
       "variableKind": "intensiveQuantity",
-      "dimensionKind": "quantitykind:AreaDensity",
+      "dimensionKind": "quantitykind:SurfaceDensity",
       "indexed": true,
       "index": "i",
-      "indexedBy": "odd:TaxonGroup",
+      "indexedBy": "tc:TaxonConcept",
       "equationRole": "input",
       "operator": "product",
       "bindings": [
@@ -74,7 +90,7 @@
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": true,
       "index": "i",
-      "indexedBy": "odd:TaxonGroup",
+      "indexedBy": "tc:TaxonConcept",
       "equationRole": "coefficient",
       "operator": "product",
       "bindings": [

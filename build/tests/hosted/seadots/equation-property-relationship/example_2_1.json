@@ -1,5 +1,5 @@
 {
-  "id": "no-wfa:eqrel/quality-adjusted-biomass-equation",
+  "id": "indo:eqrel/quality-adjusted-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
@@ -7,6 +7,15 @@
   "relationshipKind": "equation",
   "toProperty": "ind:quality-adjusted-biomass-effect",
   "equation": "B_{qa} = B_{total} \\cdot (1 - U)",
+  "targetDefinition": {
+    "id": "ind:quality-adjusted-biomass-effect",
+    "type": "prov:Entity",
+    "mathExpression": "B_{qa} = B_{total} \\cdot (1 - U)",
+    "wasDerivedFrom": [
+      "ind:wind-park-biomass-effect",
+      "indo:data-quality-uncertainty-factor"
+    ]
+  },
   "symbols": [
     {
       "symbol": "B_{total}",

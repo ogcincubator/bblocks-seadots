@@ -1,0 +1,86 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix odd: <https://w3id.org/iliad/odd#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix thns: <https://w3id.org/ogc/stac/themes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1> a <file:///github/workspace/SoftwareSourceCode>,
+        geojson:Feature ;
+    dcterms:created "2026-05-13" ;
+    dcterms:description "Minimal ODD-Protocol record demonstrating how a single submodel can reference an exemplar equation declared in the seadots `equation-property-relationship` bblock. The submodel `Reef-associated biomass` mirrors the equation B_{reef} = sum_i (A_{sub} . D_{pre,i} . AF_i . C_t) and links out to the canonical `reef-biomass-equation.json` instance for the full symbol table, bindings, and provenance." ;
+    dcterms:modified "2026-05-13" ;
+    dcterms:temporal [ ] ;
+    dcterms:title "Utsira reef-biomass demonstrator — one-submodel ODD" ;
+    rdfs:seeAlso [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ],
+        [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ] ;
+    dcat:contactPoint [ ] ;
+    dcat:keyword "ODD",
+        "SeaDOTs",
+        "Utsira",
+        "demonstrator",
+        "equation-property-relationship",
+        "floating wind",
+        "reef biomass" ;
+    dcat:license "https://creativecommons.org/licenses/by/4.0/" ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;
+    odd: [ odd:entities ( [ dcterms:title "TaxonGroup" ;
+                        odd:entityType "agent" ;
+                        odd:scales [ odd:spatialScale "Utsira Nord licence polygon (~1000 km²)" ;
+                                odd:temporalScale "annual aggregation; scenario T0 + 24 months" ] ;
+                        odd:stateVariables ( [ dcterms:description "Scientific name of the taxon iterated by index i." ;
+                                    dcterms:title "scientificName" ;
+                                    skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
+                                    odd:variableType "string" ] [ dcterms:description "Per-taxon reef aggregation index (dimensionless)." ;
+                                    dcterms:title "AF_i" ;
+                                    qudt:unit "1" ;
+                                    skos:exactMatch <https://id3.seadots.eu/indicator/reef-aggregation-index> ;
+                                    odd:range "[0, +inf)" ;
+                                    odd:variableType "real" ] [ dcterms:description "Baseline benthic biomass density before installation." ;
+                                    dcterms:title "D_pre" ;
+                                    qudt:unit "kg m-2" ;
+                                    skos:exactMatch <https://id3.seadots.eu/indicator/baseline-benthic-biomass-density> ;
+                                    odd:variableType "real" ] ) ] ) ;
+            odd:inputData ( [ dcterms:description "Canonical equation-property-relationship instance carrying the full symbol table (A_{sub}, D_{pre,i}, AF_i, C_t) with per-symbol kind, dimension kind, indexing and bindings to concrete Rainbow IRIs." ;
+                        dcterms:format "application/ld+json" ;
+                        dcterms:title "Reef-biomass equation record" ;
+                        skos:exactMatch <https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship> ;
+                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] ) ;
+            odd:processOverview [ odd:processes ( [ dcterms:description "Iterates over TaxonGroup instances and applies the reef-biomass equation defined by the linked equation-property-relationship record." ;
+                                dcterms:title "Compute reef-associated biomass" ;
+                                odd:executedBy "biomass-upscaler" ] ) ;
+                    odd:scheduling "Single deterministic pass: for every taxon group i, evaluate the reef-biomass submodel and sum." ] ;
+            odd:purpose "Estimate the reef-associated biomass that develops on submerged floating-wind infrastructure at Utsira Nord under the Norwegian SES scenario. Demonstrator: one submodel only, with the full equation, symbol table and per-taxon bindings carried by the linked `equation-property-relationship` record." ;
+            odd:submodels ( [ dcterms:description "Sum of per-taxon reef biomass attached to submerged infrastructure. The full symbol table, dimensional typing, per-taxon bindings (Mytilus edulis, Buccinum undatum, Asterias rubens) and provenance are carried by the linked `equation-property-relationship` record — this submodel only restates the equation in human-readable form." ;
+                        dcterms:title "Reef-associated biomass" ;
+                        rdfs:seeAlso ( [ dcterms:title "Reef-biomass equation — full symbol table, bindings and provenance" ;
+                                    schema:url <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
+                                    odd:linkRel "describedby" ] [ dcterms:title "EquationPropertyRelationship bblock — schema and context for the linked record" ;
+                                    schema:url <bblocks://ogc.hosted.seadots.equation-property-relationship> ;
+                                    odd:linkRel "profile" ] [ dcterms:title "Degraer et al. 2020 — artificial-reef effect prior used to parameterise AF_i" ;
+                                    schema:url <https://doi.org/10.5670/oceanog.2020.405> ;
+                                    odd:linkRel "cite-as" ] ) ;
+                        odd:equations "B_{reef} = sum_i ( A_{sub} . D_{pre,i} . AF_i . C_t )" ;
+                        odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indo:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indo:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indo:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
+    rec:format [ rec:mediaType "application/json" ] ;
+    rec:language "en" ;
+    rec:themes [ thns:concepts [ thns:id "impact-assessment"^^xsd:string ],
+                [ thns:id "reef-effect"^^xsd:string ],
+                [ thns:id "benthic-biomass"^^xsd:string ] ;
+            thns:scheme "https://id3.seadots.eu/themes" ] .
+

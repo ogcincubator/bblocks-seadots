@@ -1,0 +1,399 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: ODD Protocol Description Record
+description: 'OGC API Records profile for simulation model publications described
+  using the ODD Protocol (Grimm et al. 2020). Extends GeoDCAT-Records with a structured
+  `odd` sub-object covering the three ODD sections: Overview (purpose, patterns, entities,
+  process overview), Design Concepts (11 concepts), and Details (initialization, input
+  data, submodels). Vocabulary terms for entities and variables are intentionally
+  open-ended to allow domain-specific narrowing.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+properties:
+  properties:
+    type: object
+    properties:
+      odd:
+        type: object
+        description: 'ODD Protocol structured description. Keys map directly to the
+          seven ODD elements. Each text field accepts plain prose; structured sub-fields
+          provide vocabulary anchor points for domain profiles.
+
+          '
+        properties:
+          purpose:
+            type: string
+            description: 'Why was the model developed? What question(s) does it address?
+              Include any patterns the model is intended to reproduce (Pattern-Oriented
+              Modeling).
+
+              '
+            x-jsonld-id: https://w3id.org/iliad/odd#purpose
+          patterns:
+            type: array
+            description: 'Empirical or stylised patterns used to design, parameterise,
+              or validate the model. Each entry links to an observation or dataset
+              (domain vocabulary slot).
+
+              '
+            items:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/title
+                description:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/description
+                reference:
+                  type: string
+                  format: uri
+                  description: DOI, URL, or vocabulary term URI for the pattern source
+                  x-jsonld-id: http://purl.org/dc/terms/references
+                  x-jsonld-type: '@id'
+            x-jsonld-id: https://w3id.org/iliad/odd#patterns
+            x-jsonld-container: '@list'
+          entities:
+            type: array
+            description: "Agent types, environmental entities, and other model components.
+              `stateVariables[].vocabularyTerm` is the slot for domain vocabulary
+              injection (NERC, CF, Darwin Core, ICES, \u2026).\n"
+            items:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/title
+                entityType:
+                  type: string
+                  description: 'Role of the entity: agent | patch | grid-cell | network-node
+                    | network-link | environment | resource | observer | other
+
+                    '
+                  x-jsonld-id: https://w3id.org/iliad/odd#entityType
+                stateVariables:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - name
+                    properties:
+                      name:
+                        type: string
+                        x-jsonld-id: http://purl.org/dc/terms/title
+                      type:
+                        type: string
+                        description: "Data type (boolean, integer, real, string, list,
+                          \u2026)"
+                        x-jsonld-id: https://w3id.org/iliad/odd#variableType
+                      unit:
+                        type: string
+                        description: 'Physical unit string (e.g. "m s-1"). For QUDT
+                          or NERC unit alignment, use vocabularyTerm.
+
+                          '
+                        x-jsonld-id: http://qudt.org/schema/qudt/unit
+                      range:
+                        type: string
+                        description: Valid range or enumeration (e.g. "[0, 1]", "non-negative")
+                        x-jsonld-id: https://w3id.org/iliad/odd#range
+                      description:
+                        type: string
+                        x-jsonld-id: http://purl.org/dc/terms/description
+                      vocabularyTerm:
+                        type: string
+                        format: uri
+                        description: 'Authoritative URI for the variable concept.
+                          Priority: NERC > CF > Darwin Core > OBIS > ICES > OGC >
+                          schema.org
+
+                          '
+                        x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+                        x-jsonld-type: '@id'
+                  x-jsonld-id: https://w3id.org/iliad/odd#stateVariables
+                  x-jsonld-container: '@list'
+                scales:
+                  type: object
+                  properties:
+                    spatial:
+                      type: string
+                      description: "Spatial resolution and extent (e.g. \"1 m grid,
+                        10 km \xD7 10 km\")"
+                      x-jsonld-id: https://w3id.org/iliad/odd#spatialScale
+                    temporal:
+                      type: string
+                      description: Time step and total duration (e.g. "1 day, 30 years")
+                      x-jsonld-id: https://w3id.org/iliad/odd#temporalScale
+                  x-jsonld-id: https://w3id.org/iliad/odd#scales
+            x-jsonld-id: https://w3id.org/iliad/odd#entities
+            x-jsonld-container: '@list'
+          processOverview:
+            type: object
+            description: 'Which processes are executed, by whom, and in what order?
+              The scheduling field must describe the temporal ordering precisely (e.g.
+              "synchronous, random order within step").
+
+              '
+            properties:
+              scheduling:
+                type: string
+                x-jsonld-id: https://w3id.org/iliad/odd#scheduling
+              processes:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - name
+                  properties:
+                    name:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/title
+                    executedBy:
+                      type: string
+                      description: Entity type that runs this process
+                      x-jsonld-id: https://w3id.org/iliad/odd#executedBy
+                    description:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/description
+                x-jsonld-id: https://w3id.org/iliad/odd#processes
+                x-jsonld-container: '@list'
+            x-jsonld-id: https://w3id.org/iliad/odd#processOverview
+          designConcepts:
+            type: object
+            description: 'The 11 design concepts defined by ODD. Each is a free-text
+              field; domain profiles may add controlled-vocabulary annotations alongside.
+
+              '
+            properties:
+              basicPrinciples:
+                type: string
+                description: 'Which general theoretical or empirical concepts (theories,
+                  hypotheses, heuristics) underlie the model?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#basicPrinciples
+              emergence:
+                type: string
+                description: 'Which key model results emerge from agent interactions
+                  rather than being imposed directly on the agents?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#emergence
+              adaptation:
+                type: string
+                description: 'What adaptive traits do agents have, and on what information
+                  are adaptation decisions based?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#adaptation
+              objectives:
+                type: string
+                description: 'What objectives do agents seek to achieve, and how are
+                  the objectives measured?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#objectives
+              learning:
+                type: string
+                description: 'Do agents adapt their behaviour over time in response
+                  to experience? What algorithm is used?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#learning
+              prediction:
+                type: string
+                description: 'Do agents make predictions about future conditions?
+                  What methods or models are used for prediction?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#prediction
+              sensing:
+                type: string
+                description: 'What information can agents perceive about themselves
+                  and the environment? Are sensing assumptions justified?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#sensing
+              interaction:
+                type: string
+                description: 'What direct and indirect interactions occur among agents
+                  and between agents and the environment?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#interaction
+              stochasticity:
+                type: string
+                description: 'Which processes are represented as stochastic? How and
+                  why?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#stochasticity
+              collectives:
+                type: string
+                description: 'Are there collectives (groups, flocks, organisations,
+                  markets)? How are they represented and how do they affect agent
+                  behaviour?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#collectives
+              observation:
+                type: string
+                description: 'What data are collected from the model for analysis?
+                  How are collectives, individuals, and the environment observed?
+
+                  '
+                x-jsonld-id: https://w3id.org/iliad/odd#observation
+            x-jsonld-id: https://w3id.org/iliad/odd#designConcepts
+          initialization:
+            type: object
+            description: 'State of the model at t=0: number of agents, their initial
+              attributes, spatial configuration, and how the initial state was chosen.
+
+              '
+            properties:
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              seed:
+                type: string
+                description: How the random seed is specified or varied across runs
+                x-jsonld-id: https://w3id.org/iliad/odd#randomSeed
+              links:
+                type: array
+                description: 'References to initialization data files or datasets
+                  (domain vocabulary slot for DCAT Dataset links).
+
+                  '
+                items:
+                  type: object
+                  required:
+                  - href
+                  properties:
+                    href:
+                      type: string
+                      format: uri
+                      x-jsonld-id: https://schema.org/url
+                      x-jsonld-type: '@id'
+                    title:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/title
+                    type:
+                      type: string
+                      description: Media type
+                      x-jsonld-id: https://w3id.org/iliad/odd#variableType
+                x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#seeAlso
+                x-jsonld-type: '@id'
+                x-jsonld-container: '@list'
+            x-jsonld-id: https://w3id.org/iliad/odd#initialization
+          inputData:
+            type: array
+            description: 'External data sources (time series, maps, tables) used to
+              drive or parameterise the model. `vocabularyTerm` is the domain slot
+              for NERC, CF, or dataset-catalogue URIs.
+
+              '
+            items:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/title
+                description:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/description
+                source:
+                  type: string
+                  format: uri
+                  description: Access URL (DCAT Distribution, OGC API, or DOI)
+                  x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                  x-jsonld-type: '@id'
+                format:
+                  type: string
+                  description: Media type or format name (e.g. "text/csv", "NetCDF")
+                  x-jsonld-id: http://purl.org/dc/terms/format
+                temporalCoverage:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/temporal
+                vocabularyTerm:
+                  type: string
+                  format: uri
+                  description: 'Concept URI for the variable or dataset type. Priority:
+                    NERC > CF > Darwin Core > OBIS > ICES > EMODnet
+
+                    '
+                  x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+                  x-jsonld-type: '@id'
+            x-jsonld-id: https://w3id.org/iliad/odd#inputData
+            x-jsonld-container: '@list'
+          submodels:
+            type: array
+            description: 'Detailed descriptions of each submodel. Equations and parameterisation
+              choices that are not derivable from first principles must be fully documented
+              here.
+
+              '
+            items:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/title
+                description:
+                  type: string
+                  x-jsonld-id: http://purl.org/dc/terms/description
+                equations:
+                  type: string
+                  description: Mathematical specification (LaTeX or plain text)
+                  x-jsonld-id: https://w3id.org/iliad/odd#equations
+                parameterization:
+                  type: string
+                  description: Parameter values, sources, and calibration approach
+                  x-jsonld-id: https://w3id.org/iliad/odd#parameterization
+                links:
+                  type: array
+                  description: References to code, data, or supplementary material
+                  items:
+                    type: object
+                    required:
+                    - href
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                        x-jsonld-id: https://schema.org/url
+                        x-jsonld-type: '@id'
+                      rel:
+                        type: string
+                        x-jsonld-id: https://w3id.org/iliad/odd#linkRel
+                      title:
+                        type: string
+                        x-jsonld-id: http://purl.org/dc/terms/title
+                  x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#seeAlso
+                  x-jsonld-type: '@id'
+                  x-jsonld-container: '@list'
+            x-jsonld-id: https://w3id.org/iliad/odd#submodels
+            x-jsonld-container: '@list'
+        x-jsonld-id: https://w3id.org/iliad/odd#
+x-jsonld-prefixes:
+  odd: https://w3id.org/iliad/odd#
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  skos: http://www.w3.org/2004/02/skos/core#
+  dcat: http://www.w3.org/ns/dcat#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: https://schema.org/
+  prov: http://www.w3.org/ns/prov#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sosa: http://www.w3.org/ns/sosa/
+  foaf: http://xmlns.com/foaf/0.1/
+  bibo: http://purl.org/ontology/bibo/
+  osc: https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#
