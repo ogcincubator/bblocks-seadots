@@ -2,8 +2,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <http://www.w3.org/ns/oa#> .
+@prefix ns1: <http://www.w3.org/ns/oa#> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -22,14 +22,14 @@
     rdfs:label "Equation property relationship" ;
     dct:abstract "Specialised property relationship profile for declaring that a source property is an explicit term in the canonical equation of a derived target property."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-12T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/equation-property-relationship/index.json> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.equation-property-relationship> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/equation-property-relationship/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.equation-property-relationship> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/equation-property-relationship/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-12"^^xsd:date ;
+    dct:modified "2026-05-13"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Equation property relationship" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -38,19 +38,19 @@
         "lineage",
         "property-relationships",
         "seadots" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
-            prof:hasRole role:validation ],
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld> ;
             prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.json> ;
-            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
+            prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.yaml> ;
@@ -58,6 +58,65 @@
     bblocks:dependsOn <bblocks://ogc.hosted.seadots.property-relationship>,
         <bblocks://ogc.ogc-utils.iri-or-curie> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/equation-property-relationship/context.jsonld> ;
+    bblocks:status <http://www.opengis.net/def/status/under-development> ;
+    bblocks:validationPassed true .
+
+<bblocks://ogc.hosted.seadots.odd-protocol> a skos:Concept,
+        dcat:Dataset,
+        bblocks:BBlock,
+        bblocks:Schema ;
+    rdfs:label "ODD Protocol Description Record" ;
+    dct:abstract "OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2026-04-29T00:00:00+00:00"^^xsd:dateTime ;
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.odd-protocol> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json> ] ;
+    dct:hasVersion "0.1" ;
+    dct:modified "2026-05-13"^^xsd:date ;
+    dct:source <https://doi.org/10.18564/jasss.4259>,
+        <https://ogcincubator.github.io/bblocks-openscience/>,
+        <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
+    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
+    skos:prefLabel "ODD Protocol Description Record" ;
+    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
+    dcat:keyword "ABM",
+        "IBM",
+        "ODD",
+        "agent-based-model",
+        "model-documentation",
+        "open-science",
+        "records",
+        "simulation" ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            prof:hasRole role:validation ] ;
+    bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
+        <bblocks://ogc.geo.geodcat.geodcat-records-prov>,
+        <bblocks://ogc.osc.ontology.openscience> ;
+    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld> ;
+    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed false .
 
@@ -68,14 +127,14 @@
     rdfs:label "Seadots Properties" ;
     dct:abstract "Defines seadots properties"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md> ],
+        [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.properties> ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/properties/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md> ] ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/properties/index.json> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-12"^^xsd:date ;
+    dct:modified "2026-05-13"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Seadots Properties" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -88,20 +147,26 @@
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
 
+<https://doi.org/10.18564/jasss.4259> rdfs:label "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update" .
+
+<https://ogcincubator.github.io/bblocks-openscience/> rdfs:label "Open Science Building Blocks" .
+
 <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:N22e8beda2e8245f3b717abe011486cda ;
+    prov:wasAttributedTo _:N160adf0f18ea41bc91b21c6ab56f0bf5 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-05-12T21:20:13.975255"^^xsd:dateTime ;
-            prov:startedAtTime "2026-05-12T21:20:13.838515"^^xsd:dateTime ;
+            prov:endedAtTime "2026-05-13T10:50:57.186648"^^xsd:dateTime ;
+            prov:startedAtTime "2026-05-13T10:50:57.031260"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
                     dct:format "application/yaml" ;
                     rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
                 [ a prov:Entity ;
                     dct:format "application/json" ;
-                    dct:hasVersion "git:b11871917ee9b89af3b16ab1e58f20b8c81cdf20" ;
+                    dct:hasVersion "git:26d7e4cd5de79f28c5b34484a45321e0af2ebd1c" ;
                     rdfs:seeAlso <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ] ;
-            prov:wasAssociatedWith _:N22e8beda2e8245f3b717abe011486cda ] .
+            prov:wasAssociatedWith _:N160adf0f18ea41bc91b21c6ab56f0bf5 ] .
+
+<https://ogcincubator.github.io/geodcat-ogcapi-records/> rdfs:label "GeoDCAT mapping for OGC API Records" .
 
 <bblocks://ogc.hosted.seadots.property-relationship> a skos:Concept,
         dcat:Dataset,
@@ -112,34 +177,34 @@
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.property-relationship> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/property-relationship/index.json> ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/property-relationship/index.md> ] ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/property-relationship/index.md> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/property-relationship/index.json> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-12"^^xsd:date ;
+    dct:modified "2026-05-13"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Property relationship" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
     dcat:keyword "property-relationships",
         "seadots" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/schema.yaml> ;
-            prof:hasRole role:schema ] ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.hosted.seadots.ontology>,
         <bblocks://ogc.ogc-utils.iri-or-curie> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/property-relationship/context.jsonld> ;
@@ -153,14 +218,14 @@
     rdfs:label "Property relationship ontology" ;
     dct:abstract "This ontology provides classes and properties to model property relationships with magnitude"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.ontology> ],
+        [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/ontology/index.md> ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/ontology/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.ontology> ] ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/ontology/index.json> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-12"^^xsd:date ;
+    dct:modified "2026-05-13"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Property relationship ontology" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -187,7 +252,7 @@ It defines the indicator model, property relationship schema, and supporting ont
 used across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).
 See also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-05-12T21:20:10.606779"^^xsd:dateTime ;
+    dct:modified "2026-05-13T10:50:52.065499"^^xsd:dateTime ;
     void:sparqlEndpoint <http://defs-hosted.opengis.net/fuseki-hosted/query> ;
     owl:imports <https://ogcincubator.github.io/bblocks-openscience/build/register.json>,
         <https://ogcincubator.github.io/bblocks-sta/build/register.json>,
@@ -198,26 +263,27 @@ See also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-featu
         <https://opengeospatial.github.io/bblocks/register.json>,
         <https://opengeospatial.github.io/ogcapi-sosa/build/register.json> ;
     skos:hasTopConcept <bblocks://ogc.hosted.seadots.equation-property-relationship>,
+        <bblocks://ogc.hosted.seadots.odd-protocol>,
         <bblocks://ogc.hosted.seadots.ontology>,
         <bblocks://ogc.hosted.seadots.properties>,
         <bblocks://ogc.hosted.seadots.property-relationship> ;
     skos:prefLabel "Building Blocks - Seadots project" ;
     prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
             dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ],
-        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
-            dct:type "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.jsonld> ],
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ],
         [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
             dct:type "text/turtle" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> ] ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> ],
+        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
+            dct:type "application/ld+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.jsonld> ] ;
     foaf:homepage <https://ogcincubator.github.io/bblocks-seadots/> ;
     bblocks:hasValidationReport <https://ogcincubator.github.io/bblocks-seadots/build/tests/report.html> .
 
-_:N22e8beda2e8245f3b717abe011486cda a prov:Agent,
+_:N160adf0f18ea41bc91b21c6ab56f0bf5 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
     dct:hasVersion "0.5.28" ;

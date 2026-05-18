@@ -1,0 +1,330 @@
+{
+  "@context": {
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
+    },
+    "type": "@type",
+    "id": "@id",
+    "properties": "@nest",
+    "geometry": {
+      "@context": {
+        "coordinates": {
+          "@container": "@list",
+          "@id": "geojson:coordinates"
+        }
+      },
+      "@id": "geojson:geometry"
+    },
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:format",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "conformsTo": {
+      "@container": "@set",
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "time": "dct:temporal",
+    "linkTemplates": {
+      "@context": {
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:format",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent",
+        "uriTemplate": {
+          "@type": "xsd:string",
+          "@id": "rec:uriTemplate"
+        },
+        "varBase": "rec:varBase",
+        "variables": {
+          "@id": "rec:hasVariable",
+          "@container": "@index",
+          "@index": "dct:identifier"
+        }
+      },
+      "@id": "rec:hasLinkTemplate"
+    },
+    "created": "dct:created",
+    "updated": "dct:modified",
+    "title": {
+      "@container": "@set",
+      "@id": "dct:title"
+    },
+    "description": {
+      "@container": "@set",
+      "@id": "dct:description"
+    },
+    "keywords": {
+      "@container": "@set",
+      "@id": "dcat:keyword"
+    },
+    "language": {
+      "@id": "rec:language",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "languages": {
+      "@container": "@set",
+      "@id": "rec:languages",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "resourceLanguages": {
+      "@container": "@set",
+      "@id": "rec:resourceLanguages",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "externalIds": {
+      "@container": "@set",
+      "@id": "rec:scopedIdentifier",
+      "@context": {
+        "scheme": "rec:scheme",
+        "value": "rec:id"
+      }
+    },
+    "themes": {
+      "@container": "@set",
+      "@id": "rec:themes",
+      "@context": {
+        "concepts": {
+          "@id": "thns:concepts",
+          "@context": {
+            "id": {
+              "@type": "xsd:string",
+              "@id": "thns:id"
+            },
+            "url": {
+              "@type": "@id",
+              "@id": "@id"
+            }
+          },
+          "@container": "@set"
+        },
+        "scheme": "thns:scheme"
+      }
+    },
+    "formats": {
+      "@id": "rec:format",
+      "@context": {
+        "name": "rec:name",
+        "mediaType": "rec:mediaType"
+      },
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "contacts": {
+      "@container": "@set",
+      "@id": "dcat:contactPoint",
+      "@type": "@id"
+    },
+    "license": "dcat:license",
+    "accessrights": "dct:accessRights",
+    "variables": {
+      "@container": "@id",
+      "@id": "rec:hasVariable",
+      "@context": {
+        "@base": "http://example.com/variables/",
+        "@vocab": "https://www.opengis.net/def/ogc-api/records/"
+      }
+    },
+    "odd": {
+      "@context": {
+        "purpose": "https://w3id.org/iliad/odd#purpose",
+        "patterns": {
+          "@context": {
+            "name": "dct:title",
+            "reference": {
+              "@id": "dct:references",
+              "@type": "@id"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#patterns",
+          "@container": "@list"
+        },
+        "entities": {
+          "@context": {
+            "name": "dct:title",
+            "entityType": "https://w3id.org/iliad/odd#entityType",
+            "stateVariables": {
+              "@context": {
+                "type": "https://w3id.org/iliad/odd#variableType",
+                "unit": "qudt:unit",
+                "range": "https://w3id.org/iliad/odd#range",
+                "vocabularyTerm": {
+                  "@id": "skos:exactMatch",
+                  "@type": "@id"
+                }
+              },
+              "@id": "https://w3id.org/iliad/odd#stateVariables",
+              "@container": "@list"
+            },
+            "scales": {
+              "@context": {
+                "spatial": "https://w3id.org/iliad/odd#spatialScale",
+                "temporal": "https://w3id.org/iliad/odd#temporalScale"
+              },
+              "@id": "https://w3id.org/iliad/odd#scales"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#entities",
+          "@container": "@list"
+        },
+        "processOverview": {
+          "@context": {
+            "scheduling": "https://w3id.org/iliad/odd#scheduling",
+            "processes": {
+              "@context": {
+                "name": "dct:title",
+                "executedBy": "https://w3id.org/iliad/odd#executedBy"
+              },
+              "@id": "https://w3id.org/iliad/odd#processes",
+              "@container": "@list"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#processOverview"
+        },
+        "designConcepts": {
+          "@context": {
+            "basicPrinciples": "https://w3id.org/iliad/odd#basicPrinciples",
+            "emergence": "https://w3id.org/iliad/odd#emergence",
+            "adaptation": "https://w3id.org/iliad/odd#adaptation",
+            "objectives": "https://w3id.org/iliad/odd#objectives",
+            "learning": "https://w3id.org/iliad/odd#learning",
+            "prediction": "https://w3id.org/iliad/odd#prediction",
+            "sensing": "https://w3id.org/iliad/odd#sensing",
+            "interaction": "https://w3id.org/iliad/odd#interaction",
+            "stochasticity": "https://w3id.org/iliad/odd#stochasticity",
+            "collectives": "https://w3id.org/iliad/odd#collectives",
+            "observation": "https://w3id.org/iliad/odd#observation"
+          },
+          "@id": "https://w3id.org/iliad/odd#designConcepts"
+        },
+        "initialization": {
+          "@context": {
+            "seed": "https://w3id.org/iliad/odd#randomSeed",
+            "links": {
+              "@context": {
+                "href": {
+                  "@id": "schema:url",
+                  "@type": "@id"
+                },
+                "type": "https://w3id.org/iliad/odd#variableType"
+              },
+              "@id": "rdfs:seeAlso",
+              "@type": "@id",
+              "@container": "@list"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#initialization"
+        },
+        "inputData": {
+          "@context": {
+            "name": "dct:title",
+            "source": {
+              "@id": "dcat:accessURL",
+              "@type": "@id"
+            },
+            "format": "dct:format",
+            "temporalCoverage": "dct:temporal",
+            "vocabularyTerm": {
+              "@id": "skos:exactMatch",
+              "@type": "@id"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#inputData",
+          "@container": "@list"
+        },
+        "submodels": {
+          "@context": {
+            "name": "dct:title",
+            "equations": "https://w3id.org/iliad/odd#equations",
+            "parameterization": "https://w3id.org/iliad/odd#parameterization",
+            "links": {
+              "@context": {
+                "href": {
+                  "@id": "schema:url",
+                  "@type": "@id"
+                },
+                "rel": "https://w3id.org/iliad/odd#linkRel"
+              },
+              "@id": "rdfs:seeAlso",
+              "@type": "@id",
+              "@container": "@list"
+            }
+          },
+          "@id": "https://w3id.org/iliad/odd#submodels",
+          "@container": "@list"
+        }
+      },
+      "@id": "https://w3id.org/iliad/odd#"
+    },
+    "href": {
+      "@type": "@id",
+      "@id": "oa:hasTarget"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "rec": "https://www.opengis.net/def/ogc-api/records/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "w3ctime": "http://www.w3.org/2006/time#",
+    "dctype": "http://purl.org/dc/dcmitype/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "thns": "https://w3id.org/ogc/stac/themes/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "schema": "https://schema.org/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "bibo": "http://purl.org/ontology/bibo/",
+    "osc": "https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#",
+    "rights": "dcat:rights",
+    "@version": 1.1
+  }
+}
