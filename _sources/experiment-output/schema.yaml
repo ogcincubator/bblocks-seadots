@@ -56,3 +56,63 @@ properties:
             description: >
               How the output aggregates over the equation index, when applicable
               (e.g. `sum-over-i`, `per-taxon`, `scalar`).
+          data:
+            type: object
+            required: [provenance]
+            description: >
+              Representative inline result of this output. For a primary
+              result, typically a `headline` scalar/CI plus `perTaxon`,
+              `timeSeries`, and `uncertainty` sub-objects. For a catalog or
+              provenance record, may be a small structural sample. Shape is
+              format-specific and not further constrained.
+            properties:
+              provenance:
+                type: object
+                required: [values]
+                description: >
+                  Source pointer for every concrete value in this `data` block.
+                  Required on every example.
+                properties:
+                  values:
+                    type: string
+                    enum: [computed, retrieved, illustrative, mixed]
+                    description: >
+                      `computed` — values are the deterministic result of
+                      applying the documented equation to the cited input
+                      records (must list `derivedFrom`). `retrieved` — values
+                      came from the cited API call. `illustrative` —
+                      placeholders for schema shape. `mixed` — some are
+                      computed/retrieved and the rest are illustrative,
+                      annotated in-line.
+                  derivedFrom:
+                    type: array
+                    description: >
+                      URIs of the input records that drive these values.
+                      Required when `values=computed`.
+                    items:
+                      type: string
+                      format: uri
+                  equationRecord:
+                    type: string
+                    format: uri
+                    description: >
+                      URI of the equation-property-relationship record that
+                      defines the closed-form expression evaluated here.
+                  computedOn:
+                    type: string
+                    format: date
+                    description: ISO date the values were last computed.
+                  computeCode:
+                    type: string
+                    format: uri
+                    description: >
+                      URI of the script / notebook / CWL step that produced
+                      these values, if available.
+                  uncertaintyMethod:
+                    type: string
+                    description: >
+                      Name of the uncertainty-propagation method applied
+                      (e.g. `log-linear CV`, `Monte Carlo`, `analytic
+                      first-order`).
+                  note:
+                    type: string

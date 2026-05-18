@@ -30,7 +30,27 @@
       "role": "primary baseline",
       "source": "https://mareano.no/api/benthic-biomass-density",
       "format": "application/x-netcdf",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano"
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
+      "data": {
+        "units": "kg m-2",
+        "samplePeriod": "2018-2024",
+        "samplingProgramme": "MAREANO",
+        "perTaxon": [
+          { "scientificName": "Mytilus edulis",   "aphiaID": 140480, "density_kg_m2": 0.42, "habitat": "rocky-subtidal", "depthBand_m": "0-30",  "nSamples": 178 },
+          { "scientificName": "Buccinum undatum", "aphiaID": 138878, "density_kg_m2": 0.11, "habitat": "soft-sediment",  "depthBand_m": "30-100","nSamples": 64  },
+          { "scientificName": "Asterias rubens",  "aphiaID": 123776, "density_kg_m2": 0.28, "habitat": "mixed",          "depthBand_m": "0-100", "nSamples": 122 }
+        ],
+        "aggregateDensity_kg_m2": 0.81,
+        "provenance": {
+          "values": "illustrative",
+          "note": "Density values (kg/m²), aggregate density, sample counts, depth bands and habitat tags above are ILLUSTRATIVE placeholders to show schema shape. They are NOT MAREANO measurements. AphiaIDs are real (WoRMS) and scientificName is correct, but the per-taxon density numbers have no MAREANO provenance. MAREANO does not expose a single REST endpoint that returns per-taxon baseline biomass density (kg/m²) aggregated over an arbitrary AOI — derivation requires downloading occurrence records and aggregating against habitat / area rasters off-line.",
+          "nearestAuthoritativeSource": {
+            "url": "https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON((4.20%2059.10,5.30%2059.10,5.30%2059.70,4.20%2059.70,4.20%2059.10))&size=500",
+            "note": "OBIS occurrence API returns per-record Mytilus edulis observations (including some with `organismQuantity`/`organismQuantityType` for biomass) inside the AOI polygon. Repeat per taxon (Mytilus 140480, Buccinum 138878, Asterias 123776) and aggregate to obtain a real per-taxon density estimate. The MAREANO catalogue itself is at https://mareano.no/en — biological sample packages are downloaded via Geonorge (https://www.geonorge.no/) rather than queried by API."
+          },
+          "verificationGap": "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally."
+        }
+      }
     }
   },
   "links": [

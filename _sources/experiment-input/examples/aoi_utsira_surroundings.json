@@ -30,7 +30,22 @@
       "role": "AOI",
       "source": "aoi/utsira_surroundings_polygon.geojson",
       "format": "application/geo+json",
-      "vocabularyTerm": "http://www.opengis.net/def/property/OGC/0/area-of-interest"
+      "vocabularyTerm": "http://www.opengis.net/def/property/OGC/0/area-of-interest",
+      "data": {
+        "bbox": [4.20, 59.10, 5.30, 59.70],
+        "centroid": [4.75, 59.40],
+        "area_km2": 3520,
+        "crs": "EPSG:4326",
+        "note": "Polygon coordinates are carried by the top-level `geometry` field per OGC Records.",
+        "provenance": {
+          "values": "illustrative",
+          "note": "Bbox, centroid, and area_km2 are derived from the illustrative polygon drawn in this record's top-level geometry — not from an authoritative licence-area dataset. The polygon is hand-drawn around Utsira island as a surroundings buffer; the actual licensed Utsira Nord polygon is narrower and published by NVE.",
+          "nearestAuthoritativeSource": {
+            "url": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/",
+            "note": "NVE strategic assessment hosts the licensed Utsira Nord polygon used by the original ODD demonstrator. For real Norwegian offshore-wind area polygons, retrieve via the Geonorge catalogue (https://www.geonorge.no/) — exact WFS endpoint not verified."
+          }
+        }
+      }
     }
   },
   "links": [

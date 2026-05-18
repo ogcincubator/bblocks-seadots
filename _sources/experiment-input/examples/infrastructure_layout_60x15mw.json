@@ -30,7 +30,40 @@
       "role": "feature-of-interest geometry",
       "source": "infrastructure/utsira_nord_60x15mw.geojson",
       "format": "application/geo+json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/submerged-infrastructure-area-utsira-design"
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/submerged-infrastructure-area-utsira-design",
+      "data": {
+        "unitDesign": "15 MW semi-submersible (3-column hull, 3-point catenary mooring, drag-embedment anchors)",
+        "nUnits": 60,
+        "perUnit": {
+          "hull_area_m2": 1450,
+          "mooring_area_m2": 280,
+          "anchor_area_m2": 95,
+          "submerged_area_total_m2": 1825,
+          "depth_range_m": [200, 280]
+        },
+        "aggregate": {
+          "submerged_area_total_m2": 109500,
+          "submerged_area_total_km2": 0.1095
+        },
+        "sampleUnits": [
+          { "unit_id": "U01", "lon": 4.5520, "lat": 59.3812, "submerged_area_m2": 1825 },
+          { "unit_id": "U02", "lon": 4.5780, "lat": 59.3812, "submerged_area_m2": 1825 },
+          { "unit_id": "U03", "lon": 4.6040, "lat": 59.3812, "submerged_area_m2": 1825 }
+        ],
+        "units": "m2",
+        "provenance": {
+          "values": "mixed",
+          "note": "`unitDesign=15 MW semi-submersible` and `nUnits=60` match the publicly stated Utsira Nord engineering envelope (NVE strategic assessment). Per-unit surface areas (1450 / 280 / 95 m²), depth range, sample unit coordinates and the 109,500 m² aggregate are ILLUSTRATIVE — actual wetted areas depend on platform-supplier engineering drawings that are not in the public domain. Do not use these as engineering inputs.",
+          "primarySource": {
+            "url": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/",
+            "title": "NVE Strategisk konsekvensutredning av vindkraft til havs (covers `nUnits` and `unitDesign` only)"
+          },
+          "nearestAuthoritativeSource": {
+            "url": "https://www.equinor.com/energy/hywind-tampen",
+            "note": "Hywind Tampen 11×8.6 MW spar-buoy is the closest deployed Norwegian floating-wind asset with public-domain geometry; the Utsira Nord 15 MW semi-submersible has different surface areas. Use only for orientation."
+          }
+        }
+      }
     }
   },
   "links": [

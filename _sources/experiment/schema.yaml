@@ -3,9 +3,10 @@ title: Computational Experiment
 description: >
   OGC API Records profile for a computational experiment realising a
   documented model. Extends GeoDCAT-Records with an `experiment` sub-object
-  that binds an OGC Open Science Application Package (CWL) to the documented
-  ODD model, the evidence equation, and to standalone experiment-input and
-  experiment-output records referenced by URI.
+  that points to the executable code (`application`) that runs the
+  experiment, the documented model (`modelledBy`), the evidence equation
+  (`evidenceEquation`), and standalone experiment-input / experiment-output
+  records referenced by URI.
 
 allOf:
   - $ref: bblocks://ogc.geo.geodcat.geodcat-records
@@ -50,9 +51,6 @@ $defs:
           this input parameterises in this experiment (e.g. `A_{sub}`,
           `D_{pre,i}`, `AF_i`, `C_t`). Omit or set to `null` when the input
           is not bound to an equation symbol (e.g. the AOI).
-      cwlInput:
-        type: string
-        description: Name of the CWL workflow input port the artefact is fed into.
 
 properties:
   properties:
@@ -61,16 +59,20 @@ properties:
     properties:
       experiment:
         type: object
-        required: [kind, applicationPackage]
+        required: [kind, application]
         properties:
           kind:
             type: string
             enum: [computational, observational, mesocosm, in-situ]
           purpose:
             type: string
-          applicationPackage:
+          application:
             $ref: '#/$defs/Link'
-            description: Link to a CWL Application Package conforming to `ogc.osc.application-package`.
+            description: >
+              Link to the executable code that runs this experiment. Any
+              language or format that exists and runs (Python script,
+              Jupyter notebook, R script, etc.). The `type` field SHOULD
+              carry the media type (e.g. `text/x-python`).
           modelledBy:
             $ref: '#/$defs/Link'
             description: Link to the model documentation (e.g. an ODD record) this experiment realises.
@@ -89,20 +91,14 @@ properties:
                 schema:
                   type: object
                   description: Inline JSON Schema fragment for the parameter value.
-                binding:
-                  type: object
-                  required: [cwlInput]
-                  properties:
-                    cwlInput: { type: string }
                 vocabularyTerm:
                   type: string
                   format: uri
           inputs:
             type: array
             description: >
-              References to `experiment-input` records. Each entry carries
-              the wiring (equation symbol, CWL port) that the referenced
-              record deliberately omits. MUST NOT inline the input record
+              References to `experiment-input` records. Each entry MAY carry
+              an `equationBinding` symbol. MUST NOT inline the input record
               itself.
             items:
               $ref: '#/$defs/InputBinding'
@@ -114,15 +110,23 @@ properties:
           execution:
             type: object
             properties:
-              engine:
+              language:
                 type: string
-                description: Compatible CWL engines (free text).
-              container:
+                description: >
+                  Language or runtime the application is written in
+                  (e.g. `python`, `r`, `jupyter`, `bash`).
+              languageVersion:
                 type: string
-                description: Container image reference (with tag).
-              containerDigest:
+                description: Minimum interpreter / runtime version.
+              dependencies:
+                type: array
+                description: Runtime dependencies (e.g. PyPI packages with version specs).
+                items: { type: string }
+              entrypoint:
                 type: string
-                description: Digest of the container image.
+                description: >
+                  Command line to invoke the application from the repository
+                  root (e.g. `python3 _sources/experiment/scripts/foo.py`).
               scheduling:
                 type: string
               reproducibility:

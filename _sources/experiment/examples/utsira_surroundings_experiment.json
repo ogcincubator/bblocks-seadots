@@ -183,6 +183,8 @@
         "container": "ghcr.io/seadots/reef-biomass-tools:0.1.0",
         "containerDigest": "sha256:TBD-on-first-publish",
         "scheduling": "single deterministic pass over taxon_groups (ODD processOverview.scheduling)",
+        "computeCode": "../scripts/utsira_reef_biomass.py",
+        "computeCodeNote": "Reproducibility artefact for the worked example. Standalone Python script that loads the six experiment-input records, evaluates the reef-biomass equation at t=24 mo, propagates uncertainty by log-linear CV, and prints the result. Run: `python3 _sources/experiment/scripts/utsira_reef_biomass.py`. This is NOT the production CWL workflow step runner — the CWL pipeline still references a placeholder container (`ghcr.io/seadots/reef-biomass-tools:0.1.0`). The script and the CWL serve different purposes; both are linked from this record by design.",
         "reproducibility": {
           "seedPolicy": "deterministic — equation is closed-form, no stochastic submodels",
           "provenance": "CWLProv 0.6 written alongside outputs"
@@ -200,7 +202,8 @@
   "links": [
     { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment", "type": "application/schema+json", "title": "Experiment bblock" },
     { "rel": "profile", "href": "bblocks://ogc.osc.application-package", "type": "application/cwl+yaml", "title": "OGC Open Science Application Package bblock (CWL v1.2)" },
-    { "rel": "service", "href": "../../odd-protocol/examples/utsira_reef_biomass_pipeline.cwl", "type": "application/cwl+yaml", "title": "Executable CWL workflow for this experiment" },
+    { "rel": "service", "href": "../../odd-protocol/examples/utsira_reef_biomass_pipeline.cwl", "type": "application/cwl+yaml", "title": "Executable CWL workflow for this experiment (structural placeholder)" },
+    { "rel": "alternate", "href": "../scripts/utsira_reef_biomass.py", "type": "text/x-python", "title": "Reproducibility script — runs the worked example end-to-end" },
     { "rel": "related", "href": "https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator", "type": "application/json", "title": "ODD demonstrator that this experiment realises" },
     { "rel": "cite-as", "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation", "type": "application/ld+json", "title": "Reef-biomass equation record" }
   ]

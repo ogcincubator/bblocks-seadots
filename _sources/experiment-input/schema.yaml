@@ -47,3 +47,63 @@ properties:
             type: string
             format: uri
             description: Authoritative concept URI. Priority NERC > CF > Darwin Core > OBIS > ICES > EMODnet > schema.org.
+          data:
+            type: object
+            required: [provenance]
+            description: >
+              Representative inline sample of the input's data content. For
+              tabular inputs (e.g. per-taxon density, AF_i bindings), a small
+              array of records under a key such as `perTaxon`. For scalar /
+              parametric inputs (e.g. a sigmoid time factor), the parameters
+              plus an evaluated lookup table. For pure geographic inputs
+              (e.g. AOI), the polygon is carried by the top-level `geometry`
+              field per OGC Records and `data` MAY be omitted. The non-`provenance`
+              shape is format-specific and not further constrained by this schema.
+            properties:
+              provenance:
+                type: object
+                required: [values]
+                description: >
+                  Source pointer for every concrete value in this `data` block.
+                  Required on every example. Either cite the exact retrieval API
+                  call / DOI for real values, or explicitly label values as
+                  `illustrative` when no real source was consulted.
+                properties:
+                  values:
+                    type: string
+                    enum: [retrieved, illustrative, mixed]
+                    description: >
+                      `retrieved` — every value above came from the cited API
+                      call or DOI. `illustrative` — values are placeholders to
+                      show shape, NOT measurements. `mixed` — some values are
+                      retrieved (annotated in-line) and the rest are
+                      illustrative.
+                  retrievalApiCall:
+                    type: string
+                    description: >
+                      Exact Web API request (URL + query parameters) that
+                      retrieves these values. Required when `values=retrieved`
+                      or `values=mixed`.
+                  verifiedOn:
+                    type: string
+                    format: date
+                    description: ISO date the retrieval call was last verified to return the cited values.
+                  primarySource:
+                    type: object
+                    description: DOI / persistent identifier of the dataset or publication the values come from.
+                    properties:
+                      doi: { type: string }
+                      url: { type: string, format: uri }
+                      title: { type: string }
+                      citation: { type: string }
+                  nearestAuthoritativeSource:
+                    type: object
+                    description: >
+                      When `values=illustrative`, the closest real-world source
+                      a consumer would use to obtain real values. Clearly NOT
+                      the source of the values above.
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  note:
+                    type: string
