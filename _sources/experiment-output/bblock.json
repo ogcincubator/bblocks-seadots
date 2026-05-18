@@ -1,0 +1,44 @@
+{
+  "name": "Computational Experiment Output",
+  "abstract": "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the CWL output port the artefact was emitted from. Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-18",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["experiment", "output", "CWL", "application-package", "provenance", "STAC", "GeoParquet"],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "OGC Open Science Application Package building block",
+      "link": "https://ogcincubator.github.io/bblocks-openscience/"
+    },
+    {
+      "title": "Common Workflow Language v1.2",
+      "link": "https://www.commonwl.org/v1.2/"
+    },
+    {
+      "title": "GeoDCAT mapping for OGC API Records",
+      "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://www.commonwl.org/v1.2/",
+    "http://www.w3.org/TR/vocab-dcat-3/",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "maturity": "development",
+  "scope": "dev"
+}

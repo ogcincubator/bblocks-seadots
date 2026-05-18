@@ -1,0 +1,40 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-input/mareano-baseline-density",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [-5.0, 56.0],
+      [33.0, 56.0],
+      [33.0, 82.0],
+      [-5.0, 82.0],
+      [-5.0, 56.0]
+    ]]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "MAREANO benthic biomass density — primary baseline (D_{pre,i})",
+    "description": "MAREANO programme baseline benthic biomass density rasters, queried per AOI cell and scattered over taxon groups by index i. Provides the primary D_{pre,i} binding for the reef-biomass equation. Coverage: Norwegian shelf.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "benthic-biomass", "label": "Benthic biomass density" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["MAREANO", "benthic biomass", "Norwegian shelf", "baseline"],
+    "formats": [{ "mediaType": "application/x-netcdf" }],
+    "experimentInput": {
+      "name": "MAREANO benthic biomass density",
+      "description": "MAREANO programme baseline benthic biomass density rasters covering the Norwegian shelf. Reusable across any experiment that needs a baseline density input on this footprint.",
+      "role": "primary baseline",
+      "source": "https://mareano.no/api/benthic-biomass-density",
+      "format": "application/x-netcdf",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "cite-as", "href": "https://mareano.no/", "title": "MAREANO programme" }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "@context": [
+    "https://raw.githubusercontent.com/bblocks-seadots/OIM/main/jsonld/crossDomain-context.jsonld",
+    {
+      "sosa": "http://www.w3.org/ns/sosa/",
+      "qudt": "http://qudt.org/schema/qudt/",
+      "unit": "http://qudt.org/vocab/unit/",
+      "schema": "https://schema.org/",
+      "indo": "https://w3id.org/indicators/marine/obs/",
+      "geojson": "https://purl.org/geojson/vocab#",
+      "id": "@id",
+      "type": "@type",
+      "Feature": "geojson:Feature",
+      "FeatureCollection": "geojson:FeatureCollection",
+      "Point": "geojson:Point",
+      "Result": "sosa:Result",
+      "VariableObservationResult": "https://w3id.org/iliad/oim/ext/variable-observation/VariableObservationResult",
+      "geometry": "geojson:geometry",
+      "coordinates": {
+        "@id": "geojson:coordinates",
+        "@container": "@list"
+      },
+      "properties": "@nest",
+      "label": {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#label",
+        "@container": "@language"
+      },
+      "phenomenonTime": {
+        "@id": "sosa:phenomenonTime",
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      },
+      "resultTime": {
+        "@id": "sosa:resultTime",
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      },
+      "observedProperty": {
+        "@id": "sosa:observedProperty",
+        "@type": "@id"
+      },
+      "hasResult": {
+        "@id": "sosa:hasResult"
+      },
+      "value": {
+        "@id": "qudt:numericValue"
+      },
+      "unit": {
+        "@id": "qudt:unit",
+        "@type": "@id"
+      },
+      "taxon": "schema:taxon",
+      "taxonConcept": {
+        "@id": "schema:taxon",
+        "@type": "@id"
+      },
+      "method": "schema:measurementTechnique",
+      "evidence": {
+        "@id": "schema:citation",
+        "@type": "@id"
+      }
+    }
+  ]
+}

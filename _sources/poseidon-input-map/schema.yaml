@@ -1,0 +1,61 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Map Input
+description: Spatial domain input for POSEIDON map initializers.
+type: object
+required:
+  - initializerType
+properties:
+  initializerType:
+    type: string
+    examples: ["Simple Map", "From File Map", "OSMOSE Map", "Two Sided Map"]
+  mapFile:
+    type: string
+    description: Path or URI to a CSV-like map file when using a file-backed map initializer.
+  stacItem:
+    oneOf:
+      - type: string
+        format: uri
+      - $ref: bblocks://ogc.contrib.stac.item
+  stacCollection:
+    oneOf:
+      - type: string
+        format: uri
+      - $ref: bblocks://ogc.contrib.stac.collection
+  cellSizeInKilometers:
+    type: number
+    exclusiveMinimum: 0
+  gridWidthInCell:
+    type: number
+    exclusiveMinimum: 0
+  width:
+    type: number
+  height:
+    type: number
+  header:
+    type: boolean
+  latLong:
+    type: boolean
+  mapPaddingInDegrees:
+    type: number
+  minInitialDepth:
+    type: number
+  maxInitialDepth:
+    type: number
+  lowRightEasting:
+    type: number
+  lowRightNorthing:
+    type: number
+  upLeftEasting:
+    type: number
+  upLeftNorthing:
+    type: number
+  depthOverrides:
+    type: array
+    items:
+      type: string
+  farOffPorts:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+additionalProperties: true

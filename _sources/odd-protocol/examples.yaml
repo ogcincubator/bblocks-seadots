@@ -37,3 +37,24 @@
   snippets:
     - language: json
       ref: examples/utsira_reef_biomass_demonstrator.json
+
+- title: Utsira reef-biomass pipeline — CWL Application Package realising the ODD demonstrator
+  description: >
+    Executable CWL v1.2 workflow that implements the one-submodel ODD
+    demonstrator. One step per equation symbol (compute A_sub, fetch D_pre,i
+    scattered over TaxonGroup, resolve AF_i from the equation record, compute
+    C_t, apply B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t)) plus a packaging
+    step that emits GeoParquet, a STAC catalog and a PROV-O JSON-LD record
+    linking back to the ODD and equation records. Conforms to the
+    `ogc.osc.application-package` building block (CWL profile).
+  snippets:
+    - language: yaml
+      ref: examples/utsira_reef_biomass_pipeline.cwl
+
+# Note: the bundled experiment record that previously lived here has been
+# factored into three dedicated building blocks:
+#   _sources/experiment/                — the experiment record itself
+#   _sources/experiment-input/          — one record per input artefact
+#   _sources/experiment-output/         — one record per output artefact
+# The CWL Application Package above is still referenced by the new
+# experiment record (via a relative `service` link).

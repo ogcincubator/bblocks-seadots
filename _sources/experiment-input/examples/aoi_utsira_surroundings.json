@@ -1,0 +1,39 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-input/aoi-utsira-surroundings",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [4.20, 59.10],
+      [5.30, 59.10],
+      [5.30, 59.70],
+      [4.20, 59.70],
+      [4.20, 59.10]
+    ]]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "AOI — surroundings of Utsira island",
+    "description": "Polygon delimiting the broader study area around Utsira island (~3500 km²). Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator. Default AOI for the Utsira surroundings reef-biomass experiment.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "AOI", "label": "Area of interest" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["AOI", "Utsira", "surroundings", "polygon"],
+    "formats": [{ "mediaType": "application/geo+json" }],
+    "experimentInput": {
+      "name": "AOI polygon (surroundings of Utsira)",
+      "description": "Polygon delimiting the broader study area around Utsira island. Reusable across any experiment that operates on this area; carries no equation symbol or CWL port binding.",
+      "role": "AOI",
+      "source": "aoi/utsira_surroundings_polygon.geojson",
+      "format": "application/geo+json",
+      "vocabularyTerm": "http://www.opengis.net/def/property/OGC/0/area-of-interest"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" }
+  ]
+}

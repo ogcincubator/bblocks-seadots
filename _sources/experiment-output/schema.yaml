@@ -1,0 +1,58 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Computational Experiment Output
+description: >
+  OGC API Records profile for a single output artefact produced by a
+  computational experiment. Extends GeoDCAT-Records with an `experimentOutput`
+  sub-object that ties the artefact to an output role, a CWL output port, a
+  format, a vocabulary term for the produced quantity, and optional
+  conformance classes.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [experimentOutput]
+    properties:
+      experimentOutput:
+        type: object
+        required: [name, role, format]
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          role:
+            type: string
+            description: >
+              `primary result`, `catalog`, `provenance`, `diagnostic`.
+          format:
+            type: string
+            description: Media type or format profile URI.
+          vocabularyTerm:
+            type: string
+            format: uri
+            description: Concept URI for the produced quantity.
+          parameterBinding:
+            type: object
+            required: [cwlOutput]
+            properties:
+              cwlOutput:
+                type: string
+                description: Name of the CWL workflow output port the artefact is emitted from.
+              experiment:
+                type: string
+                format: uri
+                description: URI of the experiment record that produced the output.
+          conformsTo:
+            type: array
+            description: Conformance classes the output is expected to satisfy.
+            items:
+              type: string
+              format: uri
+          aggregation:
+            type: string
+            description: >
+              How the output aggregates over the equation index, when applicable
+              (e.g. `sum-over-i`, `per-taxon`, `scalar`).

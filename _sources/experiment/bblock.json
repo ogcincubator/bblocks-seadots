@@ -1,0 +1,51 @@
+{
+  "name": "Computational Experiment",
+  "abstract": "OGC API Records profile for describing a computational experiment realising a documented model. Wraps an OGC Open Science Application Package (CWL v1.2) and binds it to the documented model (an ODD record), the evidence equation (an `equation-property-relationship` record), and to standalone `experiment-input` / `experiment-output` records referenced by URI. Designed to be loadable by a CWL-aware engine (cwltool, calrissian, toil-cwl-runner) without further configuration.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-18",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["experiment", "CWL", "application-package", "ODD", "reproducibility", "open-science"],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "OGC Open Science Application Package building block",
+      "link": "https://ogcincubator.github.io/bblocks-openscience/"
+    },
+    {
+      "title": "Common Workflow Language v1.2",
+      "link": "https://www.commonwl.org/v1.2/"
+    },
+    {
+      "title": "ODD Protocol Description Record bblock",
+      "link": "https://w3id.org/ogc/hosted/seadots/odd-protocol"
+    },
+    {
+      "title": "Equation Property Relationship bblock",
+      "link": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records",
+    "ogc.hosted.seadots.experiment-input",
+    "ogc.hosted.seadots.experiment-output"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://www.commonwl.org/v1.2/",
+    "http://www.w3.org/TR/vocab-dcat-3/",
+    "http://www.w3.org/TR/prov-o/",
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+  ],
+  "maturity": "development",
+  "scope": "dev"
+}

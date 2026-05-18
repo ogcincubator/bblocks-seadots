@@ -1,0 +1,251 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Fisheries Model ODD Record
+description: >
+  Profile of the SeaDOTs ODD Protocol Description Record for the implemented
+  POSEIDON coupled human-environment fisheries model described by Bailey et al.
+  (2019) and maintained at https://github.com/poseidon-fisheries/POSEIDON.
+  The profile keeps the ODD structure as the normative model description and
+  adds constrained hooks for explicit model inputs, STAC spatial assets, and
+  Open Science reproducibility resources.
+
+allOf:
+  - $ref: bblocks://ogc.hosted.seadots.odd-protocol
+
+type: object
+required:
+  - id
+  - type
+  - properties
+properties:
+  id:
+    type: string
+    format: uri
+  type:
+    const: Feature
+  geometry:
+    description: >
+      Spatial footprint of the model domain. Use null when the record describes
+      the generic conceptual model rather than a site-specific deployment.
+    oneOf:
+      - type: "null"
+      - $ref: bblocks://ogc.geo.common.data_types.geojson
+  properties:
+    type: object
+    required:
+      - title
+      - description
+      - odd
+      - poseidon
+    properties:
+      odd:
+        type: object
+        required:
+          - purpose
+          - entities
+          - processOverview
+          - designConcepts
+          - initialization
+          - inputData
+          - submodels
+      poseidon:
+        type: object
+        description: >
+          POSEIDON-specific metadata that complements, but does not replace, the
+          ODD description.
+        required:
+          - modelRole
+          - publication
+          - policyOptimization
+          - reproducibility
+          - implementation
+        properties:
+          modelRole:
+            type: string
+            const: coupled-human-environment-fisheries-policy-model
+          publication:
+            type: object
+            required:
+              - doi
+              - citation
+              - published
+              - license
+            properties:
+              doi:
+                type: string
+                const: https://doi.org/10.1007/s11625-018-0579-9
+              citation:
+                type: string
+              published:
+                type: string
+                format: date
+              license:
+                type: string
+                format: uri
+              supplementaryMaterial:
+                type: array
+                items:
+                  $ref: "#/$defs/link"
+          policyOptimization:
+            type: object
+            required:
+              - method
+              - objectiveFunction
+              - decisionVariables
+              - outputs
+            properties:
+              method:
+                type: string
+                enum:
+                  - Bayesian optimization
+                  - management strategy evaluation
+                  - other
+              objectiveFunction:
+                type: string
+              decisionVariables:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - name
+                    - description
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    unit:
+                      type: string
+                    range:
+                      type: string
+              outputs:
+                type: array
+                minItems: 1
+                items:
+                  type: string
+          spatialSupport:
+            type: object
+            description: >
+              STAC-based description of rasters, grids, domains, or other
+              spatial assets that parameterize a POSEIDON deployment.
+            properties:
+              stacCollections:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: "#/$defs/link"
+                    - $ref: bblocks://ogc.contrib.stac.collection
+              stacItems:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: "#/$defs/link"
+                    - $ref: bblocks://ogc.contrib.stac.item
+                    - $ref: bblocks://ogc.contrib.stac.item-prov
+          openScience:
+            type: object
+            description: >
+              References to Open Science building block resources used to
+              package repeatable POSEIDON runs, experiments, workflows, and
+              outputs.
+            properties:
+              workflow:
+                oneOf:
+                  - $ref: "#/$defs/link"
+                  - $ref: bblocks://ogc.osc.geodcat-stac-earthcode.workflows
+                  - $ref: bblocks://ogc.osc.application-package
+              experiments:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: "#/$defs/link"
+                    - $ref: bblocks://ogc.osc.geodcat-stac-earthcode.experiments
+              products:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: "#/$defs/link"
+                    - $ref: bblocks://ogc.osc.geodcat-stac-earthcode.products
+          reproducibility:
+            type: object
+            required:
+              - implementationStatus
+              - randomSeedPolicy
+              - runProtocol
+            properties:
+              implementationStatus:
+                type: string
+                enum:
+                  - conceptual-paper
+                  - executable-implementation
+                  - site-specific-deployment
+              randomSeedPolicy:
+                type: string
+              runProtocol:
+                type: string
+              calibration:
+                type: string
+          implementation:
+            type: object
+            required:
+              - repository
+              - language
+              - license
+              - inputBlocks
+            properties:
+              repository:
+                type: string
+                format: uri
+              language:
+                type: string
+              license:
+                type: string
+                format: uri
+              inputBlocks:
+                type: object
+                required:
+                  - runControl
+                  - scenario
+                  - map
+                  - biology
+                  - fleet
+                  - portMarket
+                  - regulationPolicy
+                  - optimization
+                  - observationOutput
+                properties:
+                  runControl:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-run-control
+                  scenario:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-scenario
+                  map:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-map
+                  biology:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-biology
+                  fleet:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-fleet
+                  portMarket:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-port-market
+                  regulationPolicy:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy
+                  optimization:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-optimization
+                  observationOutput:
+                    $ref: bblocks://ogc.hosted.seadots.poseidon-input-observation-output
+
+$defs:
+  link:
+    type: object
+    required:
+      - href
+    properties:
+      href:
+        type: string
+        format: uri
+      rel:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+    additionalProperties: true

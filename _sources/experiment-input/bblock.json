@@ -1,0 +1,44 @@
+{
+  "name": "Computational Experiment Input",
+  "abstract": "OGC API Records profile for describing a single input artefact consumed by a computational experiment. Carries the role of the input (AOI, feature-of-interest geometry, baseline, coefficient, …), an optional binding to an equation symbol carried by an `equation-property-relationship` instance, the source URI, format and vocabulary term, and the CWL input name that the input is bound to. Designed to be referenced by an `experiment` record so that one input definition can be reused across runs.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-18T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-18",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["experiment", "input", "CWL", "application-package", "open-science", "records"],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "OGC Open Science Application Package building block",
+      "link": "https://ogcincubator.github.io/bblocks-openscience/"
+    },
+    {
+      "title": "Common Workflow Language v1.2",
+      "link": "https://www.commonwl.org/v1.2/"
+    },
+    {
+      "title": "GeoDCAT mapping for OGC API Records",
+      "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://www.commonwl.org/v1.2/",
+    "http://www.w3.org/TR/vocab-dcat-3/",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "maturity": "development",
+  "scope": "dev"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-input/imr-baseline-density-fallback",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [-5.0, 56.0],
+      [33.0, 56.0],
+      [33.0, 82.0],
+      [-5.0, 82.0],
+      [-5.0, 56.0]
+    ]]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "IMR benthic biomass baseline — fallback (D_{pre,i})",
+    "description": "Institute of Marine Research regional baseline used when MAREANO has no taxon coverage at index i. Provides the fallback D_{pre,i} binding for the reef-biomass equation.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "benthic-biomass", "label": "Benthic biomass density" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["IMR", "benthic biomass", "fallback", "baseline"],
+    "formats": [{ "mediaType": "application/json" }],
+    "experimentInput": {
+      "name": "IMR benthic biomass baseline",
+      "description": "Institute of Marine Research regional baseline benthic biomass density. Reusable across any experiment that needs a baseline density fallback on this footprint.",
+      "role": "fallback baseline",
+      "source": "https://www.hi.no/api/benthic-biomass-baseline",
+      "format": "application/json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "cite-as", "href": "https://www.hi.no/", "title": "Institute of Marine Research" }
+  ]
+}

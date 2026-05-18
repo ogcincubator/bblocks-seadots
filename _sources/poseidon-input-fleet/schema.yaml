@@ -1,0 +1,56 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Fleet and Fisher Input
+description: Fleet and fisher-agent configuration consumed by POSEIDON.
+type: object
+properties:
+  fishers:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        count:
+          type: integer
+          minimum: 1
+        homePort:
+          type: string
+        vessel:
+          type: object
+          additionalProperties: true
+        gear:
+          type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+          additionalProperties: true
+        departingStrategy:
+          type: object
+          additionalProperties: true
+        destinationStrategy:
+          type: object
+          additionalProperties: true
+        fishingStrategy:
+          type: object
+          additionalProperties: true
+        gearStrategy:
+          type: object
+          additionalProperties: true
+        discardingStrategy:
+          type: object
+          additionalProperties: true
+        adaptation:
+          type: object
+          additionalProperties: true
+        logbook:
+          type: object
+          additionalProperties: true
+  socialNetwork:
+    type: object
+    additionalProperties: true
+additionalProperties: true

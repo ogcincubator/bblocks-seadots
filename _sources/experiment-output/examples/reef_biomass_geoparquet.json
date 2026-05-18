@@ -1,0 +1,47 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-output/reef-biomass-geoparquet",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [4.20, 59.10],
+      [5.30, 59.10],
+      [5.30, 59.70],
+      [4.20, 59.70],
+      [4.20, 59.10]
+    ]]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "Reef-associated biomass — per-cell GeoParquet",
+    "description": "Sum-over-taxa reef biomass attached to submerged infrastructure, gridded over the AOI. Primary scientific output of the Utsira surroundings reef-biomass experiment.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "reef-effect", "label": "Floating-wind reef effect" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["reef biomass", "GeoParquet", "Utsira", "floating wind"],
+    "formats": [{ "mediaType": "application/vnd.apache.parquet" }],
+    "experimentOutput": {
+      "name": "Reef-associated biomass (per-cell GeoParquet)",
+      "description": "B_reef per AOI cell. Sum-over-taxa of A_sub · D_pre,i · AF_i · C_t.",
+      "role": "primary result",
+      "format": "https://geoparquet.org/",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/floating-wind-reef-biomass",
+      "parameterBinding": {
+        "cwlOutput": "reef_biomass_geoparquet",
+        "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1"
+      },
+      "conformsTo": [
+        "https://geoparquet.org/",
+        "https://id3.seadots.eu/conventions/edito-output"
+      ],
+      "aggregation": "sum-over-i"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-output", "type": "application/schema+json", "title": "Experiment-output bblock" }
+  ]
+}

@@ -1,0 +1,66 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Biology Input
+description: Biological initializer and species parameter input for POSEIDON.
+type: object
+required:
+  - initializerType
+properties:
+  initializerType:
+    type: string
+    examples: ["Single Species Biomass", "Multiple Species Biomass", "Single Species Abundance", "Osmose Biology"]
+  species:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        modelType:
+          type: string
+          enum: [biomass, abundance, school, osmose, other]
+        carryingCapacity:
+          type: number
+        initialBiomass:
+          type: number
+        virginBiomass:
+          type: number
+        growth:
+          type: object
+          additionalProperties: true
+        recruitment:
+          type: object
+          additionalProperties: true
+        mortality:
+          type: object
+          additionalProperties: true
+        meristics:
+          type: object
+          additionalProperties: true
+        diffusion:
+          type: object
+          additionalProperties: true
+        dataFiles:
+          type: array
+          items:
+            type: string
+  osmoseConfigurationFile:
+    type: string
+  preInitializedConfigurationDirectory:
+    type: string
+  schaeferParamsFile:
+    type: string
+  binsFilePath:
+    type:
+      - string
+      - "null"
+  stacItems:
+    type: array
+    items:
+      oneOf:
+        - type: string
+          format: uri
+        - $ref: bblocks://ogc.contrib.stac.item
+additionalProperties: true

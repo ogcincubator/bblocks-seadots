@@ -1,0 +1,73 @@
+"$schema": https://json-schema.org/draft/2020-12/schema
+title: OIM Variable Observation
+description: >
+  OIM/SOSA observation profile for numeric variable and indicator values. The
+  observedProperty field identifies the variable concept, such as
+  indo:reef-aggregation-index, while hasResult carries the numeric value.
+$defs:
+  VariableObservationResult:
+    type: object
+    required:
+      - value
+    properties:
+      type:
+        oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+      value:
+        type: number
+      unit:
+        type: string
+        format: uri-reference
+      taxon:
+        type: string
+      taxonConcept:
+        type: string
+        format: uri-reference
+      method:
+        type: string
+      evidence:
+        type: string
+        format: uri-reference
+    additionalProperties: true
+  OIMVariableObservationProps:
+    allOf:
+      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsProps'
+      - type: object
+        required:
+          - observedProperty
+          - hasResult
+        properties:
+          observedProperty:
+            type: string
+            format: uri-reference
+          hasResult:
+            $ref: '#/$defs/VariableObservationResult'
+          phenomenonTime:
+            type: string
+            format: date-time
+          resultTime:
+            type: string
+            format: date-time
+  OIMVariableObservationFeature:
+    allOf:
+      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsFeature'
+      - type: object
+        properties:
+          properties:
+            $ref: '#/$defs/OIMVariableObservationProps'
+  OIMVariableObservationCollection:
+    allOf:
+      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsCollection'
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/$defs/OIMVariableObservationFeature'
+anyOf:
+  - $ref: '#/$defs/OIMVariableObservationProps'
+  - $ref: '#/$defs/OIMVariableObservationFeature'
+  - $ref: '#/$defs/OIMVariableObservationCollection'

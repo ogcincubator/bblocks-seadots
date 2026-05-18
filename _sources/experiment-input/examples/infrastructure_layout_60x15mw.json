@@ -1,0 +1,40 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-input/infrastructure-layout-utsira-nord-60x15mw",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [4.40, 59.20],
+      [5.10, 59.20],
+      [5.10, 59.55],
+      [4.40, 59.55],
+      [4.40, 59.20]
+    ]]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "Submerged infrastructure layout — Utsira Nord 60 × 15 MW",
+    "description": "Per-unit submerged geometry (wetted hull + mooring + anchor surfaces) for the 60 × 15 MW floating-wind units of the Utsira Nord engineering design. Drives the A_{sub} calculation in the reef-biomass equation. Reused unchanged for the surroundings run.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "floating-wind", "label": "Floating wind infrastructure" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["infrastructure", "floating-wind", "Utsira Nord", "submerged area"],
+    "formats": [{ "mediaType": "application/geo+json" }],
+    "experimentInput": {
+      "name": "Submerged infrastructure layout",
+      "description": "Per-unit geometry of submerged surfaces (hull + mooring + anchor) for the 60 × 15 MW floating-wind units of the Utsira Nord engineering design. Reusable across any experiment that operates on this layout.",
+      "role": "feature-of-interest geometry",
+      "source": "infrastructure/utsira_nord_60x15mw.geojson",
+      "format": "application/geo+json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/submerged-infrastructure-area-utsira-design"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "cite-as", "href": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/", "title": "NVE strategic assessment — Utsira Nord design source" }
+  ]
+}

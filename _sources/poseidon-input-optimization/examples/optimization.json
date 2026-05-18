@@ -1,0 +1,26 @@
+{
+  "baseScenario": "inputs/easy.yaml",
+  "algorithm": "Bayesian optimization",
+  "parameters": [
+    {
+      "name": "seasonStart",
+      "adaptor": "regulations[0].startDay",
+      "lowerBound": 1,
+      "upperBound": 365
+    },
+    {
+      "name": "seasonEnd",
+      "adaptor": "regulations[0].endDay",
+      "lowerBound": 1,
+      "upperBound": 365
+    }
+  ],
+  "objective": {
+    "metric": "policy score",
+    "direction": "maximize",
+    "expression": "catch - biomass_penalty"
+  },
+  "simulationBudget": 100,
+  "seed": 12345,
+  "replicatesPerEvaluation": 10
+}

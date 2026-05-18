@@ -1,0 +1,31 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-input/reef-aggregation-index-bindings",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "type": "Dataset",
+    "title": "Reef aggregation index bindings (AF_i)",
+    "description": "Per-taxon reef aggregation index bindings carried by the canonical reef-biomass equation record. Three expansion bindings (Mytilus edulis, Buccinum undatum, Asterias rubens) provide AF_i for the index `i` in the reef-biomass equation.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "reef-effect", "label": "Floating-wind reef effect" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["reef aggregation index", "AF_i", "Mytilus", "Buccinum", "Asterias"],
+    "formats": [{ "mediaType": "application/ld+json" }],
+    "experimentInput": {
+      "name": "Reef aggregation index bindings",
+      "description": "Per-taxon reef aggregation index (Mytilus edulis, Buccinum undatum, Asterias rubens). Reusable across any experiment that consumes this indicator.",
+      "role": "coefficient (per taxon)",
+      "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+      "format": "application/ld+json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index"
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "cite-as", "href": "https://doi.org/10.5670/oceanog.2020.405", "title": "Degraer et al. 2020 — reef-effect prior" }
+  ]
+}

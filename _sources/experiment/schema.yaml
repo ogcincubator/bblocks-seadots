@@ -1,0 +1,135 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Computational Experiment
+description: >
+  OGC API Records profile for a computational experiment realising a
+  documented model. Extends GeoDCAT-Records with an `experiment` sub-object
+  that binds an OGC Open Science Application Package (CWL) to the documented
+  ODD model, the evidence equation, and to standalone experiment-input and
+  experiment-output records referenced by URI.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+$defs:
+  Link:
+    type: object
+    required: [href]
+    properties:
+      href:
+        type: string
+        format: uri
+      rel:
+        type: string
+      type:
+        type: string
+      title:
+        type: string
+
+  InputBinding:
+    description: >
+      Reference to an `experiment-input` record (`href`) plus the wiring that
+      ties it to this experiment. The referenced record is reusable and
+      carries no wiring of its own.
+    type: object
+    required: [href]
+    properties:
+      href:
+        type: string
+        format: uri
+        description: URI of the `experiment-input` record being consumed.
+      rel:
+        type: string
+      type:
+        type: string
+      title:
+        type: string
+      equationBinding:
+        type: [string, "null"]
+        description: >
+          Symbol from the linked equation-property-relationship record that
+          this input parameterises in this experiment (e.g. `A_{sub}`,
+          `D_{pre,i}`, `AF_i`, `C_t`). Omit or set to `null` when the input
+          is not bound to an equation symbol (e.g. the AOI).
+      cwlInput:
+        type: string
+        description: Name of the CWL workflow input port the artefact is fed into.
+
+properties:
+  properties:
+    type: object
+    required: [experiment]
+    properties:
+      experiment:
+        type: object
+        required: [kind, applicationPackage]
+        properties:
+          kind:
+            type: string
+            enum: [computational, observational, mesocosm, in-situ]
+          purpose:
+            type: string
+          applicationPackage:
+            $ref: '#/$defs/Link'
+            description: Link to a CWL Application Package conforming to `ogc.osc.application-package`.
+          modelledBy:
+            $ref: '#/$defs/Link'
+            description: Link to the model documentation (e.g. an ODD record) this experiment realises.
+          evidenceEquation:
+            $ref: '#/$defs/Link'
+            description: Link to an `equation-property-relationship` record carrying the symbol table.
+          parameters:
+            type: array
+            items:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                title: { type: string }
+                description: { type: string }
+                schema:
+                  type: object
+                  description: Inline JSON Schema fragment for the parameter value.
+                binding:
+                  type: object
+                  required: [cwlInput]
+                  properties:
+                    cwlInput: { type: string }
+                vocabularyTerm:
+                  type: string
+                  format: uri
+          inputs:
+            type: array
+            description: >
+              References to `experiment-input` records. Each entry carries
+              the wiring (equation symbol, CWL port) that the referenced
+              record deliberately omits. MUST NOT inline the input record
+              itself.
+            items:
+              $ref: '#/$defs/InputBinding'
+          outputs:
+            type: array
+            description: References to `experiment-output` records. MUST NOT be inlined.
+            items:
+              $ref: '#/$defs/Link'
+          execution:
+            type: object
+            properties:
+              engine:
+                type: string
+                description: Compatible CWL engines (free text).
+              container:
+                type: string
+                description: Container image reference (with tag).
+              containerDigest:
+                type: string
+                description: Digest of the container image.
+              scheduling:
+                type: string
+              reproducibility:
+                type: object
+                properties:
+                  seedPolicy: { type: string }
+                  provenance: { type: string }
+          successCriteria:
+            type: array
+            items: { type: string }

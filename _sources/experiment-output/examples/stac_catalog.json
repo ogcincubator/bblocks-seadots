@@ -1,0 +1,37 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment-output/stac-catalog",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "type": "Catalog",
+    "title": "STAC catalog — Utsira surroundings reef-biomass run",
+    "description": "STAC catalog indexing the inputs, the run, and the GeoParquet output. Follows the SeaDOTs EDITO output conventions.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      { "concepts": [{ "id": "catalog", "label": "STAC catalog" }], "scheme": "https://id3.seadots.eu/themes" }
+    ],
+    "keywords": ["STAC", "catalog", "reef biomass", "EDITO"],
+    "formats": [{ "mediaType": "application/json" }],
+    "experimentOutput": {
+      "name": "STAC catalog for the run",
+      "description": "STAC catalog indexing input rasters, the run, and the GeoParquet output.",
+      "role": "catalog",
+      "format": "application/json",
+      "vocabularyTerm": "https://stacspec.org/v1.0.0/catalog-spec/json-schema/catalog.json",
+      "parameterBinding": {
+        "cwlOutput": "stac_catalog",
+        "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1"
+      },
+      "conformsTo": [
+        "https://stacspec.org/v1.0.0",
+        "https://id3.seadots.eu/conventions/edito-output"
+      ]
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-output", "type": "application/schema+json", "title": "Experiment-output bblock" }
+  ]
+}

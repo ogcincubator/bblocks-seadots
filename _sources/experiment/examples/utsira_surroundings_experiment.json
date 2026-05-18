@@ -1,0 +1,207 @@
+{
+  "id": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [4.20, 59.10],
+      [5.30, 59.10],
+      [5.30, 59.70],
+      [4.20, 59.70],
+      [4.20, 59.10]
+    ]]
+  },
+  "time": {
+    "interval": ["2026-05-13", "2028-05-13"],
+    "resolution": "P12M"
+  },
+  "properties": {
+    "type": "SoftwareSourceCode",
+    "title": "Utsira surroundings — reef-biomass experiment (CWL Application Package)",
+    "description": "Experiment record for an executable run of the Utsira reef-biomass pipeline over the surroundings of Utsira island. Wraps a CWL v1.2 Application Package (per `ogc.osc.application-package`) that realises the one-submodel ODD demonstrator `utsira_reef_biomass_demonstrator` and the canonical equation record `reef-biomass-equation`. Inputs and outputs are referenced by URI as standalone `experiment-input` / `experiment-output` records.",
+    "created": "2026-05-18",
+    "updated": "2026-05-18",
+    "language": "en",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "contacts": [
+      {
+        "name": "Utsira biomass upscaler v1",
+        "roles": ["author"],
+        "organization": "SINTEF Ocean (SeaDOTs)"
+      }
+    ],
+    "themes": [
+      {
+        "concepts": [
+          { "id": "reef-effect",              "label": "Floating-wind reef effect" },
+          { "id": "computational-experiment", "label": "Computational experiment" },
+          { "id": "application-package",      "label": "OGC Application Package (CWL)" }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": ["experiment", "CWL", "Utsira", "surroundings", "reef biomass", "SeaDOTs"],
+    "formats": [
+      { "mediaType": "application/cwl+yaml" },
+      { "mediaType": "application/geo+json" },
+      { "mediaType": "application/vnd.apache.parquet" }
+    ],
+    "conformsTo": [
+      "https://w3id.org/ogc/hosted/openscience/application-package",
+      "https://raw.githubusercontent.com/common-workflow-language/cwl-v1.2/main/json-schema/cwl.yaml",
+      "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+    ],
+
+    "experiment": {
+      "kind": "computational",
+      "purpose": "Re-run the Utsira reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario, reusing the parameterisation that produced the original Utsira Nord licence-polygon estimate.",
+
+      "applicationPackage": {
+        "href": "../../odd-protocol/examples/utsira_reef_biomass_pipeline.cwl",
+        "type": "application/cwl+yaml",
+        "rel": "https://w3id.org/ogc/hosted/openscience/application-package",
+        "title": "Utsira reef-biomass pipeline (CWL v1.2)"
+      },
+
+      "modelledBy": {
+        "href": "https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator",
+        "rel": "describedby",
+        "title": "ODD record for the reef-biomass demonstrator"
+      },
+
+      "evidenceEquation": {
+        "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+        "rel": "cite-as",
+        "title": "Reef-biomass equation — symbol table, bindings, provenance"
+      },
+
+      "parameters": [
+        {
+          "name": "aoi",
+          "title": "Area of interest",
+          "description": "Polygon delimiting the study area. Defaults to the surroundings of Utsira island.",
+          "schema": { "format": "application/geo+json" },
+          "binding": { "cwlInput": "aoi" },
+          "vocabularyTerm": "http://www.opengis.net/def/property/OGC/0/area-of-interest"
+        },
+        {
+          "name": "taxon_groups",
+          "title": "TaxonGroup index values",
+          "description": "Scientific names iterated by index i.",
+          "schema": { "type": "array", "items": { "type": "string" } },
+          "binding": { "cwlInput": "taxon_groups" },
+          "vocabularyTerm": "http://rs.tdwg.org/dwc/terms/scientificName"
+        },
+        {
+          "name": "scenario_t0",
+          "title": "Scenario start date",
+          "schema": { "type": "string", "format": "date" },
+          "binding": { "cwlInput": "scenario_t0" }
+        },
+        {
+          "name": "colonisation_months",
+          "title": "Months since installation",
+          "schema": { "type": "integer", "minimum": 0 },
+          "binding": { "cwlInput": "colonisation_months" }
+        }
+      ],
+
+      "inputs": [
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/aoi-utsira-surroundings",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "AOI — surroundings of Utsira island",
+          "equationBinding": null,
+          "cwlInput": "aoi"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/infrastructure-layout-utsira-nord-60x15mw",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "Submerged infrastructure layout — Utsira Nord 60 × 15 MW",
+          "equationBinding": "A_{sub}",
+          "cwlInput": "infrastructure_layout"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/mareano-baseline-density",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "MAREANO benthic biomass density — primary baseline",
+          "equationBinding": "D_{pre,i}",
+          "cwlInput": "baseline_density_primary"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/imr-baseline-density-fallback",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "IMR benthic biomass baseline — fallback",
+          "equationBinding": "D_{pre,i}",
+          "cwlInput": "baseline_density_fallback"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/reef-aggregation-index-bindings",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "Reef aggregation index bindings",
+          "equationBinding": "AF_i",
+          "cwlInput": "equation_record"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-input/colonisation-time-factor",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+          "title": "Colonisation time factor",
+          "equationBinding": "C_t",
+          "cwlInput": "equation_record"
+        }
+      ],
+
+      "outputs": [
+        {
+          "href": "https://example.org/norwegian-ses/experiment-output/reef-biomass-geoparquet",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#output",
+          "title": "Reef-associated biomass — per-cell GeoParquet"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-output/stac-catalog",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#output",
+          "title": "STAC catalog for the run"
+        },
+        {
+          "href": "https://example.org/norwegian-ses/experiment-output/prov-record",
+          "type": "application/json",
+          "rel": "https://w3id.org/ogc/hosted/seadots/experiment#output",
+          "title": "PROV-O provenance (JSON-LD)"
+        }
+      ],
+
+      "execution": {
+        "engine": "cwltool >= 3.1 | calrissian | toil-cwl-runner",
+        "container": "ghcr.io/seadots/reef-biomass-tools:0.1.0",
+        "containerDigest": "sha256:TBD-on-first-publish",
+        "scheduling": "single deterministic pass over taxon_groups (ODD processOverview.scheduling)",
+        "reproducibility": {
+          "seedPolicy": "deterministic — equation is closed-form, no stochastic submodels",
+          "provenance": "CWLProv 0.6 written alongside outputs"
+        }
+      },
+
+      "successCriteria": [
+        "B_reef_total > 0 and finite",
+        "Every TaxonGroup has either a MAREANO primary binding or an IMR fallback for every AOI cell; uncovered cells are flagged in PROV",
+        "STAC catalog validates against the SeaDOTs EDITO output conventions",
+        "PROV-O record resolves the equation record and the ODD record by URI"
+      ]
+    }
+  },
+  "links": [
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment", "type": "application/schema+json", "title": "Experiment bblock" },
+    { "rel": "profile", "href": "bblocks://ogc.osc.application-package", "type": "application/cwl+yaml", "title": "OGC Open Science Application Package bblock (CWL v1.2)" },
+    { "rel": "service", "href": "../../odd-protocol/examples/utsira_reef_biomass_pipeline.cwl", "type": "application/cwl+yaml", "title": "Executable CWL workflow for this experiment" },
+    { "rel": "related", "href": "https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator", "type": "application/json", "title": "ODD demonstrator that this experiment realises" },
+    { "rel": "cite-as", "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation", "type": "application/ld+json", "title": "Reef-biomass equation record" }
+  ]
+}

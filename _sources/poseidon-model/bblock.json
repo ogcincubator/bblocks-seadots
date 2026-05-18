@@ -1,0 +1,78 @@
+{
+  "name": "POSEIDON Fisheries Model ODD Record",
+  "abstract": "Schema profile for describing the implemented POSEIDON coupled human-environment fisheries model using the ODD Protocol, with explicit model-input building blocks, STAC assets, and Open Science workflow, experiment, product, and provenance links.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-15T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-15",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "POSEIDON",
+    "ODD",
+    "agent-based-model",
+    "fisheries",
+    "coupled-human-environment-system",
+    "policy-optimization",
+    "STAC",
+    "open-science"
+  ],
+  "authors": [
+    {
+      "name": "ILIAD Marine Data Team",
+      "organization": "ILIAD Ocean Digital Twin"
+    }
+  ],
+  "sources": [
+    {
+      "title": "A computational approach to managing coupled human-environmental systems: the POSEIDON model of ocean fisheries",
+      "link": "https://doi.org/10.1007/s11625-018-0579-9"
+    },
+    {
+      "title": "POSEIDON implementation repository",
+      "link": "https://github.com/poseidon-fisheries/POSEIDON"
+    },
+    {
+      "title": "ODD Protocol Description Record",
+      "link": "bblocks://ogc.hosted.seadots.odd-protocol"
+    },
+    {
+      "title": "OGC Building Blocks for STAC",
+      "link": "https://ogcincubator.github.io/bblocks-stac/"
+    },
+    {
+      "title": "Open Science Workflows Building Blocks",
+      "link": "https://ogcincubator.github.io/bblocks-openscience/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.hosted.seadots.odd-protocol",
+    "ogc.contrib.stac.item",
+    "ogc.contrib.stac.collection",
+    "ogc.contrib.stac.item-prov",
+    "ogc.osc.geodcat-stac-earthcode.experiments",
+    "ogc.osc.geodcat-stac-earthcode.products",
+    "ogc.osc.geodcat-stac-earthcode.workflows",
+    "ogc.osc.application-package",
+    "ogc.hosted.seadots.poseidon-input-run-control",
+    "ogc.hosted.seadots.poseidon-input-scenario",
+    "ogc.hosted.seadots.poseidon-input-map",
+    "ogc.hosted.seadots.poseidon-input-biology",
+    "ogc.hosted.seadots.poseidon-input-fleet",
+    "ogc.hosted.seadots.poseidon-input-port-market",
+    "ogc.hosted.seadots.poseidon-input-regulation-policy",
+    "ogc.hosted.seadots.poseidon-input-optimization",
+    "ogc.hosted.seadots.poseidon-input-observation-output"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://doi.org/10.1007/s11625-018-0579-9",
+    "https://doi.org/10.18564/jasss.4259",
+    "https://stacspec.org/",
+    "https://ogcincubator.github.io/bblocks-openscience/"
+  ],
+  "maturity": "development",
+  "scope": "dev"
+}

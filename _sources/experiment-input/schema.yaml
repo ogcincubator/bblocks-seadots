@@ -1,0 +1,49 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Computational Experiment Input
+description: >
+  OGC API Records profile for a single input artefact that can be consumed by
+  one or more computational experiments. Extends GeoDCAT-Records with an
+  `experimentInput` sub-object describing the artefact in a reusable,
+  experiment-agnostic way: a role (e.g. AOI, baseline, coefficient), a source
+  URI, a format, and a vocabulary term for the underlying quantity. The
+  record carries NO wiring to any specific experiment, equation symbol, or
+  CWL input port — those bindings live on the consuming `experiment` record
+  so that the same input can be referenced from multiple experiments without
+  edit.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [experimentInput]
+    properties:
+      experimentInput:
+        type: object
+        required: [name, role, source, format]
+        properties:
+          name:
+            type: string
+            description: Short human-readable name for the input.
+          description:
+            type: string
+          role:
+            type: string
+            description: >
+              Generic role the input plays. Suggested values:
+              `AOI`, `feature-of-interest geometry`, `primary baseline`,
+              `fallback baseline`, `coefficient (per taxon)`,
+              `coefficient (scalar)`, `scenario parameter`.
+          source:
+            type: string
+            description: Access URI, file path, or service endpoint for the input.
+          format:
+            type: string
+            description: Media type or format name (e.g. `application/geo+json`).
+          temporalCoverage:
+            type: string
+          vocabularyTerm:
+            type: string
+            format: uri
+            description: Authoritative concept URI. Priority NERC > CF > Darwin Core > OBIS > ICES > EMODnet > schema.org.
