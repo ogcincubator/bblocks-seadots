@@ -1,0 +1,45 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Run Control Input
+description: Top-level execution controls for a POSEIDON run or batch of runs.
+type: object
+required:
+- scenario
+- yearsToRun
+properties:
+  scenario:
+    oneOf:
+    - type: string
+      description: Path or URI to a POSEIDON scenario YAML file.
+    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.yaml
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+  policy:
+    oneOf:
+    - type: 'null'
+    - type: string
+      description: Path or URI to an optional policy, regulation, or shock YAML file.
+    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.yaml
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+  yearsToRun:
+    type: integer
+    minimum: 1
+  randomSeed:
+    type: integer
+    description: Seed used for reproducible stochastic runs.
+  replicates:
+    type: integer
+    minimum: 1
+    default: 1
+  outputDirectory:
+    type: string
+    x-jsonld-id: https://schema.org/contentLocation
+  outputSelection:
+    oneOf:
+    - type: 'null'
+    - type: string
+    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.yaml
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+additionalProperties: true
+x-jsonld-vocab: https://w3id.org/iliad/seadots/poseidon/input#
+x-jsonld-prefixes:
+  prov: http://www.w3.org/ns/prov#
+  schema: https://schema.org/

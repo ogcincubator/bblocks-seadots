@@ -1,0 +1,23 @@
+@prefix : <https://w3id.org/iliad/seadots/poseidon/input#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] prov:used "inputs/easy.yaml" ;
+    schema:algorithm "Bayesian optimization" ;
+    schema:target [ :direction "maximize" ;
+            :expression "catch - biomass_penalty" ;
+            :metric "policy score" ] ;
+    schema:variableMeasured ( [ rdfs:label "seasonStart" ;
+                :adaptor "regulations[0].startDay" ;
+                :lowerBound 1 ;
+                :upperBound 365 ] [ rdfs:label "seasonEnd" ;
+                :adaptor "regulations[0].endDay" ;
+                :lowerBound 1 ;
+                :upperBound 365 ] ) ;
+    :replicatesPerEvaluation 10 ;
+    :seed 12345 ;
+    :simulationBudget 100 .
+

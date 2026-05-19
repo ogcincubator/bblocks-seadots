@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Computational Experiment",
+  "description": "OGC API Records profile for a computational experiment realising a documented model. Extends GeoDCAT-Records with an `experiment` sub-object that points to the executable code (`application`) that runs the experiment, the documented model (`modelledBy`), the evidence equation (`evidenceEquation`), and standalone per-class input and `experiment-output` records referenced by URI.\n",
+  "allOf": [
+    {
+      "$ref": "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.json"
+    }
+  ],
+  "$defs": {
+    "Link": {
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "x-jsonld-id": "@id"
+        },
+        "rel": {
+          "type": "string",
+          "x-jsonld-id": "https://purl.org/geojson/vocab#rel"
+        },
+        "type": {
+          "type": "string",
+          "x-jsonld-id": "@type"
+        },
+        "title": {
+          "type": "string",
+          "x-jsonld-id": "http://purl.org/dc/terms/title"
+        }
+      }
+    },
+    "InputBinding": {
+      "description": "Reference to a per-class input record (`href`) plus the wiring that ties it to this experiment. The referenced record is reusable and carries no wiring of its own.\n",
+      "type": "object",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "URI of the per-class input record being consumed.",
+          "x-jsonld-id": "@id"
+        },
+        "rel": {
+          "type": "string",
+          "x-jsonld-id": "https://purl.org/geojson/vocab#rel"
+        },
+        "type": {
+          "type": "string",
+          "x-jsonld-id": "@type"
+        },
+        "title": {
+          "type": "string",
+          "x-jsonld-id": "http://purl.org/dc/terms/title"
+        },
+        "equationBinding": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Symbol from the linked equation-property-relationship record that this input parameterises in this experiment (e.g. `A_{sub}`, `D_{pre,i}`, `AF_i`, `C_t`). Omit or set to `null` when the input is not bound to an equation symbol (e.g. the AOI).\n",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#equationBinding"
+        }
+      }
+    }
+  },
+  "properties": {
+    "properties": {
+      "type": "object",
+      "required": [
+        "experiment"
+      ],
+      "properties": {
+        "experiment": {
+          "type": "object",
+          "required": [
+            "kind",
+            "application"
+          ],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "computational",
+                "observational",
+                "mesocosm",
+                "in-situ"
+              ],
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#kind"
+            },
+            "purpose": {
+              "type": "string",
+              "x-jsonld-id": "http://purl.org/dc/terms/purpose"
+            },
+            "application": {
+              "$ref": "#/$defs/Link",
+              "description": "Link to the executable code that runs this experiment. Any language or format that exists and runs (Python script, Jupyter notebook, R script, etc.). The `type` field SHOULD carry the media type (e.g. `text/x-python`).\n",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#application",
+              "x-jsonld-type": "@id"
+            },
+            "modelledBy": {
+              "$ref": "#/$defs/Link",
+              "description": "Link to the model documentation (e.g. an ODD record) this experiment realises.",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#modelledBy",
+              "x-jsonld-type": "@id"
+            },
+            "evidenceEquation": {
+              "$ref": "#/$defs/Link",
+              "description": "Link to an `equation-property-relationship` record carrying the symbol table.",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#evidenceEquation",
+              "x-jsonld-type": "@id"
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "x-jsonld-id": "http://purl.org/dc/terms/title"
+                  },
+                  "title": {
+                    "type": "string",
+                    "x-jsonld-id": "http://purl.org/dc/terms/title"
+                  },
+                  "description": {
+                    "type": "string",
+                    "x-jsonld-id": "http://purl.org/dc/terms/description"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "description": "Inline JSON Schema fragment for the parameter value.",
+                    "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#parameterSchema"
+                  },
+                  "vocabularyTerm": {
+                    "type": "string",
+                    "format": "uri",
+                    "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#exactMatch",
+                    "x-jsonld-type": "@id"
+                  }
+                }
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#parameter",
+              "x-jsonld-container": "@set"
+            },
+            "inputs": {
+              "type": "array",
+              "description": "References to per-class input records. Each entry MAY carry an `equationBinding` symbol. MUST NOT inline the input record itself.\n",
+              "items": {
+                "$ref": "#/$defs/InputBinding"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#input",
+              "x-jsonld-container": "@set"
+            },
+            "outputs": {
+              "type": "array",
+              "description": "References to `experiment-output` records. MUST NOT be inlined.",
+              "items": {
+                "$ref": "#/$defs/Link"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#output",
+              "x-jsonld-type": "@id",
+              "x-jsonld-container": "@set"
+            },
+            "execution": {
+              "type": "object",
+              "properties": {
+                "language": {
+                  "type": "string",
+                  "description": "Language or runtime the application is written in (e.g. `python`, `r`, `jupyter`, `bash`).\n",
+                  "x-jsonld-id": "http://purl.org/dc/terms/language"
+                },
+                "languageVersion": {
+                  "type": "string",
+                  "description": "Minimum interpreter / runtime version.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#languageVersion"
+                },
+                "dependencies": {
+                  "type": "array",
+                  "description": "Runtime dependencies (e.g. PyPI packages with version specs).",
+                  "items": {
+                    "type": "string"
+                  },
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#dependency",
+                  "x-jsonld-container": "@set"
+                },
+                "entrypoint": {
+                  "type": "string",
+                  "description": "Command line to invoke the application from the repository root (e.g. `python3 _sources/experiment/scripts/foo.py`).\n",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#entrypoint"
+                },
+                "scheduling": {
+                  "type": "string",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#scheduling"
+                },
+                "reproducibility": {
+                  "type": "object",
+                  "properties": {
+                    "seedPolicy": {
+                      "type": "string",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#seedPolicy"
+                    },
+                    "provenance": {
+                      "type": "string",
+                      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy"
+                    }
+                  },
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#reproducibility"
+                }
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#execution"
+            },
+            "successCriteria": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#successCriterion",
+              "x-jsonld-container": "@set"
+            }
+          },
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/experiment#experiment"
+        }
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+    }
+  },
+  "x-jsonld-extra-terms": {
+    "id": "@id",
+    "geometry": "https://purl.org/geojson/vocab#geometry",
+    "coordinates": "https://purl.org/geojson/vocab#coordinates",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon",
+    "bbox": "https://purl.org/geojson/vocab#bbox",
+    "links": {
+      "x-jsonld-id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "x-jsonld-container": "@set"
+    },
+    "mediaType": "http://purl.org/dc/terms/format",
+    "created": "http://purl.org/dc/terms/created",
+    "updated": "http://purl.org/dc/terms/modified",
+    "license": "http://purl.org/dc/terms/license",
+    "keywords": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#keyword",
+      "x-jsonld-container": "@set"
+    },
+    "themes": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#theme",
+      "x-jsonld-container": "@set"
+    },
+    "concepts": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#Concept",
+      "x-jsonld-container": "@set"
+    },
+    "scheme": "http://www.w3.org/2004/02/skos/core#inScheme",
+    "label": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "formats": {
+      "x-jsonld-id": "http://purl.org/dc/terms/format",
+      "x-jsonld-container": "@set"
+    },
+    "format": "http://purl.org/dc/terms/format",
+    "conformsTo": {
+      "x-jsonld-id": "http://purl.org/dc/terms/conformsTo",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@set"
+    },
+    "contacts": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#contactPoint",
+      "x-jsonld-container": "@set"
+    },
+    "roles": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#hadRole",
+      "x-jsonld-container": "@set"
+    },
+    "organization": "https://w3id.org/ogc/hosted/seadots/experiment#parameterSchemaaffiliation",
+    "time": "http://purl.org/dc/terms/temporal",
+    "interval": "http://purl.org/dc/terms/temporal",
+    "resolution": "http://www.w3.org/ns/dcat#temporalResolution"
+  },
+  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/experiment#",
+  "x-jsonld-prefixes": {
+    "seadots": "https://w3id.org/ogc/hosted/seadots/experiment#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "https://w3id.org/ogc/hosted/seadots/experiment#parameterSchema",
+    "prov": "http://www.w3.org/ns/prov#"
+  }
+}

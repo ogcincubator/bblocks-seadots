@@ -1,0 +1,80 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.poseidon-input-run-control",
+  "name": "POSEIDON Run Control Input",
+  "abstract": "Schema for the top-level run controls consumed by the POSEIDON Java implementation: scenario file, optional policy or shock files, seed, run length, replicate count, output directory, and output-selection input.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-15T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-19",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "POSEIDON",
+    "input",
+    "run-control",
+    "random-seed",
+    "replicate"
+  ],
+  "sources": [
+    {
+      "title": "POSEIDON implementation repository",
+      "link": "https://github.com/poseidon-fisheries/POSEIDON"
+    }
+  ],
+  "dependsOn": [
+    "ogc.hosted.seadots.poseidon-input-regulation-policy",
+    "ogc.hosted.seadots.poseidon-input-observation-output",
+    "ogc.hosted.seadots.poseidon-input-scenario"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/context.jsonld",
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.api.records.v1.schemas.linkTemplate": [
+      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ]
+  },
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-run-control/",
+  "description": "# POSEIDON Run Control Input\n\nThis building block describes the top-level controls needed to execute the implemented POSEIDON model: which scenario YAML to load, whether an additional policy or shock file is applied, how long to run, which random seed and replicate count to use, and where outputs are written.\n\nIt intentionally references the other POSEIDON input blocks instead of expanding every scenario component inline.\n\n## Role within the input stack\n\nRun-control is the **orchestration glue**: it does not carry external observational data itself. Instead, it composes upstream input bblocks ([poseidon-input-scenario], [poseidon-input-regulation-policy], [poseidon-input-observation-output]) into a launchable bundle and decides three orthogonal axes:\n\n- **Time horizon** \u2014 `yearsToRun` and the implied calendar window.\n- **Stochasticity** \u2014 `randomSeed` + `replicates`.\n- **Output sink** \u2014 `outputDirectory` (EDITO S3 prefix) and `outputSelection` (which observations).\n\nBecause the data inputs live in upstream bblocks, the R/S/V classification used elsewhere does not apply here in the same way. Instead, this bblock has **time-window constraints** imposed by the availability windows of upstream V-role sources.\n\n## Time-window constraints inherited from upstream sources\n\n| Constraint | Origin bblock | Available range | Effect on `yearsToRun` / scenario start |\n|---|---|---|---|\n| Copernicus BAL physics reanalysis | [poseidon-input-scenario] (via [poseidon-input-biology]/[poseidon-input-map]) | 1993 \u2192 present minus 1 year | Earliest hindcast start year = 1993 |\n| Copernicus BAL physics forecast | [poseidon-input-scenario] | Present \u2192 ~10 days ahead; seasonal forecast extends further | Forecast horizon caps `yearsToRun` for prospective runs unless climate downscaling is plugged in |\n| ICES WGBFAS SAG time series | [poseidon-input-biology] (R) and [poseidon-input-optimization] (objective) | Typically 1980s \u2192 present for major Baltic stocks | Calibration window upper-bounded by latest assessment year |\n| DATRAS BITS quarterly trawl survey | [poseidon-input-biology] (R for Abundance initializer) | 2001 (Q4 series) / 1985 (Q1 series) \u2192 present | Length-structure calibration starts no earlier than 2001 for full Q1+Q4 |\n| ICES VMS / Logbook DB | [poseidon-input-fleet] (R) | 2009 \u2192 present | Spatial-effort prior earliest = 2009 (or 2012 if GFW used instead) |\n| Global Fishing Watch | [poseidon-input-fleet] (S) | 2012 \u2192 2024 (current public release) | AIS-based effort prior starts 2012 |\n| EUMOFA monthly first-sale prices | [poseidon-input-port-market] (R) | 2009 \u2192 present | Revenue calibration starts no earlier than 2009 |\n| EU Council Baltic TAC Regulation | [poseidon-input-regulation-policy] (R) | Annual since 1983 | TACs available across the entire reanalysis window |\n\nThe **runner-enforced rule** is: the *intersection* of the year-ranges of every R-role source actually used in the run defines the legal `yearsToRun` window. The runner validates this before launching.\n\n## Sources specific to run-control\n\nThese do not deliver scientific data; they are run-time references.\n\n| Source | Role | Provides | Feeds field(s) | Related bblock(s) |\n|---|---|---|---|---|\n| EDITO Data Lake S3 conventions | required | `s3://edito-pilot/<area>/output/<runId>/` path layout | `outputDirectory` | [poseidon-output] |\n| STAC catalogue endpoint (`stac.marine.copernicus.eu`) | required | Collection / Item resolver | `scenario` URI when scenario is a STAC Item | [poseidon-input-scenario] |\n| POSEIDON release version | required | Java JAR / Docker image tag | (runner metadata, not a schema field) | [poseidon-model] |\n| OGC Processes API endpoint (EDITO Model Lab) | optional | Job submission endpoint | \u2013 (not in schema; recorded in `runMetadata` of [poseidon-output]) | [poseidon-output] |\n| Compute environment specification | optional | CPU/RAM/replicate parallelism plan | \u2013 (advisory) | \u2013 |\n\n[poseidon-input-scenario]: ../poseidon-input-scenario/\n[poseidon-input-biology]: ../poseidon-input-biology/\n[poseidon-input-fleet]: ../poseidon-input-fleet/\n[poseidon-input-map]: ../poseidon-input-map/\n[poseidon-input-port-market]: ../poseidon-input-port-market/\n[poseidon-input-regulation-policy]: ../poseidon-input-regulation-policy/\n[poseidon-input-observation-output]: ../poseidon-input-observation-output/\n[poseidon-input-optimization]: ../poseidon-input-optimization/\n[poseidon-output]: ../poseidon-output/\n[poseidon-model]: ../poseidon-model/\n\n## EDITO orchestration contract\n\nWhen the run is launched on EDITO Model Lab via OGC Processes API:\n\n1. **Scenario resolution** \u2014 `scenario` is a STAC Item URI that aggregates the input-bblock Items used. The runner downloads / mounts each referenced asset (Parquet, Zarr).\n2. **Output path** \u2014 `outputDirectory` MUST be of the form `s3://edito-pilot/<area>/output/<runId>/` where `<runId>` is the value emitted as `runId` in the [poseidon-output] manifest.\n3. **Manifest writing** \u2014 at end of run the transformer described in [poseidon-input-observation-output] writes `manifest.json` conforming to [poseidon-output] under that prefix and publishes one STAC Item per asset under `poseidon-output-<area>`.\n4. **Provenance** \u2014 `runMetadata.modelVersion` and the SHA-256 of the resolved scenario config are written into the manifest; the runner also pushes a `runConfigRef` STAC Item that re-resolves to the *exact* scenario actually executed.\n5. **Replicates** \u2014 `replicates > 1` produces one [poseidon-output] manifest per replicate, all sharing the same Collection; the replicate index is encoded in the Item id suffix.\n\n## Two-stage transformation pipeline\n\nFor this bblock the \"two-stage\" pattern degenerates: there are no raw \u2192 EDITO transforms because run-control consumes no external observational data. The relevant pipeline is:\n\n### Stage A \u2014 input bundle assembly (Source \u2192 EDITO)\n\n| Input | EDITO artefact | Transformation |\n|---|---|---|\n| Resolved [poseidon-input-scenario] + all transitively referenced input-bblock Items | `runs/<runId>/scenario-bundle.json` (STAC Item) | Walk the scenario tree; emit a STAC Item with one `assets.<bblockname>` link per input bblock; `properties.processing:lineage` records the upstream STAC Item URIs. |\n\n### Stage B \u2014 EDITO \u2192 POSEIDON\n\n| EDITO artefact | POSEIDON field(s) | Transformation |\n|---|---|---|\n| `scenario-bundle.json` | `scenario` | Set to the bundle Item URI. |\n| Optional policy bundle Item | `policy` | Set if a regulation-only Item is supplied as override. |\n| `outputDirectory` | `outputDirectory` | `s3://edito-pilot/<area>/output/<runId>/` |\n| `outputSelection` | `outputSelection` | URI of the [poseidon-input-observation-output] Item used. |\n\n### Run-control choices that are *not* data-driven\n\n| Field | Decision rule for the pilot |\n|---|---|\n| `yearsToRun` | 30-year back-cast (typically 1993\u20132023 or 2001\u20132023 depending on whether BITS Q4 series is used) for calibration; 30-year forecast (2025\u20132055) for projection. |\n| `randomSeed` | Fixed for reproducibility (e.g. 42); randomised across replicates only via internal seed offsets. |\n| `replicates` | 3 for production runs; 10 for noise-sensitive optimization evaluations (set by [poseidon-input-optimization]). |\n\n## Required vs substitutable vs validation-only\n\nThe R/S/V dimension does not apply to run-control directly \u2014 it inherits constraints from upstream bblocks. The user-facing required set per run is simply:\n\n1. A resolved `scenario` reference (R).\n2. `yearsToRun` (R).\n3. `outputDirectory` (R for any non-throwaway run).\n4. `outputSelection` (R when [poseidon-output] is consumed downstream).\n\n## Minimal viable bundle\n\n1. **Scenario STAC Item** \u2014 bundle of map + biology + fleet + port-market + regulation-policy + observation-output for the pilot.\n2. **`yearsToRun`** \u2014 set to the intersection of upstream V-role year-ranges (typically 2010\u20132023 for a Baltic back-cast).\n3. **`outputDirectory`** \u2014 `s3://edito-pilot/north-gotland/output/<runId>/`.\n4. **`outputSelection`** STAC Item URI \u2014 points at the [poseidon-input-observation-output] configuration used.\n\n## Cross-bblock contract\n\n- `scenario` MUST resolve to a [poseidon-input-scenario] Item whose `map.gridRef` matches the canonical grid used by all transitively referenced bblocks.\n- `policy`, when supplied, overrides any `regulations` embedded inside `scenario` \u2014 both must use the same closure-ID space declared in [poseidon-input-map].\n- `outputSelection` MUST refer to a [poseidon-input-observation-output] Item that lists exactly the columns / loggers consumed by the objective in [poseidon-input-optimization] (if optimization is used).\n- The runner enforces year-range consistency by intersecting upstream R-role source windows against `yearsToRun`; a mismatch fails the job before launch.\n- The [poseidon-output] manifest written under `outputDirectory` is the single artefact carried back into validation, optimization, and downstream analysis.\n",
+  "examples": [
+    {
+      "title": "POSEIDON batch run controls",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/examples/run_control.json",
+          "code": "{\n  \"scenario\": \"inputs/easy.yaml\",\n  \"policy\": \"inputs/policies/seasonal_closure.yaml\",\n  \"yearsToRun\": 50,\n  \"randomSeed\": 12345,\n  \"replicates\": 20,\n  \"outputDirectory\": \"runs/seasonal-closure\",\n  \"outputSelection\": \"inputs/output_columns.yaml\"\n}\n",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/poseidon-input-run-control/example_1_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/context.jsonld\",\n  \"scenario\": \"inputs/easy.yaml\",\n  \"policy\": \"inputs/policies/seasonal_closure.yaml\",\n  \"yearsToRun\": 50,\n  \"randomSeed\": 12345,\n  \"replicates\": 20,\n  \"outputDirectory\": \"runs/seasonal-closure\",\n  \"outputSelection\": \"inputs/output_columns.yaml\"\n}",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/poseidon-input-run-control/example_1_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix : <https://w3id.org/iliad/seadots/poseidon/input#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix schema: <https://schema.org/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] prov:used \"inputs/easy.yaml\",\n        \"inputs/output_columns.yaml\",\n        \"inputs/policies/seasonal_closure.yaml\" ;\n    schema:contentLocation \"runs/seasonal-closure\" ;\n    :randomSeed 12345 ;\n    :replicates 20 ;\n    :yearsToRun 50 .\n\n",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/poseidon-input-run-control/example_1_1.ttl"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: POSEIDON Run Control Input\ndescription: Top-level execution controls for a POSEIDON run or batch of runs.\ntype: object\nrequired:\n- scenario\n- yearsToRun\nproperties:\n  scenario:\n    oneOf:\n    - type: string\n      description: Path or URI to a POSEIDON scenario YAML file.\n    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.yaml\n    x-jsonld-id: http://www.w3.org/ns/prov#used\n  policy:\n    oneOf:\n    - type: 'null'\n    - type: string\n      description: Path or URI to an optional policy, regulation, or shock YAML file.\n    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.yaml\n    x-jsonld-id: http://www.w3.org/ns/prov#used\n  yearsToRun:\n    type: integer\n    minimum: 1\n  randomSeed:\n    type: integer\n    description: Seed used for reproducible stochastic runs.\n  replicates:\n    type: integer\n    minimum: 1\n    default: 1\n  outputDirectory:\n    type: string\n    x-jsonld-id: https://schema.org/contentLocation\n  outputSelection:\n    oneOf:\n    - type: 'null'\n    - type: string\n    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.yaml\n    x-jsonld-id: http://www.w3.org/ns/prov#used\nadditionalProperties: true\nx-jsonld-vocab: https://w3id.org/iliad/seadots/poseidon/input#\nx-jsonld-prefixes:\n  prov: http://www.w3.org/ns/prov#\n  schema: https://schema.org/\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/_stage/poseidon-input-run-control"
+}

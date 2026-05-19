@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "POSEIDON Observation and Output Selection Input",
+  "description": "Input selecting which POSEIDON observations and output series are written.",
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Names of POSEIDON output columns, indicators, or time series.",
+      "x-jsonld-id": "https://schema.org/variableMeasured",
+      "x-jsonld-container": "@list"
+    },
+    "cadence": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "yearly",
+        "end-of-run",
+        "custom"
+      ]
+    },
+    "loggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "https://schema.org/instrument",
+      "x-jsonld-container": "@list"
+    },
+    "outputProducts": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "$ref": "https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/geodcat-stac-earthcode/products/schema.json"
+          }
+        ]
+      },
+      "x-jsonld-id": "https://schema.org/result",
+      "x-jsonld-container": "@list"
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-vocab": "https://w3id.org/iliad/seadots/poseidon/input#",
+  "x-jsonld-prefixes": {
+    "schema": "https://schema.org/"
+  }
+}

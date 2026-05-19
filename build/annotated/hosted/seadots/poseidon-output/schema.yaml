@@ -1,0 +1,256 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Output (EDITO target)
+description: Target schema for POSEIDON run outputs published in EDITO-compliant form.
+  Tabular and per-agent products are encoded as GeoParquet 1.1 (CRS EPSG:4326, WKB
+  geometry where spatial). Gridded products are encoded as GeoZarr (Zarr v3, CF coords,
+  `spatial_ref` aux coord). All products are indexed by a STAC Collection one-to-one
+  with a POSEIDON run.
+type: object
+required:
+- runId
+- stacCollection
+- timeSeries
+properties:
+  runId:
+    type: string
+    description: Unique identifier of the POSEIDON run (UUID recommended).
+    x-jsonld-id: https://schema.org/identifier
+  runConfigRef:
+    type: string
+    format: uri
+    description: URI of the bundled poseidon-input-* configuration used for this run
+      (typically a STAC Item that aggregates the input bblocks).
+    x-jsonld-id: https://schema.org/isBasedOn
+  stacCollection:
+    oneOf:
+    - type: string
+      format: uri
+    - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/collection/schema.yaml
+    description: STAC Collection grouping all output Items for this run.
+    x-jsonld-id: https://w3id.org/ogc/stac/Collection
+  runMetadata:
+    type: object
+    properties:
+      startedAt:
+        type: string
+        format: date-time
+      finishedAt:
+        type: string
+        format: date-time
+      simulatedFromYear:
+        type: integer
+      simulatedToYear:
+        type: integer
+      timeStepUnit:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      seed:
+        type: integer
+      modelVersion:
+        type: string
+      hostEnvironment:
+        type: string
+    additionalProperties: true
+  timeSeries:
+    type: array
+    minItems: 1
+    description: Non-spatial or aggregate time-series products as GeoParquet.
+    items:
+      type: object
+      required:
+      - name
+      - asset
+      - cadence
+      - mediaType
+      properties:
+        name:
+          type: string
+          description: Indicator name (matches a column from poseidon-input-observation-output).
+        asset:
+          type: string
+          format: uri
+          description: S3 URI or HTTPS URI of the GeoParquet file.
+        mediaType:
+          type: string
+          const: application/vnd.apache.parquet
+        cadence:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - monthly
+          - yearly
+          - end-of-run
+          - event
+        unit:
+          type: string
+        dimension:
+          type: string
+          enum:
+          - global
+          - per-species
+          - per-fisher
+          - per-port
+          - per-segment
+        stacItem:
+          oneOf:
+          - type: string
+            format: uri
+          - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+          x-jsonld-id: https://w3id.org/ogc/stac/Item
+      additionalProperties: true
+    x-jsonld-id: https://schema.org/hasPart
+    x-jsonld-container: '@list'
+  agentLogs:
+    type: array
+    description: Per-agent (fisher / vessel / port) logs as GeoParquet.
+    items:
+      type: object
+      required:
+      - name
+      - asset
+      - mediaType
+      properties:
+        name:
+          type: string
+        asset:
+          type: string
+          format: uri
+        mediaType:
+          type: string
+          const: application/vnd.apache.parquet
+        agentType:
+          type: string
+          enum:
+          - fisher
+          - vessel
+          - port
+          - regulator
+          - market
+        spatialGeometry:
+          type: string
+          enum:
+          - point
+          - linestring
+          - polygon
+          - none
+        stacItem:
+          oneOf:
+          - type: string
+            format: uri
+          - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+          x-jsonld-id: https://w3id.org/ogc/stac/Item
+      additionalProperties: true
+    x-jsonld-id: https://schema.org/hasPart
+    x-jsonld-container: '@list'
+  gridded:
+    type: array
+    description: Gridded model outputs as GeoZarr (Zarr v3 stores).
+    items:
+      type: object
+      required:
+      - name
+      - asset
+      - mediaType
+      properties:
+        name:
+          type: string
+        asset:
+          type: string
+          format: uri
+        mediaType:
+          type: string
+          enum:
+          - application/vnd.zarr+zip
+          - application/vnd.zarr
+        variable:
+          type: string
+          description: Name of the primary variable in the Zarr store.
+        unit:
+          type: string
+        gridRef:
+          type: string
+          format: uri
+          description: STAC Item URI of the canonical grid this product is aligned
+            to (typically the grid declared in poseidon-input-map).
+        cadence:
+          type: string
+          enum:
+          - daily
+          - weekly
+          - monthly
+          - yearly
+          - end-of-run
+          - event
+        stacItem:
+          oneOf:
+          - type: string
+            format: uri
+          - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+          x-jsonld-id: https://w3id.org/ogc/stac/Item
+      additionalProperties: true
+    x-jsonld-id: https://schema.org/hasPart
+    x-jsonld-container: '@list'
+  events:
+    type: array
+    description: Discrete event logs (regulation invocations, closures triggered,
+      vessel exits, etc.).
+    items:
+      type: object
+      required:
+      - name
+      - asset
+      properties:
+        name:
+          type: string
+        asset:
+          type: string
+          format: uri
+        mediaType:
+          type: string
+          const: application/vnd.apache.parquet
+        stacItem:
+          oneOf:
+          - type: string
+            format: uri
+          - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+          x-jsonld-id: https://w3id.org/ogc/stac/Item
+      additionalProperties: true
+    x-jsonld-id: https://schema.org/hasPart
+    x-jsonld-container: '@list'
+  validationLinks:
+    type: array
+    description: References to the empirical series used for back-cast validation.
+    items:
+      type: object
+      properties:
+        modelProductRef:
+          type: string
+          description: Name of a timeSeries / agentLog / gridded entry above.
+        empiricalRef:
+          type: string
+          format: uri
+          description: STAC Item URI of the empirical product compared against.
+        metric:
+          type: string
+          enum:
+          - RMSE
+          - MAPE
+          - Pearson_r
+          - Spearman_r
+          - KS
+          - IoU
+        value:
+          type: number
+      additionalProperties: true
+    x-jsonld-id: https://schema.org/subjectOf
+    x-jsonld-container: '@list'
+additionalProperties: true
+x-jsonld-vocab: https://w3id.org/iliad/seadots/poseidon/output#
+x-jsonld-prefixes:
+  schema: https://schema.org/
+  stac: https://w3id.org/ogc/stac/

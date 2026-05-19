@@ -1,0 +1,205 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: MAREANO Benthic Biomass Density Observation
+description: 'Per-taxon benthic biomass density observation sourced from the MAREANO
+  programme. Treated as a SOSA Observation: feature-of-interest is the observed footprint,
+  observed property is `indo:benthic-biomass-density-mareano`, and the result is the
+  `data.perTaxon[]` array.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+properties:
+  properties:
+    type: object
+    required:
+    - benthicBiomassDensity
+    properties:
+      benthicBiomassDensity:
+        type: object
+        required:
+        - name
+        - source
+        - format
+        - observedProperty
+        - data
+        properties:
+          name:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/title
+          description:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/description
+          role:
+            type: string
+            description: Usually `primary baseline`.
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#role
+          source:
+            type: string
+            x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+            x-jsonld-type: '@id'
+          format:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/format
+          vocabularyTerm:
+            type: string
+            format: uri
+            x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+            x-jsonld-type: '@id'
+          observedProperty:
+            type: string
+            format: uri
+            description: SOSA observed-property URI (`indo:benthic-biomass-density-mareano`).
+            x-jsonld-id: http://www.w3.org/ns/sosa/observedProperty
+            x-jsonld-type: '@id'
+          phenomenonTime:
+            description: "SOSA phenomenon time \u2014 typically the sampling period."
+            oneOf:
+            - type: string
+            - type: object
+            x-jsonld-id: http://www.w3.org/ns/sosa/phenomenonTime
+          data:
+            type: object
+            required:
+            - perTaxon
+            - provenance
+            properties:
+              units:
+                type: string
+                description: Units of density (kg m-2).
+                x-jsonld-id: http://qudt.org/schema/qudt/unit
+              samplePeriod:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/temporal
+              samplingProgramme:
+                type: string
+                x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
+              perTaxon:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - scientificName
+                  - density_kg_m2
+                  properties:
+                    scientificName:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/scientificName
+                    aphiaID:
+                      type: integer
+                      description: WoRMS AphiaID.
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/taxonID
+                    density_kg_m2:
+                      type: number
+                      minimum: 0
+                      description: Per-taxon density consumed as `D_pre,i`.
+                      x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density
+                      x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                    habitat:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/habitat
+                    depthBand_m:
+                      type: string
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#depthBand_m
+                    nSamples:
+                      type: integer
+                      minimum: 0
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/sampleSizeValue
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#perTaxon
+                x-jsonld-container: '@set'
+              aggregateDensity_kg_m2:
+                type: number
+                minimum: 0
+                x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density-aggregate
+                x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+              provenance:
+                type: object
+                required:
+                - values
+                properties:
+                  values:
+                    type: string
+                    enum:
+                    - retrieved
+                    - illustrative
+                    - mixed
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#provenanceValues
+                  retrievalApiCall:
+                    type: string
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#retrievalApiCall
+                    x-jsonld-type: '@id'
+                  verifiedOn:
+                    type: string
+                    format: date
+                    x-jsonld-id: http://purl.org/dc/terms/date
+                  primarySource:
+                    type: object
+                    x-jsonld-id: http://purl.org/dc/terms/source
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                        x-jsonld-type: '@id'
+                      note:
+                        type: string
+                        x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#nearestAuthoritativeSource
+                  verificationGap:
+                    type: string
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#verificationGap
+                  note:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#benthicBiomassDensity
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
+  geometry: https://purl.org/geojson/vocab#geometry
+  coordinates: https://purl.org/geojson/vocab#coordinates
+  Feature: https://purl.org/geojson/vocab#Feature
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  links:
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+  href: '@id'
+  rel: https://purl.org/geojson/vocab#rel
+  title: http://purl.org/dc/terms/title
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  language: http://purl.org/dc/terms/language
+  license: http://purl.org/dc/terms/license
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  themes:
+    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-container: '@set'
+  concepts:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#Concept
+    x-jsonld-container: '@set'
+  scheme: http://www.w3.org/2004/02/skos/core#inScheme
+  label: http://www.w3.org/2004/02/skos/core#prefLabel
+  formats:
+    x-jsonld-id: http://purl.org/dc/terms/format
+    x-jsonld-container: '@set'
+  mediaType: http://purl.org/dc/terms/format
+  conformsTo:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#
+x-jsonld-prefixes:
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  skos: http://www.w3.org/2004/02/skos/core#
+  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#
+  sosa: http://www.w3.org/ns/sosa/
+  qudt: http://qudt.org/schema/qudt/
+  prov: http://www.w3.org/ns/prov#
+  dwc: http://rs.tdwg.org/dwc/terms/
+  indo: https://id3.seadots.eu/indicator/

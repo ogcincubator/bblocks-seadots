@@ -1,0 +1,14 @@
+@prefix : <https://w3id.org/iliad/seadots/poseidon/input#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] schema:about ( [ schema:name "Species 0" ;
+                :carryingCapacity 5000 ;
+                :diffusion [ :differentialPercentageToMove 1e-03 ;
+                        :percentageLimitOnDailyMovement 1e-02 ] ;
+                :growth [ :growerType "Independent Logistic Grower" ;
+                        :steepness "uniform 0.6 0.8" ] ;
+                :modelType "biomass" ] ) ;
+    :initializerType "Single Species Biomass" .
+

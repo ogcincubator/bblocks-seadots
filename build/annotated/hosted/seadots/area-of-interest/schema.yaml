@@ -1,0 +1,170 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Marine Area of Interest
+description: 'Polygon-delimited marine area used by experiments, monitoring programmes,
+  or impact assessments. Inherits the OIM feature shape; adds an `areaOfInterest`
+  property carrying inline scalars (bbox, centroid, area, CRS) and mandatory provenance.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+properties:
+  geometry:
+    description: GeoJSON Polygon delimiting the AOI.
+    type: object
+    required:
+    - type
+    - coordinates
+    properties:
+      type:
+        const: Polygon
+        x-jsonld-id: '@type'
+      coordinates:
+        type: array
+        x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+        x-jsonld-container: '@list'
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  properties:
+    type: object
+    required:
+    - areaOfInterest
+    properties:
+      areaOfInterest:
+        type: object
+        required:
+        - name
+        - source
+        - data
+        properties:
+          name:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/title
+          description:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/description
+          role:
+            type: string
+            description: Role the AOI plays (e.g. `study area`, `monitoring footprint`,
+              `licence polygon`).
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#role
+          source:
+            type: string
+            description: Access URI or file path for the canonical polygon.
+            x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+            x-jsonld-type: '@id'
+          format:
+            type: string
+            description: Media type (e.g. application/geo+json).
+            x-jsonld-id: http://purl.org/dc/terms/format
+          vocabularyTerm:
+            type: string
+            format: uri
+            x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+            x-jsonld-type: '@id'
+          data:
+            type: object
+            required:
+            - provenance
+            properties:
+              bbox:
+                type: array
+                items:
+                  type: number
+                minItems: 4
+                maxItems: 4
+                x-jsonld-id: https://purl.org/geojson/vocab#bbox
+              centroid:
+                type: array
+                items:
+                  type: number
+                minItems: 2
+                maxItems: 2
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#centroid
+              area_km2:
+                type: number
+                minimum: 0
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#area_km2
+              crs:
+                type: string
+                description: CRS identifier, e.g. EPSG:4326.
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#crs
+              note:
+                type: string
+                x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+              provenance:
+                type: object
+                required:
+                - values
+                properties:
+                  values:
+                    type: string
+                    enum:
+                    - retrieved
+                    - illustrative
+                    - mixed
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#provenanceValues
+                  retrievalApiCall:
+                    type: string
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#retrievalApiCall
+                    x-jsonld-type: '@id'
+                  verifiedOn:
+                    type: string
+                    format: date
+                    x-jsonld-id: http://purl.org/dc/terms/date
+                  primarySource:
+                    type: object
+                    x-jsonld-id: http://purl.org/dc/terms/source
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                        x-jsonld-type: '@id'
+                      note:
+                        type: string
+                        x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#nearestAuthoritativeSource
+                  note:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/area-of-interest#areaOfInterest
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+x-jsonld-extra-terms:
+  id: '@id'
+  Feature: https://purl.org/geojson/vocab#Feature
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  links:
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+  href: '@id'
+  rel: https://purl.org/geojson/vocab#rel
+  title: http://purl.org/dc/terms/title
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  language: http://purl.org/dc/terms/language
+  license: http://purl.org/dc/terms/license
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  themes:
+    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-container: '@set'
+  concepts:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#Concept
+    x-jsonld-container: '@set'
+  scheme: http://www.w3.org/2004/02/skos/core#inScheme
+  label: http://www.w3.org/2004/02/skos/core#prefLabel
+  formats:
+    x-jsonld-id: http://purl.org/dc/terms/format
+    x-jsonld-container: '@set'
+  mediaType: http://purl.org/dc/terms/format
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/area-of-interest#
+x-jsonld-prefixes:
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  skos: http://www.w3.org/2004/02/skos/core#
+  seadots: https://w3id.org/ogc/hosted/seadots/area-of-interest#
+  prov: http://www.w3.org/ns/prov#

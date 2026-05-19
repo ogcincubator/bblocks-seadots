@@ -1,0 +1,200 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: IMR Benthic Biomass Density Observation
+description: 'Per-taxon benthic biomass density observation sourced from the Institute
+  of Marine Research regional baseline series. Acts as the fallback D_pre,i binding
+  when MAREANO has no taxon coverage. Carries explicit per-row uncertainty.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+properties:
+  properties:
+    type: object
+    required:
+    - benthicBiomassDensity
+    properties:
+      benthicBiomassDensity:
+        type: object
+        required:
+        - name
+        - source
+        - format
+        - observedProperty
+        - data
+        properties:
+          name:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/title
+          description:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/description
+          role:
+            type: string
+            description: Usually `fallback baseline`.
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#role
+          source:
+            type: string
+            x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+            x-jsonld-type: '@id'
+          format:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/format
+          vocabularyTerm:
+            type: string
+            format: uri
+            x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+            x-jsonld-type: '@id'
+          observedProperty:
+            type: string
+            format: uri
+            description: SOSA observed-property URI (`indo:benthic-biomass-density-imr-baseline`).
+            x-jsonld-id: http://www.w3.org/ns/sosa/observedProperty
+            x-jsonld-type: '@id'
+          phenomenonTime:
+            description: SOSA phenomenon time.
+            oneOf:
+            - type: string
+            - type: object
+            x-jsonld-id: http://www.w3.org/ns/sosa/phenomenonTime
+          data:
+            type: object
+            required:
+            - perTaxon
+            - provenance
+            properties:
+              units:
+                type: string
+                x-jsonld-id: http://qudt.org/schema/qudt/unit
+              samplePeriod:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/temporal
+              method:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/methodology
+              icesDivision:
+                type: string
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#icesDivision
+              perTaxon:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - scientificName
+                  - density_kg_m2
+                  - uncertainty_kg_m2
+                  properties:
+                    scientificName:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/scientificName
+                    aphiaID:
+                      type: integer
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/taxonID
+                    density_kg_m2:
+                      type: number
+                      minimum: 0
+                      x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density
+                      x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                    uncertainty_kg_m2:
+                      type: number
+                      minimum: 0
+                      description: "1\u03C3 standard uncertainty consumed for CV propagation."
+                      x-jsonld-id: http://qudt.org/schema/qudt/standardUncertainty
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#perTaxon
+                x-jsonld-container: '@set'
+              aggregateDensity_kg_m2:
+                type: number
+                minimum: 0
+                x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density-aggregate
+                x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+              provenance:
+                type: object
+                required:
+                - values
+                properties:
+                  values:
+                    type: string
+                    enum:
+                    - retrieved
+                    - illustrative
+                    - mixed
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#provenanceValues
+                  retrievalApiCall:
+                    type: string
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#retrievalApiCall
+                    x-jsonld-type: '@id'
+                  verifiedOn:
+                    type: string
+                    format: date
+                    x-jsonld-id: http://purl.org/dc/terms/date
+                  primarySource:
+                    type: object
+                    x-jsonld-id: http://purl.org/dc/terms/source
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                        x-jsonld-type: '@id'
+                      note:
+                        type: string
+                        x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#nearestAuthoritativeSource
+                  verificationGap:
+                    type: string
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#verificationGap
+                  note:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#benthicBiomassDensity
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
+  geometry: https://purl.org/geojson/vocab#geometry
+  coordinates: https://purl.org/geojson/vocab#coordinates
+  Feature: https://purl.org/geojson/vocab#Feature
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  links:
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+  href: '@id'
+  rel: https://purl.org/geojson/vocab#rel
+  title: http://purl.org/dc/terms/title
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  language: http://purl.org/dc/terms/language
+  license: http://purl.org/dc/terms/license
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  themes:
+    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-container: '@set'
+  concepts:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#Concept
+    x-jsonld-container: '@set'
+  scheme: http://www.w3.org/2004/02/skos/core#inScheme
+  label: http://www.w3.org/2004/02/skos/core#prefLabel
+  formats:
+    x-jsonld-id: http://purl.org/dc/terms/format
+    x-jsonld-container: '@set'
+  mediaType: http://purl.org/dc/terms/format
+  conformsTo:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#
+x-jsonld-prefixes:
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  skos: http://www.w3.org/2004/02/skos/core#
+  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#
+  sosa: http://www.w3.org/ns/sosa/
+  qudt: http://qudt.org/schema/qudt/
+  dwc: http://rs.tdwg.org/dwc/terms/
+  indo: https://id3.seadots.eu/indicator/
+  prov: http://www.w3.org/ns/prov#

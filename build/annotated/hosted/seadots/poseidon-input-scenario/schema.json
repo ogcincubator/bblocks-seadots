@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "POSEIDON Scenario YAML Input",
+  "description": "Main scenario document consumed by POSEIDON's YAML scenario loader.",
+  "type": "object",
+  "properties": {
+    "scenarioType": {
+      "type": "string",
+      "description": "Human-readable or implementation class name for the scenario factory."
+    },
+    "map": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "biology": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "fleet": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "portsAndMarkets": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "regulations": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "output": {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.json",
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used"
+    },
+    "plugins": {
+      "type": "array",
+      "description": "Optional POSEIDON startables, loggers, adaptors, or extensions.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used",
+      "x-jsonld-container": "@list"
+    }
+  },
+  "required": [
+    "map",
+    "biology",
+    "fleet"
+  ],
+  "additionalProperties": true,
+  "x-jsonld-vocab": "https://w3id.org/iliad/seadots/poseidon/input#",
+  "x-jsonld-prefixes": {
+    "prov": "http://www.w3.org/ns/prov#"
+  }
+}

@@ -2,8 +2,8 @@
   "title": "Validation report for ogc.hosted.seadots.odd-protocol - ODD Protocol Description Record",
   "bblockName": "ODD Protocol Description Record",
   "bblockId": "ogc.hosted.seadots.odd-protocol",
-  "generated": "2026-05-13T10:50:57.006303+00:00",
-  "result": false,
+  "generated": "2026-05-19T22:58:07.412730+00:00",
+  "result": true,
   "items": [
     {
       "source": {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": false,
+      "result": true,
       "sections": [
         {
           "name": "FILES",
@@ -40,7 +40,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_1_1.ttl",
-              "size": 122,
+              "size": 123,
               "isError": false,
               "message": "Output Turtle example_1_1.ttl created"
             }
@@ -52,11 +52,9 @@
           "entries": [
             {
               "op": "validation",
-              "result": false,
-              "exception": "ValidationError",
-              "errorMessage": "'en' is not of type 'object'",
-              "isError": true,
-              "message": "ValidationError: 'en' is not of type 'object'\n\nFailed validating 'type' in schema['allOf'][0]['allOf'][0]['allOf'][0]['properties']['properties']['properties']['language']:\n    {'description': 'The language used for textual values in this record.',\n     'properties': {'alternate': {'description': 'The name of the language '\n                                                 'in another '\n                                                 'well-understood '\n                                                 'language,\\n'\n                                                 'usually English.',\n                                  'type': 'string'},\n                    'code': {'description': 'The language tag as per '\n                                            'RFC-5646.',\n                             'type': 'string'},\n                    'dir': {'default': 'ltr',\n                            'description': 'The direction for text in this '\n                                           'language. The default, `ltr`\\n'\n                                           '(left-to-right), represents '\n                                           'the most common situation.\\n'\n                                           'However, care should be taken '\n                                           'to set the value of `dir`\\n'\n                                           'appropriately if the language '\n                                           'direction is not `ltr`.\\n'\n                                           'Other values supported are '\n                                           '`rtl` (right-to-left), `ttb`\\n'\n                                           '(top-to-bottom), and `btt` '\n                                           '(bottom-to-top).',\n                            'enum': ['ltr', 'rtl', 'ttb', 'btt'],\n                            'type': 'string'},\n                    'name': {'description': 'The untranslated name of the '\n                                            'language.',\n                             'minLength': 1,\n                             'type': 'string'}},\n     'required': ['code'],\n     'type': 'object'}\n\nOn instance['properties']['language']:\n    'en'"
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
             }
           ]
         },
@@ -74,6 +72,12 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
@@ -84,16 +88,10 @@
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <doi:10.18564/jasss.4259>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <doi:10.18564/jasss.4259>\n - Shape geojson:GeometryShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -126,7 +124,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": false,
+      "result": true,
       "sections": [
         {
           "name": "FILES",
@@ -151,7 +149,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_2_1.ttl",
-              "size": 621,
+              "size": 622,
               "isError": false,
               "message": "Output Turtle example_2_1.ttl created"
             }
@@ -163,11 +161,9 @@
           "entries": [
             {
               "op": "validation",
-              "result": false,
-              "exception": "ValidationError",
-              "errorMessage": "'en' is not of type 'object'",
-              "isError": true,
-              "message": "ValidationError: 'en' is not of type 'object'\n\nFailed validating 'type' in schema['allOf'][0]['allOf'][0]['allOf'][0]['properties']['properties']['properties']['language']:\n    {'description': 'The language used for textual values in this record.',\n     'properties': {'alternate': {'description': 'The name of the language '\n                                                 'in another '\n                                                 'well-understood '\n                                                 'language,\\n'\n                                                 'usually English.',\n                                  'type': 'string'},\n                    'code': {'description': 'The language tag as per '\n                                            'RFC-5646.',\n                             'type': 'string'},\n                    'dir': {'default': 'ltr',\n                            'description': 'The direction for text in this '\n                                           'language. The default, `ltr`\\n'\n                                           '(left-to-right), represents '\n                                           'the most common situation.\\n'\n                                           'However, care should be taken '\n                                           'to set the value of `dir`\\n'\n                                           'appropriately if the language '\n                                           'direction is not `ltr`.\\n'\n                                           'Other values supported are '\n                                           '`rtl` (right-to-left), `ttb`\\n'\n                                           '(top-to-bottom), and `btt` '\n                                           '(bottom-to-top).',\n                            'enum': ['ltr', 'rtl', 'ttb', 'btt'],\n                            'type': 'string'},\n                    'name': {'description': 'The untranslated name of the '\n                                            'language.',\n                             'minLength': 1,\n                             'type': 'string'}},\n     'required': ['code'],\n     'type': 'object'}\n\nOn instance['properties']['language']:\n    'en'"
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
             }
           ]
         },
@@ -185,6 +181,12 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
@@ -195,16 +197,10 @@
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://osmose-model.org/>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://osmose-model.org/>\n - Shape geojson:GeometryShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -237,7 +233,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": false,
+      "result": true,
       "sections": [
         {
           "name": "FILES",
@@ -262,7 +258,7 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_3_1.ttl",
-              "size": 143,
+              "size": 158,
               "isError": false,
               "message": "Output Turtle example_3_1.ttl created"
             }
@@ -274,11 +270,9 @@
           "entries": [
             {
               "op": "validation",
-              "result": false,
-              "exception": "ValidationError",
-              "errorMessage": "'en' is not of type 'object'",
-              "isError": true,
-              "message": "ValidationError: 'en' is not of type 'object'\n\nFailed validating 'type' in schema['allOf'][0]['allOf'][0]['allOf'][0]['properties']['properties']['properties']['language']:\n    {'description': 'The language used for textual values in this record.',\n     'properties': {'alternate': {'description': 'The name of the language '\n                                                 'in another '\n                                                 'well-understood '\n                                                 'language,\\n'\n                                                 'usually English.',\n                                  'type': 'string'},\n                    'code': {'description': 'The language tag as per '\n                                            'RFC-5646.',\n                             'type': 'string'},\n                    'dir': {'default': 'ltr',\n                            'description': 'The direction for text in this '\n                                           'language. The default, `ltr`\\n'\n                                           '(left-to-right), represents '\n                                           'the most common situation.\\n'\n                                           'However, care should be taken '\n                                           'to set the value of `dir`\\n'\n                                           'appropriately if the language '\n                                           'direction is not `ltr`.\\n'\n                                           'Other values supported are '\n                                           '`rtl` (right-to-left), `ttb`\\n'\n                                           '(top-to-bottom), and `btt` '\n                                           '(bottom-to-top).',\n                            'enum': ['ltr', 'rtl', 'ttb', 'btt'],\n                            'type': 'string'},\n                    'name': {'description': 'The untranslated name of the '\n                                            'language.',\n                             'minLength': 1,\n                             'type': 'string'}},\n     'required': ['code'],\n     'type': 'object'}\n\nOn instance['properties']['language']:\n    'en'"
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
             }
           ]
         },
@@ -296,6 +290,12 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
@@ -306,16 +306,10 @@
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1>\n - Shape geojson:GeometryShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -342,7 +336,7 @@
   "globalErrors": {},
   "counts": {
     "total": 3,
-    "passed": 0,
-    "failed": 3
+    "passed": 3,
+    "failed": 0
   }
 }

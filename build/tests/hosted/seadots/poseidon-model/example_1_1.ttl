@@ -1,0 +1,238 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix odd: <https://w3id.org/iliad/odd#> .
+@prefix osc: <https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#> .
+@prefix pos: <https://w3id.org/iliad/seadots/poseidon#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stac: <https://w3id.org/ogc/stac/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://doi.org/10.1007/s11625-018-0579-9> dcterms:created "2018-06-09T00:00:00Z" ;
+    dcterms:description "POSEIDON is a conceptual coupled human-environment model for ocean fisheries policy design. It couples adaptive fishing-boat agents to a spatial fish biomass model and uses Bayesian optimization over policy parameters to search for policies that satisfy specified management objectives." ;
+    dcterms:license "https://www.gnu.org/licenses/gpl-3.0.html" ;
+    dcterms:modified "2019-03-01T00:00:00Z" ;
+    dcterms:temporal [ ] ;
+    dcterms:title "POSEIDON model of ocean fisheries: ODD Protocol Description" ;
+    rdfs:seeAlso [ rdfs:label "Springer article page" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://link.springer.com/article/10.1007/s11625-018-0579-9> ],
+        [ rdfs:label "POSEIDON implementation repository" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/code> ;
+            oa:hasTarget <https://github.com/poseidon-fisheries/POSEIDON> ],
+        [ rdfs:label "POSEIDON model publication" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            oa:hasTarget <https://doi.org/10.1007/s11625-018-0579-9> ] ;
+    dcat:contactPoint [ rdfs:label "Ernesto Carrella" ],
+        [ rdfs:label "Richard M. Bailey" ],
+        [ rdfs:label "Steven Saul" ] ;
+    dcat:keyword "Bayesian optimization",
+        "POSEIDON",
+        "adaptive fleet behaviour",
+        "agent-based model",
+        "coupled human-environment system",
+        "fisheries",
+        "policy optimization" ;
+    odd: [ odd:designConcepts [ odd:adaptation "Fishing agents adapt through an explore-exploit-imitate routine that reinforces profitable choices, copies successful peers, or explores alternatives." ;
+                    odd:basicPrinciples "The model uses agent-based modelling to represent heterogeneous fishers and mechanistic ecological dynamics to avoid hard-wiring policy-specific behavioural responses. Policy design is cast as optimization over parameterized regulations." ;
+                    odd:collectives "The fleet is represented as a collective outcome of individual fishing boat agents, with social-network structure enabling imitation." ;
+                    odd:emergence "Fleet-level spatial effort patterns, catch outcomes, profit distributions, biomass depletion, and policy performance emerge from local fishing decisions, social imitation, and ecological feedbacks." ;
+                    odd:interaction "Fishing boats interact indirectly through competition for biomass and directly or socially through imitation of more successful agents. Boats interact with the ecological environment through harvest and with governance through policy constraints and incentives." ;
+                    odd:learning "Agents update behaviour from experience and social comparison rather than using policy-specific programmed responses." ;
+                    odd:objectives "Fishing agents seek profitable choices in the conceptual model. The policy optimizer seeks high scores under user-defined management objectives, such as catch, conservation, or hybrid objectives." ;
+                    odd:observation "Model observations include catch, profit, effort distribution, biomass, policy scores, and optimized policy parameter sets across repeated simulation runs." ;
+                    odd:prediction "Agents use limited, decaying knowledge of prior outcomes and social information rather than perfect forecasts of the simulated world." ;
+                    odd:sensing "Agents sense their own past outcomes, selected information from social-network peers, and policy constraints that affect feasible or profitable actions." ;
+                    odd:stochasticity "Initial choices and exploratory decisions can be stochastic; optimization and simulation ensembles require explicit random seed policies for reproducibility." ] ;
+            odd:entities ( [ dcterms:title "Fishing boat" ;
+                        odd:entityType "agent" ;
+                        odd:scales [ odd:spatialScale "Near-shore capture fishery with one port and a spatial ocean grid." ;
+                                odd:temporalScale "Daily agent decision cycle over multi-year policy simulations." ] ;
+                        odd:stateVariables ( [ dcterms:description "Current position of the vessel in the spatial fishery domain." ;
+                                    dcterms:title "location" ;
+                                    qudt:unit "grid cell" ;
+                                    odd:range "ocean cells and port" ;
+                                    odd:variableType "string" ] [ dcterms:description "Economic return used to reinforce or change fishing decisions." ;
+                                    dcterms:title "profit" ;
+                                    qudt:unit "currency" ;
+                                    odd:range "real" ;
+                                    odd:variableType "real" ] [ dcterms:description "Fishing gear selected by the agent for a trip." ;
+                                    dcterms:title "gear" ;
+                                    qudt:unit "dimensionless" ;
+                                    odd:range "available gear choices" ;
+                                    odd:variableType "string" ] [ dcterms:description "Peers whose outcomes may be observed or imitated." ;
+                                    dcterms:title "socialNetwork" ;
+                                    qudt:unit "dimensionless" ;
+                                    odd:range "other fishing boat agents" ;
+                                    odd:variableType "list" ] ) ] [ dcterms:title "Fish biomass cell" ;
+                        odd:entityType "grid-cell" ;
+                        odd:scales [ odd:spatialScale "Spatially explicit ocean grid." ;
+                                odd:temporalScale "Updated during each model step." ] ;
+                        odd:stateVariables ( [ dcterms:description "Fish biomass available in the cell and depleted by fishing." ;
+                                    dcterms:title "biomass" ;
+                                    qudt:unit "mass" ;
+                                    odd:range "non-negative" ;
+                                    odd:variableType "real" ] [ dcterms:description "Local logistic growth parameter for the conceptual biology option." ;
+                                    dcterms:title "intrinsicGrowthRate" ;
+                                    qudt:unit "per time" ;
+                                    odd:range "non-negative" ;
+                                    odd:variableType "real" ] [ dcterms:description "Spatial redistribution pressure following local biomass gradients." ;
+                                    dcterms:title "diffusionGradient" ;
+                                    qudt:unit "mass per area" ;
+                                    odd:range "real" ;
+                                    odd:variableType "real" ] ) ] [ dcterms:title "Policy" ;
+                        odd:entityType "other" ;
+                        odd:scales [ odd:spatialScale "May apply to the whole fishery or selected spatial cells." ;
+                                odd:temporalScale "Policy periods defined by scenario parameters." ] ;
+                        odd:stateVariables ( [ dcterms:description "Parameters defining restrictions or incentives such as closures, quotas, taxes, or gear controls." ;
+                                    dcterms:title "restrictionParameters" ;
+                                    qudt:unit "dimensionless" ;
+                                    odd:range "policy-specific parameter space" ;
+                                    odd:variableType "list" ] [ dcterms:description "Objective used by the optimizer to score simulated policies." ;
+                                    dcterms:title "scoringFunction" ;
+                                    qudt:unit "dimensionless" ;
+                                    odd:range "user-defined objective" ;
+                                    odd:variableType "string" ] ) ] ) ;
+            odd:initialization [ dcterms:description "The conceptual model initializes a near-shore fishery with a shoreline, one port, a spatial ocean grid containing distributed fish biomass, and a fleet of fishing boat agents. Environmental and external market modules are held constant in the conceptual examples described by the paper." ;
+                    odd:randomSeed "Random seeds should be recorded for each simulation run and optimization replicate." ] ;
+            odd:inputData ( [ dcterms:description "POSEIDON map initializer input: generated grid or file-backed map with cell size, map dimensions, coordinates, depth/bathymetry, coastline or land state, and optional STAC-referenced spatial assets." ;
+                        dcterms:format "YAML component, CSV map, or STAC item" ;
+                        dcterms:temporal "scenario-specific" ;
+                        dcterms:title "Spatial fishery domain" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-map> ] [ dcterms:description "POSEIDON biology input: species names, biomass or abundance state, carrying capacity, recruitment, growth, mortality, diffusion, OSMOSE configuration, and species parameter files." ;
+                        dcterms:format "YAML component, CSV parameter table, directory, or STAC item" ;
+                        dcterms:temporal "t0" ;
+                        dcterms:title "Biology initializer and species parameters" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-biology> ] [ dcterms:description "POSEIDON fleet input: fisher groups, vessel properties, gear, destination/departure/fishing strategies, social network, adaptation probabilities, and logbook settings." ;
+                        dcterms:format "YAML component" ;
+                        dcterms:temporal "simulation period" ;
+                        dcterms:title "Fleet and fisher definitions" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-fleet> ] [ dcterms:description "POSEIDON port and market input: port locations, market price configuration, landing assumptions, and fuel or gas-price configuration." ;
+                        dcterms:format "YAML component or CSV price table" ;
+                        dcterms:temporal "simulation period" ;
+                        dcterms:title "Ports, markets, and fuel prices" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-port-market> ] [ dcterms:description "POSEIDON management input: closures, quotas, protected areas, gear restrictions, action-specific regulations, conditional rules, and exogenous shocks." ;
+                        dcterms:format "YAML component or policy file" ;
+                        dcterms:temporal "simulation period" ;
+                        dcterms:title "Regulations, policy files, and shocks" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy> ] [ dcterms:description "POSEIDON EVA optimization input: base scenario, parameter adaptors, parameter bounds, objective function, simulation budget, seeds, and replicate strategy." ;
+                        dcterms:format "YAML optimization problem" ;
+                        dcterms:temporal "experiment period" ;
+                        dcterms:title "Optimization problem" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-optimization> ] [ dcterms:description "POSEIDON output-selection input: indicators, output columns, time-series cadence, loggers, and output product declarations." ;
+                        dcterms:format "YAML or command/run configuration" ;
+                        dcterms:temporal "simulation period" ;
+                        dcterms:title "Observation and output selection" ;
+                        dcat:accessURL <bblocks://ogc.hosted.seadots.poseidon-input-observation-output> ] ) ;
+            odd:patterns ( [ dcterms:description "Fishing agents alter whether, where, and how they fish in response to profit opportunities, social information, biomass depletion, and imposed policy constraints." ;
+                        dcterms:references <https://doi.org/10.1007/s11625-018-0579-9> ;
+                        dcterms:title "Adaptive fleet redistribution under policy constraints" ] [ dcterms:description "Fishing boats choose between continuing successful behaviour, copying more successful peers, or exploring alternatives, producing group-level adaptation without policy-specific response rules." ;
+                        dcterms:references <https://doi.org/10.1007/s11625-018-0579-9> ;
+                        dcterms:title "Explore-exploit-imitate decision behaviour" ] [ dcterms:description "Different scoring functions and constraints can produce trade-offs among catch, conservation, equity, and other management outcomes." ;
+                        dcterms:references <https://doi.org/10.1007/s11625-018-0579-9> ;
+                        dcterms:title "Policy objective trade-offs" ] ) ;
+            odd:processOverview [ odd:processes ( [ dcterms:description "Agent decides whether to leave port and participate in fishing for the day." ;
+                                dcterms:title "Choose fishing activity" ;
+                                odd:executedBy "Fishing boat" ] [ dcterms:description "Agent applies an explore-exploit-imitate decision routine using its own outcomes and social-network information." ;
+                                dcterms:title "Choose fishing location and gear" ;
+                                odd:executedBy "Fishing boat" ] [ dcterms:description "Catch, costs, policy effects, and sales revenue determine the outcome that reinforces future choices." ;
+                                dcterms:title "Harvest and profit accounting" ;
+                                odd:executedBy "Fishing boat" ] [ dcterms:description "Local fish biomass grows according to a logistic model and diffuses spatially along gradients in the conceptual implementation." ;
+                                dcterms:title "Biomass growth and diffusion" ;
+                                odd:executedBy "Fish biomass cell" ] [ dcterms:description "Bayesian optimization proposes policy parameters, evaluates model runs with a scoring function, and searches for high-scoring policy designs." ;
+                                dcterms:title "Policy parameter optimization" ;
+                                odd:executedBy "Policy" ] ) ;
+                    odd:scheduling "At each daily step, fishing agents decide whether to fish, where to fish, and which gear to use; fishing depletes local biomass; biomass grows and diffuses according to the selected ecology submodel; policy rules constrain or incentivize choices; policy optimization runs multiple simulations and updates candidate parameters between runs." ] ;
+            odd:purpose "POSEIDON was developed to support computational policy design for ocean fisheries as coupled human-environment systems. The conceptual model is intended to explore how adaptive fishing fleets respond to policy constraints and incentives, and how automated optimization can identify parameterized policies that meet user-defined management objectives." ;
+            odd:submodels ( [ dcterms:description "Fishing agents select actions by continuing a successful option, copying a more successful member of their social network, or exploring another option." ;
+                        dcterms:title "Explore-exploit-imitate fleet behaviour" ;
+                        rdfs:seeAlso ( [ dcterms:title "POSEIDON paper" ;
+                                    schema:url <https://doi.org/10.1007/s11625-018-0579-9> ;
+                                    odd:linkRel "describedby" ] ) ;
+                        odd:equations "Algorithmic multi-armed bandit style decision rule; see supplementary material for pseudocode." ;
+                        odd:parameterization "Requires probabilities or hyper-parameters controlling exploration, exploitation, imitation, memory decay, and social-network influence." ] [ dcterms:description "Conceptual examples use local logistic biomass growth and diffusion along spatial gradients, with fishing pressure depleting biomass." ;
+                        dcterms:title "Spatial fish biomass" ;
+                        rdfs:seeAlso ( [ dcterms:title "POSEIDON paper" ;
+                                    schema:url <https://doi.org/10.1007/s11625-018-0579-9> ;
+                                    odd:linkRel "describedby" ] ) ;
+                        odd:equations "Local logistic growth plus spatial diffusion and harvest loss." ;
+                        odd:parameterization "Growth, carrying capacity, diffusion, catchability, and harvest parameters are scenario-specific; the paper also notes OSMOSE as a more sophisticated biology option." ] [ dcterms:description "An optimizer iteratively selects policy parameter combinations, runs the model, updates a surrogate meta-model of policy performance, and searches for high-scoring policies." ;
+                        dcterms:title "Bayesian policy optimization" ;
+                        rdfs:seeAlso ( [ dcterms:title "POSEIDON paper" ;
+                                    schema:url <https://doi.org/10.1007/s11625-018-0579-9> ;
+                                    odd:linkRel "describedby" ] ) ;
+                        odd:equations "Black-box optimization of a scoring function over policy parameter space." ;
+                        odd:parameterization "Requires a scoring function, policy parameter bounds, simulation budget, convergence criteria, and replicate design." ] ) ] ;
+    odd:variableType "Feature",
+        "SoftwareApplication" ;
+    pos:metadata [ dcterms:source [ dcterms:bibliographicCitation "Bailey, R.M., Carrella, E., Axtell, R. et al. A computational approach to managing coupled human-environmental systems: the POSEIDON model of ocean fisheries. Sustainability Science 14, 259-275 (2019)." ;
+                    dcterms:issued "2018-06-09"^^xsd:date ;
+                    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                    bibo:doi <https://doi.org/10.1007/s11625-018-0579-9> ;
+                    schema:encoding ( [ dcterms:title "Electronic supplementary material" ;
+                                schema:url <https://link.springer.com/article/10.1007/s11625-018-0579-9#Sec25> ;
+                                odd:linkRel "describedby" ] ) ] ;
+            osc:OpenScienceResource [ prov:generated ( [ a <http://purl.org/wf4ever/wfprov#application/geo+json> ;
+                                dcterms:title "Example optimized policy outputs" ;
+                                schema:url <https://example.org/records/poseidon-optimized-policy-products> ;
+                                odd:linkRel "result" ] ) ;
+                    prov:used [ dcterms:title "Example POSEIDON policy optimization workflow" ;
+                            schema:url <https://example.org/ogcapi/processes/poseidon-policy-optimization> ;
+                            odd:linkRel "workflow" ;
+                            odd:variableType "application/json" ] ;
+                    prov:wasGeneratedBy ( [ a <http://purl.org/wf4ever/wfprov#application/geo+json> ;
+                                dcterms:title "Example seasonal closure optimization experiment" ;
+                                schema:url <https://example.org/records/poseidon-seasonal-closure-experiment> ;
+                                odd:linkRel "experiment" ] ) ] ;
+            osc:reproducibility [ pos:calibration "The implementation is executable; site-specific deployments should calibrate biological, economic, behavioural, spatial, and policy parameters against local data." ;
+                    pos:implementationStatus "executable-implementation" ;
+                    pos:randomSeedPolicy "Record a seed for each model run and optimization replicate." ;
+                    pos:runProtocol "Define policy parameter bounds, initialize the spatial fishery and fleet, run replicate simulations for proposed policies, evaluate the scoring function, and update the Bayesian optimizer until the configured simulation budget or convergence condition is met." ] ;
+            pos:modelRole "coupled-human-environment-fisheries-policy-model" ;
+            pos:policyOptimization [ pos:decisionVariables ( [ dcterms:description "Start day of a seasonal fishery closure policy." ;
+                                dcterms:title "seasonStart" ;
+                                qudt:unit "day-of-year" ;
+                                odd:range "1..365" ] [ dcterms:description "End day of a seasonal fishery closure policy." ;
+                                dcterms:title "seasonEnd" ;
+                                qudt:unit "day-of-year" ;
+                                odd:range "1..365" ] [ dcterms:description "Additional tunable policy controls for hybrid policies." ;
+                                dcterms:title "policyHybridParameters" ;
+                                qudt:unit "dimensionless" ;
+                                odd:range "scenario-specific" ] ) ;
+                    pos:objectiveFunction "User-defined scoring function over simulated policy outcomes." ;
+                    pos:optimizationMethod "Bayesian optimization" ;
+                    pos:outputs ( "policy score" "catch" "effort distribution" "profit" "fish biomass" "optimized policy parameters" ) ] ;
+            pos:spatialSupport [ stac:Collection ( [ a <file:///github/workspace/application/json> ;
+                                dcterms:title "Example STAC collection for POSEIDON spatial domain assets" ;
+                                schema:url <https://example.org/stac/collections/poseidon-fishery-domain> ;
+                                odd:linkRel "derived-from" ] ) ;
+                    stac:Item ( [ dcterms:title "Example initial biomass raster item" ;
+                                schema:url <https://example.org/stac/collections/poseidon-fishery-domain/items/initial-biomass> ;
+                                odd:linkRel "input" ;
+                                odd:variableType "application/geo+json" ] ) ] ] ;
+    rec:format [ dcterms:title "ODD record" ] ;
+    rec:language [ skos:prefLabel "English" ;
+            rec:languageCode "en" ] ;
+    rec:scopedIdentifier [ rec:id "https://github.com/poseidon-fisheries/POSEIDON" ;
+            rec:scheme "github" ],
+        [ rec:id "10.1007/s11625-018-0579-9" ;
+            rec:scheme "doi" ],
+        [ rec:id "https://link.springer.com/article/10.1007/s11625-018-0579-9" ;
+            rec:scheme "url" ] ;
+    rec:themes [ rec:concept [ rec:conceptID "coupled-human-environment-system"^^xsd:string ],
+                [ rec:conceptID "agent-based-modelling"^^xsd:string ],
+                [ rec:conceptID "fisheries-policy"^^xsd:string ],
+                [ rec:conceptID "bayesian-optimization"^^xsd:string ] ;
+            rec:scheme "https://w3id.org/iliad/seadots/poseidon/themes/" ] .
+

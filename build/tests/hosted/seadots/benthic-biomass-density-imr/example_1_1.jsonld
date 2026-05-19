@@ -1,0 +1,135 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld",
+  "id": "https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -5.0,
+          56.0
+        ],
+        [
+          33.0,
+          56.0
+        ],
+        [
+          33.0,
+          82.0
+        ],
+        [
+          -5.0,
+          82.0
+        ],
+        [
+          -5.0,
+          56.0
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "IMR benthic biomass baseline \u2014 fallback (D_{pre,i})",
+    "description": "Institute of Marine Research regional baseline used when MAREANO has no taxon coverage at index i. Provides the fallback D_{pre,i} binding for the reef-biomass equation, with explicit per-row uncertainty.",
+    "created": "2026-05-18",
+    "updated": "2026-05-19",
+    "language": {
+      "code": "en"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      {
+        "concepts": [
+          {
+            "id": "benthic-biomass",
+            "label": "Benthic biomass density"
+          }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": [
+      "IMR",
+      "benthic biomass",
+      "fallback",
+      "baseline",
+      "ICES IVa"
+    ],
+    "formats": [
+      {
+        "mediaType": "application/json"
+      }
+    ],
+    "conformsTo": [
+      "http://www.w3.org/ns/sosa/Observation",
+      "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+    ],
+    "benthicBiomassDensity": {
+      "name": "IMR benthic biomass baseline",
+      "description": "Fallback baseline benthic biomass density, used when MAREANO has no taxon coverage at i.",
+      "role": "fallback baseline",
+      "source": "https://www.hi.no/api/benthic-biomass-baseline",
+      "format": "application/json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
+      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
+      "phenomenonTime": "2015-01-01/2020-12-31",
+      "data": {
+        "units": "kg m-2",
+        "samplePeriod": "2015-2020",
+        "method": "regional baseline (IMR cruise series, depth-stratified)",
+        "icesDivision": "IVa",
+        "perTaxon": [
+          {
+            "scientificName": "Mytilus edulis",
+            "aphiaID": 140480,
+            "density_kg_m2": 0.38,
+            "uncertainty_kg_m2": 0.09
+          },
+          {
+            "scientificName": "Buccinum undatum",
+            "aphiaID": 138878,
+            "density_kg_m2": 0.09,
+            "uncertainty_kg_m2": 0.03
+          },
+          {
+            "scientificName": "Asterias rubens",
+            "aphiaID": 123776,
+            "density_kg_m2": 0.25,
+            "uncertainty_kg_m2": 0.06
+          }
+        ],
+        "aggregateDensity_kg_m2": 0.72,
+        "provenance": {
+          "values": "illustrative",
+          "note": "All densities, uncertainties, the sample period and ICES division IVa annotation above are ILLUSTRATIVE placeholders, not IMR measurements. AphiaIDs are real (WoRMS).",
+          "nearestAuthoritativeSource": {
+            "url": "https://www.imr.no/forskningsdata/",
+            "note": "IMR research-data catalogue page; the actual benthic sample series are distributed via the Norwegian Marine Data Centre (NMD) as discrete datasets, not via a per-AOI REST call. The `https://www.hi.no/api/benthic-biomass-baseline` URL in this record's `source` field is a NOTIONAL endpoint \u2014 it is NOT a verified IMR public API."
+          },
+          "verificationGap": "Verified that no public IMR REST API matches the `source` URL pattern as of the date in this record. Real retrieval requires NMD dataset download + offline aggregation."
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
+      "type": "application/schema+json",
+      "title": "IMR Benthic Biomass Density Observation bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+      "type": "application/schema+json",
+      "title": "OIM Observations profile"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://www.hi.no/",
+      "title": "Institute of Marine Research"
+    }
+  ]
+}
