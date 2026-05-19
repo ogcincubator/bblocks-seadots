@@ -5,6 +5,24 @@ description: >
   observedProperty field identifies the variable concept, such as
   indo:reef-aggregation-index, while hasResult carries the numeric value.
 $defs:
+  GeoJSONPoint:
+    type: object
+    required:
+      - type
+      - coordinates
+    properties:
+      type:
+        type: string
+        const: Point
+      coordinates:
+        type: array
+        minItems: 2
+        items:
+          type: number
+      bbox:
+        type: array
+        items:
+          type: number
   VariableObservationResult:
     type: object
     required:
@@ -33,40 +51,76 @@ $defs:
         format: uri-reference
     additionalProperties: true
   OIMVariableObservationProps:
-    allOf:
-      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsProps'
-      - type: object
-        required:
-          - observedProperty
-          - hasResult
-        properties:
-          observedProperty:
-            type: string
-            format: uri-reference
-          hasResult:
-            $ref: '#/$defs/VariableObservationResult'
-          phenomenonTime:
-            type: string
-            format: date-time
-          resultTime:
-            type: string
-            format: date-time
+    type: object
+    required:
+      - observedProperty
+      - hasResult
+    properties:
+      label:
+        oneOf:
+          - type: string
+          - type: object
+      observedProperty:
+        type: string
+        format: uri-reference
+      hasResult:
+        $ref: '#/$defs/VariableObservationResult'
+      phenomenonTime:
+        type: string
+        format: date-time
+      resultTime:
+        type: string
+        format: date-time
+    additionalProperties: true
   OIMVariableObservationFeature:
-    allOf:
-      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsFeature'
-      - type: object
-        properties:
-          properties:
-            $ref: '#/$defs/OIMVariableObservationProps'
+    type: object
+    required:
+      - type
+      - geometry
+      - properties
+    properties:
+      "@context": true
+      "@id":
+        type: string
+        format: uri-reference
+      id:
+        type: string
+        format: uri-reference
+      type:
+        type: string
+        const: Feature
+      geometry:
+        oneOf:
+          - type: "null"
+          - $ref: '#/$defs/GeoJSONPoint'
+      properties:
+        $ref: '#/$defs/OIMVariableObservationProps'
+      links:
+        type: array
+    additionalProperties: true
   OIMVariableObservationCollection:
-    allOf:
-      - $ref: 'bblocks://ogc.hosted.iliad.api.features.oim-obs#/$defs/OIMObsCollection'
-      - type: object
-        properties:
-          features:
-            type: array
-            items:
-              $ref: '#/$defs/OIMVariableObservationFeature'
+    type: object
+    required:
+      - type
+      - features
+    properties:
+      "@context": true
+      "@id":
+        type: string
+        format: uri-reference
+      id:
+        type: string
+        format: uri-reference
+      type:
+        type: string
+        const: FeatureCollection
+      features:
+        type: array
+        items:
+          $ref: '#/$defs/OIMVariableObservationFeature'
+      links:
+        type: array
+    additionalProperties: true
 anyOf:
   - $ref: '#/$defs/OIMVariableObservationProps'
   - $ref: '#/$defs/OIMVariableObservationFeature'

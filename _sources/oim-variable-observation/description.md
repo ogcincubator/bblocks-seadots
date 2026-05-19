@@ -1,7 +1,7 @@
 # OIM Variable Observation
 
 This building block profiles OIM/SOSA observations for SEADOTS variables and
-indicators. It reuses the generic `oim-obs` observation shape and adds a small
+indicators. It follows the generic OIM/SOSA observation pattern and adds a small
 numeric result object for variable values.
 
 The observed variable is carried by `observedProperty`. For reef-effect
