@@ -65,5 +65,19 @@ properties:
                 properties:
                   values: { type: string, enum: [retrieved, illustrative, mixed] }
                   note: { type: string }
-                  primarySource: { type: object }
-                  nearestAuthoritativeSource: { type: object }
+                  primarySource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      title: { type: string }
+                      citation: { type: string }
+                      doi: { type: string }
+                      supportingFigure: { type: string }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  retrievalApiCall: { type: string }
+                  verifiedOn: { type: string, format: date }
+                  verificationGap: { type: string }
