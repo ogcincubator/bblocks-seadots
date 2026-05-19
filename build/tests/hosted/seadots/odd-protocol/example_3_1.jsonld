@@ -38,7 +38,9 @@
     "description": "Minimal ODD-Protocol record demonstrating how a single submodel can reference an exemplar equation declared in the seadots `equation-property-relationship` bblock. The submodel `Reef-associated biomass` mirrors the equation B_{reef} = sum_i (A_{sub} . D_{pre,i} . AF_i . C_t) and links out to the canonical `reef-biomass-equation.json` instance for the full symbol table, bindings, and provenance.",
     "created": "2026-05-13",
     "updated": "2026-05-13",
-    "language": "en",
+    "language": {
+      "code": "en"
+    },
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "contacts": [
       {
@@ -134,6 +136,29 @@
           "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
           "format": "application/ld+json",
           "vocabularyTerm": "https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship"
+        },
+        {
+          "name": "Per-taxon reef aggregation index (dimensionless)",
+          "description": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef aggregation index"
+        },
+        {
+          "name": "Baseline benthic biomass density before installation.",
+          "description": "Baseline benthic biomass density before installation.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/baseline-benthic-biomass-dataset"
+        }
+      ],
+      "outputData": [
+        {
+          "name": "Reef-associated biomass",
+          "description": "Sum of per-taxon reef biomass attached to submerged infrastructure.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef-associated-biomass"
         }
       ],
       "submodels": [

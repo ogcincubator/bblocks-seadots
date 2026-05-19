@@ -1,0 +1,370 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: POSEIDON Fisheries Model ODD Record
+description: 'Profile of the SeaDOTs ODD Protocol Description Record for the implemented
+  POSEIDON coupled human-environment fisheries model described by Bailey et al. (2019)
+  and maintained at https://github.com/poseidon-fisheries/POSEIDON. The profile keeps
+  the ODD structure as the normative model description and adds constrained hooks
+  for explicit model inputs, STAC spatial assets, and Open Science reproducibility
+  resources.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml
+type: object
+required:
+- id
+- type
+- properties
+properties:
+  id:
+    type: string
+    format: uri
+  type:
+    const: Feature
+    x-jsonld-id: https://w3id.org/iliad/odd#variableType
+  geometry:
+    description: 'Spatial footprint of the model domain. Use null when the record
+      describes the generic conceptual model rather than a site-specific deployment.
+
+      '
+    oneOf:
+    - type: 'null'
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/common/data_types/geojson/schema.yaml
+  properties:
+    type: object
+    required:
+    - title
+    - description
+    - odd
+    - poseidon
+    properties:
+      odd:
+        type: object
+        required:
+        - purpose
+        - entities
+        - processOverview
+        - designConcepts
+        - initialization
+        - inputData
+        - submodels
+        x-jsonld-id: https://w3id.org/iliad/odd#
+      poseidon:
+        type: object
+        description: 'POSEIDON-specific metadata that complements, but does not replace,
+          the ODD description.
+
+          '
+        required:
+        - modelRole
+        - publication
+        - policyOptimization
+        - reproducibility
+        - implementation
+        properties:
+          modelRole:
+            type: string
+            const: coupled-human-environment-fisheries-policy-model
+            x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#modelRole
+          publication:
+            type: object
+            required:
+            - doi
+            - citation
+            - published
+            - license
+            properties:
+              doi:
+                type: string
+                const: https://doi.org/10.1007/s11625-018-0579-9
+                x-jsonld-id: http://purl.org/ontology/bibo/doi
+                x-jsonld-type: '@id'
+              citation:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/bibliographicCitation
+              published:
+                type: string
+                format: date
+                x-jsonld-id: http://purl.org/dc/terms/issued
+                x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+              license:
+                type: string
+                format: uri
+              supplementaryMaterial:
+                type: array
+                items:
+                  $ref: '#/$defs/link'
+                x-jsonld-id: https://schema.org/encoding
+                x-jsonld-container: '@list'
+            x-jsonld-id: http://purl.org/dc/terms/source
+          policyOptimization:
+            type: object
+            required:
+            - method
+            - objectiveFunction
+            - decisionVariables
+            - outputs
+            properties:
+              method:
+                type: string
+                enum:
+                - Bayesian optimization
+                - management strategy evaluation
+                - other
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#optimizationMethod
+              objectiveFunction:
+                type: string
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#objectiveFunction
+              decisionVariables:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                  - name
+                  - description
+                  properties:
+                    name:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/title
+                    description:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/description
+                    unit:
+                      type: string
+                      x-jsonld-id: http://qudt.org/schema/qudt/unit
+                    range:
+                      type: string
+                      x-jsonld-id: https://w3id.org/iliad/odd#range
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#decisionVariables
+                x-jsonld-container: '@list'
+              outputs:
+                type: array
+                minItems: 1
+                items:
+                  type: string
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#outputs
+                x-jsonld-container: '@list'
+            x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#policyOptimization
+          spatialSupport:
+            type: object
+            description: 'STAC-based description of rasters, grids, domains, or other
+              spatial assets that parameterize a POSEIDON deployment.
+
+              '
+            properties:
+              stacCollections:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/$defs/link'
+                  - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/collection/schema.yaml
+                x-jsonld-id: https://w3id.org/ogc/stac/Collection
+                x-jsonld-container: '@list'
+              stacItems:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/$defs/link'
+                  - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+                  - $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item-prov/schema.yaml
+                x-jsonld-id: https://w3id.org/ogc/stac/Item
+                x-jsonld-container: '@list'
+            x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#spatialSupport
+          openScience:
+            type: object
+            description: 'References to Open Science building block resources used
+              to package repeatable POSEIDON runs, experiments, workflows, and outputs.
+
+              '
+            properties:
+              workflow:
+                oneOf:
+                - $ref: '#/$defs/link'
+                - $ref: https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/geodcat-stac-earthcode/workflows/schema.yaml
+                - $ref: https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/application-package/schema.yaml
+                x-jsonld-id: http://www.w3.org/ns/prov#used
+              experiments:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/$defs/link'
+                  - $ref: https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/geodcat-stac-earthcode/experiments/schema.yaml
+                x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+                x-jsonld-container: '@list'
+              products:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/$defs/link'
+                  - $ref: https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/geodcat-stac-earthcode/products/schema.yaml
+                x-jsonld-id: http://www.w3.org/ns/prov#generated
+                x-jsonld-container: '@list'
+            x-jsonld-id: https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#OpenScienceResource
+          reproducibility:
+            type: object
+            required:
+            - implementationStatus
+            - randomSeedPolicy
+            - runProtocol
+            properties:
+              implementationStatus:
+                type: string
+                enum:
+                - conceptual-paper
+                - executable-implementation
+                - site-specific-deployment
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#implementationStatus
+              randomSeedPolicy:
+                type: string
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#randomSeedPolicy
+              runProtocol:
+                type: string
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#runProtocol
+              calibration:
+                type: string
+                x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#calibration
+            x-jsonld-id: https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#reproducibility
+          implementation:
+            type: object
+            required:
+            - repository
+            - language
+            - license
+            - inputBlocks
+            properties:
+              repository:
+                type: string
+                format: uri
+              language:
+                type: string
+              license:
+                type: string
+                format: uri
+              inputBlocks:
+                type: object
+                required:
+                - runControl
+                - scenario
+                - map
+                - biology
+                - fleet
+                - portMarket
+                - regulationPolicy
+                - optimization
+                - observationOutput
+                properties:
+                  runControl:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.yaml
+                  scenario:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.yaml
+                  map:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.yaml
+                  biology:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.yaml
+                  fleet:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.yaml
+                  portMarket:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.yaml
+                  regulationPolicy:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.yaml
+                  optimization:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/schema.yaml
+                  observationOutput:
+                    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.yaml
+        x-jsonld-id: https://w3id.org/iliad/seadots/poseidon#metadata
+$defs:
+  link:
+    type: object
+    required:
+    - href
+    properties:
+      href:
+        type: string
+        format: uri
+        x-jsonld-id: https://schema.org/url
+        x-jsonld-type: '@id'
+      rel:
+        type: string
+        x-jsonld-id: https://w3id.org/iliad/odd#linkRel
+      title:
+        type: string
+        x-jsonld-id: http://purl.org/dc/terms/title
+      type:
+        type: string
+        x-jsonld-id: https://w3id.org/iliad/odd#variableType
+    additionalProperties: true
+x-jsonld-extra-terms:
+  purpose: https://w3id.org/iliad/odd#purpose
+  patterns:
+    x-jsonld-id: https://w3id.org/iliad/odd#patterns
+    x-jsonld-container: '@list'
+  entities:
+    x-jsonld-id: https://w3id.org/iliad/odd#entities
+    x-jsonld-container: '@list'
+  processOverview: https://w3id.org/iliad/odd#processOverview
+  designConcepts: https://w3id.org/iliad/odd#designConcepts
+  initialization: https://w3id.org/iliad/odd#initialization
+  inputData:
+    x-jsonld-id: https://w3id.org/iliad/odd#inputData
+    x-jsonld-container: '@list'
+  submodels:
+    x-jsonld-id: https://w3id.org/iliad/odd#submodels
+    x-jsonld-container: '@list'
+  reference:
+    x-jsonld-id: http://purl.org/dc/terms/references
+    x-jsonld-type: '@id'
+  entityType: https://w3id.org/iliad/odd#entityType
+  stateVariables:
+    x-jsonld-id: https://w3id.org/iliad/odd#stateVariables
+    x-jsonld-container: '@list'
+  scales: https://w3id.org/iliad/odd#scales
+  spatial: https://w3id.org/iliad/odd#spatialScale
+  temporal: https://w3id.org/iliad/odd#temporalScale
+  vocabularyTerm:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+    x-jsonld-type: '@id'
+  scheduling: https://w3id.org/iliad/odd#scheduling
+  processes:
+    x-jsonld-id: https://w3id.org/iliad/odd#processes
+    x-jsonld-container: '@list'
+  executedBy: https://w3id.org/iliad/odd#executedBy
+  basicPrinciples: https://w3id.org/iliad/odd#basicPrinciples
+  emergence: https://w3id.org/iliad/odd#emergence
+  adaptation: https://w3id.org/iliad/odd#adaptation
+  objectives: https://w3id.org/iliad/odd#objectives
+  learning: https://w3id.org/iliad/odd#learning
+  prediction: https://w3id.org/iliad/odd#prediction
+  sensing: https://w3id.org/iliad/odd#sensing
+  interaction: https://w3id.org/iliad/odd#interaction
+  stochasticity: https://w3id.org/iliad/odd#stochasticity
+  collectives: https://w3id.org/iliad/odd#collectives
+  observation: https://w3id.org/iliad/odd#observation
+  seed: https://w3id.org/iliad/odd#randomSeed
+  source:
+    x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+    x-jsonld-type: '@id'
+  format: http://purl.org/dc/terms/format
+  temporalCoverage: http://purl.org/dc/terms/temporal
+  equations: https://w3id.org/iliad/odd#equations
+  parameterization: https://w3id.org/iliad/odd#parameterization
+  links:
+    x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#seeAlso
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@list'
+x-jsonld-prefixes:
+  bibo: http://purl.org/ontology/bibo/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  odd: https://w3id.org/iliad/odd#
+  dcterms: http://purl.org/dc/terms/
+  qudt: http://qudt.org/schema/qudt/
+  skos: http://www.w3.org/2004/02/skos/core#
+  dcat: http://www.w3.org/ns/dcat#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: https://schema.org/
+  pos: https://w3id.org/iliad/seadots/poseidon#
+  stac: https://w3id.org/ogc/stac/
+  osc: https://github.com/ILIAD-ocean-twin/OIM/blob/main/openscience#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  foaf: http://xmlns.com/foaf/0.1/

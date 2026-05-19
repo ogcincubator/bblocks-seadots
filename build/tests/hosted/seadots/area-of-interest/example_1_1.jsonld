@@ -1,0 +1,110 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld",
+  "id": "https://example.org/norwegian-ses/area-of-interest/utsira-surroundings",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.2,
+          59.1
+        ],
+        [
+          5.3,
+          59.1
+        ],
+        [
+          5.3,
+          59.7
+        ],
+        [
+          4.2,
+          59.7
+        ],
+        [
+          4.2,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "AOI \u2014 surroundings of Utsira island",
+    "description": "Polygon delimiting the broader study area around Utsira island (~3500 km\u00b2). Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator.",
+    "created": "2026-05-18",
+    "updated": "2026-05-19",
+    "language": {
+      "code": "en"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      {
+        "concepts": [
+          {
+            "id": "AOI",
+            "label": "Area of interest"
+          }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": [
+      "AOI",
+      "Utsira",
+      "surroundings",
+      "polygon"
+    ],
+    "formats": [
+      {
+        "mediaType": "application/geo+json"
+      }
+    ],
+    "areaOfInterest": {
+      "name": "AOI polygon (surroundings of Utsira)",
+      "description": "Polygon delimiting the broader study area around Utsira island.",
+      "role": "study area",
+      "source": "aoi/utsira_surroundings_polygon.geojson",
+      "format": "application/geo+json",
+      "vocabularyTerm": "http://www.opengis.net/def/property/OGC/0/area-of-interest",
+      "data": {
+        "bbox": [
+          4.2,
+          59.1,
+          5.3,
+          59.7
+        ],
+        "centroid": [
+          4.75,
+          59.4
+        ],
+        "area_km2": 3520,
+        "crs": "EPSG:4326",
+        "note": "Polygon coordinates are carried by the top-level `geometry` field per OGC Records.",
+        "provenance": {
+          "values": "illustrative",
+          "note": "Bbox, centroid, and area_km2 are derived from the illustrative polygon drawn in this record's top-level geometry \u2014 not from an authoritative licence-area dataset.",
+          "nearestAuthoritativeSource": {
+            "url": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/",
+            "note": "NVE strategic assessment hosts the licensed Utsira Nord polygon. For real Norwegian offshore-wind area polygons, retrieve via the Geonorge catalogue (https://www.geonorge.no/)."
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.area-of-interest",
+      "type": "application/schema+json",
+      "title": "Marine Area of Interest bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.oim",
+      "type": "application/schema+json",
+      "title": "OIM feature profile"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "type": "Dataset",
+    "title": "Reef aggregation index bindings (AF_i) \u2014 Degraer 2020 prior",
+    "description": "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE \u2014 Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m\u00b2 coefficient.",
+    "created": "2026-05-18",
+    "updated": "2026-05-19",
+    "language": {
+      "code": "en"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      {
+        "concepts": [
+          {
+            "id": "reef-effect",
+            "label": "Floating-wind reef effect"
+          }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": [
+      "reef aggregation index",
+      "AF_i",
+      "Mytilus",
+      "Buccinum",
+      "Asterias"
+    ],
+    "formats": [
+      {
+        "mediaType": "application/ld+json"
+      }
+    ],
+    "reefAggregationIndex": {
+      "name": "Reef aggregation index bindings",
+      "description": "Per-taxon AF_i (Mytilus edulis, Buccinum undatum, Asterias rubens).",
+      "role": "coefficient (per taxon)",
+      "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+      "format": "application/ld+json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+      "data": {
+        "units": "dimensionless",
+        "perTaxon": [
+          {
+            "scientificName": "Mytilus edulis",
+            "aphiaID": 140480,
+            "AF_i": 12.0,
+            "validityScope": "North Sea, 0-30 m"
+          },
+          {
+            "scientificName": "Buccinum undatum",
+            "aphiaID": 138878,
+            "AF_i": 3.5,
+            "validityScope": "soft-sediment, 30-100 m"
+          },
+          {
+            "scientificName": "Asterias rubens",
+            "aphiaID": 123776,
+            "AF_i": 5.0,
+            "validityScope": "mixed substrate, 0-100 m"
+          }
+        ],
+        "provenance": {
+          "values": "illustrative",
+          "note": "AF_i values 12.0 / 3.5 / 5.0 are ILLUSTRATIVE and NOT taken from any published source. Verified against Degraer et al. 2020: that paper reports only one quantitative figure for blue mussel \u2014 `biomass can increase 4000-fold compared to the biomass originally present in the sediments` at turbine-footprint scale (citing Rumes et al. 2013) \u2014 and gives NO numeric biomass enhancement for Buccinum or Asterias. The 4000-fold figure is at turbine-footprint scale (areal-integrated) and is not directly the per-m\u00b2 coefficient AF_i.",
+          "primarySource": {
+            "doi": "10.5670/oceanog.2020.405",
+            "url": "https://tos.org/oceanography/article/offshore-wind-farm-artificial-reefs-affect-ecosystem-structure-and-functioning-a-synthesis",
+            "citation": "Degraer, S., D.A. Carey, J.W.P. Coolen, Z.L. Hutchison, F. Kerckhof, B. Rumes, J. Vanaverbeke. 2020. Offshore wind farm artificial reefs affect ecosystem structure and functioning: A synthesis. Oceanography 33(4):48\u201357.",
+            "supportingFigure": "Mytilus edulis biomass increase quoted in body text, citing Rumes et al. 2013."
+          },
+          "nearestAuthoritativeSource": {
+            "url": "https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON_PLACEHOLDER&datasetid=wind-farm-monitoring-dataset",
+            "note": "Real AF_i derivation requires paired before/after or inside/outside biomass observations on a real wind farm aggregated against control sites."
+          },
+          "verificationGap": "Degraer 2020 numeric quote verified. AF_i values in this example NOT calibrated to that source."
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+      "type": "application/schema+json",
+      "title": "Reef Aggregation Index bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables",
+      "type": "application/schema+json",
+      "title": "OIM Variables profile"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5670/oceanog.2020.405",
+      "title": "Degraer et al. 2020 \u2014 reef-effect prior"
+    }
+  ]
+}

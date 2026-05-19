@@ -1,0 +1,113 @@
+{
+  "id": "https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid",
+  "type": "Feature",
+  "geometry": null,
+  "properties": {
+    "type": "Dataset",
+    "title": "Colonisation time factor (C_t) \u2014 default sigmoid",
+    "description": "Default sigmoid colonisation curve saturating at t = 24 months. Provides the scalar C_t coefficient for the reef-biomass equation.",
+    "created": "2026-05-18",
+    "updated": "2026-05-19",
+    "language": {
+      "code": "en"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      {
+        "concepts": [
+          {
+            "id": "reef-effect",
+            "label": "Floating-wind reef effect"
+          }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": [
+      "colonisation",
+      "C_t",
+      "sigmoid",
+      "time factor"
+    ],
+    "formats": [
+      {
+        "mediaType": "application/ld+json"
+      }
+    ],
+    "colonisationTimeFactor": {
+      "name": "Colonisation time factor (default sigmoid)",
+      "description": "Scalar colonisation factor evaluated at scenario T0 + colonisation_months.",
+      "role": "coefficient (scalar)",
+      "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+      "format": "application/ld+json",
+      "vocabularyTerm": "https://id3.seadots.eu/indicator/colonisation-time-factor-default",
+      "data": {
+        "curveType": "sigmoid",
+        "formula": "C(t) = L / (1 + exp(-k * (t - t0)))",
+        "parameters": {
+          "L": 1.0,
+          "k": 0.3,
+          "t0_months": 8
+        },
+        "lookup": [
+          {
+            "t_months": 0,
+            "C_t": 0.08
+          },
+          {
+            "t_months": 6,
+            "C_t": 0.32
+          },
+          {
+            "t_months": 12,
+            "C_t": 0.71
+          },
+          {
+            "t_months": 18,
+            "C_t": 0.93
+          },
+          {
+            "t_months": 24,
+            "C_t": 0.99
+          }
+        ],
+        "saturationMonth": 24,
+        "units": "dimensionless",
+        "provenance": {
+          "values": "illustrative",
+          "note": "Curve form (logistic sigmoid), the L / k / t0 parameter triple, the lookup table values and the 24-month saturation point are ALL ILLUSTRATIVE. Degraer 2020 discusses temporal colonisation dynamics qualitatively but does NOT publish closed-form sigmoid parameters per taxon. There is no public Web API that returns a colonisation-curve parameter set on demand.",
+          "primarySource": {
+            "doi": "10.5670/oceanog.2020.405",
+            "url": "https://tos.org/oceanography/article/offshore-wind-farm-artificial-reefs-affect-ecosystem-structure-and-functioning-a-synthesis",
+            "citation": "Degraer et al. 2020 \u2014 qualitative discussion of temporal colonisation, no numeric parameters",
+            "supportingFigure": "n/a \u2014 no equation given"
+          },
+          "nearestAuthoritativeSource": {
+            "url": "https://www.windfloat-atlantic.com/",
+            "note": "WindFloat Atlantic monitoring programmes publish time-series of benthic biofouling on floating-wind hulls; fitting a sigmoid to those time series is the realistic route to per-taxon C_t parameters."
+          },
+          "verificationGap": "Sigmoid parameter values not calibrated against any published time series."
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+      "type": "application/schema+json",
+      "title": "Colonisation Time Factor bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables",
+      "type": "application/schema+json",
+      "title": "OIM Variables profile"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5670/oceanog.2020.405",
+      "title": "Degraer et al. 2020 \u2014 colonisation prior"
+    }
+  ]
+}

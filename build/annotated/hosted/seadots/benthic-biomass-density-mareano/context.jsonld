@@ -1,0 +1,284 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#",
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
+    },
+    "type": "@type",
+    "id": "@id",
+    "properties": {
+      "@context": {
+        "benthicBiomassDensity": {
+          "@context": {
+            "name": "dct:title",
+            "role": "seadots:role",
+            "source": {
+              "@id": "dcat:accessURL",
+              "@type": "@id"
+            },
+            "format": "dct:format",
+            "vocabularyTerm": {
+              "@id": "skos:exactMatch",
+              "@type": "@id"
+            },
+            "observedProperty": {
+              "@id": "sosa:observedProperty",
+              "@type": "@id"
+            },
+            "phenomenonTime": "sosa:phenomenonTime",
+            "data": {
+              "@context": {
+                "units": "qudt:unit",
+                "samplePeriod": "dct:temporal",
+                "samplingProgramme": "prov:wasAttributedTo",
+                "perTaxon": {
+                  "@context": {
+                    "scientificName": "dwc:scientificName",
+                    "aphiaID": "dwc:taxonID",
+                    "density_kg_m2": {
+                      "@id": "indo:benthic-biomass-density",
+                      "@type": "qudt:QuantityValue"
+                    },
+                    "habitat": "dwc:habitat",
+                    "depthBand_m": "seadots:depthBand_m",
+                    "nSamples": "dwc:sampleSizeValue"
+                  },
+                  "@id": "seadots:perTaxon",
+                  "@container": "@set"
+                },
+                "aggregateDensity_kg_m2": {
+                  "@id": "indo:benthic-biomass-density-aggregate",
+                  "@type": "qudt:QuantityValue"
+                },
+                "provenance": {
+                  "@context": {
+                    "values": "seadots:provenanceValues",
+                    "retrievalApiCall": {
+                      "@id": "seadots:retrievalApiCall",
+                      "@type": "@id"
+                    },
+                    "verifiedOn": "dct:date",
+                    "primarySource": "dct:source",
+                    "nearestAuthoritativeSource": {
+                      "@context": {
+                        "url": {
+                          "@id": "dcat:accessURL",
+                          "@type": "@id"
+                        }
+                      },
+                      "@id": "seadots:nearestAuthoritativeSource"
+                    },
+                    "verificationGap": "seadots:verificationGap",
+                    "note": "skos:note"
+                  },
+                  "@id": "prov:wasDerivedFrom"
+                }
+              },
+              "@id": "seadots:data"
+            }
+          },
+          "@id": "seadots:benthicBiomassDensity"
+        }
+      },
+      "@id": "geojson:properties"
+    },
+    "geometry": {
+      "@context": {
+        "coordinates": {
+          "@container": "@list",
+          "@id": "geojson:coordinates"
+        }
+      },
+      "@id": "geojson:geometry"
+    },
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:format",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "conformsTo": {
+      "@container": "@set",
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "time": "dct:temporal",
+    "linkTemplates": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:format",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent",
+        "uriTemplate": {
+          "@type": "xsd:string",
+          "@id": "rec:uriTemplate"
+        },
+        "varBase": "rec:varBase",
+        "variables": {
+          "@id": "rec:hasVariable",
+          "@container": "@index",
+          "@index": "dct:identifier"
+        }
+      },
+      "@id": "rec:hasLinkTemplate"
+    },
+    "created": "dct:created",
+    "updated": "dct:modified",
+    "title": {
+      "@container": "@set",
+      "@id": "dct:title"
+    },
+    "description": {
+      "@container": "@set",
+      "@id": "dct:description"
+    },
+    "keywords": {
+      "@container": "@set",
+      "@id": "dcat:keyword"
+    },
+    "language": {
+      "@id": "rec:language",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "languages": {
+      "@container": "@set",
+      "@id": "rec:languages",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "resourceLanguages": {
+      "@container": "@set",
+      "@id": "rec:resourceLanguages",
+      "@context": {
+        "code": "rec:languageCode",
+        "name": "skos:prefLabel"
+      }
+    },
+    "externalIds": {
+      "@container": "@set",
+      "@id": "rec:scopedIdentifier",
+      "@context": {
+        "scheme": "rec:scheme",
+        "value": "rec:id"
+      }
+    },
+    "themes": {
+      "@container": "@set",
+      "@id": "rec:themes",
+      "@context": {
+        "concepts": {
+          "@id": "rec:concept",
+          "@context": {
+            "id": {
+              "@type": "xsd:string",
+              "@id": "rec:conceptID"
+            },
+            "url": {
+              "@type": "@id",
+              "@id": "dcat:theme"
+            }
+          }
+        },
+        "scheme": "rec:scheme"
+      }
+    },
+    "formats": {
+      "@id": "rec:format",
+      "@context": {
+        "name": "rec:name"
+      }
+    },
+    "contacts": {
+      "@container": "@set",
+      "@id": "dcat:contactPoint",
+      "@type": "@id"
+    },
+    "license": "dct:license",
+    "accessrights": "dct:accessRights",
+    "variables": {
+      "@container": "@id",
+      "@id": "rec:hasVariable",
+      "@context": {
+        "@base": "http://example.com/variables/",
+        "@vocab": "https://www.opengis.net/def/ogc-api/records/"
+      }
+    },
+    "coordinates": "geojson:coordinates",
+    "href": "@id",
+    "rel": "geojson:rel",
+    "concepts": {
+      "@id": "skos:Concept",
+      "@container": "@set"
+    },
+    "scheme": "skos:inScheme",
+    "label": "skos:prefLabel",
+    "mediaType": "dct:format",
+    "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "rec": "https://www.opengis.net/def/ogc-api/records/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "w3ctime": "http://www.w3.org/2006/time#",
+    "dctype": "http://purl.org/dc/dcmitype/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "thns": "https://w3id.org/ogc/stac/themes/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "indo": "https://id3.seadots.eu/indicator/",
+    "@version": 1.1
+  }
+}

@@ -1,0 +1,232 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Floating-Wind Submerged Infrastructure
+description: 'Per-unit submerged geometry of a floating-wind farm layout, plus aggregate
+  submerged area (`A_sub`) used as feature-of-interest input to the reef-biomass equation.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+properties:
+  properties:
+    type: object
+    required:
+    - floatingWindInfrastructure
+    properties:
+      floatingWindInfrastructure:
+        type: object
+        required:
+        - name
+        - source
+        - format
+        - data
+        properties:
+          name:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/title
+          description:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/description
+          role:
+            type: string
+            description: Usually `feature-of-interest geometry`.
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#role
+          source:
+            type: string
+            x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+            x-jsonld-type: '@id'
+          format:
+            type: string
+            x-jsonld-id: http://purl.org/dc/terms/format
+          vocabularyTerm:
+            type: string
+            format: uri
+            x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
+            x-jsonld-type: '@id'
+          data:
+            type: object
+            required:
+            - nUnits
+            - perUnit
+            - aggregate
+            - provenance
+            properties:
+              unitDesign:
+                type: string
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#unitDesign
+              nUnits:
+                type: integer
+                minimum: 1
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#nUnits
+              perUnit:
+                type: object
+                required:
+                - submerged_area_total_m2
+                properties:
+                  hull_area_m2:
+                    type: number
+                    minimum: 0
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#hullArea_m2
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                  mooring_area_m2:
+                    type: number
+                    minimum: 0
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#mooringArea_m2
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                  anchor_area_m2:
+                    type: number
+                    minimum: 0
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#anchorArea_m2
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                  submerged_area_total_m2:
+                    type: number
+                    minimum: 0
+                    x-jsonld-id: https://id3.seadots.eu/indicator/submerged-infrastructure-area
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                  depth_range_m:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 2
+                    maxItems: 2
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#depthRange_m
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#perUnit
+              aggregate:
+                type: object
+                required:
+                - submerged_area_total_m2
+                properties:
+                  submerged_area_total_m2:
+                    type: number
+                    minimum: 0
+                    description: Consumed as `A_sub` by the reef-biomass equation.
+                    x-jsonld-id: https://id3.seadots.eu/indicator/submerged-infrastructure-area
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                  submerged_area_total_km2:
+                    type: number
+                    minimum: 0
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#submergedAreaTotal_km2
+                    x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#aggregate
+              sampleUnits:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - unit_id
+                  properties:
+                    unit_id:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/identifier
+                    lon:
+                      type: number
+                      x-jsonld-id: https://purl.org/geojson/vocab#longitude
+                    lat:
+                      type: number
+                      x-jsonld-id: https://purl.org/geojson/vocab#latitude
+                    submerged_area_m2:
+                      type: number
+                      minimum: 0
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#submergedArea_m2
+                      x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#sampleUnit
+                x-jsonld-container: '@set'
+              units:
+                type: string
+                description: Default units of the area quantities, e.g. m2.
+                x-jsonld-id: http://qudt.org/schema/qudt/unit
+              provenance:
+                type: object
+                required:
+                - values
+                properties:
+                  values:
+                    type: string
+                    enum:
+                    - retrieved
+                    - illustrative
+                    - mixed
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#provenanceValues
+                  note:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                  primarySource:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                        x-jsonld-type: '@id'
+                      title:
+                        type: string
+                        x-jsonld-id: http://purl.org/dc/terms/title
+                      citation:
+                        type: string
+                      doi:
+                        type: string
+                      supportingFigure:
+                        type: string
+                    x-jsonld-id: http://purl.org/dc/terms/source
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
+                        x-jsonld-type: '@id'
+                      note:
+                        type: string
+                        x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#nearestAuthoritativeSource
+                  retrievalApiCall:
+                    type: string
+                  verifiedOn:
+                    type: string
+                    format: date
+                  verificationGap:
+                    type: string
+                x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#floatingWindInfrastructure
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
+  geometry: https://purl.org/geojson/vocab#geometry
+  coordinates: https://purl.org/geojson/vocab#coordinates
+  Feature: https://purl.org/geojson/vocab#Feature
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  links:
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+  href: '@id'
+  rel: https://purl.org/geojson/vocab#rel
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  language: http://purl.org/dc/terms/language
+  license: http://purl.org/dc/terms/license
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  themes:
+    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-container: '@set'
+  concepts:
+    x-jsonld-id: http://www.w3.org/2004/02/skos/core#Concept
+    x-jsonld-container: '@set'
+  scheme: http://www.w3.org/2004/02/skos/core#inScheme
+  label: http://www.w3.org/2004/02/skos/core#prefLabel
+  formats:
+    x-jsonld-id: http://purl.org/dc/terms/format
+    x-jsonld-container: '@set'
+  mediaType: http://purl.org/dc/terms/format
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#
+x-jsonld-prefixes:
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  skos: http://www.w3.org/2004/02/skos/core#
+  seadots: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#
+  qudt: http://qudt.org/schema/qudt/
+  indo: https://id3.seadots.eu/indicator/
+  prov: http://www.w3.org/ns/prov#

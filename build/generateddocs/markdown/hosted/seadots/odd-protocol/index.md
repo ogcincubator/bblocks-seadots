@@ -76,7 +76,7 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     "description": "The ODD (Overview, Design concepts, Details) protocol for describing agent-based and individual-based models is now widely used but has persistent weaknesses. This second update addresses those limitations through improved guidance, summary templates, hierarchical approaches for complex models, code-linking recommendations, and explicit pattern-oriented modeling integration.",
     "created": "2020-03-31",
     "updated": "2020-03-31",
-    "language": "en",
+    "language": { "code": "en" },
     "externalIds": [
       {
         "scheme": "doi",
@@ -257,7 +257,9 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     "description": "The ODD (Overview, Design concepts, Details) protocol for describing agent-based and individual-based models is now widely used but has persistent weaknesses. This second update addresses those limitations through improved guidance, summary templates, hierarchical approaches for complex models, code-linking recommendations, and explicit pattern-oriented modeling integration.",
     "created": "2020-03-31",
     "updated": "2020-03-31",
-    "language": "en",
+    "language": {
+      "code": "en"
+    },
     "externalIds": [
       {
         "scheme": "doi",
@@ -464,15 +466,7 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-03-31" ;
     dcterms:temporal [ ] ;
     dcterms:title "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism" ;
-    rdfs:seeAlso [ rdfs:label "Supplement S2 — Summary ODD templates" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
-        [ rdfs:label "DOI" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
-        [ rdfs:label "JASSS 23(2)7 — journal article" ;
+    rdfs:seeAlso [ rdfs:label "JASSS 23(2)7 — journal article" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
             oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
@@ -480,14 +474,22 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
-        [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
+        [ rdfs:label "Supplement S2 — Summary ODD templates" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ],
+            oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
         [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ] ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
+        [ rdfs:label "DOI" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
+        [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -536,16 +538,16 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
                         odd:equations "Provide full mathematical specification. Where equations come from published literature, cite sources. Where parameterised empirically, describe the calibration procedure." ;
                         odd:parameterization "All parameters must be listed with: symbol, description, value, unit, source (empirical data, literature, or calibration). Calibrated parameters must reference Supplement S7 for experiment design." ] ) ] ;
     rec:format [ rec:mediaType "text/html" ] ;
-    rec:language "en" ;
-    rec:scopedIdentifier [ rec:id "1460-7425" ;
-            rec:scheme "issn" ],
-        [ rec:id "10.18564/jasss.4259" ;
-            rec:scheme "doi" ] ;
-    rec:themes [ thns:concepts [ thns:id "protocol"^^xsd:string ],
-                [ thns:id "model-documentation"^^xsd:string ],
+    rec:language [ rec:languageCode "en" ] ;
+    rec:scopedIdentifier [ rec:id "10.18564/jasss.4259" ;
+            rec:scheme "doi" ],
+        [ rec:id "1460-7425" ;
+            rec:scheme "issn" ] ;
+    rec:themes [ thns:concepts [ thns:id "agent-based-model"^^xsd:string ],
+                [ thns:id "protocol"^^xsd:string ],
                 [ thns:id "simulation"^^xsd:string ],
                 [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "agent-based-model"^^xsd:string ] ;
+                [ thns:id "model-documentation"^^xsd:string ] ;
             thns:scheme "https://vocabularies.jasss.org/themes" ] .
 
 
@@ -568,7 +570,7 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     "description": "OSMOSE (Object-oriented Simulator of Marine Ecosystems) is a multispecies, spatially-explicit, individual-based model for marine fish communities. It represents fish populations as super-individuals (schools) and models size-based predation, growth, reproduction, and mortality. The model is designed to investigate the effects of fishing and environmental forcing on ecosystem structure and functioning.",
     "created": "2009-01-01",
     "updated": "2020-01-01",
-    "language": "en",
+    "language": { "code": "en" },
     "externalIds": [
       {
         "scheme": "doi",
@@ -1268,7 +1270,9 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     "description": "OSMOSE (Object-oriented Simulator of Marine Ecosystems) is a multispecies, spatially-explicit, individual-based model for marine fish communities. It represents fish populations as super-individuals (schools) and models size-based predation, growth, reproduction, and mortality. The model is designed to investigate the effects of fishing and environmental forcing on ecosystem structure and functioning.",
     "created": "2009-01-01",
     "updated": "2020-01-01",
-    "language": "en",
+    "language": {
+      "code": "en"
+    },
     "externalIds": [
       {
         "scheme": "doi",
@@ -2001,7 +2005,15 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-01-01" ;
     dcterms:temporal [ ] ;
     dcterms:title "OSMOSE — Object-oriented Simulator of Marine Ecosystems: ODD Protocol Description" ;
-    rdfs:seeAlso [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
+    rdfs:seeAlso [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
+        [ rdfs:label "OSMOSE model website" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://osmose-model.org/> ],
+        [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.1016/j.ecolmodel.2009.07.031> ],
@@ -2009,18 +2021,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
-        [ rdfs:label "OSMOSE model website" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://osmose-model.org/> ],
         [ rdfs:label "OSMOSE source code (GitHub)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://github.com/osmose-model/osmose> ],
-        [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
         [ rdfs:label "OSMOSE ODD Protocol description document" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -2353,26 +2357,26 @@ SSR-based (Beverton-Holt):
   R_s(t) = (alpha_BH × S_s(t)) / (beta_BH + S_s(t))
   where S_s(t) = total spawning stock biomass of species s at time t-lag.""" ;
                         odd:parameterization "For the flux mode, observed recruitment indices from ICES or DEPM surveys are prescribed. For SSR, alpha_BH and beta_BH are calibrated. Recruitment time lag (egg-to-recruit duration) is set from species-specific larval duration data." ] ) ] ;
-    rec:format [ dcterms:title "Configuration files" ;
-            rec:mediaType "text/csv" ],
-        [ dcterms:title "Java executable (JAR)" ;
-            rec:mediaType "application/java-archive" ] ;
-    rec:language "en" ;
-    rec:scopedIdentifier [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
-            rec:scheme "doi" ],
-        [ rec:id "https://github.com/osmose-model/osmose" ;
+    rec:format [ dcterms:title "Java executable (JAR)" ;
+            rec:mediaType "application/java-archive" ],
+        [ dcterms:title "Configuration files" ;
+            rec:mediaType "text/csv" ] ;
+    rec:language [ rec:languageCode "en" ] ;
+    rec:scopedIdentifier [ rec:id "https://github.com/osmose-model/osmose" ;
             rec:scheme "github" ],
+        [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
+            rec:scheme "doi" ],
         [ rec:id "https://osmose-model.org/" ;
             rec:scheme "url" ] ;
-    rec:themes [ thns:concepts [ thns:id "multispecies-model"^^xsd:string ],
-                [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "size-based-predation"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "marine-ecosystem"^^xsd:string ],
                 [ thns:id "end-to-end-model"^^xsd:string ],
-                [ thns:id "marine-ecosystem"^^xsd:string ],
-                [ thns:id "fish-community"^^xsd:string ] ;
+                [ thns:id "size-based-predation"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
+                [ thns:id "fish-community"^^xsd:string ],
+                [ thns:id "multispecies-model"^^xsd:string ] ;
             thns:scheme "https://vocabularies.osmose-model.org/" ],
-        [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ],
-                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ] ;
+        [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ],
+                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ] ;
             thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ] .
 
 
@@ -2404,7 +2408,7 @@ SSR-based (Beverton-Holt):
     "description": "Minimal ODD-Protocol record demonstrating how a single submodel can reference an exemplar equation declared in the seadots `equation-property-relationship` bblock. The submodel `Reef-associated biomass` mirrors the equation B_{reef} = sum_i (A_{sub} . D_{pre,i} . AF_i . C_t) and links out to the canonical `reef-biomass-equation.json` instance for the full symbol table, bindings, and provenance.",
     "created": "2026-05-13",
     "updated": "2026-05-13",
-    "language": "en",
+    "language": { "code": "en" },
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "contacts": [
       {
@@ -2486,6 +2490,29 @@ SSR-based (Beverton-Holt):
           "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
           "format": "application/ld+json",
           "vocabularyTerm": "https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship"
+        },
+        {
+          "name": "Per-taxon reef aggregation index (dimensionless)",
+          "description": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef aggregation index"
+        },
+        {
+          "name": "Baseline benthic biomass density before installation.",
+          "description": "Baseline benthic biomass density before installation.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/baseline-benthic-biomass-dataset"
+        }
+      ],
+      "outputData": [
+        {
+          "name": "Reef-associated biomass",
+          "description": "Sum of per-taxon reef biomass attached to submerged infrastructure.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef-associated-biomass"
         }
       ],
 
@@ -2576,7 +2603,9 @@ SSR-based (Beverton-Holt):
     "description": "Minimal ODD-Protocol record demonstrating how a single submodel can reference an exemplar equation declared in the seadots `equation-property-relationship` bblock. The submodel `Reef-associated biomass` mirrors the equation B_{reef} = sum_i (A_{sub} . D_{pre,i} . AF_i . C_t) and links out to the canonical `reef-biomass-equation.json` instance for the full symbol table, bindings, and provenance.",
     "created": "2026-05-13",
     "updated": "2026-05-13",
-    "language": "en",
+    "language": {
+      "code": "en"
+    },
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "contacts": [
       {
@@ -2672,6 +2701,29 @@ SSR-based (Beverton-Holt):
           "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
           "format": "application/ld+json",
           "vocabularyTerm": "https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship"
+        },
+        {
+          "name": "Per-taxon reef aggregation index (dimensionless)",
+          "description": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef aggregation index"
+        },
+        {
+          "name": "Baseline benthic biomass density before installation.",
+          "description": "Baseline benthic biomass density before installation.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/baseline-benthic-biomass-dataset"
+        }
+      ],
+      "outputData": [
+        {
+          "name": "Reef-associated biomass",
+          "description": "Sum of per-taxon reef biomass attached to submerged infrastructure.",
+          "source": "",
+          "format": "application/ld+json",
+          "vocabularyTerm": "example.com/reef-associated-biomass"
         }
       ],
       "submodels": [
@@ -2782,7 +2834,15 @@ SSR-based (Beverton-Holt):
                         dcterms:format "application/ld+json" ;
                         dcterms:title "Reef-biomass equation record" ;
                         skos:exactMatch <https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship> ;
-                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] ) ;
+                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] [ dcterms:description "https://id3.seadots.eu/indicator/reef-aggregation-index" ;
+                        dcterms:format "application/ld+json" ;
+                        dcterms:title "Per-taxon reef aggregation index (dimensionless)" ;
+                        skos:exactMatch <file:///github/workspace/> ;
+                        dcat:accessURL <file:///github/workspace/> ] [ dcterms:description "Baseline benthic biomass density before installation." ;
+                        dcterms:format "application/ld+json" ;
+                        dcterms:title "Baseline benthic biomass density before installation." ;
+                        skos:exactMatch <file:///github/workspace/example.com/baseline-benthic-biomass-dataset> ;
+                        dcat:accessURL <file:///github/workspace/> ] ) ;
             odd:processOverview [ odd:processes ( [ dcterms:description "Iterates over TaxonGroup instances and applies the reef-biomass equation defined by the linked equation-property-relationship record." ;
                                 dcterms:title "Compute reef-associated biomass" ;
                                 odd:executedBy "biomass-upscaler" ] ) ;
@@ -2800,10 +2860,10 @@ SSR-based (Beverton-Holt):
                         odd:equations "B_{reef} = sum_i ( A_{sub} . D_{pre,i} . AF_i . C_t )" ;
                         odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indo:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indo:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indo:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
     rec:format [ rec:mediaType "application/json" ] ;
-    rec:language "en" ;
-    rec:themes [ thns:concepts [ thns:id "impact-assessment"^^xsd:string ],
-                [ thns:id "reef-effect"^^xsd:string ],
-                [ thns:id "benthic-biomass"^^xsd:string ] ;
+    rec:language [ rec:languageCode "en" ] ;
+    rec:themes [ thns:concepts [ thns:id "benthic-biomass"^^xsd:string ],
+                [ thns:id "impact-assessment"^^xsd:string ],
+                [ thns:id "reef-effect"^^xsd:string ] ;
             thns:scheme "https://id3.seadots.eu/themes" ] .
 
 

@@ -1,0 +1,80 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback> a geojson:Feature ;
+    rdfs:seeAlso [ rdfs:label "OIM Observations profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
+        [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
+        [ rdfs:label "Institute of Marine Research" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://www.hi.no/> ] ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
+    geojson:properties [ a seadots:Dataset ;
+            dcterms:conformsTo sosa:Observation,
+                <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
+            dcterms:created "2026-05-18" ;
+            dcterms:description "Institute of Marine Research regional baseline used when MAREANO has no taxon coverage at index i. Provides the fallback D_{pre,i} binding for the reef-biomass equation, with explicit per-row uncertainty." ;
+            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+            dcterms:modified "2026-05-19" ;
+            dcterms:title "IMR benthic biomass baseline — fallback (D_{pre,i})" ;
+            dcat:keyword "ICES IVa",
+                "IMR",
+                "baseline",
+                "benthic biomass",
+                "fallback" ;
+            seadots:benthicBiomassDensity [ dcterms:description "Fallback baseline benthic biomass density, used when MAREANO has no taxon coverage at i." ;
+                    dcterms:format "application/json" ;
+                    dcterms:title "IMR benthic biomass baseline" ;
+                    skos:exactMatch indo:benthic-biomass-density-imr-baseline ;
+                    dcat:accessURL <https://www.hi.no/api/benthic-biomass-baseline> ;
+                    sosa:observedProperty indo:benthic-biomass-density-imr-baseline ;
+                    sosa:phenomenonTime "2015-01-01/2020-12-31" ;
+                    seadots:data [ dcterms:methodology "regional baseline (IMR cruise series, depth-stratified)" ;
+                            dcterms:temporal "2015-2020" ;
+                            qudt:unit "kg m-2" ;
+                            prov:wasDerivedFrom [ skos:note "All densities, uncertainties, the sample period and ICES division IVa annotation above are ILLUSTRATIVE placeholders, not IMR measurements. AphiaIDs are real (WoRMS)." ;
+                                    seadots:nearestAuthoritativeSource [ skos:note "IMR research-data catalogue page; the actual benthic sample series are distributed via the Norwegian Marine Data Centre (NMD) as discrete datasets, not via a per-AOI REST call. The `https://www.hi.no/api/benthic-biomass-baseline` URL in this record's `source` field is a NOTIONAL endpoint — it is NOT a verified IMR public API." ;
+                                            dcat:accessURL <https://www.imr.no/forskningsdata/> ] ;
+                                    seadots:provenanceValues "illustrative" ;
+                                    seadots:verificationGap "Verified that no public IMR REST API matches the `source` URL pattern as of the date in this record. Real retrieval requires NMD dataset download + offline aggregation." ] ;
+                            indo:benthic-biomass-density-aggregate "0.72"^^qudt:QuantityValue ;
+                            seadots:icesDivision "IVa" ;
+                            seadots:perTaxon [ qudt:standardUncertainty 9e-02 ;
+                                    dwc:scientificName "Mytilus edulis" ;
+                                    dwc:taxonID 140480 ;
+                                    indo:benthic-biomass-density "0.38"^^qudt:QuantityValue ],
+                                [ qudt:standardUncertainty 6e-02 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density "0.25"^^qudt:QuantityValue ],
+                                [ qudt:standardUncertainty 3e-02 ;
+                                    dwc:scientificName "Buccinum undatum" ;
+                                    dwc:taxonID 138878 ;
+                                    indo:benthic-biomass-density "0.09"^^qudt:QuantityValue ] ] ;
+                    seadots:role "fallback baseline" ] ;
+            rec:format [ dcterms:format "application/json" ] ;
+            rec:language [ rec:languageCode "en" ] ;
+            rec:themes [ rec:concept [ skos:prefLabel "Benthic biomass density" ;
+                            rec:conceptID "benthic-biomass"^^xsd:string ] ;
+                    rec:scheme "https://id3.seadots.eu/themes" ] ] .
+

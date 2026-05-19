@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "POSEIDON Port and Market Input",
+  "description": "Port, landing, market, and fuel-price input consumed by POSEIDON.",
+  "type": "object",
+  "properties": {
+    "portInitializerType": {
+      "type": "string",
+      "examples": [
+        "One Port",
+        "Two Ports",
+        "List of Ports",
+        "Random Ports"
+      ]
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-jsonld-id": "https://schema.org/name"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number",
+            "x-jsonld-id": "https://schema.org/longitude"
+          },
+          "latitude": {
+            "type": "number",
+            "x-jsonld-id": "https://schema.org/latitude"
+          },
+          "usingGridCoordinates": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "https://schema.org/location",
+      "x-jsonld-container": "@list"
+    },
+    "market": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "priceBySpecies": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "priceFile": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true,
+      "x-jsonld-id": "https://schema.org/offers"
+    },
+    "fuel": {
+      "type": "object",
+      "properties": {
+        "gasPriceMaker": {
+          "type": "string"
+        },
+        "fuelPrice": {
+          "type": "number"
+        },
+        "fuelPriceFile": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-vocab": "https://w3id.org/iliad/seadots/poseidon/input#",
+  "x-jsonld-prefixes": {
+    "schema": "https://schema.org/"
+  }
+}
