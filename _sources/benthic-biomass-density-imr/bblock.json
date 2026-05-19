@@ -1,0 +1,23 @@
+{
+  "name": "IMR Benthic Biomass Density Observation",
+  "abstract": "OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) sourced from the Institute of Marine Research (IMR / Havforskningsinstituttet) regional baseline series. Acts as the fallback `D_{pre,i}` binding when MAREANO has no taxon coverage at index i. Carries per-taxon density with explicit `uncertainty_kg_m2`, ICES area annotation, and mandatory provenance.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-19",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["IMR", "benthic", "biomass", "density", "fallback", "SOSA", "observation"],
+  "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
+  "sources": [{ "title": "Institute of Marine Research (IMR)", "link": "https://www.hi.no/" }],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records",
+    "ogc.hosted.iliad.api.features.oim-obs"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": ["http://www.w3.org/ns/sosa/", "http://rs.tdwg.org/dwc/terms/"],
+  "maturity": "development",
+  "scope": "dev"
+}

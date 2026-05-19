@@ -1,5 +1,5 @@
 {
-  "id": "https://example.org/norwegian-ses/experiment-output/reef-biomass-geoparquet",
+  "id": "https://example.org/norwegian-ses/experiment-output/reef-biomass-result",
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -13,8 +13,8 @@
   },
   "properties": {
     "type": "Dataset",
-    "title": "Reef-associated biomass — Utsira surroundings, scenario T0+24 mo (with uncertainty)",
-    "description": "Primary scientific output of the Utsira surroundings reef-biomass experiment. Headline value: 741 ± 330 t standing reef-associated biomass at scenario end (24 months). Output carries (a) the headline scalar with 1σ and 95 % CI, (b) the per-taxon decomposition at t=24 mo, (c) the time series at the sigmoid-lookup points, (d) full variance attribution by input, and (e) per-variable provenance. All input values are illustrative; this record demonstrates equation evaluation and uncertainty propagation, not a measurement of Utsira.",
+    "title": "Reef-associated biomass result — Utsira surroundings, scenario T0+24 mo (with uncertainty)",
+    "description": "Primary scientific output of the Utsira surroundings reef-biomass experiment. Headline value: 741 ± 330 t standing reef-associated biomass at scenario end (24 months). This file is an OGC API Records Feature (JSON) carrying the full structured result inline: (a) the headline scalar with 1σ and 95 % CI, (b) the per-taxon decomposition at t=24 mo, (c) the time series at the sigmoid-lookup points, (d) full variance attribution by input, and (e) per-variable provenance. All input values are illustrative; this record demonstrates equation evaluation and uncertainty propagation, not a measurement of Utsira.",
     "created": "2026-05-19",
     "updated": "2026-05-19",
     "language": "en",
@@ -22,20 +22,25 @@
     "themes": [
       { "concepts": [{ "id": "reef-effect", "label": "Floating-wind reef effect" }], "scheme": "https://id3.seadots.eu/themes" }
     ],
-    "keywords": ["reef biomass", "GeoParquet", "Utsira", "floating wind", "uncertainty", "CV propagation"],
-    "formats": [{ "mediaType": "application/vnd.apache.parquet" }],
+    "keywords": ["reef biomass", "Utsira", "floating wind", "uncertainty", "CV propagation"],
+    "formats": [{ "mediaType": "application/json" }],
     "experimentOutput": {
-      "name": "Reef-associated biomass (per-cell GeoParquet)",
-      "description": "B_reef per AOI cell. Sum-over-taxa of A_sub · D_pre,i · AF_i · C_t evaluated at scenario end.",
+      "name": "Reef-associated biomass (structured result)",
+      "description": "B_reef headline scalar, per-taxon decomposition, time series, and variance attribution. Sum-over-taxa of A_sub · D_pre,i · AF_i · C_t evaluated at scenario end. All values emitted inline as JSON.",
       "role": "primary result",
-      "format": "https://geoparquet.org/",
+      "format": "application/json",
       "vocabularyTerm": "https://id3.seadots.eu/indicator/floating-wind-reef-biomass",
-      "parameterBinding": {
-        "cwlOutput": "reef_biomass_geoparquet",
-        "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1"
-      },
+      "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1",
+      "observedProperty": "https://id3.seadots.eu/indicator/floating-wind-reef-biomass",
+      "hasSimpleResult": 741237,
+      "hasSimpleResultUnit": "kg",
+      "resultTime": "2028-05-13T00:00:00Z",
+      "phenomenonTime": { "start": "2026-05-13T00:00:00Z", "end": "2028-05-13T00:00:00Z" },
+      "hasFeatureOfInterest": "https://example.org/norwegian-ses/area-of-interest/utsira-surroundings",
       "conformsTo": [
-        "https://geoparquet.org/",
+        "https://ogcincubator.github.io/geodcat-ogcapi-records/",
+        "https://w3id.org/ogc/hosted/iliad/oim-obs",
+        "http://www.w3.org/ns/sosa/Observation",
         "https://id3.seadots.eu/conventions/edito-output"
       ],
       "aggregation": "sum-over-i",
@@ -222,17 +227,17 @@
         "provenance": {
           "values": "computed",
           "derivedFrom": [
-            "https://example.org/norwegian-ses/experiment-input/infrastructure-layout-utsira-nord-60x15mw",
-            "https://example.org/norwegian-ses/experiment-input/mareano-baseline-density",
-            "https://example.org/norwegian-ses/experiment-input/imr-baseline-density-fallback",
-            "https://example.org/norwegian-ses/experiment-input/reef-aggregation-index-bindings",
-            "https://example.org/norwegian-ses/experiment-input/colonisation-time-factor",
-            "https://example.org/norwegian-ses/experiment-input/aoi-utsira-surroundings"
+            "https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw",
+            "https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf",
+            "https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback",
+            "https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings",
+            "https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid",
+            "https://example.org/norwegian-ses/area-of-interest/utsira-surroundings"
           ],
           "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
           "computedOn": "2026-05-19",
           "computeCode": "../../experiment/scripts/utsira_reef_biomass.py",
-          "computeCodeNote": "Standalone Python reproducibility script. Loads the six experiment-input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/experiment/scripts/utsira_reef_biomass.py --json` to regenerate this JSON. Not the CWL workflow step runner.",
+          "computeCodeNote": "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/experiment/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
           "uncertaintyMethod": "log-linear CV propagation; B_reef = A_sub · C_t · Σᵢ Dᵢ·AFᵢ; taxa treated independent within S",
           "note": "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement."
         }

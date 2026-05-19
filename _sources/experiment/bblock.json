@@ -1,14 +1,14 @@
 {
   "name": "Computational Experiment",
-  "abstract": "OGC API Records profile for describing a computational experiment realising a documented model. Wraps an OGC Open Science Application Package (CWL v1.2) and binds it to the documented model (an ODD record), the evidence equation (an `equation-property-relationship` record), and to standalone `experiment-input` / `experiment-output` records referenced by URI. Designed to be loadable by a CWL-aware engine (cwltool, calrissian, toil-cwl-runner) without further configuration.",
+  "abstract": "OGC API Records profile for describing a computational experiment realising a documented model. Points at the executable code that runs the experiment (any language / format that exists and runs — Python, Jupyter, R, …), and binds it to the documented model (an ODD record), the evidence equation (an `equation-property-relationship` record), and to standalone input records (one per data class) and `experiment-output` records, all referenced by URI.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-18T00:00:00Z",
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
-  "version": "0.1",
-  "dateOfLastChange": "2026-05-18",
+  "version": "0.2",
+  "dateOfLastChange": "2026-05-19",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["experiment", "CWL", "application-package", "ODD", "reproducibility", "open-science"],
+  "tags": ["experiment", "reproducibility", "open-science", "ODD"],
   "authors": [
     {
       "name": "SeaDOTs Marine Data Team",
@@ -17,12 +17,8 @@
   ],
   "sources": [
     {
-      "title": "OGC Open Science Application Package building block",
-      "link": "https://ogcincubator.github.io/bblocks-openscience/"
-    },
-    {
-      "title": "Common Workflow Language v1.2",
-      "link": "https://www.commonwl.org/v1.2/"
+      "title": "GeoDCAT-Records",
+      "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
     },
     {
       "title": "ODD Protocol Description Record bblock",
@@ -35,13 +31,17 @@
   ],
   "dependsOn": [
     "ogc.geo.geodcat.geodcat-records",
-    "ogc.hosted.seadots.experiment-input",
+    "ogc.hosted.seadots.area-of-interest",
+    "ogc.hosted.seadots.floating-wind-infrastructure",
+    "ogc.hosted.seadots.benthic-biomass-density-mareano",
+    "ogc.hosted.seadots.benthic-biomass-density-imr",
+    "ogc.hosted.seadots.reef-aggregation-index",
+    "ogc.hosted.seadots.colonisation-time-factor",
     "ogc.hosted.seadots.experiment-output"
   ],
   "ldContext": "context.jsonld",
   "shaclRules": [],
   "standards": [
-    "https://www.commonwl.org/v1.2/",
     "http://www.w3.org/TR/vocab-dcat-3/",
     "http://www.w3.org/TR/prov-o/",
     "https://ogcincubator.github.io/geodcat-ogcapi-records/"

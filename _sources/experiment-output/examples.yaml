@@ -1,17 +1,19 @@
-- title: Reef-associated biomass — per-cell GeoParquet
+- title: Reef-associated biomass — structured result (JSON)
   description: >
     Primary scientific output of the Utsira surroundings experiment.
-    Sum-over-taxa reef biomass attached to submerged infrastructure, gridded
-    over the AOI. Bound to the `reef_biomass_geoparquet` CWL output port.
+    Sum-over-taxa reef biomass attached to submerged infrastructure.
+    Headline value 741 ± 330 t at t = 24 months, with full variance
+    attribution, per-taxon decomposition, time series, and per-input
+    provenance — all carried inline as JSON inside the OGC Records Feature
+    (no separate binary artefact).
   snippets:
     - language: json
-      ref: examples/reef_biomass_geoparquet.json
+      ref: examples/reef_biomass_result.json
 
 - title: STAC catalog — Utsira surroundings reef-biomass run
   description: >
-    STAC catalog indexing inputs, the run, and the GeoParquet output. Bound to
-    the `stac_catalog` CWL output port and conforms to the SeaDOTs EDITO
-    output conventions.
+    STAC catalog indexing inputs, the run, and the JSON result output.
+    Conforms to the SeaDOTs EDITO output conventions.
   snippets:
     - language: json
       ref: examples/stac_catalog.json
@@ -19,9 +21,8 @@
 - title: PROV-O provenance record (JSON-LD)
   description: >
     Provenance record closing the loop to the ODD demonstrator, the canonical
-    reef-biomass equation record, and the per-taxon bindings resolved at run
-    time. Bound to the `prov_record` CWL output port and conforms to
-    CWLProv 0.6.
+    reef-biomass equation record, the Python script that produced the result,
+    and the per-taxon bindings resolved at run time.
   snippets:
     - language: json
       ref: examples/prov_record.json

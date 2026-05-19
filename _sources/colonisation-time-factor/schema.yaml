@@ -1,0 +1,66 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Colonisation Time Factor (C_t)
+description: >
+  Dimensionless time factor for reef colonisation. Encoded as a closed-form
+  expression with named parameters plus an evaluated lookup table.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [colonisationTimeFactor]
+    properties:
+      colonisationTimeFactor:
+        type: object
+        required: [name, source, format, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role: { type: string, description: "Usually `coefficient (scalar)`." }
+          source: { type: string }
+          format: { type: string }
+          vocabularyTerm: { type: string, format: uri }
+          data:
+            type: object
+            required: [curveType, formula, parameters, lookup, provenance]
+            properties:
+              curveType: { type: string, description: "e.g. `sigmoid`." }
+              formula: { type: string, description: "Closed-form expression in plain text." }
+              parameters:
+                type: object
+                required: [L, k, t0_months]
+                properties:
+                  L: { type: number, minimum: 0, description: "Sigmoid saturation level." }
+                  k: { type: number, description: "Sigmoid growth rate." }
+                  t0_months: { type: number, description: "Sigmoid midpoint, months since installation." }
+              lookup:
+                type: array
+                items:
+                  type: object
+                  required: [t_months, C_t]
+                  properties:
+                    t_months: { type: number, minimum: 0 }
+                    C_t: { type: number, minimum: 0, maximum: 1, description: "Evaluated C_t at t_months." }
+              saturationMonth: { type: number, minimum: 0 }
+              units: { type: string, description: "Always `dimensionless`." }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, calibrated, illustrative, mixed] }
+                  primarySource:
+                    type: object
+                    properties:
+                      doi: { type: string }
+                      url: { type: string, format: uri }
+                      citation: { type: string }
+                      supportingFigure: { type: string }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  verificationGap: { type: string }
+                  note: { type: string }

@@ -1,0 +1,70 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: MAREANO Benthic Biomass Density Observation
+description: >
+  Per-taxon benthic biomass density observation sourced from the MAREANO
+  programme. Treated as a SOSA Observation: feature-of-interest is the
+  observed footprint, observed property is `indo:benthic-biomass-density-mareano`,
+  and the result is the `data.perTaxon[]` array.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [benthicBiomassDensity]
+    properties:
+      benthicBiomassDensity:
+        type: object
+        required: [name, source, format, observedProperty, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role: { type: string, description: "Usually `primary baseline`." }
+          source: { type: string }
+          format: { type: string }
+          vocabularyTerm: { type: string, format: uri }
+          observedProperty:
+            type: string
+            format: uri
+            description: SOSA observed-property URI (`indo:benthic-biomass-density-mareano`).
+          phenomenonTime:
+            description: SOSA phenomenon time — typically the sampling period.
+            oneOf:
+              - type: string
+              - type: object
+          data:
+            type: object
+            required: [perTaxon, provenance]
+            properties:
+              units: { type: string, description: "Units of density (kg m-2)." }
+              samplePeriod: { type: string }
+              samplingProgramme: { type: string }
+              perTaxon:
+                type: array
+                items:
+                  type: object
+                  required: [scientificName, density_kg_m2]
+                  properties:
+                    scientificName: { type: string }
+                    aphiaID: { type: integer, description: "WoRMS AphiaID." }
+                    density_kg_m2: { type: number, minimum: 0, description: "Per-taxon density consumed as `D_pre,i`." }
+                    habitat: { type: string }
+                    depthBand_m: { type: string }
+                    nSamples: { type: integer, minimum: 0 }
+              aggregateDensity_kg_m2: { type: number, minimum: 0 }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, illustrative, mixed] }
+                  retrievalApiCall: { type: string }
+                  verifiedOn: { type: string, format: date }
+                  primarySource: { type: object }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  verificationGap: { type: string }
+                  note: { type: string }

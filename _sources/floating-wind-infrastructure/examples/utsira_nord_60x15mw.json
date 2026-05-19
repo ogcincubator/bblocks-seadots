@@ -1,5 +1,5 @@
 {
-  "id": "https://example.org/norwegian-ses/experiment-input/infrastructure-layout-utsira-nord-60x15mw",
+  "id": "https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw",
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -14,19 +14,17 @@
   "properties": {
     "type": "Dataset",
     "title": "Submerged infrastructure layout — Utsira Nord 60 × 15 MW",
-    "description": "Per-unit submerged geometry (wetted hull + mooring + anchor surfaces) for the 60 × 15 MW floating-wind units of the Utsira Nord engineering design. Drives the A_{sub} calculation in the reef-biomass equation. Reused unchanged for the surroundings run.",
+    "description": "Per-unit submerged geometry (wetted hull + mooring + anchor surfaces) for the 60 × 15 MW floating-wind units of the Utsira Nord engineering design. Drives the A_sub calculation in the reef-biomass equation.",
     "created": "2026-05-18",
-    "updated": "2026-05-18",
+    "updated": "2026-05-19",
     "language": "en",
     "license": "https://creativecommons.org/licenses/by/4.0/",
-    "themes": [
-      { "concepts": [{ "id": "floating-wind", "label": "Floating wind infrastructure" }], "scheme": "https://id3.seadots.eu/themes" }
-    ],
+    "themes": [{ "concepts": [{ "id": "floating-wind", "label": "Floating wind infrastructure" }], "scheme": "https://id3.seadots.eu/themes" }],
     "keywords": ["infrastructure", "floating-wind", "Utsira Nord", "submerged area"],
     "formats": [{ "mediaType": "application/geo+json" }],
-    "experimentInput": {
-      "name": "Submerged infrastructure layout",
-      "description": "Per-unit geometry of submerged surfaces (hull + mooring + anchor) for the 60 × 15 MW floating-wind units of the Utsira Nord engineering design. Reusable across any experiment that operates on this layout.",
+    "floatingWindInfrastructure": {
+      "name": "Submerged infrastructure layout — Utsira Nord 60 × 15 MW",
+      "description": "Per-unit submerged geometry for the floating-wind units intersecting the AOI.",
       "role": "feature-of-interest geometry",
       "source": "infrastructure/utsira_nord_60x15mw.geojson",
       "format": "application/geo+json",
@@ -53,7 +51,7 @@
         "units": "m2",
         "provenance": {
           "values": "mixed",
-          "note": "`unitDesign=15 MW semi-submersible` and `nUnits=60` match the publicly stated Utsira Nord engineering envelope (NVE strategic assessment). Per-unit surface areas (1450 / 280 / 95 m²), depth range, sample unit coordinates and the 109,500 m² aggregate are ILLUSTRATIVE — actual wetted areas depend on platform-supplier engineering drawings that are not in the public domain. Do not use these as engineering inputs.",
+          "note": "`unitDesign=15 MW semi-submersible` and `nUnits=60` match the publicly stated Utsira Nord engineering envelope (NVE strategic assessment). Per-unit surface areas (1450 / 280 / 95 m²), depth range, sample unit coordinates and the 109,500 m² aggregate are ILLUSTRATIVE — actual wetted areas depend on platform-supplier engineering drawings that are not in the public domain.",
           "primarySource": {
             "url": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/",
             "title": "NVE Strategisk konsekvensutredning av vindkraft til havs (covers `nUnits` and `unitDesign` only)"
@@ -67,7 +65,8 @@
     }
   },
   "links": [
-    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.floating-wind-infrastructure", "type": "application/schema+json", "title": "Floating-Wind Submerged Infrastructure bblock" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim", "type": "application/schema+json", "title": "OIM feature profile" },
     { "rel": "cite-as", "href": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/", "title": "NVE strategic assessment — Utsira Nord design source" }
   ]
 }

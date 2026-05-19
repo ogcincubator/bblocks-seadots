@@ -1,0 +1,23 @@
+{
+  "name": "MAREANO Benthic Biomass Density Observation",
+  "abstract": "OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) derived from the MAREANO programme. Each record is a SOSA Observation of `benthic-biomass-density` over a polygon footprint and a sampling period, with the per-taxon values carried inline by `data.perTaxon[]` and mandatory provenance describing whether the values are retrieved or illustrative.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-19",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["MAREANO", "benthic", "biomass", "density", "SOSA", "observation", "OIM"],
+  "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
+  "sources": [{ "title": "MAREANO programme", "link": "https://mareano.no/" }],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records",
+    "ogc.hosted.iliad.api.features.oim-obs"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": ["http://www.w3.org/ns/sosa/", "http://rs.tdwg.org/dwc/terms/"],
+  "maturity": "development",
+  "scope": "dev"
+}

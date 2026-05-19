@@ -1,0 +1,69 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Floating-Wind Submerged Infrastructure
+description: >
+  Per-unit submerged geometry of a floating-wind farm layout, plus aggregate
+  submerged area (`A_sub`) used as feature-of-interest input to the reef-biomass
+  equation.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [floatingWindInfrastructure]
+    properties:
+      floatingWindInfrastructure:
+        type: object
+        required: [name, source, format, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role: { type: string, description: "Usually `feature-of-interest geometry`." }
+          source: { type: string }
+          format: { type: string }
+          vocabularyTerm: { type: string, format: uri }
+          data:
+            type: object
+            required: [nUnits, perUnit, aggregate, provenance]
+            properties:
+              unitDesign: { type: string }
+              nUnits: { type: integer, minimum: 1 }
+              perUnit:
+                type: object
+                required: [submerged_area_total_m2]
+                properties:
+                  hull_area_m2: { type: number, minimum: 0 }
+                  mooring_area_m2: { type: number, minimum: 0 }
+                  anchor_area_m2: { type: number, minimum: 0 }
+                  submerged_area_total_m2: { type: number, minimum: 0 }
+                  depth_range_m:
+                    type: array
+                    items: { type: number }
+                    minItems: 2
+                    maxItems: 2
+              aggregate:
+                type: object
+                required: [submerged_area_total_m2]
+                properties:
+                  submerged_area_total_m2: { type: number, minimum: 0, description: "Consumed as `A_sub` by the reef-biomass equation." }
+                  submerged_area_total_km2: { type: number, minimum: 0 }
+              sampleUnits:
+                type: array
+                items:
+                  type: object
+                  required: [unit_id]
+                  properties:
+                    unit_id: { type: string }
+                    lon: { type: number }
+                    lat: { type: number }
+                    submerged_area_m2: { type: number, minimum: 0 }
+              units: { type: string, description: "Default units of the area quantities, e.g. m2." }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, illustrative, mixed] }
+                  note: { type: string }
+                  primarySource: { type: object }
+                  nearestAuthoritativeSource: { type: object }

@@ -1,0 +1,69 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: IMR Benthic Biomass Density Observation
+description: >
+  Per-taxon benthic biomass density observation sourced from the Institute of
+  Marine Research regional baseline series. Acts as the fallback D_pre,i
+  binding when MAREANO has no taxon coverage. Carries explicit per-row
+  uncertainty.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [benthicBiomassDensity]
+    properties:
+      benthicBiomassDensity:
+        type: object
+        required: [name, source, format, observedProperty, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role: { type: string, description: "Usually `fallback baseline`." }
+          source: { type: string }
+          format: { type: string }
+          vocabularyTerm: { type: string, format: uri }
+          observedProperty:
+            type: string
+            format: uri
+            description: SOSA observed-property URI (`indo:benthic-biomass-density-imr-baseline`).
+          phenomenonTime:
+            description: SOSA phenomenon time.
+            oneOf:
+              - type: string
+              - type: object
+          data:
+            type: object
+            required: [perTaxon, provenance]
+            properties:
+              units: { type: string }
+              samplePeriod: { type: string }
+              method: { type: string }
+              icesDivision: { type: string }
+              perTaxon:
+                type: array
+                items:
+                  type: object
+                  required: [scientificName, density_kg_m2, uncertainty_kg_m2]
+                  properties:
+                    scientificName: { type: string }
+                    aphiaID: { type: integer }
+                    density_kg_m2: { type: number, minimum: 0 }
+                    uncertainty_kg_m2: { type: number, minimum: 0, description: "1σ standard uncertainty consumed for CV propagation." }
+              aggregateDensity_kg_m2: { type: number, minimum: 0 }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, illustrative, mixed] }
+                  retrievalApiCall: { type: string }
+                  verifiedOn: { type: string, format: date }
+                  primarySource: { type: object }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  verificationGap: { type: string }
+                  note: { type: string }

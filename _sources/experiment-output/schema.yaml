@@ -3,8 +3,8 @@ title: Computational Experiment Output
 description: >
   OGC API Records profile for a single output artefact produced by a
   computational experiment. Extends GeoDCAT-Records with an `experimentOutput`
-  sub-object that ties the artefact to an output role, a CWL output port, a
-  format, a vocabulary term for the produced quantity, and optional
+  sub-object that ties the artefact to an output role, a format, a vocabulary
+  term for the produced quantity, the experiment it belongs to, and optional
   conformance classes.
 
 allOf:
@@ -34,17 +34,44 @@ properties:
             type: string
             format: uri
             description: Concept URI for the produced quantity.
-          parameterBinding:
-            type: object
-            required: [cwlOutput]
-            properties:
-              cwlOutput:
-                type: string
-                description: Name of the CWL workflow output port the artefact is emitted from.
-              experiment:
-                type: string
-                format: uri
-                description: URI of the experiment record that produced the output.
+          experiment:
+            type: string
+            format: uri
+            description: URI of the experiment record that produced this output.
+          observedProperty:
+            type: string
+            format: uri
+            description: >
+              SOSA-aligned. URI of the property observed by this output. For
+              the reef-biomass result this is the `floating-wind-reef-biomass`
+              indicator URI. Carrying this field aligns the record with the
+              OIM-OBS / SOSA observation profile.
+          hasSimpleResult:
+            description: >
+              SOSA-aligned. The simple (scalar or short structured) result of
+              the observation/calculation. Type follows the observed property;
+              for B_reef this is the headline scalar in kg with units carried
+              by `hasSimpleResultUnit`.
+          hasSimpleResultUnit:
+            type: string
+            description: Units of `hasSimpleResult` (e.g. `kg`, `t`, `kg m-2`).
+          resultTime:
+            type: string
+            format: date-time
+            description: >
+              SOSA-aligned. Time at which the result was produced or applies.
+              For a standing-stock calculation, the end-of-scenario instant.
+          phenomenonTime:
+            description: >
+              SOSA-aligned. Time interval over which the observed phenomenon
+              occurred (e.g. the scenario interval). String, or object with
+              `start` and `end` keys.
+          hasFeatureOfInterest:
+            type: string
+            format: uri
+            description: >
+              SOSA-aligned. URI of the feature of interest (typically the AOI
+              `area-of-interest` record, typically).
           conformsTo:
             type: array
             description: Conformance classes the output is expected to satisfy.
@@ -106,8 +133,7 @@ properties:
                     type: string
                     format: uri
                     description: >
-                      URI of the script / notebook / CWL step that produced
-                      these values, if available.
+                      URI of the script / notebook that produced these values.
                   uncertaintyMethod:
                     type: string
                     description: >

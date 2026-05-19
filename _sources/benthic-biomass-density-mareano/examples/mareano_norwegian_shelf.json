@@ -1,5 +1,5 @@
 {
-  "id": "https://example.org/norwegian-ses/experiment-input/mareano-baseline-density",
+  "id": "https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf",
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -16,21 +16,25 @@
     "title": "MAREANO benthic biomass density — primary baseline (D_{pre,i})",
     "description": "MAREANO programme baseline benthic biomass density rasters, queried per AOI cell and scattered over taxon groups by index i. Provides the primary D_{pre,i} binding for the reef-biomass equation. Coverage: Norwegian shelf.",
     "created": "2026-05-18",
-    "updated": "2026-05-18",
+    "updated": "2026-05-19",
     "language": "en",
     "license": "https://creativecommons.org/licenses/by/4.0/",
-    "themes": [
-      { "concepts": [{ "id": "benthic-biomass", "label": "Benthic biomass density" }], "scheme": "https://id3.seadots.eu/themes" }
-    ],
+    "themes": [{ "concepts": [{ "id": "benthic-biomass", "label": "Benthic biomass density" }], "scheme": "https://id3.seadots.eu/themes" }],
     "keywords": ["MAREANO", "benthic biomass", "Norwegian shelf", "baseline"],
     "formats": [{ "mediaType": "application/x-netcdf" }],
-    "experimentInput": {
+    "conformsTo": [
+      "http://www.w3.org/ns/sosa/Observation",
+      "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+    ],
+    "benthicBiomassDensity": {
       "name": "MAREANO benthic biomass density",
-      "description": "MAREANO programme baseline benthic biomass density rasters covering the Norwegian shelf. Reusable across any experiment that needs a baseline density input on this footprint.",
+      "description": "Primary baseline benthic biomass density before installation. Scattered over taxon index i.",
       "role": "primary baseline",
       "source": "https://mareano.no/api/benthic-biomass-density",
       "format": "application/x-netcdf",
       "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
+      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
+      "phenomenonTime": "2018-01-01/2024-12-31",
       "data": {
         "units": "kg m-2",
         "samplePeriod": "2018-2024",
@@ -43,10 +47,10 @@
         "aggregateDensity_kg_m2": 0.81,
         "provenance": {
           "values": "illustrative",
-          "note": "Density values (kg/m²), aggregate density, sample counts, depth bands and habitat tags above are ILLUSTRATIVE placeholders to show schema shape. They are NOT MAREANO measurements. AphiaIDs are real (WoRMS) and scientificName is correct, but the per-taxon density numbers have no MAREANO provenance. MAREANO does not expose a single REST endpoint that returns per-taxon baseline biomass density (kg/m²) aggregated over an arbitrary AOI — derivation requires downloading occurrence records and aggregating against habitat / area rasters off-line.",
+          "note": "Density values (kg/m²), aggregate density, sample counts, depth bands and habitat tags above are ILLUSTRATIVE placeholders. NOT MAREANO measurements. AphiaIDs are real (WoRMS) and scientificName is correct, but the per-taxon density numbers have no MAREANO provenance.",
           "nearestAuthoritativeSource": {
             "url": "https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON((4.20%2059.10,5.30%2059.10,5.30%2059.70,4.20%2059.70,4.20%2059.10))&size=500",
-            "note": "OBIS occurrence API returns per-record Mytilus edulis observations (including some with `organismQuantity`/`organismQuantityType` for biomass) inside the AOI polygon. Repeat per taxon (Mytilus 140480, Buccinum 138878, Asterias 123776) and aggregate to obtain a real per-taxon density estimate. The MAREANO catalogue itself is at https://mareano.no/en — biological sample packages are downloaded via Geonorge (https://www.geonorge.no/) rather than queried by API."
+            "note": "OBIS occurrence API returns per-record observations inside the AOI polygon. Repeat per taxon (Mytilus 140480, Buccinum 138878, Asterias 123776) and aggregate to obtain a real per-taxon density estimate."
           },
           "verificationGap": "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally."
         }
@@ -54,7 +58,8 @@
     }
   },
   "links": [
-    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano", "type": "application/schema+json", "title": "MAREANO Benthic Biomass Density Observation bblock" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim-obs", "type": "application/schema+json", "title": "OIM Observations profile" },
     { "rel": "cite-as", "href": "https://mareano.no/", "title": "MAREANO programme" }
   ]
 }

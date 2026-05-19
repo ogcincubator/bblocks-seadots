@@ -1,0 +1,59 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Reef Aggregation Index (AF_i)
+description: >
+  Per-taxon dimensionless reef aggregation index used by the reef-biomass
+  equation. Treated as an OIM variable / indicator binding.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  properties:
+    type: object
+    required: [reefAggregationIndex]
+    properties:
+      reefAggregationIndex:
+        type: object
+        required: [name, source, format, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role: { type: string, description: "Usually `coefficient (per taxon)`." }
+          source: { type: string }
+          format: { type: string }
+          vocabularyTerm: { type: string, format: uri }
+          data:
+            type: object
+            required: [perTaxon, provenance]
+            properties:
+              units: { type: string, description: "Always `dimensionless`." }
+              perTaxon:
+                type: array
+                items:
+                  type: object
+                  required: [scientificName, AF_i]
+                  properties:
+                    scientificName: { type: string }
+                    aphiaID: { type: integer }
+                    AF_i: { type: number, minimum: 0, description: "Dimensionless aggregation index consumed by the reef-biomass equation." }
+                    validityScope: { type: string }
+                    evidence: { type: string, format: uri }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, illustrative, mixed] }
+                  primarySource:
+                    type: object
+                    properties:
+                      doi: { type: string }
+                      url: { type: string, format: uri }
+                      citation: { type: string }
+                      supportingFigure: { type: string }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  verificationGap: { type: string }
+                  note: { type: string }

@@ -6,12 +6,12 @@ Each instance describes a single output — a primary result file, a catalog, or
 
 Captured fields:
 
-1. **Role** — `primary result`, `catalog`, `provenance`, `diagnostic`. Mirrors the `role` field on `experiment-input`.
-2. **Format** — media type or URI for the artefact's format profile (e.g. `https://geoparquet.org/`, `application/ld+json`).
+1. **Role** — `primary result`, `catalog`, `provenance`, `diagnostic`. Mirrors the `role` field used on the per-class input records.
+2. **Format** — media type or URI for the artefact's format profile (e.g. `application/json`, `application/ld+json`, `application/x-netcdf`, or an OGC format URI). Pick the value that matches what the file *is*, not what it conceptually describes.
 3. **Vocabulary term** — concept URI for the produced quantity (e.g. `floating-wind-reef-biomass`).
-4. **CWL binding** — `cwlOutput` port name and the consuming experiment URI.
+4. **Experiment** — URI of the `experiment` record that produced this output.
 5. **Conformance** — optional list of conformance class URIs (e.g. the SeaDOTs EDITO output conventions, STAC version).
-6. **Inline data** — every example MUST embed representative result values inside the `data` object so a reader can see what the output actually carries. Same `provenance` requirement as `experiment-input` — see the worked example below.
+6. **Inline data** — every example MUST embed representative result values inside the `data` object so a reader can see what the output actually carries. Same `provenance` requirement as the per-class input bblocks — see the worked example below.
 
 Outputs may be self-contained datasets, references to STAC collections, or PROV-O records that close the loop back to the experiment's inputs and the modelled equation.
 
@@ -19,11 +19,11 @@ Outputs may be self-contained datasets, references to STAC collections, or PROV-
 
 ## Worked example — reef-biomass result for the Utsira surroundings experiment
 
-The example `examples/reef_biomass_geoparquet.json` is the primary result of the experiment described in `_sources/experiment/examples/utsira_surroundings_experiment.json`. It evaluates the reef-biomass equation
+The example `examples/reef_biomass_result.json` is the primary result of the experiment described in `_sources/experiment/examples/utsira_surroundings_experiment.json`. It evaluates the reef-biomass equation
 
 $$B_{reef}(t) \;=\; \sum_i \bigl( A_{sub} \cdot D_{pre,i} \cdot AF_i \cdot C_t \bigr)$$
 
-over the scenario time span (2026-05-13 → 2028-05-13, 24 months) using the input records in `_sources/experiment-input/examples/`. Every variable is traceable to a specific input record; every value below carries an explicit provenance flag.
+over the scenario time span (2026-05-13 → 2028-05-13, 24 months) using the input records in the six per-input bblocks (`_sources/area-of-interest`, `floating-wind-infrastructure`, `benthic-biomass-density-mareano`, `benthic-biomass-density-imr`, `reef-aggregation-index`, `colonisation-time-factor`). Every variable is traceable to a specific input record; every value below carries an explicit provenance flag.
 
 ### Inputs and where they come from
 

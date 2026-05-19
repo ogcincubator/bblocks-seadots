@@ -1,23 +1,21 @@
 {
-  "id": "https://example.org/norwegian-ses/experiment-input/reef-aggregation-index-bindings",
+  "id": "https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings",
   "type": "Feature",
   "geometry": null,
   "properties": {
     "type": "Dataset",
-    "title": "Reef aggregation index bindings (AF_i)",
-    "description": "Per-taxon reef aggregation index bindings carried by the canonical reef-biomass equation record. Three expansion bindings (Mytilus edulis, Buccinum undatum, Asterias rubens) provide AF_i for the index `i` in the reef-biomass equation.",
+    "title": "Reef aggregation index bindings (AF_i) — Degraer 2020 prior",
+    "description": "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE — Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m² coefficient.",
     "created": "2026-05-18",
-    "updated": "2026-05-18",
+    "updated": "2026-05-19",
     "language": "en",
     "license": "https://creativecommons.org/licenses/by/4.0/",
-    "themes": [
-      { "concepts": [{ "id": "reef-effect", "label": "Floating-wind reef effect" }], "scheme": "https://id3.seadots.eu/themes" }
-    ],
+    "themes": [{ "concepts": [{ "id": "reef-effect", "label": "Floating-wind reef effect" }], "scheme": "https://id3.seadots.eu/themes" }],
     "keywords": ["reef aggregation index", "AF_i", "Mytilus", "Buccinum", "Asterias"],
     "formats": [{ "mediaType": "application/ld+json" }],
-    "experimentInput": {
+    "reefAggregationIndex": {
       "name": "Reef aggregation index bindings",
-      "description": "Per-taxon reef aggregation index (Mytilus edulis, Buccinum undatum, Asterias rubens). Reusable across any experiment that consumes this indicator.",
+      "description": "Per-taxon AF_i (Mytilus edulis, Buccinum undatum, Asterias rubens).",
       "role": "coefficient (per taxon)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
@@ -31,7 +29,7 @@
         ],
         "provenance": {
           "values": "illustrative",
-          "note": "AF_i values 12.0 / 3.5 / 5.0 are ILLUSTRATIVE and NOT taken from any published source. Verified via WebFetch against Degraer et al. 2020: that paper reports only one quantitative figure for blue mussel — `biomass can increase 4,000-fold compared to the biomass originally present in the sediments` at turbine-footprint scale (citing Rumes et al. 2013) — and gives NO numeric biomass enhancement for Buccinum undatum or Asterias rubens. The 4,000-fold figure is at turbine-footprint scale (areal-integrated) and is not directly the per-m² coefficient AF_i in the reef-biomass equation.",
+          "note": "AF_i values 12.0 / 3.5 / 5.0 are ILLUSTRATIVE and NOT taken from any published source. Verified against Degraer et al. 2020: that paper reports only one quantitative figure for blue mussel — `biomass can increase 4000-fold compared to the biomass originally present in the sediments` at turbine-footprint scale (citing Rumes et al. 2013) — and gives NO numeric biomass enhancement for Buccinum or Asterias. The 4000-fold figure is at turbine-footprint scale (areal-integrated) and is not directly the per-m² coefficient AF_i.",
           "primarySource": {
             "doi": "10.5670/oceanog.2020.405",
             "url": "https://tos.org/oceanography/article/offshore-wind-farm-artificial-reefs-affect-ecosystem-structure-and-functioning-a-synthesis",
@@ -40,7 +38,7 @@
           },
           "nearestAuthoritativeSource": {
             "url": "https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=<wkt-of-offshore-wind-farm>&datasetid=<wind-farm-monitoring-dataset>",
-            "note": "Real AF_i derivation requires paired before/after or inside/outside biomass observations on a real wind farm — Belwind, Thornton Bank, WindFloat Atlantic etc. — aggregated against control sites. OBIS exposes such occurrence records when monitoring programmes publish to it. No single REST call returns the dimensionless AF_i itself."
+            "note": "Real AF_i derivation requires paired before/after or inside/outside biomass observations on a real wind farm aggregated against control sites."
           },
           "verificationGap": "Degraer 2020 numeric quote verified. AF_i values in this example NOT calibrated to that source."
         }
@@ -48,7 +46,8 @@
     }
   },
   "links": [
-    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-input", "type": "application/schema+json", "title": "Experiment-input bblock" },
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.reef-aggregation-index", "type": "application/schema+json", "title": "Reef Aggregation Index bblock" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
     { "rel": "cite-as", "href": "https://doi.org/10.5670/oceanog.2020.405", "title": "Degraer et al. 2020 — reef-effect prior" }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "name": "Floating-Wind Submerged Infrastructure",
+  "abstract": "OGC Feature profile describing per-unit submerged geometry (wetted hull + mooring + anchor surfaces) of a floating-wind farm layout. Used as the feature-of-interest geometry input to reef-effect biomass equations (drives the A_sub aggregate). Inline `data` block carries per-unit areas, count, design label, aggregate submerged area, and sample unit coordinates; geometry travels in the top-level GeoJSON Polygon.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-19",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["floating-wind", "infrastructure", "submerged-area", "OIM", "reef-effect"],
+  "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
+  "sources": [{ "title": "NVE strategisk konsekvensutredning av vindkraft til havs", "link": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/" }],
+  "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records",
+    "ogc.hosted.iliad.api.features.oim"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": ["http://www.w3.org/TR/vocab-dcat-3/"],
+  "maturity": "development",
+  "scope": "dev"
+}

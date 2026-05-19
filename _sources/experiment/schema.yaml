@@ -5,7 +5,7 @@ description: >
   documented model. Extends GeoDCAT-Records with an `experiment` sub-object
   that points to the executable code (`application`) that runs the
   experiment, the documented model (`modelledBy`), the evidence equation
-  (`evidenceEquation`), and standalone experiment-input / experiment-output
+  (`evidenceEquation`), and standalone per-class input and `experiment-output`
   records referenced by URI.
 
 allOf:
@@ -28,7 +28,7 @@ $defs:
 
   InputBinding:
     description: >
-      Reference to an `experiment-input` record (`href`) plus the wiring that
+      Reference to a per-class input record (`href`) plus the wiring that
       ties it to this experiment. The referenced record is reusable and
       carries no wiring of its own.
     type: object
@@ -37,7 +37,7 @@ $defs:
       href:
         type: string
         format: uri
-        description: URI of the `experiment-input` record being consumed.
+        description: URI of the per-class input record being consumed.
       rel:
         type: string
       type:
@@ -97,7 +97,7 @@ properties:
           inputs:
             type: array
             description: >
-              References to `experiment-input` records. Each entry MAY carry
+              References to per-class input records. Each entry MAY carry
               an `equationBinding` symbol. MUST NOT inline the input record
               itself.
             items:

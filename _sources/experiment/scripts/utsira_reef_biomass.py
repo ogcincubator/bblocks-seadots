@@ -4,25 +4,24 @@ utsira_reef_biomass.py — deterministic reproducibility artefact for the
 worked example documented in:
 
   ../examples/utsira_surroundings_experiment.json
-  ../../experiment-output/examples/reef_biomass_geoparquet.json
+  ../../experiment-output/examples/reef_biomass_result.json
 
 Evaluates the reef-biomass equation
 
   B_reef(t) = sum_i ( A_sub * D_pre,i * AF_i * C_t )
 
 from `equation-property-relationship/examples/reef-biomass-equation.json`
-at the scenario end (t = 24 months) using the six input records under
-`_sources/experiment-input/examples/`. Propagates uncertainty by
+at the scenario end (t = 24 months) using six input records from the
+per-input bblocks. Propagates uncertainty by
 log-linear CV propagation under the refactoring
 
   B_reef = A_sub * C_t * S         with  S = sum_i (D_pre,i * AF_i)
 
 so the scalar factors common to all taxa enter once, not three times.
 
-This script is NOT the CWL workflow step runner. The CWL pipeline at
-`_sources/odd-protocol/examples/utsira_reef_biomass_pipeline.cwl` is a
-structural placeholder pending implementation of the
-`ghcr.io/seadots/reef-biomass-tools` container.
+This script IS the experiment's executable. It is linked from the
+experiment record's `application` field and from each output record's
+`data.provenance.computeCode` field.
 
 Run:
     python3 utsira_reef_biomass.py            # prints summary + JSON
@@ -45,14 +44,29 @@ from pathlib import Path
 # ─── Paths ───────────────────────────────────────────────────────────────
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parents[2]                       # .../bblocks-seadots
-INPUT_DIR = REPO_ROOT / "_sources" / "experiment-input" / "examples"
+SOURCES = REPO_ROOT / "_sources"
+
+# Each input now lives in its own bblock under `_sources/<bblock>/examples/<file>`.
+# The keys here name the property under which `data` sits in that bblock's record.
+INPUT_FILES = {
+    "infrastructure": (SOURCES / "floating-wind-infrastructure/examples/utsira_nord_60x15mw.json",
+                       "floatingWindInfrastructure"),
+    "mareano":        (SOURCES / "benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json",
+                       "benthicBiomassDensity"),
+    "imr":            (SOURCES / "benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json",
+                       "benthicBiomassDensity"),
+    "af":             (SOURCES / "reef-aggregation-index/examples/degraer2020_bindings.json",
+                       "reefAggregationIndex"),
+    "ct":             (SOURCES / "colonisation-time-factor/examples/default_sigmoid.json",
+                       "colonisationTimeFactor"),
+}
 
 
-def load_input(name: str) -> dict:
-    """Load `data` block from an experiment-input example file."""
-    path = INPUT_DIR / name
+def load_input(key: str) -> dict:
+    """Load the `data` block from an input record by logical key."""
+    path, prop = INPUT_FILES[key]
     rec = json.loads(path.read_text())
-    return rec["properties"]["experimentInput"]["data"]
+    return rec["properties"][prop]["data"]
 
 
 # ─── Assumed sigma values (not in any input record) ─────────────────────
@@ -70,11 +84,11 @@ ASSUMED_SIGMAS = {
 def compute() -> dict:
     """Run the worked B_reef calculation and return a structured result."""
 
-    infra = load_input("infrastructure_layout_60x15mw.json")
-    mareano = load_input("mareano_baseline_density.json")
-    imr = load_input("imr_baseline_density_fallback.json")
-    af = load_input("reef_aggregation_index_bindings.json")
-    ct = load_input("colonisation_time_factor.json")
+    infra = load_input("infrastructure")
+    mareano = load_input("mareano")
+    imr = load_input("imr")
+    af = load_input("af")
+    ct = load_input("ct")
 
     # ─── Variables ──────────────────────────────────────────────────────
     A_sub = infra["aggregate"]["submerged_area_total_m2"]      # 109_500 m²
@@ -186,13 +200,7 @@ def compute() -> dict:
         "provenance": {
             "values": "computed",
             "derivedFrom": [
-                f"experiment-input/examples/{fn}" for fn in (
-                    "infrastructure_layout_60x15mw.json",
-                    "mareano_baseline_density.json",
-                    "imr_baseline_density_fallback.json",
-                    "reef_aggregation_index_bindings.json",
-                    "colonisation_time_factor.json",
-                )
+                str(p.relative_to(SOURCES)) for p, _ in INPUT_FILES.values()
             ],
             "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
             "computeCode": "experiment/scripts/utsira_reef_biomass.py",

@@ -1,0 +1,67 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Marine Area of Interest
+description: >
+  Polygon-delimited marine area used by experiments, monitoring programmes,
+  or impact assessments. Inherits the OIM feature shape; adds an
+  `areaOfInterest` property carrying inline scalars (bbox, centroid, area,
+  CRS) and mandatory provenance.
+
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+
+properties:
+  geometry:
+    description: GeoJSON Polygon delimiting the AOI.
+    type: object
+    required: [type, coordinates]
+    properties:
+      type: { const: Polygon }
+      coordinates:
+        type: array
+  properties:
+    type: object
+    required: [areaOfInterest]
+    properties:
+      areaOfInterest:
+        type: object
+        required: [name, source, data]
+        properties:
+          name: { type: string }
+          description: { type: string }
+          role:
+            type: string
+            description: Role the AOI plays (e.g. `study area`, `monitoring footprint`, `licence polygon`).
+          source: { type: string, description: "Access URI or file path for the canonical polygon." }
+          format: { type: string, description: "Media type (e.g. application/geo+json)." }
+          vocabularyTerm: { type: string, format: uri }
+          data:
+            type: object
+            required: [provenance]
+            properties:
+              bbox:
+                type: array
+                items: { type: number }
+                minItems: 4
+                maxItems: 4
+              centroid:
+                type: array
+                items: { type: number }
+                minItems: 2
+                maxItems: 2
+              area_km2: { type: number, minimum: 0 }
+              crs: { type: string, description: "CRS identifier, e.g. EPSG:4326." }
+              note: { type: string }
+              provenance:
+                type: object
+                required: [values]
+                properties:
+                  values: { type: string, enum: [retrieved, illustrative, mixed] }
+                  retrievalApiCall: { type: string }
+                  verifiedOn: { type: string, format: date }
+                  primarySource: { type: object }
+                  nearestAuthoritativeSource:
+                    type: object
+                    properties:
+                      url: { type: string, format: uri }
+                      note: { type: string }
+                  note: { type: string }

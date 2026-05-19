@@ -1,14 +1,14 @@
 {
   "name": "Computational Experiment Output",
-  "abstract": "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the CWL output port the artefact was emitted from. Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits.",
+  "abstract": "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the URI of the experiment that produced it. Carries inline result values with mandatory provenance (computed / retrieved / illustrative / mixed). Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-18T00:00:00Z",
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
-  "version": "0.1",
-  "dateOfLastChange": "2026-05-18",
+  "version": "0.2",
+  "dateOfLastChange": "2026-05-19",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["experiment", "output", "CWL", "application-package", "provenance", "STAC", "GeoParquet"],
+  "tags": ["experiment", "output", "provenance", "STAC", "reproducibility"],
   "authors": [
     {
       "name": "SeaDOTs Marine Data Team",
@@ -16,14 +16,6 @@
     }
   ],
   "sources": [
-    {
-      "title": "OGC Open Science Application Package building block",
-      "link": "https://ogcincubator.github.io/bblocks-openscience/"
-    },
-    {
-      "title": "Common Workflow Language v1.2",
-      "link": "https://www.commonwl.org/v1.2/"
-    },
     {
       "title": "GeoDCAT mapping for OGC API Records",
       "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
@@ -35,7 +27,6 @@
   "ldContext": "context.jsonld",
   "shaclRules": [],
   "standards": [
-    "https://www.commonwl.org/v1.2/",
     "http://www.w3.org/TR/vocab-dcat-3/",
     "http://www.w3.org/TR/prov-o/"
   ],

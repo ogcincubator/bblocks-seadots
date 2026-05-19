@@ -13,21 +13,17 @@
     "themes": [
       { "concepts": [{ "id": "provenance", "label": "PROV-O provenance" }], "scheme": "https://id3.seadots.eu/themes" }
     ],
-    "keywords": ["PROV-O", "provenance", "JSON-LD", "CWLProv"],
+    "keywords": ["PROV-O", "provenance", "JSON-LD"],
     "formats": [{ "mediaType": "application/ld+json" }],
     "experimentOutput": {
       "name": "PROV-O provenance (JSON-LD)",
-      "description": "PROV record linking the run to the ODD record, the equation record, and the resolved bindings per taxon.",
+      "description": "PROV record linking the run to the ODD record, the equation record, the Python script that produced the result, and the resolved bindings per taxon.",
       "role": "provenance",
       "format": "application/ld+json",
       "vocabularyTerm": "http://www.w3.org/ns/prov#Entity",
-      "parameterBinding": {
-        "cwlOutput": "prov_record",
-        "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1"
-      },
+      "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1",
       "conformsTo": [
-        "http://www.w3.org/TR/prov-o/",
-        "https://w3id.org/cwl/prov/0.6.0"
+        "http://www.w3.org/TR/prov-o/"
       ]
     }
   },
