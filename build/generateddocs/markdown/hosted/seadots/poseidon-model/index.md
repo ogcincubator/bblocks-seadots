@@ -1261,21 +1261,21 @@ Implementation repository: <https://github.com/poseidon-fisheries/POSEIDON>
     dcterms:modified "2019-03-01T00:00:00Z" ;
     dcterms:temporal [ ] ;
     dcterms:title "POSEIDON model of ocean fisheries: ODD Protocol Description" ;
-    rdfs:seeAlso [ rdfs:label "Springer article page" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://link.springer.com/article/10.1007/s11625-018-0579-9> ],
-        [ rdfs:label "POSEIDON implementation repository" ;
+    rdfs:seeAlso [ rdfs:label "POSEIDON implementation repository" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/code> ;
             oa:hasTarget <https://github.com/poseidon-fisheries/POSEIDON> ],
+        [ rdfs:label "Springer article page" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://link.springer.com/article/10.1007/s11625-018-0579-9> ],
         [ rdfs:label "POSEIDON model publication" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/self> ;
             oa:hasTarget <https://doi.org/10.1007/s11625-018-0579-9> ] ;
-    dcat:contactPoint [ rdfs:label "Ernesto Carrella" ],
-        [ rdfs:label "Richard M. Bailey" ],
-        [ rdfs:label "Steven Saul" ] ;
+    dcat:contactPoint [ rdfs:label "Steven Saul" ],
+        [ rdfs:label "Ernesto Carrella" ],
+        [ rdfs:label "Richard M. Bailey" ] ;
     dcat:keyword "Bayesian optimization",
         "POSEIDON",
         "adaptive fleet behaviour",
@@ -1463,16 +1463,16 @@ Implementation repository: <https://github.com/poseidon-fisheries/POSEIDON>
     rec:format [ dcterms:title "ODD record" ] ;
     rec:language [ skos:prefLabel "English" ;
             rec:languageCode "en" ] ;
-    rec:scopedIdentifier [ rec:id "https://github.com/poseidon-fisheries/POSEIDON" ;
-            rec:scheme "github" ],
+    rec:scopedIdentifier [ rec:id "https://link.springer.com/article/10.1007/s11625-018-0579-9" ;
+            rec:scheme "url" ],
         [ rec:id "10.1007/s11625-018-0579-9" ;
             rec:scheme "doi" ],
-        [ rec:id "https://link.springer.com/article/10.1007/s11625-018-0579-9" ;
-            rec:scheme "url" ] ;
-    rec:themes [ rec:concept [ rec:conceptID "coupled-human-environment-system"^^xsd:string ],
-                [ rec:conceptID "agent-based-modelling"^^xsd:string ],
-                [ rec:conceptID "fisheries-policy"^^xsd:string ],
-                [ rec:conceptID "bayesian-optimization"^^xsd:string ] ;
+        [ rec:id "https://github.com/poseidon-fisheries/POSEIDON" ;
+            rec:scheme "github" ] ;
+    rec:themes [ rec:concept [ rec:conceptID "fisheries-policy"^^xsd:string ],
+                [ rec:conceptID "coupled-human-environment-system"^^xsd:string ],
+                [ rec:conceptID "bayesian-optimization"^^xsd:string ],
+                [ rec:conceptID "agent-based-modelling"^^xsd:string ] ;
             rec:scheme "https://w3id.org/iliad/seadots/poseidon/themes/" ] .
 
 

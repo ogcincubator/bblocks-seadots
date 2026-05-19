@@ -365,19 +365,6 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "D_pre_i" ;
             prop-rel:hasVariableKind <file:///github/workspace/intensiveQuantity> ;
             prop-rel:isIndexed true ],
-        [ prop-rel:fromProperty indo:colonisation-time-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
-                    prop-rel:bindingVariable indo:colonisation-time-factor-default ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "C_t" ;
-            prop-rel:hasSymbolAlias "C_time",
-                "C_{t}" ;
-            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
-            prop-rel:isIndexed false ],
         [ prop-rel:fromProperty indo:submerged-infrastructure-area ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
@@ -391,19 +378,32 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "A_sub" ;
             prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
             prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indo:colonisation-time-factor ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
+                    prop-rel:bindingVariable indo:colonisation-time-factor-default ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "C_t" ;
+            prop-rel:hasSymbolAlias "C_time",
+                "C_{t}" ;
+            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
+            prop-rel:isIndexed false ],
         [ prop-rel:fromProperty indo:reef-aggregation-index ;
             prop-rel:hasBinding [ prop-rel:bindingIndexValue "Asterias rubens" ;
                     prop-rel:bindingRole <file:///github/workspace/expansion> ;
                     prop-rel:bindingVariable indo:reef-aggregation-index-asterias ],
+                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
+                    prop-rel:bindingIndexValue "Buccinum undatum" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indo:reef-aggregation-index-buccinum ],
                 [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
                     prop-rel:bindingIndexValue "Mytilus edulis" ;
                     prop-rel:bindingRole <file:///github/workspace/expansion> ;
                     prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
-                    prop-rel:bindingVariable indo:reef-aggregation-index-mytilus ],
-                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
-                    prop-rel:bindingIndexValue "Buccinum undatum" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indo:reef-aggregation-index-buccinum ] ;
+                    prop-rel:bindingVariable indo:reef-aggregation-index-mytilus ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
             prop-rel:hasIndex "i" ;
@@ -604,20 +604,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
     prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{qa} = B_{total} \\cdot (1 - U)" ;
-    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indo:data-quality-uncertainty-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
-                    prop-rel:bindingVariable indo:data-quality-uncertainty-factor ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "U" ;
-            prop-rel:hasSymbolAlias "U_data",
-                "U_{data}" ;
-            prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
-            prop-rel:isIndexed false ],
-        [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
+    prop-rel:hasEquationSymbol [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
             prop-rel:fromProperty ind:wind-park-biomass-effect ;
             prop-rel:hasBinding [ prov:wasDerivedFrom ind:wind-park-biomass-effect ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
@@ -629,6 +616,19 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
             prop-rel:hasSymbol "B_{total}" ;
             prop-rel:hasSymbolAlias "B_total" ;
             prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
+            prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indo:data-quality-uncertainty-factor ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
+                    prop-rel:bindingVariable indo:data-quality-uncertainty-factor ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "U" ;
+            prop-rel:hasSymbolAlias "U_data",
+                "U_{data}" ;
+            prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
             prop-rel:isIndexed false ] ;
     prop-rel:targetDefinition ind:quality-adjusted-biomass-effect ;
     prop-rel:toProperty ind:quality-adjusted-biomass-effect .

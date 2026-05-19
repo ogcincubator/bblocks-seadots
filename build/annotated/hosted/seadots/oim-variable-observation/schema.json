@@ -3,6 +3,35 @@
   "title": "OIM Variable Observation",
   "description": "OIM/SOSA observation profile for numeric variable and indicator values. The observedProperty field identifies the variable concept, such as indo:reef-aggregation-index, while hasResult carries the numeric value.\n",
   "$defs": {
+    "GeoJSONPoint": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Point",
+          "x-jsonld-id": "@type"
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          },
+          "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
+          "x-jsonld-container": "@list"
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
     "VariableObservationResult": {
       "type": "object",
       "required": [
@@ -57,77 +86,127 @@
       "additionalProperties": true
     },
     "OIMVariableObservationProps": {
-      "allOf": [
-        {
-          "$ref": "https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/oim-obs/schema.json#/$defs/OIMObsProps"
-        },
-        {
-          "type": "object",
-          "required": [
-            "observedProperty",
-            "hasResult"
-          ],
-          "properties": {
-            "observedProperty": {
-              "type": "string",
-              "format": "uri-reference",
-              "x-jsonld-id": "http://www.w3.org/ns/sosa/observedProperty",
-              "x-jsonld-type": "@id"
+      "type": "object",
+      "required": [
+        "observedProperty",
+        "hasResult"
+      ],
+      "properties": {
+        "label": {
+          "oneOf": [
+            {
+              "type": "string"
             },
-            "hasResult": {
-              "$ref": "#/$defs/VariableObservationResult",
-              "x-jsonld-id": "http://www.w3.org/ns/sosa/hasResult",
-              "x-jsonld-type": "@id"
-            },
-            "phenomenonTime": {
-              "type": "string",
-              "format": "date-time",
-              "x-jsonld-id": "http://www.w3.org/ns/sosa/phenomenonTime",
-              "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
-            },
-            "resultTime": {
-              "type": "string",
-              "format": "date-time",
-              "x-jsonld-id": "http://www.w3.org/ns/sosa/resultTime",
-              "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+            {
+              "type": "object"
             }
-          }
+          ],
+          "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#label",
+          "x-jsonld-container": "@language"
+        },
+        "observedProperty": {
+          "type": "string",
+          "format": "uri-reference",
+          "x-jsonld-id": "http://www.w3.org/ns/sosa/observedProperty",
+          "x-jsonld-type": "@id"
+        },
+        "hasResult": {
+          "$ref": "#/$defs/VariableObservationResult",
+          "x-jsonld-id": "http://www.w3.org/ns/sosa/hasResult",
+          "x-jsonld-type": "@id"
+        },
+        "phenomenonTime": {
+          "type": "string",
+          "format": "date-time",
+          "x-jsonld-id": "http://www.w3.org/ns/sosa/phenomenonTime",
+          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "resultTime": {
+          "type": "string",
+          "format": "date-time",
+          "x-jsonld-id": "http://www.w3.org/ns/sosa/resultTime",
+          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
         }
-      ]
+      },
+      "additionalProperties": true
     },
     "OIMVariableObservationFeature": {
-      "allOf": [
-        {
-          "$ref": "https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/oim-obs/schema.json#/$defs/OIMObsFeature"
+      "type": "object",
+      "required": [
+        "type",
+        "geometry",
+        "properties"
+      ],
+      "properties": {
+        "@context": true,
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
         },
-        {
-          "type": "object",
-          "properties": {
-            "properties": {
-              "$ref": "#/$defs/OIMVariableObservationProps",
-              "x-jsonld-id": "@nest"
+        "id": {
+          "type": "string",
+          "format": "uri-reference",
+          "x-jsonld-id": "@id"
+        },
+        "type": {
+          "type": "string",
+          "const": "Feature",
+          "x-jsonld-id": "@type"
+        },
+        "geometry": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/GeoJSONPoint"
             }
-          }
+          ],
+          "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
+        },
+        "properties": {
+          "$ref": "#/$defs/OIMVariableObservationProps",
+          "x-jsonld-id": "@nest"
+        },
+        "links": {
+          "type": "array"
         }
-      ]
+      },
+      "additionalProperties": true
     },
     "OIMVariableObservationCollection": {
-      "allOf": [
-        {
-          "$ref": "https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/oim-obs/schema.json#/$defs/OIMObsCollection"
+      "type": "object",
+      "required": [
+        "type",
+        "features"
+      ],
+      "properties": {
+        "@context": true,
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
         },
-        {
-          "type": "object",
-          "properties": {
-            "features": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/OIMVariableObservationFeature"
-              }
-            }
+        "id": {
+          "type": "string",
+          "format": "uri-reference",
+          "x-jsonld-id": "@id"
+        },
+        "type": {
+          "type": "string",
+          "const": "FeatureCollection",
+          "x-jsonld-id": "@type"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OIMVariableObservationFeature"
           }
+        },
+        "links": {
+          "type": "array"
         }
-      ]
+      },
+      "additionalProperties": true
     }
   },
   "anyOf": [
@@ -247,10 +326,6 @@
     "long": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
     "ActuatableProperty": "http://www.w3.org/ns/sosa/ActuatableProperty",
     "Feature": "https://purl.org/geojson/vocab#Feature",
-    "label": {
-      "x-jsonld-id": "http://www.w3.org/2000/01/rdf-schema#label",
-      "x-jsonld-container": "@language"
-    },
     "LineString": "http://www.opengis.net/ont/sf#LineString",
     "numericValue": "http://qudt.org/schema/qudt/numericValue",
     "Concept": "http://www.w3.org/2004/02/skos/core#Concept",
@@ -529,10 +604,7 @@
     "Point": "https://purl.org/geojson/vocab#Point",
     "schema.name": "https://schema.org/name",
     "QuantityKind": "http://qudt.org/schema/qudt/QuantityKind",
-    "id": "@id",
-    "type": "@type",
     "VariableObservationResult": "https://w3id.org/iliad/oim/ext/variable-observation/VariableObservationResult",
-    "geometry": "https://purl.org/geojson/vocab#geometry",
     "coordinates": {
       "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
       "x-jsonld-container": "@list"

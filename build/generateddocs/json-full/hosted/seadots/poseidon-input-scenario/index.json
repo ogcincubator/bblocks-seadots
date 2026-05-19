@@ -25,11 +25,11 @@
   ],
   "dependsOn": [
     "ogc.hosted.seadots.poseidon-input-map",
-    "ogc.hosted.seadots.poseidon-input-port-market",
-    "ogc.hosted.seadots.poseidon-input-biology",
-    "ogc.hosted.seadots.poseidon-input-observation-output",
     "ogc.hosted.seadots.poseidon-input-regulation-policy",
-    "ogc.hosted.seadots.poseidon-input-fleet"
+    "ogc.hosted.seadots.poseidon-input-observation-output",
+    "ogc.hosted.seadots.poseidon-input-fleet",
+    "ogc.hosted.seadots.poseidon-input-port-market",
+    "ogc.hosted.seadots.poseidon-input-biology"
   ],
   "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/context.jsonld",
   "maturity": "development",
@@ -70,7 +70,7 @@
         },
         {
           "language": "ttl",
-          "code": "@prefix : <https://w3id.org/iliad/seadots/poseidon/input#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix schema: <https://schema.org/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] prov:used [ :cellSizeInKilometers 10 ;\n            :height 50 ;\n            :initializerType \"Simple Map\" ;\n            :width 50 ],\n        [ schema:about ( [ schema:name \"Species 0\" ;\n                        :carryingCapacity 5000 ;\n                        :modelType \"biomass\" ] ) ;\n            :initializerType \"Single Species Biomass\" ],\n        [ schema:agent ( [ schema:name \"fleet-0\" ;\n                        :count 50 ;\n                        :gear [ ] ] ) ] ;\n    :scenarioType \"Flexible Scenario\" .\n\n",
+          "code": "@prefix : <https://w3id.org/iliad/seadots/poseidon/input#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix schema: <https://schema.org/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] prov:used [ schema:agent ( [ schema:name \"fleet-0\" ;\n                        :count 50 ;\n                        :gear [ ] ] ) ],\n        [ schema:about ( [ schema:name \"Species 0\" ;\n                        :carryingCapacity 5000 ;\n                        :modelType \"biomass\" ] ) ;\n            :initializerType \"Single Species Biomass\" ],\n        [ :cellSizeInKilometers 10 ;\n            :height 50 ;\n            :initializerType \"Simple Map\" ;\n            :width 50 ] ;\n    :scenarioType \"Flexible Scenario\" .\n\n",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/poseidon-input-scenario/example_1_1.ttl"
         }
       ]
