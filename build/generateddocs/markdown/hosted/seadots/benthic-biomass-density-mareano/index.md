@@ -269,17 +269,17 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
+    rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://mareano.no/> ],
+        [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ],
         [ rdfs:label "OIM Observations profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
-        [ rdfs:label "MAREANO programme" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -310,13 +310,7 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally." ] ;
                             indo:baseline-benthic-biomass-density "0.81"^^qudt:QuantityValue ;
-                            seadots:perTaxon [ dwc:habitat "mixed" ;
-                                    dwc:sampleSizeValue 122 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "0-100" ],
-                                [ dwc:habitat "rocky-subtidal" ;
+                            seadots:perTaxon [ dwc:habitat "rocky-subtidal" ;
                                     dwc:sampleSizeValue 178 ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
@@ -327,7 +321,13 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indo:benthic-biomass-density-mareano "0.11"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "30-100" ] ] ;
+                                    seadots:depthBand_m "30-100" ],
+                                [ dwc:habitat "mixed" ;
+                                    dwc:sampleSizeValue 122 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "0-100" ] ] ;
                     seadots:role "primary baseline" ] ;
             rec:format [ dcterms:format "application/x-netcdf" ] ;
             rec:language [ rec:languageCode "en" ] ;

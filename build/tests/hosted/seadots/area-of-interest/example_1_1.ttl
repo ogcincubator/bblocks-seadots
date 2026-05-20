@@ -12,14 +12,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM feature profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ],
-        [ rdfs:label "Marine Area of Interest bblock" ;
+    rdfs:seeAlso [ rdfs:label "Marine Area of Interest bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest> ],
+        [ rdfs:label "OIM feature profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;

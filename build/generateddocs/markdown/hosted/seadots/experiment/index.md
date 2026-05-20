@@ -545,10 +545,10 @@ Do not link to placeholder workflows that reference containers or tools that hav
     dcterms:temporal [ dcterms:temporal "2026-05-13",
                 "2028-05-13" ;
             dcat:temporalResolution "P12M" ] ;
-    rdfs:seeAlso [ rdfs:label "Reef-biomass equation record" ;
-            dcterms:format "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
+    rdfs:seeAlso [ rdfs:label "ODD demonstrator that this experiment realises" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ],
         [ rdfs:label "Experiment bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
@@ -557,10 +557,10 @@ Do not link to placeholder workflows that reference containers or tools that hav
             dcterms:format "text/x-python" ;
             ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
             oa:hasTarget <file:///github/scripts/utsira_reef_biomass.py> ],
-        [ rdfs:label "ODD demonstrator that this experiment realises" ;
-            dcterms:format "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ] ;
+        [ rdfs:label "Reef-biomass equation record" ;
+            dcterms:format "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
     geojson:properties [ a seadots:SoftwareSourceCode ;
@@ -599,25 +599,25 @@ Do not link to placeholder workflows that reference containers or tools that hav
                     seadots:output <https://example.org/norwegian-ses/experiment-output/prov-record>,
                         <https://example.org/norwegian-ses/experiment-output/reef-biomass-result>,
                         <https://example.org/norwegian-ses/experiment-output/stac-catalog> ;
-                    seadots:parameter [ dcterms:title "Scenario start date",
-                                "scenario_t0" ;
-                            seadots:parameterSchema [ a seadots:string ;
-                                    dcterms:format "date" ] ],
-                        [ dcterms:description "Scientific names iterated by index i." ;
+                    seadots:parameter [ dcterms:description "Scientific names iterated by index i." ;
                             dcterms:title "TaxonGroup index values",
                                 "taxon_groups" ;
                             skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
                             seadots:parameterSchema [ a seadots:array ;
                                     seadots:items [ a seadots:string ] ] ],
-                        [ dcterms:title "Months since installation",
-                                "colonisation_months" ;
-                            seadots:parameterSchema [ a seadots:integer ;
-                                    seadots:minimum 0 ] ],
                         [ dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
                             dcterms:title "Area of interest",
                                 "aoi" ;
                             skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
-                            seadots:parameterSchema [ dcterms:format "application/geo+json" ] ] ;
+                            seadots:parameterSchema [ dcterms:format "application/geo+json" ] ],
+                        [ dcterms:title "Scenario start date",
+                                "scenario_t0" ;
+                            seadots:parameterSchema [ a seadots:string ;
+                                    dcterms:format "date" ] ],
+                        [ dcterms:title "Months since installation",
+                                "colonisation_months" ;
+                            seadots:parameterSchema [ a seadots:integer ;
+                                    seadots:minimum 0 ] ] ;
                     seadots:successCriterion "B_reef_total > 0 and finite",
                         "Every TaxonGroup has either a MAREANO primary binding or an IMR fallback for every AOI cell; uncovered cells are flagged in PROV",
                         "PROV-O record resolves the equation record and the ODD record by URI",
@@ -626,10 +626,10 @@ Do not link to placeholder workflows that reference containers or tools that hav
                 [ dcterms:format "application/json" ],
                 [ dcterms:format "text/x-python" ] ;
             rec:language [ rec:languageCode "en" ] ;
-            rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
-                            rec:conceptID "reef-effect"^^xsd:string ],
-                        [ skos:prefLabel "Computational experiment" ;
-                            rec:conceptID "computational-experiment"^^xsd:string ] ;
+            rec:themes [ rec:concept [ skos:prefLabel "Computational experiment" ;
+                            rec:conceptID "computational-experiment"^^xsd:string ],
+                        [ skos:prefLabel "Floating-wind reef effect" ;
+                            rec:conceptID "reef-effect"^^xsd:string ] ;
                     rec:scheme "https://id3.seadots.eu/themes" ] ] .
 
 <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a <https://w3id.org/ogc/hosted/seadots/experiment#application/json> ;
