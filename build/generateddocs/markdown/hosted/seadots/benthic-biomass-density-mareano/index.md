@@ -273,13 +273,13 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ],
-        [ rdfs:label "MAREANO programme" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ],
         [ rdfs:label "OIM Observations profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
+        [ rdfs:label "MAREANO programme" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://mareano.no/> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;

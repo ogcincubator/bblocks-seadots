@@ -194,7 +194,7 @@
   "name": "Building Blocks - Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-19T23:13:48.642188",
+  "modified": "2026-05-20T07:25:28.494754",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"e60dc0e8e5fe745aaf564ebe05c1579dea71d2d6",
@@ -247,261 +247,6 @@
   "skos:prefLabel": "Building Blocks - Seadots project",
   "hasConcepts": [
     {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-fleet",
-      "name": "POSEIDON Fleet and Fisher Input",
-      "abstract": "Schema for fleet, fisher, vessel, gear, behavioural strategy, social-network, logbook, and adaptation inputs consumed by POSEIDON.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "fleet",
-        "fisher",
-        "gear",
-        "behaviour"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON YAML component samples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples/components"
-        }
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": null,
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-fleet/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-fleet/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-fleet/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-fleet/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-fleet/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-fleet/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-fleet"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-fleet",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Fleet and Fisher Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "dependsOn": null,
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-port-market",
-      "name": "POSEIDON Port and Market Input",
-      "abstract": "Schema for port locations, market, price, fuel/gas-price, and landing infrastructure inputs consumed by POSEIDON.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "port",
-        "market",
-        "price",
-        "fuel"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON PortInitializer YAML samples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/PortInitializer.yaml"
-        }
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": null,
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-port-market/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-port-market/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-port-market/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-port-market/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-port-market/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-port-market/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-port-market"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-port-market",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Port and Market Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "dependsOn": null,
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-regulation-policy",
-      "name": "POSEIDON Regulation and Policy Input",
-      "abstract": "Schema for regulation, policy, closure, quota, trigger, shock, and intervention inputs consumed by POSEIDON.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "regulation",
-        "policy",
-        "closure",
-        "quota"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON regulations module",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/tree/main/regulations"
-        }
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": null,
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-regulation-policy/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-regulation-policy/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-regulation-policy/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-regulation-policy/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-regulation-policy/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-regulation-policy/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-regulation-policy"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Regulation and Policy Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "dependsOn": null,
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.ontology",
       "name": "Property relationship ontology",
       "abstract": "This ontology provides classes and properties to model property relationships with magnitude",
@@ -510,7 +255,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "dependsOn": null,
       "tags": [
         "seadots",
@@ -576,7 +321,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "dependsOn": null,
       "tags": [
         "seadots",
@@ -632,7 +377,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.ontology",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -718,7 +463,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.property-relationship",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -799,337 +544,6 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-biology",
-      "name": "POSEIDON Biology Input",
-      "abstract": "Schema for biological inputs consumed by POSEIDON, including biomass, abundance, recruitment, growth, mortality, diffusion, carrying capacity, OSMOSE configuration, and species-specific parameter files.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "biology",
-        "biomass",
-        "abundance",
-        "OSMOSE"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON BiologyInitializer YAML samples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/BiologyInitializer.yaml"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.contrib.stac.item"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-biology/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-biology/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-biology/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-biology/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-biology/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-biology/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-biology"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-biology",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Biology Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-map",
-      "name": "POSEIDON Map Input",
-      "abstract": "Schema for spatial map inputs consumed by POSEIDON, including generated grids, file-backed maps, bounds, cell size, bathymetry/depth values, coastline/land flags, and STAC references.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "map",
-        "STAC",
-        "bathymetry"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON MapInitializer YAML samples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/MapInitializer.yaml"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.contrib.stac.item",
-        "bblocks://ogc.contrib.stac.collection"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-map/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-map/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-map/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-map/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-map/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-map/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-map"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-map",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Map Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-output",
-      "name": "POSEIDON Output (EDITO target)",
-      "abstract": "Target schema for POSEIDON run outputs published in EDITO-compliant form: tabular time-series and agent logs as GeoParquet, gridded fields as GeoZarr, indexed by STAC. Receives the products selected by poseidon-input-observation-output.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-17T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "output",
-        "EDITO",
-        "GeoParquet",
-        "GeoZarr",
-        "STAC"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON implementation repository",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON"
-        },
-        {
-          "title": "EDITO-Infra Data Lake",
-          "link": "https://edito-infra.eu/news/what-is-a-data-lake/"
-        },
-        {
-          "title": "GeoParquet 1.1 specification",
-          "link": "https://geoparquet.org/releases/v1.1.0/"
-        },
-        {
-          "title": "OGC GeoZarr SWG",
-          "link": "https://www.ogc.org/announcement/ogc-forms-new-geozarr-standards-working-group-to-establish-a-zarr-encoding-for-geospatial-data/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.contrib.stac.item",
-        "bblocks://ogc.contrib.stac.collection"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-output/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-output/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-output/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-output/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-output/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-output/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-output"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-output",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Output (EDITO target)",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.colonisation-time-factor",
       "name": "Colonisation Time Factor (C_t)",
       "abstract": "OGC Feature + OIM Variable profile for the dimensionless time factor C_t in the reef-biomass equation. Encodes the colonisation curve as a closed-form expression (typically a logistic sigmoid) with its parameters plus an evaluated lookup table at discrete time points. Mandatory provenance flags whether the curve parameters are calibrated or illustrative.",
@@ -1138,7 +552,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -1252,7 +666,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "experiment",
@@ -1368,7 +782,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -1483,7 +897,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "IMR",
@@ -1507,8 +921,8 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.iliad.api.features.oim-obs"
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld",
@@ -1524,24 +938,6 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
         {
           "prof:hasArtifact": [
             "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
@@ -1562,9 +958,27 @@
         },
         {
           "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
             "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1629,7 +1043,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "MAREANO",
@@ -1653,8 +1067,8 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.iliad.api.features.oim-obs"
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/context.jsonld",
@@ -1670,24 +1084,6 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
         {
           "prof:hasArtifact": [
             "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
@@ -1708,9 +1104,27 @@
         },
         {
           "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
             "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1775,7 +1189,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "AOI",
@@ -1796,8 +1210,8 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.iliad.api.features.oim"
+        "bblocks://ogc.hosted.iliad.api.features.oim",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld",
@@ -1812,24 +1226,6 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
         {
           "prof:hasArtifact": [
             "http://qudt.org/2.1/schema/shacl/qudt"
@@ -1862,6 +1258,24 @@
             "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.common",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1926,7 +1340,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "floating-wind",
@@ -1948,8 +1362,8 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.iliad.api.features.oim"
+        "bblocks://ogc.hosted.iliad.api.features.oim",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/context.jsonld",
@@ -1964,24 +1378,6 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
         {
           "prof:hasArtifact": [
             "http://qudt.org/2.1/schema/shacl/qudt"
@@ -2014,6 +1410,24 @@
             "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.common",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -2078,7 +1492,7 @@
       "itemClass": "schema",
       "register": "iliad-apis",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "dependsOn": [
         "bblocks://ogc.hosted.iliad.api.features.oim-variables"
       ],
@@ -2213,7 +1627,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "ODD",
@@ -2246,9 +1660,9 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
         "bblocks://ogc.osc.ontology.openscience",
-        "bblocks://ogc.geo.geodcat.geodcat-records-prov"
+        "bblocks://ogc.geo.geodcat.geodcat-records-prov",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
@@ -2344,7 +1758,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-05-19",
+      "dateOfLastChange": "2026-05-20",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "experiment",
@@ -2373,14 +1787,14 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.seadots.area-of-interest",
-        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
         "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
         "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
         "bblocks://ogc.hosted.seadots.experiment-output",
-        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure"
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.geo.geodcat.geodcat-records",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
+        "bblocks://ogc.hosted.seadots.area-of-interest"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld",
@@ -2399,9 +1813,36 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
+            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
             "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -2447,33 +1888,6 @@
             "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.common",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -2528,618 +1942,9 @@
       "skos:topConceptOf": {
         "@id": "https://ogcincubator.github.io/bblocks-seadots/"
       }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-observation-output",
-      "name": "POSEIDON Observation and Output Selection Input",
-      "abstract": "Schema for POSEIDON inputs that select observations, indicators, output columns, output cadence, and loggers consumed by a run.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "output",
-        "observation",
-        "indicator"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON implementation repository",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.osc.geodcat-stac-earthcode.products"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-observation-output/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-observation-output/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-observation-output/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-observation-output/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-observation-output/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-observation-output/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-observation-output"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-observation-output",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Observation and Output Selection Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-scenario",
-      "name": "POSEIDON Scenario YAML Input",
-      "abstract": "Schema for the POSEIDON scenario YAML input that wires together map, biology, fleet, ports, market, regulations, plugins, and output components.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "scenario",
-        "YAML"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON YAML samples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.poseidon-input-map",
-        "bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy",
-        "bblocks://ogc.hosted.seadots.poseidon-input-observation-output",
-        "bblocks://ogc.hosted.seadots.poseidon-input-fleet",
-        "bblocks://ogc.hosted.seadots.poseidon-input-port-market",
-        "bblocks://ogc.hosted.seadots.poseidon-input-biology"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-scenario/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-scenario/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-scenario/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-scenario/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-scenario/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-scenario/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-scenario"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-scenario",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Scenario YAML Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-run-control",
-      "name": "POSEIDON Run Control Input",
-      "abstract": "Schema for the top-level run controls consumed by the POSEIDON Java implementation: scenario file, optional policy or shock files, seed, run length, replicate count, output directory, and output-selection input.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "run-control",
-        "random-seed",
-        "replicate"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON implementation repository",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.poseidon-input-observation-output",
-        "bblocks://ogc.hosted.seadots.poseidon-input-scenario",
-        "bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-run-control/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-run-control/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-run-control/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-run-control"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-run-control",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Run Control Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-input-optimization",
-      "name": "POSEIDON Optimization Input",
-      "abstract": "Schema for POSEIDON optimization-problem inputs: base scenario, tunable parameters, parameter adaptors, objective or fitness function, run budget, seeds, and policy outputs.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "input",
-        "optimization",
-        "Bayesian optimization",
-        "policy"
-      ],
-      "sources": [
-        {
-          "title": "POSEIDON EVA optimization examples",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/eva"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.poseidon-input-scenario",
-        "bblocks://ogc.hosted.seadots.poseidon-input-run-control",
-        "bblocks://ogc.osc.geodcat-stac-earthcode.experiments"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-openscience/_sources/geodcat-stac-earthcode/experiments/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.osc.geodcat-stac-earthcode.experiments",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-optimization/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-optimization/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-optimization/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-input-optimization/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-optimization/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-optimization/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-optimization"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-optimization",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Optimization Input",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.poseidon-model",
-      "name": "POSEIDON Fisheries Model ODD Record",
-      "abstract": "Schema profile for describing the implemented POSEIDON coupled human-environment fisheries model using the ODD Protocol, with explicit model-input building blocks, STAC assets, and Open Science workflow, experiment, product, and provenance links.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-15T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-19",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "POSEIDON",
-        "ODD",
-        "agent-based-model",
-        "fisheries",
-        "coupled-human-environment-system",
-        "policy-optimization",
-        "STAC",
-        "open-science"
-      ],
-      "authors": [
-        {
-          "name": "ILIAD Marine Data Team",
-          "organization": "ILIAD Ocean Digital Twin"
-        }
-      ],
-      "sources": [
-        {
-          "title": "A computational approach to managing coupled human-environmental systems: the POSEIDON model of ocean fisheries",
-          "link": "https://doi.org/10.1007/s11625-018-0579-9"
-        },
-        {
-          "title": "POSEIDON implementation repository",
-          "link": "https://github.com/poseidon-fisheries/POSEIDON"
-        },
-        {
-          "title": "ODD Protocol Description Record",
-          "link": "bblocks://ogc.hosted.seadots.odd-protocol"
-        },
-        {
-          "title": "OGC Building Blocks for STAC",
-          "link": "https://ogcincubator.github.io/bblocks-stac/"
-        },
-        {
-          "title": "Open Science Workflows Building Blocks",
-          "link": "https://ogcincubator.github.io/bblocks-openscience/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.poseidon-input-optimization",
-        "bblocks://ogc.hosted.seadots.odd-protocol",
-        "bblocks://ogc.hosted.seadots.poseidon-input-scenario",
-        "bblocks://ogc.hosted.seadots.poseidon-input-map",
-        "bblocks://ogc.osc.geodcat-stac-earthcode.products",
-        "bblocks://ogc.osc.geodcat-stac-earthcode.experiments",
-        "bblocks://ogc.hosted.seadots.poseidon-input-run-control",
-        "bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy",
-        "bblocks://ogc.contrib.stac.item",
-        "bblocks://ogc.hosted.seadots.poseidon-input-observation-output",
-        "bblocks://ogc.osc.application-package",
-        "bblocks://ogc.hosted.seadots.poseidon-input-fleet",
-        "bblocks://ogc.contrib.stac.item-prov",
-        "bblocks://ogc.geo.common.data_types.geojson",
-        "bblocks://ogc.contrib.stac.collection",
-        "bblocks://ogc.hosted.seadots.poseidon-input-port-market",
-        "bblocks://ogc.osc.geodcat-stac-earthcode.workflows",
-        "bblocks://ogc.hosted.seadots.poseidon-input-biology"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "https://doi.org/10.1007/s11625-018-0579-9",
-        "https://doi.org/10.18564/jasss.4259",
-        "https://stacspec.org/",
-        "https://ogcincubator.github.io/bblocks-openscience/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-openscience/_sources/geodcat-stac-earthcode/experiments/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.osc.geodcat-stac-earthcode.experiments",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-model/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-model/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-model/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/poseidon-model/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-model/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-model/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-model"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-model",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "POSEIDON Fisheries Model ODD Record",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
     }
   ],
   "skos:hasTopConcept": [
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-fleet"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-port-market"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy"
-    },
     {
       "@id": "bblocks://ogc.hosted.seadots.ontology"
     },
@@ -3151,15 +1956,6 @@
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.equation-property-relationship"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-biology"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-map"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-output"
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.colonisation-time-factor"
@@ -3190,21 +1986,6 @@
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.experiment"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-observation-output"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-scenario"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-run-control"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-input-optimization"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.poseidon-model"
     }
   ]
 }
