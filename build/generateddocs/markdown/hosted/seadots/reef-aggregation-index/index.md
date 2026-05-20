@@ -219,13 +219,13 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
-        [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
+        [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
             dcterms:description "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE — Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m² coefficient." ;
@@ -252,14 +252,14 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
                                             dcat:accessURL <https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON_PLACEHOLDER&datasetid=wind-farm-monitoring-dataset> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "Degraer 2020 numeric quote verified. AF_i values in this example NOT calibrated to that source." ] ;
-                            seadots:perTaxon [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "soft-sediment, 30-100 m" ;
+                            seadots:perTaxon [ dcterms:coverage "soft-sediment, 30-100 m" ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indo:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "North Sea, 0-30 m" ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;

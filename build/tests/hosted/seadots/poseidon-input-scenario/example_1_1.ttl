@@ -4,16 +4,16 @@
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-[] prov:used [ :cellSizeInKilometers 10 ;
-            :height 50 ;
-            :initializerType "Simple Map" ;
-            :width 50 ],
+[] prov:used [ schema:agent ( [ schema:name "fleet-0" ;
+                        :count 50 ;
+                        :gear [ ] ] ) ],
         [ schema:about ( [ schema:name "Species 0" ;
                         :carryingCapacity 5000 ;
                         :modelType "biomass" ] ) ;
             :initializerType "Single Species Biomass" ],
-        [ schema:agent ( [ schema:name "fleet-0" ;
-                        :count 50 ;
-                        :gear [ ] ] ) ] ;
+        [ :cellSizeInKilometers 10 ;
+            :height 50 ;
+            :initializerType "Simple Map" ;
+            :width 50 ] ;
     :scenarioType "Flexible Scenario" .
 

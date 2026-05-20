@@ -2,7 +2,7 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-19T22:57:41.247553",
+  "modified": "2026-05-19T23:13:48.642188",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"e60dc0e8e5fe745aaf564ebe05c1579dea71d2d6",
@@ -324,8 +324,8 @@
       "version": "0.1",
       "dateOfLastChange": "2026-05-19",
       "dependsOn": [
-        "ogc.ogc-utils.iri-or-curie",
-        "ogc.hosted.seadots.property-relationship"
+        "ogc.hosted.seadots.property-relationship",
+        "ogc.ogc-utils.iri-or-curie"
       ],
       "tags": [
         "seadots",
@@ -455,8 +455,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.contrib.stac.collection",
-        "ogc.contrib.stac.item"
+        "ogc.contrib.stac.item",
+        "ogc.contrib.stac.collection"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/context.jsonld",
       "maturity": "development",
@@ -532,8 +532,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.contrib.stac.collection",
-        "ogc.contrib.stac.item"
+        "ogc.contrib.stac.item",
+        "ogc.contrib.stac.collection"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/context.jsonld",
       "maturity": "development",
@@ -823,8 +823,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs",
-        "ogc.geo.geodcat.geodcat-records"
+        "ogc.geo.geodcat.geodcat-records",
+        "ogc.hosted.iliad.api.features.oim-obs"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld",
       "shaclRules": [],
@@ -835,20 +835,20 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
         "ogc.hosted.iliad.api.features.oim-obs": [
           "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
         ],
         "ogc.sosa.properties.observation": [
           "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
         ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ]
       },
       "schema": {
@@ -909,8 +909,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs",
-        "ogc.geo.geodcat.geodcat-records"
+        "ogc.geo.geodcat.geodcat-records",
+        "ogc.hosted.iliad.api.features.oim-obs"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/context.jsonld",
       "shaclRules": [],
@@ -921,20 +921,20 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
         "ogc.hosted.iliad.api.features.oim-obs": [
           "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
         ],
         "ogc.sosa.properties.observation": [
           "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
         ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ]
       },
       "schema": {
@@ -992,8 +992,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim",
-        "ogc.geo.geodcat.geodcat-records"
+        "ogc.geo.geodcat.geodcat-records",
+        "ogc.hosted.iliad.api.features.oim"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld",
       "shaclRules": [],
@@ -1003,6 +1003,12 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
         ],
@@ -1014,12 +1020,6 @@
         ],
         "ogc.skos.common": [
           "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-        ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ]
       },
       "schema": {
@@ -1078,8 +1078,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim",
-        "ogc.geo.geodcat.geodcat-records"
+        "ogc.geo.geodcat.geodcat-records",
+        "ogc.hosted.iliad.api.features.oim"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/context.jsonld",
       "shaclRules": [],
@@ -1089,6 +1089,12 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
         ],
@@ -1100,12 +1106,6 @@
         ],
         "ogc.skos.common": [
           "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-        ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ]
       },
       "schema": {
@@ -1144,7 +1144,6 @@
       "version": "0.1",
       "dateOfLastChange": "2026-05-19",
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs",
         "ogc.hosted.iliad.api.features.oim-variables"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld",
@@ -1169,18 +1168,6 @@
         "observations"
       ],
       "shaclShapes": {
-        "ogc.hosted.iliad.api.features.oim-obs": [
-          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-        ],
-        "ogc.sosa.properties.observation": [
-          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-        ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.geo.features.featureCollection": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-        ],
         "ogc.hosted.iliad.api.features.oim-variables": [
           "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-variables/rules.shacl"
         ],
@@ -1263,8 +1250,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.osc.ontology.openscience",
         "ogc.geo.geodcat.geodcat-records",
+        "ogc.osc.ontology.openscience",
         "ogc.geo.geodcat.geodcat-records-prov"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
@@ -1348,14 +1335,14 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.colonisation-time-factor",
         "ogc.geo.geodcat.geodcat-records",
+        "ogc.hosted.seadots.area-of-interest",
         "ogc.hosted.seadots.reef-aggregation-index",
         "ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "ogc.hosted.seadots.area-of-interest",
+        "ogc.hosted.seadots.colonisation-time-factor",
+        "ogc.hosted.seadots.benthic-biomass-density-imr",
         "ogc.hosted.seadots.experiment-output",
-        "ogc.hosted.seadots.floating-wind-infrastructure",
-        "ogc.hosted.seadots.benthic-biomass-density-imr"
+        "ogc.hosted.seadots.floating-wind-infrastructure"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld",
       "shaclRules": [],
@@ -1373,15 +1360,6 @@
         "ogc.api.records.v1.schemas.linkTemplate": [
           "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ],
-        "ogc.hosted.iliad.api.features.oim-obs": [
-          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-        ],
-        "ogc.sosa.properties.observation": [
-          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-        ],
-        "ogc.geo.features.featureCollection": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-        ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
         ],
@@ -1393,6 +1371,15 @@
         ],
         "ogc.skos.common": [
           "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+        ],
+        "ogc.hosted.iliad.api.features.oim-obs": [
+          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
+        ],
+        "ogc.sosa.properties.observation": [
+          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
+        ],
+        "ogc.geo.features.featureCollection": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ]
       },
       "schema": {
@@ -1508,11 +1495,11 @@
       ],
       "dependsOn": [
         "ogc.hosted.seadots.poseidon-input-map",
-        "ogc.hosted.seadots.poseidon-input-port-market",
-        "ogc.hosted.seadots.poseidon-input-biology",
-        "ogc.hosted.seadots.poseidon-input-observation-output",
         "ogc.hosted.seadots.poseidon-input-regulation-policy",
-        "ogc.hosted.seadots.poseidon-input-fleet"
+        "ogc.hosted.seadots.poseidon-input-observation-output",
+        "ogc.hosted.seadots.poseidon-input-fleet",
+        "ogc.hosted.seadots.poseidon-input-port-market",
+        "ogc.hosted.seadots.poseidon-input-biology"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/context.jsonld",
       "maturity": "development",
@@ -1575,9 +1562,9 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.poseidon-input-regulation-policy",
         "ogc.hosted.seadots.poseidon-input-observation-output",
-        "ogc.hosted.seadots.poseidon-input-scenario"
+        "ogc.hosted.seadots.poseidon-input-scenario",
+        "ogc.hosted.seadots.poseidon-input-regulation-policy"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/context.jsonld",
       "maturity": "development",
@@ -1640,9 +1627,9 @@
         }
       ],
       "dependsOn": [
+        "ogc.hosted.seadots.poseidon-input-scenario",
         "ogc.hosted.seadots.poseidon-input-run-control",
-        "ogc.osc.geodcat-stac-earthcode.experiments",
-        "ogc.hosted.seadots.poseidon-input-scenario"
+        "ogc.osc.geodcat-stac-earthcode.experiments"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/context.jsonld",
       "maturity": "development",
@@ -1733,24 +1720,24 @@
         }
       ],
       "dependsOn": [
-        "ogc.osc.geodcat-stac-earthcode.workflows",
-        "ogc.contrib.stac.item",
-        "ogc.osc.geodcat-stac-earthcode.products",
-        "ogc.hosted.seadots.poseidon-input-map",
-        "ogc.hosted.seadots.poseidon-input-port-market",
-        "ogc.osc.application-package",
-        "ogc.hosted.seadots.poseidon-input-biology",
-        "ogc.osc.geodcat-stac-earthcode.experiments",
-        "ogc.hosted.seadots.odd-protocol",
-        "ogc.hosted.seadots.poseidon-input-regulation-policy",
-        "ogc.geo.common.data_types.geojson",
-        "ogc.hosted.seadots.poseidon-input-observation-output",
-        "ogc.hosted.seadots.poseidon-input-fleet",
-        "ogc.contrib.stac.collection",
         "ogc.hosted.seadots.poseidon-input-optimization",
+        "ogc.hosted.seadots.odd-protocol",
+        "ogc.hosted.seadots.poseidon-input-scenario",
+        "ogc.hosted.seadots.poseidon-input-map",
+        "ogc.osc.geodcat-stac-earthcode.products",
+        "ogc.osc.geodcat-stac-earthcode.experiments",
         "ogc.hosted.seadots.poseidon-input-run-control",
+        "ogc.hosted.seadots.poseidon-input-regulation-policy",
+        "ogc.contrib.stac.item",
+        "ogc.hosted.seadots.poseidon-input-observation-output",
+        "ogc.osc.application-package",
+        "ogc.hosted.seadots.poseidon-input-fleet",
         "ogc.contrib.stac.item-prov",
-        "ogc.hosted.seadots.poseidon-input-scenario"
+        "ogc.geo.common.data_types.geojson",
+        "ogc.contrib.stac.collection",
+        "ogc.hosted.seadots.poseidon-input-port-market",
+        "ogc.osc.geodcat-stac-earthcode.workflows",
+        "ogc.hosted.seadots.poseidon-input-biology"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/context.jsonld",
       "shaclRules": [],
