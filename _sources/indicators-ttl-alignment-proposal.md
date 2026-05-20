@@ -1,5 +1,34 @@
 # Proposal: align bblock contexts to `oim-variables/examples/indicators.ttl`
 
+## Executive summary
+
+**What:** Migrate the indicator-concept URIs in our 7 affected JSON-LD contexts (and 6 `vocabularyTerm` strings in examples) from the `https://id3.seadots.eu/indicator/` placeholder namespace to the canonical `https://w3id.org/indicators/marine/` namespace declared by `iliad-apis-features/_sources/oim-variables/examples/indicators.ttl`.
+
+**Three substantive corrections, not just a prefix swap:**
+1. **B_reef sits in `ind:`, not `indo:`** — the top-level composite indicator `floating-wind-reef-biomass` is in `https://w3id.org/indicators/marine/`, while every input concept (`submerged-infrastructure-area`, `baseline-benthic-biomass-density`, `reef-aggregation-index`, `colonisation-time-factor`) is in `https://w3id.org/indicators/marine/obs/`. We currently put all of them under `indo:`.
+2. **`D_pre` canonical name is `baseline-benthic-biomass-density`** — we use `benthic-biomass-density`. The TTL distinguishes the abstract baseline from the `-mareano` / `-imr-baseline` source-specific narrower bindings.
+3. **`-aggregate` does not exist in the TTL** — our `indo:benthic-biomass-density-aggregate` synthetic concept should fold back to the parent `indo:baseline-benthic-biomass-density`.
+
+**Three additions worth adopting now:**
+- Add `ind:`, `inda:`, `prop-rel:` prefix declarations to the `experiment` context.
+- Use the SKOS narrower terms in source-specific bblocks (`indo:benthic-biomass-density-mareano` in the MAREANO bblock, `-imr-baseline` in IMR, `-utsira-design` in floating-wind aggregate).
+- **Lift `equationBinding` to `prop-rel:toProperty`** — single most powerful change: per-input bindings become SKOS-traversable property relationships rather than private strings.
+
+**Scope and risk if accepted:**
+
+| Item | Count |
+|---|---:|
+| `context.jsonld` files to edit | 6 |
+| `vocabularyTerm` strings in example records to migrate | 6 |
+| Schema changes required | **0** |
+| Python script changes required | **0** |
+| Tests affected | none (contexts are pure JSON-LD term tables) |
+| Re-validation needed afterwards | context-coverage diff (must remain 0 missing per bblock) |
+
+**Recommendation:** apply in a single coordinated pass; re-verify with the existing coverage checker. The full per-term mapping table with TTL line references is below.
+
+---
+
 Source of truth: `/Users/piotr/repos/Iliad/iliad-apis-features/_sources/oim-variables/examples/indicators.ttl` (the now-parseable indicator + property-relationship vocabulary).
 
 The TTL is the canonical place where concept URIs for the reef-biomass equation are *declared* (with `skos:prefLabel`, `skos:definition`, `qudt:hasQuantityKind`, and `skos:broader`/`narrower` hierarchies). The contexts in our bblocks should resolve to those URIs so that a triple-store consumer can navigate from a value (e.g. a `density_kg_m2` cell) back to the concept that defines it.
