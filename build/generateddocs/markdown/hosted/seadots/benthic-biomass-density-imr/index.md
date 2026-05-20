@@ -71,8 +71,8 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
       "role": "fallback baseline",
       "source": "https://www.hi.no/api/benthic-biomass-baseline",
       "format": "application/json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
-      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
       "phenomenonTime": "2015-01-01/2020-12-31",
       "data": {
         "units": "kg m-2",
@@ -182,8 +182,8 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
       "role": "fallback baseline",
       "source": "https://www.hi.no/api/benthic-biomass-baseline",
       "format": "application/json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
-      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
       "phenomenonTime": "2015-01-01/2020-12-31",
       "data": {
         "units": "kg m-2",
@@ -251,7 +251,7 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -306,20 +306,20 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
                                             dcat:accessURL <https://www.imr.no/forskningsdata/> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "Verified that no public IMR REST API matches the `source` URL pattern as of the date in this record. Real retrieval requires NMD dataset download + offline aggregation." ] ;
-                            indo:benthic-biomass-density-aggregate "0.72"^^qudt:QuantityValue ;
+                            indo:baseline-benthic-biomass-density "0.72"^^qudt:QuantityValue ;
                             seadots:icesDivision "IVa" ;
-                            seadots:perTaxon [ qudt:standardUncertainty 6e-02 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density "0.25"^^qudt:QuantityValue ],
+                            seadots:perTaxon [ qudt:standardUncertainty 3e-02 ;
+                                    dwc:scientificName "Buccinum undatum" ;
+                                    dwc:taxonID 138878 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.09"^^qudt:QuantityValue ],
                                 [ qudt:standardUncertainty 9e-02 ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density "0.38"^^qudt:QuantityValue ],
-                                [ qudt:standardUncertainty 3e-02 ;
-                                    dwc:scientificName "Buccinum undatum" ;
-                                    dwc:taxonID 138878 ;
-                                    indo:benthic-biomass-density "0.09"^^qudt:QuantityValue ] ] ;
+                                    indo:benthic-biomass-density-imr-baseline "0.38"^^qudt:QuantityValue ],
+                                [ qudt:standardUncertainty 6e-02 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.25"^^qudt:QuantityValue ] ] ;
                     seadots:role "fallback baseline" ] ;
             rec:format [ dcterms:format "application/json" ] ;
             rec:language [ rec:languageCode "en" ] ;
@@ -427,7 +427,7 @@ properties:
                     density_kg_m2:
                       type: number
                       minimum: 0
-                      x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density
+                      x-jsonld-id: https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline
                       x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                     uncertainty_kg_m2:
                       type: number
@@ -439,7 +439,7 @@ properties:
               aggregateDensity_kg_m2:
                 type: number
                 minimum: 0
-                x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density-aggregate
+                x-jsonld-id: https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density
                 x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
               provenance:
                 type: object
@@ -502,6 +502,7 @@ x-jsonld-extra-terms:
   created: http://purl.org/dc/terms/created
   updated: http://purl.org/dc/terms/modified
   language: http://purl.org/dc/terms/language
+  code: http://purl.org/dc/terms/identifier
   license: http://purl.org/dc/terms/license
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
@@ -531,7 +532,7 @@ x-jsonld-prefixes:
   sosa: http://www.w3.org/ns/sosa/
   qudt: http://qudt.org/schema/qudt/
   dwc: http://rs.tdwg.org/dwc/terms/
-  indo: https://id3.seadots.eu/indicator/
+  indo: https://w3id.org/indicators/marine/obs/
   prov: http://www.w3.org/ns/prov#
 
 ```
@@ -594,7 +595,7 @@ Links to the schema:
                     "scientificName": "dwc:scientificName",
                     "aphiaID": "dwc:taxonID",
                     "density_kg_m2": {
-                      "@id": "indo:benthic-biomass-density",
+                      "@id": "indo:benthic-biomass-density-imr-baseline",
                       "@type": "qudt:QuantityValue"
                     },
                     "uncertainty_kg_m2": "qudt:standardUncertainty"
@@ -603,7 +604,7 @@ Links to the schema:
                   "@container": "@set"
                 },
                 "aggregateDensity_kg_m2": {
-                  "@id": "indo:benthic-biomass-density-aggregate",
+                  "@id": "indo:baseline-benthic-biomass-density",
                   "@type": "qudt:QuantityValue"
                 },
                 "provenance": {
@@ -796,6 +797,7 @@ Links to the schema:
     "coordinates": "geojson:coordinates",
     "href": "@id",
     "rel": "geojson:rel",
+    "code": "dct:identifier",
     "concepts": {
       "@id": "skos:Concept",
       "@container": "@set"
@@ -824,7 +826,7 @@ Links to the schema:
     "sosa": "http://www.w3.org/ns/sosa/",
     "qudt": "http://qudt.org/schema/qudt/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
-    "indo": "https://id3.seadots.eu/indicator/",
+    "indo": "https://w3id.org/indicators/marine/obs/",
     "@version": 1.1
   }
 }

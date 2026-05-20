@@ -2,7 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -56,25 +56,25 @@
                                             dcat:accessURL <https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON((4.20%2059.10,5.30%2059.10,5.30%2059.70,4.20%2059.70,4.20%2059.10))&size=500> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally." ] ;
-                            indo:benthic-biomass-density-aggregate "0.81"^^qudt:QuantityValue ;
-                            seadots:perTaxon [ dwc:habitat "rocky-subtidal" ;
+                            indo:baseline-benthic-biomass-density "0.81"^^qudt:QuantityValue ;
+                            seadots:perTaxon [ dwc:habitat "mixed" ;
+                                    dwc:sampleSizeValue 122 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "0-100" ],
+                                [ dwc:habitat "rocky-subtidal" ;
                                     dwc:sampleSizeValue 178 ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density "0.42"^^qudt:QuantityValue ;
+                                    indo:benthic-biomass-density-mareano "0.42"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "0-30" ],
                                 [ dwc:habitat "soft-sediment" ;
                                     dwc:sampleSizeValue 64 ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
-                                    indo:benthic-biomass-density "0.11"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "30-100" ],
-                                [ dwc:habitat "mixed" ;
-                                    dwc:sampleSizeValue 122 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density "0.28"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "0-100" ] ] ;
+                                    indo:benthic-biomass-density-mareano "0.11"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "30-100" ] ] ;
                     seadots:role "primary baseline" ] ;
             rec:format [ dcterms:format "application/x-netcdf" ] ;
             rec:language [ rec:languageCode "en" ] ;

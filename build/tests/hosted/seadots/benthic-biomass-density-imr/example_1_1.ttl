@@ -2,7 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -57,20 +57,20 @@
                                             dcat:accessURL <https://www.imr.no/forskningsdata/> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "Verified that no public IMR REST API matches the `source` URL pattern as of the date in this record. Real retrieval requires NMD dataset download + offline aggregation." ] ;
-                            indo:benthic-biomass-density-aggregate "0.72"^^qudt:QuantityValue ;
+                            indo:baseline-benthic-biomass-density "0.72"^^qudt:QuantityValue ;
                             seadots:icesDivision "IVa" ;
-                            seadots:perTaxon [ qudt:standardUncertainty 6e-02 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density "0.25"^^qudt:QuantityValue ],
+                            seadots:perTaxon [ qudt:standardUncertainty 3e-02 ;
+                                    dwc:scientificName "Buccinum undatum" ;
+                                    dwc:taxonID 138878 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.09"^^qudt:QuantityValue ],
                                 [ qudt:standardUncertainty 9e-02 ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density "0.38"^^qudt:QuantityValue ],
-                                [ qudt:standardUncertainty 3e-02 ;
-                                    dwc:scientificName "Buccinum undatum" ;
-                                    dwc:taxonID 138878 ;
-                                    indo:benthic-biomass-density "0.09"^^qudt:QuantityValue ] ] ;
+                                    indo:benthic-biomass-density-imr-baseline "0.38"^^qudt:QuantityValue ],
+                                [ qudt:standardUncertainty 6e-02 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.25"^^qudt:QuantityValue ] ] ;
                     seadots:role "fallback baseline" ] ;
             rec:format [ dcterms:format "application/json" ] ;
             rec:language [ rec:languageCode "en" ] ;

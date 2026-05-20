@@ -72,8 +72,8 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
       "role": "primary baseline",
       "source": "https://mareano.no/api/benthic-biomass-density",
       "format": "application/x-netcdf",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
-      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano",
       "phenomenonTime": "2018-01-01/2024-12-31",
       "data": {
         "units": "kg m-2",
@@ -181,8 +181,8 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
       "role": "primary baseline",
       "source": "https://mareano.no/api/benthic-biomass-density",
       "format": "application/x-netcdf",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
-      "observedProperty": "https://id3.seadots.eu/indicator/benthic-biomass-density-mareano",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano",
       "phenomenonTime": "2018-01-01/2024-12-31",
       "data": {
         "units": "kg m-2",
@@ -255,7 +255,7 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -309,25 +309,25 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                             dcat:accessURL <https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON((4.20%2059.10,5.30%2059.10,5.30%2059.70,4.20%2059.70,4.20%2059.10))&size=500> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally." ] ;
-                            indo:benthic-biomass-density-aggregate "0.81"^^qudt:QuantityValue ;
-                            seadots:perTaxon [ dwc:habitat "rocky-subtidal" ;
+                            indo:baseline-benthic-biomass-density "0.81"^^qudt:QuantityValue ;
+                            seadots:perTaxon [ dwc:habitat "mixed" ;
+                                    dwc:sampleSizeValue 122 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "0-100" ],
+                                [ dwc:habitat "rocky-subtidal" ;
                                     dwc:sampleSizeValue 178 ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density "0.42"^^qudt:QuantityValue ;
+                                    indo:benthic-biomass-density-mareano "0.42"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "0-30" ],
                                 [ dwc:habitat "soft-sediment" ;
                                     dwc:sampleSizeValue 64 ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
-                                    indo:benthic-biomass-density "0.11"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "30-100" ],
-                                [ dwc:habitat "mixed" ;
-                                    dwc:sampleSizeValue 122 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density "0.28"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "0-100" ] ] ;
+                                    indo:benthic-biomass-density-mareano "0.11"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "30-100" ] ] ;
                     seadots:role "primary baseline" ] ;
             rec:format [ dcterms:format "application/x-netcdf" ] ;
             rec:language [ rec:languageCode "en" ] ;
@@ -435,7 +435,7 @@ properties:
                       type: number
                       minimum: 0
                       description: Per-taxon density consumed as `D_pre,i`.
-                      x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density
+                      x-jsonld-id: https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano
                       x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                     habitat:
                       type: string
@@ -452,7 +452,7 @@ properties:
               aggregateDensity_kg_m2:
                 type: number
                 minimum: 0
-                x-jsonld-id: https://id3.seadots.eu/indicator/benthic-biomass-density-aggregate
+                x-jsonld-id: https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density
                 x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
               provenance:
                 type: object
@@ -515,6 +515,7 @@ x-jsonld-extra-terms:
   created: http://purl.org/dc/terms/created
   updated: http://purl.org/dc/terms/modified
   language: http://purl.org/dc/terms/language
+  code: http://purl.org/dc/terms/identifier
   license: http://purl.org/dc/terms/license
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
@@ -545,7 +546,7 @@ x-jsonld-prefixes:
   qudt: http://qudt.org/schema/qudt/
   prov: http://www.w3.org/ns/prov#
   dwc: http://rs.tdwg.org/dwc/terms/
-  indo: https://id3.seadots.eu/indicator/
+  indo: https://w3id.org/indicators/marine/obs/
 
 ```
 
@@ -606,7 +607,7 @@ Links to the schema:
                     "scientificName": "dwc:scientificName",
                     "aphiaID": "dwc:taxonID",
                     "density_kg_m2": {
-                      "@id": "indo:benthic-biomass-density",
+                      "@id": "indo:benthic-biomass-density-mareano",
                       "@type": "qudt:QuantityValue"
                     },
                     "habitat": "dwc:habitat",
@@ -617,7 +618,7 @@ Links to the schema:
                   "@container": "@set"
                 },
                 "aggregateDensity_kg_m2": {
-                  "@id": "indo:benthic-biomass-density-aggregate",
+                  "@id": "indo:baseline-benthic-biomass-density",
                   "@type": "qudt:QuantityValue"
                 },
                 "provenance": {
@@ -810,6 +811,7 @@ Links to the schema:
     "coordinates": "geojson:coordinates",
     "href": "@id",
     "rel": "geojson:rel",
+    "code": "dct:identifier",
     "concepts": {
       "@id": "skos:Concept",
       "@container": "@set"
@@ -838,7 +840,7 @@ Links to the schema:
     "sosa": "http://www.w3.org/ns/sosa/",
     "qudt": "http://qudt.org/schema/qudt/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
-    "indo": "https://id3.seadots.eu/indicator/",
+    "indo": "https://w3id.org/indicators/marine/obs/",
     "@version": 1.1
   }
 }

@@ -53,7 +53,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
       "role": "coefficient (per taxon)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
       "data": {
         "units": "dimensionless",
         "perTaxon": [
@@ -134,7 +134,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
       "role": "coefficient (per taxon)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
       "data": {
         "units": "dimensionless",
         "perTaxon": [
@@ -203,7 +203,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -215,14 +215,14 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Reef Aggregation Index bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
-        [ rdfs:label "OIM Variables profile" ;
+    rdfs:seeAlso [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
+        [ rdfs:label "Reef Aggregation Index bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
         [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
@@ -256,14 +256,14 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indo:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "North Sea, 0-30 m" ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ] ] ;
+                                    indo:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ] ] ;
                     seadots:role "coefficient (per taxon)" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;
@@ -350,7 +350,7 @@ properties:
                       minimum: 0
                       description: Dimensionless aggregation index consumed by the
                         reef-biomass equation.
-                      x-jsonld-id: https://id3.seadots.eu/indicator/reef-aggregation-index
+                      x-jsonld-id: https://w3id.org/indicators/marine/obs/reef-aggregation-index
                       x-jsonld-type: http://qudt.org/schema/qudt/DimensionlessQuantity
                     validityScope:
                       type: string
@@ -428,6 +428,7 @@ x-jsonld-extra-terms:
   created: http://purl.org/dc/terms/created
   updated: http://purl.org/dc/terms/modified
   language: http://purl.org/dc/terms/language
+  code: http://purl.org/dc/terms/identifier
   license: http://purl.org/dc/terms/license
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
@@ -452,7 +453,7 @@ x-jsonld-prefixes:
   seadots: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#
   qudt: http://qudt.org/schema/qudt/
   dwc: http://rs.tdwg.org/dwc/terms/
-  indo: https://id3.seadots.eu/indicator/
+  indo: https://w3id.org/indicators/marine/obs/
   prov: http://www.w3.org/ns/prov#
 
 ```
@@ -714,6 +715,7 @@ Links to the schema:
     },
     "href": "@id",
     "rel": "geojson:rel",
+    "code": "dct:identifier",
     "concepts": {
       "@id": "skos:Concept",
       "@container": "@set"
@@ -741,7 +743,7 @@ Links to the schema:
     "seadots": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#",
     "qudt": "http://qudt.org/schema/qudt/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
-    "indo": "https://id3.seadots.eu/indicator/",
+    "indo": "https://w3id.org/indicators/marine/obs/",
     "@version": 1.1
   }
 }

@@ -57,7 +57,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
       "role": "coefficient (scalar)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/colonisation-time-factor-default",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/colonisation-time-factor-default",
       "data": {
         "curveType": "sigmoid",
         "formula": "C(t) = L / (1 + exp(-k * (t - t0)))",
@@ -143,7 +143,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
       "role": "coefficient (scalar)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://id3.seadots.eu/indicator/colonisation-time-factor-default",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/colonisation-time-factor-default",
       "data": {
         "curveType": "sigmoid",
         "formula": "C(t) = L / (1 + exp(-k * (t - t0)))",
@@ -221,7 +221,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -394,7 +394,7 @@ properties:
                       minimum: 0
                       maximum: 1
                       description: Evaluated C_t at t_months.
-                      x-jsonld-id: https://id3.seadots.eu/indicator/colonisation-time-factor
+                      x-jsonld-id: https://w3id.org/indicators/marine/obs/colonisation-time-factor
                       x-jsonld-type: http://qudt.org/schema/qudt/DimensionlessQuantity
                 x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#lookup
                 x-jsonld-container: '@list'
@@ -473,6 +473,7 @@ x-jsonld-extra-terms:
   created: http://purl.org/dc/terms/created
   updated: http://purl.org/dc/terms/modified
   language: http://purl.org/dc/terms/language
+  code: http://purl.org/dc/terms/identifier
   license: http://purl.org/dc/terms/license
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
@@ -496,7 +497,7 @@ x-jsonld-prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   seadots: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#
   qudt: http://qudt.org/schema/qudt/
-  indo: https://id3.seadots.eu/indicator/
+  indo: https://w3id.org/indicators/marine/obs/
   prov: http://www.w3.org/ns/prov#
 
 ```
@@ -763,6 +764,7 @@ Links to the schema:
     },
     "href": "@id",
     "rel": "geojson:rel",
+    "code": "dct:identifier",
     "concepts": {
       "@id": "skos:Concept",
       "@container": "@set"
@@ -789,7 +791,7 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#",
     "qudt": "http://qudt.org/schema/qudt/",
-    "indo": "https://id3.seadots.eu/indicator/",
+    "indo": "https://w3id.org/indicators/marine/obs/",
     "@version": 1.1
   }
 }

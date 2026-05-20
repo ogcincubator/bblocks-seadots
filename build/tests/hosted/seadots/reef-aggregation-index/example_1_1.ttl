@@ -2,7 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://id3.seadots.eu/indicator/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -14,14 +14,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Reef Aggregation Index bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
-        [ rdfs:label "OIM Variables profile" ;
+    rdfs:seeAlso [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
+        [ rdfs:label "Reef Aggregation Index bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
         [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
@@ -55,14 +55,14 @@
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indo:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "North Sea, 0-30 m" ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indo:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ] ] ;
+                                    indo:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ] ] ;
                     seadots:role "coefficient (per taxon)" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;

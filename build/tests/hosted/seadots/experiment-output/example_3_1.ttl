@@ -1,8 +1,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/hosted/seadots/experiment#> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/experiment#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -14,7 +14,7 @@
 <https://example.org/norwegian-ses/experiment-output/prov-record> a geojson:Feature ;
     rdfs:seeAlso [ rdfs:label "Experiment-output bblock" ;
             dcterms:format "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.experiment-output> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
@@ -30,7 +30,7 @@
                     dcterms:format "application/ld+json" ;
                     dcterms:title "PROV-O provenance (JSON-LD)" ;
                     skos:exactMatch prov:Entity ;
-                    ns1:experiment <https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1> ;
+                    ns2:experiment <https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1> ;
                     seadots:role "provenance" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;

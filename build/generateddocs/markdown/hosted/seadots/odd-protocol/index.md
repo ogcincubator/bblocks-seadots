@@ -466,30 +466,30 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-03-31" ;
     dcterms:temporal [ ] ;
     dcterms:title "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism" ;
-    rdfs:seeAlso [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
-        [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
-        [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ],
+    rdfs:seeAlso [ rdfs:label "DOI" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
         [ rdfs:label "Supplement S2 — Summary ODD templates" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
-        [ rdfs:label "DOI" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
+        [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
+        [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ],
         [ rdfs:label "JASSS 23(2)7 — journal article" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7.html> ] ;
+            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
+        [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -543,10 +543,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             rec:scheme "doi" ],
         [ rec:id "1460-7425" ;
             rec:scheme "issn" ] ;
-    rec:themes [ thns:concepts [ thns:id "protocol"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "simulation"^^xsd:string ],
                 [ thns:id "agent-based-model"^^xsd:string ],
                 [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "simulation"^^xsd:string ],
+                [ thns:id "protocol"^^xsd:string ],
                 [ thns:id "model-documentation"^^xsd:string ] ;
             thns:scheme "https://vocabularies.jasss.org/themes" ] .
 
@@ -2005,14 +2005,18 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-01-01" ;
     dcterms:temporal [ ] ;
     dcterms:title "OSMOSE — Object-oriented Simulator of Marine Ecosystems: ODD Protocol Description" ;
-    rdfs:seeAlso [ rdfs:label "OSMOSE source code (GitHub)" ;
+    rdfs:seeAlso [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.1016/j.ecolmodel.2009.07.031> ],
+        [ rdfs:label "OSMOSE source code (GitHub)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://github.com/osmose-model/osmose> ],
-        [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
+        [ rdfs:label "OSMOSE model website" ;
             dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://osmose-model.org/> ],
         [ rdfs:label "OSMOSE ODD Protocol description document" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -2021,14 +2025,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
-        [ rdfs:label "OSMOSE model website" ;
+        [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
             dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://osmose-model.org/> ],
-        [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.1016/j.ecolmodel.2009.07.031> ] ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -2362,22 +2362,22 @@ SSR-based (Beverton-Holt):
         [ dcterms:title "Configuration files" ;
             rec:mediaType "text/csv" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:scopedIdentifier [ rec:id "https://osmose-model.org/" ;
-            rec:scheme "url" ],
+    rec:scopedIdentifier [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
+            rec:scheme "doi" ],
         [ rec:id "https://github.com/osmose-model/osmose" ;
             rec:scheme "github" ],
-        [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
-            rec:scheme "doi" ] ;
-    rec:themes [ thns:concepts [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "size-based-predation"^^xsd:string ],
-                [ thns:id "multispecies-model"^^xsd:string ],
-                [ thns:id "fish-community"^^xsd:string ],
-                [ thns:id "end-to-end-model"^^xsd:string ],
-                [ thns:id "marine-ecosystem"^^xsd:string ] ;
-            thns:scheme "https://vocabularies.osmose-model.org/" ],
-        [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ],
+        [ rec:id "https://osmose-model.org/" ;
+            rec:scheme "url" ] ;
+    rec:themes [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ],
                 [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ] ;
-            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ] .
+            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ],
+        [ thns:concepts [ thns:id "end-to-end-model"^^xsd:string ],
+                [ thns:id "fish-community"^^xsd:string ],
+                [ thns:id "marine-ecosystem"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
+                [ thns:id "multispecies-model"^^xsd:string ],
+                [ thns:id "size-based-predation"^^xsd:string ] ;
+            thns:scheme "https://vocabularies.osmose-model.org/" ] .
 
 
 ```
@@ -2455,14 +2455,14 @@ SSR-based (Beverton-Holt):
               "unit": "1",
               "range": "[0, +inf)",
               "description": "Per-taxon reef aggregation index (dimensionless).",
-              "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index"
+              "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index"
             },
             {
               "name": "D_pre",
               "type": "real",
               "unit": "kg m-2",
               "description": "Baseline benthic biomass density before installation.",
-              "vocabularyTerm": "https://id3.seadots.eu/indicator/baseline-benthic-biomass-density"
+              "vocabularyTerm": "https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density"
             }
           ],
           "scales": {
@@ -2493,7 +2493,7 @@ SSR-based (Beverton-Holt):
         },
         {
           "name": "Per-taxon reef aggregation index (dimensionless)",
-          "description": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+          "description": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
           "source": "",
           "format": "application/ld+json",
           "vocabularyTerm": "example.com/reef aggregation index"
@@ -2668,14 +2668,14 @@ SSR-based (Beverton-Holt):
               "unit": "1",
               "range": "[0, +inf)",
               "description": "Per-taxon reef aggregation index (dimensionless).",
-              "vocabularyTerm": "https://id3.seadots.eu/indicator/reef-aggregation-index"
+              "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index"
             },
             {
               "name": "D_pre",
               "type": "real",
               "unit": "kg m-2",
               "description": "Baseline benthic biomass density before installation.",
-              "vocabularyTerm": "https://id3.seadots.eu/indicator/baseline-benthic-biomass-density"
+              "vocabularyTerm": "https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density"
             }
           ],
           "scales": {
@@ -2704,7 +2704,7 @@ SSR-based (Beverton-Holt):
         },
         {
           "name": "Per-taxon reef aggregation index (dimensionless)",
-          "description": "https://id3.seadots.eu/indicator/reef-aggregation-index",
+          "description": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
           "source": "",
           "format": "application/ld+json",
           "vocabularyTerm": "example.com/reef aggregation index"
@@ -2823,18 +2823,18 @@ SSR-based (Beverton-Holt):
                                     odd:variableType "string" ] [ dcterms:description "Per-taxon reef aggregation index (dimensionless)." ;
                                     dcterms:title "AF_i" ;
                                     qudt:unit "1" ;
-                                    skos:exactMatch <https://id3.seadots.eu/indicator/reef-aggregation-index> ;
+                                    skos:exactMatch <https://w3id.org/indicators/marine/obs/reef-aggregation-index> ;
                                     odd:range "[0, +inf)" ;
                                     odd:variableType "real" ] [ dcterms:description "Baseline benthic biomass density before installation." ;
                                     dcterms:title "D_pre" ;
                                     qudt:unit "kg m-2" ;
-                                    skos:exactMatch <https://id3.seadots.eu/indicator/baseline-benthic-biomass-density> ;
+                                    skos:exactMatch <https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density> ;
                                     odd:variableType "real" ] ) ] ) ;
             odd:inputData ( [ dcterms:description "Canonical equation-property-relationship instance carrying the full symbol table (A_{sub}, D_{pre,i}, AF_i, C_t) with per-symbol kind, dimension kind, indexing and bindings to concrete Rainbow IRIs." ;
                         dcterms:format "application/ld+json" ;
                         dcterms:title "Reef-biomass equation record" ;
                         skos:exactMatch <https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship> ;
-                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] [ dcterms:description "https://id3.seadots.eu/indicator/reef-aggregation-index" ;
+                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] [ dcterms:description "https://w3id.org/indicators/marine/obs/reef-aggregation-index" ;
                         dcterms:format "application/ld+json" ;
                         dcterms:title "Per-taxon reef aggregation index (dimensionless)" ;
                         skos:exactMatch <file:///github/workspace/> ;
