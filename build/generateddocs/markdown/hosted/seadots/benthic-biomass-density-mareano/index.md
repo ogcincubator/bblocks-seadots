@@ -310,24 +310,24 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "OBIS endpoint shape verified; aggregation pipeline from per-occurrence records to kg/m² density NOT verified to match what MAREANO publishes internally." ] ;
                             indo:baseline-benthic-biomass-density "0.81"^^qudt:QuantityValue ;
-                            seadots:perTaxon [ dwc:habitat "rocky-subtidal" ;
-                                    dwc:sampleSizeValue 178 ;
-                                    dwc:scientificName "Mytilus edulis" ;
-                                    dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density-mareano "0.42"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "0-30" ],
+                            seadots:perTaxon [ dwc:habitat "mixed" ;
+                                    dwc:sampleSizeValue 122 ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "0-100" ],
                                 [ dwc:habitat "soft-sediment" ;
                                     dwc:sampleSizeValue 64 ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indo:benthic-biomass-density-mareano "0.11"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "30-100" ],
-                                [ dwc:habitat "mixed" ;
-                                    dwc:sampleSizeValue 122 ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indo:benthic-biomass-density-mareano "0.28"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "0-100" ] ] ;
+                                [ dwc:habitat "rocky-subtidal" ;
+                                    dwc:sampleSizeValue 178 ;
+                                    dwc:scientificName "Mytilus edulis" ;
+                                    dwc:taxonID 140480 ;
+                                    indo:benthic-biomass-density-mareano "0.42"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "0-30" ] ] ;
                     seadots:role "primary baseline" ] ;
             rec:format [ dcterms:format "application/x-netcdf" ] ;
             rec:language [ rec:languageCode "en" ] ;

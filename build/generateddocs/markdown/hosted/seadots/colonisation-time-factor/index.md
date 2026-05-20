@@ -238,13 +238,13 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.colonisation-time-factor> ],
-        [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
+        [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
             dcterms:description "Default sigmoid colonisation curve saturating at t = 24 months. Provides the scalar C_t coefficient for the reef-biomass equation." ;

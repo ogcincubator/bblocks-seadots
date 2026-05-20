@@ -194,12 +194,12 @@
   "name": "Building Blocks - Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-20T07:51:14.207335",
+  "modified": "2026-05-20T08:10:41.616920",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"a2caeca784d77c6a3f0b1c8c95106b92d82286f0",
-      "shortCommitId": "\"a2caec",
-      "date": "2026-05-20T07:42:30+00:00\""
+      "commitId": "\"1c38e230d79a22d5b242ea63ec3c6d6a95af173d",
+      "shortCommitId": "\"1c38e2",
+      "date": "2026-05-20T08:08:02+00:00\""
     }
   },
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
@@ -379,8 +379,8 @@
       "version": "1.0",
       "dateOfLastChange": "2026-04-17",
       "dependsOn": [
-        "bblocks://ogc.ogc-utils.iri-or-curie",
-        "bblocks://ogc.hosted.seadots.ontology"
+        "bblocks://ogc.hosted.seadots.ontology",
+        "bblocks://ogc.ogc-utils.iri-or-curie"
       ],
       "tags": [
         "seadots",
@@ -1660,9 +1660,9 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records-prov",
+        "bblocks://ogc.osc.ontology.openscience",
         "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.osc.ontology.openscience"
+        "bblocks://ogc.geo.geodcat.geodcat-records-prov"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
@@ -1787,14 +1787,14 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.seadots.area-of-interest",
-        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
         "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.geo.geodcat.geodcat-records",
         "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
         "bblocks://ogc.hosted.seadots.experiment-output",
-        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr"
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld",
@@ -1831,6 +1831,33 @@
         },
         {
           "prof:hasArtifact": [
+            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
             "http://qudt.org/2.1/schema/shacl/qudt"
           ],
           "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.qudt",
@@ -1861,33 +1888,6 @@
             "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.common",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"

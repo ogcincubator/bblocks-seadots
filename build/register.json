@@ -2,12 +2,12 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-20T07:51:14.207335",
+  "modified": "2026-05-20T08:10:41.616920",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"a2caeca784d77c6a3f0b1c8c95106b92d82286f0",
-      "shortCommitId": "\"a2caec",
-      "date": "2026-05-20T07:42:30+00:00\""
+      "commitId": "\"1c38e230d79a22d5b242ea63ec3c6d6a95af173d",
+      "shortCommitId": "\"1c38e2",
+      "date": "2026-05-20T08:08:02+00:00\""
     }
   },
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
@@ -112,8 +112,8 @@
       "version": "1.0",
       "dateOfLastChange": "2026-04-17",
       "dependsOn": [
-        "ogc.ogc-utils.iri-or-curie",
-        "ogc.hosted.seadots.ontology"
+        "ogc.hosted.seadots.ontology",
+        "ogc.ogc-utils.iri-or-curie"
       ],
       "tags": [
         "seadots",
@@ -883,9 +883,9 @@
         }
       ],
       "dependsOn": [
-        "ogc.geo.geodcat.geodcat-records-prov",
+        "ogc.osc.ontology.openscience",
         "ogc.geo.geodcat.geodcat-records",
-        "ogc.osc.ontology.openscience"
+        "ogc.geo.geodcat.geodcat-records-prov"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
       "shaclRules": [],
@@ -968,14 +968,14 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.colonisation-time-factor",
-        "ogc.geo.geodcat.geodcat-records",
-        "ogc.hosted.seadots.area-of-interest",
-        "ogc.hosted.seadots.floating-wind-infrastructure",
         "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "ogc.geo.geodcat.geodcat-records",
         "ogc.hosted.seadots.reef-aggregation-index",
+        "ogc.hosted.seadots.benthic-biomass-density-imr",
         "ogc.hosted.seadots.experiment-output",
-        "ogc.hosted.seadots.benthic-biomass-density-imr"
+        "ogc.hosted.seadots.floating-wind-infrastructure",
+        "ogc.hosted.seadots.area-of-interest",
+        "ogc.hosted.seadots.colonisation-time-factor"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld",
       "shaclRules": [],
@@ -993,6 +993,15 @@
         "ogc.api.records.v1.schemas.linkTemplate": [
           "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ],
+        "ogc.hosted.iliad.api.features.oim-obs": [
+          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
+        ],
+        "ogc.sosa.properties.observation": [
+          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
+        ],
+        "ogc.geo.features.featureCollection": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+        ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
         ],
@@ -1004,15 +1013,6 @@
         ],
         "ogc.skos.common": [
           "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-        ],
-        "ogc.hosted.iliad.api.features.oim-obs": [
-          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-        ],
-        "ogc.sosa.properties.observation": [
-          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-        ],
-        "ogc.geo.features.featureCollection": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ]
       },
       "schema": {
