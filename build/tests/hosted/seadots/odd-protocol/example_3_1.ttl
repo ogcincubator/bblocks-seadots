@@ -20,14 +20,14 @@
     dcterms:modified "2026-05-13" ;
     dcterms:temporal [ ] ;
     dcterms:title "Utsira reef-biomass demonstrator — one-submodel ODD" ;
-    rdfs:seeAlso [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ],
-        [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
+    rdfs:seeAlso [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
             dcterms:format "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ] ;
+            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ],
+        [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ] ;
     dcat:contactPoint [ ] ;
     dcat:keyword "ODD",
         "SeaDOTs",
@@ -87,8 +87,8 @@
                         odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indo:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indo:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indo:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
     rec:format [ rec:mediaType "application/json" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:themes [ thns:concepts [ thns:id "reef-effect"^^xsd:string ],
-                [ thns:id "benthic-biomass"^^xsd:string ],
-                [ thns:id "impact-assessment"^^xsd:string ] ;
+    rec:themes [ thns:concepts [ thns:id "impact-assessment"^^xsd:string ],
+                [ thns:id "reef-effect"^^xsd:string ],
+                [ thns:id "benthic-biomass"^^xsd:string ] ;
             thns:scheme "https://id3.seadots.eu/themes" ] .
 

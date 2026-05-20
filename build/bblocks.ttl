@@ -2,8 +2,8 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <http://www.w3.org/ns/oa#> .
+@prefix ns1: <http://www.w3.org/ns/oa#> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -22,14 +22,14 @@
     rdfs:label "Equation property relationship" ;
     dct:abstract "Specialised property relationship profile for declaring that a source property is an explicit term in the canonical equation of a derived target property."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-12T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/equation-property-relationship/index.json> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.equation-property-relationship> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/equation-property-relationship/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.equation-property-relationship> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/equation-property-relationship/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Equation property relationship" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -43,18 +43,18 @@
             rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld> ;
-            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.yaml> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/schema.json> ;
-            prof:hasRole role:schema ] ;
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld> ;
+            prof:hasRole role:mapping ] ;
     bblocks:dependsOn <bblocks://ogc.hosted.seadots.property-relationship>,
         <bblocks://ogc.ogc-utils.iri-or-curie> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/equation-property-relationship/context.jsonld> ;
@@ -75,7 +75,7 @@
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/experiment/index.json> ] ;
     dct:hasVersion "0.2" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://ogcincubator.github.io/geodcat-ogcapi-records/>,
         <https://w3id.org/ogc/hosted/seadots/equation-property-relationship>,
         <https://w3id.org/ogc/hosted/seadots/odd-protocol> ;
@@ -86,20 +86,27 @@
         "experiment",
         "open-science",
         "reproducibility" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
-            prof:hasArtifact <http://qudt.org/2.1/schema/shacl/qudt> ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
-            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.skos.concept> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
@@ -113,36 +120,29 @@
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.hosted.iliad.api.features.oim-obs> ;
             prof:hasArtifact <https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
+            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
+            prof:hasArtifact <http://qudt.org/2.1/schema/shacl/qudt> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.sosa> ;
             prof:hasArtifact <https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.skos.concept> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
         <bblocks://ogc.hosted.seadots.area-of-interest>,
         <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr>,
@@ -156,6 +156,65 @@
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
 
+<bblocks://ogc.hosted.seadots.odd-protocol> a skos:Concept,
+        dcat:Dataset,
+        bblocks:BBlock,
+        bblocks:Schema ;
+    rdfs:label "ODD Protocol Description Record" ;
+    dct:abstract "OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
+    dct:created "2026-04-29T00:00:00+00:00"^^xsd:dateTime ;
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.odd-protocol> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md> ] ;
+    dct:hasVersion "0.1" ;
+    dct:modified "2026-05-20"^^xsd:date ;
+    dct:source <https://doi.org/10.18564/jasss.4259>,
+        <https://ogcincubator.github.io/bblocks-openscience/>,
+        <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
+    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
+    skos:prefLabel "ODD Protocol Description Record" ;
+    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
+    dcat:keyword "ABM",
+        "IBM",
+        "ODD",
+        "agent-based-model",
+        "model-documentation",
+        "open-science",
+        "records",
+        "simulation" ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml> ;
+            prof:hasRole role:schema ] ;
+    bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
+        <bblocks://ogc.geo.geodcat.geodcat-records-prov>,
+        <bblocks://ogc.osc.ontology.openscience> ;
+    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld> ;
+    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
+    bblocks:status <http://www.opengis.net/def/status/under-development> ;
+    bblocks:validationPassed true .
+
 <bblocks://ogc.hosted.seadots.oim-variable-observation> a skos:Concept,
         dcat:Dataset,
         bblocks:BBlock,
@@ -163,14 +222,14 @@
     rdfs:label "OIM Variable Observation" ;
     dct:abstract "Schema profile for OIM/SOSA observations of SEADOTS variables and indicators, including numeric values mapped to observed-property IRIs from the OIM Variables building block."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-18T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variable-observation/index.json> ],
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variable-observation/index.md> ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.oim-variable-observation> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variable-observation/index.md> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variable-observation/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <bblocks://ogc.hosted.iliad.api.features.oim-variables>,
         <https://github.com/ILIAD-ocean-twin/OIM> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -184,27 +243,23 @@
         "variables" ;
     prof:hasResource [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
-            prof:hasArtifact <http://qudt.org/2.1/schema/shacl/qudt> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.hosted.iliad.api.features.oim-variables> ;
             prof:hasArtifact <https://ogcincubator.github.io/iliad-apis-features/_sources/oim-variables/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
+            prof:hasArtifact <http://qudt.org/2.1/schema/shacl/qudt> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.sosa> ;
             prof:hasArtifact <https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.skos.concept> ;
@@ -215,6 +270,10 @@
             rdfs:seeAlso <bblocks://ogc.skos.common> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld> ;
+            prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/schema.yaml> ;
@@ -225,144 +284,6 @@
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
 
-<bblocks://ogc.hosted.seadots.poseidon-model> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Fisheries Model ODD Record" ;
-    dct:abstract "Schema profile for describing the implemented POSEIDON coupled human-environment fisheries model using the ODD Protocol, with explicit model-input building blocks, STAC assets, and Open Science workflow, experiment, product, and provenance links."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-model/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-model> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-model/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <bblocks://ogc.hosted.seadots.odd-protocol>,
-        <https://doi.org/10.1007/s11625-018-0579-9>,
-        <https://github.com/poseidon-fisheries/POSEIDON>,
-        <https://ogcincubator.github.io/bblocks-openscience/>,
-        <https://ogcincubator.github.io/bblocks-stac/> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Fisheries Model ODD Record" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "ODD",
-        "POSEIDON",
-        "STAC",
-        "agent-based-model",
-        "coupled-human-environment-system",
-        "fisheries",
-        "open-science",
-        "policy-optimization" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.osc.geodcat-stac-earthcode.experiments> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-openscience/_sources/geodcat-stac-earthcode/experiments/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-model/schema.json> ;
-            prof:hasRole role:schema ] ;
-    bblocks:dependsOn <bblocks://ogc.contrib.stac.collection>,
-        <bblocks://ogc.contrib.stac.item>,
-        <bblocks://ogc.contrib.stac.item-prov>,
-        <bblocks://ogc.geo.common.data_types.geojson>,
-        <bblocks://ogc.hosted.seadots.odd-protocol>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-biology>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-fleet>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-map>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-observation-output>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-optimization>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-port-market>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-run-control>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-scenario>,
-        <bblocks://ogc.osc.application-package>,
-        <bblocks://ogc.osc.geodcat-stac-earthcode.experiments>,
-        <bblocks://ogc.osc.geodcat-stac-earthcode.products>,
-        <bblocks://ogc.osc.geodcat-stac-earthcode.workflows> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-model/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-output> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Output (EDITO target)" ;
-    dct:abstract "Target schema for POSEIDON run outputs published in EDITO-compliant form: tabular time-series and agent logs as GeoParquet, gridded fields as GeoZarr, indexed by STAC. Receives the products selected by poseidon-input-observation-output."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-output/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-output> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-output/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://edito-infra.eu/news/what-is-a-data-lake/>,
-        <https://geoparquet.org/releases/v1.1.0/>,
-        <https://github.com/poseidon-fisheries/POSEIDON>,
-        <https://www.ogc.org/announcement/ogc-forms-new-geozarr-standards-working-group-to-establish-a-zarr-encoding-for-geospatial-data/> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Output (EDITO target)" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "EDITO",
-        "GeoParquet",
-        "GeoZarr",
-        "POSEIDON",
-        "STAC",
-        "output" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-output/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-    bblocks:dependsOn <bblocks://ogc.contrib.stac.collection>,
-        <bblocks://ogc.contrib.stac.item> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-output/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
 <bblocks://ogc.hosted.seadots.properties> a skos:Concept,
         dcat:Dataset,
         bblocks:BBlock,
@@ -370,14 +291,14 @@
     rdfs:label "Seadots Properties" ;
     dct:abstract "Defines seadots properties"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md> ],
-        [ dct:format "application/json" ;
+    dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/properties/index.json> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md> ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.properties> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Seadots Properties" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
@@ -390,48 +311,28 @@
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
 
-<https://doi.org/10.1007/s11625-018-0579-9> rdfs:label "A computational approach to managing coupled human-environmental systems: the POSEIDON model of ocean fisheries" .
-
 <https://doi.org/10.18564/jasss.4259> rdfs:label "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update" .
-
-<https://edito-infra.eu/news/what-is-a-data-lake/> rdfs:label "EDITO-Infra Data Lake" .
-
-<https://geoparquet.org/releases/v1.1.0/> rdfs:label "GeoParquet 1.1 specification" .
 
 <https://github.com/ILIAD-ocean-twin/OIM> rdfs:label "OIM master repository" .
 
-<https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/BiologyInitializer.yaml> rdfs:label "POSEIDON BiologyInitializer YAML samples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/MapInitializer.yaml> rdfs:label "POSEIDON MapInitializer YAML samples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/PortInitializer.yaml> rdfs:label "POSEIDON PortInitializer YAML samples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/eva> rdfs:label "POSEIDON EVA optimization examples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples> rdfs:label "POSEIDON YAML samples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples/components> rdfs:label "POSEIDON YAML component samples" .
-
-<https://github.com/poseidon-fisheries/POSEIDON/tree/main/regulations> rdfs:label "POSEIDON regulations module" .
-
 <https://mareano.no/> rdfs:label "MAREANO programme" .
+
+<https://ogcincubator.github.io/bblocks-openscience/> rdfs:label "Open Science Building Blocks" .
 
 <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-    prov:wasAttributedTo _:N3cb0892c042b4dfe81bf9e43b4d1d4d2 ;
+    prov:wasAttributedTo _:Naf7dc519d1d74a728e2bf2f25b53d655 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-05-19T23:14:13.370596"^^xsd:dateTime ;
-            prov:startedAtTime "2026-05-19T23:14:13.167571"^^xsd:dateTime ;
+            prov:endedAtTime "2026-05-20T07:25:44.098556"^^xsd:dateTime ;
+            prov:startedAtTime "2026-05-20T07:25:43.884362"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
-                [ a prov:Entity ;
                     dct:format "application/json" ;
-                    dct:hasVersion "git:7430486b9df566202b7224acb90f9908b80b2edf" ;
-                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ] ;
-            prov:wasAssociatedWith _:N3cb0892c042b4dfe81bf9e43b4d1d4d2 ] .
-
-<https://ogcincubator.github.io/bblocks-stac/> rdfs:label "OGC Building Blocks for STAC" .
+                    dct:hasVersion "git:6a989f8f40d2929f7b0dafd17ae26634a9d9bdc4" ;
+                    rdfs:seeAlso <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ],
+                [ a prov:Entity ;
+                    dct:format "application/yaml" ;
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
+            prov:wasAssociatedWith _:Naf7dc519d1d74a728e2bf2f25b53d655 ] .
 
 <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> rdfs:label "NVE strategisk konsekvensutredning av vindkraft til havs" .
 
@@ -441,8 +342,6 @@
 
 <https://www.hi.no/> rdfs:label "Institute of Marine Research (IMR)" .
 
-<https://www.ogc.org/announcement/ogc-forms-new-geozarr-standards-working-group-to-establish-a-zarr-encoding-for-geospatial-data/> rdfs:label "OGC GeoZarr SWG" .
-
 <bblocks://ogc.hosted.seadots.area-of-interest> a skos:Concept,
         dcat:Dataset,
         bblocks:BBlock,
@@ -450,14 +349,14 @@
     rdfs:label "Marine Area of Interest" ;
     dct:abstract "OGC Feature profile for a polygon delimiting a marine area of interest (AOI) used by experiments, monitoring programmes, or impact assessments. Carries the bbox, centroid, area, and CRS as a self-contained inline `data` block with mandatory provenance. Geometry travels in the top-level GeoJSON `geometry` field."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.area-of-interest> ],
-        [ dct:format "application/json" ;
+    dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/area-of-interest/index.json> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.area-of-interest> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/area-of-interest/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Marine Area of Interest" ;
@@ -476,10 +375,23 @@
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.sosa> ;
             prof:hasArtifact <https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld> ;
             prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.yaml> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
@@ -490,19 +402,6 @@
             rdfs:seeAlso <bblocks://ogc.skos.concept> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.yaml> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
@@ -522,14 +421,14 @@
     rdfs:label "IMR Benthic Biomass Density Observation" ;
     dct:abstract "OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) sourced from the Institute of Marine Research (IMR / Havforskningsinstituttet) regional baseline series. Acts as the fallback `D_{pre,i}` binding when MAREANO has no taxon coverage at index i. Carries per-taxon density with explicit `uncertainty_kg_m2`, ICES area annotation, and mandatory provenance."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-density-imr> ],
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-density-imr/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-imr/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-density-imr/index.json> ] ;
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-density-imr> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://www.hi.no/> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "IMR Benthic Biomass Density Observation" ;
@@ -541,14 +440,10 @@
         "density",
         "fallback",
         "observation" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
+    prof:hasResource [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.hosted.iliad.api.features.oim-obs> ;
-            prof:hasArtifact <https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
@@ -557,26 +452,30 @@
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.hosted.iliad.api.features.oim-obs> ;
+            prof:hasArtifact <https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
+            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/schema.yaml> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
-            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
             prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
         <bblocks://ogc.hosted.iliad.api.features.oim-obs> ;
@@ -592,14 +491,14 @@
     rdfs:label "MAREANO Benthic Biomass Density Observation" ;
     dct:abstract "OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) derived from the MAREANO programme. Each record is a SOSA Observation of `benthic-biomass-density` over a polygon footprint and a sampling period, with the per-taxon values carried inline by `data.perTaxon[]` and mandatory provenance describing whether the values are retrieved or illustrative."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-mareano/index.md> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-density-mareano> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-density-mareano/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-density-mareano> ] ;
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-mareano/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://mareano.no/> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "MAREANO Benthic Biomass Density Observation" ;
@@ -611,10 +510,30 @@
         "biomass",
         "density",
         "observation" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+    prof:hasResource [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/context.jsonld> ;
             prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
+            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/schema.json> ;
@@ -623,26 +542,6 @@
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/schema.yaml> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.sosa.properties.observation> ;
-            prof:hasArtifact <https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.hosted.iliad.api.features.oim-obs> ;
@@ -662,14 +561,14 @@
     rdfs:label "Colonisation Time Factor (C_t)" ;
     dct:abstract "OGC Feature + OIM Variable profile for the dimensionless time factor C_t in the reef-biomass equation. Encodes the colonisation curve as a closed-form expression (typically a logistic sigmoid) with its parameters plus an evaluated lookup table at discrete time points. Mandatory provenance flags whether the curve parameters are calibrated or illustrative."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.colonisation-time-factor> ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/colonisation-time-factor/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.colonisation-time-factor> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/colonisation-time-factor/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://doi.org/10.5670/oceanog.2020.405> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Colonisation Time Factor (C_t)" ;
@@ -680,7 +579,11 @@
         "reef-effect",
         "sigmoid",
         "time-factor" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/colonisation-time-factor/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
@@ -697,11 +600,7 @@
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/colonisation-time-factor/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/colonisation-time-factor/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+            prof:hasRole role:schema ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/colonisation-time-factor/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
@@ -715,14 +614,14 @@
     rdfs:label "Computational Experiment Output" ;
     dct:abstract "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the URI of the experiment that produced it. Carries inline result values with mandatory provenance (computed / retrieved / illustrative / mixed). Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-18T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.experiment-output> ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/experiment-output/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.experiment-output> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/experiment-output/index.json> ] ;
     dct:hasVersion "0.2" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Computational Experiment Output" ;
@@ -736,24 +635,24 @@
             dct:format "application/json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/schema.json> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/context.jsonld> ;
+            prof:hasRole role:mapping ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/schema.yaml> ;
-            prof:hasRole role:schema ] ;
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/experiment-output/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
@@ -767,14 +666,14 @@
     rdfs:label "Floating-Wind Submerged Infrastructure" ;
     dct:abstract "OGC Feature profile describing per-unit submerged geometry (wetted hull + mooring + anchor surfaces) of a floating-wind farm layout. Used as the feature-of-interest geometry input to reef-effect biomass equations (drives the A_sub aggregate). Inline `data` block carries per-unit areas, count, design label, aggregate submerged area, and sample unit coordinates; geometry travels in the top-level GeoJSON Polygon."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.floating-wind-infrastructure> ],
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/floating-wind-infrastructure/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/floating-wind-infrastructure/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/floating-wind-infrastructure/index.json> ] ;
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.floating-wind-infrastructure> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Floating-Wind Submerged Infrastructure" ;
@@ -784,21 +683,7 @@
         "infrastructure",
         "reef-effect",
         "submerged-area" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.skos.common> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/schema.yaml> ;
             prof:hasRole role:schema ],
@@ -809,85 +694,40 @@
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.skos.common> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.qudt> ;
             prof:hasArtifact <http://qudt.org/2.1/schema/shacl/qudt> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/context.jsonld> ;
+            prof:hasRole role:mapping ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.model.cross-domain.sosa> ;
             prof:hasArtifact <https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
         <bblocks://ogc.hosted.iliad.api.features.oim> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/floating-wind-infrastructure/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-optimization> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Optimization Input" ;
-    dct:abstract "Schema for POSEIDON optimization-problem inputs: base scenario, tunable parameters, parameter adaptors, objective or fitness function, run budget, seeds, and policy outputs."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-optimization/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-optimization/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-optimization> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/eva> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Optimization Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "Bayesian optimization",
-        "POSEIDON",
-        "input",
-        "optimization",
-        "policy" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.osc.geodcat-stac-earthcode.experiments> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-openscience/_sources/geodcat-stac-earthcode/experiments/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-optimization/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:dependsOn <bblocks://ogc.hosted.seadots.poseidon-input-run-control>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-scenario>,
-        <bblocks://ogc.osc.geodcat-stac-earthcode.experiments> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-optimization/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
@@ -899,36 +739,36 @@
     rdfs:label "Property relationship" ;
     dct:abstract "Provides a common model for defining property relationships bound to the ontology"^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/property-relationship/index.json> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.property-relationship> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/property-relationship/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.property-relationship> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/property-relationship/index.json> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Property relationship" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
     dcat:keyword "property-relationships",
         "seadots" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/schema.json> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/schema.yaml> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/schema.json> ;
-            prof:hasRole role:schema ] ;
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.hosted.seadots.ontology>,
         <bblocks://ogc.ogc-utils.iri-or-curie> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/property-relationship/context.jsonld> ;
@@ -942,14 +782,14 @@
     rdfs:label "Reef Aggregation Index (AF_i)" ;
     dct:abstract "OGC Feature profile carrying per-taxon dimensionless reef aggregation index AF_i used by the reef-biomass equation. Treated as an OIM variable / indicator binding — one record per evidence basis (e.g. Degraer 2020 prior). Per-taxon rows carry scientificName, AphiaID, AF_i value, validityScope, and evidence URI."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2026-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-aggregation-index/index.json> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-aggregation-index> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-aggregation-index/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-aggregation-index> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-aggregation-index/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     dct:source <https://doi.org/10.5670/oceanog.2020.405> ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Reef Aggregation Index (AF_i)" ;
@@ -959,28 +799,28 @@
         "aggregation-index",
         "indicator",
         "reef-effect" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/schema.json> ;
-            prof:hasRole role:schema ],
+    prof:hasResource [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/context.jsonld> ;
+            prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/schema.yaml> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/schema.json> ;
+            prof:hasRole role:schema ] ;
     bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records> ;
     bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/reef-aggregation-index/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
@@ -989,465 +829,7 @@
 
 <https://doi.org/10.5670/oceanog.2020.405> rdfs:label "Degraer et al. 2020 — reef-effect synthesis" .
 
-<https://ogcincubator.github.io/bblocks-openscience/> rdfs:label "Open Science Building Blocks",
-        "Open Science Workflows Building Blocks" .
-
 <bblocks://ogc.hosted.iliad.api.features.oim-variables> rdfs:label "SEADOTS OIM Variables" .
-
-<bblocks://ogc.hosted.seadots.odd-protocol> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "ODD Protocol Description Record" ;
-    dct:abstract "OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-04-29T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.odd-protocol> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://doi.org/10.18564/jasss.4259>,
-        <https://ogcincubator.github.io/bblocks-openscience/>,
-        <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "ODD Protocol Description Record" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "ABM",
-        "IBM",
-        "ODD",
-        "agent-based-model",
-        "model-documentation",
-        "open-science",
-        "records",
-        "simulation" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-    bblocks:dependsOn <bblocks://ogc.geo.geodcat.geodcat-records>,
-        <bblocks://ogc.geo.geodcat.geodcat-records-prov>,
-        <bblocks://ogc.osc.ontology.openscience> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-biology> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Biology Input" ;
-    dct:abstract "Schema for biological inputs consumed by POSEIDON, including biomass, abundance, recruitment, growth, mortality, diffusion, carrying capacity, OSMOSE configuration, and species-specific parameter files."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-biology> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-biology/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-biology/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/BiologyInitializer.yaml> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Biology Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "OSMOSE",
-        "POSEIDON",
-        "abundance",
-        "biology",
-        "biomass",
-        "input" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-biology/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:dependsOn <bblocks://ogc.contrib.stac.item> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-biology/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-fleet> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Fleet and Fisher Input" ;
-    dct:abstract "Schema for fleet, fisher, vessel, gear, behavioural strategy, social-network, logbook, and adaptation inputs consumed by POSEIDON."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-fleet/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-fleet> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-fleet/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples/components> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Fleet and Fisher Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "behaviour",
-        "fisher",
-        "fleet",
-        "gear",
-        "input" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-fleet/schema.json> ;
-            prof:hasRole role:schema ] ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-fleet/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-map> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Map Input" ;
-    dct:abstract "Schema for spatial map inputs consumed by POSEIDON, including generated grids, file-backed maps, bounds, cell size, bathymetry/depth values, coastline/land flags, and STAC references."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-map> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-map/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-map/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/MapInitializer.yaml> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Map Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "STAC",
-        "bathymetry",
-        "input",
-        "map" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-map/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-    bblocks:dependsOn <bblocks://ogc.contrib.stac.collection>,
-        <bblocks://ogc.contrib.stac.item> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-map/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-port-market> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Port and Market Input" ;
-    dct:abstract "Schema for port locations, market, price, fuel/gas-price, and landing infrastructure inputs consumed by POSEIDON."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-port-market> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-port-market/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-port-market/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/blob/main/POSEIDON/inputs/YAML%20Samples/components/PortInitializer.yaml> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Port and Market Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "fuel",
-        "input",
-        "market",
-        "port",
-        "price" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-port-market/schema.json> ;
-            prof:hasRole role:schema ] ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-port-market/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-run-control> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Run Control Input" ;
-    dct:abstract "Schema for the top-level run controls consumed by the POSEIDON Java implementation: scenario file, optional policy or shock files, seed, run length, replicate count, output directory, and output-selection input."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-run-control/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-run-control/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-run-control> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Run Control Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "input",
-        "random-seed",
-        "replicate",
-        "run-control" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-run-control/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-    bblocks:dependsOn <bblocks://ogc.hosted.seadots.poseidon-input-observation-output>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-scenario> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-run-control/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-observation-output> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Observation and Output Selection Input" ;
-    dct:abstract "Schema for POSEIDON inputs that select observations, indicators, output columns, output cadence, and loggers consumed by a run."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-observation-output/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-observation-output> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-observation-output/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Observation and Output Selection Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "indicator",
-        "input",
-        "observation",
-        "output" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-observation-output/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:dependsOn <bblocks://ogc.osc.geodcat-stac-earthcode.products> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-observation-output/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Regulation and Policy Input" ;
-    dct:abstract "Schema for regulation, policy, closure, quota, trigger, shock, and intervention inputs consumed by POSEIDON."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-regulation-policy/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-regulation-policy> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-regulation-policy/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/tree/main/regulations> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Regulation and Policy Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "closure",
-        "input",
-        "policy",
-        "quota",
-        "regulation" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-regulation-policy/schema.yaml> ;
-            prof:hasRole role:schema ] ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-regulation-policy/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<bblocks://ogc.hosted.seadots.poseidon-input-scenario> a skos:Concept,
-        dcat:Dataset,
-        bblocks:BBlock,
-        bblocks:Schema ;
-    rdfs:label "POSEIDON Scenario YAML Input" ;
-    dct:abstract "Schema for the POSEIDON scenario YAML input that wires together map, biology, fleet, ports, market, regulations, plugins, and output components."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:created "2026-05-15T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/poseidon-input-scenario/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.poseidon-input-scenario> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/poseidon-input-scenario/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-05-19"^^xsd:date ;
-    dct:source <https://github.com/poseidon-fisheries/POSEIDON/tree/main/POSEIDON/inputs/YAML%20Samples> ;
-    skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
-    skos:prefLabel "POSEIDON Scenario YAML Input" ;
-    skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
-    dcat:keyword "POSEIDON",
-        "YAML",
-        "input",
-        "scenario" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.api.records.v1.schemas.linkTemplate> ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/poseidon-input-scenario/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-    bblocks:dependsOn <bblocks://ogc.hosted.seadots.poseidon-input-biology>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-fleet>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-map>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-observation-output>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-port-market>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy> ;
-    bblocks:hasSourceJsonLdContext <https://ogcincubator.github.io/bblocks-seadots/_sources/_stage/poseidon-input-scenario/context.jsonld> ;
-    bblocks:scope <http://www.opengis.net/def/bblocks/scope/dev> ;
-    bblocks:status <http://www.opengis.net/def/status/under-development> ;
-    bblocks:validationPassed true .
-
-<https://github.com/poseidon-fisheries/POSEIDON> rdfs:label "POSEIDON implementation repository" .
 
 <https://ogcincubator.github.io/geodcat-ogcapi-records/> rdfs:label "GeoDCAT mapping for OGC API Records",
         "GeoDCAT-Records" .
@@ -1461,26 +843,26 @@
     dct:created "2026-04-17T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.ontology> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/ontology/index.md> ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/ontology/index.json> ] ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/ontology/index.json> ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/ontology/index.md> ] ;
     dct:hasVersion "1.0" ;
-    dct:modified "2026-05-19"^^xsd:date ;
+    dct:modified "2026-05-20"^^xsd:date ;
     skos:inScheme <https://ogcincubator.github.io/bblocks-seadots/> ;
     skos:prefLabel "Property relationship ontology" ;
     skos:topConceptOf <https://ogcincubator.github.io/bblocks-seadots/> ;
     dcat:keyword "ontology",
         "seadots" ;
-    prof:hasResource [ dct:conformsTo shacl: ;
+    prof:hasResource [ dct:conformsTo owl:Ontology ;
+            dct:format "text/turtle" ;
+            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/ontology/ontology.ttl> ;
+            prof:hasRole role:specification ],
+        [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.hosted.seadots.ontology> ;
             prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo owl:Ontology ;
-            dct:format "text/turtle" ;
-            prof:hasArtifact <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/ontology/ontology.ttl> ;
-            prof:hasRole role:specification ] ;
+            prof:hasRole role:validation ] ;
     bblocks:status <http://www.opengis.net/def/status/under-development> ;
     bblocks:validationPassed true .
 
@@ -1493,7 +875,7 @@ It defines the indicator model, property relationship schema, and supporting ont
 used across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).
 See also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-    dct:modified "2026-05-19T23:13:48.642188"^^xsd:dateTime ;
+    dct:modified "2026-05-20T07:25:28.494754"^^xsd:dateTime ;
     void:sparqlEndpoint <http://defs-hosted.opengis.net/fuseki-hosted/query> ;
     owl:imports <https://ogcincubator.github.io/bblocks-openscience/build/register.json>,
         <https://ogcincubator.github.io/bblocks-sta/build/register.json>,
@@ -1514,37 +896,26 @@ See also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-featu
         <bblocks://ogc.hosted.seadots.odd-protocol>,
         <bblocks://ogc.hosted.seadots.oim-variable-observation>,
         <bblocks://ogc.hosted.seadots.ontology>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-biology>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-fleet>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-map>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-observation-output>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-optimization>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-port-market>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-regulation-policy>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-run-control>,
-        <bblocks://ogc.hosted.seadots.poseidon-input-scenario>,
-        <bblocks://ogc.hosted.seadots.poseidon-model>,
-        <bblocks://ogc.hosted.seadots.poseidon-output>,
         <bblocks://ogc.hosted.seadots.properties>,
         <bblocks://ogc.hosted.seadots.property-relationship>,
         <bblocks://ogc.hosted.seadots.reef-aggregation-index> ;
     skos:prefLabel "Building Blocks - Seadots project" ;
-    prof:hasResource [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON format" ;
+            dct:type "application/json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ],
+        [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
             dct:type "text/turtle" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> ],
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.ttl> ],
         [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
             dct:type "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.jsonld> ],
-        [ rdfs:label "This Building Blocks Register in JSON format" ;
-            dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/register.json> ] ;
+            ns2:relation <http://www.iana.org/assignments/relation/self> ;
+            ns1:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/bblocks.jsonld> ] ;
     foaf:homepage <https://ogcincubator.github.io/bblocks-seadots/> ;
     bblocks:hasValidationReport <https://ogcincubator.github.io/bblocks-seadots/build/tests/report.html> .
 
-_:N3cb0892c042b4dfe81bf9e43b4d1d4d2 a prov:Agent,
+_:Naf7dc519d1d74a728e2bf2f25b53d655 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
     dct:hasVersion "0.5.28" ;
