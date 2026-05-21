@@ -1,0 +1,57 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.oim-variables - OIM Variables",
+  "bblockName": "OIM Variables",
+  "bblockId": "ogc.hosted.seadots.oim-variables",
+  "generated": "2026-05-21T22:41:21.456722+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/oim-variables/example_1_1.ttl",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/oim-variables/example_1_1.ttl",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "text/turtle"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/indicators.ttl from examples"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 1056,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": []
+        }
+      ]
+    }
+  ],
+  "globalErrors": {
+    "SHACL": {
+      "isError": true,
+      "message": "Error processing _sources/oim-variables/rules.shacl: at line 10 of <>:\nBad syntax (Prefix \":\" not bound) at ^ in:\n\"...b'ses#> .\\n@prefix ind: <https://id3.seadots.eu/indicator/> .\\n\\n'^b':ObservedPropertyShape\\n    a sh:NodeShape ;\\n    sh:targetCla'...\""
+    }
+  },
+  "counts": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}
