@@ -1,0 +1,70 @@
+Abstract:
+  biologyInitializer:
+    Diffusing Logistic:
+      carryingCapacity: '1034000.0'
+      differentialPercentageToMove: '0.001'
+      percentageLimitOnDailyMovement: '0.01'
+      grower:
+          Independent Logistic Grower:
+              steepness: 'uniform 0.55 0.85'
+  mapInitializer:
+    From File Map:
+      mapFile:
+        path: /tmp/poseidon-run/experiments/her-2010-2020/inputs/bathy.csv
+      gridWidthInCell: 56
+      header: true
+      latLong: true
+      mapPaddingInDegrees: 0.0001
+  mapMakerDedicatedRandomSeed: 123
+  habitatInitializer: All Sand
+  weatherInitializer:
+    Constant Weather:
+      temperature: '8.5'
+      windOrientation: '0.0'
+      windSpeed: '0.0'
+  weatherStrategy: Ignore Weather
+  market:
+    Fixed Price Market:
+      marketPrice: '0.27'
+  fishers: 50
+  ports: 1
+  portPositionX: -1
+  portPositionY: -1
+  speedInKmh: '15.0'
+  fuelTankSize: '50000.0'
+  literPerKilometer: '20.0'
+  enginePower: normal 1500.0 200.0
+  gasPricePerLiter: '0.65'
+  holdSize: '50000.0'
+  cheaters: false
+  usePredictors: false
+  startingMPAs: []
+  regulation: MPA Only
+  departingStrategy:
+    Fixed Rest:
+      hoursBetweenEachDeparture: '24.0'
+  destinationStrategy:
+    Imitator-Explorator:
+      alwaysCopyBest: true
+      dropInUtilityNeededForUnfriend: '-1.0'
+      ignoreEdgeDirection: true
+      probability:
+        Adaptive Probability:
+          explorationProbability: '0.2'
+          explorationProbabilityMinimum: '0.01'
+          imitationProbability: '1.0'
+          incrementMultiplier: '0.02'
+      stepSize: uniform 1.0 5.0
+  fishingStrategy: Fish until full
+  gear:
+    Random Catchability:
+      meanCatchabilityFirstSpecies: '0.000005'
+      meanCatchabilityOtherSpecies: '0.0'
+      standardDeviationCatchabilityFirstSpecies: '0.0'
+      standardDeviationCatchabilityOtherSpecies: '0.0'
+      gasPerHourFished: '10.0'
+  gearStrategy: Never Change Gear
+  networkBuilder:
+    Equal Out Degree:
+      degree: 2
+  discardingStrategy: No discarding

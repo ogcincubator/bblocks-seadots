@@ -1,0 +1,76 @@
+{
+  "runId": "her-2010-2020-pilot-001",
+  "runConfigRef": "file:///tmp/poseidon-run/experiments/her-2010-2020/inputs/pilot.yaml",
+  "stacCollection": "poseidon-output-north-gotland",
+  "runMetadata": {
+    "startedAt": "2026-05-21T09:25:13.880031Z",
+    "finishedAt": "2026-05-21T09:25:13.880040Z",
+    "simulatedFromYear": 2010,
+    "simulatedToYear": 2020,
+    "timeStepUnit": "day",
+    "seed": 42,
+    "modelVersion": "POSEIDON main @ HEAD (built 2026-05-17, 13b31638)",
+    "hostEnvironment": "claude-sandbox"
+  },
+  "timeSeries": [
+    {
+      "name": "Species 0 Biomass",
+      "asset": "file:///tmp/poseidon-run/experiments/her-2010-2020/output/pilot/result.yaml",
+      "mediaType": "application/x-yaml",
+      "cadence": "yearly",
+      "unit": "kg",
+      "dimension": "global",
+      "lineage": {
+        "carryingCapacityFrom": "ICES SAG getStockDownloadData assessmentKey=17816, MSY-Btrigger \u00d7 1.0",
+        "carryingCapacityValueTonnes": 1034000,
+        "carryingCapacitySourceDOI": "https://doi.org/10.17895/ices.advice.21820506.v1",
+        "steepnessRangeFrom": "calibrated bracket centred on FishBase k=0.39 prior with \u00b115% spread for SST coupling proxy",
+        "fuelPriceEURperL": 0.65,
+        "fuelPriceSource": "EU Weekly Oil Bulletin, Sweden diesel 2010-2020 mean (proxy scalar)",
+        "marketPriceEURperKg": 0.27,
+        "marketPriceSource": "EUMOFA Sweden herring industrial first-sale 2010-2020 mean (proxy scalar)"
+      }
+    }
+  ],
+  "validationLinks": [
+    {
+      "modelProductRef": "Species 0 Biomass",
+      "empiricalRef": "ICES SAG her.27.25-2932 assessmentKey=17816 SSB tonnes",
+      "empiricalSourceDOI": "https://doi.org/10.17895/ices.advice.21820506.v1",
+      "metric": "Pearson_r",
+      "value": 0.24898223381348922
+    },
+    {
+      "modelProductRef": "Species 0 Biomass",
+      "empiricalRef": "ICES SAG her.27.25-2932 assessmentKey=17816 SSB tonnes",
+      "empiricalSourceDOI": "https://doi.org/10.17895/ices.advice.21820506.v1",
+      "metric": "Spearman_r",
+      "value": 0.14545454545454542
+    },
+    {
+      "modelProductRef": "Species 0 Biomass",
+      "empiricalRef": "ICES SAG her.27.25-2932 assessmentKey=17816 SSB tonnes",
+      "empiricalSourceDOI": "https://doi.org/10.17895/ices.advice.21820506.v1",
+      "metric": "NRMSE",
+      "value": 1.388830430130227
+    }
+  ],
+  "environmentalDriver": {
+    "name": "SST annual anomaly (area mean) 2010-2020",
+    "asset": "file:///tmp/poseidon-run/experiments/her-2010-2020/data/sst_anom_2010_2020.nc",
+    "source": "NOAA OISST v2.1 highres monthly, PSL THREDDS OPeNDAP",
+    "sourceURL": "https://psl.noaa.gov/thredds/dodsC/Datasets/noaa.oisst.v2.highres/sst.mon.mean.nc",
+    "note": "Used as Copernicus BAL SST proxy because Copernicus ARCO Zarr chunks are auth-gated; OISST is open."
+  },
+  "spatialFrame": {
+    "bbox": [
+      16.0,
+      56.5,
+      21.5,
+      60.0
+    ],
+    "gridCells": "56 x 36",
+    "bathySource": "Copernicus BAL static bathymetry BALTICSEA_MULTIYEAR_PHY_003_011 (EDITO STAC, native NetCDF)",
+    "bathyURL": "https://s3.waw3-1.cloudferro.com/mdl-native-11/native/BALTICSEA_MULTIYEAR_PHY_003_011/cmems_mod_bal_phy_my_static_202303/BAL-MFC_003_011_mask_bathy.nc"
+  }
+}
