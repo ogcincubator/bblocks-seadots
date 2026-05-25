@@ -62,6 +62,18 @@ OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg
 
 OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) derived from the MAREANO programme. Each record is a SOSA Observation of `benthic-biomass-density` over a polygon footprint and a sampling period, with the per-taxon values carried inline by `data.perTaxon[]` and mandatory provenance describing whether the values are retrieved or illustrative.
 
+### `ogc.hosted.seadots.oim-variables` — OIM Variables
+
+**Type:** model
+
+Defines the OIM variable and indicator concept model for SEADOTS and ILIAD variable observations.
+
+### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
+
+**Type:** schema
+
+OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.
+
 ### `ogc.hosted.seadots.area-of-interest` — Marine Area of Interest
 
 **Type:** schema
@@ -79,12 +91,6 @@ OGC Feature profile describing per-unit submerged geometry (wetted hull + moorin
 **Type:** schema
 
 Schema profile for OIM/SOSA observations of SEADOTS variables and indicators, including numeric values mapped to observed-property IRIs from the OIM Variables building block.
-
-### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
-
-**Type:** schema
-
-OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.
 
 ### `ogc.hosted.seadots.experiment` — Computational Experiment
 

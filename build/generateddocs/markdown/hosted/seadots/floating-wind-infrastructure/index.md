@@ -261,6 +261,7 @@ The accompanying calculator script (`_sources/experiment/scripts/utsira_reef_bio
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix indo: <https://w3id.org/indicators/marine/obs/> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -308,26 +309,26 @@ The accompanying calculator script (`_sources/experiment/scripts/utsira_reef_bio
                                     seadots:nearestAuthoritativeSource [ skos:note "Hywind Tampen 11×8.6 MW spar-buoy is the closest deployed Norwegian floating-wind asset with public-domain geometry; the Utsira Nord 15 MW semi-submersible has different surface areas. Use only for orientation." ;
                                             dcat:accessURL <https://www.equinor.com/energy/hywind-tampen> ] ;
                                     seadots:provenanceValues "mixed" ] ;
-                            seadots:aggregate [ indo:submerged-infrastructure-area-utsira-design "109500"^^qudt:QuantityValue ;
+                            seadots:aggregate [ indp:submerged-infrastructure-area-utsira-design "109500"^^qudt:QuantityValue ;
                                     seadots:submergedAreaTotal_km2 "0.1095"^^qudt:QuantityValue ] ;
                             seadots:nUnits 60 ;
-                            seadots:perUnit [ indo:submerged-infrastructure-area-utsira-design "1825"^^qudt:QuantityValue ;
+                            seadots:perUnit [ indp:submerged-infrastructure-area-utsira-design "1825"^^qudt:QuantityValue ;
                                     seadots:anchorArea_m2 "95"^^qudt:QuantityValue ;
                                     seadots:depthRange_m 200,
                                         280 ;
                                     seadots:hullArea_m2 "1450"^^qudt:QuantityValue ;
                                     seadots:mooringArea_m2 "280"^^qudt:QuantityValue ] ;
-                            seadots:sampleUnit [ dcterms:identifier "U01" ;
+                            seadots:sampleUnit [ dcterms:identifier "U02" ;
+                                    geojson:latitude 5.93812e+01 ;
+                                    geojson:longitude 4.578e+00 ;
+                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
+                                [ dcterms:identifier "U01" ;
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.552e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
                                 [ dcterms:identifier "U03" ;
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.604e+00 ;
-                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
-                                [ dcterms:identifier "U02" ;
-                                    geojson:latitude 5.93812e+01 ;
-                                    geojson:longitude 4.578e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ] ;
                             seadots:unitDesign "15 MW semi-submersible (3-column hull, 3-point catenary mooring, drag-embedment anchors)" ] ;
                     seadots:role "feature-of-interest geometry" ] ;
@@ -425,7 +426,7 @@ properties:
                   submerged_area_total_m2:
                     type: number
                     minimum: 0
-                    x-jsonld-id: https://w3id.org/indicators/marine/obs/submerged-infrastructure-area-utsira-design
+                    x-jsonld-id: https://w3id.org/indicators/marine/parameters/submerged-infrastructure-area-utsira-design
                     x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                   depth_range_m:
                     type: array
@@ -444,7 +445,7 @@ properties:
                     type: number
                     minimum: 0
                     description: Consumed as `A_sub` by the reef-biomass equation.
-                    x-jsonld-id: https://w3id.org/indicators/marine/obs/submerged-infrastructure-area-utsira-design
+                    x-jsonld-id: https://w3id.org/indicators/marine/parameters/submerged-infrastructure-area-utsira-design
                     x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                   submerged_area_total_km2:
                     type: number
@@ -574,8 +575,9 @@ x-jsonld-prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   seadots: https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#
   qudt: http://qudt.org/schema/qudt/
-  indo: https://w3id.org/indicators/marine/obs/
+  indp: https://w3id.org/indicators/marine/parameters/
   prov: http://www.w3.org/ns/prov#
+  indo: https://w3id.org/indicators/marine/obs/
 
 ```
 
@@ -640,7 +642,7 @@ Links to the schema:
                       "@type": "qudt:QuantityValue"
                     },
                     "submerged_area_total_m2": {
-                      "@id": "indo:submerged-infrastructure-area-utsira-design",
+                      "@id": "indp:submerged-infrastructure-area-utsira-design",
                       "@type": "qudt:QuantityValue"
                     },
                     "depth_range_m": "seadots:depthRange_m"
@@ -650,7 +652,7 @@ Links to the schema:
                 "aggregate": {
                   "@context": {
                     "submerged_area_total_m2": {
-                      "@id": "indo:submerged-infrastructure-area-utsira-design",
+                      "@id": "indp:submerged-infrastructure-area-utsira-design",
                       "@type": "qudt:QuantityValue"
                     },
                     "submerged_area_total_km2": {
@@ -893,6 +895,7 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure#",
     "qudt": "http://qudt.org/schema/qudt/",
+    "indp": "https://w3id.org/indicators/marine/parameters/",
     "indo": "https://w3id.org/indicators/marine/obs/",
     "@version": 1.1
   }

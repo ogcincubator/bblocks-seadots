@@ -265,17 +265,17 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
+    rdfs:seeAlso [ rdfs:label "Institute of Marine Research" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://www.hi.no/> ],
+        [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
         [ rdfs:label "OIM Observations profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
-        [ rdfs:label "Institute of Marine Research" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://www.hi.no/> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -308,18 +308,18 @@ IMR does not expose a single REST endpoint for "per-taxon baseline density on an
                                     seadots:verificationGap "Verified that no public IMR REST API matches the `source` URL pattern as of the date in this record. Real retrieval requires NMD dataset download + offline aggregation." ] ;
                             indo:baseline-benthic-biomass-density "0.72"^^qudt:QuantityValue ;
                             seadots:icesDivision "IVa" ;
-                            seadots:perTaxon [ qudt:standardUncertainty 9e-02 ;
-                                    dwc:scientificName "Mytilus edulis" ;
-                                    dwc:taxonID 140480 ;
-                                    indo:benthic-biomass-density-imr-baseline "0.38"^^qudt:QuantityValue ],
+                            seadots:perTaxon [ qudt:standardUncertainty 3e-02 ;
+                                    dwc:scientificName "Buccinum undatum" ;
+                                    dwc:taxonID 138878 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.09"^^qudt:QuantityValue ],
                                 [ qudt:standardUncertainty 6e-02 ;
                                     dwc:scientificName "Asterias rubens" ;
                                     dwc:taxonID 123776 ;
                                     indo:benthic-biomass-density-imr-baseline "0.25"^^qudt:QuantityValue ],
-                                [ qudt:standardUncertainty 3e-02 ;
-                                    dwc:scientificName "Buccinum undatum" ;
-                                    dwc:taxonID 138878 ;
-                                    indo:benthic-biomass-density-imr-baseline "0.09"^^qudt:QuantityValue ] ] ;
+                                [ qudt:standardUncertainty 9e-02 ;
+                                    dwc:scientificName "Mytilus edulis" ;
+                                    dwc:taxonID 140480 ;
+                                    indo:benthic-biomass-density-imr-baseline "0.38"^^qudt:QuantityValue ] ] ;
                     seadots:role "fallback baseline" ] ;
             rec:format [ dcterms:format "application/json" ] ;
             rec:language [ rec:languageCode "en" ] ;
