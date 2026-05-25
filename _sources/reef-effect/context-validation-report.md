@@ -1,4 +1,4 @@
-# Context validation report — `experiment`
+# Context validation report — `reef-effect`
 
 Date: 2026-05-20 · `context.jsonld` covers every property used in `schema.yaml` and in `examples/utsira_surroundings_experiment.json` (0 missing terms).
 
@@ -21,7 +21,7 @@ Date: 2026-05-20 · `context.jsonld` covers every property used in `schema.yaml`
 
 | Term | Current @id | Suggested vocabulary | Status |
 |---|---|---|---|
-| `experiment` | `seadots:experiment` | Container term | local-permanent |
+| `reef-effect` | `seadots:experiment` | Container term | local-permanent |
 | `kind` | `seadots:kind` | schema.org `additionalType`; promote to SKOS scheme | needs-vocabulary |
 | `application` | `seadots:application` | codemeta `SoftwareSourceCode`; schema.org `SoftwareApplication` | needs-vocabulary |
 | `modelledBy` | `seadots:modelledBy` | `prov:wasInformedBy`; `sosa:isResultOf` (close fit) | needs-discussion |

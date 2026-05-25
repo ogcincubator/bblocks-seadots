@@ -1,11 +1,11 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: Computational Experiment
+title: Reef Effect
 description: >
   OGC API Records profile for a computational experiment realising a
-  documented model. Extends GeoDCAT-Records with an `experiment` sub-object
+  documented model. Extends GeoDCAT-Records with an `reef-effect` sub-object
   that points to the executable code (`application`) that runs the
   experiment, the documented model (`modelledBy`), the evidence equation
-  (`evidenceEquation`), and standalone per-class input and `experiment-output`
+  (`evidenceEquation`), and standalone per-class input and `reef-effect-output`
   records referenced by URI.
 
 allOf:
@@ -104,7 +104,7 @@ properties:
               $ref: '#/$defs/InputBinding'
           outputs:
             type: array
-            description: References to `experiment-output` records. MUST NOT be inlined.
+            description: References to `reef-effect-output` records. MUST NOT be inlined.
             items:
               $ref: '#/$defs/Link'
           execution:
@@ -126,7 +126,7 @@ properties:
                 type: string
                 description: >
                   Command line to invoke the application from the repository
-                  root (e.g. `python3 _sources/experiment/scripts/foo.py`).
+                  root (e.g. `python3 _sources/reef-effect/scripts/foo.py`).
               scheduling:
                 type: string
               reproducibility:

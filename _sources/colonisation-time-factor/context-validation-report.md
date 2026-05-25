@@ -9,7 +9,7 @@ Date: 2026-05-19 · `context.jsonld` covers every property used in `schema.yaml`
 | `title`, `name`, `description`, `created`, `updated`, `language`, `license`, `format`, `citation` | DC Terms |
 | `keywords`, `themes`, `formats`, `source`, `url` | DCAT |
 | `concepts`, `scheme`, `label`, `vocabularyTerm`, `note` | SKOS |
-| `C_t` | `indo:colonisation-time-factor` (SeaDOTs indicator namespace) |
+| `C_t` | `indp:colonisation-time-factor` (SeaDOTs indicator namespace) |
 | `units` | QUDT |
 | `provenance`, `primarySource` | PROV-O / DC Terms |
 

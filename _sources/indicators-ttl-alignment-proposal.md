@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-**What:** Migrate the indicator-concept URIs in our 7 affected JSON-LD contexts (and 6 `vocabularyTerm` strings in examples) from the `https://id3.seadots.eu/indicator/` placeholder namespace to the canonical `https://w3id.org/indicators/marine/` namespace declared by `iliad-apis-features/_sources/oim-variables/examples/indicators.ttl`.
+**What:** Migrate the indicator-concept URIs in our 7 affected JSON-LD contexts (and 6 `vocabularyTerm` strings in examples) from the `https://w3id.org/indicators/marine/` placeholder namespace to the canonical `https://w3id.org/indicators/marine/` namespace declared by `iliad-apis-features/_sources/oim-variables/examples/indicators.ttl`.
 
 **Three substantive corrections, not just a prefix swap:**
 1. **B_reef sits in `ind:`, not `indo:`** — the top-level composite indicator `floating-wind-reef-biomass` is in `https://w3id.org/indicators/marine/`, while every input concept (`submerged-infrastructure-area`, `baseline-benthic-biomass-density`, `reef-aggregation-index`, `colonisation-time-factor`) is in `https://w3id.org/indicators/marine/obs/`. We currently put all of them under `indo:`.
@@ -10,7 +10,7 @@
 3. **`-aggregate` does not exist in the TTL** — our `indo:benthic-biomass-density-aggregate` synthetic concept should fold back to the parent `indo:baseline-benthic-biomass-density`.
 
 **Three additions worth adopting now:**
-- Add `ind:`, `inda:`, `prop-rel:` prefix declarations to the `experiment` context.
+- Add `ind:`, `inda:`, `prop-rel:` prefix declarations to the `reef-effect` context.
 - Use the SKOS narrower terms in source-specific bblocks (`indo:benthic-biomass-density-mareano` in the MAREANO bblock, `-imr-baseline` in IMR, `-utsira-design` in floating-wind aggregate).
 - **Lift `equationBinding` to `prop-rel:toProperty`** — single most powerful change: per-input bindings become SKOS-traversable property relationships rather than private strings.
 
@@ -37,11 +37,11 @@ The TTL is the canonical place where concept URIs for the reef-biomass equation 
 
 | Prefix | Current value in our contexts | Proposed value (matches the TTL) | Action |
 |---|---|---|---|
-| `indo:` | `https://id3.seadots.eu/indicator/` | `https://w3id.org/indicators/marine/obs/` | **change** (used in 7 contexts) |
-| `ind:` | — (not currently declared) | `https://w3id.org/indicators/marine/` | **add** to `experiment-output` (carries `ind:floating-wind-reef-biomass`) |
-| `inda:` | — | `https://w3id.org/indicators/marine/activity/` | **add** to `experiment` (for `inda:cdi-computation`-style activities, when used) |
+| `indo:` | `https://w3id.org/indicators/marine/` | `https://w3id.org/indicators/marine/obs/` | **change** (used in 7 contexts) |
+| `ind:` | — (not currently declared) | `https://w3id.org/indicators/marine/` | **add** to `reef-effect-output` (carries `indo:floating-wind-reef-biomass-effect`) |
+| `inda:` | — | `https://w3id.org/indicators/marine/activity/` | **add** to `reef-effect` (for `inda:cdi-computation`-style activities, when used) |
 | `indrel:` | — | `https://w3id.org/indicators/marine/relationship/` | optional — only needed if we surface property-relationship edges in examples |
-| `prop-rel:` | — | `https://w3id.org/ogc/hosted/seadots/prop-rel/` | **add** to `experiment` (so `equationBinding` can later be expressed as `prop-rel:fromProperty`) |
+| `prop-rel:` | — | `https://w3id.org/ogc/hosted/seadots/prop-rel/` | **add** to `reef-effect` (so `equationBinding` can later be expressed as `prop-rel:fromProperty`) |
 | `sosa:` | already declared in some | `http://www.w3.org/ns/sosa/` | unchanged |
 | `qudt:`, `quantitykind:` | already declared | unchanged | unchanged (the TTL uses `quantitykind:Area`, `Mass`, `Dimensionless`, `SurfaceDensity` — same URIs) |
 
@@ -49,19 +49,19 @@ The TTL is the canonical place where concept URIs for the reef-biomass equation 
 
 | Bblock | Term in example | Current `@id` | Proposed `@id` | Source line in TTL |
 |---|---|---|---|---|
-| **`experiment-output`** | `B_reef_kg`, `B_reef_tonnes`, `B_kg` | `indo:floating-wind-reef-biomass` | `ind:floating-wind-reef-biomass` | TTL line 117 (this is the top-level `prov:Entity, sosa:observedProperty` — it's in the `ind:` namespace, **not** `indo:`) |
-| `experiment-output` | `A_sub_m2` | `indo:submerged-infrastructure-area` | `indo:submerged-infrastructure-area` | TTL line 129 ✓ concept matches, prefix base changes |
-| `experiment-output` | `D_pre_kg_m2` | `indo:benthic-biomass-density` | **`indo:baseline-benthic-biomass-density`** | TTL line 137 — the canonical term is "baseline-benthic-biomass-density", not "benthic-biomass-density" |
-| `experiment-output` | `AF_i` | `indo:reef-aggregation-index` | `indo:reef-aggregation-index` | TTL line 146 ✓ |
-| `experiment-output` | `C_t` | `indo:colonisation-time-factor` | `indo:colonisation-time-factor` | TTL line 156 ✓ |
-| **`floating-wind-infrastructure`** | `submerged_area_total_m2` (aggregate) | `indo:submerged-infrastructure-area` | `indo:submerged-infrastructure-area-utsira-design` (when the example is Utsira-specific) | TTL line 164 — narrower for the Utsira engineering design |
+| **`reef-effect-output`** | `B_reef_kg`, `B_reef_tonnes`, `B_kg` | `indo:floating-wind-reef-biomass` | `indo:floating-wind-reef-biomass-effect` | TTL line 117 (this is the top-level `prov:Entity, sosa:observedProperty` — it's in the `ind:` namespace, **not** `indo:`) |
+| `reef-effect-output` | `A_sub_m2` | `indp:submerged-infrastructure-area` | `indp:submerged-infrastructure-area` | TTL line 129 ✓ concept matches, prefix base changes |
+| `reef-effect-output` | `D_pre_kg_m2` | `indo:benthic-biomass-density` | **`indo:baseline-benthic-biomass-density`** | TTL line 137 — the canonical term is "baseline-benthic-biomass-density", not "benthic-biomass-density" |
+| `reef-effect-output` | `AF_i` | `indp:reef-aggregation-index` | `indp:reef-aggregation-index` | TTL line 146 ✓ |
+| `reef-effect-output` | `C_t` | `indp:colonisation-time-factor` | `indp:colonisation-time-factor` | TTL line 156 ✓ |
+| **`floating-wind-infrastructure`** | `submerged_area_total_m2` (aggregate) | `indp:submerged-infrastructure-area` | `indp:submerged-infrastructure-area-utsira-design` (when the example is Utsira-specific) | TTL line 164 — narrower for the Utsira engineering design |
 | `floating-wind-infrastructure` | (other unit-level `*_area_m2`) | `seadots:*Area_m2` | (stay seadots-local — TTL doesn't yet define unit-level sub-concepts) | — |
 | **`benthic-biomass-density-mareano`** | `density_kg_m2` | `indo:benthic-biomass-density` | **`indo:benthic-biomass-density-mareano`** | TTL line 173 — this is the MAREANO-specific narrower binding |
 | `benthic-biomass-density-mareano` | `aggregateDensity_kg_m2` | `indo:benthic-biomass-density-aggregate` | `indo:baseline-benthic-biomass-density` (the parent concept) | TTL has no "aggregate" variant; map to parent |
 | **`benthic-biomass-density-imr`** | `density_kg_m2` | `indo:benthic-biomass-density` | **`indo:benthic-biomass-density-imr-baseline`** | TTL line 182 |
 | `benthic-biomass-density-imr` | `aggregateDensity_kg_m2` | `indo:benthic-biomass-density-aggregate` | `indo:baseline-benthic-biomass-density` | as above |
-| **`reef-aggregation-index`** | `AF_i` (top of perTaxon array) | `indo:reef-aggregation-index` | `indo:reef-aggregation-index` | TTL line 146 ✓ (the per-taxon narrower terms — `-mytilus`/`-buccinum`/`-asterias` — are *instances*, attached at the row level if we ever bind a row's `scientificName` to a concept) |
-| **`colonisation-time-factor`** | `C_t` | `indo:colonisation-time-factor` | `indo:colonisation-time-factor` | TTL line 156 ✓ (the example's "default sigmoid" parameters are an instance of the narrower `-default` term — could be referenced from `data.vocabularyTerm` rather than from the row) |
+| **`reef-aggregation-index`** | `AF_i` (top of perTaxon array) | `indp:reef-aggregation-index` | `indp:reef-aggregation-index` | TTL line 146 ✓ (the per-taxon narrower terms — `-mytilus`/`-buccinum`/`-asterias` — are *instances*, attached at the row level if we ever bind a row's `scientificName` to a concept) |
+| **`colonisation-time-factor`** | `C_t` | `indp:colonisation-time-factor` | `indp:colonisation-time-factor` | TTL line 156 ✓ (the example's "default sigmoid" parameters are an instance of the narrower `-default` term — could be referenced from `data.vocabularyTerm` rather than from the row) |
 
 ## Concept renames that affect the `vocabularyTerm` field in examples
 
@@ -69,12 +69,12 @@ Three example records currently set `vocabularyTerm` to a URL that does not reso
 
 | File | Current `vocabularyTerm` | Proposed `vocabularyTerm` |
 |---|---|---|
-| `benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json` | `https://id3.seadots.eu/indicator/benthic-biomass-density-mareano` | `https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano` |
-| `benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json` | `https://id3.seadots.eu/indicator/benthic-biomass-density-imr-baseline` | `https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline` |
-| `reef-aggregation-index/examples/degraer2020_bindings.json` | `https://id3.seadots.eu/indicator/reef-aggregation-index` | `https://w3id.org/indicators/marine/obs/reef-aggregation-index` |
-| `colonisation-time-factor/examples/default_sigmoid.json` | `https://id3.seadots.eu/indicator/colonisation-time-factor-default` | `https://w3id.org/indicators/marine/obs/colonisation-time-factor-default` |
-| `floating-wind-infrastructure/examples/utsira_nord_60x15mw.json` | `https://id3.seadots.eu/indicator/submerged-infrastructure-area-utsira-design` | `https://w3id.org/indicators/marine/obs/submerged-infrastructure-area-utsira-design` |
-| `experiment-output/examples/reef_biomass_result.json` (`observedProperty` + `vocabularyTerm`) | `https://id3.seadots.eu/indicator/floating-wind-reef-biomass` | `https://w3id.org/indicators/marine/floating-wind-reef-biomass` (note: `ind:` namespace, no `obs/`) |
+| `benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json` | `https://w3id.org/indicators/marine/benthic-biomass-density-mareano` | `https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano` |
+| `benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json` | `https://w3id.org/indicators/marine/benthic-biomass-density-imr-baseline` | `https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline` |
+| `reef-aggregation-index/examples/degraer2020_bindings.json` | `https://w3id.org/indicators/marine/reef-aggregation-index` | `https://w3id.org/indicators/marine/parameters/reef-aggregation-index` |
+| `colonisation-time-factor/examples/default_sigmoid.json` | `https://w3id.org/indicators/marine/colonisation-time-factor-default` | `https://w3id.org/indicators/marine/parameters/colonisation-time-factor-default` |
+| `floating-wind-infrastructure/examples/utsira_nord_60x15mw.json` | `https://w3id.org/indicators/marine/submerged-infrastructure-area-utsira-design` | `https://w3id.org/indicators/marine/parameters/submerged-infrastructure-area-utsira-design` |
+| `experiment-output/examples/reef_biomass_result.json` (`observedProperty` + `vocabularyTerm`) | `https://w3id.org/indicators/marine/floating-wind-reef-biomass` | `https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect` (note: `ind:` namespace, no `obs/`) |
 
 ## What the TTL adds that we have not yet surfaced
 
@@ -92,11 +92,12 @@ Three example records currently set `vocabularyTerm` to a URL that does not reso
 ## Sample minimal patch (illustrative, not yet applied)
 
 ```diff
---- _sources/experiment-output/context.jsonld
-+++ _sources/experiment-output/context.jsonld
+--- _sources/reef-effect-output/context.jsonld
++++ _sources/reef-effect-output/context.jsonld
 @@
--    "indo": "https://id3.seadots.eu/indicator/",
+-    "indo": "https://w3id.org/indicators/marine/",
 +    "indo": "https://w3id.org/indicators/marine/obs/",
+      "indp": "https://w3id.org/indicators/marine/parameters/",
 +    "ind":  "https://w3id.org/indicators/marine/",
 +    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
 @@
@@ -104,9 +105,9 @@ Three example records currently set `vocabularyTerm` to a URL that does not reso
 -    "B_reef_tonnes": { "@id": "indo:floating-wind-reef-biomass",  "@type": "qudt:QuantityValue" },
 -    "B_kg":          { "@id": "indo:floating-wind-reef-biomass",  "@type": "qudt:QuantityValue" },
 -    "D_pre_kg_m2":   { "@id": "indo:benthic-biomass-density",     "@type": "qudt:QuantityValue" },
-+    "B_reef_kg":     { "@id": "ind:floating-wind-reef-biomass",   "@type": "qudt:QuantityValue" },
-+    "B_reef_tonnes": { "@id": "ind:floating-wind-reef-biomass",   "@type": "qudt:QuantityValue" },
-+    "B_kg":          { "@id": "ind:floating-wind-reef-biomass",   "@type": "qudt:QuantityValue" },
++    "B_reef_kg":     { "@id": "indo:floating-wind-reef-biomass-effect",   "@type": "qudt:QuantityValue" },
++    "B_reef_tonnes": { "@id": "indo:floating-wind-reef-biomass-effect",   "@type": "qudt:QuantityValue" },
++    "B_kg":          { "@id": "indo:floating-wind-reef-biomass-effect",   "@type": "qudt:QuantityValue" },
 +    "D_pre_kg_m2":   { "@id": "indo:baseline-benthic-biomass-density", "@type": "qudt:QuantityValue" },
 ```
 

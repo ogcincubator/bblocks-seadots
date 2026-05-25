@@ -1,6 +1,6 @@
 {
-  "name": "Computational Experiment",
-  "abstract": "OGC API Records profile for describing a computational experiment realising a documented model. Points at the executable code that runs the experiment (any language / format that exists and runs — Python, Jupyter, R, …), and binds it to the documented model (an ODD record), the evidence equation (an `equation-property-relationship` record), and to standalone input records (one per data class) and `experiment-output` records, all referenced by URI.",
+  "name": "Reef Effect",
+  "abstract": "OGC API Records profile for describing the executable reef-effect calculation realising a documented model. Points at the code that runs the calculation and binds it to the ODD record, evidence equation, input records, and reef-effect-output records.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-18T00:00:00Z",
   "itemClass": "schema",
@@ -8,7 +8,12 @@
   "version": "0.2",
   "dateOfLastChange": "2026-05-19",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["experiment", "reproducibility", "open-science", "ODD"],
+  "tags": [
+    "reef-effect",
+    "reproducibility",
+    "open-science",
+    "ODD"
+  ],
   "authors": [
     {
       "name": "SeaDOTs Marine Data Team",
@@ -37,10 +42,12 @@
     "ogc.hosted.seadots.benthic-biomass-density-imr",
     "ogc.hosted.seadots.reef-aggregation-index",
     "ogc.hosted.seadots.colonisation-time-factor",
-    "ogc.hosted.seadots.experiment-output"
+    "ogc.hosted.seadots.reef-effect-output"
   ],
   "ldContext": "context.jsonld",
-  "shaclRules": [],
+  "shaclRules": [
+
+  ],
   "standards": [
     "http://www.w3.org/TR/vocab-dcat-3/",
     "http://www.w3.org/TR/prov-o/",

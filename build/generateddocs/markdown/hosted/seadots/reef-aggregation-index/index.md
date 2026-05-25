@@ -17,7 +17,7 @@ Each record collects a set of `AF_i` bindings sharing one evidence basis (e.g. D
 
 ## Dependency
 
-Extends `ogc.hosted.iliad.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
+Extends `ogc.hosted.seadots.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
 
 ## Required fields for script consumption
 
@@ -81,7 +81,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
   },
   "links": [
     { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.reef-aggregation-index", "type": "application/schema+json", "title": "Reef Aggregation Index bblock" },
-    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
     { "rel": "cite-as", "href": "https://doi.org/10.5670/oceanog.2020.405", "title": "Degraer et al. 2020 — reef-effect prior" }
   ]
 }
@@ -184,7 +184,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
     },
     {
       "rel": "profile",
-      "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables",
+      "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables",
       "type": "application/schema+json",
       "title": "OIM Variables profile"
     },
@@ -225,7 +225,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
             dcterms:description "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE — Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m² coefficient." ;

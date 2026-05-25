@@ -989,7 +989,7 @@ You can find the full JSON-LD context here:
 ## Sources
 
 * [OIM master repository](https://github.com/ILIAD-ocean-twin/OIM)
-* [SEADOTS OIM Variables](bblocks://ogc.hosted.iliad.api.features.oim-variables)
+* [SEADOTS OIM Variables](bblocks://ogc.hosted.seadots.api.features.oim-variables)
 
 # For developers
 

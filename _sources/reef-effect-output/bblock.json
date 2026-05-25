@@ -1,6 +1,6 @@
 {
-  "name": "Computational Experiment Output",
-  "abstract": "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the URI of the experiment that produced it. Carries inline result values with mandatory provenance (computed / retrieved / illustrative / mixed). Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits.",
+  "name": "Reef Effect Output",
+  "abstract": "OGC API Records profile for describing a single output artefact produced by the reef-effect calculation. Captures the output role, format, vocabulary term for the produced quantity, producing experiment URI, conformance classes, and inline result values with provenance.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-18T00:00:00Z",
   "itemClass": "schema",
@@ -8,7 +8,13 @@
   "version": "0.2",
   "dateOfLastChange": "2026-05-19",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["experiment", "output", "provenance", "STAC", "reproducibility"],
+  "tags": [
+    "reef-effect",
+    "output",
+    "provenance",
+    "STAC",
+    "reproducibility"
+  ],
   "authors": [
     {
       "name": "SeaDOTs Marine Data Team",
@@ -25,7 +31,9 @@
     "ogc.geo.geodcat.geodcat-records"
   ],
   "ldContext": "context.jsonld",
-  "shaclRules": [],
+  "shaclRules": [
+
+  ],
   "standards": [
     "http://www.w3.org/TR/vocab-dcat-3/",
     "http://www.w3.org/TR/prov-o/"

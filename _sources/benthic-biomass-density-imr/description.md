@@ -15,7 +15,7 @@ Extends `ogc.hosted.iliad.api.features.oim-obs`.
 
 ## Required fields for script consumption
 
-`_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName`, `data.perTaxon[].density_kg_m2`, and `data.perTaxon[].uncertainty_kg_m2`. All three are marked `required` in the schema.
+`_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName`, `data.perTaxon[].density_kg_m2`, and `data.perTaxon[].uncertainty_kg_m2`. All three are marked `required` in the schema.
 
 ## Retrieval
 

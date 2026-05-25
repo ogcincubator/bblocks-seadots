@@ -4,7 +4,7 @@ utsira_reef_biomass.py — deterministic reproducibility artefact for the
 worked example documented in:
 
   ../examples/utsira_surroundings_experiment.json
-  ../../experiment-output/examples/reef_biomass_result.json
+  ../../reef-effect-output/examples/reef_biomass_result.json
 
 Evaluates the reef-biomass equation
 
@@ -203,7 +203,7 @@ def compute() -> dict:
                 str(p.relative_to(SOURCES)) for p, _ in INPUT_FILES.values()
             ],
             "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
-            "computeCode": "experiment/scripts/utsira_reef_biomass.py",
+            "computeCode": "reef-effect/scripts/utsira_reef_biomass.py",
             "uncertaintyMethod": "log-linear CV propagation; taxa treated independent within S",
             "note": "Inputs are illustrative (see each input record's data.provenance). `values: computed` refers to the calculation chain, not to a real-world measurement.",
         },

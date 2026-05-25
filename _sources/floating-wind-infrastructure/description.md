@@ -15,4 +15,4 @@ Inherits the OIM feature shape from `ogc.hosted.iliad.api.features.oim`.
 
 ## Required fields for script consumption
 
-The accompanying calculator script (`_sources/experiment/scripts/utsira_reef_biomass.py`) reads `data.aggregate.submerged_area_total_m2`. That field is marked `required` in the schema.
+The accompanying calculator script (`_sources/reef-effect/scripts/utsira_reef_biomass.py`) reads `data.aggregate.submerged_area_total_m2`. That field is marked `required` in the schema.

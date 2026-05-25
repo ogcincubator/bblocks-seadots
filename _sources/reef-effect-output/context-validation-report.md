@@ -1,4 +1,4 @@
-# Context validation report — `experiment-output`
+# Context validation report — `reef-effect-output`
 
 Date: 2026-05-20 · `context.jsonld` covers every property used in `schema.yaml` and in all three example records under `examples/` (0 missing terms).
 
@@ -16,16 +16,16 @@ Date: 2026-05-20 · `context.jsonld` covers every property used in `schema.yaml`
 | `sigma_kg`, `sigma_tonnes`, `totalSigma_kg`, `totalSigma_tonnes`, `sigma` | `qudt:standardUncertainty` |
 | `CV`, `totalCV` | `qudt:coefficientOfVariation` |
 | `B_reef_kg`, `B_reef_tonnes`, `B_kg` | `indo:floating-wind-reef-biomass` |
-| `A_sub_m2` | `indo:submerged-infrastructure-area` |
+| `A_sub_m2` | `indp:submerged-infrastructure-area` |
 | `D_pre_kg_m2` | `indo:benthic-biomass-density` |
-| `AF_i` | `indo:reef-aggregation-index` |
-| `C_t` | `indo:colonisation-time-factor` |
+| `AF_i` | `indp:reef-aggregation-index` |
+| `C_t` | `indp:colonisation-time-factor` |
 | `derivedFrom`, `provenance` | PROV-O |
 | `equationRecord` | `prov:hadPlan` |
 | `computedOn` | DC Terms `date` |
 | `caveats`, `note`, `timeSeriesNote`, `computeCodeNote`, `methodDetail` | SKOS `note` / `definition` |
 | `term` (variance attribution rows) | `skos:notation` |
-| `experiment` | `seadots:experiment` (URI to experiment record) |
+| `reef-effect` | `seadots:experiment` (URI to experiment record) |
 
 ## Missing authoritative URIs (mapped under local `seadots:` namespace)
 

@@ -1,4 +1,4 @@
-# Validation report — `experiment-output`
+# Validation report — `reef-effect-output`
 
 Date: 2026-05-19 · Scope: schema, context.jsonld, three example records under `examples/`.
 
@@ -58,10 +58,10 @@ Every key appearing in any of the three example records now has a `@context` ter
 | `sigma_kg`, `sigma_tonnes`, `totalSigma_kg`, `totalSigma_tonnes`, `sigma` | `qudt:standardUncertainty` |
 | `CV`, `totalCV` | `qudt:coefficientOfVariation` |
 | `B_reef_kg`, `B_reef_tonnes`, `B_kg` | `indo:floating-wind-reef-biomass` |
-| `A_sub_m2` | `indo:submerged-infrastructure-area` |
+| `A_sub_m2` | `indp:submerged-infrastructure-area` |
 | `D_pre_kg_m2` | `indo:benthic-biomass-density` |
-| `AF_i` | `indo:reef-aggregation-index` |
-| `C_t` | `indo:colonisation-time-factor` |
+| `AF_i` | `indp:reef-aggregation-index` |
+| `C_t` | `indp:colonisation-time-factor` |
 | `derivedFrom`, `provenance` | PROV-O |
 | `equationRecord` | `prov:hadPlan` |
 | `computedOn` | `dcterms:date` |
@@ -116,6 +116,6 @@ Every key appearing in any of the three example records now has a `@context` ter
 [TODO]
 for examples in the /Users/piotr/repos/seadots/bblocks-seadots/_sources/experiment-input separate them into different building blocks, each schema shall be updated to cover all the properties, each
   context shall cover all the properties in the schema and examples, examples should depend on the best matching block from /Users/piotr/repos/Iliad/iliad-apis-features
-[TODO] update /Users/piotr/repos/seadots/bblocks-seadots/_sources/experiment/scripts/utsira_reef_biomass.py with references from the divided example inputs
+[TODO] update /Users/piotr/repos/seadots/bblocks-seadots/_sources/reef-effect/scripts/utsira_reef_biomass.py with references from the divided example inputs
 [TODO] update schemas of the inputs so they cover all the properties and the ones used in the script above shall be required
 [TODO] update the context so it cover all the properties in the example input, output and experiment. create context-validation-report.md for each of the blocks with missing context vocabulary definitions

@@ -12,7 +12,7 @@ It supports two usage modes:
 
 Use this block when the relationship is mathematical lineage. Use the existing
 `property-relationship` block for weighted causal cross-impact edges, such as
-`ind:floating-wind-reef-biomass -> indo:floating-wind-fish-abundance`.
+`indo:floating-wind-reef-biomass-effect -> indo:floating-wind-fish-abundance`.
 
 Validation intent (partly enforced by `_sources/ontology/rules.shacl`):
 

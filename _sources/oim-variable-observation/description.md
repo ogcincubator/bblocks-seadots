@@ -8,7 +8,7 @@ The observed variable is carried by `observedProperty`. For reef-effect
 demonstrators, a reef aggregation index value is represented by setting:
 
 ```json
-"observedProperty": "indo:reef-aggregation-index"
+"observedProperty": "indp:reef-aggregation-index"
 ```
 
 The example in this block is a compact observation for a dimensionless reef

@@ -10,7 +10,7 @@ Date: 2026-05-19 · `context.jsonld` covers every property used in `schema.yaml`
 | `keywords`, `themes`, `formats`, `source`, `url` | DCAT |
 | `concepts`, `scheme`, `label`, `vocabularyTerm`, `note` | SKOS |
 | `scientificName`, `aphiaID` | Darwin Core |
-| `AF_i` | `indo:reef-aggregation-index` (SeaDOTs indicator namespace) |
+| `AF_i` | `indp:reef-aggregation-index` (SeaDOTs indicator namespace) |
 | `units` | QUDT |
 | `evidence` | PROV-O `wasInfluencedBy` |
 | `provenance`, `primarySource` | PROV-O / DC Terms |
@@ -27,5 +27,5 @@ Date: 2026-05-19 · `context.jsonld` covers every property used in `schema.yaml`
 
 ## Outstanding
 
-- The `indo:reef-aggregation-index` concept is unique to the SeaDOTs indicator namespace. There is no community vocabulary for a per-m² reef-effect aggregation coefficient — flagged for a future literature/registry survey.
+- The `indp:reef-aggregation-index` concept is unique to the SeaDOTs indicator namespace. There is no community vocabulary for a per-m² reef-effect aggregation coefficient — flagged for a future literature/registry survey.
 - AF_i numeric values are illustrative (Degraer 2020 reports only a turbine-footprint figure for Mytilus). When real values become available, attach evidence URIs per-row via the existing `evidence` term.

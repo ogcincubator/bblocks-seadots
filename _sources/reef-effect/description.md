@@ -1,8 +1,8 @@
-# Computational Experiment
+# Reef Effect
 
 OGC API Records profile for describing one computational experiment that realises a documented model.
 
-A computational experiment is the executable counterpart of an ODD Protocol description: it commits to specific software, specific inputs and a specific output target. The record points at the executable code (Python script, Jupyter notebook, R script, etc.) that runs the experiment, and at standalone per-class input records (e.g. `area-of-interest`, `floating-wind-infrastructure`, `benthic-biomass-density-mareano`, …) and `experiment-output` records by URI so they can be reused across runs.
+A computational experiment is the executable counterpart of an ODD Protocol description: it commits to specific software, specific inputs and a specific output target. The record points at the executable code (Python script, Jupyter notebook, R script, etc.) that runs the experiment, and at standalone per-class input records (e.g. `area-of-interest`, `floating-wind-infrastructure`, `benthic-biomass-density-mareano`, …) and `reef-effect-output` records by URI so they can be reused across runs.
 
 ## What an experiment record carries
 
@@ -16,7 +16,7 @@ experiment:
   parameters[]        — parameter definitions
   inputs[]            — link[] to per-class input records (NOT inlined)
                           each entry MAY carry an equationBinding symbol
-  outputs[]           — link[] to experiment-output records (NOT inlined)
+  outputs[]           — link[] to reef-effect-output records (NOT inlined)
   execution           — language, languageVersion, dependencies, entrypoint,
                           scheduling, reproducibility flags
   successCriteria[]   — assertions the run must satisfy to be considered successful
@@ -27,7 +27,7 @@ experiment:
 The experiment record references inputs and outputs **by URI** rather than embedding them. This matches the cross-bblock composition already used by `odd-protocol` (which references `equation-property-relationship` records by URI) and keeps the experiment record stable when the input set is revised.
 
 - Each input is a standalone instance of the matching per-class bblock: [`area-of-interest`](../area-of-interest/), [`floating-wind-infrastructure`](../floating-wind-infrastructure/), [`benthic-biomass-density-mareano`](../benthic-biomass-density-mareano/), [`benthic-biomass-density-imr`](../benthic-biomass-density-imr/), [`reef-aggregation-index`](../reef-aggregation-index/), [`colonisation-time-factor`](../colonisation-time-factor/).
-- Each output is a standalone instance of [`experiment-output`](../experiment-output/).
+- Each output is a standalone instance of [`reef-effect-output`](../reef-effect-output/).
 - The equation is a standalone instance of [`equation-property-relationship`](../equation-property-relationship/).
 - The model documentation is a standalone instance of [`odd-protocol`](../odd-protocol/).
 

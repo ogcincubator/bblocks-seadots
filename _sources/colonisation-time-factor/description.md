@@ -10,11 +10,11 @@ OGC Feature + OIM Variable profile for the dimensionless time factor `C_t` in th
 
 ## Dependency
 
-Extends `ogc.hosted.iliad.api.features.oim-variables` — `C_t` is an OIM indicator.
+Extends `ogc.hosted.seadots.api.features.oim-variables` — `C_t` is an OIM indicator.
 
 ## Required fields for script consumption
 
-`_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.parameters.L`, `data.parameters.k`, `data.parameters.t0_months` to evaluate the formula analytically, and the `data.lookup[]` array to populate the time series. All four are marked `required` in the schema.
+`_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.parameters.L`, `data.parameters.k`, `data.parameters.t0_months` to evaluate the formula analytically, and the `data.lookup[]` array to populate the time series. All four are marked `required` in the schema.
 
 ## Authoritative source
 

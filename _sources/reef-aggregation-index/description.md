@@ -6,12 +6,12 @@ Each record collects a set of `AF_i` bindings sharing one evidence basis (e.g. D
 
 ## Dependency
 
-Extends `ogc.hosted.iliad.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
+Extends `ogc.hosted.seadots.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
 
 ## Required fields for script consumption
 
-`_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].AF_i`. Both are marked `required` in the schema.
+`_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].AF_i`. Both are marked `required` in the schema.
 
 ## Vocabulary
 
-The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indicator namespace. No external community vocabulary defines a per-m² reef-effect aggregation coefficient at the time of writing — flagged in `context-validation-report.md`.
+The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indicator namespace. No external community vocabulary defines a per-m² reef-effect aggregation coefficient at the time of writing — flagged in `context-validation-report.md`.

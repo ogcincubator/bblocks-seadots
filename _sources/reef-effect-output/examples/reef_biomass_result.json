@@ -1,5 +1,5 @@
 {
-  "id": "https://example.org/norwegian-ses/experiment-output/reef-biomass-result",
+  "id": "https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result",
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -29,9 +29,9 @@
       "description": "B_reef headline scalar, per-taxon decomposition, time series, and variance attribution. Sum-over-taxa of A_sub · D_pre,i · AF_i · C_t evaluated at scenario end. All values emitted inline as JSON.",
       "role": "primary result",
       "format": "application/json",
-      "vocabularyTerm": "https://w3id.org/indicators/marine/floating-wind-reef-biomass",
-      "experiment": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1",
-      "observedProperty": "https://w3id.org/indicators/marine/floating-wind-reef-biomass",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "experiment": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
       "hasSimpleResult": 741237,
       "hasSimpleResultUnit": "kg",
       "resultTime": "2028-05-13T00:00:00Z",
@@ -236,8 +236,8 @@
           ],
           "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
           "computedOn": "2026-05-19",
-          "computeCode": "../../experiment/scripts/utsira_reef_biomass.py",
-          "computeCodeNote": "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/experiment/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
+          "computeCode": "../../reef-effect/scripts/utsira_reef_biomass.py",
+          "computeCodeNote": "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/reef-effect/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
           "uncertaintyMethod": "log-linear CV propagation; B_reef = A_sub · C_t · Σᵢ Dᵢ·AFᵢ; taxa treated independent within S",
           "note": "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement."
         }
@@ -245,8 +245,8 @@
     }
   },
   "links": [
-    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.experiment-output", "type": "application/schema+json", "title": "Experiment-output bblock" },
-    { "rel": "derivedFrom", "href": "https://example.org/norwegian-ses/experiment/utsira-reef-biomass-surroundings-v1", "type": "application/json", "title": "Experiment record this output belongs to" },
+    { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.reef-effect-output", "type": "application/schema+json", "title": "Reef Effect Output bblock" },
+    { "rel": "derivedFrom", "href": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1", "type": "application/json", "title": "Experiment record this output belongs to" },
     { "rel": "cite-as",    "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation", "type": "application/ld+json", "title": "Equation evaluated to produce this result" }
   ]
 }

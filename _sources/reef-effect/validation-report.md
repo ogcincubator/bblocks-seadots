@@ -1,4 +1,4 @@
-# Validation report — `experiment`
+# Validation report — `reef-effect`
 
 Date: 2026-05-19 · Scope: schema, context.jsonld, every record under `examples/`.
 
@@ -12,11 +12,11 @@ The record is a valid OGC GeoJSON Feature. `time.interval` is a JSON-FG-style te
 
 ## 2. OIM-OBS / SOSA compliance
 
-**Not applicable.** This record describes a *process* (a computational experiment), not an *observation* of a phenomenon. SOSA terms (`observedProperty`, `hasSimpleResult`, etc.) are emitted by the `experiment-output` result record, not here. The experiment record links to that output via `properties.experiment.outputs[]`.
+**Not applicable.** This record describes a *process* (a computational experiment), not an *observation* of a phenomenon. SOSA terms (`observedProperty`, `hasSimpleResult`, etc.) are emitted by the `reef-effect-output` result record, not here. The experiment record links to that output via `properties.experiment.outputs[]`.
 
 ## 3. Schema-vs-example diff
 
-- `experiment` (required) ✓ present
+- `reef-effect` (required) ✓ present
 - `experiment.kind` ✓ value `"computational"` is in the enum
 - `experiment.application` (required) ✓ present, points to `../scripts/utsira_reef_biomass.py`
 - `experiment.inputs[]` ✓ 6 entries, each an `InputBinding` with `href`, `equationBinding`
@@ -31,7 +31,7 @@ Every key appearing in the example record now has a `@context` term mapping. The
 
 ## 5. Terms still needing authoritative vocabulary URIs
 
-The following terms are currently mapped to the local `https://w3id.org/ogc/hosted/seadots/experiment#` namespace (via the `seadots:` prefix or `@vocab` default) and SHOULD be replaced with authoritative URIs when a community vocabulary is identified:
+The following terms are currently mapped to the local `https://w3id.org/ogc/hosted/seadots/reef-effect#` namespace (via the `seadots:` prefix or `@vocab` default) and SHOULD be replaced with authoritative URIs when a community vocabulary is identified:
 
 | Term | Current @id | Suggested vocabulary search | Status |
 |---|---|---|---|

@@ -16,7 +16,7 @@ Extends `ogc.hosted.iliad.api.features.oim-obs` (SOSA observation profile in ili
 
 ## Required fields for script consumption
 
-The calculator `_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].density_kg_m2` to populate `D_pre,i`. Both are marked `required` in the schema.
+The calculator `_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].density_kg_m2` to populate `D_pre,i`. Both are marked `required` in the schema.
 
 ## Retrieval
 

@@ -1,15 +1,15 @@
-# Computational Experiment Output
+# Reef Effect Output
 
 OGC API Records profile for one output artefact produced by a computational experiment.
 
-Each instance describes a single output — a primary result file, a catalog, or a provenance record. The schema is intentionally narrow so that an `experiment` record can reference many `experiment-output` records by URI and an audit pipeline can resolve each artefact independently.
+Each instance describes a single output — a primary result file, a catalog, or a provenance record. The schema is intentionally narrow so that an `reef-effect` record can reference many `reef-effect-output` records by URI and an audit pipeline can resolve each artefact independently.
 
 Captured fields:
 
 1. **Role** — `primary result`, `catalog`, `provenance`, `diagnostic`. Mirrors the `role` field used on the per-class input records.
 2. **Format** — media type or URI for the artefact's format profile (e.g. `application/json`, `application/ld+json`, `application/x-netcdf`, or an OGC format URI). Pick the value that matches what the file *is*, not what it conceptually describes.
 3. **Vocabulary term** — concept URI for the produced quantity (e.g. `floating-wind-reef-biomass`).
-4. **Experiment** — URI of the `experiment` record that produced this output.
+4. **Experiment** — URI of the `reef-effect` record that produced this output.
 5. **Conformance** — optional list of conformance class URIs (e.g. the SeaDOTs EDITO output conventions, STAC version).
 6. **Inline data** — every example MUST embed representative result values inside the `data` object so a reader can see what the output actually carries. Same `provenance` requirement as the per-class input bblocks — see the worked example below.
 
@@ -19,7 +19,7 @@ Outputs may be self-contained datasets, references to STAC collections, or PROV-
 
 ## Worked example — reef-biomass result for the Utsira surroundings experiment
 
-The example `examples/reef_biomass_result.json` is the primary result of the experiment described in `_sources/experiment/examples/utsira_surroundings_experiment.json`. It evaluates the reef-biomass equation
+The example `examples/reef_biomass_result.json` is the primary result of the experiment described in `_sources/reef-effect/examples/utsira_surroundings_experiment.json`. It evaluates the reef-biomass equation
 
 $$B_{reef}(t) \;=\; \sum_i \bigl( A_{sub} \cdot D_{pre,i} \cdot AF_i \cdot C_t \bigr)$$
 
