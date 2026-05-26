@@ -7,6 +7,7 @@
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "prov": "http://www.w3.org/ns/prov#",
     "sosa": "http://www.w3.org/ns/sosa/",
+    "time": "http://www.w3.org/2006/time#",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
     "qudt": "http://qudt.org/schema/qudt/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#",
@@ -47,9 +48,12 @@
     "vocabularyTerm": { "@id": "skos:exactMatch", "@type": "@id" },
     "observedProperty": { "@id": "sosa:observedProperty", "@type": "@id" },
     "phenomenonTime": "sosa:phenomenonTime",
+    "start": { "@id": "time:hasBeginning", "@type": "http://www.w3.org/2001/XMLSchema#date" },
+    "end": { "@id": "time:hasEnd", "@type": "http://www.w3.org/2001/XMLSchema#date" },
     "data": "seadots:data",
     "units": "qudt:unit",
     "samplePeriod": "dcterms:temporal",
+    "timeBoundaries": { "@id": "dcterms:temporal", "@container": "@list" },
     "method": "dcterms:methodology",
     "icesDivision": "seadots:icesDivision",
 
@@ -67,6 +71,7 @@
     "primarySource": "dcterms:source",
     "nearestAuthoritativeSource": "seadots:nearestAuthoritativeSource",
     "verificationGap": "seadots:verificationGap",
+    "timeBoundaryNote": "skos:note",
     "note": "skos:note",
     "url": { "@id": "dcat:accessURL", "@type": "@id" }
   }

@@ -1,6 +1,6 @@
 # Validation report — `reef-effect-output`
 
-Date: 2026-05-19 · Scope: schema, context.jsonld, three example records under `examples/`.
+Date: 2026-05-19 · Scope: schema, context.jsonld, two example records under `examples/`.
 
 ## 1. OGC Feature compliance
 
@@ -8,7 +8,6 @@ Date: 2026-05-19 · Scope: schema, context.jsonld, three example records under `
 |---|:-:|:-:|:-:|:-:|:-:|
 | `reef_biomass_result.json` | ✓ | Polygon | ✓ | ✓ | **PASS** |
 | `stac_catalog.json` | ✓ | `null` | ✓ | ✓ | **PASS** |
-| `prov_record.json` | ✓ | `null` | ✓ | ✓ | **PASS** |
 
 ## 2. OIM-OBS / SOSA compliance
 
@@ -25,7 +24,7 @@ Date: 2026-05-19 · Scope: schema, context.jsonld, three example records under `
 
 These are siblings of the `experimentOutput.data` block (where the structured result lives) and do not replace it. A consumer that only reads SOSA fields gets the headline scalar and the feature/time; a consumer that reads the full `data` block additionally gets the per-taxon decomposition, time series, and uncertainty attribution.
 
-`stac_catalog.json` and `prov_record.json` are **catalog** and **provenance** records and are NOT observations — they intentionally carry no SOSA fields.
+`stac_catalog.json` is a **catalog** record and is NOT an observation — it intentionally carries no SOSA fields. The PROV-O provenance record is embedded inline under `reef_biomass_result.json` → `properties.experimentOutput.data.provenance.provRecord`.
 
 ### Gap vs OIM-OBS
 
@@ -37,13 +36,13 @@ This is a **known gap**: action item below.
 
 ## 3. Schema-vs-example diff
 
-For all three records: `experimentOutput` (required) is present with `name`, `role`, `format` (all required) ✓. `data.provenance` (required when `data` is present) ✓.
+For both example records: `experimentOutput` (required) is present with `name`, `role`, `format` (all required) ✓. `data.provenance` (required when `data` is present) ✓.
 
 No schema violations detected.
 
 ## 4. Context coverage
 
-Every key appearing in any of the three example records now has a `@context` term mapping. Including the SOSA-aligned additions, the diff resolved 0 missing terms.
+Every key appearing in either example record now has a `@context` term mapping. Including the SOSA-aligned additions and embedded PROV record, the diff resolved 0 missing terms.
 
 ## 5. Terms with authoritative URIs (resolved)
 

@@ -1,6 +1,6 @@
 {
   "name": "Marine Area of Interest",
-  "abstract": "OGC Feature profile for a polygon delimiting a marine area of interest (AOI) used by experiments, monitoring programmes, or impact assessments. Carries the bbox, centroid, area, and CRS as a self-contained inline `data` block with mandatory provenance. Geometry travels in the top-level GeoJSON `geometry` field.",
+  "abstract": "Simple GeoJSON Feature profile for a polygon delimiting a marine area of interest (AOI) used by experiments, monitoring programmes, or impact assessments. The polygon is carried only in the top-level GeoJSON `geometry`; `properties` carries a human-readable `title` and `description`.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-19T00:00:00Z",
   "itemClass": "schema",
@@ -10,14 +10,12 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "tags": ["AOI", "marine", "OGC Feature", "OIM"],
   "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
-  "sources": [{ "title": "GeoDCAT-Records", "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/" }],
   "dependsOn": [
-    "ogc.geo.geodcat.geodcat-records",
     "ogc.hosted.iliad.api.features.oim"
   ],
   "ldContext": "context.jsonld",
   "shaclRules": [],
-  "standards": ["http://www.w3.org/TR/vocab-dcat-3/"],
+  "standards": ["https://datatracker.ietf.org/doc/html/rfc7946"],
   "maturity": "development",
   "scope": "dev"
 }

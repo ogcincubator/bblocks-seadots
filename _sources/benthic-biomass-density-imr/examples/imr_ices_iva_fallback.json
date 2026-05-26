@@ -32,8 +32,8 @@
     "type": "Dataset",
     "title": "MAREANO benthic catch-sample biomass, aggregated per species over a North Sea / Norwegian Sea / Barents Sea AOI",
     "description": "Per-species sum of weighed catch-sample mass from the MAREANO Marbunn database, filtered to the AOI polygon. All numbers are real Marbunn-API responses fetched at file generation time.",
-    "created": "2026-05-25",
-    "updated": "2026-05-25",
+    "created": "2026-05-26",
+    "updated": "2026-05-26",
     "language": {
       "code": "en"
     },
@@ -136,6 +136,7 @@
           "2025001009",
           "2026007006"
         ],
+        "timeBoundaries": null,
         "speciesQueried": 3620,
         "speciesWithRecordsInAOI": 988,
         "speciesWithWeighedSamples": 481,
@@ -19163,8 +19164,9 @@
             "portal": "https://mareano.no/",
             "license": "CC BY 4.0 / NLOD"
           },
-          "fetched_utc": "2026-05-25T09:18:27Z",
+          "fetched_utc": "2026-05-26T11:11:24Z",
           "generator": "build_example.py",
+          "timeBoundaryNote": "No explicit --time-boundaries supplied; phenomenonTime falls back to the min/max contributing cruise identifiers.",
           "caveats": [
             "Marbunn returns catch-sample weights in kilograms; the values here are SUMS of those per-sample weights — not areal densities. Converting to kg m-2 would require the swept area of every sample, which Marbunn does not expose.",
             "Many catch records have Weight=null (sample identified but not weighed); they are excluded from totalWeight_kg but counted in samplesInAOI so coverage gaps stay visible.",

@@ -7,7 +7,7 @@ description: >
   uncertainty.
 
 allOf:
-  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+  - $ref: bblocks://ogc.hosted.iliad.api.features.oim-obs
 
 properties:
   properties:
@@ -33,12 +33,22 @@ properties:
             oneOf:
               - type: string
               - type: object
+                required: [start, end]
+                properties:
+                  start: { type: string, format: date }
+                  end: { type: string, format: date }
           data:
             type: object
             required: [perTaxon, provenance]
             properties:
               units: { type: string }
               samplePeriod: { type: string }
+              timeBoundaries:
+                type: array
+                description: Explicit phenomenon-time boundaries supplied to build_example.py.
+                minItems: 2
+                maxItems: 2
+                items: { type: string, format: date }
               method: { type: string }
               icesDivision: { type: string }
               perTaxon:
@@ -66,4 +76,5 @@ properties:
                       url: { type: string, format: uri }
                       note: { type: string }
                   verificationGap: { type: string }
+                  timeBoundaryNote: { type: string }
                   note: { type: string }

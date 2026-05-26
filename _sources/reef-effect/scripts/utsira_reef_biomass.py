@@ -11,9 +11,8 @@ Evaluates the reef-biomass equation
   B_reef(t) = sum_i ( A_sub * D_pre,i * AF_i * C_t )
 
 from `equation-property-relationship/examples/reef-biomass-equation.json`
-at the scenario end (t = 24 months) using six input records from the
-per-input bblocks. Propagates uncertainty by
-log-linear CV propagation under the refactoring
+at the scenario end (t = 24 months) using the per-input bblock records.
+Propagates uncertainty by log-linear CV propagation under the refactoring
 
   B_reef = A_sub * C_t * S         with  S = sum_i (D_pre,i * AF_i)
 
@@ -27,11 +26,23 @@ Run:
     python3 utsira_reef_biomass.py            # prints summary + JSON
     python3 utsira_reef_biomass.py --json     # prints structured JSON only
 
-Provenance: every input value carries a `provenance` block in its source
-record. All sigma values used here are either pulled from the IMR row's
-`uncertainty_kg_m2` field (used as a proxy for the MAREANO row, which
-has no sigma) or assumed (sigma_A_rel, sigma_AF_rel, sigma_C). The
-`assumed` ones are flagged in the script output.
+Inputs actually consumed (current schemas):
+    floating-wind-infrastructure   -> `data.aggregate.submerged_area_total_m2`  (A_sub)
+    benthic-biomass-density-mareano-> `data.perTaxon[].{scientificName,density_kg_m2}` (D_pre,i)
+    reef-aggregation-index         -> `data.perTaxon[].{scientificName,AF_i}` (AF_i)
+    colonisation-time-factor       -> `data.parameters.{L,k,t0_months}` + `data.lookup[]` (C_t)
+
+The area-of-interest record identifies the feature of interest for the
+experiment, but its polygon is not loaded into this closed-form worked
+example; the per-input examples are already scoped to the Utsira surroundings.
+
+The benthic-biomass-density-imr record is referenced by the experiment
+record as an alternate D_{pre,i} baseline but is NOT consumed by this
+script: its current schema reports per-sample catch weight (kg) summed
+across gear, not kg m-2, and carries no `uncertainty_kg_m2` field. With
+that field gone, sigma_D is treated as an assumed relative scalar
+(SIGMA_D_REL) and flagged in the script output alongside the other
+assumed sigmas.
 """
 
 from __future__ import annotations
@@ -53,13 +64,19 @@ INPUT_FILES = {
                        "floatingWindInfrastructure"),
     "mareano":        (SOURCES / "benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json",
                        "benthicBiomassDensity"),
-    "imr":            (SOURCES / "benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json",
-                       "benthicBiomassDensity"),
     "af":             (SOURCES / "reef-aggregation-index/examples/degraer2020_bindings.json",
                        "reefAggregationIndex"),
     "ct":             (SOURCES / "colonisation-time-factor/examples/default_sigmoid.json",
                        "colonisationTimeFactor"),
 }
+
+# IMR alternate-baseline record — referenced by the experiment record but
+# not loaded into the equation here (see module docstring for reasons).
+IMR_REFERENCE = SOURCES / "benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json"
+
+# Feature-of-interest record — referenced by the experiment record, but
+# not loaded into the closed-form arithmetic here (see module docstring).
+AOI_REFERENCE = SOURCES / "area-of-interest/examples/utsira_surroundings_aoi.json"
 
 
 def load_input(key: str) -> dict:
@@ -71,11 +88,16 @@ def load_input(key: str) -> dict:
 
 # ─── Assumed sigma values (not in any input record) ─────────────────────
 SIGMA_A_REL = 0.15      # engineering tolerance for submerged area
+SIGMA_D_REL = 0.40      # benthic survey CV proxy; MAREANO row carries no sigma
 SIGMA_AF_REL = 0.50     # wide literature variance on aggregation index
 SIGMA_C_ABS = 0.02      # near sigmoid saturation at t = 24 mo
 
 ASSUMED_SIGMAS = {
     "sigma_A_rel":  (SIGMA_A_REL,  "engineering tolerance, no source in input record"),
+    "sigma_D_rel":  (SIGMA_D_REL,  "benthic survey CV proxy; MAREANO row carries no sigma "
+                                   "and the IMR alternate-baseline record no longer exposes "
+                                   "uncertainty_kg_m2 (current schema reports per-sample "
+                                   "catch weight, not kg m-2)"),
     "sigma_AF_rel": (SIGMA_AF_REL, "wide literature variance; Degraer 2020 gives no spread"),
     "sigma_C_abs":  (SIGMA_C_ABS,  "near sigmoid saturation; small sigma assumed"),
 }
@@ -86,7 +108,6 @@ def compute() -> dict:
 
     infra = load_input("infrastructure")
     mareano = load_input("mareano")
-    imr = load_input("imr")
     af = load_input("af")
     ct = load_input("ct")
 
@@ -94,9 +115,10 @@ def compute() -> dict:
     A_sub = infra["aggregate"]["submerged_area_total_m2"]      # 109_500 m²
 
     D = {row["scientificName"]: row["density_kg_m2"] for row in mareano["perTaxon"]}
-    # IMR row carries `uncertainty_kg_m2`; MAREANO row does not — use IMR
-    # as a proxy for sigma until MAREANO retrieval is wired up.
-    sigma_D = {row["scientificName"]: row["uncertainty_kg_m2"] for row in imr["perTaxon"]}
+    # Neither MAREANO nor the current IMR record carries a per-taxon
+    # density uncertainty; treat sigma_D as a relative scalar (see
+    # ASSUMED_SIGMAS["sigma_D_rel"]).
+    sigma_D = {taxon: SIGMA_D_REL * D[taxon] for taxon in D}
 
     AF = {row["scientificName"]: row["AF_i"] for row in af["perTaxon"]}
 
@@ -202,10 +224,14 @@ def compute() -> dict:
             "derivedFrom": [
                 str(p.relative_to(SOURCES)) for p, _ in INPUT_FILES.values()
             ],
+            "referencedNotConsumed": [
+                str(AOI_REFERENCE.relative_to(SOURCES)),
+                str(IMR_REFERENCE.relative_to(SOURCES)),
+            ],
             "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
             "computeCode": "reef-effect/scripts/utsira_reef_biomass.py",
             "uncertaintyMethod": "log-linear CV propagation; taxa treated independent within S",
-            "note": "Inputs are illustrative (see each input record's data.provenance). `values: computed` refers to the calculation chain, not to a real-world measurement.",
+            "note": "Inputs are illustrative (see each input record's data.provenance). `values: computed` refers to the calculation chain, not to a real-world measurement. The benthic-biomass-density-imr record is referenced by the experiment record as an alternate D_{pre,i} baseline; under its current schema it reports per-sample catch weight (kg) not kg m-2, so it is not consumed here — see `referencedNotConsumed`.",
         },
     }
 

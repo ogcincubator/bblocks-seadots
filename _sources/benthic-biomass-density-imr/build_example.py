@@ -21,6 +21,7 @@ Run
         # uses defaults — writes ./examples/imr_ices_iva_fallback.json
         # cache lives next to the script as _marbunn_cache.json
     python build_example.py --aoi -5 56 33 82 --workers 16
+    python build_example.py --time-boundaries 2006-01-01 2026-12-31
     python build_example.py --refresh    # ignore the cache, re-fetch all
     python build_example.py --top 50     # keep only the 50 heaviest species
 
@@ -47,6 +48,14 @@ DEFAULT_AOI = (-5.0, 56.0, 33.0, 82.0)   # min_lon, min_lat, max_lon, max_lat
 SCRIPT_DIR  = Path(__file__).resolve().parent
 DEFAULT_OUT = SCRIPT_DIR / "examples" / "imr_ices_iva_fallback.json"
 DEFAULT_CACHE = SCRIPT_DIR / "_marbunn_cache.json"
+
+
+def _iso_date(value: str) -> str:
+    """Validate and normalize a CLI date boundary."""
+    try:
+        return dt.date.fromisoformat(value).isoformat()
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"{value!r} is not an ISO date (YYYY-MM-DD)") from exc
 
 
 def _http_json(url: str, timeout: int = 30) -> dict | list | None:
@@ -166,6 +175,11 @@ def build_document(cache: dict, aoi, args) -> dict:
     total_records_in_aoi = sum(r["n_records_in_aoi"] for r in cache.values())
     total_weight         = round(sum(r["total_weight_kg"] for r in cache.values()), 3)
     cruise_span          = sorted({c for r in cache.values() for c in r["cruises"]})
+    time_boundaries      = list(args.time_boundaries) if args.time_boundaries else None
+    phenomenon_time      = {
+        "start": time_boundaries[0],
+        "end":   time_boundaries[1],
+    } if time_boundaries else (f"{cruise_span[0]}/{cruise_span[-1]}" if cruise_span else None)
 
     today = dt.date.today().isoformat()
     return {
@@ -207,7 +221,7 @@ def build_document(cache: dict, aoi, args) -> dict:
                 "format":           "application/geo+json",
                 "vocabularyTerm":   "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
                 "observedProperty": "https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline",
-                "phenomenonTime":   f"{cruise_span[0]}/{cruise_span[-1]}" if cruise_span else None,
+                "phenomenonTime":   phenomenon_time,
                 "data": {
                     "units":  "kg (per-sample catch weight, summed across samples; NOT kg m-2)",
                     "method": ("For every species in MAREANO's catch-species list, fetched /getmapforcatch as "
@@ -215,6 +229,7 @@ def build_document(cache: dict, aoi, args) -> dict:
                                "Weight property (kg) and counted samples."),
                     "samplingGear":             sorted({e for r in cache.values() for e in r["equipment"]}),
                     "cruisesContributing":      cruise_span,
+                    "timeBoundaries":           time_boundaries,
                     "speciesQueried":           len(cache),
                     "speciesWithRecordsInAOI":  species_in_aoi,
                     "speciesWithWeighedSamples": species_with_weights,
@@ -233,6 +248,12 @@ def build_document(cache: dict, aoi, args) -> dict:
                         },
                         "fetched_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                         "generator":   f"{Path(__file__).name}",
+                        "timeBoundaryNote": (
+                            "The Marbunn catch-sample API exposes cruise identifiers rather than normalized "
+                            "per-sample dates in this aggregation. --time-boundaries records the intended "
+                            "phenomenon-time interval for the generated example; it does not filter cached "
+                            "records unless the upstream payload exposes dates in a future script revision."
+                        ) if time_boundaries else "No explicit --time-boundaries supplied; phenomenonTime falls back to the min/max contributing cruise identifiers.",
                         "caveats": [
                             "Marbunn returns catch-sample weights in kilograms; the values here are SUMS of those per-sample weights — not areal densities. Converting to kg m-2 would require the swept area of every sample, which Marbunn does not expose.",
                             "Many catch records have Weight=null (sample identified but not weighed); they are excluded from totalWeight_kg but counted in samplesInAOI so coverage gaps stay visible.",
@@ -262,8 +283,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--workers", type=int, default=16, help="concurrent HTTP fetchers (default: 16)")
     p.add_argument("--top", type=int, default=None,
                    help="if set, keep only the N species with the heaviest summed biomass in perTaxon")
+    p.add_argument("--time-boundaries", nargs=2, type=_iso_date, metavar=("START_DATE", "END_DATE"),
+                   help="explicit SOSA phenomenon-time bounds as ISO dates (YYYY-MM-DD YYYY-MM-DD)")
     p.add_argument("--refresh", action="store_true", help="ignore the species-aggregate cache and re-fetch all species")
-    return p.parse_args(argv)
+    args = p.parse_args(argv)
+    if args.time_boundaries and args.time_boundaries[0] > args.time_boundaries[1]:
+        p.error("--time-boundaries START_DATE must be earlier than or equal to END_DATE")
+    return args
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -271,6 +297,8 @@ def main(argv: list[str] | None = None) -> int:
     aoi = tuple(args.aoi)
 
     print(f"AOI: {aoi}", file=sys.stderr)
+    if args.time_boundaries:
+        print(f"TIME: {args.time_boundaries[0]} → {args.time_boundaries[1]}", file=sys.stderr)
     print(f"OUT: {args.out}", file=sys.stderr)
     args.out.parent.mkdir(parents=True, exist_ok=True)
 

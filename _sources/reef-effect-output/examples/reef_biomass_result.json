@@ -239,7 +239,28 @@
           "computeCode": "../../reef-effect/scripts/utsira_reef_biomass.py",
           "computeCodeNote": "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/reef-effect/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
           "uncertaintyMethod": "log-linear CV propagation; B_reef = A_sub · C_t · Σᵢ Dᵢ·AFᵢ; taxa treated independent within S",
-          "note": "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement."
+          "note": "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement.",
+          "provRecord": {
+            "id": "https://example.org/norwegian-ses/reef-effect-output/prov-record",
+            "type": "prov:Entity",
+            "title": "PROV-O provenance record (JSON-LD)",
+            "description": "Provenance record linking the run to the ODD demonstrator, the canonical reef-biomass equation record, and the per-taxon bindings resolved at run time.",
+            "created": "2026-05-18",
+            "updated": "2026-05-18",
+            "role": "provenance",
+            "format": "application/ld+json",
+            "vocabularyTerm": "http://www.w3.org/ns/prov#Entity",
+            "experiment": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+            "conformsTo": [
+              "http://www.w3.org/TR/prov-o/"
+            ],
+            "derivedFrom": [
+              "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+              "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+              "../../reef-effect/scripts/utsira_reef_biomass.py"
+            ],
+            "note": "Merged from the former standalone provenance example so the primary reef-biomass result carries its PROV-O provenance inline."
+          }
         }
       }
     }
@@ -247,6 +268,7 @@
   "links": [
     { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.reef-effect-output", "type": "application/schema+json", "title": "Reef Effect Output bblock" },
     { "rel": "derivedFrom", "href": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1", "type": "application/json", "title": "Experiment record this output belongs to" },
-    { "rel": "cite-as",    "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation", "type": "application/ld+json", "title": "Equation evaluated to produce this result" }
+    { "rel": "cite-as",    "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation", "type": "application/ld+json", "title": "Equation evaluated to produce this result" },
+    { "rel": "provenance", "href": "https://example.org/norwegian-ses/reef-effect-output/prov-record", "type": "application/ld+json", "title": "Embedded PROV-O provenance record" }
   ]
 }

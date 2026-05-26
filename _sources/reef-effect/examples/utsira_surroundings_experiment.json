@@ -51,7 +51,7 @@
 
     "experiment": {
       "kind": "computational",
-      "purpose": "Evaluate the reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario. Inputs are the six per-class input records cited below; outputs are the three reef-effect-output records cited below.",
+      "purpose": "Evaluate the reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario. Inputs are the six per-class input records cited below; outputs are the two reef-effect-output records cited below. The PROV-O provenance record is embedded in the structured result output.",
 
       "application": {
         "href": "../scripts/utsira_reef_biomass.py",
@@ -156,12 +156,6 @@
           "type": "application/json",
           "rel": "https://w3id.org/ogc/hosted/seadots/reef-effect#output",
           "title": "STAC catalog for the run"
-        },
-        {
-          "href": "https://example.org/norwegian-ses/reef-effect-output/prov-record",
-          "type": "application/json",
-          "rel": "https://w3id.org/ogc/hosted/seadots/reef-effect#output",
-          "title": "PROV-O provenance (JSON-LD)"
         }
       ],
 
@@ -173,7 +167,7 @@
         "scheduling": "single deterministic pass over taxon_groups (ODD processOverview.scheduling)",
         "reproducibility": {
           "seedPolicy": "deterministic — equation is closed-form, no stochastic submodels",
-          "provenance": "PROV-O record emitted as one of the outputs"
+          "provenance": "PROV-O record embedded in the structured result output"
         }
       },
 

@@ -1,0 +1,120 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Reef Effect Process
+description: >
+  OGC API Processes - Part 1 process description for the reef-effect biomass
+  calculation. Composed from the upstream `processSummary`, `inputDescription`
+  and `outputDescription` building blocks (register `bblocks-ogcapi-processes`)
+  and aligned with the OSPD profile
+  (`ogc.osc.api-profiles.processes.ospd`). Each declared input/output is
+  expected to carry a JSON Schema document (via the standard OGC API Processes
+  `schema` slot) pointing at the corresponding per-class SeaDOTs building
+  block; the per-class wiring is captured by `dependsOn` at the bblock level
+  and by the `$ref` URLs in the example. This bblock does not re-constrain
+  the `schema` slot beyond what the upstream `inputDescription`/
+  `outputDescription` schemas already mandate.
+
+allOf:
+  - $ref: 'bblocks://ogc.api.processes.v1.schemas.processSummary'
+  - type: object
+    required: [inputs, outputs]
+    properties:
+      inputs:
+        type: object
+        description: >
+          Input descriptions for the reef-effect process. Keys are the input
+          identifiers used in the `Execute` request `inputs` object.
+        additionalProperties: false
+        required:
+          - aoi
+          - infrastructure
+          - benthicBiomassPrimary
+          - reefAggregationIndex
+          - colonisationTimeFactor
+        properties:
+          aoi:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Area of interest }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 1 }
+                  maxOccurs: { type: integer, const: 1 }
+          infrastructure:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Floating wind infrastructure }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 1 }
+                  maxOccurs: { type: integer, const: 1 }
+          benthicBiomassPrimary:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Primary benthic biomass density (MAREANO) }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 1 }
+                  maxOccurs: { type: integer, const: 1 }
+          benthicBiomassFallback:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Fallback benthic biomass density (IMR) }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 0 }
+                  maxOccurs: { type: integer, const: 1 }
+          reefAggregationIndex:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Reef aggregation index }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 1 }
+                  maxOccurs: { type: integer, const: 1 }
+          colonisationTimeFactor:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Colonisation time factor }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 1 }
+                  maxOccurs: { type: integer, const: 1 }
+          asOfMonths:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.inputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Evaluation time (months since installation) }
+                  description: { type: string }
+                  minOccurs: { type: integer, const: 0 }
+                  maxOccurs: { type: integer, const: 1 }
+      outputs:
+        type: object
+        description: >
+          Output descriptions. The canonical structured result is a
+          reef-effect-output record carrying B_reef(t), per-taxon
+          contributions, time series, and uncertainty propagation.
+        additionalProperties: false
+        required:
+          - reefBiomassResult
+        properties:
+          reefBiomassResult:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.outputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: Reef-associated biomass — structured result }
+                  description: { type: string }
+          provenance:
+            allOf:
+              - $ref: 'bblocks://ogc.api.processes.v1.schemas.outputDescription'
+              - type: object
+                properties:
+                  title: { type: string, const: PROV-O provenance (JSON-LD) }
+                  description: { type: string }

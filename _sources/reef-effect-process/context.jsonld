@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-process#",
+
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "ogcapi-proc": "http://www.opengis.net/def/ogcapi-processes/1.0/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect-process#",
+
+    "id": "ogcapi-proc:id",
+    "version": "dcterms:hasVersion",
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "keywords": { "@id": "dcat:keyword", "@container": "@set" },
+    "metadata": { "@id": "dcterms:source", "@container": "@set" },
+    "additionalParameters": "ogcapi-proc:additionalParameters",
+
+    "jobControlOptions": { "@id": "ogcapi-proc:jobControlOptions", "@container": "@set" },
+    "outputTransmission": { "@id": "ogcapi-proc:outputTransmission", "@container": "@set" },
+
+    "inputs": { "@id": "ogcapi-proc:input", "@container": "@index" },
+    "outputs": { "@id": "ogcapi-proc:output", "@container": "@index" },
+    "minOccurs": "ogcapi-proc:minOccurs",
+    "maxOccurs": "ogcapi-proc:maxOccurs",
+    "schema": { "@id": "dcterms:conformsTo", "@type": "@id" },
+
+    "links": { "@id": "http://www.w3.org/ns/iana/link-relations/relation", "@container": "@set" },
+    "href": { "@id": "@id" },
+    "rel": "https://purl.org/geojson/vocab#rel",
+    "type": "dcterms:format",
+    "mediaType": "dcterms:format",
+
+    "executionUnit": { "@id": "schema:softwareSourceCode", "@type": "@id" },
+    "language": "dcterms:language",
+    "languageVersion": "schema:runtimePlatform",
+    "dependencies": { "@id": "schema:softwareRequirements", "@container": "@set" },
+    "entrypoint": "schema:potentialAction",
+    "reproducibility": "seadots:reproducibility",
+    "seedPolicy": "seadots:seedPolicy",
+    "provenance": "prov:wasGeneratedBy",
+
+    "modelledBy": { "@id": "prov:wasInformedBy", "@type": "@id" },
+    "evidenceEquation": { "@id": "prov:hadPlan", "@type": "@id" },
+
+    "conformsTo": { "@id": "dcterms:conformsTo", "@type": "@id", "@container": "@set" }
+  }
+}
