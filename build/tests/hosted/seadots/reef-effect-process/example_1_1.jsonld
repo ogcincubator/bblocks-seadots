@@ -1,0 +1,214 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/context.jsonld",
+  "id": "utsira-reef-biomass",
+  "version": "0.1.0",
+  "title": "Utsira reef-biomass calculator",
+  "description": "Deterministic computation of reef-associated biomass B_reef(t) = sum_i (A_sub * D_pre,i * AF_i * C_t) for the surroundings of Utsira island, with log-linear CV uncertainty propagation. Inputs are per-class SeaDOTs records; the output is a reef-effect-output record plus a PROV-O provenance document. Realises the ODD demonstrator utsira_reef_biomass_demonstrator and cites the canonical reef-biomass equation record.",
+  "keywords": [
+    "reef-effect",
+    "Utsira",
+    "reef biomass",
+    "ogcapi-processes",
+    "ospd",
+    "SeaDOTs",
+    "deterministic"
+  ],
+  "metadata": [
+    {
+      "role": "https://www.opengis.net/def/metadata-role/ogcapi-processes/ospd",
+      "title": "Aligned with the OSPD profile (ogc.osc.api-profiles.processes.ospd)",
+      "href": "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.api-profiles.processes.ospd"
+    },
+    {
+      "role": "http://www.w3.org/ns/dcat#theme",
+      "title": "Floating-wind reef effect",
+      "href": "https://id3.seadots.eu/themes/reef-effect"
+    }
+  ],
+  "jobControlOptions": [
+    "sync-execute",
+    "async-execute"
+  ],
+  "outputTransmission": [
+    "value",
+    "reference"
+  ],
+  "inputs": {
+    "aoi": {
+      "title": "Area of interest",
+      "description": "Polygon delimiting the study area. Defaults to the surroundings of Utsira island.",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/area-of-interest/schema.json",
+        "contentMediaType": "application/json"
+      }
+    },
+    "infrastructure": {
+      "title": "Floating wind infrastructure",
+      "description": "Submerged-area description bound to the equation symbol A_sub.",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure/schema.json",
+        "contentMediaType": "application/json"
+      },
+      "additionalParameters": {
+        "parameters": [
+          {
+            "name": "equationBinding",
+            "value": [
+              "A_{sub}"
+            ]
+          }
+        ]
+      }
+    },
+    "benthicBiomassPrimary": {
+      "title": "Primary benthic biomass density (MAREANO)",
+      "description": "Per-taxon pre-existing density bound to the equation symbol D_pre,i.",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/schema.json",
+        "contentMediaType": "application/json"
+      },
+      "additionalParameters": {
+        "parameters": [
+          {
+            "name": "equationBinding",
+            "value": [
+              "D_{pre,i}"
+            ]
+          }
+        ]
+      }
+    },
+    "benthicBiomassFallback": {
+      "title": "Fallback benthic biomass density (IMR)",
+      "description": "Fallback baseline used where the primary baseline has no coverage; also supplies sigma_kg_m2 for uncertainty propagation.",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/schema.json",
+        "contentMediaType": "application/json"
+      },
+      "additionalParameters": {
+        "parameters": [
+          {
+            "name": "equationBinding",
+            "value": [
+              "D_{pre,i}"
+            ]
+          }
+        ]
+      }
+    },
+    "reefAggregationIndex": {
+      "title": "Reef aggregation index",
+      "description": "Per-taxon AF_i bindings.",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/schema.json",
+        "contentMediaType": "application/json"
+      },
+      "additionalParameters": {
+        "parameters": [
+          {
+            "name": "equationBinding",
+            "value": [
+              "AF_i"
+            ]
+          }
+        ]
+      }
+    },
+    "colonisationTimeFactor": {
+      "title": "Colonisation time factor",
+      "description": "Sigmoid parameters L, k, t0 (months); evaluated to C_t for the equation.",
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/schema.json",
+        "contentMediaType": "application/json"
+      },
+      "additionalParameters": {
+        "parameters": [
+          {
+            "name": "equationBinding",
+            "value": [
+              "C_t"
+            ]
+          }
+        ]
+      }
+    },
+    "asOfMonths": {
+      "title": "Evaluation time (months since installation)",
+      "description": "Scalar t in C(t); defaults to 24 months in the worked example.",
+      "minOccurs": 0,
+      "maxOccurs": 1,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 24
+      }
+    }
+  },
+  "outputs": {
+    "reefBiomassResult": {
+      "title": "Reef-associated biomass \u2014 structured result",
+      "description": "Reef-effect-output record carrying headline B_reef(t), per-taxon contributions, time series, and uncertainty propagation.",
+      "schema": {
+        "$ref": "https://w3id.org/ogc/hosted/seadots/reef-effect-output/schema.json",
+        "contentMediaType": "application/json"
+      }
+    },
+    "provenance": {
+      "title": "PROV-O provenance (JSON-LD)",
+      "description": "PROV-O record linking the run to its six input records, the equation record, and the ODD record.",
+      "schema": {
+        "type": "object",
+        "contentMediaType": "application/ld+json"
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "execute",
+      "href": "https://example.org/norwegian-ses/processes/utsira-reef-biomass/execution",
+      "type": "application/json",
+      "title": "Execute endpoint"
+    },
+    {
+      "rel": "http://www.opengis.net/def/rel/ogc/1.0/execution-unit",
+      "href": "../../reef-effect/scripts/utsira_reef_biomass.py",
+      "type": "text/x-python",
+      "title": "Python reproducibility script (executionUnit)"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator",
+      "type": "application/json",
+      "title": "ODD demonstrator realised by this process"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+      "type": "application/ld+json",
+      "title": "Reef-biomass equation record"
+    },
+    {
+      "rel": "related",
+      "href": "https://w3id.org/ogc/hosted/seadots/reef-effect/examples/utsira_surroundings_experiment",
+      "type": "application/geo+json",
+      "title": "Experiment record (OGC API Records) that realises this process"
+    },
+    {
+      "rel": "http://www.opengis.net/def/rel/ogc/1.0/conformance",
+      "href": "http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core",
+      "title": "OGC API - Processes - Part 1: Core"
+    }
+  ]
+}

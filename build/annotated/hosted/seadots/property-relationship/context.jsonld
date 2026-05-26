@@ -1,6 +1,21 @@
 {
   "@context": {
     "PropertyRelationship": "prop-rel:PropertyRelationship",
+    "experiment": {
+      "@id": "prov:wasGeneratedBy",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
     "id": "@id",
     "type": "@type",
     "fromProperty": {
@@ -21,27 +36,11 @@
     "model": {
       "@context": {
         "id": "dct:identifier",
-        "name": "rdfs:label",
         "uri": "@id"
       },
       "@id": "prov:wasAttributedTo"
     },
-    "experiment": {
-      "@context": {
-        "id": "dct:identifier",
-        "name": "rdfs:label",
-        "uri": "@id",
-        "start": {
-          "@id": "prov:startedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "end": {
-          "@id": "prov:endedAtTime",
-          "@type": "xsd:dateTime"
-        }
-      },
-      "@id": "prov:wasGeneratedBy"
-    },
+    "name": "rdfs:label",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
     "qudt": "http://qudt.org/schema/qudt/",

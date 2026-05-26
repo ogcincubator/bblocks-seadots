@@ -236,7 +236,7 @@ properties:
         description: URI of the model resource.
         x-jsonld-id: '@id'
     x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
-  experiment:
+  reef-effect:
     description: Experiment activity that evaluated this relationship (prov:wasGeneratedBy).
     type: object
     required:
@@ -245,7 +245,7 @@ properties:
       id:
         type: string
         description: Identifier of the experiment (dct:identifier).
-        x-jsonld-id: http://purl.org/dc/terms/identifier
+        x-jsonld-id: '@id'
       name:
         type: string
         description: Human-readable label of the experiment (rdfs:label).
@@ -253,22 +253,16 @@ properties:
       uri:
         type: string
         description: URI of the experiment resource.
-        x-jsonld-id: '@id'
       start:
         type: string
         format: date-time
         pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
         description: Date and time when the experiment started (prov:startedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
       end:
         type: string
         format: date-time
         pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
         description: Date and time when the experiment ended (prov:endedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
   evidence:
     oneOf:
     - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
@@ -309,6 +303,18 @@ x-jsonld-extra-terms:
             '@id': https://w3id.org/ogc/hosted/seadots/prop-rel/aggregatesOver
             '@type': '@id'
           indexSymbol: https://w3id.org/ogc/hosted/seadots/prop-rel/indexSymbol
+  experiment:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+    x-jsonld-context:
+      id: http://purl.org/dc/terms/identifier
+      name: http://www.w3.org/2000/01/rdf-schema#label
+      uri: '@id'
+      start:
+        '@id': http://www.w3.org/ns/prov#startedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
+      end:
+        '@id': http://www.w3.org/ns/prov#endedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
 x-jsonld-prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   prop-rel: https://w3id.org/ogc/hosted/seadots/prop-rel/
@@ -321,4 +327,5 @@ x-jsonld-prefixes:
   odd: https://w3id.org/iliad/odd#
   tc: http://rs.tdwg.org/ontology/voc/TaxonConcept#
   indo: https://w3id.org/indicators/marine/obs/
+  indp: https://w3id.org/indicators/marine/parameters/
   ind: https://w3id.org/indicators/marine/

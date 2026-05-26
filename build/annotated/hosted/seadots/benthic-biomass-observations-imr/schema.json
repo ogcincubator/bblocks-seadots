@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IMR Benthic Biomass Observations",
+  "description": "GeoJSON FeatureCollection containing raw IMR / MAREANO Marbunn catch-sample point features for all requested species and cruise queries. Each feature is a raw station/sample record with species, cruise, equipment, count and weight fields where available.\n",
+  "type": "object",
+  "required": [
+    "type",
+    "features"
+  ],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection",
+      "x-jsonld-id": "@type"
+    },
+    "id": {
+      "type": "string",
+      "format": "uri-reference",
+      "x-jsonld-id": "@id"
+    },
+    "bbox": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "number"
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#bbox"
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "x-jsonld-id": "http://purl.org/dc/terms/title"
+        },
+        "description": {
+          "type": "string",
+          "x-jsonld-id": "http://purl.org/dc/terms/description"
+        },
+        "created": {
+          "type": "string",
+          "format": "date",
+          "x-jsonld-id": "http://purl.org/dc/terms/created"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "x-jsonld-id": "http://purl.org/dc/terms/title"
+            },
+            "api": {
+              "type": "string",
+              "format": "uri",
+              "x-jsonld-id": "http://www.w3.org/ns/dcat#accessURL",
+              "x-jsonld-type": "@id"
+            },
+            "speciesListEndpoint": {
+              "type": "string",
+              "format": "uri",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesListEndpoint",
+              "x-jsonld-type": "@id"
+            },
+            "perSpeciesEndpoint": {
+              "type": "string",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#perSpeciesEndpoint"
+            },
+            "license": {
+              "type": "string",
+              "x-jsonld-id": "http://purl.org/dc/terms/license"
+            }
+          },
+          "x-jsonld-id": "http://purl.org/dc/terms/source"
+        },
+        "aoi": {
+          "type": "object",
+          "properties": {
+            "bbox": {
+              "type": "array",
+              "minItems": 4,
+              "items": {
+                "type": "number"
+              },
+              "x-jsonld-id": "https://purl.org/geojson/vocab#bbox"
+            },
+            "geometry": {
+              "type": "object",
+              "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
+            }
+          },
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#areaOfInterest"
+        },
+        "phenomenonTime": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "start",
+                "end"
+              ],
+              "properties": {
+                "start": {
+                  "type": "string",
+                  "format": "date",
+                  "x-jsonld-id": "http://www.w3.org/2006/time#hasBeginning",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date",
+                  "x-jsonld-id": "http://www.w3.org/2006/time#hasEnd",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+                }
+              }
+            }
+          ],
+          "x-jsonld-id": "http://www.w3.org/2006/time#hasTime"
+        },
+        "summary": {
+          "type": "object",
+          "properties": {
+            "speciesQueried": {
+              "type": "integer",
+              "minimum": 0,
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesQueried"
+            },
+            "cruiseQueries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruiseQueries",
+              "x-jsonld-container": "@set"
+            },
+            "apiQueries": {
+              "type": "integer",
+              "minimum": 0,
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#apiQueries"
+            },
+            "sourceFeatures": {
+              "type": "integer",
+              "minimum": 0,
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sourceFeatures"
+            },
+            "featuresInAOI": {
+              "type": "integer",
+              "minimum": 0,
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#featuresInAOI"
+            },
+            "speciesInAOI": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesInAOI",
+              "x-jsonld-container": "@set"
+            },
+            "cruisesInAOI": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruisesInAOI",
+              "x-jsonld-container": "@set"
+            },
+            "equipmentInAOI": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#equipmentInAOI",
+              "x-jsonld-container": "@set"
+            }
+          },
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#summary"
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "values": {
+              "type": "string",
+              "enum": [
+                "retrieved",
+                "illustrative",
+                "mixed"
+              ],
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#provenanceValues"
+            },
+            "generator": {
+              "type": "string",
+              "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy"
+            },
+            "fetched_utc": {
+              "type": "string",
+              "x-jsonld-id": "http://www.w3.org/ns/prov#generatedAtTime"
+            },
+            "cacheDirectory": {
+              "type": "string",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cacheDirectory"
+            },
+            "timeBoundaryNote": {
+              "type": "string",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#timeBoundaryNote"
+            }
+          },
+          "x-jsonld-id": "http://www.w3.org/ns/prov#wasDerivedFrom"
+        }
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rel": {
+            "type": "string",
+            "x-jsonld-id": "https://purl.org/geojson/vocab#rel"
+          },
+          "href": {
+            "type": "string",
+            "x-jsonld-id": "@id"
+          },
+          "type": {
+            "type": "string",
+            "x-jsonld-id": "@type"
+          },
+          "title": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/title"
+          }
+        }
+      },
+      "x-jsonld-id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "x-jsonld-container": "@set"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "geometry",
+          "properties"
+        ],
+        "properties": {
+          "type": {
+            "const": "Feature",
+            "x-jsonld-id": "@type"
+          },
+          "geometry": {
+            "type": "object",
+            "required": [
+              "type",
+              "coordinates"
+            ],
+            "properties": {
+              "type": {
+                "const": "Point",
+                "x-jsonld-id": "@type"
+              },
+              "coordinates": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "number"
+                },
+                "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
+                "x-jsonld-container": "@list"
+              }
+            },
+            "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
+          },
+          "properties": {
+            "type": "object",
+            "required": [
+              "scientificName"
+            ],
+            "properties": {
+              "scientificName": {
+                "type": "string",
+                "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/scientificName"
+              },
+              "species": {
+                "type": "string",
+                "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/scientificName"
+              },
+              "sourceSpeciesQuery": {
+                "type": "string",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sourceSpeciesQuery"
+              },
+              "sourceCruiseQuery": {
+                "type": "string",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sourceCruiseQuery"
+              },
+              "cruise": {
+                "type": "string",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruise"
+              },
+              "equipment": {
+                "type": "string",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#equipment"
+              },
+              "Cruise": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruise"
+              },
+              "Equipment": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#equipment"
+              },
+              "Scientific name": {
+                "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/scientificName"
+              },
+              "Number": {
+                "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/individualCount"
+              },
+              "Weight": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#catchWeight",
+                "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+              },
+              "Catch Id": {
+                "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+              },
+              "Sample Number": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sampleNumber"
+              },
+              "Station (R)": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#station"
+              },
+              "Bottom depth": {
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#bottomDepth"
+              }
+            },
+            "additionalProperties": true,
+            "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+          }
+        },
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#features",
+      "x-jsonld-container": "@set"
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-extra-terms": {
+    "FeatureCollection": "https://purl.org/geojson/vocab#FeatureCollection",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "Point": "https://purl.org/geojson/vocab#Point",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon"
+  },
+  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#",
+  "x-jsonld-prefixes": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#",
+    "time": "http://www.w3.org/2006/time#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "qudt": "http://qudt.org/schema/qudt/"
+  }
+}

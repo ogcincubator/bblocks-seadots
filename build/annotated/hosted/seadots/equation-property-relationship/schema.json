@@ -266,7 +266,7 @@
       },
       "x-jsonld-id": "http://www.w3.org/ns/prov#wasAttributedTo"
     },
-    "experiment": {
+    "reef-effect": {
       "description": "Experiment activity that evaluated this relationship (prov:wasGeneratedBy).",
       "type": "object",
       "required": [
@@ -276,7 +276,7 @@
         "id": {
           "type": "string",
           "description": "Identifier of the experiment (dct:identifier).",
-          "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+          "x-jsonld-id": "@id"
         },
         "name": {
           "type": "string",
@@ -285,27 +285,21 @@
         },
         "uri": {
           "type": "string",
-          "description": "URI of the experiment resource.",
-          "x-jsonld-id": "@id"
+          "description": "URI of the experiment resource."
         },
         "start": {
           "type": "string",
           "format": "date-time",
           "pattern": "^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d+)?(Z|[+-]\\\\d{2}:\\\\d{2})?$",
-          "description": "Date and time when the experiment started (prov:startedAtTime).",
-          "x-jsonld-id": "http://www.w3.org/ns/prov#startedAtTime",
-          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "description": "Date and time when the experiment started (prov:startedAtTime)."
         },
         "end": {
           "type": "string",
           "format": "date-time",
           "pattern": "^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d+)?(Z|[+-]\\\\d{2}:\\\\d{2})?$",
-          "description": "Date and time when the experiment ended (prov:endedAtTime).",
-          "x-jsonld-id": "http://www.w3.org/ns/prov#endedAtTime",
-          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "description": "Date and time when the experiment ended (prov:endedAtTime)."
         }
-      },
-      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy"
+      }
     },
     "evidence": {
       "oneOf": [
@@ -361,6 +355,22 @@
           }
         }
       }
+    },
+    "experiment": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "x-jsonld-context": {
+        "id": "http://purl.org/dc/terms/identifier",
+        "name": "http://www.w3.org/2000/01/rdf-schema#label",
+        "uri": "@id",
+        "start": {
+          "@id": "http://www.w3.org/ns/prov#startedAtTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "end": {
+          "@id": "http://www.w3.org/ns/prov#endedAtTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        }
+      }
     }
   },
   "x-jsonld-prefixes": {
@@ -375,6 +385,7 @@
     "odd": "https://w3id.org/iliad/odd#",
     "tc": "http://rs.tdwg.org/ontology/voc/TaxonConcept#",
     "indo": "https://w3id.org/indicators/marine/obs/",
+    "indp": "https://w3id.org/indicators/marine/parameters/",
     "ind": "https://w3id.org/indicators/marine/"
   }
 }

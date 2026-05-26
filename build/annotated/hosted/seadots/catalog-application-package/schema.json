@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SeaDOTs Catalog Application Package",
+  "description": "APKG/CWL-aligned computational contract for a reusable SeaDOTs application.\n",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "description",
+    "class",
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "x-jsonld-id": "@id"
+    },
+    "type": {
+      "const": "ApplicationPackage",
+      "x-jsonld-id": "@type"
+    },
+    "title": {
+      "type": "string",
+      "x-jsonld-id": "http://purl.org/dc/terms/title"
+    },
+    "description": {
+      "type": "string",
+      "x-jsonld-id": "http://purl.org/dc/terms/description"
+    },
+    "class": {
+      "type": "string",
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#class"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-jsonld-id": "@id"
+          },
+          "type": {
+            "type": "string",
+            "x-jsonld-id": "@type"
+          },
+          "description": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/description"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/apkg/terms/inputs",
+      "x-jsonld-container": "@set"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-jsonld-id": "@id"
+          },
+          "type": {
+            "type": "string",
+            "x-jsonld-id": "@type"
+          },
+          "description": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/description"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/apkg/terms/outputs",
+      "x-jsonld-container": "@set"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "x-jsonld-id": "https://w3id.org/cwl/cwl#requirements",
+      "x-jsonld-container": "@set"
+    },
+    "softwareVersion": {
+      "type": "string",
+      "x-jsonld-id": "https://schema.org/softwareVersion"
+    },
+    "programmingLanguage": {
+      "type": "string",
+      "x-jsonld-id": "https://schema.org/programmingLanguage"
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-extra-terms": {
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "geometry": "https://purl.org/geojson/vocab#geometry",
+    "bbox": "https://purl.org/geojson/vocab#bbox",
+    "coordinates": "https://purl.org/geojson/vocab#coordinates",
+    "properties": "https://purl.org/geojson/vocab#properties",
+    "links": {
+      "x-jsonld-id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "x-jsonld-container": "@set"
+    },
+    "href": "@id",
+    "rel": "http://www.w3.org/ns/iana/link-relations/relation",
+    "itemType": "http://purl.org/dc/terms/type",
+    "conformsTo": {
+      "x-jsonld-id": "http://purl.org/dc/terms/conformsTo",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@set"
+    },
+    "name": "http://purl.org/dc/terms/title",
+    "keywords": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#keyword",
+      "x-jsonld-container": "@set"
+    },
+    "themes": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#theme",
+      "x-jsonld-container": "@set"
+    },
+    "license": {
+      "x-jsonld-id": "http://purl.org/dc/terms/license",
+      "x-jsonld-type": "@id"
+    },
+    "created": {
+      "x-jsonld-id": "http://purl.org/dc/terms/created",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "updated": {
+      "x-jsonld-id": "http://purl.org/dc/terms/modified",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "applicationCategory": "https://schema.org/applicationCategory",
+    "applicationPackage": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage",
+      "x-jsonld-type": "@id"
+    },
+    "workflow": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#hadPlan",
+      "x-jsonld-type": "@id"
+    },
+    "version": "http://purl.org/dc/terms/hasVersion",
+    "method": "http://purl.org/dc/terms/method",
+    "startTime": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#startedAtTime",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "endTime": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#endedAtTime",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "status": "https://w3id.org/ogc/hosted/seadots/catalog#status",
+    "parameters": "https://w3id.org/ogc/hosted/seadots/catalog#parameters",
+    "timeBoundaryStart": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryStart",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "timeBoundaryEnd": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryEnd",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "application": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used",
+      "x-jsonld-type": "@id"
+    },
+    "activity": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/catalog#activity",
+      "x-jsonld-type": "@id"
+    },
+    "inputRecords": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#used",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@set"
+    },
+    "outputRecords": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#generated",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@set"
+    },
+    "agent": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasAssociatedWith",
+      "x-jsonld-type": "@id"
+    },
+    "configuration": "https://w3id.org/ogc/hosted/seadots/catalog#configuration",
+    "containerImage": "https://w3id.org/ogc/hosted/seadots/catalog#containerImage",
+    "stac_version": "https://stacspec.org/vocab#stac_version",
+    "collection": {
+      "x-jsonld-id": "http://purl.org/dc/terms/isPartOf",
+      "x-jsonld-type": "@id"
+    },
+    "datetime": {
+      "x-jsonld-id": "http://purl.org/dc/terms/date",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "convention": "https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention",
+    "cf:parameter": {
+      "x-jsonld-id": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter",
+      "x-jsonld-container": "@set"
+    },
+    "unit": "http://purl.org/dc/terms/format",
+    "assets": "https://stacspec.org/vocab#assets",
+    "data": "https://stacspec.org/vocab#data",
+    "derivedFrom": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasDerivedFrom",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@set"
+    },
+    "role": "https://w3id.org/ogc/hosted/seadots/catalog#role",
+    "mediaType": "http://purl.org/dc/terms/format",
+    "dockerPull": "https://w3id.org/ogc/hosted/seadots/catalog#dockerPull"
+  },
+  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+  "x-jsonld-prefixes": {
+    "geojson": "https://purl.org/geojson/vocab#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "schema": "https://schema.org/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "apkg": "https://w3id.org/apkg/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "stac": "https://stacspec.org/vocab#",
+    "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#"
+  }
+}

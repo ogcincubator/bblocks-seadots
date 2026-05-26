@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OBIS MAREANO Checklist",
+  "description": "Raw OBIS checklist or occurrence response for selected MAREANO dataset identifiers. The payload is intentionally kept in the OBIS API shape: a total count and a `results` array of checklist rows or occurrence records.\n",
+  "type": "object",
+  "required": [
+    "total",
+    "results"
+  ],
+  "properties": {
+    "total": {
+      "type": "integer",
+      "minimum": 0,
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#totalChecklistRows"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "scientificName"
+        ],
+        "properties": {
+          "scientificName": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/scientificName"
+          },
+          "scientificNameAuthorship": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/scientificNameAuthorship"
+          },
+          "taxonID": {
+            "type": "integer",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/taxonID"
+          },
+          "aphiaID": {
+            "type": "integer",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/taxonID"
+          },
+          "acceptedNameUsage": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/acceptedNameUsage"
+          },
+          "acceptedNameUsageID": {
+            "type": "integer",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/acceptedNameUsageID"
+          },
+          "taxonRank": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/taxonRank"
+          },
+          "taxonomicStatus": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/taxonomicStatus"
+          },
+          "records": {
+            "type": "integer",
+            "minimum": 0,
+            "x-jsonld-id": "https://api.obis.org/v3/terms/records"
+          },
+          "id": {
+            "type": "string",
+            "x-jsonld-id": "@id"
+          },
+          "occurrenceID": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/occurrenceID"
+          },
+          "basisOfRecord": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/basisOfRecord"
+          },
+          "dataset_id": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/isPartOf"
+          },
+          "datasetID": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/isPartOf"
+          },
+          "datasetName": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/title"
+          },
+          "decimalLatitude": {
+            "type": "number",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/decimalLatitude"
+          },
+          "decimalLongitude": {
+            "type": "number",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/decimalLongitude"
+          },
+          "eventDate": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/eventDate"
+          },
+          "eventID": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/eventID"
+          },
+          "samplingProtocol": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/samplingProtocol"
+          },
+          "depth": {
+            "type": "number",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/minimumDepthInMeters"
+          },
+          "minimumDepthInMeters": {
+            "type": "number",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/minimumDepthInMeters"
+          },
+          "maximumDepthInMeters": {
+            "type": "number",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/maximumDepthInMeters"
+          },
+          "ncbi_id": {
+            "type": "integer",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#ncbiId"
+          },
+          "wrims": {
+            "type": "boolean",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#wrims"
+          },
+          "is_marine": {
+            "type": "boolean",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/marine"
+          },
+          "is_brackish": {
+            "type": "boolean",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isBrackish"
+          },
+          "is_freshwater": {
+            "type": "boolean",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isFreshwater"
+          },
+          "is_terrestrial": {
+            "type": "boolean",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isTerrestrial"
+          },
+          "kingdom": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/kingdom"
+          },
+          "phylum": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/phylum"
+          },
+          "class": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/class"
+          },
+          "order": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/order"
+          },
+          "family": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/family"
+          },
+          "genus": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/genus"
+          },
+          "species": {
+            "type": "string",
+            "x-jsonld-id": "http://rs.tdwg.org/dwc/terms/specificEpithet"
+          }
+        },
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#checklistResult",
+      "x-jsonld-container": "@set"
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#",
+  "x-jsonld-prefixes": {
+    "seadots": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "obis": "https://api.obis.org/v3/terms/",
+    "dcterms": "http://purl.org/dc/terms/"
+  }
+}

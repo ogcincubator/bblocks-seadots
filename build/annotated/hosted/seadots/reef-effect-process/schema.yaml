@@ -1,0 +1,267 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Reef Effect Process
+description: 'OGC API Processes - Part 1 process description for the reef-effect biomass
+  calculation. Composed from the upstream `processSummary`, `inputDescription` and
+  `outputDescription` building blocks (register `bblocks-ogcapi-processes`) and aligned
+  with the OSPD profile (`ogc.osc.api-profiles.processes.ospd`). Each declared input/output
+  is expected to carry a JSON Schema document (via the standard OGC API Processes
+  `schema` slot) pointing at the corresponding per-class SeaDOTs building block; the
+  per-class wiring is captured by `dependsOn` at the bblock level and by the `$ref`
+  URLs in the example. This bblock does not re-constrain the `schema` slot beyond
+  what the upstream `inputDescription`/ `outputDescription` schemas already mandate.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/processSummary/schema.yaml
+- type: object
+  required:
+  - inputs
+  - outputs
+  properties:
+    inputs:
+      type: object
+      description: 'Input descriptions for the reef-effect process. Keys are the input
+        identifiers used in the `Execute` request `inputs` object.
+
+        '
+      additionalProperties: false
+      required:
+      - aoi
+      - infrastructure
+      - benthicBiomassPrimary
+      - reefAggregationIndex
+      - colonisationTimeFactor
+      properties:
+        aoi:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Area of interest
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        infrastructure:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Floating wind infrastructure
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        benthicBiomassPrimary:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Primary benthic biomass density (MAREANO)
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        benthicBiomassFallback:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Fallback benthic biomass density (IMR)
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 0
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        reefAggregationIndex:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Reef aggregation index
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        colonisationTimeFactor:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Colonisation time factor
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+        asOfMonths:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/inputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: Evaluation time (months since installation)
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+              minOccurs:
+                type: integer
+                const: 0
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/minOccurs
+              maxOccurs:
+                type: integer
+                const: 1
+                x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/maxOccurs
+      x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/input
+      x-jsonld-container: '@index'
+    outputs:
+      type: object
+      description: 'Output descriptions. The canonical structured result is a reef-effect-output
+        record carrying B_reef(t), per-taxon contributions, time series, and uncertainty
+        propagation.
+
+        '
+      additionalProperties: false
+      required:
+      - reefBiomassResult
+      properties:
+        reefBiomassResult:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/outputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: "Reef-associated biomass \u2014 structured result"
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+        provenance:
+          allOf:
+          - $ref: https://ogcincubator.github.io/bblocks-ogcapi-processes/build/annotated/api/processes/v1/schemas/outputDescription/schema.yaml
+          - type: object
+            properties:
+              title:
+                type: string
+                const: PROV-O provenance (JSON-LD)
+                x-jsonld-id: http://purl.org/dc/terms/title
+              description:
+                type: string
+                x-jsonld-id: http://purl.org/dc/terms/description
+          x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+      x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/output
+      x-jsonld-container: '@index'
+x-jsonld-extra-terms:
+  id: http://www.opengis.net/def/ogcapi-processes/1.0/id
+  version: http://purl.org/dc/terms/hasVersion
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  metadata:
+    x-jsonld-id: http://purl.org/dc/terms/source
+    x-jsonld-container: '@set'
+  additionalParameters: http://www.opengis.net/def/ogcapi-processes/1.0/additionalParameters
+  jobControlOptions:
+    x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/jobControlOptions
+    x-jsonld-container: '@set'
+  outputTransmission:
+    x-jsonld-id: http://www.opengis.net/def/ogcapi-processes/1.0/outputTransmission
+    x-jsonld-container: '@set'
+  links:
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+  href: '@id'
+  rel: https://purl.org/geojson/vocab#rel
+  type: http://purl.org/dc/terms/format
+  mediaType: http://purl.org/dc/terms/format
+  executionUnit:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTosoftwareSourceCode
+    x-jsonld-type: '@id'
+  language: http://purl.org/dc/terms/language
+  languageVersion: http://purl.org/dc/terms/conformsToruntimePlatform
+  dependencies:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTosoftwareRequirements
+    x-jsonld-container: '@set'
+  entrypoint: http://purl.org/dc/terms/conformsTopotentialAction
+  reproducibility: https://w3id.org/ogc/hosted/seadots/reef-effect-process#reproducibility
+  seedPolicy: https://w3id.org/ogc/hosted/seadots/reef-effect-process#seedPolicy
+  modelledBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasInformedBy
+    x-jsonld-type: '@id'
+  evidenceEquation:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
+    x-jsonld-type: '@id'
+  conformsTo:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-effect-process#
+x-jsonld-prefixes:
+  dcterms: http://purl.org/dc/terms/
+  ogcapi-proc: http://www.opengis.net/def/ogcapi-processes/1.0/
+  dcat: http://www.w3.org/ns/dcat#
+  schema: http://purl.org/dc/terms/conformsTo
+  seadots: https://w3id.org/ogc/hosted/seadots/reef-effect-process#
+  prov: http://www.w3.org/ns/prov#
+  skos: http://www.w3.org/2004/02/skos/core#

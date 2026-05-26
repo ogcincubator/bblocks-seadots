@@ -21,11 +21,11 @@ OGC Feature + OIM Variable profile for the dimensionless time factor `C_t` in th
 
 ## Dependency
 
-Extends `ogc.hosted.iliad.api.features.oim-variables` — `C_t` is an OIM indicator.
+Extends `ogc.hosted.seadots.api.features.oim-variables` — `C_t` is an OIM indicator.
 
 ## Required fields for script consumption
 
-`_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.parameters.L`, `data.parameters.k`, `data.parameters.t0_months` to evaluate the formula analytically, and the `data.lookup[]` array to populate the time series. All four are marked `required` in the schema.
+`_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.parameters.L`, `data.parameters.k`, `data.parameters.t0_months` to evaluate the formula analytically, and the `data.lookup[]` array to populate the time series. All four are marked `required` in the schema.
 
 ## Authoritative source
 
@@ -57,7 +57,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
       "role": "coefficient (scalar)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/colonisation-time-factor-default",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/parameters/colonisation-time-factor-default",
       "data": {
         "curveType": "sigmoid",
         "formula": "C(t) = L / (1 + exp(-k * (t - t0)))",
@@ -91,7 +91,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
   },
   "links": [
     { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.colonisation-time-factor", "type": "application/schema+json", "title": "Colonisation Time Factor bblock" },
-    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
     { "rel": "cite-as", "href": "https://doi.org/10.5670/oceanog.2020.405", "title": "Degraer et al. 2020 — colonisation prior" }
   ]
 }
@@ -143,7 +143,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
       "role": "coefficient (scalar)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/colonisation-time-factor-default",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/parameters/colonisation-time-factor-default",
       "data": {
         "curveType": "sigmoid",
         "formula": "C(t) = L / (1 + exp(-k * (t - t0)))",
@@ -203,7 +203,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
     },
     {
       "rel": "profile",
-      "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables",
+      "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables",
       "type": "application/schema+json",
       "title": "OIM Variables profile"
     },
@@ -221,7 +221,6 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
@@ -235,14 +234,14 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM Variables profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
-        [ rdfs:label "Colonisation Time Factor bblock" ;
+    rdfs:seeAlso [ rdfs:label "Colonisation Time Factor bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.colonisation-time-factor> ],
+        [ rdfs:label "OIM Variables profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
         [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
@@ -259,7 +258,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
             seadots:colonisationTimeFactor [ dcterms:description "Scalar colonisation factor evaluated at scenario T0 + colonisation_months." ;
                     dcterms:format "application/ld+json" ;
                     dcterms:title "Colonisation time factor (default sigmoid)" ;
-                    skos:exactMatch indo:colonisation-time-factor-default ;
+                    skos:exactMatch indp:colonisation-time-factor-default ;
                     dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
                     seadots:data [ qudt:unit "dimensionless" ;
                             prov:wasDerivedFrom [ dcterms:source [ dcterms:bibliographicCitation "Degraer et al. 2020 — qualitative discussion of temporal colonisation, no numeric parameters" ;

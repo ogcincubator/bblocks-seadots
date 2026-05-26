@@ -1,0 +1,89 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.catalog-application-package",
+  "name": "SeaDOTs Catalog Application Package",
+  "abstract": "Generic APKG/CWL-aligned profile for the executable package attached to a SeaDOTs application record.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-05-26T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-05-26",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "catalog",
+    "application-package",
+    "apkg",
+    "cwl",
+    "open-science"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+      "link": "https://github.com/ogcincubator/bblocks-seadots"
+    },
+    {
+      "title": "OGC API - Records",
+      "link": "https://docs.ogc.org/is/20-004/20-004.html"
+    },
+    {
+      "title": "OGC bblocks-openscience",
+      "link": "https://github.com/ogcincubator/bblocks-openscience"
+    }
+  ],
+  "dependsOn": [],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://w3id.org/apkg/",
+    "https://www.commonwl.org/"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {},
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-application-package/",
+  "description": "# SeaDOTs Catalog Application Package\n\nAn application package is the deployable profile of an application. It records the APKG/CWL computational contract: declared inputs, declared outputs, runtime class, requirements, software version, implementation language, and deployment metadata.\n\n## Role in the Catalog Metadata Model\n\nThis generic building block supports the SeaDOTs catalog model described in\n`data_framework/INTEROPERABILITY.md` under `Catalog Metadata Model` and\n`2.2 Provenance model (Open Science)`.\n\n## Source-property coverage gaps\n\nThis block is a generic catalog template and is not derived from a raw source\ndataset. No source properties are intentionally dropped.\n",
+  "examples": [
+    {
+      "title": "SeaDOTs Catalog Application Package",
+      "description": "Minimal generic example for the SeaDOTs Catalog Application Package building block.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/examples/application-package.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.json",
+          "code": "{\n  \"id\": \"https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect\",\n  \"type\": \"ApplicationPackage\",\n  \"title\": \"Reef-effect CWL application package\",\n  \"description\": \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\",\n  \"class\": \"CommandLineTool\",\n  \"inputs\": [\n    {\n      \"id\": \"areaOfInterest\",\n      \"type\": \"File\",\n      \"description\": \"GeoJSON Feature describing the AOI.\"\n    },\n    {\n      \"id\": \"benthicBiomassDensity\",\n      \"type\": \"File\",\n      \"description\": \"Input biomass-density STAC Item or OGC Record.\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"id\": \"reefBiomassOutput\",\n      \"type\": \"File\",\n      \"description\": \"STAC/OGC Records output item.\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"class\": \"DockerRequirement\",\n      \"dockerPull\": \"ghcr.io/seadots/reef-effect:0.1.0\"\n    }\n  ],\n  \"softwareVersion\": \"0.1.0\",\n  \"programmingLanguage\": \"Python\"\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.jsonld",
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld\",\n  \"id\": \"https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect\",\n  \"type\": \"ApplicationPackage\",\n  \"title\": \"Reef-effect CWL application package\",\n  \"description\": \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\",\n  \"class\": \"CommandLineTool\",\n  \"inputs\": [\n    {\n      \"id\": \"areaOfInterest\",\n      \"type\": \"File\",\n      \"description\": \"GeoJSON Feature describing the AOI.\"\n    },\n    {\n      \"id\": \"benthicBiomassDensity\",\n      \"type\": \"File\",\n      \"description\": \"Input biomass-density STAC Item or OGC Record.\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"id\": \"reefBiomassOutput\",\n      \"type\": \"File\",\n      \"description\": \"STAC/OGC Records output item.\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"class\": \"DockerRequirement\",\n      \"dockerPull\": \"ghcr.io/seadots/reef-effect:0.1.0\"\n    }\n  ],\n  \"softwareVersion\": \"0.1.0\",\n  \"programmingLanguage\": \"Python\"\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.ttl",
+          "code": "@prefix apkg: <https://w3id.org/apkg/terms/> .\n@prefix cwl: <https://w3id.org/cwl/cwl#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n\n<https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> a seadots:ApplicationPackage ;\n    dcterms:description \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\" ;\n    dcterms:title \"Reef-effect CWL application package\" ;\n    schema:programmingLanguage \"Python\" ;\n    schema:softwareVersion \"0.1.0\" ;\n    apkg:inputs <file:///github/workspace/areaOfInterest>,\n        <file:///github/workspace/benthicBiomassDensity> ;\n    apkg:outputs <file:///github/workspace/reefBiomassOutput> ;\n    cwl:class \"CommandLineTool\" ;\n    cwl:requirements [ cwl:class \"DockerRequirement\" ;\n            seadots:dockerPull \"ghcr.io/seadots/reef-effect:0.1.0\" ] .\n\n<file:///github/workspace/areaOfInterest> a seadots:File ;\n    dcterms:description \"GeoJSON Feature describing the AOI.\" .\n\n<file:///github/workspace/benthicBiomassDensity> a seadots:File ;\n    dcterms:description \"Input biomass-density STAC Item or OGC Record.\" .\n\n<file:///github/workspace/reefBiomassOutput> a seadots:File ;\n    dcterms:description \"STAC/OGC Records output item.\" .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: SeaDOTs Catalog Application Package\ndescription: 'APKG/CWL-aligned computational contract for a reusable SeaDOTs application.\n\n  '\ntype: object\nrequired:\n- id\n- type\n- title\n- description\n- class\n- inputs\n- outputs\nproperties:\n  id:\n    type: string\n    format: uri\n    x-jsonld-id: '@id'\n  type:\n    const: ApplicationPackage\n    x-jsonld-id: '@type'\n  title:\n    type: string\n    x-jsonld-id: http://purl.org/dc/terms/title\n  description:\n    type: string\n    x-jsonld-id: http://purl.org/dc/terms/description\n  class:\n    type: string\n    x-jsonld-id: https://w3id.org/cwl/cwl#class\n  inputs:\n    type: array\n    items:\n      type: object\n      required:\n      - id\n      - type\n      properties:\n        id:\n          type: string\n          x-jsonld-id: '@id'\n        type:\n          type: string\n          x-jsonld-id: '@type'\n        description:\n          type: string\n          x-jsonld-id: http://purl.org/dc/terms/description\n    x-jsonld-id: https://w3id.org/apkg/terms/inputs\n    x-jsonld-container: '@set'\n  outputs:\n    type: array\n    items:\n      type: object\n      required:\n      - id\n      - type\n      properties:\n        id:\n          type: string\n          x-jsonld-id: '@id'\n        type:\n          type: string\n          x-jsonld-id: '@type'\n        description:\n          type: string\n          x-jsonld-id: http://purl.org/dc/terms/description\n    x-jsonld-id: https://w3id.org/apkg/terms/outputs\n    x-jsonld-container: '@set'\n  requirements:\n    type: array\n    items:\n      type: object\n    x-jsonld-id: https://w3id.org/cwl/cwl#requirements\n    x-jsonld-container: '@set'\n  softwareVersion:\n    type: string\n    x-jsonld-id: https://schema.org/softwareVersion\n  programmingLanguage:\n    type: string\n    x-jsonld-id: https://schema.org/programmingLanguage\nadditionalProperties: true\nx-jsonld-extra-terms:\n  Feature: https://purl.org/geojson/vocab#Feature\n  geometry: https://purl.org/geojson/vocab#geometry\n  bbox: https://purl.org/geojson/vocab#bbox\n  coordinates: https://purl.org/geojson/vocab#coordinates\n  properties: https://purl.org/geojson/vocab#properties\n  links:\n    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation\n    x-jsonld-container: '@set'\n  href: '@id'\n  rel: http://www.w3.org/ns/iana/link-relations/relation\n  itemType: http://purl.org/dc/terms/type\n  conformsTo:\n    x-jsonld-id: http://purl.org/dc/terms/conformsTo\n    x-jsonld-type: '@id'\n    x-jsonld-container: '@set'\n  name: http://purl.org/dc/terms/title\n  keywords:\n    x-jsonld-id: http://www.w3.org/ns/dcat#keyword\n    x-jsonld-container: '@set'\n  themes:\n    x-jsonld-id: http://www.w3.org/ns/dcat#theme\n    x-jsonld-container: '@set'\n  license:\n    x-jsonld-id: http://purl.org/dc/terms/license\n    x-jsonld-type: '@id'\n  created:\n    x-jsonld-id: http://purl.org/dc/terms/created\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n  updated:\n    x-jsonld-id: http://purl.org/dc/terms/modified\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n  applicationCategory: https://schema.org/applicationCategory\n  applicationPackage:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage\n    x-jsonld-type: '@id'\n  workflow:\n    x-jsonld-id: http://www.w3.org/ns/prov#hadPlan\n    x-jsonld-type: '@id'\n  version: http://purl.org/dc/terms/hasVersion\n  method: http://purl.org/dc/terms/method\n  startTime:\n    x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n  endTime:\n    x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n  status: https://w3id.org/ogc/hosted/seadots/catalog#status\n  parameters: https://w3id.org/ogc/hosted/seadots/catalog#parameters\n  timeBoundaryStart:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryStart\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date\n  timeBoundaryEnd:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryEnd\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date\n  application:\n    x-jsonld-id: http://www.w3.org/ns/prov#used\n    x-jsonld-type: '@id'\n  activity:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#activity\n    x-jsonld-type: '@id'\n  inputRecords:\n    x-jsonld-id: http://www.w3.org/ns/prov#used\n    x-jsonld-type: '@id'\n    x-jsonld-container: '@set'\n  outputRecords:\n    x-jsonld-id: http://www.w3.org/ns/prov#generated\n    x-jsonld-type: '@id'\n    x-jsonld-container: '@set'\n  agent:\n    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith\n    x-jsonld-type: '@id'\n  configuration: https://w3id.org/ogc/hosted/seadots/catalog#configuration\n  containerImage: https://w3id.org/ogc/hosted/seadots/catalog#containerImage\n  stac_version: https://stacspec.org/vocab#stac_version\n  collection:\n    x-jsonld-id: http://purl.org/dc/terms/isPartOf\n    x-jsonld-type: '@id'\n  datetime:\n    x-jsonld-id: http://purl.org/dc/terms/date\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n  convention: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention\n  cf:parameter:\n    x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter\n    x-jsonld-container: '@set'\n  unit: http://purl.org/dc/terms/format\n  assets: https://stacspec.org/vocab#assets\n  data: https://stacspec.org/vocab#data\n  derivedFrom:\n    x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom\n    x-jsonld-type: '@id'\n    x-jsonld-container: '@set'\n  role: https://w3id.org/ogc/hosted/seadots/catalog#role\n  mediaType: http://purl.org/dc/terms/format\n  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  dcterms: http://purl.org/dc/terms/\n  dcat: http://www.w3.org/ns/dcat#\n  schema: https://schema.org/\n  seadots: https://w3id.org/ogc/hosted/seadots/catalog#\n  prov: http://www.w3.org/ns/prov#\n  apkg: https://w3id.org/apkg/terms/\n  cwl: https://w3id.org/cwl/cwl#\n  stac: https://stacspec.org/vocab#\n  cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/catalog-application-package"
+}

@@ -1,7 +1,6 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
@@ -19,13 +18,13 @@
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ],
+        [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ],
         [ rdfs:label "Floating-Wind Submerged Infrastructure bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.floating-wind-infrastructure> ],
-        [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.floating-wind-infrastructure> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -41,7 +40,7 @@
             seadots:floatingWindInfrastructure [ dcterms:description "Per-unit submerged geometry for the floating-wind units intersecting the AOI." ;
                     dcterms:format "application/geo+json" ;
                     dcterms:title "Submerged infrastructure layout — Utsira Nord 60 × 15 MW" ;
-                    skos:exactMatch indo:submerged-infrastructure-area-utsira-design ;
+                    skos:exactMatch indp:submerged-infrastructure-area-utsira-design ;
                     dcat:accessURL <file:///github/workspace/infrastructure/utsira_nord_60x15mw.geojson> ;
                     seadots:data [ qudt:unit "m2" ;
                             prov:wasDerivedFrom [ dcterms:source [ dcterms:title "NVE Strategisk konsekvensutredning av vindkraft til havs (covers `nUnits` and `unitDesign` only)" ;
@@ -59,17 +58,17 @@
                                         280 ;
                                     seadots:hullArea_m2 "1450"^^qudt:QuantityValue ;
                                     seadots:mooringArea_m2 "280"^^qudt:QuantityValue ] ;
-                            seadots:sampleUnit [ dcterms:identifier "U02" ;
+                            seadots:sampleUnit [ dcterms:identifier "U03" ;
                                     geojson:latitude 5.93812e+01 ;
-                                    geojson:longitude 4.578e+00 ;
+                                    geojson:longitude 4.604e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
                                 [ dcterms:identifier "U01" ;
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.552e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
-                                [ dcterms:identifier "U03" ;
+                                [ dcterms:identifier "U02" ;
                                     geojson:latitude 5.93812e+01 ;
-                                    geojson:longitude 4.604e+00 ;
+                                    geojson:longitude 4.578e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ] ;
                             seadots:unitDesign "15 MW semi-submersible (3-column hull, 3-point catenary mooring, drag-embedment anchors)" ] ;
                     seadots:role "feature-of-interest geometry" ] ;

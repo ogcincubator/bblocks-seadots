@@ -1,6 +1,4 @@
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix ind: <https://w3id.org/indicators/marine/> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -8,31 +6,18 @@
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/indicators/marine/obs/eqrel/quality-adjusted-biomass-effect> a prop-rel:EquationPropertyRelationship,
+<https://example.org/norwegian-ses/equation-property-relationship/quality-adjusted-biomass-effect> a prop-rel:EquationPropertyRelationship,
         prop-rel:PropertyRelationship ;
     rdfs:comment "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole." ;
     prov:wasAttributedTo <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ;
-    prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
+    prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{qa} = B_{total} \\cdot (1 - U)" ;
-    prop-rel:hasEquationSymbol [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
-            prop-rel:fromProperty ind:wind-park-biomass-effect ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom ind:wind-park-biomass-effect ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input." ;
-                    prop-rel:bindingVariable ind:wind-park-biomass-effect ] ;
-            prop-rel:hasDimensionKind quantitykind:Mass ;
-            prop-rel:hasEquationRole <file:///github/workspace/input> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "B_{total}" ;
-            prop-rel:hasSymbolAlias "B_total" ;
-            prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
-            prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indo:data-quality-uncertainty-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
+    prop-rel:hasEquationSymbol [ prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
-                    prop-rel:bindingVariable indo:data-quality-uncertainty-factor ] ;
+                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
             prop-rel:hasOperator <file:///github/workspace/product> ;
@@ -40,15 +25,28 @@
             prop-rel:hasSymbolAlias "U_data",
                 "U_{data}" ;
             prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
+            prop-rel:isIndexed false ],
+        [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
+            prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input." ;
+                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ] ;
+            prop-rel:hasDimensionKind quantitykind:Mass ;
+            prop-rel:hasEquationRole <file:///github/workspace/input> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "B_{total}" ;
+            prop-rel:hasSymbolAlias "B_total" ;
+            prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
             prop-rel:isIndexed false ] ;
-    prop-rel:targetDefinition ind:quality-adjusted-biomass-effect ;
-    prop-rel:toProperty ind:quality-adjusted-biomass-effect .
+    prop-rel:targetDefinition <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
+    prop-rel:toProperty <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> .
 
 <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> rdfs:label "Utsira biomass upscaler v1" ;
     dct:identifier "utsira-biomass-upscaler-v1" .
 
-ind:quality-adjusted-biomass-effect a prov:Entity ;
-    prov:wasDerivedFrom indo:data-quality-uncertainty-factor,
-        ind:wind-park-biomass-effect ;
+<https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> a prov:Entity ;
+    prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor>,
+        <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
     schema:mathExpression "B_{qa} = B_{total} \\cdot (1 - U)" .
 

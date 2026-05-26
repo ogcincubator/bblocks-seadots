@@ -102,7 +102,7 @@
               "unit": "1",
               "range": "[0, +inf)",
               "description": "Per-taxon reef aggregation index (dimensionless).",
-              "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index"
+              "vocabularyTerm": "https://w3id.org/indicators/marine/parameters/reef-aggregation-index"
             },
             {
               "name": "D_pre",
@@ -138,7 +138,7 @@
         },
         {
           "name": "Per-taxon reef aggregation index (dimensionless)",
-          "description": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
+          "description": "https://w3id.org/indicators/marine/parameters/reef-aggregation-index",
           "source": "",
           "format": "application/ld+json",
           "vocabularyTerm": "example.com/reef aggregation index"
@@ -165,7 +165,7 @@
           "name": "Reef-associated biomass",
           "description": "Sum of per-taxon reef biomass attached to submerged infrastructure. The full symbol table, dimensional typing, per-taxon bindings (Mytilus edulis, Buccinum undatum, Asterias rubens) and provenance are carried by the linked `equation-property-relationship` record \u2014 this submodel only restates the equation in human-readable form.",
           "equations": "B_{reef} = sum_i ( A_{sub} . D_{pre,i} . AF_i . C_t )",
-          "parameterization": "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} \u2192 indo:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} \u2192 indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i \u2192 indo:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t \u2192 indo:colonisation-time-factor-default (sigmoid saturating at 24 months).",
+          "parameterization": "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} \u2192 indp:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} \u2192 indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i \u2192 indp:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t \u2192 indp:colonisation-time-factor-default (sigmoid saturating at 24 months).",
           "links": [
             {
               "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",

@@ -1,0 +1,388 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/context.jsonld",
+  "id": "https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.2,
+          59.1
+        ],
+        [
+          5.3,
+          59.1
+        ],
+        [
+          5.3,
+          59.7
+        ],
+        [
+          4.2,
+          59.7
+        ],
+        [
+          4.2,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "type": "Dataset",
+    "title": "Reef-associated biomass result \u2014 Utsira surroundings, scenario T0+24 mo (with uncertainty)",
+    "description": "Primary scientific output of the Utsira surroundings reef-biomass experiment. Headline value: 741 \u00b1 330 t standing reef-associated biomass at scenario end (24 months). This file is an OGC API Records Feature (JSON) carrying the full structured result inline: (a) the headline scalar with 1\u03c3 and 95 % CI, (b) the per-taxon decomposition at t=24 mo, (c) the time series at the sigmoid-lookup points, (d) full variance attribution by input, and (e) per-variable provenance. All input values are illustrative; this record demonstrates equation evaluation and uncertainty propagation, not a measurement of Utsira.",
+    "created": "2026-05-19",
+    "updated": "2026-05-19",
+    "language": {
+      "code": "en"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "themes": [
+      {
+        "concepts": [
+          {
+            "id": "reef-effect",
+            "label": "Floating-wind reef effect"
+          }
+        ],
+        "scheme": "https://id3.seadots.eu/themes"
+      }
+    ],
+    "keywords": [
+      "reef biomass",
+      "Utsira",
+      "floating wind",
+      "uncertainty",
+      "CV propagation"
+    ],
+    "formats": [
+      {
+        "mediaType": "application/json"
+      }
+    ],
+    "experimentOutput": {
+      "name": "Reef-associated biomass (structured result)",
+      "description": "B_reef headline scalar, per-taxon decomposition, time series, and variance attribution. Sum-over-taxa of A_sub \u00b7 D_pre,i \u00b7 AF_i \u00b7 C_t evaluated at scenario end. All values emitted inline as JSON.",
+      "role": "primary result",
+      "format": "application/json",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "experiment": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+      "observedProperty": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "hasSimpleResult": 741237,
+      "hasSimpleResultUnit": "kg",
+      "resultTime": "2028-05-13T00:00:00Z",
+      "phenomenonTime": {
+        "start": "2026-05-13T00:00:00Z",
+        "end": "2028-05-13T00:00:00Z"
+      },
+      "hasFeatureOfInterest": "https://example.org/norwegian-ses/area-of-interest/utsira-surroundings",
+      "conformsTo": [
+        "https://ogcincubator.github.io/geodcat-ogcapi-records/",
+        "https://w3id.org/ogc/hosted/iliad/oim-obs",
+        "http://www.w3.org/ns/sosa/Observation",
+        "https://id3.seadots.eu/conventions/edito-output"
+      ],
+      "aggregation": "sum-over-i",
+      "data": {
+        "equation": "B_reef(t) = \u03a3_i (A_sub \u00b7 D_pre,i \u00b7 AF_i \u00b7 C_t)",
+        "asOf_months": 24,
+        "scenarioInterval": [
+          "2026-05-13",
+          "2028-05-13"
+        ],
+        "units": "kg",
+        "headline": {
+          "B_reef_kg": 741237,
+          "B_reef_tonnes": 741.2,
+          "sigma_kg": 329632,
+          "sigma_tonnes": 329.6,
+          "CV": 0.445,
+          "ci95_tonnes": [
+            95,
+            1387
+          ],
+          "ci95_kg": [
+            95198,
+            1387276
+          ]
+        },
+        "perTaxonAtT24": [
+          {
+            "scientificName": "Mytilus edulis",
+            "aphiaID": 140480,
+            "A_sub_m2": 109500,
+            "D_pre_kg_m2": 0.42,
+            "AF_i": 12.0,
+            "C_t": 0.9918,
+            "B_kg": 547375,
+            "shareOfTotal": 0.7385
+          },
+          {
+            "scientificName": "Buccinum undatum",
+            "aphiaID": 138878,
+            "A_sub_m2": 109500,
+            "D_pre_kg_m2": 0.11,
+            "AF_i": 3.5,
+            "C_t": 0.9918,
+            "B_kg": 41813,
+            "shareOfTotal": 0.0564
+          },
+          {
+            "scientificName": "Asterias rubens",
+            "aphiaID": 123776,
+            "A_sub_m2": 109500,
+            "D_pre_kg_m2": 0.28,
+            "AF_i": 5.0,
+            "C_t": 0.9918,
+            "B_kg": 152049,
+            "shareOfTotal": 0.2051
+          }
+        ],
+        "timeSeries": [
+          {
+            "t_months": 0,
+            "C_t": 0.08,
+            "B_reef_kg": 59787,
+            "B_reef_tonnes": 59.8
+          },
+          {
+            "t_months": 6,
+            "C_t": 0.32,
+            "B_reef_kg": 239148,
+            "B_reef_tonnes": 239.1
+          },
+          {
+            "t_months": 12,
+            "C_t": 0.71,
+            "B_reef_kg": 530610,
+            "B_reef_tonnes": 530.6
+          },
+          {
+            "t_months": 18,
+            "C_t": 0.93,
+            "B_reef_kg": 695024,
+            "B_reef_tonnes": 695.0
+          },
+          {
+            "t_months": 24,
+            "C_t": 0.99,
+            "B_reef_kg": 739864,
+            "B_reef_tonnes": 739.9
+          }
+        ],
+        "timeSeriesNote": "B_reef_kg above uses the rounded C_t values from `colonisation_time_factor.json \u2192 data.lookup`. The `headline` and `perTaxonAtT24` use the analytic C(24)=0.9918 from the sigmoid; the two agree at three significant figures.",
+        "uncertainty": {
+          "method": "log-linear CV propagation",
+          "methodDetail": "B_reef = A_sub \u00b7 C_t \u00b7 S, with S = \u03a3\u1d62 D\u1d62\u00b7AF\u1d62. For each multiplicative pair under independence: CV\u00b2(XY) \u2248 CV\u00b2(X) + CV\u00b2(Y). For S: \u03c3\u00b2(S) = \u03a3\u1d62 \u03c3\u00b2(D\u1d62\u00b7AF\u1d62) with the three taxa treated independent. AF_i errors are not in fact independent across taxa (likely correlated through shared monitoring programmes) \u2014 this is acknowledged in `caveats` and inflates the reported \u03c3 as an upper-bound estimate of total uncertainty.",
+          "totalCV": 0.445,
+          "totalSigma_kg": 329632,
+          "totalSigma_tonnes": 329.6,
+          "inputs": [
+            {
+              "variable": "A_sub",
+              "value": 109500,
+              "valueUnits": "m^2",
+              "sigma": 16425,
+              "CV": 0.15,
+              "valueSource": "infrastructure_layout_60x15mw.json:data.aggregate.submerged_area_total_m2",
+              "valueKind": "mixed",
+              "sigmaSource": "assumed (15% engineering tolerance for floating-platform wetted area; no \u03c3 in input record)",
+              "sigmaKind": "assumed"
+            },
+            {
+              "variable": "D_pre,Mytilus edulis",
+              "value": 0.42,
+              "valueUnits": "kg m^-2",
+              "sigma": 0.09,
+              "CV": 0.214,
+              "valueSource": "mareano_baseline_density.json:data.perTaxon[0].density_kg_m2",
+              "valueKind": "illustrative",
+              "sigmaSource": "imr_baseline_density_fallback.json:data.perTaxon[0].uncertainty_kg_m2 (proxy \u2014 MAREANO row carries no \u03c3)",
+              "sigmaKind": "illustrative-proxy"
+            },
+            {
+              "variable": "D_pre,Buccinum undatum",
+              "value": 0.11,
+              "valueUnits": "kg m^-2",
+              "sigma": 0.03,
+              "CV": 0.273,
+              "valueSource": "mareano_baseline_density.json:data.perTaxon[1].density_kg_m2",
+              "valueKind": "illustrative",
+              "sigmaSource": "imr_baseline_density_fallback.json:data.perTaxon[1].uncertainty_kg_m2",
+              "sigmaKind": "illustrative-proxy"
+            },
+            {
+              "variable": "D_pre,Asterias rubens",
+              "value": 0.28,
+              "valueUnits": "kg m^-2",
+              "sigma": 0.06,
+              "CV": 0.214,
+              "valueSource": "mareano_baseline_density.json:data.perTaxon[2].density_kg_m2",
+              "valueKind": "illustrative",
+              "sigmaSource": "imr_baseline_density_fallback.json:data.perTaxon[2].uncertainty_kg_m2",
+              "sigmaKind": "illustrative-proxy"
+            },
+            {
+              "variable": "AF_Mytilus edulis",
+              "value": 12.0,
+              "valueUnits": "dimensionless",
+              "sigma": 6.0,
+              "CV": 0.5,
+              "valueSource": "reef_aggregation_index_bindings.json:data.perTaxon[0].AF_i",
+              "valueKind": "illustrative",
+              "sigmaSource": "assumed (CV=0.5 reflects wide literature variance; Degraer 2020 cites a single Mytilus value with no published spread)",
+              "sigmaKind": "assumed"
+            },
+            {
+              "variable": "AF_Buccinum undatum",
+              "value": 3.5,
+              "valueUnits": "dimensionless",
+              "sigma": 1.75,
+              "CV": 0.5,
+              "valueSource": "reef_aggregation_index_bindings.json:data.perTaxon[1].AF_i",
+              "valueKind": "illustrative",
+              "sigmaSource": "assumed (CV=0.5; no published value for Buccinum in Degraer 2020)",
+              "sigmaKind": "assumed"
+            },
+            {
+              "variable": "AF_Asterias rubens",
+              "value": 5.0,
+              "valueUnits": "dimensionless",
+              "sigma": 2.5,
+              "CV": 0.5,
+              "valueSource": "reef_aggregation_index_bindings.json:data.perTaxon[2].AF_i",
+              "valueKind": "illustrative",
+              "sigmaSource": "assumed (CV=0.5; no published value for Asterias in Degraer 2020)",
+              "sigmaKind": "assumed"
+            },
+            {
+              "variable": "C_t(24 mo)",
+              "value": 0.9918,
+              "valueUnits": "dimensionless",
+              "sigma": 0.02,
+              "CV": 0.02,
+              "valueSource": "colonisation_time_factor.json:data.formula evaluated with parameters {L:1.0, k:0.30, t0_months:8}",
+              "valueKind": "illustrative",
+              "sigmaSource": "assumed (near sigmoid saturation; small \u03c3)",
+              "sigmaKind": "assumed"
+            }
+          ],
+          "perTaxonVariance": [
+            {
+              "scientificName": "Mytilus edulis",
+              "D_times_AF": 5.04,
+              "var_D_times_AF": 7.517,
+              "shareWithinS": 0.9229
+            },
+            {
+              "scientificName": "Buccinum undatum",
+              "D_times_AF": 0.385,
+              "var_D_times_AF": 0.048,
+              "shareWithinS": 0.0059
+            },
+            {
+              "scientificName": "Asterias rubens",
+              "D_times_AF": 1.4,
+              "var_D_times_AF": 0.58,
+              "shareWithinS": 0.0712
+            }
+          ],
+          "S_value_kg_m2": 6.825,
+          "S_sigma_kg_m2": 2.854,
+          "S_CV": 0.418,
+          "varianceAttribution": [
+            {
+              "term": "A_sub",
+              "CV_squared": 0.0225,
+              "shareOfTotal": 0.1137
+            },
+            {
+              "term": "C_t",
+              "CV_squared": 0.0004,
+              "shareOfTotal": 0.002
+            },
+            {
+              "term": "S = \u03a3\u1d62 D\u1d62\u00b7AF\u1d62",
+              "CV_squared": 0.1749,
+              "shareOfTotal": 0.8842
+            }
+          ],
+          "dominantUncertainty": "AF_Mytilus edulis accounts for \u224880 % of total CV\u00b2(B_reef). Tightening that single prior pays back ~4\u00d7 more than tightening any other input."
+        },
+        "caveats": [
+          "Every headline number is downstream of illustrative inputs. This record demonstrates equation evaluation and CV propagation; it is NOT a measurement of Utsira.",
+          "Three \u03c3 values are assumed (\u03c3(A_sub)=15%, \u03c3(AF_i)/AF_i=0.5 for all taxa, \u03c3(C_t)=0.02). Flagged in `data.uncertainty.inputs[*].sigmaKind`.",
+          "The MAREANO row carries no \u03c3; IMR's \u03c3 is borrowed as a proxy. Real \u03c3 should come from the same retrieval that produced the density.",
+          "Independence across taxa is optimistic. AF_i errors plausibly correlate through shared monitoring programmes; correlated errors would inflate \u03c3(S) above 2.854.",
+          "B_reef is a standing-stock quantity. A time-integrated 'reef-effect-years' (\u222b\u2080\u00b2\u2074 B_reef(t) dt) is \u2248 9800 t\u00b7month at central values."
+        ],
+        "provenance": {
+          "values": "computed",
+          "derivedFrom": [
+            "https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw",
+            "https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf",
+            "https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback",
+            "https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings",
+            "https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid",
+            "https://example.org/norwegian-ses/area-of-interest/utsira-surroundings"
+          ],
+          "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+          "computedOn": "2026-05-19",
+          "computeCode": "../../reef-effect/scripts/utsira_reef_biomass.py",
+          "computeCodeNote": "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/reef-effect/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
+          "uncertaintyMethod": "log-linear CV propagation; B_reef = A_sub \u00b7 C_t \u00b7 \u03a3\u1d62 D\u1d62\u00b7AF\u1d62; taxa treated independent within S",
+          "note": "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement.",
+          "provRecord": {
+            "id": "https://example.org/norwegian-ses/reef-effect-output/prov-record",
+            "type": "prov:Entity",
+            "title": "PROV-O provenance record (JSON-LD)",
+            "description": "Provenance record linking the run to the ODD demonstrator, the canonical reef-biomass equation record, and the per-taxon bindings resolved at run time.",
+            "created": "2026-05-18",
+            "updated": "2026-05-18",
+            "role": "provenance",
+            "format": "application/ld+json",
+            "vocabularyTerm": "http://www.w3.org/ns/prov#Entity",
+            "experiment": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+            "conformsTo": [
+              "http://www.w3.org/TR/prov-o/"
+            ],
+            "derivedFrom": [
+              "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+              "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+              "../../reef-effect/scripts/utsira_reef_biomass.py"
+            ],
+            "note": "Merged from the former standalone provenance example so the primary reef-biomass result carries its PROV-O provenance inline."
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.reef-effect-output",
+      "type": "application/schema+json",
+      "title": "Reef Effect Output bblock"
+    },
+    {
+      "rel": "derivedFrom",
+      "href": "https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1",
+      "type": "application/json",
+      "title": "Experiment record this output belongs to"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+      "type": "application/ld+json",
+      "title": "Equation evaluated to produce this result"
+    },
+    {
+      "rel": "provenance",
+      "href": "https://example.org/norwegian-ses/reef-effect-output/prov-record",
+      "type": "application/ld+json",
+      "title": "Embedded PROV-O provenance record"
+    }
+  ]
+}

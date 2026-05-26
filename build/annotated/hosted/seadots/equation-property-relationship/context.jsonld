@@ -5,7 +5,6 @@
     "targetDefinition": {
       "@id": "prop-rel:targetDefinition",
       "@context": {
-        "name": "rdfs:label",
         "mathExpression": "schema:mathExpression",
         "wasDerivedFrom": {
           "@id": "prov:wasDerivedFrom",
@@ -25,6 +24,21 @@
             },
             "indexSymbol": "prop-rel:indexSymbol"
           }
+        }
+      }
+    },
+    "experiment": {
+      "@id": "prov:wasGeneratedBy",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
         }
       }
     },
@@ -99,27 +113,11 @@
     "model": {
       "@context": {
         "id": "dct:identifier",
-        "name": "rdfs:label",
         "uri": "@id"
       },
       "@id": "prov:wasAttributedTo"
     },
-    "experiment": {
-      "@context": {
-        "id": "dct:identifier",
-        "name": "rdfs:label",
-        "uri": "@id",
-        "start": {
-          "@id": "prov:startedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "end": {
-          "@id": "prov:endedAtTime",
-          "@type": "xsd:dateTime"
-        }
-      },
-      "@id": "prov:wasGeneratedBy"
-    },
+    "name": "rdfs:label",
     "evidence": {
       "@id": "prov:wasDerivedFrom",
       "@type": "@id"
@@ -136,6 +134,7 @@
     "odd": "https://w3id.org/iliad/odd#",
     "tc": "http://rs.tdwg.org/ontology/voc/TaxonConcept#",
     "indo": "ind:obs/",
+    "indp": "ind:parameters/",
     "ind": "https://w3id.org/indicators/marine/",
     "@version": 1.1
   }
