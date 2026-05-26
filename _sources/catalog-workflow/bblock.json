@@ -1,6 +1,6 @@
 {
   "name": "SeaDOTs Catalog Workflow",
-  "abstract": "Generic PROV-O Plan profile for the workflow or method described by a SeaDOTs application.",
+  "abstract": "Generic OGC API Records and PROV-O profile for a discoverable reusable workflow, model, transformer, or digital-twin application.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-26T00:00:00Z",
   "itemClass": "schema",
@@ -35,13 +35,21 @@
     }
   ],
   "dependsOn": [
-    "ogc.ogc-utils.prov-entity"
+    "ogc.geo.geodcat.geodcat-records",
+    "ogc.ogc-utils.prov-entity",
+    "ogc.hosted.seadots.catalog-application-package",
+    "ogc.hosted.seadots.catalog-input",
+    "ogc.hosted.seadots.area-of-interest",
+    "ogc.hosted.seadots.benthic-biomass-density-mareano",
+    "ogc.hosted.seadots.catalog-output",
+    "ogc.hosted.seadots.reef-effect-output"
   ],
   "ldContext": "context.jsonld",
   "shaclRules": [
 
   ],
   "standards": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
     "http://www.w3.org/TR/prov-o/"
   ],
   "maturity": "development",

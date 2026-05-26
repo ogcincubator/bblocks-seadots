@@ -5,42 +5,35 @@ description: >
   that links to reusable catalog records instead of duplicating their metadata.
 
 allOf:
-  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+  - $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records-prov/schema.yaml
 
 type: object
-required: [id, type, itemType, properties]
 properties:
-  id:
-    type: string
+  "@context":
+    oneOf:
+      - type: string
+        format: uri-reference
+      - type: object
+      - type: array
+        items:
+          oneOf:
+            - type: string
+              format: uri-reference
+            - type: object
   type:
     const: Feature
   itemType:
     const: record
-  conformsTo:
-    type: array
-    items:
-      type: string
-      format: uri
-  geometry:
-    type: ["object", "null"]
-  bbox:
-    type: array
-    items:
-      type: number
   properties:
     type: object
-    required: [type, workflow, application, inputRecords, outputRecords]
+    required: [type, workflow, inputRecords, outputRecords]
     properties:
       type:
         const: Execution
-      application:
-        type: string
-        format: uri-reference
-        description: Relative or absolute reference to the catalog application record.
       workflow:
         type: string
         format: uri-reference
-        description: Relative or absolute reference to the workflow plan record instantiated by this execution.
+        description: Relative or absolute reference to the workflow record instantiated by this execution.
       startTime:
         type: string
         format: date-time
@@ -64,19 +57,3 @@ properties:
           type: string
           format: uri-reference
     additionalProperties: true
-
-  links:
-    type: array
-    items:
-      type: object
-      required: [rel, href]
-      properties:
-        rel:
-          type: string
-        href:
-          type: string
-          format: uri-reference
-        type:
-          type: string
-        title:
-          type: string

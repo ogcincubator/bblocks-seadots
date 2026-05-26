@@ -1,4 +1,8 @@
 {
+  "@context": [
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "../context.jsonld"
+  ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
   "type": "Feature",
   "itemType": "record",
@@ -9,7 +13,6 @@
   "geometry": null,
   "properties": {
     "type": "Execution",
-    "application": "../../catalog-application/examples/application-record.json",
     "workflow": "../../catalog-workflow/examples/workflow.json",
     "inputRecords": [
       "../../catalog-input/examples/input-stac-item.json"
@@ -21,22 +24,17 @@
   "links": [
     {
       "rel": "related",
-      "href": "../../catalog-application/examples/application-record.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json",
       "type": "application/geo+json"
     },
     {
       "rel": "related",
-      "href": "../../catalog-workflow/examples/workflow.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-input/examples/input-stac-item.json",
       "type": "application/geo+json"
     },
     {
       "rel": "related",
-      "href": "../../catalog-input/examples/input-stac-item.json",
-      "type": "application/geo+json"
-    },
-    {
-      "rel": "related",
-      "href": "../../catalog-output/examples/output-stac-item.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-output/examples/output-stac-item.json",
       "type": "application/geo+json"
     }
   ]

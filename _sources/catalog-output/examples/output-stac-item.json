@@ -2,6 +2,9 @@
   "id": "reef-biomass-result",
   "type": "Feature",
   "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json"
+  ],
   "collection": "seadots-outputs",
   "geometry": {
     "type": "Polygon",
@@ -56,16 +59,40 @@
   },
   "assets": {
     "data": {
-      "href": "https://example.org/seadots/outputs/reef-biomass-result.json",
-      "type": "application/json",
-      "title": "Reef biomass JSON result"
+      "href": "../../reef-effect-output/examples/reef_biomass_result.json",
+      "type": "application/geo+json",
+      "title": "Reef biomass structured result",
+      "cf:parameter": [
+        {
+          "name": "biomass",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "kg",
+          "description": "Optional CF-style parameter declaration for the output quantity."
+        }
+      ],
+      "roles": [
+        "data",
+        "result"
+      ]
     }
   },
   "links": [
     {
+      "rel": "collection",
+      "href": "https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-outputs",
+      "type": "application/json",
+      "title": "SeaDOTs outputs"
+    },
+    {
       "rel": "describedby",
       "href": "bblocks://ogc.hosted.seadots.catalog-output",
       "type": "application/schema+json"
+    },
+    {
+      "rel": "item",
+      "href": "bblocks://ogc.hosted.seadots.reef-effect-output/examples/reef_biomass_result.json",
+      "type": "application/geo+json",
+      "title": "Reef biomass structured result"
     },
     {
       "rel": "derived_from",

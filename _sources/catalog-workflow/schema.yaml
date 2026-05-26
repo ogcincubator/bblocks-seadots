@@ -1,34 +1,93 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: SeaDOTs Catalog Workflow
 description: >
-  PROV-O Plan profile for a reusable SeaDOTs workflow or method.
+  OGC API Records profile for a reusable SeaDOTs workflow, model, transformer,
+  or digital-twin application. This is the catalog-facing plan and discovery
+  record; runnable APKG/CWL details are linked through applicationPackage.
+
+allOf:
+  - $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+  - $ref: https://ogcincubator.github.io/bblock-prov-schema/build/annotated/ogc-utils/prov-entity/schema.yaml
 
 type: object
-required: [id, type, title, description, version, method]
 properties:
-  id:
-    type: string
-    format: uri
+  "@context":
+    oneOf:
+      - type: string
+        format: uri-reference
+      - type: object
+      - type: array
+        items:
+          oneOf:
+            - type: string
+              format: uri-reference
+            - type: object
   type:
-    const: Workflow
-  title:
-    type: string
-  description:
-    type: string
-  version:
-    type: string
-  method:
-    type: string
-  activity:
-    type: string
-    format: uri
-    description: URI of the planned PROV-O Activity pattern contained by this workflow.
-  inputs:
-    type: array
-    items:
-      type: string
-  outputs:
-    type: array
-    items:
-      type: string
-additionalProperties: true
+    const: Feature
+  itemType:
+    const: record
+  properties:
+    type: object
+    required: [title, description, type, applicationCategory, version, method, applicationPackage]
+    properties:
+      type:
+        const: Workflow
+      applicationCategory:
+        type: string
+        enum: [DigitalTwinApplication, Workflow, Transform, Model, Service]
+      version:
+        type: string
+      method:
+        type: string
+      activity:
+        type: string
+        format: uri-reference
+        description: URI of the planned PROV-O Activity pattern contained by this workflow.
+      softwareVersion:
+        type: string
+      programmingLanguage:
+        type: string
+      applicationPackage:
+        type: string
+        format: uri-reference
+      inputs:
+        type: array
+        description: Input profiles accepted by this workflow.
+        items:
+          type: object
+          required: [profileId, required]
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the accepted input profile.
+            required:
+              type: boolean
+              description: Whether this input profile is required to execute the workflow.
+            role:
+              type: string
+              description: Workflow-specific input role.
+            description:
+              type: string
+      outputs:
+        type: array
+        description: Output profiles produced by this workflow.
+        items:
+          type: object
+          required: [profileId, required]
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the produced output profile.
+            required:
+              type: boolean
+              description: Whether this output profile is always produced by the workflow.
+            role:
+              type: string
+              description: Workflow-specific output role.
+            description:
+              type: string
+      keywords:
+        type: array
+        items:
+          type: string
+    additionalProperties: true

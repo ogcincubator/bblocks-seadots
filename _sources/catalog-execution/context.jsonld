@@ -1,161 +1,37 @@
 {
-  "@context": {
-    "@version": 1.1,
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "dcat": "http://www.w3.org/ns/dcat#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "schema": "https://schema.org/",
-    "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
-    "geojson": "https://purl.org/geojson/vocab#",
-    "stac": "https://stacspec.org/vocab#",
-    "apkg": "https://w3id.org/apkg/terms/",
-    "cwl": "https://w3id.org/cwl/cwl#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
-    "id": "@id",
-    "type": "@type",
-    "Feature": "geojson:Feature",
-    "geometry": "geojson:geometry",
-    "bbox": "geojson:bbox",
-    "coordinates": "geojson:coordinates",
-    "properties": "geojson:properties",
-    "links": {
-      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
-      "@container": "@set"
-    },
-    "href": {
-      "@id": "@id"
-    },
-    "rel": "http://www.w3.org/ns/iana/link-relations/relation",
-    "itemType": "dcterms:type",
-    "conformsTo": {
-      "@id": "dcterms:conformsTo",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "title": "dcterms:title",
-    "name": "dcterms:title",
-    "description": "dcterms:description",
-    "keywords": {
-      "@id": "dcat:keyword",
-      "@container": "@set"
-    },
-    "themes": {
-      "@id": "dcat:theme",
-      "@container": "@set"
-    },
-    "license": {
-      "@id": "dcterms:license",
-      "@type": "@id"
-    },
-    "created": {
-      "@id": "dcterms:created",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "updated": {
-      "@id": "dcterms:modified",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "applicationCategory": "schema:applicationCategory",
-    "softwareVersion": "schema:softwareVersion",
-    "programmingLanguage": "schema:programmingLanguage",
-    "applicationPackage": {
-      "@id": "seadots:applicationPackage",
-      "@type": "@id"
-    },
-    "workflow": {
-      "@id": "prov:hadPlan",
-      "@type": "@id"
-    },
-    "inputs": {
-      "@id": "apkg:inputs",
-      "@container": "@set"
-    },
-    "outputs": {
-      "@id": "apkg:outputs",
-      "@container": "@set"
-    },
-    "profileId": {
-      "@id": "dcterms:conformsTo",
-      "@type": "@id"
-    },
-    "required": {
-      "@id": "seadots:requiredInput",
-      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
-    },
-    "class": "cwl:class",
-    "requirements": {
-      "@id": "cwl:requirements",
-      "@container": "@set"
-    },
-    "version": "dcterms:hasVersion",
-    "method": "dcterms:method",
-    "startTime": {
-      "@id": "prov:startedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "endTime": {
-      "@id": "prov:endedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "status": "seadots:status",
-    "parameters": "seadots:parameters",
-    "timeBoundaryStart": {
-      "@id": "seadots:timeBoundaryStart",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "timeBoundaryEnd": {
-      "@id": "seadots:timeBoundaryEnd",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "application": {
-      "@id": "prov:used",
-      "@type": "@id"
-    },
-    "activity": {
-      "@id": "seadots:activity",
-      "@type": "@id"
-    },
-    "inputRecords": {
-      "@id": "prov:used",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "outputRecords": {
-      "@id": "prov:generated",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "agent": {
-      "@id": "prov:wasAssociatedWith",
-      "@type": "@id"
-    },
-    "configuration": "seadots:configuration",
-    "containerImage": "seadots:containerImage",
-    "stac_version": "stac:stac_version",
-    "collection": {
-      "@id": "dcterms:isPartOf",
-      "@type": "@id"
-    },
-    "datetime": {
-      "@id": "dcterms:date",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "convention": "seadots:metadataConvention",
-    "cf:parameter": {
-      "@id": "cf:parameter",
-      "@container": "@set"
-    },
-    "unit": "dcterms:format",
-    "assets": "stac:assets",
-    "data": "stac:data",
-    "derivedFrom": {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "role": "seadots:role",
-    "mediaType": "dcterms:format",
-    "dockerPull": "seadots:dockerPull"
-  }
+  "@context": [
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records-prov/context.jsonld",
+    {
+      "@version": 1.1,
+      "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+      "prov": "http://www.w3.org/ns/prov#",
+      "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "Execution": "prov:Activity",
+      "workflow": {
+        "@id": "prov:hadPlan",
+        "@type": "@id"
+      },
+      "inputRecords": {
+        "@id": "prov:used",
+        "@container": "@set",
+        "@type": "@id"
+      },
+      "outputRecords": {
+        "@id": "prov:generated",
+        "@container": "@set",
+        "@type": "@id"
+      },
+      "startTime": {
+        "@id": "prov:startedAtTime",
+        "@type": "xsd:dateTime"
+      },
+      "endTime": {
+        "@id": "prov:endedAtTime",
+        "@type": "xsd:dateTime"
+      },
+      "status": "seadots:status",
+      "parameters": "seadots:parameters"
+    }
+  ]
 }

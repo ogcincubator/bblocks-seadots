@@ -1,6 +1,14 @@
 # SeaDOTs Catalog Workflow
 
-A workflow is the reusable PROV-O Plan behind an application. It describes the intended method, model chain, processing order, version, expected inputs, expected outputs, and the planned Activity pattern that is repeated by every execution.
+A workflow is the reusable catalog-facing plan for a digital twin application,
+model, transformer, or processing service. It is represented as an OGC API
+Records item with PROV-O plan semantics, so it carries both discovery metadata
+and the intended method, model chain, version, expected inputs, expected
+outputs, and planned Activity pattern repeated by every execution.
+
+Runnable implementation details are linked through `applicationPackage`, which
+points to the APKG/CWL-aligned `catalog-application-package` block. This avoids
+maintaining a separate `catalog-application` record with duplicate metadata.
 
 ## Role in the Catalog Metadata Model
 

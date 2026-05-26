@@ -4,48 +4,13 @@ description: >
   APKG/CWL-aligned computational contract for a reusable SeaDOTs
   application.
 
+allOf:
+  - $ref: https://ogcincubator.github.io/bblocks-openscience/build/annotated/osc/application-package/schema.yaml
+
 type: object
-required: [id, type, title, description, class, inputs, outputs]
 properties:
-  id:
-    type: string
-    format: uri
   type:
     const: ApplicationPackage
-  title:
-    type: string
-  description:
-    type: string
-  class:
-    type: string
-  inputs:
-    type: array
-    items:
-      type: object
-      required: [id, type]
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        description:
-          type: string
-  outputs:
-    type: array
-    items:
-      type: object
-      required: [id, type]
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        description:
-          type: string
-  requirements:
-    type: array
-    items:
-      type: object
   softwareVersion:
     type: string
   programmingLanguage:
