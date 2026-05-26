@@ -261,6 +261,12 @@ x-jsonld-extra-terms:
   workflow:
     x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
     x-jsonld-type: '@id'
+  profileId:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+  required:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
   version: http://purl.org/dc/terms/hasVersion
   method: http://purl.org/dc/terms/method
   startTime:
@@ -390,6 +396,14 @@ Links to the schema:
     "workflow": {
       "@id": "prov:hadPlan",
       "@type": "@id"
+    },
+    "profileId": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "required": {
+      "@id": "seadots:requiredInput",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "version": "dcterms:hasVersion",
     "method": "dcterms:method",

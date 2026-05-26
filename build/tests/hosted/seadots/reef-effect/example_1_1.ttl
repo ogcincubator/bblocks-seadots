@@ -16,14 +16,14 @@
     dcterms:temporal [ dcterms:temporal "2026-05-13",
                 "2028-05-13" ;
             dcat:temporalResolution "P12M" ] ;
-    rdfs:seeAlso [ rdfs:label "Experiment bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect> ],
-        [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
+    rdfs:seeAlso [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
             dcterms:format "text/x-python" ;
             ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
             oa:hasTarget <file:///github/scripts/utsira_reef_biomass.py> ],
+        [ rdfs:label "Experiment bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect> ],
         [ rdfs:label "Reef-biomass equation record" ;
             dcterms:format "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
@@ -69,11 +69,7 @@
                     seadots:modelledBy <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ;
                     seadots:output <https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result>,
                         <https://example.org/norwegian-ses/reef-effect-output/stac-catalog> ;
-                    seadots:parameter [ dcterms:title "Months since installation",
-                                "colonisation_months" ;
-                            seadots:parameterSchema [ a seadots:integer ;
-                                    seadots:minimum 0 ] ],
-                        [ dcterms:description "Scientific names iterated by index i." ;
+                    seadots:parameter [ dcterms:description "Scientific names iterated by index i." ;
                             dcterms:title "TaxonGroup index values",
                                 "taxon_groups" ;
                             skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
@@ -83,6 +79,10 @@
                                 "scenario_t0" ;
                             seadots:parameterSchema [ a seadots:string ;
                                     dcterms:format "date" ] ],
+                        [ dcterms:title "Months since installation",
+                                "colonisation_months" ;
+                            seadots:parameterSchema [ a seadots:integer ;
+                                    seadots:minimum 0 ] ],
                         [ dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
                             dcterms:title "Area of interest",
                                 "aoi" ;
@@ -92,14 +92,14 @@
                         "Every TaxonGroup has either a MAREANO primary binding or an IMR fallback for every AOI cell; uncovered cells are flagged in PROV",
                         "PROV-O record resolves the equation record and the ODD record by URI",
                         "STAC catalog validates against the SeaDOTs EDITO output conventions" ] ;
-            rec:format [ dcterms:format "application/geo+json" ],
-                [ dcterms:format "application/json" ],
+            rec:format [ dcterms:format "application/json" ],
+                [ dcterms:format "application/geo+json" ],
                 [ dcterms:format "text/x-python" ] ;
             rec:language [ rec:languageCode "en" ] ;
-            rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
-                            rec:conceptID "reef-effect"^^xsd:string ],
-                        [ skos:prefLabel "Computational experiment" ;
-                            rec:conceptID "computational-experiment"^^xsd:string ] ;
+            rec:themes [ rec:concept [ skos:prefLabel "Computational experiment" ;
+                            rec:conceptID "computational-experiment"^^xsd:string ],
+                        [ skos:prefLabel "Floating-wind reef effect" ;
+                            rec:conceptID "reef-effect"^^xsd:string ] ;
                     rec:scheme "https://id3.seadots.eu/themes" ] ] .
 
 <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a <https://w3id.org/ogc/hosted/seadots/reef-effect#application/json> ;

@@ -82,6 +82,64 @@ properties:
         format: uri
         x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
         x-jsonld-type: '@id'
+      inputs:
+        type: array
+        description: Input profiles accepted by this application.
+        items:
+          type: object
+          required:
+          - profileId
+          - required
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the
+                accepted input profile.
+              x-jsonld-id: http://purl.org/dc/terms/conformsTo
+              x-jsonld-type: '@id'
+            required:
+              type: boolean
+              description: Whether this input profile is required to execute the application.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+            role:
+              type: string
+              description: Application-specific input role.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+            description:
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/description
+        x-jsonld-id: https://w3id.org/apkg/terms/inputs
+        x-jsonld-container: '@set'
+      outputs:
+        type: array
+        description: Output profiles produced by this application.
+        items:
+          type: object
+          required:
+          - profileId
+          - required
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the
+                produced output profile.
+              x-jsonld-id: http://purl.org/dc/terms/conformsTo
+              x-jsonld-type: '@id'
+            required:
+              type: boolean
+              description: Whether this output profile is always produced by the application.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+            role:
+              type: string
+              description: Application-specific output role.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+            description:
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/description
+        x-jsonld-id: https://w3id.org/apkg/terms/outputs
+        x-jsonld-container: '@set'
       keywords:
         type: array
         items:
@@ -130,12 +188,6 @@ x-jsonld-extra-terms:
   updated:
     x-jsonld-id: http://purl.org/dc/terms/modified
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  inputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/inputs
-    x-jsonld-container: '@set'
-  outputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/outputs
-    x-jsonld-container: '@set'
   class: https://w3id.org/cwl/cwl#class
   requirements:
     x-jsonld-id: https://w3id.org/cwl/cwl#requirements
@@ -193,7 +245,6 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
     x-jsonld-type: '@id'
     x-jsonld-container: '@set'
-  role: https://w3id.org/ogc/hosted/seadots/catalog#role
   mediaType: http://purl.org/dc/terms/format
   dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
