@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reef Effect Output",
+  "description": "OGC API Records profile for a single output artefact produced by a computational experiment. Extends GeoDCAT-Records with an `experimentOutput` sub-object that ties the artefact to an output role, a format, a vocabulary term for the produced quantity, the experiment it belongs to, and optional conformance classes.\n",
+  "allOf": [
+    {
+      "$ref": "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.json"
+    }
+  ],
+  "properties": {
+    "properties": {
+      "type": "object",
+      "required": [
+        "experimentOutput"
+      ],
+      "properties": {
+        "experimentOutput": {
+          "type": "object",
+          "required": [
+            "name",
+            "role",
+            "format"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "x-jsonld-id": "http://purl.org/dc/terms/title"
+            },
+            "description": {
+              "type": "string",
+              "x-jsonld-id": "http://purl.org/dc/terms/description"
+            },
+            "role": {
+              "type": "string",
+              "description": "`primary result`, `catalog`, `provenance`, `diagnostic`.\n",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#role"
+            },
+            "format": {
+              "type": "string",
+              "description": "Media type or format profile URI.",
+              "x-jsonld-id": "http://purl.org/dc/terms/format"
+            },
+            "vocabularyTerm": {
+              "type": "string",
+              "format": "uri",
+              "description": "Concept URI for the produced quantity.",
+              "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#exactMatch",
+              "x-jsonld-type": "@id"
+            },
+            "experiment": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI of the experiment record that produced this output.",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect#experiment",
+              "x-jsonld-type": "@id"
+            },
+            "observedProperty": {
+              "type": "string",
+              "format": "uri",
+              "description": "SOSA-aligned. URI of the property observed by this output. For the reef-biomass result this is the `floating-wind-reef-biomass` indicator URI. Carrying this field aligns the record with the OIM-OBS / SOSA observation profile.\n",
+              "x-jsonld-id": "http://www.w3.org/ns/sosa/observedProperty",
+              "x-jsonld-type": "@id"
+            },
+            "hasSimpleResult": {
+              "description": "SOSA-aligned. The simple (scalar or short structured) result of the observation/calculation. Type follows the observed property; for B_reef this is the headline scalar in kg with units carried by `hasSimpleResultUnit`.\n",
+              "x-jsonld-id": "http://www.w3.org/ns/sosa/hasSimpleResult"
+            },
+            "hasSimpleResultUnit": {
+              "type": "string",
+              "description": "Units of `hasSimpleResult` (e.g. `kg`, `t`, `kg m-2`).",
+              "x-jsonld-id": "http://qudt.org/schema/qudt/unit"
+            },
+            "resultTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "SOSA-aligned. Time at which the result was produced or applies. For a standing-stock calculation, the end-of-scenario instant.\n",
+              "x-jsonld-id": "http://www.w3.org/ns/sosa/resultTime",
+              "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+            },
+            "phenomenonTime": {
+              "description": "SOSA-aligned. Time interval over which the observed phenomenon occurred (e.g. the scenario interval). String, or object with `start` and `end` keys.\n",
+              "x-jsonld-id": "http://www.w3.org/ns/sosa/phenomenonTime"
+            },
+            "hasFeatureOfInterest": {
+              "type": "string",
+              "format": "uri",
+              "description": "SOSA-aligned. URI of the feature of interest (typically the AOI `area-of-interest` record, typically).\n",
+              "x-jsonld-id": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+              "x-jsonld-type": "@id"
+            },
+            "conformsTo": {
+              "type": "array",
+              "description": "Conformance classes the output is expected to satisfy.",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "x-jsonld-id": "http://purl.org/dc/terms/conformsTo",
+              "x-jsonld-type": "@id",
+              "x-jsonld-container": "@set"
+            },
+            "aggregation": {
+              "type": "string",
+              "description": "How the output aggregates over the equation index, when applicable (e.g. `sum-over-i`, `per-taxon`, `scalar`).\n",
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#aggregation"
+            },
+            "data": {
+              "type": "object",
+              "required": [
+                "provenance"
+              ],
+              "description": "Representative inline result of this output. For a primary result, typically a `headline` scalar/CI plus `perTaxon`, `timeSeries`, and `uncertainty` sub-objects. For a catalog or provenance record, may be a small structural sample. Shape is format-specific and not further constrained.\n",
+              "properties": {
+                "provenance": {
+                  "type": "object",
+                  "required": [
+                    "values"
+                  ],
+                  "description": "Source pointer for every concrete value in this `data` block. Required on every example.\n",
+                  "properties": {
+                    "values": {
+                      "type": "string",
+                      "enum": [
+                        "computed",
+                        "retrieved",
+                        "illustrative",
+                        "mixed"
+                      ],
+                      "description": "`computed` \u2014 values are the deterministic result of applying the documented equation to the cited input records (must list `derivedFrom`). `retrieved` \u2014 values came from the cited API call. `illustrative` \u2014 placeholders for schema shape. `mixed` \u2014 some are computed/retrieved and the rest are illustrative, annotated in-line.\n",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#provenanceValues"
+                    },
+                    "derivedFrom": {
+                      "type": "array",
+                      "description": "URIs of the input records that drive these values. Required when `values=computed`.\n",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "x-jsonld-id": "http://www.w3.org/ns/prov#wasDerivedFrom",
+                      "x-jsonld-type": "@id",
+                      "x-jsonld-container": "@set"
+                    },
+                    "equationRecord": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URI of the equation-property-relationship record that defines the closed-form expression evaluated here.\n",
+                      "x-jsonld-id": "http://www.w3.org/ns/prov#hadPlan",
+                      "x-jsonld-type": "@id"
+                    },
+                    "computedOn": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "ISO date the values were last computed.",
+                      "x-jsonld-id": "http://purl.org/dc/terms/date"
+                    },
+                    "computeCode": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URI of the script / notebook that produced these values.\n",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#computeCode",
+                      "x-jsonld-type": "@id"
+                    },
+                    "uncertaintyMethod": {
+                      "type": "string",
+                      "description": "Name of the uncertainty-propagation method applied (e.g. `log-linear CV`, `Monte Carlo`, `analytic first-order`).\n",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertaintyMethod"
+                    },
+                    "note": {
+                      "type": "string",
+                      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#note"
+                    }
+                  },
+                  "x-jsonld-id": "http://www.w3.org/ns/prov#wasDerivedFrom"
+                }
+              },
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#data"
+            }
+          },
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#output"
+        }
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+    }
+  },
+  "x-jsonld-extra-terms": {
+    "id": "@id",
+    "type": "@type",
+    "geometry": "https://purl.org/geojson/vocab#geometry",
+    "coordinates": "https://purl.org/geojson/vocab#coordinates",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon",
+    "links": {
+      "x-jsonld-id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "x-jsonld-container": "@set"
+    },
+    "href": "@id",
+    "rel": "https://purl.org/geojson/vocab#rel",
+    "title": "http://purl.org/dc/terms/title",
+    "created": "http://purl.org/dc/terms/created",
+    "updated": "http://purl.org/dc/terms/modified",
+    "language": "http://purl.org/dc/terms/language",
+    "code": "http://purl.org/dc/terms/identifier",
+    "license": "http://purl.org/dc/terms/license",
+    "keywords": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#keyword",
+      "x-jsonld-container": "@set"
+    },
+    "themes": {
+      "x-jsonld-id": "http://www.w3.org/ns/dcat#theme",
+      "x-jsonld-container": "@set"
+    },
+    "concepts": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#Concept",
+      "x-jsonld-container": "@set"
+    },
+    "scheme": "http://www.w3.org/2004/02/skos/core#inScheme",
+    "label": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "formats": {
+      "x-jsonld-id": "http://purl.org/dc/terms/format",
+      "x-jsonld-container": "@set"
+    },
+    "mediaType": "http://purl.org/dc/terms/format",
+    "start": {
+      "x-jsonld-id": "http://www.w3.org/2006/time#hasBeginning",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "end": {
+      "x-jsonld-id": "http://www.w3.org/2006/time#hasEnd",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "equation": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#equation",
+    "asOf_months": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#asOf_months",
+    "scenarioInterval": "http://purl.org/dc/terms/temporal",
+    "units": "http://qudt.org/schema/qudt/unit",
+    "headline": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#headline",
+    "B_reef_kg": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+    },
+    "B_reef_tonnes": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+    },
+    "sigma_kg": "http://qudt.org/schema/qudt/standardUncertainty",
+    "sigma_tonnes": "http://qudt.org/schema/qudt/standardUncertainty",
+    "totalSigma_kg": "http://qudt.org/schema/qudt/standardUncertainty",
+    "totalSigma_tonnes": "http://qudt.org/schema/qudt/standardUncertainty",
+    "CV": "http://qudt.org/schema/qudt/coefficientOfVariation",
+    "totalCV": "http://qudt.org/schema/qudt/coefficientOfVariation",
+    "ci95_kg": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#ci95_kg",
+    "ci95_tonnes": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#ci95_tonnes",
+    "perTaxonAtT24": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#perTaxonAtT24",
+      "x-jsonld-container": "@set"
+    },
+    "scientificName": "http://rs.tdwg.org/dwc/terms/scientificName",
+    "aphiaID": "http://rs.tdwg.org/dwc/terms/taxonID",
+    "A_sub_m2": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/parameters/submerged-infrastructure-area",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+    },
+    "D_pre_kg_m2": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+    },
+    "AF_i": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/parameters/reef-aggregation-index",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/DimensionlessQuantity"
+    },
+    "C_t": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/parameters/colonisation-time-factor",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/DimensionlessQuantity"
+    },
+    "B_kg": {
+      "x-jsonld-id": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
+      "x-jsonld-type": "http://qudt.org/schema/qudt/QuantityValue"
+    },
+    "shareOfTotal": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#shareOfTotal",
+    "timeSeries": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#timeSeries",
+      "x-jsonld-container": "@list"
+    },
+    "t_months": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#t_months",
+    "timeSeriesNote": "http://www.w3.org/2004/02/skos/core#note",
+    "uncertainty": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertainty",
+    "method": "http://purl.org/dc/terms/methodology",
+    "methodDetail": "http://www.w3.org/2004/02/skos/core#definition",
+    "inputs": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertaintyInput",
+      "x-jsonld-container": "@set"
+    },
+    "variable": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#variable",
+    "value": "http://qudt.org/schema/qudt/value",
+    "valueUnits": "http://qudt.org/schema/qudt/unit",
+    "sigma": "http://qudt.org/schema/qudt/standardUncertainty",
+    "valueSource": "http://purl.org/dc/terms/source",
+    "valueKind": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#valueKind",
+    "sigmaSource": "http://purl.org/dc/terms/source",
+    "sigmaKind": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#sigmaKind",
+    "perTaxonVariance": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#perTaxonVariance",
+      "x-jsonld-container": "@set"
+    },
+    "D_times_AF": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#D_times_AF",
+    "var_D_times_AF": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#var_D_times_AF",
+    "shareWithinS": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#shareWithinS",
+    "S_value_kg_m2": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_value_kg_m2",
+    "S_sigma_kg_m2": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_sigma_kg_m2",
+    "S_CV": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_CV",
+    "varianceAttribution": {
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#varianceAttribution",
+      "x-jsonld-container": "@set"
+    },
+    "term": "http://www.w3.org/2004/02/skos/core#notation",
+    "CV_squared": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#CV_squared",
+    "dominantUncertainty": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#dominantUncertainty",
+    "caveats": {
+      "x-jsonld-id": "http://www.w3.org/2004/02/skos/core#note",
+      "x-jsonld-container": "@set"
+    },
+    "computeCodeNote": "http://www.w3.org/2004/02/skos/core#note",
+    "provRecord": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#has_provenance",
+      "x-jsonld-type": "@id"
+    }
+  },
+  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#",
+  "x-jsonld-prefixes": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "indo": "https://w3id.org/indicators/marine/obs/",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "indp": "https://w3id.org/indicators/marine/parameters/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "unit": "http://qudt.org/vocab/unit/",
+    "ind": "https://w3id.org/indicators/marine/"
+  }
+}

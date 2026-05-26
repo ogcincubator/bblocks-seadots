@@ -1,0 +1,38 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect> a geojson:Feature ;
+    dcterms:conformsTo <https://docs.ogc.org/is/20-004/20-004.html> ;
+    dcterms:type "record" ;
+    ns1:relation <bblocks://ogc.hosted.seadots.catalog-application>,
+        <https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect>,
+        <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
+    geojson:bbox () ;
+    geojson:properties [ a seadots:Application ;
+            dcterms:description "Reusable application record for estimating reef-associated biomass around floating wind infrastructure." ;
+            dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+            dcterms:title "Utsira reef-effect biomass application" ;
+            dcat:keyword "digital-twin",
+                "offshore-wind",
+                "open-science" ;
+            prov:hadPlan <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
+            schema:applicationCategory "DigitalTwinApplication" ;
+            schema:programmingLanguage "Python" ;
+            schema:softwareVersion "0.1.0" ;
+            seadots:applicationPackage <https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> ] .
+
+<bblocks://ogc.hosted.seadots.catalog-application> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;
+    ns1:relation "describedby" .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+    ns1:relation "application-package" .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+    ns1:relation "workflow" .
+

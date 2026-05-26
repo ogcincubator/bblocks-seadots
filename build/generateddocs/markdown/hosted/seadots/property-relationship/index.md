@@ -12,7 +12,7 @@ Provides a common model for defining property relationships bound to the ontolog
 A `PropertyRelationship` links two observable properties (`fromProperty` → `toProperty`) with a numeric weight
 expressing the strength of their relationship, as produced by a specific model and experiment.
 
-The `model` identifies the algorithm or system that generated the relationship, while `experiment` captures the
+The `model` identifies the algorithm or system that generated the relationship, while `reef-effect` captures the
 activity that ran it, including optional start and end timestamps. Both map to PROV-O concepts
 (`prov:wasAttributedTo` and `prov:wasGeneratedBy` respectively).
 ## Examples
@@ -290,7 +290,7 @@ properties:
         description: URI of the model resource.
         x-jsonld-id: '@id'
     x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
-  experiment:
+  reef-effect:
     description: Experiment activity that produced this relationship (prov:wasGeneratedBy).
     type: object
     required:
@@ -299,7 +299,7 @@ properties:
       id:
         type: string
         description: Identifier of the experiment (dct:identifier).
-        x-jsonld-id: http://purl.org/dc/terms/identifier
+        x-jsonld-id: '@id'
       name:
         type: string
         description: Human-readable label of the experiment (rdfs:label).
@@ -307,24 +307,29 @@ properties:
       uri:
         type: string
         description: URI of the experiment resource.
-        x-jsonld-id: '@id'
       start:
         type: string
         format: date-time
         pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$
         description: Date and time when the experiment started (prov:startedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
       end:
         type: string
         format: date-time
         pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$
         description: Date and time when the experiment ended (prov:endedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
 x-jsonld-extra-terms:
   PropertyRelationship: https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship
+  experiment:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+    x-jsonld-context:
+      id: http://purl.org/dc/terms/identifier
+      uri: '@id'
+      start:
+        '@id': http://www.w3.org/ns/prov#startedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
+      end:
+        '@id': http://www.w3.org/ns/prov#endedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
 x-jsonld-prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   prop-rel: https://w3id.org/ogc/hosted/seadots/prop-rel/
@@ -347,6 +352,21 @@ Links to the schema:
 {
   "@context": {
     "PropertyRelationship": "prop-rel:PropertyRelationship",
+    "experiment": {
+      "@id": "prov:wasGeneratedBy",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
     "id": "@id",
     "type": "@type",
     "fromProperty": {
@@ -367,27 +387,11 @@ Links to the schema:
     "model": {
       "@context": {
         "id": "dct:identifier",
-        "name": "rdfs:label",
         "uri": "@id"
       },
       "@id": "prov:wasAttributedTo"
     },
-    "experiment": {
-      "@context": {
-        "id": "dct:identifier",
-        "name": "rdfs:label",
-        "uri": "@id",
-        "start": {
-          "@id": "prov:startedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "end": {
-          "@id": "prov:endedAtTime",
-          "@type": "xsd:dateTime"
-        }
-      },
-      "@id": "prov:wasGeneratedBy"
-    },
+    "name": "rdfs:label",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
     "qudt": "http://qudt.org/schema/qudt/",

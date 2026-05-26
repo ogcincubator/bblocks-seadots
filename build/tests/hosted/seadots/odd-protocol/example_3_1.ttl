@@ -20,14 +20,14 @@
     dcterms:modified "2026-05-13" ;
     dcterms:temporal [ ] ;
     dcterms:title "Utsira reef-biomass demonstrator — one-submodel ODD" ;
-    rdfs:seeAlso [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
-            dcterms:format "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ],
-        [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
+    rdfs:seeAlso [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ],
+        [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ] ;
     dcat:contactPoint [ ] ;
     dcat:keyword "ODD",
         "SeaDOTs",
@@ -49,7 +49,7 @@
                                     odd:variableType "string" ] [ dcterms:description "Per-taxon reef aggregation index (dimensionless)." ;
                                     dcterms:title "AF_i" ;
                                     qudt:unit "1" ;
-                                    skos:exactMatch <https://w3id.org/indicators/marine/obs/reef-aggregation-index> ;
+                                    skos:exactMatch <https://w3id.org/indicators/marine/parameters/reef-aggregation-index> ;
                                     odd:range "[0, +inf)" ;
                                     odd:variableType "real" ] [ dcterms:description "Baseline benthic biomass density before installation." ;
                                     dcterms:title "D_pre" ;
@@ -60,7 +60,7 @@
                         dcterms:format "application/ld+json" ;
                         dcterms:title "Reef-biomass equation record" ;
                         skos:exactMatch <https://w3id.org/ogc/hosted/seadots/prop-rel/EquationPropertyRelationship> ;
-                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] [ dcterms:description "https://w3id.org/indicators/marine/obs/reef-aggregation-index" ;
+                        dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] [ dcterms:description "https://w3id.org/indicators/marine/parameters/reef-aggregation-index" ;
                         dcterms:format "application/ld+json" ;
                         dcterms:title "Per-taxon reef aggregation index (dimensionless)" ;
                         skos:exactMatch <file:///github/workspace/> ;
@@ -84,11 +84,11 @@
                                     schema:url <https://doi.org/10.5670/oceanog.2020.405> ;
                                     odd:linkRel "cite-as" ] ) ;
                         odd:equations "B_{reef} = sum_i ( A_{sub} . D_{pre,i} . AF_i . C_t )" ;
-                        odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indo:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indo:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indo:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
+                        odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indp:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indp:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indp:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
     rec:format [ rec:mediaType "application/json" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:themes [ thns:concepts [ thns:id "impact-assessment"^^xsd:string ],
-                [ thns:id "reef-effect"^^xsd:string ],
-                [ thns:id "benthic-biomass"^^xsd:string ] ;
+    rec:themes [ thns:concepts [ thns:id "benthic-biomass"^^xsd:string ],
+                [ thns:id "impact-assessment"^^xsd:string ],
+                [ thns:id "reef-effect"^^xsd:string ] ;
             thns:scheme "https://id3.seadots.eu/themes" ] .
 

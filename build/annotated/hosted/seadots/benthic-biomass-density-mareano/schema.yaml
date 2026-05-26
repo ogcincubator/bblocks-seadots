@@ -7,7 +7,7 @@ description: 'Per-taxon benthic biomass density observation sourced from the MAR
 
   '
 allOf:
-- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+- $ref: https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/oim-obs/schema.yaml
 properties:
   properties:
     type: object
@@ -94,6 +94,13 @@ properties:
                       description: Per-taxon density consumed as `D_pre,i`.
                       x-jsonld-id: https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano
                       x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                    observedMeanDensity_kg_m2:
+                      type: number
+                      minimum: 0
+                      description: Diagnostic mean of point-level weight/assumed-sampled-area
+                        before spatial extrapolation.
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#observedMeanDensity_kg_m2
+                      x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                     habitat:
                       type: string
                       x-jsonld-id: http://rs.tdwg.org/dwc/terms/habitat
@@ -111,6 +118,50 @@ properties:
                 minimum: 0
                 x-jsonld-id: https://w3id.org/indicators/marine/obs/baseline-benthic-biomass-density
                 x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+              observationOutputs:
+                type: array
+                description: Per-observation output rows derived from source occurrence
+                  records, when available.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      x-jsonld-id: '@id'
+                    occurrenceID:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/occurrenceID
+                    scientificName:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/scientificName
+                    aphiaID:
+                      type: integer
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/taxonID
+                    decimalLongitude:
+                      type: number
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/decimalLongitude
+                    decimalLatitude:
+                      type: number
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/decimalLatitude
+                    eventDate:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/eventDate
+                    depth_m:
+                      type: number
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/minimumDepthInMeters
+                    datasetName:
+                      type: string
+                      x-jsonld-id: http://purl.org/dc/terms/title
+                    samplingProtocol:
+                      type: string
+                      x-jsonld-id: http://rs.tdwg.org/dwc/terms/samplingProtocol
+                    density_kg_m2:
+                      type: number
+                      minimum: 0
+                      x-jsonld-id: https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano
+                      x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#observationOutputs
+                x-jsonld-container: '@set'
               provenance:
                 type: object
                 required:
@@ -157,7 +208,6 @@ properties:
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#benthicBiomassDensity
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
-  id: '@id'
   type: '@type'
   geometry: https://purl.org/geojson/vocab#geometry
   coordinates: https://purl.org/geojson/vocab#coordinates

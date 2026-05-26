@@ -69,7 +69,7 @@
       },
       "x-jsonld-id": "http://www.w3.org/ns/prov#wasAttributedTo"
     },
-    "experiment": {
+    "reef-effect": {
       "description": "Experiment activity that produced this relationship (prov:wasGeneratedBy).",
       "type": "object",
       "required": [
@@ -79,7 +79,7 @@
         "id": {
           "type": "string",
           "description": "Identifier of the experiment (dct:identifier).",
-          "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+          "x-jsonld-id": "@id"
         },
         "name": {
           "type": "string",
@@ -88,31 +88,40 @@
         },
         "uri": {
           "type": "string",
-          "description": "URI of the experiment resource.",
-          "x-jsonld-id": "@id"
+          "description": "URI of the experiment resource."
         },
         "start": {
           "type": "string",
           "format": "date-time",
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
-          "description": "Date and time when the experiment started (prov:startedAtTime).",
-          "x-jsonld-id": "http://www.w3.org/ns/prov#startedAtTime",
-          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "description": "Date and time when the experiment started (prov:startedAtTime)."
         },
         "end": {
           "type": "string",
           "format": "date-time",
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$",
-          "description": "Date and time when the experiment ended (prov:endedAtTime).",
-          "x-jsonld-id": "http://www.w3.org/ns/prov#endedAtTime",
-          "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+          "description": "Date and time when the experiment ended (prov:endedAtTime)."
         }
-      },
-      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy"
+      }
     }
   },
   "x-jsonld-extra-terms": {
-    "PropertyRelationship": "https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship"
+    "PropertyRelationship": "https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship",
+    "experiment": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "x-jsonld-context": {
+        "id": "http://purl.org/dc/terms/identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "http://www.w3.org/ns/prov#startedAtTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "end": {
+          "@id": "http://www.w3.org/ns/prov#endedAtTime",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        }
+      }
+    }
   },
   "x-jsonld-prefixes": {
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",

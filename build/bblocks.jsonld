@@ -194,12 +194,12 @@
   "name": "Building Blocks - Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-21T22:41:10.545287",
+  "modified": "2026-05-26T19:08:16.214978",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"1c38e230d79a22d5b242ea63ec3c6d6a95af173d",
-      "shortCommitId": "\"1c38e2",
-      "date": "2026-05-20T11:46:31+00:00\""
+      "commitId": "\"ccc2722ff09e6ff35b4415d9a62b15eb66c2dc45",
+      "shortCommitId": "\"ccc272",
+      "date": "2026-05-26T10:12:47+00:00\""
     }
   },
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
@@ -216,6 +216,7 @@
     "https://ogcincubator.github.io/bblocks-sta/build/register.json",
     "https://ogcincubator.github.io/bblocks-stac/build/register.json",
     "https://ogcincubator.github.io/bblocks-openscience/build/register.json",
+    "https://ogcincubator.github.io/bblocks-ogcapi-processes/build/register.json",
     "https://ogcincubator.github.io/iliad-apis-features/build/register.json"
   ],
   "remoteCacheDir": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/_cache",
@@ -247,6 +248,775 @@
   "skos:prefLabel": "Building Blocks - Seadots project",
   "hasConcepts": [
     {
+      "itemIdentifier": "ogc.hosted.seadots.area-of-interest",
+      "name": "Marine Area of Interest",
+      "abstract": "Simple GeoJSON Feature profile for a polygon delimiting a marine area of interest (AOI) used by experiments, monitoring programmes, or impact assessments. The polygon is carried only in the top-level GeoJSON `geometry`; `properties` carries a human-readable `title` and `description`.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-19T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "AOI",
+        "marine",
+        "OGC Feature",
+        "GeoJSON"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/area-of-interest/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/area-of-interest/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/area-of-interest/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.area-of-interest"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.area-of-interest",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Marine Area of Interest",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.benthic-biomass-observations-imr",
+      "name": "IMR Benthic Biomass Observations",
+      "abstract": "GeoJSON FeatureCollection profile for raw IMR / MAREANO Marbunn benthic biomass observation point features across species and cruises. This block preserves individual sample records, while benthic-biomass-density-imr provides the aggregate per-taxon observation derived from those raw features.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "IMR",
+        "MAREANO",
+        "Marbunn",
+        "benthic",
+        "raw data",
+        "FeatureCollection",
+        "cruise",
+        "species"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "MAREANO Marbunn",
+          "link": "https://marbunn-ekstern.hi.no/apps/marbunn/v1/"
+        },
+        {
+          "title": "Institute of Marine Research (IMR)",
+          "link": "https://www.hi.no/"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-observations-imr/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "http://rs.tdwg.org/dwc/terms/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-observations-imr/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-observations-imr/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-observations-imr/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-observations-imr/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-observations-imr/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-observations-imr/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/benthic-biomass-observations-imr/",
+      "transforms": [
+        {
+          "id": "to-benthic-biomass-density-mareano",
+          "description": "Converts the raw IMR / MAREANO Marbunn observation FeatureCollection into the aggregate `benthic-biomass-density-mareano` observation profile. The source weights are converted to point densities in kg m-2 using explicit per-gear sampled-area assumptions, then spatially extrapolated over the AOI with inverse distance weighting (IDW). The assumptions are recorded in output provenance.\n",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-observations-imr/transforms/to_benthic_biomass_density_mareano.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              },
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              },
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano"
+            ]
+          },
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform IMR / MAREANO Marbunn raw observation points into the\n`benthic-biomass-density-mareano` aggregate observation shape.\n\nThe source FeatureCollection contains catch-sample weights in kilograms. The\ntarget block expects density in kg m-2, so this transformer first applies\nexplicit per-gear sampled-area assumptions to estimate point densities, then\nextrapolates each taxon over the AOI with inverse distance weighting (IDW).\n\nOGC Building Blocks Python transform compatibility:\n* when executed by the postprocessor, `input_data` is provided and this file\n  assigns `output_data`;\n* when run standalone, it reads JSON from stdin and writes JSON to stdout.\n\"\"\"\nfrom __future__ import annotations\n\nimport datetime as dt\nimport json\nimport math\nimport sys\nfrom collections import defaultdict\nfrom typing import Any\n\n\nOBS_BLOCK = \"bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr\"\nTARGET_BLOCK = \"bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano\"\nTARGET_ID = \"https://example.org/norwegian-ses/benthic-biomass-density-mareano/from-imr-observations\"\n\n# Area assumptions are intentionally conservative and explicit. They are not a\n# replacement for cruise-level swept-area metadata.\nDEFAULT_GEAR_AREAS_M2 = {\n    \"Small VV grab\": 0.1,\n    \"VVgrab020\": 0.2,\n    \"Large VV grab\": 0.25,\n    \"Boxcorer\": 0.1,\n    \"Bioboks\": 0.1,\n    \"Beamtrawl\": 100.0,\n    \"RP-sledge\": 50.0,\n    \"Videograb\": 0.1,\n}\nFALLBACK_SAMPLE_AREA_M2 = 0.1\nIDW_POWER = 2.0\nIDW_GRID_SIZE = 25\n\n\ndef _as_number(value: Any) -> float | None:\n    if isinstance(value, bool):\n        return None\n    if isinstance(value, (int, float)) and math.isfinite(float(value)):\n        return float(value)\n    if isinstance(value, str):\n        try:\n            parsed = float(value)\n        except ValueError:\n            return None\n        return parsed if math.isfinite(parsed) else None\n    return None\n\n\ndef _as_string(value: Any) -> str | None:\n    if value is None:\n        return None\n    text = str(value).strip()\n    return text or None\n\n\ndef _feature_species(props: dict[str, Any]) -> str | None:\n    return (\n        _as_string(props.get(\"scientificName\"))\n        or _as_string(props.get(\"Scientific name\"))\n        or _as_string(props.get(\"species\"))\n        or _as_string(props.get(\"sourceSpeciesQuery\"))\n    )\n\n\ndef _feature_equipment(props: dict[str, Any]) -> str | None:\n    return _as_string(props.get(\"equipment\")) or _as_string(props.get(\"Equipment\"))\n\n\ndef _feature_cruise(props: dict[str, Any]) -> str | None:\n    return _as_string(props.get(\"cruise\")) or _as_string(props.get(\"Cruise\"))\n\n\ndef _sample_area_m2(equipment: str | None) -> tuple[float, bool]:\n    if equipment in DEFAULT_GEAR_AREAS_M2:\n        return DEFAULT_GEAR_AREAS_M2[equipment], False\n    return FALLBACK_SAMPLE_AREA_M2, True\n\n\ndef _bbox_polygon(source: dict[str, Any]) -> dict[str, Any]:\n    props = source.get(\"properties\") or {}\n    aoi = props.get(\"aoi\") or {}\n    geometry = aoi.get(\"geometry\")\n    if isinstance(geometry, dict) and geometry.get(\"type\") == \"Polygon\":\n        return geometry\n\n    bbox = source.get(\"bbox\") or aoi.get(\"bbox\")\n    if isinstance(bbox, list) and len(bbox) >= 4:\n        min_lon, min_lat, max_lon, max_lat = [float(v) for v in bbox[:4]]\n        return {\n            \"type\": \"Polygon\",\n            \"coordinates\": [[\n                [min_lon, min_lat],\n                [max_lon, min_lat],\n                [max_lon, max_lat],\n                [min_lon, max_lat],\n                [min_lon, min_lat],\n            ]],\n        }\n\n    return {\"type\": \"Polygon\", \"coordinates\": [[[-5.0, 56.0], [33.0, 56.0], [33.0, 82.0], [-5.0, 82.0], [-5.0, 56.0]]]}\n\n\ndef _geometry_bbox(geometry: dict[str, Any]) -> tuple[float, float, float, float]:\n    rings = geometry.get(\"coordinates\") or []\n    points = []\n    for ring in rings:\n        if isinstance(ring, list):\n            for point in ring:\n                if isinstance(point, list) and len(point) >= 2:\n                    lon = _as_number(point[0])\n                    lat = _as_number(point[1])\n                    if lon is not None and lat is not None:\n                        points.append((lon, lat))\n    if not points:\n        return (-5.0, 56.0, 33.0, 82.0)\n    lons = [p[0] for p in points]\n    lats = [p[1] for p in points]\n    return (min(lons), min(lats), max(lons), max(lats))\n\n\ndef _feature_xy(feature: dict[str, Any]) -> tuple[float, float] | None:\n    geometry = feature.get(\"geometry\") or {}\n    if geometry.get(\"type\") != \"Point\":\n        return None\n    coordinates = geometry.get(\"coordinates\") or []\n    if len(coordinates) < 2:\n        return None\n    lon = _as_number(coordinates[0])\n    lat = _as_number(coordinates[1])\n    if lon is None or lat is None:\n        return None\n    return lon, lat\n\n\ndef _grid_points(bounds: tuple[float, float, float, float], size: int) -> list[tuple[float, float]]:\n    min_lon, min_lat, max_lon, max_lat = bounds\n    if size < 1 or min_lon == max_lon or min_lat == max_lat:\n        return [((min_lon + max_lon) / 2, (min_lat + max_lat) / 2)]\n    lon_step = (max_lon - min_lon) / size\n    lat_step = (max_lat - min_lat) / size\n    return [\n        (min_lon + (col + 0.5) * lon_step, min_lat + (row + 0.5) * lat_step)\n        for row in range(size)\n        for col in range(size)\n    ]\n\n\ndef _idw_area_mean(\n    observations: list[tuple[float, float, float]],\n    grid_points: list[tuple[float, float]],\n    power: float,\n) -> float:\n    if not observations:\n        return 0.0\n    if len(observations) == 1:\n        return observations[0][2]\n\n    estimates = []\n    for gx, gy in grid_points:\n        numerator = 0.0\n        denominator = 0.0\n        exact = None\n        for ox, oy, value in observations:\n            distance = math.hypot(gx - ox, gy - oy)\n            if distance == 0:\n                exact = value\n                break\n            weight = 1 / (distance ** power)\n            numerator += weight * value\n            denominator += weight\n        estimates.append(exact if exact is not None else numerator / denominator)\n    return sum(estimates) / len(estimates)\n\n\ndef _phenomenon_time(source: dict[str, Any], cruises: set[str]) -> str | dict[str, str] | None:\n    props = source.get(\"properties\") or {}\n    phenomenon_time = props.get(\"phenomenonTime\")\n    if isinstance(phenomenon_time, dict) and phenomenon_time.get(\"start\") and phenomenon_time.get(\"end\"):\n        return {\"start\": str(phenomenon_time[\"start\"]), \"end\": str(phenomenon_time[\"end\"])}\n    if isinstance(phenomenon_time, str) and phenomenon_time:\n        return phenomenon_time\n    if cruises:\n        ordered = sorted(cruises)\n        return f\"{ordered[0]}/{ordered[-1]}\"\n    return None\n\n\ndef transform(raw_json: str) -> str:\n    source = json.loads(raw_json)\n    if source.get(\"type\") != \"FeatureCollection\":\n        raise ValueError(\"Expected a GeoJSON FeatureCollection from benthic-biomass-observations-imr\")\n\n    grouped: dict[str, dict[str, Any]] = defaultdict(lambda: {\n        \"weight_kg\": 0.0,\n        \"area_m2\": 0.0,\n        \"n_samples\": 0,\n        \"n_weighted\": 0,\n        \"fallback_area_samples\": 0,\n        \"equipment\": set(),\n        \"cruises\": set(),\n        \"depths\": [],\n        \"observations\": [],\n    })\n    all_cruises: set[str] = set()\n    all_equipment: set[str] = set()\n    ignored_features = 0\n\n    for feature in source.get(\"features\") or []:\n        if not isinstance(feature, dict):\n            ignored_features += 1\n            continue\n        props = feature.get(\"properties\") or {}\n        species = _feature_species(props)\n        if not species:\n            ignored_features += 1\n            continue\n\n        row = grouped[species]\n        row[\"n_samples\"] += 1\n\n        equipment = _feature_equipment(props)\n        if equipment:\n            row[\"equipment\"].add(equipment)\n            all_equipment.add(equipment)\n\n        cruise = _feature_cruise(props)\n        if cruise:\n            row[\"cruises\"].add(cruise)\n            all_cruises.add(cruise)\n\n        depth = _as_number(props.get(\"Bottom depth\"))\n        if depth is not None:\n            row[\"depths\"].append(depth)\n\n        weight = _as_number(props.get(\"Weight\"))\n        if weight is None:\n            continue\n        xy = _feature_xy(feature)\n        area, used_fallback = _sample_area_m2(equipment)\n        point_density = weight / area\n        row[\"weight_kg\"] += weight\n        row[\"area_m2\"] += area\n        row[\"n_weighted\"] += 1\n        if xy is not None:\n            row[\"observations\"].append((xy[0], xy[1], point_density))\n        if used_fallback:\n            row[\"fallback_area_samples\"] += 1\n\n    per_taxon = []\n    geometry = _bbox_polygon(source)\n    grid_points = _grid_points(_geometry_bbox(geometry), IDW_GRID_SIZE)\n    total_weighted_samples = 0\n    total_fallback_area_samples = 0\n    for species, row in grouped.items():\n        density = _idw_area_mean(row[\"observations\"], grid_points, IDW_POWER)\n        observed_mean_density = row[\"weight_kg\"] / row[\"area_m2\"] if row[\"area_m2\"] > 0 else 0.0\n        total_weighted_samples += int(row[\"n_weighted\"])\n        total_fallback_area_samples += int(row[\"fallback_area_samples\"])\n        depths = row[\"depths\"]\n        per_taxon.append({\n            \"scientificName\": species,\n            \"density_kg_m2\": round(density, 8),\n            \"habitat\": \"unclassified\",\n            \"depthBand_m\": (\n                f\"{round(min(depths))}-{round(max(depths))}\"\n                if depths else \"unknown\"\n            ),\n            \"nSamples\": int(row[\"n_samples\"]),\n            \"observedMeanDensity_kg_m2\": round(observed_mean_density, 8),\n        })\n\n    per_taxon.sort(key=lambda item: (-item[\"density_kg_m2\"], item[\"scientificName\"]))\n    aggregate_density = round(sum(item[\"density_kg_m2\"] for item in per_taxon), 8)\n    today = dt.date.today().isoformat()\n    source_props = source.get(\"properties\") or {}\n    source_prov = source_props.get(\"provenance\") or {}\n\n    result = {\n        \"id\": TARGET_ID,\n        \"type\": \"Feature\",\n        \"geometry\": geometry,\n        \"properties\": {\n            \"type\": \"Dataset\",\n            \"title\": \"MAREANO benthic biomass density derived from IMR/Marbunn observations\",\n                \"description\": (\n                    \"Per-taxon benthic biomass density estimate derived from raw IMR / \"\n                    \"MAREANO Marbunn catch-sample observations by converting catch \"\n                    \"weights to point densities and extrapolating over the AOI with IDW.\"\n                ),\n            \"created\": today,\n            \"updated\": today,\n            \"language\": {\"code\": \"en\"},\n            \"license\": \"https://creativecommons.org/licenses/by/4.0/\",\n            \"themes\": [{\n                \"concepts\": [{\"id\": \"benthic-biomass\", \"label\": \"Benthic biomass density\"}],\n                \"scheme\": \"https://id3.seadots.eu/themes\",\n            }],\n            \"keywords\": [\"MAREANO\", \"Marbunn\", \"IMR\", \"benthic biomass\", \"density\", \"transform\"],\n            \"formats\": [{\"mediaType\": \"application/json\"}],\n            \"conformsTo\": [\n                \"http://www.w3.org/ns/sosa/Observation\",\n                \"https://ogcincubator.github.io/geodcat-ogcapi-records/\",\n            ],\n            \"benthicBiomassDensity\": {\n                \"name\": \"MAREANO benthic biomass density from IMR observations\",\n                \"description\": \"Aggregate per-taxon density estimate transformed from raw Marbunn observation points using IDW interpolation over the AOI.\",\n                \"role\": \"primary baseline\",\n                \"source\": source.get(\"id\") or \"bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr\",\n                \"format\": \"application/json\",\n                \"vocabularyTerm\": \"https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano\",\n                \"observedProperty\": \"https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano\",\n                \"phenomenonTime\": _phenomenon_time(source, all_cruises),\n                \"data\": {\n                    \"units\": \"kg m-2\",\n                    \"samplePeriod\": _phenomenon_time(source, all_cruises),\n                    \"samplingProgramme\": \"MAREANO / IMR Marbunn\",\n                        \"perTaxon\": per_taxon,\n                        \"aggregateDensity_kg_m2\": aggregate_density,\n                        \"provenance\": {\n                        \"values\": \"mixed\",\n                        \"retrievalApiCall\": (source_props.get(\"source\") or {}).get(\"perSpeciesEndpoint\"),\n                        \"verifiedOn\": today,\n                        \"primarySource\": source_props.get(\"source\"),\n                        \"nearestAuthoritativeSource\": {\n                            \"url\": \"https://mareano.no/\",\n                            \"note\": \"Raw observations come from IMR / MAREANO Marbunn catch-sample point features.\",\n                        },\n                        \"verificationGap\": (\n                            \"Source observations provide catch weight in kg. The target block requires kg m-2. \"\n                            \"This transform first uses per-gear sampled-area assumptions rather than authoritative \"\n                            \"cruise-level swept-area metadata, then extrapolates point densities with IDW. \"\n                            \"Ordinary Kriging or Regression-Kriging would be preferable once variograms, \"\n                            \"environmental covariates and geostatistical dependencies are available.\"\n                        ),\n                        \"note\": (\n                            f\"Transformed {len(source.get('features') or [])} source features into \"\n                            f\"{len(per_taxon)} per-taxon rows. Ignored {ignored_features} malformed or \"\n                            f\"unnamed features. IDW grid={IDW_GRID_SIZE}x{IDW_GRID_SIZE}, power={IDW_POWER}, \"\n                            f\"weighted samples={total_weighted_samples}, samples using fallback area=\"\n                            f\"{total_fallback_area_samples}. Gear-area assumptions m2: \"\n                            f\"{json.dumps(DEFAULT_GEAR_AREAS_M2, sort_keys=True)}; fallback=\"\n                            f\"{FALLBACK_SAMPLE_AREA_M2}. Source fetched_utc=\"\n                            f\"{source_prov.get('fetched_utc', 'unknown')}.\"\n                        ),\n                    },\n                },\n            },\n        },\n        \"links\": [\n            {\"rel\": \"describedby\", \"href\": TARGET_BLOCK, \"type\": \"application/schema+json\", \"title\": \"MAREANO Benthic Biomass Density Observation bblock\"},\n            {\"rel\": \"derivedFrom\", \"href\": OBS_BLOCK, \"type\": \"application/schema+json\", \"title\": \"IMR Benthic Biomass Observations bblock\"},\n            {\"rel\": \"cite-as\", \"href\": \"https://mareano.no/\", \"title\": \"MAREANO programme\"},\n            {\"rel\": \"cite-as\", \"href\": \"https://www.hi.no/\", \"title\": \"Institute of Marine Research\"},\n        ],\n    }\n    return json.dumps(result, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    sys.stdout.write(transform(sys.stdin.read()))\n    sys.stdout.write(\"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data)\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        }
+      ],
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-observations-imr/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-observations-imr/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-observations-imr"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "IMR Benthic Biomass Observations",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-application-package",
+      "name": "SeaDOTs Catalog Application Package",
+      "abstract": "Generic APKG/CWL-aligned profile for the executable package attached to a SeaDOTs application record.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "application-package",
+        "apkg",
+        "cwl",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://w3id.org/apkg/",
+        "https://www.commonwl.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-application-package/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-application-package/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-application-package/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-application-package"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-application-package",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Application Package",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-input",
+      "name": "SeaDOTs Catalog Input",
+      "abstract": "Generic STAC Item profile for a concrete dataset, parameter file, or configuration consumed by an execution.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "stac",
+        "input",
+        "prov-o",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://github.com/radiantearth/stac-spec",
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-input/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-input/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-input/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-input"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-input",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Input",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-output",
+      "name": "SeaDOTs Catalog Output",
+      "abstract": "Generic STAC Item and PROV-O profile for a concrete product generated by an execution.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "stac",
+        "output",
+        "prov-o",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://github.com/radiantearth/stac-spec",
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-output/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-output/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-output/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-output"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-output",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Output",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-workflow",
+      "name": "SeaDOTs Catalog Workflow",
+      "abstract": "Generic PROV-O Plan profile for the workflow or method described by a SeaDOTs application.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "workflow",
+        "prov-o",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-workflow/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-workflow/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-workflow/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-workflow/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-workflow/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-workflow/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-workflow"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-workflow",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Workflow",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.obis-mareano-checklist",
+      "name": "OBIS MAREANO Checklist",
+      "abstract": "Raw OBIS checklist response for selected MAREANO dataset identifiers. The example preserves the OBIS API payload as returned by the checklist endpoint and is used as source material for derived SeaDOTs biomass-density proxy examples.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "OBIS",
+        "MAREANO",
+        "checklist",
+        "benthic",
+        "Darwin Core"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OBIS checklist API",
+          "link": "https://api.obis.org/v3/checklist"
+        }
+      ],
+      "dependsOn": null,
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/obis-mareano-checklist/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "http://rs.tdwg.org/dwc/terms/",
+        "https://api.obis.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": null,
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/obis-mareano-checklist/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/obis-mareano-checklist/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/obis-mareano-checklist/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/obis-mareano-checklist/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/obis-mareano-checklist/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/obis-mareano-checklist/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/obis-mareano-checklist/",
+      "transforms": [
+        {
+          "id": "to-benthic-biomass-density-mareano",
+          "description": "Converts an OBIS checklist or occurrence response for selected MAREANO datasets into a `benthic-biomass-density-mareano` proxy example. The source contains occurrence rows or occurrence record counts, not biomass; the output records normalized occurrence shares in the target density field, carries per-observation outputs when occurrence rows are present, and documents the limitation in provenance.\n",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/obis-mareano-checklist/transforms/to_benthic_biomass_density_mareano.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              },
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano"
+            ]
+          },
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform an OBIS checklist or occurrence response into the\n`benthic-biomass-density-mareano` example shape.\n\nOBIS checklist and occurrence rows provide occurrence records, not biomass or\nsampled area. This transformer therefore emits an occurrence-weighted proxy for\n`density_kg_m2` so the result can be carried by the target bblock, and it\nrecords the limitation in provenance. When occurrence rows are provided, the\noutput also carries per-observation output rows.\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* when run standalone, reads JSON from stdin and writes JSON to stdout.\n\"\"\"\nfrom __future__ import annotations\n\nimport datetime as dt\nimport json\nimport sys\nfrom typing import Any\n\n\nSOURCE_ENDPOINT = (\n    \"https://api.obis.org/v3/checklist?size=10&skip=20&datasetid=\"\n    \"d556b9d4-7625-4aa2-894d-441eabae47f7,\"\n    \"152259dc-9c20-4c1a-9644-8e4b509d4f73,\"\n    \"14fa3c3e-259c-4af9-9314-eee1dc3a119b\"\n)\nOCCURRENCE_ENDPOINT = (\n    \"https://api.obis.org/v3/occurrence?size=10&skip=20&datasetid=\"\n    \"d556b9d4-7625-4aa2-894d-441eabae47f7,\"\n    \"152259dc-9c20-4c1a-9644-8e4b509d4f73,\"\n    \"14fa3c3e-259c-4af9-9314-eee1dc3a119b\"\n)\nSOURCE_BLOCK = \"bblocks://ogc.hosted.seadots.obis-mareano-checklist\"\nTARGET_BLOCK = \"bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano\"\nCHECKLIST_TARGET_ID = \"https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-checklist-proxy\"\nOCCURRENCE_TARGET_ID = \"https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-occurrence-proxy\"\nOBSERVED_PROPERTY = \"https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano\"\n\nMAREANO_FOOTPRINT = {\n    \"type\": \"Polygon\",\n    \"coordinates\": [[\n        [-5.0, 56.0],\n        [33.0, 56.0],\n        [33.0, 82.0],\n        [-5.0, 82.0],\n        [-5.0, 56.0],\n    ]],\n}\n\n\ndef _as_int(value: Any, default: int = 0) -> int:\n    if isinstance(value, bool):\n        return default\n    if isinstance(value, int):\n        return value\n    if isinstance(value, float):\n        return int(value)\n    if isinstance(value, str):\n        try:\n            return int(float(value))\n        except ValueError:\n            return default\n    return default\n\n\ndef _as_float(value: Any) -> float | None:\n    if isinstance(value, bool):\n        return None\n    if isinstance(value, (int, float)):\n        return float(value)\n    if isinstance(value, str):\n        try:\n            return float(value)\n        except ValueError:\n            return None\n    return None\n\n\ndef _taxon_name(row: dict[str, Any]) -> str | None:\n    value = row.get(\"acceptedNameUsage\") or row.get(\"scientificName\")\n    if value is None:\n        return None\n    text = str(value).strip()\n    return text or None\n\n\ndef _aphia_id(row: dict[str, Any]) -> int | None:\n    value = row.get(\"aphiaID\") or row.get(\"acceptedNameUsageID\") or row.get(\"taxonID\")\n    parsed = _as_int(value, -1)\n    return parsed if parsed >= 0 else None\n\n\ndef _is_occurrence_row(row: dict[str, Any]) -> bool:\n    return any(key in row for key in (\"occurrenceID\", \"basisOfRecord\", \"decimalLatitude\", \"decimalLongitude\", \"eventDate\"))\n\n\ndef _occurrence_output(row: dict[str, Any], density_proxy: float) -> dict[str, Any]:\n    item = {\n        \"id\": row.get(\"id\") or row.get(\"occurrenceID\"),\n        \"occurrenceID\": row.get(\"occurrenceID\"),\n        \"scientificName\": _taxon_name(row),\n        \"density_kg_m2\": round(density_proxy, 10),\n        \"eventDate\": row.get(\"eventDate\"),\n        \"datasetName\": row.get(\"datasetName\"),\n        \"samplingProtocol\": row.get(\"samplingProtocol\"),\n    }\n    aphia_id = _aphia_id(row)\n    if aphia_id is not None:\n        item[\"aphiaID\"] = aphia_id\n    lon = _as_float(row.get(\"decimalLongitude\"))\n    lat = _as_float(row.get(\"decimalLatitude\"))\n    depth = _as_float(row.get(\"depth\") or row.get(\"minimumDepthInMeters\"))\n    if lon is not None:\n        item[\"decimalLongitude\"] = lon\n    if lat is not None:\n        item[\"decimalLatitude\"] = lat\n    if depth is not None:\n        item[\"depth_m\"] = depth\n    return {k: v for k, v in item.items() if v is not None}\n\n\ndef transform(raw_json: str) -> str:\n    source = json.loads(raw_json)\n    rows = source.get(\"results\")\n    if not isinstance(rows, list):\n        raise ValueError(\"Expected OBIS checklist JSON with a results array\")\n\n    usable_rows = [row for row in rows if isinstance(row, dict) and _taxon_name(row)]\n    occurrence_mode = any(_is_occurrence_row(row) for row in usable_rows)\n    if occurrence_mode:\n        record_total = len(usable_rows)\n    else:\n        record_total = sum(_as_int(row.get(\"records\")) for row in usable_rows)\n    if record_total <= 0:\n        record_total = 1\n\n    grouped: dict[str, dict[str, Any]] = {}\n    observation_outputs = []\n    for row in usable_rows:\n        records = 1 if occurrence_mode else _as_int(row.get(\"records\"))\n        density_proxy = records / record_total\n        name = _taxon_name(row)\n        if name not in grouped:\n            grouped[name] = {\"records\": 0, \"row\": row}\n        grouped[name][\"records\"] += records\n        if occurrence_mode:\n            observation_outputs.append(_occurrence_output(row, density_proxy))\n\n    per_taxon = []\n    for name, grouped_row in grouped.items():\n        row = grouped_row[\"row\"]\n        records = grouped_row[\"records\"]\n        density_proxy = records / record_total\n        item = {\n            \"scientificName\": name,\n            \"density_kg_m2\": round(density_proxy, 10),\n            \"habitat\": \"marine benthic occurrence taxon\" if occurrence_mode else \"marine benthic checklist taxon\",\n            \"depthBand_m\": \"occurrence depth varies\" if occurrence_mode else \"unknown\",\n            \"nSamples\": records,\n            \"obisRecords\": records,\n            \"taxonRank\": row.get(\"taxonRank\"),\n        }\n        aphia_id = _aphia_id(row)\n        if aphia_id is not None:\n            item[\"aphiaID\"] = aphia_id\n        per_taxon.append(item)\n\n    per_taxon.sort(key=lambda item: (-item[\"density_kg_m2\"], item[\"scientificName\"]))\n    aggregate_density = round(sum(item[\"density_kg_m2\"] for item in per_taxon), 10)\n    today = dt.date.today().isoformat()\n\n    result = {\n        \"id\": OCCURRENCE_TARGET_ID if occurrence_mode else CHECKLIST_TARGET_ID,\n        \"type\": \"Feature\",\n        \"geometry\": MAREANO_FOOTPRINT,\n        \"properties\": {\n            \"type\": \"Dataset\",\n            \"title\": \"MAREANO benthic biomass density proxy from OBIS occurrence data\" if occurrence_mode else \"MAREANO benthic biomass density proxy from OBIS checklist\",\n            \"description\": (\n                \"Occurrence-weighted proxy derived from OBIS records for selected \"\n                \"MAREANO datasets. OBIS records do not provide biomass, sampled \"\n                \"area or station geometry; this output is a schema-compatible proxy, not \"\n                \"a physical biomass-density measurement.\"\n            ),\n            \"created\": today,\n            \"updated\": today,\n            \"language\": {\"code\": \"en\"},\n            \"license\": \"https://creativecommons.org/licenses/by/4.0/\",\n            \"themes\": [{\n                \"concepts\": [{\"id\": \"benthic-biomass\", \"label\": \"Benthic biomass density\"}],\n                \"scheme\": \"https://id3.seadots.eu/themes\",\n            }],\n            \"keywords\": [\"OBIS\", \"MAREANO\", \"occurrence\", \"benthic biomass\", \"proxy\"],\n            \"formats\": [{\"mediaType\": \"application/json\"}],\n            \"conformsTo\": [\n                \"http://www.w3.org/ns/sosa/Observation\",\n                \"https://ogcincubator.github.io/geodcat-ogcapi-records/\",\n            ],\n            \"benthicBiomassDensity\": {\n                \"name\": \"OBIS occurrence proxy for MAREANO benthic biomass density\",\n                \"description\": \"Per-taxon normalized OBIS occurrence records carried as a density proxy.\",\n                \"role\": \"primary baseline proxy\",\n                \"source\": OCCURRENCE_ENDPOINT if occurrence_mode else SOURCE_ENDPOINT,\n                \"format\": \"application/json\",\n                \"vocabularyTerm\": OBSERVED_PROPERTY,\n                \"observedProperty\": OBSERVED_PROPERTY,\n                \"phenomenonTime\": \"unknown\",\n                \"data\": {\n                    \"units\": \"dimensionless occurrence share encoded in kg m-2 field\",\n                    \"samplePeriod\": \"unknown\",\n                    \"samplingProgramme\": \"OBIS / MAREANO\",\n                    \"perTaxon\": per_taxon,\n                    \"aggregateDensity_kg_m2\": aggregate_density,\n                    \"observationOutputs\": observation_outputs,\n                    \"provenance\": {\n                        \"values\": \"mixed\",\n                        \"retrievalApiCall\": OCCURRENCE_ENDPOINT if occurrence_mode else SOURCE_ENDPOINT,\n                        \"verifiedOn\": today,\n                        \"primarySource\": {\n                            \"name\": \"OBIS checklist API\",\n                            \"url\": OCCURRENCE_ENDPOINT if occurrence_mode else SOURCE_ENDPOINT,\n                        },\n                        \"nearestAuthoritativeSource\": {\n                            \"url\": \"https://obis.org/\",\n                            \"note\": \"OBIS occurrence/checklist endpoints for selected MAREANO dataset identifiers.\",\n                        },\n                        \"verificationGap\": (\n                            \"The source OBIS response contains occurrence records or occurrence record counts. \"\n                            \"It does not contain biomass, sampled area, station effort \"\n                            \"or physical density measurements. `density_kg_m2` is therefore a normalized \"\n                            \"occurrence-count proxy for testing target bblock interoperability.\"\n                        ),\n                        \"note\": (\n                            f\"Transformed {len(usable_rows)} OBIS {'occurrence' if occurrence_mode else 'checklist'} rows from a response with \"\n                            f\"total={source.get('total')} into a MAREANO biomass-density proxy example. \"\n                            f\"Proxy density is {'occurrence count' if occurrence_mode else 'records'} / \"\n                            f\"{'number of occurrence rows in this page' if occurrence_mode else 'sum(records in this page)'}; \"\n                            f\"aggregate={aggregate_density}.\"\n                        ),\n                    },\n                },\n            },\n        },\n        \"links\": [\n            {\"rel\": \"describedby\", \"href\": TARGET_BLOCK, \"type\": \"application/schema+json\", \"title\": \"MAREANO Benthic Biomass Density Observation bblock\"},\n            {\"rel\": \"derivedFrom\", \"href\": SOURCE_BLOCK, \"type\": \"application/schema+json\", \"title\": \"OBIS MAREANO Checklist bblock\"},\n            {\"rel\": \"cite-as\", \"href\": \"https://obis.org/\", \"title\": \"OBIS\"},\n            {\"rel\": \"cite-as\", \"href\": \"https://mareano.no/\", \"title\": \"MAREANO programme\"},\n        ],\n    }\n    return json.dumps(result, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    sys.stdout.write(transform(sys.stdin.read()))\n    sys.stdout.write(\"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data)\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        }
+      ],
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/obis-mareano-checklist/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/obis-mareano-checklist/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.obis-mareano-checklist"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.obis-mareano-checklist",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "OBIS MAREANO Checklist",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.ontology",
       "name": "Property relationship ontology",
       "abstract": "This ontology provides classes and properties to model property relationships with magnitude",
@@ -255,7 +1025,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "dependsOn": null,
       "tags": [
         "seadots",
@@ -321,7 +1091,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "dependsOn": null,
       "tags": [
         "seadots",
@@ -377,7 +1147,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.ontology",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -463,10 +1233,10 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "dependsOn": [
-        "bblocks://ogc.ogc-utils.iri-or-curie",
-        "bblocks://ogc.hosted.seadots.property-relationship"
+        "bblocks://ogc.hosted.seadots.property-relationship",
+        "bblocks://ogc.ogc-utils.iri-or-curie"
       ],
       "tags": [
         "seadots",
@@ -544,6 +1314,368 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.oim-variables",
+      "name": "OIM Variables",
+      "abstract": "Defines the OIM variable and indicator concept model for SEADOTS and ILIAD variable observations.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-04-20T00:00:00Z",
+      "itemClass": "model",
+      "register": "ogc-incubator",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "dependsOn": [
+        "bblocks://ogc.model.cross-domain.all"
+      ],
+      "sources": [
+        {
+          "title": "SEADOTS Indicator Vocabulary",
+          "link": "https://w3id.org/indicators/marine/"
+        },
+        {
+          "title": "OIM Oceans Information Model",
+          "link": "https://github.com/ILIAD-ocean-twin/OIM"
+        }
+      ],
+      "scope": "dev",
+      "tags": [
+        "iliad",
+        "oim",
+        "variables",
+        "indicators",
+        "model"
+      ],
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.hosted.seadots.oim-variables",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "http://qudt.org/2.1/schema/shacl/qudt"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.qudt",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.sosa",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.skos.common",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/oim-variables/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variables/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variables/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.oim-variables"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.oim-variables",
+      "@type": [
+        "bblocks:Model",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "OIM Variables",
+      "ldContext": null,
+      "schema": null,
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-application",
+      "name": "SeaDOTs Catalog Application",
+      "abstract": "Generic OGC API Records profile for a discoverable SeaDOTs Application: a digital twin application, workflow, transformer, model, or processing service.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "ogc-records",
+        "application",
+        "apkg",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.geodcat.geodcat-records"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "https://w3id.org/apkg/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-application/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-application/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-application/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-application"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-application",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Application",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-execution",
+      "name": "SeaDOTs Catalog Execution",
+      "abstract": "Generic OGC API Records and PROV-O profile for one concrete execution, experiment run, or digital twin run.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "ogc-records",
+        "execution",
+        "experiment",
+        "prov-o",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.geodcat.geodcat-records"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-execution/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-execution/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-execution/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-execution/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-execution/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-execution/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-execution"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.catalog-execution",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "SeaDOTs Catalog Execution",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.colonisation-time-factor",
       "name": "Colonisation Time Factor (C_t)",
       "abstract": "OGC Feature + OIM Variable profile for the dimensionless time factor C_t in the reef-biomass equation. Encodes the colonisation curve as a closed-form expression (typically a logistic sigmoid) with its parameters plus an evaluated lookup table at discrete time points. Mandatory provenance flags whether the curve parameters are calibrated or illustrative.",
@@ -552,7 +1684,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -590,18 +1722,18 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -658,122 +1790,6 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.experiment-output",
-      "name": "Computational Experiment Output",
-      "abstract": "OGC API Records profile for describing a single output artefact produced by a computational experiment. Captures the kind of output (primary result, catalog, provenance), the format, the vocabulary term for the produced quantity, and the URI of the experiment that produced it. Carries inline result values with mandatory provenance (computed / retrieved / illustrative / mixed). Designed to be referenced by an `experiment` record so that one output definition can be reused across runs and audits.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-18T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.2",
-      "dateOfLastChange": "2026-05-21",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "experiment",
-        "output",
-        "provenance",
-        "STAC",
-        "reproducibility"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "GeoDCAT mapping for OGC API Records",
-          "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "http://www.w3.org/TR/vocab-dcat-3/",
-        "http://www.w3.org/TR/prov-o/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment-output/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment-output/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment-output/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment-output/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/experiment-output/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/experiment-output/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/experiment-output/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.experiment-output"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.experiment-output",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "Computational Experiment Output",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.reef-aggregation-index",
       "name": "Reef Aggregation Index (AF_i)",
       "abstract": "OGC Feature profile carrying per-taxon dimensionless reef aggregation index AF_i used by the reef-biomass equation. Treated as an OIM variable / indicator binding \u2014 one record per evidence basis (e.g. Degraer 2020 prior). Per-taxon rows carry scientificName, AphiaID, AF_i value, validityScope, and evidence URI.",
@@ -782,7 +1798,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -821,18 +1837,18 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -889,6 +1905,122 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.reef-effect-output",
+      "name": "Reef Effect Output",
+      "abstract": "OGC API Records profile for describing a single output artefact produced by the reef-effect calculation. Captures the output role, format, vocabulary term for the produced quantity, producing experiment URI, conformance classes, and inline result values with provenance.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-18T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.2",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "reef-effect",
+        "output",
+        "provenance",
+        "STAC",
+        "reproducibility"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GeoDCAT mapping for OGC API Records",
+          "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.geodcat.geodcat-records"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "http://www.w3.org/TR/vocab-dcat-3/",
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-output/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-output/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-output/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect-output/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect-output/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-output/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-effect-output"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect-output",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Reef Effect Output",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.benthic-biomass-density-imr",
       "name": "IMR Benthic Biomass Density Observation",
       "abstract": "OGC Feature + SOSA observation profile for per-taxon benthic biomass density (kg m-2) sourced from the Institute of Marine Research (IMR / Havforskningsinstituttet) regional baseline series. Acts as the fallback `D_{pre,i}` binding when MAREANO has no taxon coverage at index i. Carries per-taxon density with explicit `uncertainty_kg_m2`, ICES area annotation, and mandatory provenance.",
@@ -897,7 +2029,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "IMR",
@@ -906,7 +2038,8 @@
         "density",
         "fallback",
         "SOSA",
-        "observation"
+        "observation",
+        "OIM"
       ],
       "authors": [
         {
@@ -921,8 +2054,8 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.iliad.api.features.oim-obs"
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld",
@@ -940,24 +2073,6 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
             "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
@@ -970,6 +2085,15 @@
             "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1002,7 +2126,7 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-density-imr/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-density-imr/",
-      "validationPassed": true,
+      "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/benthic-biomass-density-imr/",
       "documentation": {
         "json-full": {
@@ -1043,7 +2167,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "MAREANO",
@@ -1067,7 +2191,6 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records",
         "bblocks://ogc.hosted.iliad.api.features.oim-obs"
       ],
       "ldContext": {
@@ -1086,24 +2209,6 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
             "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
@@ -1116,6 +2221,15 @@
             "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1148,7 +2262,7 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-density-mareano/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/benthic-biomass-density-mareano/",
-      "validationPassed": true,
+      "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/benthic-biomass-density-mareano/",
       "documentation": {
         "json-full": {
@@ -1181,401 +2295,6 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.oim-variables",
-      "name": "OIM Variables",
-      "abstract": "Defines the OIM variable and indicator concept model for SEADOTS and ILIAD variable observations.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-04-20T00:00:00Z",
-      "itemClass": "model",
-      "register": "ogc-incubator",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
-      "dependsOn": [
-        "bblocks://ogc.model.cross-domain.all"
-      ],
-      "sources": [
-        {
-          "title": "SEADOTS Indicator Vocabulary",
-          "link": "https://id3.seadots.eu/indicator/"
-        },
-        {
-          "title": "OIM Oceans Information Model",
-          "link": "https://github.com/ILIAD-ocean-twin/OIM"
-        }
-      ],
-      "scope": "dev",
-      "tags": [
-        "iliad",
-        "oim",
-        "variables",
-        "indicators",
-        "model"
-      ],
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.hosted.seadots.oim-variables",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "http://qudt.org/2.1/schema/shacl/qudt"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.qudt",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.sosa",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.common",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/",
-      "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/oim-variables/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variables/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variables/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.oim-variables"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.oim-variables",
-      "@type": [
-        "bblocks:Model",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "OIM Variables",
-      "ldContext": null,
-      "schema": null,
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.odd-protocol",
-      "name": "ODD Protocol Description Record",
-      "abstract": "OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-04-29T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "ODD",
-        "simulation",
-        "agent-based-model",
-        "ABM",
-        "IBM",
-        "model-documentation",
-        "open-science",
-        "records"
-      ],
-      "authors": [
-        {
-          "name": "ILIAD Marine Data Team",
-          "organization": "ILIAD Ocean Digital Twin"
-        }
-      ],
-      "sources": [
-        {
-          "title": "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update",
-          "link": "https://doi.org/10.18564/jasss.4259"
-        },
-        {
-          "title": "GeoDCAT mapping for OGC API Records",
-          "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
-        },
-        {
-          "title": "Open Science Building Blocks",
-          "link": "https://ogcincubator.github.io/bblocks-openscience/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.geo.geodcat.geodcat-records-prov",
-        "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.osc.ontology.openscience"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "https://doi.org/10.18564/jasss.4259",
-        "http://www.w3.org/TR/vocab-dcat-3/",
-        "http://www.w3.org/TR/prov-o/",
-        "https://ogcincubator.github.io/geodcat-ogcapi-records/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/odd-protocol/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.odd-protocol"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.odd-protocol",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "ODD Protocol Description Record",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.area-of-interest",
-      "name": "Marine Area of Interest",
-      "abstract": "OGC Feature profile for a polygon delimiting a marine area of interest (AOI) used by experiments, monitoring programmes, or impact assessments. Carries the bbox, centroid, area, and CRS as a self-contained inline `data` block with mandatory provenance. Geometry travels in the top-level GeoJSON `geometry` field.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-19T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "AOI",
-        "marine",
-        "OGC Feature",
-        "OIM"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "GeoDCAT-Records",
-          "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.iliad.api.features.oim",
-        "bblocks://ogc.geo.geodcat.geodcat-records"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "http://www.w3.org/TR/vocab-dcat-3/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "http://qudt.org/2.1/schema/shacl/qudt"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.qudt",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.sosa",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.common",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/area-of-interest/",
-      "documentation": {
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/area-of-interest/index.json"
-        },
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/area-of-interest/index.md"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.area-of-interest"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.area-of-interest",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "Marine Area of Interest",
-      "openAPIDocument": null,
-      "ontology": null,
-      "rdfData": [],
-      "isProfileOf": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.floating-wind-infrastructure",
       "name": "Floating-Wind Submerged Infrastructure",
       "abstract": "OGC Feature profile describing per-unit submerged geometry (wetted hull + mooring + anchor surfaces) of a floating-wind farm layout. Used as the feature-of-interest geometry input to reef-effect biomass equations (drives the A_sub aggregate). Inline `data` block carries per-unit areas, count, design label, aggregate submerged area, and sample unit coordinates; geometry travels in the top-level GeoJSON Polygon.",
@@ -1584,7 +2303,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "floating-wind",
@@ -1642,15 +2361,6 @@
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        },
-        {
-          "prof:hasArtifact": [
             "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.common",
@@ -1660,9 +2370,9 @@
         },
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1672,6 +2382,15 @@
             "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1736,9 +2455,9 @@
       "itemClass": "schema",
       "register": "iliad-apis",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "dependsOn": [
-        "bblocks://ogc.hosted.seadots.api.features.oim-variables"
+        "bblocks://ogc.hosted.seadots.oim-variables"
       ],
       "ldContext": {
         "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld",
@@ -1753,7 +2472,7 @@
         },
         {
           "title": "SEADOTS OIM Variables",
-          "link": "bblocks://ogc.hosted.seadots.api.features.oim-variables"
+          "link": "bblocks://ogc.hosted.seadots.oim-variables"
         }
       ],
       "maturity": "development",
@@ -1769,9 +2488,9 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-variables/rules.shacl"
+            "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.hosted.seadots.api.features.oim-variables",
+          "rdfs:seeAlso": "bblocks://ogc.hosted.seadots.oim-variables",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1796,18 +2515,18 @@
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
+          "rdfs:seeAlso": "bblocks://ogc.skos.common",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.skos.common",
+          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1863,18 +2582,149 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.experiment",
-      "name": "Computational Experiment",
-      "abstract": "OGC API Records profile for describing a computational experiment realising a documented model. Points at the executable code that runs the experiment (any language / format that exists and runs \u2014 Python, Jupyter, R, \u2026), and binds it to the documented model (an ODD record), the evidence equation (an `equation-property-relationship` record), and to standalone input records (one per data class) and `experiment-output` records, all referenced by URI.",
+      "itemIdentifier": "ogc.hosted.seadots.odd-protocol",
+      "name": "ODD Protocol Description Record",
+      "abstract": "OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-04-29T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "ODD",
+        "simulation",
+        "agent-based-model",
+        "ABM",
+        "IBM",
+        "model-documentation",
+        "open-science",
+        "records"
+      ],
+      "authors": [
+        {
+          "name": "ILIAD Marine Data Team",
+          "organization": "ILIAD Ocean Digital Twin"
+        }
+      ],
+      "sources": [
+        {
+          "title": "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update",
+          "link": "https://doi.org/10.18564/jasss.4259"
+        },
+        {
+          "title": "GeoDCAT mapping for OGC API Records",
+          "link": "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+        },
+        {
+          "title": "Open Science Building Blocks",
+          "link": "https://ogcincubator.github.io/bblocks-openscience/"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.osc.ontology.openscience",
+        "bblocks://ogc.geo.geodcat.geodcat-records",
+        "bblocks://ogc.geo.geodcat.geodcat-records-prov"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://doi.org/10.18564/jasss.4259",
+        "http://www.w3.org/TR/vocab-dcat-3/",
+        "http://www.w3.org/TR/prov-o/",
+        "https://ogcincubator.github.io/geodcat-ogcapi-records/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/odd-protocol/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.odd-protocol"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.odd-protocol",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "ODD Protocol Description Record",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.reef-effect",
+      "name": "Reef Effect",
+      "abstract": "OGC API Records profile for describing the executable reef-effect calculation realising a documented model. Points at the code that runs the calculation and binds it to the ODD record, evidence equation, input records, and reef-effect-output records.",
       "status": "under-development",
       "dateTimeAddition": "2026-05-18T00:00:00Z",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-05-21",
+      "dateOfLastChange": "2026-05-26",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
-        "experiment",
+        "reef-effect",
         "reproducibility",
         "open-science",
         "ODD"
@@ -1900,17 +2750,17 @@
         }
       ],
       "dependsOn": [
-        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
         "bblocks://ogc.hosted.seadots.reef-aggregation-index",
-        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
-        "bblocks://ogc.hosted.seadots.experiment-output",
-        "bblocks://ogc.hosted.seadots.area-of-interest",
         "bblocks://ogc.geo.geodcat.geodcat-records",
-        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
-        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano"
+        "bblocks://ogc.hosted.seadots.reef-effect-output",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure"
       ],
       "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/context.jsonld",
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect/context.jsonld",
         "prof:hasRole": "role:mapping",
         "dct:format": "application/ld+json",
         "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
@@ -1926,18 +2776,18 @@
       "shaclShapes": [
         {
           "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
         },
         {
           "prof:hasArtifact": [
-            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
           ],
-          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -1989,9 +2839,201 @@
         },
         {
           "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.skos.common",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
             "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
           ],
           "rdfs:seeAlso": "bblocks://ogc.skos.concept",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        }
+      ],
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-effect"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Reef Effect",
+      "openAPIDocument": null,
+      "ontology": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.reef-effect-process",
+      "name": "Reef Effect Process",
+      "abstract": "OGC API Processes Part 1 process description for the reef-effect biomass calculation, aligned with the OSPD pattern (ogc.osc.api-profiles.processes.ospd). Wraps the deterministic Python reproducibility script utsira_reef_biomass.py as an executable Process whose inputs are per-class SeaDOTs records (area-of-interest, floating-wind-infrastructure, benthic-biomass-density-mareano, benthic-biomass-density-imr, reef-aggregation-index, colonisation-time-factor) and whose output is a reef-effect-output record.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-05-26",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "ogcapi-processes",
+        "ospd",
+        "reef-effect",
+        "open-science",
+        "application-package",
+        "reproducibility"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OGC API - Processes - Part 1: Core",
+          "link": "https://docs.ogc.org/is/18-062r2/18-062r2.html"
+        },
+        {
+          "title": "OGC API Processes building blocks register",
+          "link": "https://ogcincubator.github.io/bblocks-ogcapi-processes/"
+        },
+        {
+          "title": "OSPD profile (Open Science Process Description)",
+          "link": "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.api-profiles.processes.ospd"
+        },
+        {
+          "title": "OSPD sample-implementation buffer-geometry processDescription",
+          "link": "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.api-profiles.processes.sample-implementation.schemas.buffer-geometry.processDescription"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+        "bblocks://ogc.hosted.seadots.reef-effect-output",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.api.processes.v1.schemas.inputDescription",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.api.processes.v1.schemas.outputDescription",
+        "bblocks://ogc.api.processes.v1.schemas.processSummary",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure"
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/18-062r2/18-062r2.html",
+        "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.api-profiles.processes.ospd"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": [
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.api.records.v1.schemas.linkTemplate",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.sosa.properties.observation",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.geo.features.featureCollection",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "http://qudt.org/2.1/schema/shacl/qudt"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.qudt",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.model.cross-domain.sosa",
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
@@ -2004,50 +3046,59 @@
           "prof:hasRole": "role:validation",
           "dct:format": "text/turtle",
           "dct:conformsTo": "shacl:"
+        },
+        {
+          "prof:hasArtifact": [
+            "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+          ],
+          "rdfs:seeAlso": "bblocks://ogc.skos.concept",
+          "prof:hasRole": "role:validation",
+          "dct:format": "text/turtle",
+          "dct:conformsTo": "shacl:"
         }
       ],
       "schema": [
         {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.yaml",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/schema.yaml",
           "prof:hasRole": "role:schema",
           "dct:format": "application/yaml",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         },
         {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/schema.json",
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/schema.json",
           "prof:hasRole": "role:schema",
           "dct:format": "application/json",
           "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
         }
       ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/experiment/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/experiment/",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-process/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-process/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/reef-effect-process/",
       "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/experiment/",
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect-process/",
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/experiment/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect-process/index.json"
         },
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/experiment/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-process/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.experiment"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-effect-process"
         }
       },
-      "@id": "bblocks://ogc.hosted.seadots.experiment",
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect-process",
       "@type": [
         "bblocks:Schema",
         "skos:Concept",
         "dcat:Dataset",
         "bblocks:BBlock"
       ],
-      "skos:prefLabel": "Computational Experiment",
+      "skos:prefLabel": "Reef Effect Process",
       "openAPIDocument": null,
       "ontology": null,
       "rdfData": [],
@@ -2058,6 +3109,27 @@
     }
   ],
   "skos:hasTopConcept": [
+    {
+      "@id": "bblocks://ogc.hosted.seadots.area-of-interest"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-application-package"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-input"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-output"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-workflow"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.obis-mareano-checklist"
+    },
     {
       "@id": "bblocks://ogc.hosted.seadots.ontology"
     },
@@ -2071,13 +3143,22 @@
       "@id": "bblocks://ogc.hosted.seadots.equation-property-relationship"
     },
     {
+      "@id": "bblocks://ogc.hosted.seadots.oim-variables"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-application"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.catalog-execution"
+    },
+    {
       "@id": "bblocks://ogc.hosted.seadots.colonisation-time-factor"
     },
     {
-      "@id": "bblocks://ogc.hosted.seadots.experiment-output"
+      "@id": "bblocks://ogc.hosted.seadots.reef-aggregation-index"
     },
     {
-      "@id": "bblocks://ogc.hosted.seadots.reef-aggregation-index"
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect-output"
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr"
@@ -2086,22 +3167,19 @@
       "@id": "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano"
     },
     {
-      "@id": "bblocks://ogc.hosted.seadots.oim-variables"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.odd-protocol"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.area-of-interest"
-    },
-    {
       "@id": "bblocks://ogc.hosted.seadots.floating-wind-infrastructure"
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.oim-variable-observation"
     },
     {
-      "@id": "bblocks://ogc.hosted.seadots.experiment"
+      "@id": "bblocks://ogc.hosted.seadots.odd-protocol"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.reef-effect-process"
     }
   ]
 }

@@ -1,0 +1,229 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-process#",
+    "inputs": {
+      "@context": {
+        "aoi": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "infrastructure": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "benthicBiomassPrimary": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "benthicBiomassFallback": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "reefAggregationIndex": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "colonisationTimeFactor": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "asOfMonths": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "maxOccurs": "ogcapi-proc:maxOccurs",
+            "minOccurs": "ogcapi-proc:minOccurs",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        }
+      },
+      "@id": "ogcapi-proc:input",
+      "@container": "@index"
+    },
+    "outputs": {
+      "@context": {
+        "reefBiomassResult": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          }
+        },
+        "provenance": {
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/api/processes/",
+            "schema": {
+              "@context": {
+                "@vocab": "https://w3id.org/ogc/api/schema/"
+              },
+              "@id": "proc:schema"
+            },
+            "keywords": "proc:keywords",
+            "type": "proc:type"
+          },
+          "@id": "prov:wasGeneratedBy"
+        }
+      },
+      "@id": "ogcapi-proc:output",
+      "@container": "@index"
+    },
+    "id": "ogcapi-proc:id",
+    "version": "dcterms:hasVersion",
+    "keywords": {
+      "@id": "dcat:keyword",
+      "@container": "@set"
+    },
+    "metadata": {
+      "@id": "dcterms:source",
+      "@container": "@set"
+    },
+    "additionalParameters": "ogcapi-proc:additionalParameters",
+    "jobControlOptions": {
+      "@id": "ogcapi-proc:jobControlOptions",
+      "@container": "@set"
+    },
+    "outputTransmission": {
+      "@id": "ogcapi-proc:outputTransmission",
+      "@container": "@set"
+    },
+    "links": {
+      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "@container": "@set"
+    },
+    "href": "@id",
+    "rel": "https://purl.org/geojson/vocab#rel",
+    "type": "dcterms:format",
+    "mediaType": "dcterms:format",
+    "executionUnit": {
+      "@id": "dcterms:conformsTosoftwareSourceCode",
+      "@type": "@id"
+    },
+    "language": "dcterms:language",
+    "languageVersion": "dcterms:conformsToruntimePlatform",
+    "dependencies": {
+      "@id": "dcterms:conformsTosoftwareRequirements",
+      "@container": "@set"
+    },
+    "entrypoint": "dcterms:conformsTopotentialAction",
+    "reproducibility": "seadots:reproducibility",
+    "seedPolicy": "seadots:seedPolicy",
+    "modelledBy": {
+      "@id": "prov:wasInformedBy",
+      "@type": "@id"
+    },
+    "evidenceEquation": {
+      "@id": "prov:hadPlan",
+      "@type": "@id"
+    },
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "nullable": "proc:nullable",
+    "$ref": {
+      "@id": "proc:ref",
+      "@type": "@id"
+    },
+    "default": {
+      "@id": "proc:default",
+      "@type": "@json"
+    },
+    "enum": {
+      "@id": "proc:enum",
+      "@container": "@set"
+    },
+    "minOccurs": "proc:minOccurs",
+    "maxOccurs": "proc:maxOccurs",
+    "dcterms": "http://purl.org/dc/terms/",
+    "ogcapi-proc": "http://www.opengis.net/def/ogcapi-processes/1.0/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "schema": "dcterms:conformsTo",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect-process#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dct": "http://purl.org/dc/terms/",
+    "proc": "https://w3id.org/ogc/api/processes/",
+    "@version": 1.1
+  }
+}

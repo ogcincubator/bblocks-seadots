@@ -1,7 +1,6 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
@@ -15,14 +14,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM Variables profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
-        [ rdfs:label "Colonisation Time Factor bblock" ;
+    rdfs:seeAlso [ rdfs:label "Colonisation Time Factor bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.colonisation-time-factor> ],
+        [ rdfs:label "OIM Variables profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
         [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
@@ -39,7 +38,7 @@
             seadots:colonisationTimeFactor [ dcterms:description "Scalar colonisation factor evaluated at scenario T0 + colonisation_months." ;
                     dcterms:format "application/ld+json" ;
                     dcterms:title "Colonisation time factor (default sigmoid)" ;
-                    skos:exactMatch indo:colonisation-time-factor-default ;
+                    skos:exactMatch indp:colonisation-time-factor-default ;
                     dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
                     seadots:data [ qudt:unit "dimensionless" ;
                             prov:wasDerivedFrom [ dcterms:source [ dcterms:bibliographicCitation "Degraer et al. 2020 — qualitative discussion of temporal colonisation, no numeric parameters" ;

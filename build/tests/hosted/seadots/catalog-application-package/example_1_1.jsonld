@@ -1,0 +1,35 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld",
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect",
+  "type": "ApplicationPackage",
+  "title": "Reef-effect CWL application package",
+  "description": "Minimal APKG/CWL package contract for the reef-effect biomass calculation.",
+  "class": "CommandLineTool",
+  "inputs": [
+    {
+      "id": "areaOfInterest",
+      "type": "File",
+      "description": "GeoJSON Feature describing the AOI."
+    },
+    {
+      "id": "benthicBiomassDensity",
+      "type": "File",
+      "description": "Input biomass-density STAC Item or OGC Record."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "reefBiomassOutput",
+      "type": "File",
+      "description": "STAC/OGC Records output item."
+    }
+  ],
+  "requirements": [
+    {
+      "class": "DockerRequirement",
+      "dockerPull": "ghcr.io/seadots/reef-effect:0.1.0"
+    }
+  ],
+  "softwareVersion": "0.1.0",
+  "programmingLanguage": "Python"
+}

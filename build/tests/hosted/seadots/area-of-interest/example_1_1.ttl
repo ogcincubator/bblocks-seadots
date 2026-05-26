@@ -1,56 +1,16 @@
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ns1: <https://purl.org/geojson/vocab#> .
+@prefix ns2: <http://www.w3.org/ns/iana/link-relations/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/area-of-interest#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Marine Area of Interest bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest> ],
-        [ rdfs:label "OIM feature profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ] ;
-    geojson:geometry [ a geojson:Polygon ;
-            geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
-    geojson:properties [ a seadots:Dataset ;
-            dcterms:created "2026-05-18" ;
-            dcterms:description "Polygon delimiting the broader study area around Utsira island (~3500 km²). Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator." ;
-            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
-            dcterms:modified "2026-05-19" ;
-            dcterms:title "AOI — surroundings of Utsira island" ;
-            dcat:keyword "AOI",
-                "Utsira",
-                "polygon",
-                "surroundings" ;
-            seadots:areaOfInterest [ dcterms:description "Polygon delimiting the broader study area around Utsira island." ;
-                    dcterms:format "application/geo+json" ;
-                    dcterms:title "AOI polygon (surroundings of Utsira)" ;
-                    skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
-                    dcat:accessURL <file:///github/workspace/aoi/utsira_surroundings_polygon.geojson> ;
-                    seadots:data [ skos:note "Polygon coordinates are carried by the top-level `geometry` field per OGC Records." ;
-                            prov:wasDerivedFrom [ skos:note "Bbox, centroid, and area_km2 are derived from the illustrative polygon drawn in this record's top-level geometry — not from an authoritative licence-area dataset." ;
-                                    seadots:nearestAuthoritativeSource [ skos:note "NVE strategic assessment hosts the licensed Utsira Nord polygon. For real Norwegian offshore-wind area polygons, retrieve via the Geonorge catalogue (https://www.geonorge.no/)." ;
-                                            dcat:accessURL <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ] ;
-                                    seadots:provenanceValues "illustrative" ] ;
-                            geojson:bbox ( 4.2e+00 5.91e+01 5.3e+00 5.97e+01 ) ;
-                            seadots:area_km2 3520 ;
-                            seadots:centroid 4.75e+00,
-                                5.94e+01 ;
-                            seadots:crs "EPSG:4326" ] ;
-                    seadots:role "study area" ] ;
-            rec:format [ dcterms:format "application/geo+json" ] ;
-            rec:language [ rec:languageCode "en" ] ;
-            rec:themes [ rec:concept [ skos:prefLabel "Area of interest" ;
-                            rec:conceptID "AOI"^^xsd:string ] ;
-                    rec:scheme "https://id3.seadots.eu/themes" ] ] .
+<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a ns1:Feature ;
+    ns2:relation <bblocks://ogc.hosted.seadots.area-of-interest> ;
+    ns1:geometry [ a ns1:Polygon ;
+            ns1:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
+    ns1:properties [ dcterms:description "Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator." ;
+            dcterms:title "AOI — surroundings of Utsira island" ] .
+
+<bblocks://ogc.hosted.seadots.area-of-interest> a <file:///github/workspace/application/schema+json> ;
+    ns1:rel "describedby" .
 

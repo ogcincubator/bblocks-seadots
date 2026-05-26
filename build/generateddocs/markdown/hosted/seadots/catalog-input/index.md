@@ -1,0 +1,645 @@
+
+# SeaDOTs Catalog Input (Schema)
+
+`ogc.hosted.seadots.catalog-input` *v0.1*
+
+Generic STAC Item profile for a concrete dataset, parameter file, or configuration consumed by an execution.
+
+[*Status*](http://www.opengis.net/def/status): Under development
+
+## Description
+
+# SeaDOTs Catalog Input
+
+An input is a concrete STAC Item consumed by an execution. It may represent an observation collection, AOI, forcing dataset, parameter object, model configuration, or other resource used by a SeaDOTs application.
+
+## Role in the Catalog Metadata Model
+
+This generic building block supports the SeaDOTs catalog model described in
+`data_framework/INTEROPERABILITY.md` under `Catalog Metadata Model` and
+`2.2 Provenance model (Open Science)`.
+
+## Source-property coverage gaps
+
+This block is a generic catalog template and is not derived from a raw source
+dataset. No source properties are intentionally dropped.
+
+## Examples
+
+### SeaDOTs Catalog Input
+#### json
+```json
+{
+  "id": "aoi-utsira",
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "collection": "seadots-inputs",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.7,
+          59.1
+        ],
+        [
+          5.0,
+          59.1
+        ],
+        [
+          5.0,
+          59.4
+        ],
+        [
+          4.7,
+          59.4
+        ],
+        [
+          4.7,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    4.7,
+    59.1,
+    5.0,
+    59.4
+  ],
+  "properties": {
+    "title": "Utsira area of interest",
+    "description": "Example area-of-interest input for a SeaDOTs execution.",
+    "datetime": "2026-05-26T00:00:00Z",
+    "role": "input",
+    "convention": "CF-1.10",
+    "cf:parameter": [
+      {
+        "name": "area",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m2",
+        "description": "Optional CF-style parameter declaration for spatial input extent."
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "type": "application/geo+json",
+      "title": "AOI GeoJSON"
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-input",
+      "type": "application/schema+json"
+    }
+  ]
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/context.jsonld",
+  "id": "aoi-utsira",
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "collection": "seadots-inputs",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.7,
+          59.1
+        ],
+        [
+          5.0,
+          59.1
+        ],
+        [
+          5.0,
+          59.4
+        ],
+        [
+          4.7,
+          59.4
+        ],
+        [
+          4.7,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    4.7,
+    59.1,
+    5.0,
+    59.4
+  ],
+  "properties": {
+    "title": "Utsira area of interest",
+    "description": "Example area-of-interest input for a SeaDOTs execution.",
+    "datetime": "2026-05-26T00:00:00Z",
+    "role": "input",
+    "convention": "CF-1.10",
+    "cf:parameter": [
+      {
+        "name": "area",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m2",
+        "description": "Optional CF-style parameter declaration for spatial input extent."
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "type": "application/geo+json",
+      "title": "AOI GeoJSON"
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-input",
+      "type": "application/schema+json"
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix stac: <https://stacspec.org/vocab#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/aoi-utsira> a geojson:Feature ;
+    dcterms:isPartOf <file:///github/workspace/seadots-inputs> ;
+    ns1:relation <bblocks://ogc.hosted.seadots.catalog-input> ;
+    geojson:bbox 4.7e+00,
+        5e+00,
+        5.91e+01,
+        5.94e+01 ;
+    geojson:geometry [ a seadots:Polygon ;
+            geojson:coordinates "[4.7, 59.1]",
+                "[4.7, 59.4]",
+                "[5.0, 59.1]",
+                "[5.0, 59.4]" ] ;
+    geojson:properties [ dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
+            dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
+            dcterms:title "Utsira area of interest" ;
+            cf:parameter [ dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+                    dcterms:format "m2" ;
+                    dcterms:title "area" ;
+                    schema: "http://vocab.nerc.ac.uk/standard_name/" ] ;
+            seadots:metadataConvention "CF-1.10" ;
+            seadots:role "input" ] ;
+    stac:assets [ stac:data <https://example.org/seadots/inputs/aoi-utsira.geojson> ] ;
+    stac:stac_version "1.0.0" .
+
+<bblocks://ogc.hosted.seadots.catalog-input> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;
+    ns1:relation "describedby" .
+
+<https://example.org/seadots/inputs/aoi-utsira.geojson> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    dcterms:title "AOI GeoJSON" .
+
+
+```
+
+## Schema
+
+```yaml
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Input
+description: 'STAC Item profile for a concrete input consumed by a SeaDOTs execution.
+
+  '
+type: object
+required:
+- id
+- type
+- stac_version
+- properties
+- geometry
+- bbox
+- assets
+properties:
+  id:
+    type: string
+    x-jsonld-id: '@id'
+  type:
+    const: Feature
+    x-jsonld-id: '@type'
+  stac_version:
+    type: string
+    x-jsonld-id: https://stacspec.org/vocab#stac_version
+  collection:
+    type: string
+    x-jsonld-id: http://purl.org/dc/terms/isPartOf
+    x-jsonld-type: '@id'
+  geometry:
+    type:
+    - object
+    - 'null'
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  bbox:
+    type: array
+    items:
+      type: number
+    x-jsonld-id: https://purl.org/geojson/vocab#bbox
+  properties:
+    type: object
+    required:
+    - title
+    - description
+    - datetime
+    properties:
+      title:
+        type: string
+        x-jsonld-id: http://purl.org/dc/terms/title
+      description:
+        type: string
+        x-jsonld-id: http://purl.org/dc/terms/description
+      datetime:
+        type: string
+        format: date-time
+        x-jsonld-id: http://purl.org/dc/terms/date
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+      role:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+      convention:
+        type: string
+        description: Optional metadata convention declaration, e.g. CF-1.10.
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
+      cf:parameter:
+        type: array
+        description: Optional STAC CF extension parameter declarations.
+        items:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              description: CF standard name or local parameter name.
+              x-jsonld-id: http://purl.org/dc/terms/title
+            schema:
+              type: string
+              format: uri
+              description: Vocabulary or schema URI for the parameter name.
+              x-jsonld-id: https://schema.org/
+            unit:
+              type: string
+              description: Unit string or URI for the parameter.
+              x-jsonld-id: http://purl.org/dc/terms/format
+            description:
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/description
+        x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
+        x-jsonld-container: '@set'
+    additionalProperties: true
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+  assets:
+    type: object
+    additionalProperties:
+      type: object
+      required:
+      - href
+      properties:
+        href:
+          type: string
+          x-jsonld-id: '@id'
+        type:
+          type: string
+          x-jsonld-id: '@type'
+        title:
+          type: string
+          x-jsonld-id: http://purl.org/dc/terms/title
+        roles:
+          type: array
+          items:
+            type: string
+    x-jsonld-id: https://stacspec.org/vocab#assets
+  links:
+    type: array
+    items:
+      type: object
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+        href:
+          type: string
+          x-jsonld-id: '@id'
+        type:
+          type: string
+          x-jsonld-id: '@type'
+        title:
+          type: string
+          x-jsonld-id: http://purl.org/dc/terms/title
+    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
+    x-jsonld-container: '@set'
+x-jsonld-extra-terms:
+  Feature: https://purl.org/geojson/vocab#Feature
+  coordinates: https://purl.org/geojson/vocab#coordinates
+  itemType: http://purl.org/dc/terms/type
+  conformsTo:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+  keywords:
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+    x-jsonld-container: '@set'
+  themes:
+    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-container: '@set'
+  license:
+    x-jsonld-id: http://purl.org/dc/terms/license
+    x-jsonld-type: '@id'
+  created:
+    x-jsonld-id: http://purl.org/dc/terms/created
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  updated:
+    x-jsonld-id: http://purl.org/dc/terms/modified
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  applicationCategory: https://schema.org/applicationCategory
+  softwareVersion: https://schema.org/softwareVersion
+  programmingLanguage: https://schema.org/programmingLanguage
+  applicationPackage:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
+    x-jsonld-type: '@id'
+  workflow:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
+    x-jsonld-type: '@id'
+  inputs:
+    x-jsonld-id: https://w3id.org/apkg/terms/inputs
+    x-jsonld-container: '@set'
+  outputs:
+    x-jsonld-id: https://w3id.org/apkg/terms/outputs
+    x-jsonld-container: '@set'
+  class: https://w3id.org/cwl/cwl#class
+  requirements:
+    x-jsonld-id: https://w3id.org/cwl/cwl#requirements
+    x-jsonld-container: '@set'
+  version: http://purl.org/dc/terms/hasVersion
+  method: http://purl.org/dc/terms/method
+  startTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  endTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  status: https://w3id.org/ogc/hosted/seadots/catalog#status
+  parameters: https://w3id.org/ogc/hosted/seadots/catalog#parameters
+  timeBoundaryStart:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryStart
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+  timeBoundaryEnd:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryEnd
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+  application:
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+    x-jsonld-type: '@id'
+  activity:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#activity
+    x-jsonld-type: '@id'
+  inputRecords:
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+  outputRecords:
+    x-jsonld-id: http://www.w3.org/ns/prov#generated
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+  agent:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith
+    x-jsonld-type: '@id'
+  configuration: https://w3id.org/ogc/hosted/seadots/catalog#configuration
+  containerImage: https://w3id.org/ogc/hosted/seadots/catalog#containerImage
+  data: https://stacspec.org/vocab#data
+  derivedFrom:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+    x-jsonld-type: '@id'
+    x-jsonld-container: '@set'
+  mediaType: http://purl.org/dc/terms/format
+  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  schema: https://schema.org/
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  prov: http://www.w3.org/ns/prov#
+  apkg: https://w3id.org/apkg/terms/
+  cwl: https://w3id.org/cwl/cwl#
+  stac: https://stacspec.org/vocab#
+  cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
+
+```
+
+Links to the schema:
+
+* YAML version: [schema.yaml](https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.json)
+* JSON version: [schema.json](https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.yaml)
+
+
+# JSON-LD Context
+
+```jsonld
+{
+  "@context": {
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "Feature": "geojson:Feature",
+    "coordinates": "geojson:coordinates",
+    "itemType": "dcterms:type",
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "keywords": {
+      "@id": "dcat:keyword",
+      "@container": "@set"
+    },
+    "themes": {
+      "@id": "dcat:theme",
+      "@container": "@set"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "created": {
+      "@id": "dcterms:created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "updated": {
+      "@id": "dcterms:modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "applicationCategory": "schema:applicationCategory",
+    "softwareVersion": "schema:softwareVersion",
+    "programmingLanguage": "schema:programmingLanguage",
+    "applicationPackage": {
+      "@id": "seadots:applicationPackage",
+      "@type": "@id"
+    },
+    "workflow": {
+      "@id": "prov:hadPlan",
+      "@type": "@id"
+    },
+    "inputs": {
+      "@id": "apkg:inputs",
+      "@container": "@set"
+    },
+    "outputs": {
+      "@id": "apkg:outputs",
+      "@container": "@set"
+    },
+    "class": "cwl:class",
+    "requirements": {
+      "@id": "cwl:requirements",
+      "@container": "@set"
+    },
+    "version": "dcterms:hasVersion",
+    "method": "dcterms:method",
+    "startTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "endTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "status": "seadots:status",
+    "parameters": "seadots:parameters",
+    "timeBoundaryStart": {
+      "@id": "seadots:timeBoundaryStart",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "timeBoundaryEnd": {
+      "@id": "seadots:timeBoundaryEnd",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "application": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "activity": {
+      "@id": "seadots:activity",
+      "@type": "@id"
+    },
+    "inputRecords": {
+      "@id": "prov:used",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "outputRecords": {
+      "@id": "prov:generated",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "agent": {
+      "@id": "prov:wasAssociatedWith",
+      "@type": "@id"
+    },
+    "configuration": "seadots:configuration",
+    "containerImage": "seadots:containerImage",
+    "data": "stac:data",
+    "derivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "mediaType": "dcterms:format",
+    "dockerPull": "seadots:dockerPull",
+    "id": "@id",
+    "type": "@type",
+    "stac_version": "stac:stac_version",
+    "collection": {
+      "@id": "dcterms:isPartOf",
+      "@type": "@id"
+    },
+    "geometry": "geojson:geometry",
+    "bbox": "geojson:bbox",
+    "properties": {
+      "@context": {
+        "title": "dcterms:title",
+        "description": "dcterms:description",
+        "datetime": {
+          "@id": "dcterms:date",
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "role": "seadots:role",
+        "convention": "seadots:metadataConvention",
+        "name": "dcterms:title",
+        "unit": "dcterms:format",
+        "cf:parameter": {
+          "@container": "@set"
+        }
+      },
+      "@id": "geojson:properties"
+    },
+    "assets": {
+      "@context": {
+        "href": "@id",
+        "title": "dcterms:title"
+      },
+      "@id": "stac:assets"
+    },
+    "links": {
+      "@context": {
+        "rel": "http://www.w3.org/ns/iana/link-relations/relation",
+        "href": "@id",
+        "title": "dcterms:title"
+      },
+      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "@container": "@set"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "schema": "https://schema.org/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "apkg": "https://w3id.org/apkg/terms/",
+    "cwl": "https://w3id.org/cwl/cwl#",
+    "stac": "https://stacspec.org/vocab#",
+    "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
+    "@version": 1.1
+  }
+}
+```
+
+You can find the full JSON-LD context here:
+[context.jsonld](https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/context.jsonld)
+
+## Sources
+
+* [SeaDOTs Interoperability Framework - Catalog Metadata Model](https://github.com/ogcincubator/bblocks-seadots)
+* [OGC API - Records](https://docs.ogc.org/is/20-004/20-004.html)
+* [OGC bblocks-openscience](https://github.com/ogcincubator/bblocks-openscience)
+
+# For developers
+
+The source code for this Building Block can be found in the following repository:
+
+* URL: [https://github.com/ogcincubator/bblocks-seadots](https://github.com/ogcincubator/bblocks-seadots)
+* Path: `_sources/catalog-input`
+

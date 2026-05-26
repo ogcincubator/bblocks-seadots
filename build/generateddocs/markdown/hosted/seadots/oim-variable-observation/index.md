@@ -19,7 +19,7 @@ The observed variable is carried by `observedProperty`. For reef-effect
 demonstrators, a reef aggregation index value is represented by setting:
 
 ```json
-"observedProperty": "indo:reef-aggregation-index"
+"observedProperty": "indp:reef-aggregation-index"
 ```
 
 The example in this block is a compact observation for a dimensionless reef
@@ -39,7 +39,7 @@ examples/utsira-reef-aggregation-index-observations.json
 $schema: https://json-schema.org/draft/2020-12/schema
 title: OIM Variable Observation
 description: 'OIM/SOSA observation profile for numeric variable and indicator values.
-  The observedProperty field identifies the variable concept, such as indo:reef-aggregation-index,
+  The observedProperty field identifies the variable concept, such as indp:reef-aggregation-index,
   while hasResult carries the numeric value.
 
   '
@@ -536,6 +536,7 @@ x-jsonld-prefixes:
   sosa: http://www.w3.org/ns/sosa/
   schema: https://schema.org/
   indo: https://w3id.org/indicators/marine/obs/
+  indp: https://w3id.org/indicators/marine/parameters/
 
 ```
 
@@ -978,6 +979,7 @@ Links to the schema:
     "sosa": "http://www.w3.org/ns/sosa/",
     "schema": "https://schema.org/",
     "indo": "https://w3id.org/indicators/marine/obs/",
+    "indp": "https://w3id.org/indicators/marine/parameters/",
     "@version": 1.1
   }
 }
@@ -989,7 +991,7 @@ You can find the full JSON-LD context here:
 ## Sources
 
 * [OIM master repository](https://github.com/ILIAD-ocean-twin/OIM)
-* [SEADOTS OIM Variables](bblocks://ogc.hosted.seadots.api.features.oim-variables)
+* [SEADOTS OIM Variables](bblocks://ogc.hosted.seadots.oim-variables)
 
 # For developers
 

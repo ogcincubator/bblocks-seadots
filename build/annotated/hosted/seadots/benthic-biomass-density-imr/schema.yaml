@@ -6,7 +6,7 @@ description: 'Per-taxon benthic biomass density observation sourced from the Ins
 
   '
 allOf:
-- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+- $ref: https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/oim-obs/schema.yaml
 properties:
   properties:
     type: object
@@ -55,6 +55,20 @@ properties:
             oneOf:
             - type: string
             - type: object
+              required:
+              - start
+              - end
+              properties:
+                start:
+                  type: string
+                  format: date
+                  x-jsonld-id: http://www.w3.org/2006/time#hasBeginning
+                  x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+                end:
+                  type: string
+                  format: date
+                  x-jsonld-id: http://www.w3.org/2006/time#hasEnd
+                  x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
             x-jsonld-id: http://www.w3.org/ns/sosa/phenomenonTime
           data:
             type: object
@@ -68,6 +82,16 @@ properties:
               samplePeriod:
                 type: string
                 x-jsonld-id: http://purl.org/dc/terms/temporal
+              timeBoundaries:
+                type: array
+                description: Explicit phenomenon-time boundaries supplied to build_example.py.
+                minItems: 2
+                maxItems: 2
+                items:
+                  type: string
+                  format: date
+                x-jsonld-id: http://purl.org/dc/terms/temporal
+                x-jsonld-container: '@list'
               method:
                 type: string
                 x-jsonld-id: http://purl.org/dc/terms/methodology
@@ -122,6 +146,10 @@ properties:
                     type: string
                     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#retrievalApiCall
                     x-jsonld-type: '@id'
+                  rawCollectionBlock:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
+                    x-jsonld-type: '@id'
                   verifiedOn:
                     type: string
                     format: date
@@ -144,6 +172,9 @@ properties:
                   verificationGap:
                     type: string
                     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#verificationGap
+                  timeBoundaryNote:
+                    type: string
+                    x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                   note:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
@@ -195,6 +226,7 @@ x-jsonld-prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#
   sosa: http://www.w3.org/ns/sosa/
+  time: http://www.w3.org/2006/time#
   qudt: http://qudt.org/schema/qudt/
   dwc: http://rs.tdwg.org/dwc/terms/
   indo: https://w3id.org/indicators/marine/obs/

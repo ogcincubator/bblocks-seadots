@@ -23,7 +23,7 @@ It supports two usage modes:
 
 Use this block when the relationship is mathematical lineage. Use the existing
 `property-relationship` block for weighted causal cross-impact edges, such as
-`ind:floating-wind-reef-biomass -> indo:floating-wind-fish-abundance`.
+`indo:floating-wind-reef-biomass-effect -> indo:floating-wind-fish-abundance`.
 
 Validation intent (partly enforced by `_sources/ontology/rules.shacl`):
 
@@ -58,23 +58,23 @@ because the record describes the equation as a whole, not a single symbol-edge.
 #### json
 ```json
 {
-  "id": "indo:eqrel/reef-biomass-effect",
+  "id": "https://example.org/norwegian-ses/equation-property-relationship/reef-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
   ],
   "relationshipKind": "equation",
-  "toProperty": "ind:floating-wind-reef-biomass",
+  "toProperty": "indo:floating-wind-reef-biomass-effect",
   "equation": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
   "targetDefinition": {
-    "id": "ind:floating-wind-reef-biomass",
+    "id": "indo:floating-wind-reef-biomass-effect",
     "type": "prov:Entity",
     "mathExpression": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
     "wasDerivedFrom": [
-      "indo:submerged-infrastructure-area",
+      "indp:submerged-infrastructure-area",
       "indo:baseline-benthic-biomass-density",
-      "indo:reef-aggregation-index",
-      "indo:colonisation-time-factor"
+      "indp:reef-aggregation-index",
+      "indp:colonisation-time-factor"
     ],
     "aggregation": {
       "type": "prop-rel:Aggregation",
@@ -87,14 +87,14 @@ because the record describes the equation as a whole, not a single symbol-edge.
     {
       "symbol": "A_{sub}",
       "symbolAliases": ["A_sub", "A_s"],
-      "fromProperty": "indo:submerged-infrastructure-area",
+      "fromProperty": "indp:submerged-infrastructure-area",
       "variableKind": "featureOfInterest",
       "dimensionKind": "quantitykind:Area",
       "indexed": false,
       "equationRole": "input",
       "operator": "product",
       "bindings": [
-        { "variable": "indo:submerged-infrastructure-area-utsira-design",
+        { "variable": "indp:submerged-infrastructure-area-utsira-design",
           "bindingRole": "primary",
           "validityScope": "Utsira Nord engineering design (60 × 15 MW units, wetted hull + mooring + anchor surfaces)",
           "evidence": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/" }
@@ -124,7 +124,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     },
     {
       "symbol": "AF_i",
-      "fromProperty": "indo:reef-aggregation-index",
+      "fromProperty": "indp:reef-aggregation-index",
       "variableKind": "adjustmentFactor",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": true,
@@ -133,16 +133,16 @@ because the record describes the equation as a whole, not a single symbol-edge.
       "equationRole": "coefficient",
       "operator": "product",
       "bindings": [
-        { "variable": "indo:reef-aggregation-index-mytilus",
+        { "variable": "indp:reef-aggregation-index-mytilus",
           "indexValue": "Mytilus edulis",
           "bindingRole": "expansion",
           "validityScope": "North Sea, depth 0-30 m",
           "evidence": "https://doi.org/10.5670/oceanog.2020.405" },
-        { "variable": "indo:reef-aggregation-index-buccinum",
+        { "variable": "indp:reef-aggregation-index-buccinum",
           "indexValue": "Buccinum undatum",
           "bindingRole": "expansion",
           "evidence": "https://www.windfloat-atlantic.com/" },
-        { "variable": "indo:reef-aggregation-index-asterias",
+        { "variable": "indp:reef-aggregation-index-asterias",
           "indexValue": "Asterias rubens",
           "bindingRole": "expansion" }
       ]
@@ -150,14 +150,14 @@ because the record describes the equation as a whole, not a single symbol-edge.
     {
       "symbol": "C_t",
       "symbolAliases": ["C_{t}", "C_time"],
-      "fromProperty": "indo:colonisation-time-factor",
+      "fromProperty": "indp:colonisation-time-factor",
       "variableKind": "timeCoefficient",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": false,
       "equationRole": "coefficient",
       "operator": "product",
       "bindings": [
-        { "variable": "indo:colonisation-time-factor-default",
+        { "variable": "indp:colonisation-time-factor-default",
           "bindingRole": "primary",
           "validityScope": "default sigmoid colonisation curve, saturating at t = 24 months",
           "evidence": "https://doi.org/10.5670/oceanog.2020.405" }
@@ -169,7 +169,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     "name": "Utsira biomass upscaler v1",
     "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
   },
-  "evidence": "ind:floating-wind-reef-biomass",
+  "evidence": "indo:floating-wind-reef-biomass-effect",
   "explanation": "Equation-level record for the reef-biomass equation. `symbols[]` enumerates every term (A_{sub} feature-of-interest, D_{pre,i} intensive density per taxon, AF_i adjustment factor per taxon, C_t time coefficient) with its abstract Rainbow IRI, kind, dimension and concrete bindings. No top-level `fromProperty`: the record describes the equation as a whole."
 }
 
@@ -185,23 +185,23 @@ because the record describes the equation as a whole, not a single symbol-edge.
     },
     "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld"
   ],
-  "id": "indo:eqrel/reef-biomass-effect",
+  "id": "https://example.org/norwegian-ses/equation-property-relationship/reef-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
   ],
   "relationshipKind": "equation",
-  "toProperty": "ind:floating-wind-reef-biomass",
+  "toProperty": "indo:floating-wind-reef-biomass-effect",
   "equation": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
   "targetDefinition": {
-    "id": "ind:floating-wind-reef-biomass",
+    "id": "indo:floating-wind-reef-biomass-effect",
     "type": "prov:Entity",
     "mathExpression": "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)",
     "wasDerivedFrom": [
-      "indo:submerged-infrastructure-area",
+      "indp:submerged-infrastructure-area",
       "indo:baseline-benthic-biomass-density",
-      "indo:reef-aggregation-index",
-      "indo:colonisation-time-factor"
+      "indp:reef-aggregation-index",
+      "indp:colonisation-time-factor"
     ],
     "aggregation": {
       "type": "prop-rel:Aggregation",
@@ -217,7 +217,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
         "A_sub",
         "A_s"
       ],
-      "fromProperty": "indo:submerged-infrastructure-area",
+      "fromProperty": "indp:submerged-infrastructure-area",
       "variableKind": "featureOfInterest",
       "dimensionKind": "quantitykind:Area",
       "indexed": false,
@@ -225,7 +225,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
       "operator": "product",
       "bindings": [
         {
-          "variable": "indo:submerged-infrastructure-area-utsira-design",
+          "variable": "indp:submerged-infrastructure-area-utsira-design",
           "bindingRole": "primary",
           "validityScope": "Utsira Nord engineering design (60 \u00d7 15 MW units, wetted hull + mooring + anchor surfaces)",
           "evidence": "https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/"
@@ -264,7 +264,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     },
     {
       "symbol": "AF_i",
-      "fromProperty": "indo:reef-aggregation-index",
+      "fromProperty": "indp:reef-aggregation-index",
       "variableKind": "adjustmentFactor",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": true,
@@ -274,20 +274,20 @@ because the record describes the equation as a whole, not a single symbol-edge.
       "operator": "product",
       "bindings": [
         {
-          "variable": "indo:reef-aggregation-index-mytilus",
+          "variable": "indp:reef-aggregation-index-mytilus",
           "indexValue": "Mytilus edulis",
           "bindingRole": "expansion",
           "validityScope": "North Sea, depth 0-30 m",
           "evidence": "https://doi.org/10.5670/oceanog.2020.405"
         },
         {
-          "variable": "indo:reef-aggregation-index-buccinum",
+          "variable": "indp:reef-aggregation-index-buccinum",
           "indexValue": "Buccinum undatum",
           "bindingRole": "expansion",
           "evidence": "https://www.windfloat-atlantic.com/"
         },
         {
-          "variable": "indo:reef-aggregation-index-asterias",
+          "variable": "indp:reef-aggregation-index-asterias",
           "indexValue": "Asterias rubens",
           "bindingRole": "expansion"
         }
@@ -299,7 +299,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
         "C_{t}",
         "C_time"
       ],
-      "fromProperty": "indo:colonisation-time-factor",
+      "fromProperty": "indp:colonisation-time-factor",
       "variableKind": "timeCoefficient",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": false,
@@ -307,7 +307,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
       "operator": "product",
       "bindings": [
         {
-          "variable": "indo:colonisation-time-factor-default",
+          "variable": "indp:colonisation-time-factor-default",
           "bindingRole": "primary",
           "validityScope": "default sigmoid colonisation curve, saturating at t = 24 months",
           "evidence": "https://doi.org/10.5670/oceanog.2020.405"
@@ -320,7 +320,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     "name": "Utsira biomass upscaler v1",
     "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
   },
-  "evidence": "ind:floating-wind-reef-biomass",
+  "evidence": "indo:floating-wind-reef-biomass-effect",
   "explanation": "Equation-level record for the reef-biomass equation. `symbols[]` enumerates every term (A_{sub} feature-of-interest, D_{pre,i} intensive density per taxon, AF_i adjustment factor per taxon, C_t time coefficient) with its abstract Rainbow IRI, kind, dimension and concrete bindings. No top-level `fromProperty`: the record describes the equation as a whole."
 }
 ```
@@ -328,8 +328,8 @@ because the record describes the equation as a whole, not a single symbol-edge.
 #### ttl
 ```ttl
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix ind: <https://w3id.org/indicators/marine/> .
 @prefix indo: <https://w3id.org/indicators/marine/obs/> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -338,22 +338,22 @@ because the record describes the equation as a whole, not a single symbol-edge.
 @prefix tc: <http://rs.tdwg.org/ontology/voc/TaxonConcept#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/indicators/marine/obs/eqrel/reef-biomass-effect> a prop-rel:EquationPropertyRelationship,
+<https://example.org/norwegian-ses/equation-property-relationship/reef-biomass-effect> a prop-rel:EquationPropertyRelationship,
         prop-rel:PropertyRelationship ;
     rdfs:comment "Equation-level record for the reef-biomass equation. `symbols[]` enumerates every term (A_{sub} feature-of-interest, D_{pre,i} intensive density per taxon, AF_i adjustment factor per taxon, C_t time coefficient) with its abstract Rainbow IRI, kind, dimension and concrete bindings. No top-level `fromProperty`: the record describes the equation as a whole." ;
     prov:wasAttributedTo <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ;
-    prov:wasDerivedFrom ind:floating-wind-reef-biomass ;
+    prov:wasDerivedFrom indo:floating-wind-reef-biomass-effect ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)" ;
     prop-rel:hasEquationSymbol [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.hi.no/> ;
-                    prop-rel:bindingRole <file:///github/workspace/fallback> ;
-                    prop-rel:bindingValidityScope "regional default when MAREANO has no taxon coverage at i" ;
-                    prop-rel:bindingVariable indo:benthic-biomass-density-imr-baseline ],
-                [ prov:wasDerivedFrom <https://mareano.no/> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://mareano.no/> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "Norwegian shelf, MAREANO programme" ;
-                    prop-rel:bindingVariable indo:benthic-biomass-density-mareano ] ;
+                    prop-rel:bindingVariable indo:benthic-biomass-density-mareano ],
+                [ prov:wasDerivedFrom <https://www.hi.no/> ;
+                    prop-rel:bindingRole <file:///github/workspace/fallback> ;
+                    prop-rel:bindingValidityScope "regional default when MAREANO has no taxon coverage at i" ;
+                    prop-rel:bindingVariable indo:benthic-biomass-density-imr-baseline ] ;
             prop-rel:hasDimensionKind quantitykind:SurfaceDensity ;
             prop-rel:hasEquationRole <file:///github/workspace/input> ;
             prop-rel:hasIndex "i" ;
@@ -365,24 +365,32 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "D_pre_i" ;
             prop-rel:hasVariableKind <file:///github/workspace/intensiveQuantity> ;
             prop-rel:isIndexed true ],
-        [ prop-rel:fromProperty indo:colonisation-time-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
-                    prop-rel:bindingVariable indo:colonisation-time-factor-default ] ;
+        [ prop-rel:fromProperty indp:reef-aggregation-index ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
+                    prop-rel:bindingIndexValue "Buccinum undatum" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ],
+                [ prop-rel:bindingIndexValue "Asterias rubens" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-asterias ],
+                [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingIndexValue "Mytilus edulis" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
+            prop-rel:hasIndex "i" ;
+            prop-rel:hasIndexedBy tc:TaxonConcept ;
             prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "C_t" ;
-            prop-rel:hasSymbolAlias "C_time",
-                "C_{t}" ;
-            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
-            prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indo:submerged-infrastructure-area ;
+            prop-rel:hasSymbol "AF_i" ;
+            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
+            prop-rel:isIndexed true ],
+        [ prop-rel:fromProperty indp:submerged-infrastructure-area ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "Utsira Nord engineering design (60 × 15 MW units, wetted hull + mooring + anchor surfaces)" ;
-                    prop-rel:bindingVariable indo:submerged-infrastructure-area-utsira-design ] ;
+                    prop-rel:bindingVariable indp:submerged-infrastructure-area-utsira-design ] ;
             prop-rel:hasDimensionKind quantitykind:Area ;
             prop-rel:hasEquationRole <file:///github/workspace/input> ;
             prop-rel:hasOperator <file:///github/workspace/product> ;
@@ -391,38 +399,30 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "A_sub" ;
             prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
             prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indo:reef-aggregation-index ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
-                    prop-rel:bindingIndexValue "Buccinum undatum" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indo:reef-aggregation-index-buccinum ],
-                [ prop-rel:bindingIndexValue "Asterias rubens" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indo:reef-aggregation-index-asterias ],
-                [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingIndexValue "Mytilus edulis" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
-                    prop-rel:bindingVariable indo:reef-aggregation-index-mytilus ] ;
+        [ prop-rel:fromProperty indp:colonisation-time-factor ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
+                    prop-rel:bindingVariable indp:colonisation-time-factor-default ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
-            prop-rel:hasIndex "i" ;
-            prop-rel:hasIndexedBy tc:TaxonConcept ;
             prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "AF_i" ;
-            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
-            prop-rel:isIndexed true ] ;
-    prop-rel:targetDefinition ind:floating-wind-reef-biomass ;
-    prop-rel:toProperty ind:floating-wind-reef-biomass .
+            prop-rel:hasSymbol "C_t" ;
+            prop-rel:hasSymbolAlias "C_time",
+                "C_{t}" ;
+            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
+            prop-rel:isIndexed false ] ;
+    prop-rel:targetDefinition indo:floating-wind-reef-biomass-effect ;
+    prop-rel:toProperty indo:floating-wind-reef-biomass-effect .
 
 <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> rdfs:label "Utsira biomass upscaler v1" ;
     dct:identifier "utsira-biomass-upscaler-v1" .
 
-ind:floating-wind-reef-biomass a prov:Entity ;
+indo:floating-wind-reef-biomass-effect a prov:Entity ;
     prov:wasDerivedFrom indo:baseline-benthic-biomass-density,
-        indo:colonisation-time-factor,
-        indo:reef-aggregation-index,
-        indo:submerged-infrastructure-area ;
+        indp:colonisation-time-factor,
+        indp:reef-aggregation-index,
+        indp:submerged-infrastructure-area ;
     schema:mathExpression "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)" ;
     prop-rel:hasAggregation [ a prop-rel:Aggregation ;
             prop-rel:aggregatesOver tc:TaxonConcept ;
@@ -435,61 +435,61 @@ ind:floating-wind-reef-biomass a prov:Entity ;
 
 ### Quality-adjusted biomass equation (equation-level record)
 Equation-level record for `B_{qa} = B_{total} \cdot (1 - U)`. `symbols[]` carries the two
-terms: B_{total} chained from a sibling equation (`ind:wind-park-biomass-effect`) and U the
+terms: B_{total} chained from a sibling equation (`https://example.org/norwegian-ses/indicator/wind-park-biomass-effect`) and U the
 data-quality uncertainty factor computed at run-time from QI_* scores.
 
 #### json
 ```json
 {
-  "id": "indo:eqrel/quality-adjusted-biomass-effect",
+  "id": "https://example.org/norwegian-ses/equation-property-relationship/quality-adjusted-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
   ],
   "relationshipKind": "equation",
-  "toProperty": "ind:quality-adjusted-biomass-effect",
+  "toProperty": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "equation": "B_{qa} = B_{total} \\cdot (1 - U)",
   "targetDefinition": {
-    "id": "ind:quality-adjusted-biomass-effect",
+    "id": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
     "type": "prov:Entity",
     "mathExpression": "B_{qa} = B_{total} \\cdot (1 - U)",
     "wasDerivedFrom": [
-      "ind:wind-park-biomass-effect",
-      "indo:data-quality-uncertainty-factor"
+      "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
+      "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor"
     ]
   },
   "symbols": [
     {
       "symbol": "B_{total}",
       "symbolAliases": ["B_total"],
-      "fromProperty": "ind:wind-park-biomass-effect",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
       "variableKind": "extensiveQuantity",
       "dimensionKind": "quantitykind:Mass",
       "indexed": false,
       "equationRole": "input",
       "operator": "product",
       "bindings": [
-        { "variable": "ind:wind-park-biomass-effect",
+        { "variable": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
           "bindingRole": "primary",
           "validityScope": "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input.",
-          "evidence": "ind:wind-park-biomass-effect" }
+          "evidence": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect" }
       ],
       "explanation": "Chained input: B_total is itself a derived indicator computed by a sibling equation."
     },
     {
       "symbol": "U",
       "symbolAliases": ["U_{data}", "U_data"],
-      "fromProperty": "indo:data-quality-uncertainty-factor",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
       "variableKind": "uncertaintyFactor",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": false,
       "equationRole": "uncertaintyTerm",
       "operator": "product",
       "bindings": [
-        { "variable": "indo:data-quality-uncertainty-factor",
+        { "variable": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
           "bindingRole": "primary",
           "validityScope": "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values.",
-          "evidence": "ind:quality-adjusted-biomass-effect" }
+          "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect" }
       ]
     }
   ],
@@ -498,7 +498,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
     "name": "Utsira biomass upscaler v1",
     "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
   },
-  "evidence": "ind:quality-adjusted-biomass-effect",
+  "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "explanation": "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole."
 }
 
@@ -514,21 +514,21 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
     },
     "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/equation-property-relationship/context.jsonld"
   ],
-  "id": "indo:eqrel/quality-adjusted-biomass-effect",
+  "id": "https://example.org/norwegian-ses/equation-property-relationship/quality-adjusted-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
   ],
   "relationshipKind": "equation",
-  "toProperty": "ind:quality-adjusted-biomass-effect",
+  "toProperty": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "equation": "B_{qa} = B_{total} \\cdot (1 - U)",
   "targetDefinition": {
-    "id": "ind:quality-adjusted-biomass-effect",
+    "id": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
     "type": "prov:Entity",
     "mathExpression": "B_{qa} = B_{total} \\cdot (1 - U)",
     "wasDerivedFrom": [
-      "ind:wind-park-biomass-effect",
-      "indo:data-quality-uncertainty-factor"
+      "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
+      "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor"
     ]
   },
   "symbols": [
@@ -537,7 +537,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
       "symbolAliases": [
         "B_total"
       ],
-      "fromProperty": "ind:wind-park-biomass-effect",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
       "variableKind": "extensiveQuantity",
       "dimensionKind": "quantitykind:Mass",
       "indexed": false,
@@ -545,10 +545,10 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
       "operator": "product",
       "bindings": [
         {
-          "variable": "ind:wind-park-biomass-effect",
+          "variable": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
           "bindingRole": "primary",
           "validityScope": "Output of the wind-park biomass equation (B_total = B_reef + B_reserve \u2212 B_lost_soft_sediment). Chained input.",
-          "evidence": "ind:wind-park-biomass-effect"
+          "evidence": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect"
         }
       ],
       "explanation": "Chained input: B_total is itself a derived indicator computed by a sibling equation."
@@ -559,7 +559,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
         "U_{data}",
         "U_data"
       ],
-      "fromProperty": "indo:data-quality-uncertainty-factor",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
       "variableKind": "uncertaintyFactor",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": false,
@@ -567,10 +567,10 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
       "operator": "product",
       "bindings": [
         {
-          "variable": "indo:data-quality-uncertainty-factor",
+          "variable": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
           "bindingRole": "primary",
           "validityScope": "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values.",
-          "evidence": "ind:quality-adjusted-biomass-effect"
+          "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect"
         }
       ]
     }
@@ -580,7 +580,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
     "name": "Utsira biomass upscaler v1",
     "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
   },
-  "evidence": "ind:quality-adjusted-biomass-effect",
+  "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "explanation": "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole."
 }
 ```
@@ -588,8 +588,6 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
 #### ttl
 ```ttl
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix ind: <https://w3id.org/indicators/marine/> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -597,31 +595,18 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/indicators/marine/obs/eqrel/quality-adjusted-biomass-effect> a prop-rel:EquationPropertyRelationship,
+<https://example.org/norwegian-ses/equation-property-relationship/quality-adjusted-biomass-effect> a prop-rel:EquationPropertyRelationship,
         prop-rel:PropertyRelationship ;
     rdfs:comment "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole." ;
     prov:wasAttributedTo <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ;
-    prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
+    prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{qa} = B_{total} \\cdot (1 - U)" ;
-    prop-rel:hasEquationSymbol [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
-            prop-rel:fromProperty ind:wind-park-biomass-effect ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom ind:wind-park-biomass-effect ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input." ;
-                    prop-rel:bindingVariable ind:wind-park-biomass-effect ] ;
-            prop-rel:hasDimensionKind quantitykind:Mass ;
-            prop-rel:hasEquationRole <file:///github/workspace/input> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "B_{total}" ;
-            prop-rel:hasSymbolAlias "B_total" ;
-            prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
-            prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indo:data-quality-uncertainty-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom ind:quality-adjusted-biomass-effect ;
+    prop-rel:hasEquationSymbol [ prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
-                    prop-rel:bindingVariable indo:data-quality-uncertainty-factor ] ;
+                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
             prop-rel:hasOperator <file:///github/workspace/product> ;
@@ -629,16 +614,29 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
             prop-rel:hasSymbolAlias "U_data",
                 "U_{data}" ;
             prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
+            prop-rel:isIndexed false ],
+        [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
+            prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Output of the wind-park biomass equation (B_total = B_reef + B_reserve − B_lost_soft_sediment). Chained input." ;
+                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ] ;
+            prop-rel:hasDimensionKind quantitykind:Mass ;
+            prop-rel:hasEquationRole <file:///github/workspace/input> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "B_{total}" ;
+            prop-rel:hasSymbolAlias "B_total" ;
+            prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
             prop-rel:isIndexed false ] ;
-    prop-rel:targetDefinition ind:quality-adjusted-biomass-effect ;
-    prop-rel:toProperty ind:quality-adjusted-biomass-effect .
+    prop-rel:targetDefinition <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
+    prop-rel:toProperty <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> .
 
 <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> rdfs:label "Utsira biomass upscaler v1" ;
     dct:identifier "utsira-biomass-upscaler-v1" .
 
-ind:quality-adjusted-biomass-effect a prov:Entity ;
-    prov:wasDerivedFrom indo:data-quality-uncertainty-factor,
-        ind:wind-park-biomass-effect ;
+<https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> a prov:Entity ;
+    prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor>,
+        <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
     schema:mathExpression "B_{qa} = B_{total} \\cdot (1 - U)" .
 
 
@@ -885,7 +883,7 @@ properties:
         description: URI of the model resource.
         x-jsonld-id: '@id'
     x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
-  experiment:
+  reef-effect:
     description: Experiment activity that evaluated this relationship (prov:wasGeneratedBy).
     type: object
     required:
@@ -894,7 +892,7 @@ properties:
       id:
         type: string
         description: Identifier of the experiment (dct:identifier).
-        x-jsonld-id: http://purl.org/dc/terms/identifier
+        x-jsonld-id: '@id'
       name:
         type: string
         description: Human-readable label of the experiment (rdfs:label).
@@ -902,22 +900,16 @@ properties:
       uri:
         type: string
         description: URI of the experiment resource.
-        x-jsonld-id: '@id'
       start:
         type: string
         format: date-time
         pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
         description: Date and time when the experiment started (prov:startedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
       end:
         type: string
         format: date-time
         pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$
         description: Date and time when the experiment ended (prov:endedAtTime).
-        x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
   evidence:
     oneOf:
     - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
@@ -958,6 +950,18 @@ x-jsonld-extra-terms:
             '@id': https://w3id.org/ogc/hosted/seadots/prop-rel/aggregatesOver
             '@type': '@id'
           indexSymbol: https://w3id.org/ogc/hosted/seadots/prop-rel/indexSymbol
+  experiment:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+    x-jsonld-context:
+      id: http://purl.org/dc/terms/identifier
+      name: http://www.w3.org/2000/01/rdf-schema#label
+      uri: '@id'
+      start:
+        '@id': http://www.w3.org/ns/prov#startedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
+      end:
+        '@id': http://www.w3.org/ns/prov#endedAtTime
+        '@type': http://www.w3.org/2001/XMLSchema#dateTime
 x-jsonld-prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   prop-rel: https://w3id.org/ogc/hosted/seadots/prop-rel/
@@ -970,6 +974,7 @@ x-jsonld-prefixes:
   odd: https://w3id.org/iliad/odd#
   tc: http://rs.tdwg.org/ontology/voc/TaxonConcept#
   indo: https://w3id.org/indicators/marine/obs/
+  indp: https://w3id.org/indicators/marine/parameters/
   ind: https://w3id.org/indicators/marine/
 
 ```
@@ -990,7 +995,6 @@ Links to the schema:
     "targetDefinition": {
       "@id": "prop-rel:targetDefinition",
       "@context": {
-        "name": "rdfs:label",
         "mathExpression": "schema:mathExpression",
         "wasDerivedFrom": {
           "@id": "prov:wasDerivedFrom",
@@ -1010,6 +1014,21 @@ Links to the schema:
             },
             "indexSymbol": "prop-rel:indexSymbol"
           }
+        }
+      }
+    },
+    "experiment": {
+      "@id": "prov:wasGeneratedBy",
+      "@context": {
+        "id": "dct:identifier",
+        "uri": "@id",
+        "start": {
+          "@id": "prov:startedAtTime",
+          "@type": "xsd:dateTime"
+        },
+        "end": {
+          "@id": "prov:endedAtTime",
+          "@type": "xsd:dateTime"
         }
       }
     },
@@ -1084,27 +1103,11 @@ Links to the schema:
     "model": {
       "@context": {
         "id": "dct:identifier",
-        "name": "rdfs:label",
         "uri": "@id"
       },
       "@id": "prov:wasAttributedTo"
     },
-    "experiment": {
-      "@context": {
-        "id": "dct:identifier",
-        "name": "rdfs:label",
-        "uri": "@id",
-        "start": {
-          "@id": "prov:startedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "end": {
-          "@id": "prov:endedAtTime",
-          "@type": "xsd:dateTime"
-        }
-      },
-      "@id": "prov:wasGeneratedBy"
-    },
+    "name": "rdfs:label",
     "evidence": {
       "@id": "prov:wasDerivedFrom",
       "@type": "@id"
@@ -1121,6 +1124,7 @@ Links to the schema:
     "odd": "https://w3id.org/iliad/odd#",
     "tc": "http://rs.tdwg.org/ontology/voc/TaxonConcept#",
     "indo": "ind:obs/",
+    "indp": "ind:parameters/",
     "ind": "https://w3id.org/indicators/marine/",
     "@version": 1.1
   }

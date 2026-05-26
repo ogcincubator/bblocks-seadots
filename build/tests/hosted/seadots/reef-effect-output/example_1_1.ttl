@@ -1,0 +1,265 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/reef-effect#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-effect-output#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix w3ctime: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result> a geojson:Feature ;
+    rdfs:seeAlso [ rdfs:label "Embedded PROV-O provenance record" ;
+            dcterms:format "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/provenance> ;
+            oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/prov-record> ],
+        [ rdfs:label "Equation evaluated to produce this result" ;
+            dcterms:format "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
+        [ rdfs:label "Experiment record this output belongs to" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
+            oa:hasTarget <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ],
+        [ rdfs:label "Reef Effect Output bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output> ] ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
+    geojson:properties [ a seadots:Dataset ;
+            dcterms:created "2026-05-19" ;
+            dcterms:description "Primary scientific output of the Utsira surroundings reef-biomass experiment. Headline value: 741 ± 330 t standing reef-associated biomass at scenario end (24 months). This file is an OGC API Records Feature (JSON) carrying the full structured result inline: (a) the headline scalar with 1σ and 95 % CI, (b) the per-taxon decomposition at t=24 mo, (c) the time series at the sigmoid-lookup points, (d) full variance attribution by input, and (e) per-variable provenance. All input values are illustrative; this record demonstrates equation evaluation and uncertainty propagation, not a measurement of Utsira." ;
+            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+            dcterms:modified "2026-05-19" ;
+            dcterms:title "Reef-associated biomass result — Utsira surroundings, scenario T0+24 mo (with uncertainty)" ;
+            dcat:keyword "CV propagation",
+                "Utsira",
+                "floating wind",
+                "reef biomass",
+                "uncertainty" ;
+            seadots:output [ dcterms:conformsTo sosa:Observation,
+                        <https://id3.seadots.eu/conventions/edito-output>,
+                        <https://ogcincubator.github.io/geodcat-ogcapi-records/>,
+                        <https://w3id.org/ogc/hosted/iliad/oim-obs> ;
+                    dcterms:description "B_reef headline scalar, per-taxon decomposition, time series, and variance attribution. Sum-over-taxa of A_sub · D_pre,i · AF_i · C_t evaluated at scenario end. All values emitted inline as JSON." ;
+                    dcterms:format "application/json" ;
+                    dcterms:title "Reef-associated biomass (structured result)" ;
+                    qudt:unit "kg" ;
+                    skos:exactMatch indo:floating-wind-reef-biomass-effect ;
+                    sosa:hasFeatureOfInterest <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> ;
+                    sosa:hasSimpleResult 741237 ;
+                    sosa:observedProperty indo:floating-wind-reef-biomass-effect ;
+                    sosa:phenomenonTime [ w3ctime:hasBeginning "2026-05-13T00:00:00+00:00"^^xsd:dateTime ;
+                            w3ctime:hasEnd "2028-05-13T00:00:00+00:00"^^xsd:dateTime ] ;
+                    sosa:resultTime "2028-05-13T00:00:00+00:00"^^xsd:dateTime ;
+                    ns2:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ;
+                    seadots:aggregation "sum-over-i" ;
+                    seadots:data [ dcterms:temporal "2026-05-13",
+                                "2028-05-13" ;
+                            qudt:unit "kg" ;
+                            skos:note "B_reef is a standing-stock quantity. A time-integrated 'reef-effect-years' (∫₀²⁴ B_reef(t) dt) is ≈ 9800 t·month at central values.",
+                                "B_reef_kg above uses the rounded C_t values from `colonisation_time_factor.json → data.lookup`. The `headline` and `perTaxonAtT24` use the analytic C(24)=0.9918 from the sigmoid; the two agree at three significant figures.",
+                                "Every headline number is downstream of illustrative inputs. This record demonstrates equation evaluation and CV propagation; it is NOT a measurement of Utsira.",
+                                "Independence across taxa is optimistic. AF_i errors plausibly correlate through shared monitoring programmes; correlated errors would inflate σ(S) above 2.854.",
+                                "The MAREANO row carries no σ; IMR's σ is borrowed as a proxy. Real σ should come from the same retrieval that produced the density.",
+                                "Three σ values are assumed (σ(A_sub)=15%, σ(AF_i)/AF_i=0.5 for all taxa, σ(C_t)=0.02). Flagged in `data.uncertainty.inputs[*].sigmaKind`." ;
+                            prov:wasDerivedFrom [ dcterms:date "2026-05-19" ;
+                                    skos:note "Standalone Python script. Loads the six per-class input records, evaluates the equation at t=24 mo, propagates uncertainty by log-linear CV, and emits this output. Run: `python3 _sources/reef-effect/scripts/utsira_reef_biomass.py --json` to regenerate this JSON.",
+                                        "Values are deterministic results of applying the cited equation to the input records listed in `derivedFrom`. Input values are themselves illustrative (see each input record's `data.provenance`), so this output's `values: computed` flag refers to the calculation chain, not to a real-world measurement." ;
+                                    prov:hadPlan <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
+                                    prov:has_provenance <https://example.org/norwegian-ses/reef-effect-output/prov-record> ;
+                                    prov:wasDerivedFrom <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings>,
+                                        <https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback>,
+                                        <https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf>,
+                                        <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid>,
+                                        <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw>,
+                                        <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> ;
+                                    seadots:computeCode <file:///reef-effect/scripts/utsira_reef_biomass.py> ;
+                                    seadots:provenanceValues "computed" ;
+                                    seadots:uncertaintyMethod "log-linear CV propagation; B_reef = A_sub · C_t · Σᵢ Dᵢ·AFᵢ; taxa treated independent within S" ] ;
+                            seadots:asOf_months 24 ;
+                            seadots:equation "B_reef(t) = Σ_i (A_sub · D_pre,i · AF_i · C_t)" ;
+                            seadots:headline [ qudt:coefficientOfVariation 4.45e-01 ;
+                                    qudt:standardUncertainty 3.296e+02,
+                                        329632 ;
+                                    indo:floating-wind-reef-biomass-effect "741.2"^^qudt:QuantityValue,
+                                        "741237"^^qudt:QuantityValue ;
+                                    seadots:ci95_kg 95198,
+                                        1387276 ;
+                                    seadots:ci95_tonnes 95,
+                                        1387 ] ;
+                            seadots:perTaxonAtT24 [ dwc:scientificName "Mytilus edulis" ;
+                                    dwc:taxonID 140480 ;
+                                    indo:baseline-benthic-biomass-density "0.42"^^qudt:QuantityValue ;
+                                    indo:floating-wind-reef-biomass-effect "547375"^^qudt:QuantityValue ;
+                                    indp:colonisation-time-factor "0.9918"^^qudt:DimensionlessQuantity ;
+                                    indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ;
+                                    indp:submerged-infrastructure-area "109500"^^qudt:QuantityValue ;
+                                    seadots:shareOfTotal 7.385e-01 ],
+                                [ dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indo:baseline-benthic-biomass-density "0.28"^^qudt:QuantityValue ;
+                                    indo:floating-wind-reef-biomass-effect "152049"^^qudt:QuantityValue ;
+                                    indp:colonisation-time-factor "0.9918"^^qudt:DimensionlessQuantity ;
+                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ;
+                                    indp:submerged-infrastructure-area "109500"^^qudt:QuantityValue ;
+                                    seadots:shareOfTotal 2.051e-01 ],
+                                [ dwc:scientificName "Buccinum undatum" ;
+                                    dwc:taxonID 138878 ;
+                                    indo:baseline-benthic-biomass-density "0.11"^^qudt:QuantityValue ;
+                                    indo:floating-wind-reef-biomass-effect "41813"^^qudt:QuantityValue ;
+                                    indp:colonisation-time-factor "0.9918"^^qudt:DimensionlessQuantity ;
+                                    indp:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ;
+                                    indp:submerged-infrastructure-area "109500"^^qudt:QuantityValue ;
+                                    seadots:shareOfTotal 5.64e-02 ] ;
+                            seadots:timeSeries ( [ indo:floating-wind-reef-biomass-effect "59.8"^^qudt:QuantityValue,
+                                            "59787"^^qudt:QuantityValue ;
+                                        indp:colonisation-time-factor "0.08"^^qudt:DimensionlessQuantity ;
+                                        seadots:t_months 0 ] [ indo:floating-wind-reef-biomass-effect "239.1"^^qudt:QuantityValue,
+                                            "239148"^^qudt:QuantityValue ;
+                                        indp:colonisation-time-factor "0.32"^^qudt:DimensionlessQuantity ;
+                                        seadots:t_months 6 ] [ indo:floating-wind-reef-biomass-effect "530.6"^^qudt:QuantityValue,
+                                            "530610"^^qudt:QuantityValue ;
+                                        indp:colonisation-time-factor "0.71"^^qudt:DimensionlessQuantity ;
+                                        seadots:t_months 12 ] [ indo:floating-wind-reef-biomass-effect "695.0"^^qudt:QuantityValue,
+                                            "695024"^^qudt:QuantityValue ;
+                                        indp:colonisation-time-factor "0.93"^^qudt:DimensionlessQuantity ;
+                                        seadots:t_months 18 ] [ indo:floating-wind-reef-biomass-effect "739.9"^^qudt:QuantityValue,
+                                            "739864"^^qudt:QuantityValue ;
+                                        indp:colonisation-time-factor "0.99"^^qudt:DimensionlessQuantity ;
+                                        seadots:t_months 24 ] ) ;
+                            seadots:uncertainty [ dcterms:methodology "log-linear CV propagation" ;
+                                    qudt:coefficientOfVariation 4.45e-01 ;
+                                    qudt:standardUncertainty 3.296e+02,
+                                        329632 ;
+                                    skos:definition "B_reef = A_sub · C_t · S, with S = Σᵢ Dᵢ·AFᵢ. For each multiplicative pair under independence: CV²(XY) ≈ CV²(X) + CV²(Y). For S: σ²(S) = Σᵢ σ²(Dᵢ·AFᵢ) with the three taxa treated independent. AF_i errors are not in fact independent across taxa (likely correlated through shared monitoring programmes) — this is acknowledged in `caveats` and inflates the reported σ as an upper-bound estimate of total uncertainty." ;
+                                    seadots:S_CV 4.18e-01 ;
+                                    seadots:S_sigma_kg_m2 2.854e+00 ;
+                                    seadots:S_value_kg_m2 6.825e+00 ;
+                                    seadots:dominantUncertainty "AF_Mytilus edulis accounts for ≈80 % of total CV²(B_reef). Tightening that single prior pays back ~4× more than tightening any other input." ;
+                                    seadots:perTaxonVariance [ dwc:scientificName "Mytilus edulis" ;
+                                            seadots:D_times_AF 5.04e+00 ;
+                                            seadots:shareWithinS 9.229e-01 ;
+                                            seadots:var_D_times_AF 7.517e+00 ],
+                                        [ dwc:scientificName "Buccinum undatum" ;
+                                            seadots:D_times_AF 3.85e-01 ;
+                                            seadots:shareWithinS 5.9e-03 ;
+                                            seadots:var_D_times_AF 4.8e-02 ],
+                                        [ dwc:scientificName "Asterias rubens" ;
+                                            seadots:D_times_AF 1.4e+00 ;
+                                            seadots:shareWithinS 7.12e-02 ;
+                                            seadots:var_D_times_AF 5.8e-01 ] ;
+                                    seadots:uncertaintyInput [ dcterms:source "assumed (15% engineering tolerance for floating-platform wetted area; no σ in input record)",
+                                                "infrastructure_layout_60x15mw.json:data.aggregate.submerged_area_total_m2" ;
+                                            qudt:coefficientOfVariation 1.5e-01 ;
+                                            qudt:standardUncertainty 16425 ;
+                                            qudt:unit "m^2" ;
+                                            qudt:value 109500 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "mixed" ;
+                                            seadots:variable "A_sub" ],
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[0].uncertainty_kg_m2 (proxy — MAREANO row carries no σ)",
+                                                "mareano_baseline_density.json:data.perTaxon[0].density_kg_m2" ;
+                                            qudt:coefficientOfVariation 2.14e-01 ;
+                                            qudt:standardUncertainty 9e-02 ;
+                                            qudt:unit "kg m^-2" ;
+                                            qudt:value 4.2e-01 ;
+                                            seadots:sigmaKind "illustrative-proxy" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "D_pre,Mytilus edulis" ],
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[2].uncertainty_kg_m2",
+                                                "mareano_baseline_density.json:data.perTaxon[2].density_kg_m2" ;
+                                            qudt:coefficientOfVariation 2.14e-01 ;
+                                            qudt:standardUncertainty 6e-02 ;
+                                            qudt:unit "kg m^-2" ;
+                                            qudt:value 2.8e-01 ;
+                                            seadots:sigmaKind "illustrative-proxy" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "D_pre,Asterias rubens" ],
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[1].uncertainty_kg_m2",
+                                                "mareano_baseline_density.json:data.perTaxon[1].density_kg_m2" ;
+                                            qudt:coefficientOfVariation 2.73e-01 ;
+                                            qudt:standardUncertainty 3e-02 ;
+                                            qudt:unit "kg m^-2" ;
+                                            qudt:value 1.1e-01 ;
+                                            seadots:sigmaKind "illustrative-proxy" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "D_pre,Buccinum undatum" ],
+                                        [ dcterms:source "assumed (near sigmoid saturation; small σ)",
+                                                "colonisation_time_factor.json:data.formula evaluated with parameters {L:1.0, k:0.30, t0_months:8}" ;
+                                            qudt:coefficientOfVariation 2e-02 ;
+                                            qudt:standardUncertainty 2e-02 ;
+                                            qudt:unit "dimensionless" ;
+                                            qudt:value 9.918e-01 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "C_t(24 mo)" ],
+                                        [ dcterms:source "assumed (CV=0.5 reflects wide literature variance; Degraer 2020 cites a single Mytilus value with no published spread)",
+                                                "reef_aggregation_index_bindings.json:data.perTaxon[0].AF_i" ;
+                                            qudt:coefficientOfVariation 5e-01 ;
+                                            qudt:standardUncertainty 6e+00 ;
+                                            qudt:unit "dimensionless" ;
+                                            qudt:value 1.2e+01 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "AF_Mytilus edulis" ],
+                                        [ dcterms:source "assumed (CV=0.5; no published value for Buccinum in Degraer 2020)",
+                                                "reef_aggregation_index_bindings.json:data.perTaxon[1].AF_i" ;
+                                            qudt:coefficientOfVariation 5e-01 ;
+                                            qudt:standardUncertainty 1.75e+00 ;
+                                            qudt:unit "dimensionless" ;
+                                            qudt:value 3.5e+00 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "AF_Buccinum undatum" ],
+                                        [ dcterms:source "assumed (CV=0.5; no published value for Asterias in Degraer 2020)",
+                                                "reef_aggregation_index_bindings.json:data.perTaxon[2].AF_i" ;
+                                            qudt:coefficientOfVariation 5e-01 ;
+                                            qudt:standardUncertainty 2.5e+00 ;
+                                            qudt:unit "dimensionless" ;
+                                            qudt:value 5e+00 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "AF_Asterias rubens" ] ;
+                                    seadots:varianceAttribution [ skos:notation "S = Σᵢ Dᵢ·AFᵢ" ;
+                                            seadots:CV_squared 1.749e-01 ;
+                                            seadots:shareOfTotal 8.842e-01 ],
+                                        [ skos:notation "A_sub" ;
+                                            seadots:CV_squared 2.25e-02 ;
+                                            seadots:shareOfTotal 1.137e-01 ],
+                                        [ skos:notation "C_t" ;
+                                            seadots:CV_squared 4e-04 ;
+                                            seadots:shareOfTotal 2e-03 ] ] ] ;
+                    seadots:role "primary result" ] ;
+            rec:format [ dcterms:format "application/json" ] ;
+            rec:language [ rec:languageCode "en" ] ;
+            rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
+                            rec:conceptID "reef-effect"^^xsd:string ] ;
+                    rec:scheme "https://id3.seadots.eu/themes" ] ] .
+
+<https://example.org/norwegian-ses/reef-effect-output/prov-record> a prov:Entity ;
+    dcterms:conformsTo <http://www.w3.org/TR/prov-o/> ;
+    dcterms:created "2026-05-18" ;
+    dcterms:description "Provenance record linking the run to the ODD demonstrator, the canonical reef-biomass equation record, and the per-taxon bindings resolved at run time." ;
+    dcterms:format "application/ld+json" ;
+    dcterms:modified "2026-05-18" ;
+    dcterms:title "PROV-O provenance record (JSON-LD)" ;
+    skos:exactMatch prov:Entity ;
+    skos:note "Merged from the former standalone provenance example so the primary reef-biomass result carries its PROV-O provenance inline." ;
+    prov:wasDerivedFrom <file:///reef-effect/scripts/utsira_reef_biomass.py>,
+        <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1>,
+        <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
+    ns2:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ;
+    seadots:role "provenance" .
+

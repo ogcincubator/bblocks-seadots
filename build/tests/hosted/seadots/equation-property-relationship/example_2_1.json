@@ -1,19 +1,19 @@
 {
-  "id": "indo:eqrel/quality-adjusted-biomass-effect",
+  "id": "https://example.org/norwegian-ses/equation-property-relationship/quality-adjusted-biomass-effect",
   "type": [
     "PropertyRelationship",
     "EquationPropertyRelationship"
   ],
   "relationshipKind": "equation",
-  "toProperty": "ind:quality-adjusted-biomass-effect",
+  "toProperty": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "equation": "B_{qa} = B_{total} \\cdot (1 - U)",
   "targetDefinition": {
-    "id": "ind:quality-adjusted-biomass-effect",
+    "id": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
     "type": "prov:Entity",
     "mathExpression": "B_{qa} = B_{total} \\cdot (1 - U)",
     "wasDerivedFrom": [
-      "ind:wind-park-biomass-effect",
-      "indo:data-quality-uncertainty-factor"
+      "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
+      "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor"
     ]
   },
   "symbols": [
@@ -22,7 +22,7 @@
       "symbolAliases": [
         "B_total"
       ],
-      "fromProperty": "ind:wind-park-biomass-effect",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
       "variableKind": "extensiveQuantity",
       "dimensionKind": "quantitykind:Mass",
       "indexed": false,
@@ -30,10 +30,10 @@
       "operator": "product",
       "bindings": [
         {
-          "variable": "ind:wind-park-biomass-effect",
+          "variable": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect",
           "bindingRole": "primary",
           "validityScope": "Output of the wind-park biomass equation (B_total = B_reef + B_reserve \u2212 B_lost_soft_sediment). Chained input.",
-          "evidence": "ind:wind-park-biomass-effect"
+          "evidence": "https://example.org/norwegian-ses/indicator/wind-park-biomass-effect"
         }
       ],
       "explanation": "Chained input: B_total is itself a derived indicator computed by a sibling equation."
@@ -44,7 +44,7 @@
         "U_{data}",
         "U_data"
       ],
-      "fromProperty": "indo:data-quality-uncertainty-factor",
+      "fromProperty": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
       "variableKind": "uncertaintyFactor",
       "dimensionKind": "quantitykind:Dimensionless",
       "indexed": false,
@@ -52,10 +52,10 @@
       "operator": "product",
       "bindings": [
         {
-          "variable": "indo:data-quality-uncertainty-factor",
+          "variable": "https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor",
           "bindingRole": "primary",
           "validityScope": "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values.",
-          "evidence": "ind:quality-adjusted-biomass-effect"
+          "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect"
         }
       ]
     }
@@ -65,6 +65,6 @@
     "name": "Utsira biomass upscaler v1",
     "uri": "https://example.org/norwegian-ses/utsira-biomass-upscaler-v1"
   },
-  "evidence": "ind:quality-adjusted-biomass-effect",
+  "evidence": "https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect",
   "explanation": "Equation-level record for the quality-adjusted biomass equation. B_{total} is a chained input from the wind-park biomass equation; U is the data-quality uncertainty factor computed at run-time. No top-level `fromProperty`: the record describes the equation as a whole."
 }

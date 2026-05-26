@@ -17,15 +17,15 @@ Each record collects a set of `AF_i` bindings sharing one evidence basis (e.g. D
 
 ## Dependency
 
-Extends `ogc.hosted.iliad.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
+Extends `ogc.hosted.seadots.api.features.oim-variables` — `AF_i` is an indicator/variable in the OIM sense.
 
 ## Required fields for script consumption
 
-`_sources/experiment/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].AF_i`. Both are marked `required` in the schema.
+`_sources/reef-effect/scripts/utsira_reef_biomass.py` reads `data.perTaxon[].scientificName` and `data.perTaxon[].AF_i`. Both are marked `required` in the schema.
 
 ## Vocabulary
 
-The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indicator namespace. No external community vocabulary defines a per-m² reef-effect aggregation coefficient at the time of writing — flagged in `context-validation-report.md`.
+The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indicator namespace. No external community vocabulary defines a per-m² reef-effect aggregation coefficient at the time of writing — flagged in `context-validation-report.md`.
 
 ## Examples
 
@@ -53,7 +53,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
       "role": "coefficient (per taxon)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/parameters/reef-aggregation-index",
       "data": {
         "units": "dimensionless",
         "perTaxon": [
@@ -81,7 +81,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
   },
   "links": [
     { "rel": "describedby", "href": "bblocks://ogc.hosted.seadots.reef-aggregation-index", "type": "application/schema+json", "title": "Reef Aggregation Index bblock" },
-    { "rel": "profile", "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
+    { "rel": "profile", "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables", "type": "application/schema+json", "title": "OIM Variables profile" },
     { "rel": "cite-as", "href": "https://doi.org/10.5670/oceanog.2020.405", "title": "Degraer et al. 2020 — reef-effect prior" }
   ]
 }
@@ -134,7 +134,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
       "role": "coefficient (per taxon)",
       "source": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
       "format": "application/ld+json",
-      "vocabularyTerm": "https://w3id.org/indicators/marine/obs/reef-aggregation-index",
+      "vocabularyTerm": "https://w3id.org/indicators/marine/parameters/reef-aggregation-index",
       "data": {
         "units": "dimensionless",
         "perTaxon": [
@@ -184,7 +184,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
     },
     {
       "rel": "profile",
-      "href": "bblocks://ogc.hosted.iliad.api.features.oim-variables",
+      "href": "bblocks://ogc.hosted.seadots.api.features.oim-variables",
       "type": "application/schema+json",
       "title": "OIM Variables profile"
     },
@@ -203,7 +203,6 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
@@ -216,17 +215,17 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
+    rdfs:seeAlso [ rdfs:label "Reef Aggregation Index bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-variables> ],
-        [ rdfs:label "Reef Aggregation Index bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
+        [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
             dcterms:description "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE — Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m² coefficient." ;
@@ -241,7 +240,7 @@ The indicator concept `indo:reef-aggregation-index` is local to the SeaDOTs indi
             seadots:reefAggregationIndex [ dcterms:description "Per-taxon AF_i (Mytilus edulis, Buccinum undatum, Asterias rubens)." ;
                     dcterms:format "application/ld+json" ;
                     dcterms:title "Reef aggregation index bindings" ;
-                    skos:exactMatch indo:reef-aggregation-index ;
+                    skos:exactMatch indp:reef-aggregation-index ;
                     dcat:accessURL <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
                     seadots:data [ qudt:unit "dimensionless" ;
                             prov:wasDerivedFrom [ dcterms:source [ dcterms:bibliographicCitation "Degraer, S., D.A. Carey, J.W.P. Coolen, Z.L. Hutchison, F. Kerckhof, B. Rumes, J. Vanaverbeke. 2020. Offshore wind farm artificial reefs affect ecosystem structure and functioning: A synthesis. Oceanography 33(4):48–57." ;

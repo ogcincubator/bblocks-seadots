@@ -1,0 +1,145 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#",
+    "FeatureCollection": "https://purl.org/geojson/vocab#FeatureCollection",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "Point": "https://purl.org/geojson/vocab#Point",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon",
+    "type": "@type",
+    "id": "@id",
+    "bbox": "https://purl.org/geojson/vocab#bbox",
+    "properties": {
+      "@context": {
+        "title": "dcterms:title",
+        "description": "dcterms:description",
+        "created": "dcterms:created",
+        "source": {
+          "@context": {
+            "name": "dcterms:title",
+            "api": {
+              "@id": "dcat:accessURL",
+              "@type": "@id"
+            },
+            "speciesListEndpoint": {
+              "@id": "seadots:speciesListEndpoint",
+              "@type": "@id"
+            },
+            "perSpeciesEndpoint": "seadots:perSpeciesEndpoint",
+            "license": "dcterms:license"
+          },
+          "@id": "dcterms:source"
+        },
+        "aoi": {
+          "@context": {
+            "geometry": "https://purl.org/geojson/vocab#geometry"
+          },
+          "@id": "seadots:areaOfInterest"
+        },
+        "phenomenonTime": {
+          "@context": {
+            "start": {
+              "@id": "time:hasBeginning",
+              "@type": "http://www.w3.org/2001/XMLSchema#date"
+            },
+            "end": {
+              "@id": "time:hasEnd",
+              "@type": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          "@id": "time:hasTime"
+        },
+        "summary": {
+          "@context": {
+            "speciesQueried": "seadots:speciesQueried",
+            "cruiseQueries": {
+              "@id": "seadots:cruiseQueries",
+              "@container": "@set"
+            },
+            "apiQueries": "seadots:apiQueries",
+            "sourceFeatures": "seadots:sourceFeatures",
+            "featuresInAOI": "seadots:featuresInAOI",
+            "speciesInAOI": {
+              "@id": "seadots:speciesInAOI",
+              "@container": "@set"
+            },
+            "cruisesInAOI": {
+              "@id": "seadots:cruisesInAOI",
+              "@container": "@set"
+            },
+            "equipmentInAOI": {
+              "@id": "seadots:equipmentInAOI",
+              "@container": "@set"
+            }
+          },
+          "@id": "seadots:summary"
+        },
+        "provenance": {
+          "@context": {
+            "values": "seadots:provenanceValues",
+            "generator": "prov:wasGeneratedBy",
+            "fetched_utc": "prov:generatedAtTime",
+            "cacheDirectory": "seadots:cacheDirectory",
+            "timeBoundaryNote": "seadots:timeBoundaryNote"
+          },
+          "@id": "prov:wasDerivedFrom"
+        }
+      },
+      "@id": "https://purl.org/geojson/vocab#properties"
+    },
+    "links": {
+      "@context": {
+        "rel": "https://purl.org/geojson/vocab#rel",
+        "href": "@id",
+        "title": "dcterms:title"
+      },
+      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "@container": "@set"
+    },
+    "features": {
+      "@context": {
+        "geometry": {
+          "@context": {
+            "coordinates": {
+              "@id": "https://purl.org/geojson/vocab#coordinates",
+              "@container": "@list"
+            }
+          },
+          "@id": "https://purl.org/geojson/vocab#geometry"
+        },
+        "properties": {
+          "@context": {
+            "scientificName": "dwc:scientificName",
+            "species": "dwc:scientificName",
+            "sourceSpeciesQuery": "seadots:sourceSpeciesQuery",
+            "sourceCruiseQuery": "seadots:sourceCruiseQuery",
+            "cruise": "seadots:cruise",
+            "equipment": "seadots:equipment",
+            "Cruise": "seadots:cruise",
+            "Equipment": "seadots:equipment",
+            "Scientific name": "dwc:scientificName",
+            "Number": "dwc:individualCount",
+            "Weight": {
+              "@id": "seadots:catchWeight",
+              "@type": "qudt:QuantityValue"
+            },
+            "Catch Id": "dcterms:identifier",
+            "Sample Number": "seadots:sampleNumber",
+            "Station (R)": "seadots:station",
+            "Bottom depth": "seadots:bottomDepth"
+          },
+          "@id": "https://purl.org/geojson/vocab#properties"
+        }
+      },
+      "@id": "https://purl.org/geojson/vocab#features",
+      "@container": "@set"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#",
+    "time": "http://www.w3.org/2006/time#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "@version": 1.1
+  }
+}

@@ -1,0 +1,27 @@
+@prefix apkg: <https://w3id.org/apkg/terms/> .
+@prefix cwl: <https://w3id.org/cwl/cwl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> a seadots:ApplicationPackage ;
+    dcterms:description "Minimal APKG/CWL package contract for the reef-effect biomass calculation." ;
+    dcterms:title "Reef-effect CWL application package" ;
+    schema:programmingLanguage "Python" ;
+    schema:softwareVersion "0.1.0" ;
+    apkg:inputs <file:///github/workspace/areaOfInterest>,
+        <file:///github/workspace/benthicBiomassDensity> ;
+    apkg:outputs <file:///github/workspace/reefBiomassOutput> ;
+    cwl:class "CommandLineTool" ;
+    cwl:requirements [ cwl:class "DockerRequirement" ;
+            seadots:dockerPull "ghcr.io/seadots/reef-effect:0.1.0" ] .
+
+<file:///github/workspace/areaOfInterest> a seadots:File ;
+    dcterms:description "GeoJSON Feature describing the AOI." .
+
+<file:///github/workspace/benthicBiomassDensity> a seadots:File ;
+    dcterms:description "Input biomass-density STAC Item or OGC Record." .
+
+<file:///github/workspace/reefBiomassOutput> a seadots:File ;
+    dcterms:description "STAC/OGC Records output item." .
+
