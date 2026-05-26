@@ -29,6 +29,36 @@
           "@id": "prov:hadPlan",
           "@type": "@id"
         },
+        "inputs": {
+          "@context": {
+            "profileId": {
+              "@id": "dct:conformsTo",
+              "@type": "@id"
+            },
+            "required": {
+              "@id": "seadots:requiredInput",
+              "@type": "xsd:boolean"
+            },
+            "role": "seadots:role"
+          },
+          "@id": "apkg:inputs",
+          "@container": "@set"
+        },
+        "outputs": {
+          "@context": {
+            "profileId": {
+              "@id": "dct:conformsTo",
+              "@type": "@id"
+            },
+            "required": {
+              "@id": "seadots:requiredInput",
+              "@type": "xsd:boolean"
+            },
+            "role": "seadots:role"
+          },
+          "@id": "apkg:outputs",
+          "@container": "@set"
+        },
         "license": {
           "@id": "dct:license",
           "@type": "@id"
@@ -177,14 +207,6 @@
     },
     "coordinates": "geojson:coordinates",
     "name": "dct:title",
-    "inputs": {
-      "@id": "apkg:inputs",
-      "@container": "@set"
-    },
-    "outputs": {
-      "@id": "apkg:outputs",
-      "@container": "@set"
-    },
     "class": "cwl:class",
     "requirements": {
       "@id": "cwl:requirements",
@@ -256,7 +278,6 @@
       "@type": "@id",
       "@container": "@set"
     },
-    "role": "seadots:role",
     "mediaType": "dct:format",
     "dockerPull": "seadots:dockerPull",
     "itemType": "dct:type",

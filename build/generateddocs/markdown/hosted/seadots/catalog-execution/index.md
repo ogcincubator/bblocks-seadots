@@ -3,7 +3,7 @@
 
 `ogc.hosted.seadots.catalog-execution` *v0.1*
 
-Generic OGC API Records and PROV-O profile for one concrete execution, experiment run, or digital twin run.
+Generic OGC API Records and PROV-O profile for one concrete execution, experiment run, or digital twin run represented as links to catalog application, workflow, input, and output records.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 
@@ -11,7 +11,12 @@ Generic OGC API Records and PROV-O profile for one concrete execution, experimen
 
 # SeaDOTs Catalog Execution
 
-An execution is one concrete experiment run: an instance of the same reusable workflow with specific inputs, parameters, time boundaries, and generated outputs using OGC API Records and PROV-O relations.
+An execution is one concrete experiment run: an instance of the same reusable workflow that links to the catalog application, workflow, input records, and output records using OGC API Records and PROV-O relations.
+
+The execution record is intentionally light. It avoids repeating descriptive
+metadata that belongs in the linked records, so a run can be represented by its
+identifier and relative references that work in local checkouts and published
+registers.
 
 ## Role in the Catalog Metadata Model
 
@@ -38,45 +43,37 @@ dataset. No source properties are intentionally dropped.
     "http://www.w3.org/TR/prov-o/"
   ],
   "geometry": null,
-  "bbox": [
-
-  ],
   "properties": {
-    "title": "Utsira reef-effect biomass run 001",
-    "description": "Execution record for one reef-effect biomass calculation.",
     "type": "Execution",
-    "application": "https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect",
-    "workflow": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
-    "startTime": "2026-05-26T09:00:00Z",
-    "endTime": "2026-05-26T09:03:00Z",
-    "status": "completed",
-    "parameters": {
-      "timeBoundaryStart": "2024-01-01",
-      "timeBoundaryEnd": "2026-01-01"
-    },
+    "application": "../../catalog-application/examples/application-record.json",
+    "workflow": "../../catalog-workflow/examples/workflow.json",
     "inputRecords": [
-      "https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira"
+      "../../catalog-input/examples/input-stac-item.json"
     ],
     "outputRecords": [
-      "https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result"
+      "../../catalog-output/examples/output-stac-item.json"
     ]
   },
   "links": [
     {
-      "rel": "application",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect"
+      "rel": "related",
+      "href": "../../catalog-application/examples/application-record.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "workflow",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect"
+      "rel": "related",
+      "href": "../../catalog-workflow/examples/workflow.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "input",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira"
+      "rel": "related",
+      "href": "../../catalog-input/examples/input-stac-item.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "output",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result"
+      "rel": "related",
+      "href": "../../catalog-output/examples/output-stac-item.json",
+      "type": "application/geo+json"
     }
   ]
 }
@@ -95,43 +92,37 @@ dataset. No source properties are intentionally dropped.
     "http://www.w3.org/TR/prov-o/"
   ],
   "geometry": null,
-  "bbox": [],
   "properties": {
-    "title": "Utsira reef-effect biomass run 001",
-    "description": "Execution record for one reef-effect biomass calculation.",
     "type": "Execution",
-    "application": "https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect",
-    "workflow": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
-    "startTime": "2026-05-26T09:00:00Z",
-    "endTime": "2026-05-26T09:03:00Z",
-    "status": "completed",
-    "parameters": {
-      "timeBoundaryStart": "2024-01-01",
-      "timeBoundaryEnd": "2026-01-01"
-    },
+    "application": "../../catalog-application/examples/application-record.json",
+    "workflow": "../../catalog-workflow/examples/workflow.json",
     "inputRecords": [
-      "https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira"
+      "../../catalog-input/examples/input-stac-item.json"
     ],
     "outputRecords": [
-      "https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result"
+      "../../catalog-output/examples/output-stac-item.json"
     ]
   },
   "links": [
     {
-      "rel": "application",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect"
+      "rel": "related",
+      "href": "../../catalog-application/examples/application-record.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "workflow",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect"
+      "rel": "related",
+      "href": "../../catalog-workflow/examples/workflow.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "input",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira"
+      "rel": "related",
+      "href": "../../catalog-input/examples/input-stac-item.json",
+      "type": "application/geo+json"
     },
     {
-      "rel": "output",
-      "href": "https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result"
+      "rel": "related",
+      "href": "../../catalog-output/examples/output-stac-item.json",
+      "type": "application/geo+json"
     }
   ]
 }
@@ -143,39 +134,33 @@ dataset. No source properties are intentionally dropped.
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a geojson:Feature ;
     dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
         <https://docs.ogc.org/is/20-004/20-004.html> ;
     dcterms:type "record" ;
-    ns1:relation <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
-    geojson:bbox () ;
+    ns1:relation <file:///catalog-application/examples/application-record.json>,
+        <file:///catalog-input/examples/input-stac-item.json>,
+        <file:///catalog-output/examples/output-stac-item.json>,
+        <file:///catalog-workflow/examples/workflow.json> ;
     geojson:properties [ a seadots:Execution ;
-            dcterms:description "Execution record for one reef-effect biomass calculation." ;
-            dcterms:title "Utsira reef-effect biomass run 001" ;
-            prov:endedAtTime "2026-05-26T09:03:00+00:00"^^xsd:dateTime ;
-            prov:generated <https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result> ;
-            prov:hadPlan <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
-            prov:startedAtTime "2026-05-26T09:00:00+00:00"^^xsd:dateTime ;
-            prov:used <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect>,
-                <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ;
-            seadots:parameters [ seadots:timeBoundaryEnd "2026-01-01"^^xsd:date ;
-                    seadots:timeBoundaryStart "2024-01-01"^^xsd:date ] ;
-            seadots:status "completed" ] .
+            prov:generated <file:///catalog-output/examples/output-stac-item.json> ;
+            prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
+            prov:used <file:///catalog-application/examples/application-record.json>,
+                <file:///catalog-input/examples/input-stac-item.json> ] .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect> ns1:relation "application" .
+<file:///catalog-application/examples/application-record.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ns1:relation "input" .
+<file:///catalog-input/examples/input-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result> ns1:relation "output" .
+<file:///catalog-output/examples/output-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ns1:relation "workflow" .
+<file:///catalog-workflow/examples/workflow.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
 
 ```
@@ -186,7 +171,7 @@ dataset. No source properties are intentionally dropped.
 $schema: https://json-schema.org/draft/2020-12/schema
 title: SeaDOTs Catalog Execution
 description: 'OGC API Records profile for a concrete workflow execution or experiment
-  run.
+  run that links to reusable catalog records instead of duplicating their metadata.
 
   '
 allOf:
@@ -228,31 +213,26 @@ properties:
   properties:
     type: object
     required:
-    - title
-    - description
     - type
     - workflow
     - application
-    - startTime
+    - inputRecords
+    - outputRecords
     properties:
-      title:
-        type: string
-        x-jsonld-id: http://purl.org/dc/terms/title
-      description:
-        type: string
-        x-jsonld-id: http://purl.org/dc/terms/description
       type:
         const: Execution
         x-jsonld-id: '@type'
       application:
         type: string
-        format: uri
+        format: uri-reference
+        description: Relative or absolute reference to the catalog application record.
         x-jsonld-id: http://www.w3.org/ns/prov#used
         x-jsonld-type: '@id'
       workflow:
         type: string
-        format: uri
-        description: URI of the workflow plan instantiated by this execution.
+        format: uri-reference
+        description: Relative or absolute reference to the workflow plan record instantiated
+          by this execution.
         x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
         x-jsonld-type: '@id'
       startTime:
@@ -273,17 +253,19 @@ properties:
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#parameters
       inputRecords:
         type: array
+        minItems: 1
         items:
           type: string
-          format: uri
+          format: uri-reference
         x-jsonld-id: http://www.w3.org/ns/prov#used
         x-jsonld-type: '@id'
         x-jsonld-container: '@set'
       outputRecords:
         type: array
+        minItems: 1
         items:
           type: string
-          format: uri
+          format: uri-reference
         x-jsonld-id: http://www.w3.org/ns/prov#generated
         x-jsonld-type: '@id'
         x-jsonld-container: '@set'
@@ -302,6 +284,7 @@ properties:
           x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
         href:
           type: string
+          format: uri-reference
           x-jsonld-id: '@id'
         type:
           type: string
@@ -315,6 +298,7 @@ x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
   coordinates: https://purl.org/geojson/vocab#coordinates
   name: http://purl.org/dc/terms/title
+  description: http://purl.org/dc/terms/description
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
     x-jsonld-container: '@set'
@@ -342,6 +326,12 @@ x-jsonld-extra-terms:
   outputs:
     x-jsonld-id: https://w3id.org/apkg/terms/outputs
     x-jsonld-container: '@set'
+  profileId:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+  required:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
   class: https://w3id.org/cwl/cwl#class
   requirements:
     x-jsonld-id: https://w3id.org/cwl/cwl#requirements
@@ -613,6 +603,14 @@ Links to the schema:
     "outputs": {
       "@id": "apkg:outputs",
       "@container": "@set"
+    },
+    "profileId": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "required": {
+      "@id": "seadots:requiredInput",
+      "@type": "xsd:boolean"
     },
     "class": "cwl:class",
     "requirements": {

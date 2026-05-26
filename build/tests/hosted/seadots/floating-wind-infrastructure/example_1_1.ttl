@@ -14,17 +14,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM feature profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ],
-        [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
+    rdfs:seeAlso [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ],
         [ rdfs:label "Floating-Wind Submerged Infrastructure bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.floating-wind-infrastructure> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.floating-wind-infrastructure> ],
+        [ rdfs:label "OIM feature profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;

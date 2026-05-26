@@ -392,6 +392,12 @@ x-jsonld-extra-terms:
   outputs:
     x-jsonld-id: https://w3id.org/apkg/terms/outputs
     x-jsonld-container: '@set'
+  profileId:
+    x-jsonld-id: http://purl.org/dc/terms/conformsTo
+    x-jsonld-type: '@id'
+  required:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
   class: https://w3id.org/cwl/cwl#class
   requirements:
     x-jsonld-id: https://w3id.org/cwl/cwl#requirements
@@ -511,6 +517,14 @@ Links to the schema:
     "outputs": {
       "@id": "apkg:outputs",
       "@container": "@set"
+    },
+    "profileId": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "required": {
+      "@id": "seadots:requiredInput",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "class": "cwl:class",
     "requirements": {

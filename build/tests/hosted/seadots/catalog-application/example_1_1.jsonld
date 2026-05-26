@@ -17,6 +17,40 @@
     "programmingLanguage": "Python",
     "applicationPackage": "https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect",
     "workflow": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-input",
+        "required": true,
+        "role": "catalog-input",
+        "description": "Generic STAC input item accepted by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.area-of-interest",
+        "required": true,
+        "role": "area-of-interest",
+        "description": "GeoJSON Feature defining the spatial area for the calculation."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "required": false,
+        "role": "benthic-biomass-density",
+        "description": "Optional baseline benthic biomass-density input profile."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-output",
+        "required": true,
+        "role": "catalog-output",
+        "description": "Generic STAC output item produced by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.reef-effect-output",
+        "required": true,
+        "role": "reef-biomass-result",
+        "description": "Structured reef-effect biomass output record."
+      }
+    ],
     "keywords": [
       "open-science",
       "digital-twin",

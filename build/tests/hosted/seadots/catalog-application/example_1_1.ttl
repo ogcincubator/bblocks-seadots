@@ -1,3 +1,4 @@
+@prefix apkg: <https://w3id.org/apkg/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
@@ -6,6 +7,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect> a geojson:Feature ;
     dcterms:conformsTo <https://docs.ogc.org/is/20-004/20-004.html> ;
@@ -25,6 +27,26 @@
             schema:applicationCategory "DigitalTwinApplication" ;
             schema:programmingLanguage "Python" ;
             schema:softwareVersion "0.1.0" ;
+            apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-input> ;
+                    dcterms:description "Generic STAC input item accepted by this application." ;
+                    seadots:requiredInput true ;
+                    seadots:role "catalog-input" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+                    dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+                    seadots:requiredInput true ;
+                    seadots:role "area-of-interest" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+                    dcterms:description "Optional baseline benthic biomass-density input profile." ;
+                    seadots:requiredInput false ;
+                    seadots:role "benthic-biomass-density" ] ;
+            apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+                    dcterms:description "Structured reef-effect biomass output record." ;
+                    seadots:requiredInput true ;
+                    seadots:role "reef-biomass-result" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-output> ;
+                    dcterms:description "Generic STAC output item produced by this application." ;
+                    seadots:requiredInput true ;
+                    seadots:role "catalog-output" ] ;
             seadots:applicationPackage <https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> ] .
 
 <bblocks://ogc.hosted.seadots.catalog-application> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;

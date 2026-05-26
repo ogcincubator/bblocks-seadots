@@ -252,18 +252,18 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
                                             dcat:accessURL <https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON_PLACEHOLDER&datasetid=wind-farm-monitoring-dataset> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "Degraer 2020 numeric quote verified. AF_i values in this example NOT calibrated to that source." ] ;
-                            seadots:perTaxon [ dcterms:coverage "soft-sediment, 30-100 m" ;
+                            seadots:perTaxon [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "soft-sediment, 30-100 m" ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indp:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "North Sea, 0-30 m" ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ] ] ;
+                                    indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ] ] ;
                     seadots:role "coefficient (per taxon)" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;

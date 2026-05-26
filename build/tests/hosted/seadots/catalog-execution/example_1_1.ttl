@@ -2,37 +2,31 @@
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a geojson:Feature ;
     dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
         <https://docs.ogc.org/is/20-004/20-004.html> ;
     dcterms:type "record" ;
-    ns1:relation <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result>,
-        <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
-    geojson:bbox () ;
+    ns1:relation <file:///catalog-application/examples/application-record.json>,
+        <file:///catalog-input/examples/input-stac-item.json>,
+        <file:///catalog-output/examples/output-stac-item.json>,
+        <file:///catalog-workflow/examples/workflow.json> ;
     geojson:properties [ a seadots:Execution ;
-            dcterms:description "Execution record for one reef-effect biomass calculation." ;
-            dcterms:title "Utsira reef-effect biomass run 001" ;
-            prov:endedAtTime "2026-05-26T09:03:00+00:00"^^xsd:dateTime ;
-            prov:generated <https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result> ;
-            prov:hadPlan <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ;
-            prov:startedAtTime "2026-05-26T09:00:00+00:00"^^xsd:dateTime ;
-            prov:used <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect>,
-                <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ;
-            seadots:parameters [ seadots:timeBoundaryEnd "2026-01-01"^^xsd:date ;
-                    seadots:timeBoundaryStart "2024-01-01"^^xsd:date ] ;
-            seadots:status "completed" ] .
+            prov:generated <file:///catalog-output/examples/output-stac-item.json> ;
+            prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
+            prov:used <file:///catalog-application/examples/application-record.json>,
+                <file:///catalog-input/examples/input-stac-item.json> ] .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect> ns1:relation "application" .
+<file:///catalog-application/examples/application-record.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ns1:relation "input" .
+<file:///catalog-input/examples/input-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/output/reef-biomass-result> ns1:relation "output" .
+<file:///catalog-output/examples/output-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> ns1:relation "workflow" .
+<file:///catalog-workflow/examples/workflow.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+    ns1:relation "related" .
 

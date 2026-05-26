@@ -49,6 +49,40 @@ dataset. No source properties are intentionally dropped.
     "programmingLanguage": "Python",
     "applicationPackage": "https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect",
     "workflow": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-input",
+        "required": true,
+        "role": "catalog-input",
+        "description": "Generic STAC input item accepted by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.area-of-interest",
+        "required": true,
+        "role": "area-of-interest",
+        "description": "GeoJSON Feature defining the spatial area for the calculation."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "required": false,
+        "role": "benthic-biomass-density",
+        "description": "Optional baseline benthic biomass-density input profile."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-output",
+        "required": true,
+        "role": "catalog-output",
+        "description": "Generic STAC output item produced by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.reef-effect-output",
+        "required": true,
+        "role": "reef-biomass-result",
+        "description": "Structured reef-effect biomass output record."
+      }
+    ],
     "keywords": [
       "open-science",
       "digital-twin",
@@ -98,6 +132,40 @@ dataset. No source properties are intentionally dropped.
     "programmingLanguage": "Python",
     "applicationPackage": "https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect",
     "workflow": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-input",
+        "required": true,
+        "role": "catalog-input",
+        "description": "Generic STAC input item accepted by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.area-of-interest",
+        "required": true,
+        "role": "area-of-interest",
+        "description": "GeoJSON Feature defining the spatial area for the calculation."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "required": false,
+        "role": "benthic-biomass-density",
+        "description": "Optional baseline benthic biomass-density input profile."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-output",
+        "required": true,
+        "role": "catalog-output",
+        "description": "Generic STAC output item produced by this application."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.reef-effect-output",
+        "required": true,
+        "role": "reef-biomass-result",
+        "description": "Structured reef-effect biomass output record."
+      }
+    ],
     "keywords": [
       "open-science",
       "digital-twin",
@@ -127,6 +195,7 @@ dataset. No source properties are intentionally dropped.
 
 #### ttl
 ```ttl
+@prefix apkg: <https://w3id.org/apkg/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
@@ -135,6 +204,7 @@ dataset. No source properties are intentionally dropped.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/application/reef-effect> a geojson:Feature ;
     dcterms:conformsTo <https://docs.ogc.org/is/20-004/20-004.html> ;
@@ -154,6 +224,26 @@ dataset. No source properties are intentionally dropped.
             schema:applicationCategory "DigitalTwinApplication" ;
             schema:programmingLanguage "Python" ;
             schema:softwareVersion "0.1.0" ;
+            apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-input> ;
+                    dcterms:description "Generic STAC input item accepted by this application." ;
+                    seadots:requiredInput true ;
+                    seadots:role "catalog-input" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+                    dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+                    seadots:requiredInput true ;
+                    seadots:role "area-of-interest" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+                    dcterms:description "Optional baseline benthic biomass-density input profile." ;
+                    seadots:requiredInput false ;
+                    seadots:role "benthic-biomass-density" ] ;
+            apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+                    dcterms:description "Structured reef-effect biomass output record." ;
+                    seadots:requiredInput true ;
+                    seadots:role "reef-biomass-result" ],
+                [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-output> ;
+                    dcterms:description "Generic STAC output item produced by this application." ;
+                    seadots:requiredInput true ;
+                    seadots:role "catalog-output" ] ;
             seadots:applicationPackage <https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> ] .
 
 <bblocks://ogc.hosted.seadots.catalog-application> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;
@@ -255,6 +345,64 @@ properties:
         format: uri
         x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
         x-jsonld-type: '@id'
+      inputs:
+        type: array
+        description: Input profiles accepted by this application.
+        items:
+          type: object
+          required:
+          - profileId
+          - required
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the
+                accepted input profile.
+              x-jsonld-id: http://purl.org/dc/terms/conformsTo
+              x-jsonld-type: '@id'
+            required:
+              type: boolean
+              description: Whether this input profile is required to execute the application.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+            role:
+              type: string
+              description: Application-specific input role.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+            description:
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/description
+        x-jsonld-id: https://w3id.org/apkg/terms/inputs
+        x-jsonld-container: '@set'
+      outputs:
+        type: array
+        description: Output profiles produced by this application.
+        items:
+          type: object
+          required:
+          - profileId
+          - required
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the
+                produced output profile.
+              x-jsonld-id: http://purl.org/dc/terms/conformsTo
+              x-jsonld-type: '@id'
+            required:
+              type: boolean
+              description: Whether this output profile is always produced by the application.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+            role:
+              type: string
+              description: Application-specific output role.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+            description:
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/description
+        x-jsonld-id: https://w3id.org/apkg/terms/outputs
+        x-jsonld-container: '@set'
       keywords:
         type: array
         items:
@@ -303,12 +451,6 @@ x-jsonld-extra-terms:
   updated:
     x-jsonld-id: http://purl.org/dc/terms/modified
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  inputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/inputs
-    x-jsonld-container: '@set'
-  outputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/outputs
-    x-jsonld-container: '@set'
   class: https://w3id.org/cwl/cwl#class
   requirements:
     x-jsonld-id: https://w3id.org/cwl/cwl#requirements
@@ -366,7 +508,6 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
     x-jsonld-type: '@id'
     x-jsonld-container: '@set'
-  role: https://w3id.org/ogc/hosted/seadots/catalog#role
   mediaType: http://purl.org/dc/terms/format
   dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
@@ -423,6 +564,36 @@ Links to the schema:
         "workflow": {
           "@id": "prov:hadPlan",
           "@type": "@id"
+        },
+        "inputs": {
+          "@context": {
+            "profileId": {
+              "@id": "dct:conformsTo",
+              "@type": "@id"
+            },
+            "required": {
+              "@id": "seadots:requiredInput",
+              "@type": "xsd:boolean"
+            },
+            "role": "seadots:role"
+          },
+          "@id": "apkg:inputs",
+          "@container": "@set"
+        },
+        "outputs": {
+          "@context": {
+            "profileId": {
+              "@id": "dct:conformsTo",
+              "@type": "@id"
+            },
+            "required": {
+              "@id": "seadots:requiredInput",
+              "@type": "xsd:boolean"
+            },
+            "role": "seadots:role"
+          },
+          "@id": "apkg:outputs",
+          "@container": "@set"
         },
         "license": {
           "@id": "dct:license",
@@ -572,14 +743,6 @@ Links to the schema:
     },
     "coordinates": "geojson:coordinates",
     "name": "dct:title",
-    "inputs": {
-      "@id": "apkg:inputs",
-      "@container": "@set"
-    },
-    "outputs": {
-      "@id": "apkg:outputs",
-      "@container": "@set"
-    },
     "class": "cwl:class",
     "requirements": {
       "@id": "cwl:requirements",
@@ -651,7 +814,6 @@ Links to the schema:
       "@type": "@id",
       "@container": "@set"
     },
-    "role": "seadots:role",
     "mediaType": "dct:format",
     "dockerPull": "seadots:dockerPull",
     "itemType": "dct:type",
