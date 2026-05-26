@@ -7,3 +7,19 @@
   snippets:
     - language: json
       ref: examples/mareano_norwegian_shelf.json
+- title: MAREANO benthic biomass density proxy — OBIS checklist
+  description: >
+    Per-taxon occurrence-count proxy derived from the OBIS checklist response
+    in `obis-mareano-checklist`. This is schema-compatible with the MAREANO
+    biomass-density bblock but is not a physical kg m-2 biomass measurement.
+  snippets:
+    - language: json
+      ref: examples/mareano_obis_checklist_proxy.json
+- title: MAREANO benthic biomass density proxy — OBIS occurrences
+  description: >
+    Per-observation occurrence proxy derived from the OBIS occurrence response
+    in `obis-mareano-checklist`. Includes `observationOutputs` copied from OBIS
+    occurrence rows and normalized occurrence shares in the target density field.
+  snippets:
+    - language: json
+      ref: examples/mareano_obis_occurrence_proxy.json

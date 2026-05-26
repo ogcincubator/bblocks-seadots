@@ -54,6 +54,23 @@ properties:
                     depthBand_m: { type: string }
                     nSamples: { type: integer, minimum: 0 }
               aggregateDensity_kg_m2: { type: number, minimum: 0 }
+              observationOutputs:
+                type: array
+                description: Per-observation output rows derived from source occurrence records, when available.
+                items:
+                  type: object
+                  properties:
+                    id: { type: string }
+                    occurrenceID: { type: string }
+                    scientificName: { type: string }
+                    aphiaID: { type: integer }
+                    decimalLongitude: { type: number }
+                    decimalLatitude: { type: number }
+                    eventDate: { type: string }
+                    depth_m: { type: number }
+                    datasetName: { type: string }
+                    samplingProtocol: { type: string }
+                    density_kg_m2: { type: number, minimum: 0 }
               provenance:
                 type: object
                 required: [values]

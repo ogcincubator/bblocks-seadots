@@ -1,0 +1,53 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Application Package
+description: >
+  APKG/CWL-aligned computational contract for a reusable SeaDOTs
+  application.
+
+type: object
+required: [id, type, title, description, class, inputs, outputs]
+properties:
+  id:
+    type: string
+    format: uri
+  type:
+    const: ApplicationPackage
+  title:
+    type: string
+  description:
+    type: string
+  class:
+    type: string
+  inputs:
+    type: array
+    items:
+      type: object
+      required: [id, type]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+  outputs:
+    type: array
+    items:
+      type: object
+      required: [id, type]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+  requirements:
+    type: array
+    items:
+      type: object
+  softwareVersion:
+    type: string
+  programmingLanguage:
+    type: string
+additionalProperties: true

@@ -1,0 +1,89 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Input
+description: >
+  STAC Item profile for a concrete input consumed by a SeaDOTs execution.
+
+type: object
+required: [id, type, stac_version, properties, geometry, bbox, assets]
+properties:
+  id:
+    type: string
+  type:
+    const: Feature
+  stac_version:
+    type: string
+  collection:
+    type: string
+  geometry:
+    type: ["object", "null"]
+  bbox:
+    type: array
+    items:
+      type: number
+  properties:
+    type: object
+    required: [title, description, datetime]
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      datetime:
+        type: string
+        format: date-time
+      role:
+        type: string
+      convention:
+        type: string
+        description: Optional metadata convention declaration, e.g. CF-1.10.
+      "cf:parameter":
+        type: array
+        description: Optional STAC CF extension parameter declarations.
+        items:
+          type: object
+          required: [name]
+          properties:
+            name:
+              type: string
+              description: CF standard name or local parameter name.
+            schema:
+              type: string
+              format: uri
+              description: Vocabulary or schema URI for the parameter name.
+            unit:
+              type: string
+              description: Unit string or URI for the parameter.
+            description:
+              type: string
+
+    additionalProperties: true
+  assets:
+    type: object
+    additionalProperties:
+      type: object
+      required: [href]
+      properties:
+        href:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+  links:
+    type: array
+    items:
+      type: object
+      required: [rel, href]
+      properties:
+        rel:
+          type: string
+        href:
+          type: string
+        type:
+          type: string
+        title:
+          type: string

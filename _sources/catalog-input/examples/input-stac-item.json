@@ -1,0 +1,68 @@
+{
+  "id": "aoi-utsira",
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "collection": "seadots-inputs",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.7,
+          59.1
+        ],
+        [
+          5.0,
+          59.1
+        ],
+        [
+          5.0,
+          59.4
+        ],
+        [
+          4.7,
+          59.4
+        ],
+        [
+          4.7,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    4.7,
+    59.1,
+    5.0,
+    59.4
+  ],
+  "properties": {
+    "title": "Utsira area of interest",
+    "description": "Example area-of-interest input for a SeaDOTs execution.",
+    "datetime": "2026-05-26T00:00:00Z",
+    "role": "input",
+    "convention": "CF-1.10",
+    "cf:parameter": [
+      {
+        "name": "area",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m2",
+        "description": "Optional CF-style parameter declaration for spatial input extent."
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "type": "application/geo+json",
+      "title": "AOI GeoJSON"
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-input",
+      "type": "application/schema+json"
+    }
+  ]
+}

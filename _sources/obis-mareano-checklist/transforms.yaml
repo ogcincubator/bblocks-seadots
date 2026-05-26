@@ -1,0 +1,20 @@
+transforms:
+  - id: to-benthic-biomass-density-mareano
+    description: >
+      Converts an OBIS checklist or occurrence response for selected MAREANO
+      datasets into a `benthic-biomass-density-mareano` proxy example. The
+      source contains occurrence rows or occurrence record counts, not biomass;
+      the output records normalized occurrence shares in the target density
+      field, carries per-observation outputs when occurrence rows are present,
+      and documents the limitation in provenance.
+    type: python
+    ref: transforms/to_benthic_biomass_density_mareano.py
+    inputs:
+      mediaTypes:
+        - application/json
+    outputs:
+      mediaTypes:
+        - application/json
+        - application/geo+json
+      profiles:
+        - bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano

@@ -1,0 +1,34 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Workflow
+description: >
+  PROV-O Plan profile for a reusable SeaDOTs workflow or method.
+
+type: object
+required: [id, type, title, description, version, method]
+properties:
+  id:
+    type: string
+    format: uri
+  type:
+    const: Workflow
+  title:
+    type: string
+  description:
+    type: string
+  version:
+    type: string
+  method:
+    type: string
+  activity:
+    type: string
+    format: uri
+    description: URI of the planned PROV-O Activity pattern contained by this workflow.
+  inputs:
+    type: array
+    items:
+      type: string
+  outputs:
+    type: array
+    items:
+      type: string
+additionalProperties: true

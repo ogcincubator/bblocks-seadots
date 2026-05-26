@@ -1,0 +1,57 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OBIS MAREANO Checklist
+description: >
+  Raw OBIS checklist or occurrence response for selected MAREANO dataset
+  identifiers. The payload is intentionally kept in the OBIS API shape: a total
+  count and a `results` array of checklist rows or occurrence records.
+
+type: object
+required: [total, results]
+properties:
+  total:
+    type: integer
+    minimum: 0
+  results:
+    type: array
+    items:
+      type: object
+      required: [scientificName]
+      properties:
+        scientificName: { type: string }
+        scientificNameAuthorship: { type: string }
+        taxonID: { type: integer }
+        aphiaID: { type: integer }
+        acceptedNameUsage: { type: string }
+        acceptedNameUsageID: { type: integer }
+        taxonRank: { type: string }
+        taxonomicStatus: { type: string }
+        records: { type: integer, minimum: 0 }
+        id: { type: string }
+        occurrenceID: { type: string }
+        basisOfRecord: { type: string }
+        dataset_id: { type: string }
+        datasetID: { type: string }
+        datasetName: { type: string }
+        decimalLatitude: { type: number }
+        decimalLongitude: { type: number }
+        eventDate: { type: string }
+        eventID: { type: string }
+        samplingProtocol: { type: string }
+        depth: { type: number }
+        minimumDepthInMeters: { type: number }
+        maximumDepthInMeters: { type: number }
+        ncbi_id: { type: integer }
+        wrims: { type: boolean }
+        is_marine: { type: boolean }
+        is_brackish: { type: boolean }
+        is_freshwater: { type: boolean }
+        is_terrestrial: { type: boolean }
+        kingdom: { type: string }
+        phylum: { type: string }
+        class: { type: string }
+        order: { type: string }
+        family: { type: string }
+        genus: { type: string }
+        species: { type: string }
+      additionalProperties: true
+additionalProperties: true
