@@ -1,7 +1,8 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: SeaDOTs Catalog Execution
 description: >
-  OGC API Records profile for a concrete workflow execution or experiment run.
+  OGC API Records profile for a concrete workflow execution or experiment run
+  that links to reusable catalog records instead of duplicating their metadata.
 
 allOf:
   - $ref: bblocks://ogc.geo.geodcat.geodcat-records
@@ -28,21 +29,18 @@ properties:
       type: number
   properties:
     type: object
-    required: [title, description, type, workflow, application, startTime]
+    required: [type, workflow, application, inputRecords, outputRecords]
     properties:
-      title:
-        type: string
-      description:
-        type: string
       type:
         const: Execution
       application:
         type: string
-        format: uri
+        format: uri-reference
+        description: Relative or absolute reference to the catalog application record.
       workflow:
         type: string
-        format: uri
-        description: URI of the workflow plan instantiated by this execution.
+        format: uri-reference
+        description: Relative or absolute reference to the workflow plan record instantiated by this execution.
       startTime:
         type: string
         format: date-time
@@ -55,14 +53,16 @@ properties:
         type: object
       inputRecords:
         type: array
+        minItems: 1
         items:
           type: string
-          format: uri
+          format: uri-reference
       outputRecords:
         type: array
+        minItems: 1
         items:
           type: string
-          format: uri
+          format: uri-reference
     additionalProperties: true
 
   links:
@@ -75,6 +75,7 @@ properties:
           type: string
         href:
           type: string
+          format: uri-reference
         type:
           type: string
         title:

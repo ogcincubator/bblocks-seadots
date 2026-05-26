@@ -49,6 +49,42 @@ properties:
       workflow:
         type: string
         format: uri
+      inputs:
+        type: array
+        description: Input profiles accepted by this application.
+        items:
+          type: object
+          required: [profileId, required]
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the accepted input profile.
+            required:
+              type: boolean
+              description: Whether this input profile is required to execute the application.
+            role:
+              type: string
+              description: Application-specific input role.
+            description:
+              type: string
+      outputs:
+        type: array
+        description: Output profiles produced by this application.
+        items:
+          type: object
+          required: [profileId, required]
+          properties:
+            profileId:
+              type: string
+              description: URI or fully qualified building block identifier of the produced output profile.
+            required:
+              type: boolean
+              description: Whether this output profile is always produced by the application.
+            role:
+              type: string
+              description: Application-specific output role.
+            description:
+              type: string
       keywords:
         type: array
         items:
