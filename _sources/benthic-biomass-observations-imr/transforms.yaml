@@ -1,0 +1,21 @@
+transforms:
+  - id: to-benthic-biomass-density-mareano
+    description: >
+      Converts the raw IMR / MAREANO Marbunn observation FeatureCollection into
+      the aggregate `benthic-biomass-density-mareano` observation profile. The
+      source weights are converted to point densities in kg m-2 using explicit
+      per-gear sampled-area assumptions, then spatially extrapolated over the
+      AOI with inverse distance weighting (IDW). The assumptions are recorded
+      in output provenance.
+    type: python
+    ref: transforms/to_benthic_biomass_density_mareano.py
+    inputs:
+      mediaTypes:
+        - application/json
+        - application/geo+json
+    outputs:
+      mediaTypes:
+        - application/json
+        - application/geo+json
+      profiles:
+        - bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano

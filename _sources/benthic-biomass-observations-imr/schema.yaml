@@ -1,0 +1,127 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: IMR Benthic Biomass Observations
+description: >
+  GeoJSON FeatureCollection containing raw IMR / MAREANO Marbunn catch-sample
+  point features for all requested species and cruise queries. Each feature is
+  a raw station/sample record with species, cruise, equipment, count and weight
+  fields where available.
+
+type: object
+required: [type, features]
+properties:
+  type:
+    const: FeatureCollection
+  id:
+    type: string
+    format: uri-reference
+  bbox:
+    type: array
+    minItems: 4
+    items: { type: number }
+  properties:
+    type: object
+    properties:
+      title: { type: string }
+      description: { type: string }
+      created: { type: string, format: date }
+      source:
+        type: object
+        properties:
+          name: { type: string }
+          api: { type: string, format: uri }
+          speciesListEndpoint: { type: string, format: uri }
+          perSpeciesEndpoint: { type: string }
+          license: { type: string }
+      aoi:
+        type: object
+        properties:
+          bbox:
+            type: array
+            minItems: 4
+            items: { type: number }
+          geometry:
+            type: object
+      phenomenonTime:
+        oneOf:
+          - type: "null"
+          - type: object
+            required: [start, end]
+            properties:
+              start: { type: string, format: date }
+              end: { type: string, format: date }
+      summary:
+        type: object
+        properties:
+          speciesQueried: { type: integer, minimum: 0 }
+          cruiseQueries:
+            type: array
+            items: { type: string }
+          apiQueries: { type: integer, minimum: 0 }
+          sourceFeatures: { type: integer, minimum: 0 }
+          featuresInAOI: { type: integer, minimum: 0 }
+          speciesInAOI:
+            type: array
+            items: { type: string }
+          cruisesInAOI:
+            type: array
+            items: { type: string }
+          equipmentInAOI:
+            type: array
+            items: { type: string }
+      provenance:
+        type: object
+        properties:
+          values: { type: string, enum: [retrieved, illustrative, mixed] }
+          generator: { type: string }
+          fetched_utc: { type: string }
+          cacheDirectory: { type: string }
+          timeBoundaryNote: { type: string }
+  links:
+    type: array
+    items:
+      type: object
+      properties:
+        rel: { type: string }
+        href: { type: string }
+        type: { type: string }
+        title: { type: string }
+  features:
+    type: array
+    items:
+      type: object
+      required: [type, geometry, properties]
+      properties:
+        type:
+          const: Feature
+        geometry:
+          type: object
+          required: [type, coordinates]
+          properties:
+            type:
+              const: Point
+            coordinates:
+              type: array
+              minItems: 2
+              items: { type: number }
+        properties:
+          type: object
+          required: [scientificName]
+          properties:
+            scientificName: { type: string }
+            species: { type: string }
+            sourceSpeciesQuery: { type: string }
+            sourceCruiseQuery: { type: string }
+            cruise: { type: string }
+            equipment: { type: string }
+            Cruise: {}
+            Equipment: {}
+            Scientific name: {}
+            Number: {}
+            Weight: {}
+            Catch Id: {}
+            Sample Number: {}
+            Station (R): {}
+            Bottom depth: {}
+          additionalProperties: true
+      additionalProperties: true
+additionalProperties: true

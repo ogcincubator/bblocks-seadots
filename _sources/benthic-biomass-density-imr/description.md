@@ -9,6 +9,11 @@ Used as the **fallback** `D_{pre,i}` binding when MAREANO has no taxon coverage 
 
 Otherwise the shape mirrors MAREANO so the two are interchangeable downstream.
 
+The raw per-sample Marbunn FeatureCollection and its collector script live in
+the companion block [`benthic-biomass-observations-imr`](../benthic-biomass-observations-imr/).
+This block keeps only the aggregate per-taxon observation used by downstream
+reef-effect calculations.
+
 ## Dependency
 
 Extends `ogc.hosted.iliad.api.features.oim-obs`.
@@ -19,4 +24,6 @@ Extends `ogc.hosted.iliad.api.features.oim-obs`.
 
 ## Retrieval
 
-IMR does not expose a single REST endpoint for "per-taxon baseline density on an AOI". Cruise sample series are distributed via the Norwegian Marine Data Centre (NMD) as discrete datasets. The `data.source` URL in the example is a NOTIONAL endpoint — flagged in `data.provenance.verificationGap`.
+The aggregate example is built from the MAREANO Marbunn API using
+`build_example.py`. It groups catch-sample records by species and summarizes
+their weights, while the raw block preserves the individual point features.

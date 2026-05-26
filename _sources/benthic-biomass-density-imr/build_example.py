@@ -248,6 +248,7 @@ def build_document(cache: dict, aoi, args) -> dict:
                         },
                         "fetched_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                         "generator":   f"{Path(__file__).name}",
+                        "rawCollectionBlock": "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr",
                         "timeBoundaryNote": (
                             "The Marbunn catch-sample API exposes cruise identifiers rather than normalized "
                             "per-sample dates in this aggregation. --time-boundaries records the intended "
@@ -266,6 +267,7 @@ def build_document(cache: dict, aoi, args) -> dict:
         },
         "links": [
             {"rel": "describedby", "href": "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr", "type": "application/schema+json", "title": "IMR Benthic Biomass Density Observation bblock"},
+            {"rel": "derivedFrom", "href": "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr", "type": "application/schema+json", "title": "IMR benthic biomass observations bblock"},
             {"rel": "profile",     "href": "bblocks://ogc.hosted.iliad.api.features.oim-obs",         "type": "application/schema+json", "title": "OIM Observations profile"},
             {"rel": "cite-as",     "href": "https://mareano.no/",                                     "title": "MAREANO programme"},
             {"rel": "cite-as",     "href": "https://www.hi.no/",                                      "title": "Institute of Marine Research"},
