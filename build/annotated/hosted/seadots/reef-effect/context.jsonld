@@ -1,6 +1,6 @@
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -16,96 +16,7 @@
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "experiment": {
-          "@context": {
-            "kind": "seadots:kind",
-            "purpose": "dct:purpose",
-            "application": {
-              "@context": {
-                "href": "@id",
-                "rel": "geojson:rel"
-              },
-              "@id": "seadots:application",
-              "@type": "@id"
-            },
-            "modelledBy": {
-              "@context": {
-                "href": "@id",
-                "rel": "geojson:rel"
-              },
-              "@id": "seadots:modelledBy",
-              "@type": "@id"
-            },
-            "evidenceEquation": {
-              "@context": {
-                "href": "@id",
-                "rel": "geojson:rel"
-              },
-              "@id": "seadots:evidenceEquation",
-              "@type": "@id"
-            },
-            "parameters": {
-              "@context": {
-                "name": "dct:title",
-                "schema": "seadots:parameterSchema",
-                "vocabularyTerm": {
-                  "@id": "skos:exactMatch",
-                  "@type": "@id"
-                }
-              },
-              "@id": "seadots:parameter",
-              "@container": "@set"
-            },
-            "inputs": {
-              "@context": {
-                "href": "@id",
-                "rel": "geojson:rel",
-                "equationBinding": "seadots:equationBinding"
-              },
-              "@id": "seadots:input",
-              "@container": "@set"
-            },
-            "outputs": {
-              "@context": {
-                "href": "@id",
-                "rel": "geojson:rel"
-              },
-              "@id": "seadots:output",
-              "@type": "@id",
-              "@container": "@set"
-            },
-            "execution": {
-              "@context": {
-                "language": "dct:language",
-                "languageVersion": "seadots:languageVersion",
-                "dependencies": {
-                  "@id": "seadots:dependency",
-                  "@container": "@set"
-                },
-                "entrypoint": "seadots:entrypoint",
-                "scheduling": "seadots:scheduling",
-                "reproducibility": {
-                  "@context": {
-                    "seedPolicy": "seadots:seedPolicy",
-                    "provenance": "prov:wasGeneratedBy"
-                  },
-                  "@id": "seadots:reproducibility"
-                }
-              },
-              "@id": "seadots:execution"
-            },
-            "successCriteria": {
-              "@id": "seadots:successCriterion",
-              "@container": "@set"
-            }
-          },
-          "@id": "seadots:experiment"
-        }
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": {
       "@context": {
         "coordinates": {
@@ -128,7 +39,7 @@
           "@id": "http://www.iana.org/assignments/relation",
           "@type": "@id"
         },
-        "type": "dct:format",
+        "type": "dct:type",
         "hreflang": "dct:language",
         "title": "rdfs:label",
         "length": "dct:extent"
@@ -253,9 +164,360 @@
         "@vocab": "https://www.opengis.net/def/ogc-api/records/"
       }
     },
-    "coordinates": "geojson:coordinates",
-    "mediaType": "dct:format",
+    "wasInfluencedBy": {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "@id"
+    },
+    "qualifiedInfluence": {
+      "@id": "prov:qualifiedInfluence",
+      "@type": "@id"
+    },
+    "hadMember": {
+      "@id": "prov:hadMember",
+      "@type": "@id"
+    },
+    "provType": "@type",
+    "featureType": "@type",
+    "entityType": "@type",
+    "has_provenance": {
+      "@id": "dct:provenance",
+      "@type": "@id"
+    },
+    "wasGeneratedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
+    },
+    "wasAttributedTo": {
+      "@id": "prov:wasAttributedTo",
+      "@type": "@id"
+    },
+    "wasDerivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "alternateOf": {
+      "@id": "prov:alternateOf",
+      "@type": "@id"
+    },
+    "hadPrimarySource": {
+      "@id": "prov:hadPrimarySource",
+      "@type": "@id"
+    },
+    "specializationOf": {
+      "@id": "prov:specializationOf",
+      "@type": "@id"
+    },
+    "wasInvalidatedBy": {
+      "@id": "prov:wasInvalidatedBy",
+      "@type": "@id"
+    },
+    "wasQuotedFrom": {
+      "@id": "prov:wasQuotedFrom",
+      "@type": "@id"
+    },
+    "wasRevisionOf": {
+      "@id": "prov:wasRevisionOf",
+      "@type": "@id"
+    },
+    "atLocation": {
+      "@id": "prov:atLocation",
+      "@type": "@id"
+    },
+    "qualifiedGeneration": {
+      "@id": "prov:qualifiedGeneration",
+      "@type": "@id"
+    },
+    "qualifiedInvalidation": {
+      "@id": "prov:qualifiedInvalidation",
+      "@type": "@id"
+    },
+    "qualifiedDerivation": {
+      "@id": "prov:qualifiedDerivation",
+      "@type": "@id"
+    },
+    "qualifiedAttribution": {
+      "@id": "prov:qualifiedAttribution",
+      "@type": "@id"
+    },
+    "activityType": "@type",
+    "agentType": "@type",
+    "Activity": "prov:Activity",
+    "ActivityInfluence": "prov:ActivityInfluence",
+    "Agent": "prov:Agent",
+    "AgentInfluence": "prov:AgentInfluence",
+    "Association": "prov:Association",
+    "Attribution": "prov:Attribution",
+    "Bundle": "prov:Bundle",
+    "Collection": "prov:Collection",
+    "Communication": "prov:Communication",
+    "Delegation": "prov:Delegation",
+    "Derivation": "prov:Derivation",
+    "EmptyCollection": "prov:EmptyCollection",
+    "End": "prov:End",
+    "Entity": "prov:Entity",
+    "EntityInfluence": "prov:EntityInfluence",
+    "Generation": "prov:Generation",
+    "Influence": "prov:Influence",
+    "InstantaneousEvent": "prov:InstantaneousEvent",
+    "Invalidation": "prov:Invalidation",
+    "Location": "prov:Location",
+    "Organization": "prov:Organization",
+    "Person": "prov:Person",
+    "Plan": "prov:Plan",
+    "PrimarySource": "prov:PrimarySource",
+    "Quotation": "prov:Quotation",
+    "Revision": "prov:Revision",
+    "Role": "prov:Role",
+    "SoftwareAgent": "prov:SoftwareAgent",
+    "Start": "prov:Start",
+    "Usage": "prov:Usage",
+    "ServiceDescription": "prov:ServiceDescription",
+    "DirectQueryService": "prov:DirectQueryService",
+    "Accept": "prov:Accept",
+    "Contribute": "prov:Contribute",
+    "Contributor": "prov:Contributor",
+    "Copyright": "prov:Copyright",
+    "Create": "prov:Create",
+    "Creator": "prov:Creator",
+    "Modify": "prov:Modify",
+    "Publish": "prov:Publish",
+    "Publisher": "prov:Publisher",
+    "Replace": "prov:Replace",
+    "RightsAssignment": "prov:RightsAssignment",
+    "RightsHolder": "prov:RightsHolder",
+    "Submit": "prov:Submit",
+    "Dictionary": "prov:Dictionary",
+    "EmptyDictionary": "prov:EmptyDictionary",
+    "KeyEntityPair": "prov:KeyEntityPair",
+    "Insertion": "prov:Insertion",
+    "Removal": "prov:Removal",
+    "atTime": {
+      "@id": "prov:atTime",
+      "@type": "xsd:dateTime"
+    },
+    "endedAtTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "invalidatedAtTime": {
+      "@id": "prov:invalidatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "value": "prov:value",
+    "provenanceUriTemplate": "prov:provenanceUriTemplate",
+    "pairKey": {
+      "@id": "prov:pairKey",
+      "@type": "rdfs:Literal"
+    },
+    "removedKey": {
+      "@id": "prov:removedKey",
+      "@type": "rdfs:Literal"
+    },
+    "actedOnBehalfOf": {
+      "@id": "prov:actedOnBehalfOf",
+      "@type": "@id"
+    },
+    "agent": {
+      "@id": "prov:agent",
+      "@type": "@id"
+    },
+    "entity": {
+      "@id": "prov:entity",
+      "@type": "@id"
+    },
+    "generated": {
+      "@id": "prov:generated",
+      "@type": "@id"
+    },
+    "hadActivity": {
+      "@id": "prov:hadActivity",
+      "@type": "@id"
+    },
+    "activity": {
+      "@id": "prov:activity",
+      "@type": "@id"
+    },
+    "hadGeneration": {
+      "@id": "prov:hadGeneration",
+      "@type": "@id"
+    },
+    "hadPlan": {
+      "@id": "prov:hadPlan",
+      "@type": "@id"
+    },
+    "hadRole": {
+      "@id": "prov:hadRole",
+      "@type": "@id"
+    },
+    "hadUsage": {
+      "@id": "prov:hadUsage",
+      "@type": "@id"
+    },
+    "influenced": {
+      "@id": "prov:influenced",
+      "@type": "@id"
+    },
+    "influencer": {
+      "@id": "prov:influencer",
+      "@type": "@id"
+    },
+    "invalidated": {
+      "@id": "prov:invalidated",
+      "@type": "@id"
+    },
+    "qualifiedAssociation": {
+      "@id": "prov:qualifiedAssociation",
+      "@type": "@id"
+    },
+    "qualifiedCommunication": {
+      "@id": "prov:qualifiedCommunication",
+      "@type": "@id"
+    },
+    "qualifiedDelegation": {
+      "@id": "prov:qualifiedDelegation",
+      "@type": "@id"
+    },
+    "qualifiedEnd": {
+      "@id": "prov:qualifiedEnd",
+      "@type": "@id"
+    },
+    "qualifiedPrimarySource": {
+      "@id": "prov:qualifiedPrimarySource",
+      "@type": "@id"
+    },
+    "qualifiedQuotation": {
+      "@id": "prov:qualifiedQuotation",
+      "@type": "@id"
+    },
+    "qualifiedRevision": {
+      "@id": "prov:qualifiedRevision",
+      "@type": "@id"
+    },
+    "qualifiedStart": {
+      "@id": "prov:qualifiedStart",
+      "@type": "@id"
+    },
+    "qualifiedUsage": {
+      "@id": "prov:qualifiedUsage",
+      "@type": "@id"
+    },
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "wasAssociatedWith": {
+      "@id": "prov:wasAssociatedWith",
+      "@type": "@id"
+    },
+    "wasEndedBy": {
+      "@id": "prov:wasEndedBy",
+      "@type": "@id"
+    },
+    "wasInformedBy": {
+      "@id": "prov:wasInformedBy",
+      "@type": "@id"
+    },
+    "wasStartedBy": {
+      "@id": "prov:wasStartedBy",
+      "@type": "@id"
+    },
+    "has_anchor": {
+      "@id": "prov:has_anchor",
+      "@type": "@id"
+    },
+    "has_query_service": {
+      "@id": "prov:has_query_service",
+      "@type": "@id"
+    },
+    "describesService": {
+      "@id": "prov:describesService",
+      "@type": "@id"
+    },
+    "pingback": {
+      "@id": "prov:pingback",
+      "@type": "@id"
+    },
+    "dictionary": {
+      "@id": "prov:dictionary",
+      "@type": "@id"
+    },
+    "derivedByInsertionFrom": {
+      "@id": "prov:derivedByInsertionFrom",
+      "@type": "@id"
+    },
+    "derivedByRemovalFrom": {
+      "@id": "prov:derivedByRemovalFrom",
+      "@type": "@id"
+    },
+    "insertedKeyEntityPair": {
+      "@id": "prov:insertedKeyEntityPair",
+      "@type": "@id"
+    },
+    "hadDictionaryMember": {
+      "@id": "prov:hadDictionaryMember",
+      "@type": "@id"
+    },
+    "pairEntity": {
+      "@id": "prov:pairEntity",
+      "@type": "@id"
+    },
+    "qualifiedInsertion": {
+      "@id": "prov:qualifiedInsertion",
+      "@type": "@id"
+    },
+    "qualifiedRemoval": {
+      "@id": "prov:qualifiedRemoval",
+      "@type": "@id"
+    },
+    "asInBundle": {
+      "@id": "prov:asInBundle",
+      "@type": "@id"
+    },
+    "mentionOf": {
+      "@id": "prov:mentionOf",
+      "@type": "@id"
+    },
+    "name": "rdfs:label",
+    "href": {
+      "@type": "@id",
+      "@id": "oa:hasTarget"
+    },
+    "rights": "dcat:rights",
+    "Workflow": "prov:Plan",
+    "applicationCategory": "schema:applicationCategory",
+    "version": "dct:hasVersion",
+    "method": "dct:method",
+    "softwareVersion": "schema:softwareVersion",
+    "programmingLanguage": "schema:programmingLanguage",
+    "applicationPackage": {
+      "@id": "seadots:applicationPackage",
+      "@type": "@id"
+    },
+    "profileId": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "required": {
+      "@id": "seadots:required",
+      "@type": "xsd:boolean"
+    },
+    "role": "seadots:role",
     "code": "dct:identifier",
+    "roles": {
+      "@id": "dcat:hadRole",
+      "@container": "@set"
+    },
+    "organization": "schema:affiliation",
+    "interval": "dct:temporal",
+    "resolution": "dcat:temporalResolution",
     "concepts": {
       "@id": "skos:Concept",
       "@container": "@set"
@@ -263,17 +525,7 @@
     "scheme": "skos:inScheme",
     "label": "skos:prefLabel",
     "format": "dct:format",
-    "roles": {
-      "@id": "dcat:hadRole",
-      "@container": "@set"
-    },
-    "organization": "https://schema.org/affiliation",
-    "interval": "dct:temporal",
-    "resolution": "dcat:temporalResolution",
-    "href": {
-      "@type": "@id",
-      "@id": "oa:hasTarget"
-    },
+    "mediaType": "dct:format",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
@@ -290,8 +542,78 @@
     "prov": "http://www.w3.org/ns/prov#",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
+    "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "apkg": "https://w3id.org/apkg/terms/",
+    "seadotsReef": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
+    "softwareType": "dct:type",
+    "experiment": {
+      "@context": {
+        "kind": "seadotsReef:kind",
+        "purpose": "dct:purpose",
+        "application": {
+          "@id": "seadotsReef:application",
+          "@type": "@id"
+        },
+        "modelledBy": {
+          "@id": "seadotsReef:modelledBy",
+          "@type": "@id"
+        },
+        "evidenceEquation": {
+          "@id": "seadotsReef:evidenceEquation",
+          "@type": "@id"
+        },
+        "parameters": {
+          "@context": {
+            "parameterSchema": "seadotsReef:parameterSchema",
+            "vocabularyTerm": {
+              "@id": "skos:exactMatch",
+              "@type": "@id"
+            }
+          },
+          "@id": "seadotsReef:parameter",
+          "@container": "@set"
+        },
+        "inputs": {
+          "@context": {
+            "equationBinding": "seadotsReef:equationBinding"
+          },
+          "@id": "seadotsReef:input",
+          "@container": "@set"
+        },
+        "outputs": {
+          "@id": "seadotsReef:output",
+          "@container": "@set",
+          "@type": "@id"
+        },
+        "execution": {
+          "@context": {
+            "language": "dct:language",
+            "languageVersion": "seadotsReef:languageVersion",
+            "dependencies": {
+              "@id": "seadotsReef:dependency",
+              "@container": "@set"
+            },
+            "entrypoint": "seadotsReef:entrypoint",
+            "scheduling": "seadotsReef:scheduling",
+            "reproducibility": {
+              "@context": {
+                "seedPolicy": "seadotsReef:seedPolicy",
+                "provenance": "prov:wasGeneratedBy"
+              },
+              "@id": "seadotsReef:reproducibility"
+            }
+          },
+          "@id": "seadotsReef:execution"
+        },
+        "successCriteria": {
+          "@id": "seadotsReef:successCriterion",
+          "@container": "@set"
+        }
+      },
+      "@id": "seadotsReef:experiment"
+    },
     "@version": 1.1
   }
 }

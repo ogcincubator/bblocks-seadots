@@ -4,7 +4,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
 
-<https://w3id.org/ogc/hosted/seadots/catalog/application-package/reef-effect> a seadots:ApplicationPackage ;
+<file:///github/workspace/reef-effect> a apkg:ApplicationPackage ;
     dcterms:description "Minimal APKG/CWL package contract for the reef-effect biomass calculation." ;
     dcterms:title "Reef-effect CWL application package" ;
     schema:programmingLanguage "Python" ;
@@ -14,7 +14,9 @@
     apkg:outputs <file:///github/workspace/reefBiomassOutput> ;
     cwl:class "CommandLineTool" ;
     cwl:requirements [ cwl:class "DockerRequirement" ;
-            seadots:dockerPull "ghcr.io/seadots/reef-effect:0.1.0" ] .
+            seadots:dockerPull "ghcr.io/seadots/reef-effect:0.1.0" ] ;
+    seadots:baseCommand "reef-effect" ;
+    seadots:cwlVersion "v1.2" .
 
 <file:///github/workspace/areaOfInterest> a seadots:File ;
     dcterms:description "GeoJSON Feature describing the AOI." .

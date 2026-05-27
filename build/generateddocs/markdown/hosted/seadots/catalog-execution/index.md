@@ -3,7 +3,7 @@
 
 `ogc.hosted.seadots.catalog-execution` *v0.1*
 
-Generic OGC API Records and PROV-O profile for one concrete execution, experiment run, or digital twin run represented as links to catalog application, workflow, input, and output records.
+Generic OGC API Records and PROV-O profile for one concrete execution, experiment run, or digital twin run represented as links to workflow, input, and output records.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 
@@ -11,7 +11,7 @@ Generic OGC API Records and PROV-O profile for one concrete execution, experimen
 
 # SeaDOTs Catalog Execution
 
-An execution is one concrete experiment run: an instance of the same reusable workflow that links to the catalog application, workflow, input records, and output records using OGC API Records and PROV-O relations.
+An execution is one concrete experiment run: an instance of the same reusable workflow that links to the workflow, input records, and output records using OGC API Records and PROV-O relations.
 
 The execution record is intentionally light. It avoids repeating descriptive
 metadata that belongs in the linked records, so a run can be represented by its
@@ -35,6 +35,10 @@ dataset. No source properties are intentionally dropped.
 #### json
 ```json
 {
+  "@context": [
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "../context.jsonld"
+  ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
   "type": "Feature",
   "itemType": "record",
@@ -45,7 +49,6 @@ dataset. No source properties are intentionally dropped.
   "geometry": null,
   "properties": {
     "type": "Execution",
-    "application": "../../catalog-application/examples/application-record.json",
     "workflow": "../../catalog-workflow/examples/workflow.json",
     "inputRecords": [
       "../../catalog-input/examples/input-stac-item.json"
@@ -57,111 +60,21 @@ dataset. No source properties are intentionally dropped.
   "links": [
     {
       "rel": "related",
-      "href": "../../catalog-application/examples/application-record.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json",
       "type": "application/geo+json"
     },
     {
       "rel": "related",
-      "href": "../../catalog-workflow/examples/workflow.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-input/examples/input-stac-item.json",
       "type": "application/geo+json"
     },
     {
       "rel": "related",
-      "href": "../../catalog-input/examples/input-stac-item.json",
-      "type": "application/geo+json"
-    },
-    {
-      "rel": "related",
-      "href": "../../catalog-output/examples/output-stac-item.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-output/examples/output-stac-item.json",
       "type": "application/geo+json"
     }
   ]
 }
-
-```
-
-#### jsonld
-```jsonld
-{
-  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
-  "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
-  "type": "Feature",
-  "itemType": "record",
-  "conformsTo": [
-    "https://docs.ogc.org/is/20-004/20-004.html",
-    "http://www.w3.org/TR/prov-o/"
-  ],
-  "geometry": null,
-  "properties": {
-    "type": "Execution",
-    "application": "../../catalog-application/examples/application-record.json",
-    "workflow": "../../catalog-workflow/examples/workflow.json",
-    "inputRecords": [
-      "../../catalog-input/examples/input-stac-item.json"
-    ],
-    "outputRecords": [
-      "../../catalog-output/examples/output-stac-item.json"
-    ]
-  },
-  "links": [
-    {
-      "rel": "related",
-      "href": "../../catalog-application/examples/application-record.json",
-      "type": "application/geo+json"
-    },
-    {
-      "rel": "related",
-      "href": "../../catalog-workflow/examples/workflow.json",
-      "type": "application/geo+json"
-    },
-    {
-      "rel": "related",
-      "href": "../../catalog-input/examples/input-stac-item.json",
-      "type": "application/geo+json"
-    },
-    {
-      "rel": "related",
-      "href": "../../catalog-output/examples/output-stac-item.json",
-      "type": "application/geo+json"
-    }
-  ]
-}
-```
-
-#### ttl
-```ttl
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
-
-<https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a geojson:Feature ;
-    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
-        <https://docs.ogc.org/is/20-004/20-004.html> ;
-    dcterms:type "record" ;
-    ns1:relation <file:///catalog-application/examples/application-record.json>,
-        <file:///catalog-input/examples/input-stac-item.json>,
-        <file:///catalog-output/examples/output-stac-item.json>,
-        <file:///catalog-workflow/examples/workflow.json> ;
-    geojson:properties [ a seadots:Execution ;
-            prov:generated <file:///catalog-output/examples/output-stac-item.json> ;
-            prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
-            prov:used <file:///catalog-application/examples/application-record.json>,
-                <file:///catalog-input/examples/input-stac-item.json> ] .
-
-<file:///catalog-application/examples/application-record.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    ns1:relation "related" .
-
-<file:///catalog-input/examples/input-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    ns1:relation "related" .
-
-<file:///catalog-output/examples/output-stac-item.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    ns1:relation "related" .
-
-<file:///catalog-workflow/examples/workflow.json> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    ns1:relation "related" .
-
 
 ```
 
@@ -175,63 +88,40 @@ description: 'OGC API Records profile for a concrete workflow execution or exper
 
   '
 allOf:
-- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records-prov/schema.yaml
 type: object
-required:
-- id
-- type
-- itemType
-- properties
 properties:
-  id:
-    type: string
-    x-jsonld-id: '@id'
+  '@context':
+    oneOf:
+    - type: string
+      format: uri-reference
+    - type: object
+    - type: array
+      items:
+        oneOf:
+        - type: string
+          format: uri-reference
+        - type: object
   type:
     const: Feature
     x-jsonld-id: '@type'
   itemType:
     const: record
-    x-jsonld-id: http://purl.org/dc/terms/type
-  conformsTo:
-    type: array
-    items:
-      type: string
-      format: uri
-    x-jsonld-id: http://purl.org/dc/terms/conformsTo
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@set'
-  geometry:
-    type:
-    - object
-    - 'null'
-    x-jsonld-id: https://purl.org/geojson/vocab#geometry
-  bbox:
-    type: array
-    items:
-      type: number
-    x-jsonld-id: https://purl.org/geojson/vocab#bbox
   properties:
     type: object
     required:
     - type
     - workflow
-    - application
     - inputRecords
     - outputRecords
     properties:
       type:
         const: Execution
         x-jsonld-id: '@type'
-      application:
-        type: string
-        format: uri-reference
-        description: Relative or absolute reference to the catalog application record.
-        x-jsonld-id: http://www.w3.org/ns/prov#used
-        x-jsonld-type: '@id'
       workflow:
         type: string
         format: uri-reference
-        description: Relative or absolute reference to the workflow plan record instantiated
+        description: Relative or absolute reference to the workflow record instantiated
           by this execution.
         x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
         x-jsonld-type: '@id'
@@ -258,8 +148,8 @@ properties:
           type: string
           format: uri-reference
         x-jsonld-id: http://www.w3.org/ns/prov#used
-        x-jsonld-type: '@id'
         x-jsonld-container: '@set'
+        x-jsonld-type: '@id'
       outputRecords:
         type: array
         minItems: 1
@@ -267,124 +157,418 @@ properties:
           type: string
           format: uri-reference
         x-jsonld-id: http://www.w3.org/ns/prov#generated
-        x-jsonld-type: '@id'
         x-jsonld-container: '@set'
+        x-jsonld-type: '@id'
     additionalProperties: true
-    x-jsonld-id: https://purl.org/geojson/vocab#properties
-  links:
-    type: array
-    items:
-      type: object
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
-        href:
-          type: string
-          format: uri-reference
-          x-jsonld-id: '@id'
-        type:
-          type: string
-          x-jsonld-id: '@type'
-        title:
-          type: string
-          x-jsonld-id: http://purl.org/dc/terms/title
-    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
-    x-jsonld-container: '@set'
+    x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
-  coordinates: https://purl.org/geojson/vocab#coordinates
-  name: http://purl.org/dc/terms/title
-  description: http://purl.org/dc/terms/description
-  keywords:
-    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+  FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection
+  GeometryCollection: https://purl.org/geojson/vocab#GeometryCollection
+  LineString: https://purl.org/geojson/vocab#LineString
+  MultiLineString: https://purl.org/geojson/vocab#MultiLineString
+  MultiPoint: https://purl.org/geojson/vocab#MultiPoint
+  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon
+  Point: https://purl.org/geojson/vocab#Point
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  features:
     x-jsonld-container: '@set'
-  themes:
-    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-id: https://purl.org/geojson/vocab#features
+  id: '@id'
+  geometry:
+    x-jsonld-context:
+      coordinates:
+        '@container': '@list'
+        '@id': https://purl.org/geojson/vocab#coordinates
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  bbox:
+    x-jsonld-container: '@list'
+    x-jsonld-id: https://purl.org/geojson/vocab#bbox
+  links:
+    x-jsonld-context:
+      rel:
+        '@context':
+          '@base': http://www.iana.org/assignments/relation/
+        '@id': http://www.iana.org/assignments/relation
+        '@type': '@id'
+      type: http://purl.org/dc/terms/type
+      hreflang: http://purl.org/dc/terms/language
+      title: http://www.w3.org/2000/01/rdf-schema#label
+      length: http://purl.org/dc/terms/extent
+    x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#seeAlso
+  conformsTo:
     x-jsonld-container: '@set'
-  license:
-    x-jsonld-id: http://purl.org/dc/terms/license
-    x-jsonld-type: '@id'
-  created:
-    x-jsonld-id: http://purl.org/dc/terms/created
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  updated:
-    x-jsonld-id: http://purl.org/dc/terms/modified
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  applicationCategory: https://schema.org/applicationCategory
-  softwareVersion: https://schema.org/softwareVersion
-  programmingLanguage: https://schema.org/programmingLanguage
-  applicationPackage:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
-    x-jsonld-type: '@id'
-  inputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/inputs
-    x-jsonld-container: '@set'
-  outputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/outputs
-    x-jsonld-container: '@set'
-  profileId:
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
-  required:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
-  class: https://w3id.org/cwl/cwl#class
-  requirements:
-    x-jsonld-id: https://w3id.org/cwl/cwl#requirements
+  time: http://purl.org/dc/terms/temporal
+  linkTemplates:
+    x-jsonld-context:
+      rel:
+        '@context':
+          '@base': http://www.iana.org/assignments/relation/
+        '@id': http://www.iana.org/assignments/relation
+        '@type': '@id'
+      type: http://purl.org/dc/terms/format
+      hreflang: http://purl.org/dc/terms/language
+      title: http://www.w3.org/2000/01/rdf-schema#label
+      length: http://purl.org/dc/terms/extent
+      uriTemplate:
+        '@type': http://www.w3.org/2001/XMLSchema#string
+        '@id': https://www.opengis.net/def/ogc-api/records/uriTemplate
+      varBase: https://www.opengis.net/def/ogc-api/records/varBase
+      variables:
+        '@id': https://www.opengis.net/def/ogc-api/records/hasVariable
+        '@container': '@index'
+        '@index': http://purl.org/dc/terms/identifier
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/hasLinkTemplate
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  title:
     x-jsonld-container: '@set'
-  version: http://purl.org/dc/terms/hasVersion
-  method: http://purl.org/dc/terms/method
-  timeBoundaryStart:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryStart
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
-  timeBoundaryEnd:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryEnd
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
-  activity:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#activity
-    x-jsonld-type: '@id'
-  agent:
-    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith
-    x-jsonld-type: '@id'
-  configuration: https://w3id.org/ogc/hosted/seadots/catalog#configuration
-  containerImage: https://w3id.org/ogc/hosted/seadots/catalog#containerImage
-  stac_version: https://stacspec.org/vocab#stac_version
-  collection:
-    x-jsonld-id: http://purl.org/dc/terms/isPartOf
-    x-jsonld-type: '@id'
-  datetime:
-    x-jsonld-id: http://purl.org/dc/terms/date
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  convention: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
-  cf:parameter:
-    x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
+    x-jsonld-id: http://purl.org/dc/terms/title
+  description:
     x-jsonld-container: '@set'
-  unit: http://purl.org/dc/terms/format
-  assets: https://stacspec.org/vocab#assets
-  data: https://stacspec.org/vocab#data
-  derivedFrom:
+    x-jsonld-id: http://purl.org/dc/terms/description
+  keywords:
+    x-jsonld-container: '@set'
+    x-jsonld-id: http://www.w3.org/ns/dcat#keyword
+  language:
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/language
+    x-jsonld-context:
+      code: https://www.opengis.net/def/ogc-api/records/languageCode
+      name: http://www.w3.org/2004/02/skos/core#prefLabel
+  languages:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/languages
+    x-jsonld-context:
+      code: https://www.opengis.net/def/ogc-api/records/languageCode
+      name: http://www.w3.org/2004/02/skos/core#prefLabel
+  resourceLanguages:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/resourceLanguages
+    x-jsonld-context:
+      code: https://www.opengis.net/def/ogc-api/records/languageCode
+      name: http://www.w3.org/2004/02/skos/core#prefLabel
+  externalIds:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/scopedIdentifier
+    x-jsonld-context:
+      scheme: https://www.opengis.net/def/ogc-api/records/scheme
+      value: https://www.opengis.net/def/ogc-api/records/id
+  themes:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/themes
+    x-jsonld-context:
+      concepts:
+        '@id': https://w3id.org/ogc/stac/themes/concepts
+        '@context':
+          id:
+            '@type': http://www.w3.org/2001/XMLSchema#string
+            '@id': https://w3id.org/ogc/stac/themes/id
+          url:
+            '@type': '@id'
+            '@id': '@id'
+        '@container': '@set'
+      scheme: https://w3id.org/ogc/stac/themes/scheme
+  formats:
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/format
+    x-jsonld-context:
+      name: https://www.opengis.net/def/ogc-api/records/name
+      mediaType: https://www.opengis.net/def/ogc-api/records/mediaType
+    x-jsonld-container: '@set'
+    x-jsonld-type: '@id'
+  contacts:
+    x-jsonld-container: '@set'
+    x-jsonld-id: http://www.w3.org/ns/dcat#contactPoint
+    x-jsonld-type: '@id'
+  license: http://www.w3.org/ns/dcat#license
+  accessrights: http://purl.org/dc/terms/accessRights
+  variables:
+    x-jsonld-container: '@id'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/hasVariable
+    x-jsonld-context:
+      '@base': http://example.com/variables/
+      '@vocab': https://www.opengis.net/def/ogc-api/records/
+  wasInfluencedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasInfluencedBy
+    x-jsonld-type: '@id'
+  qualifiedInfluence:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedInfluence
+    x-jsonld-type: '@id'
+  hadMember:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadMember
+    x-jsonld-type: '@id'
+  provType: '@type'
+  featureType: '@type'
+  entityType: '@type'
+  has_provenance:
+    x-jsonld-id: http://purl.org/dc/terms/provenance
+    x-jsonld-type: '@id'
+  wasGeneratedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
+    x-jsonld-type: '@id'
+  wasAttributedTo:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasAttributedTo
+    x-jsonld-type: '@id'
+  wasDerivedFrom:
     x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
     x-jsonld-type: '@id'
-    x-jsonld-container: '@set'
-  role: https://w3id.org/ogc/hosted/seadots/catalog#role
-  mediaType: http://purl.org/dc/terms/format
-  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
+  alternateOf:
+    x-jsonld-id: http://www.w3.org/ns/prov#alternateOf
+    x-jsonld-type: '@id'
+  hadPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadPrimarySource
+    x-jsonld-type: '@id'
+  specializationOf:
+    x-jsonld-id: http://www.w3.org/ns/prov#specializationOf
+    x-jsonld-type: '@id'
+  wasInvalidatedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasInvalidatedBy
+    x-jsonld-type: '@id'
+  wasQuotedFrom:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasQuotedFrom
+    x-jsonld-type: '@id'
+  wasRevisionOf:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
+    x-jsonld-type: '@id'
+  atLocation:
+    x-jsonld-id: http://www.w3.org/ns/prov#atLocation
+    x-jsonld-type: '@id'
+  qualifiedGeneration:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedGeneration
+    x-jsonld-type: '@id'
+  qualifiedInvalidation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedInvalidation
+    x-jsonld-type: '@id'
+  qualifiedDerivation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedDerivation
+    x-jsonld-type: '@id'
+  qualifiedAttribution:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedAttribution
+    x-jsonld-type: '@id'
+  activityType: '@type'
+  agentType: '@type'
+  Activity: http://www.w3.org/ns/prov#Activity
+  ActivityInfluence: http://www.w3.org/ns/prov#ActivityInfluence
+  Agent: http://www.w3.org/ns/prov#Agent
+  AgentInfluence: http://www.w3.org/ns/prov#AgentInfluence
+  Association: http://www.w3.org/ns/prov#Association
+  Attribution: http://www.w3.org/ns/prov#Attribution
+  Bundle: http://www.w3.org/ns/prov#Bundle
+  Collection: http://www.w3.org/ns/prov#Collection
+  Communication: http://www.w3.org/ns/prov#Communication
+  Delegation: http://www.w3.org/ns/prov#Delegation
+  Derivation: http://www.w3.org/ns/prov#Derivation
+  EmptyCollection: http://www.w3.org/ns/prov#EmptyCollection
+  End: http://www.w3.org/ns/prov#End
+  Entity: http://www.w3.org/ns/prov#Entity
+  EntityInfluence: http://www.w3.org/ns/prov#EntityInfluence
+  Generation: http://www.w3.org/ns/prov#Generation
+  Influence: http://www.w3.org/ns/prov#Influence
+  InstantaneousEvent: http://www.w3.org/ns/prov#InstantaneousEvent
+  Invalidation: http://www.w3.org/ns/prov#Invalidation
+  Location: http://www.w3.org/ns/prov#Location
+  Organization: http://www.w3.org/ns/prov#Organization
+  Person: http://www.w3.org/ns/prov#Person
+  Plan: http://www.w3.org/ns/prov#Plan
+  PrimarySource: http://www.w3.org/ns/prov#PrimarySource
+  Quotation: http://www.w3.org/ns/prov#Quotation
+  Revision: http://www.w3.org/ns/prov#Revision
+  Role: http://www.w3.org/ns/prov#Role
+  SoftwareAgent: http://www.w3.org/ns/prov#SoftwareAgent
+  Start: http://www.w3.org/ns/prov#Start
+  Usage: http://www.w3.org/ns/prov#Usage
+  ServiceDescription: http://www.w3.org/ns/prov#ServiceDescription
+  DirectQueryService: http://www.w3.org/ns/prov#DirectQueryService
+  Accept: http://www.w3.org/ns/prov#Accept
+  Contribute: http://www.w3.org/ns/prov#Contribute
+  Contributor: http://www.w3.org/ns/prov#Contributor
+  Copyright: http://www.w3.org/ns/prov#Copyright
+  Create: http://www.w3.org/ns/prov#Create
+  Creator: http://www.w3.org/ns/prov#Creator
+  Modify: http://www.w3.org/ns/prov#Modify
+  Publish: http://www.w3.org/ns/prov#Publish
+  Publisher: http://www.w3.org/ns/prov#Publisher
+  Replace: http://www.w3.org/ns/prov#Replace
+  RightsAssignment: http://www.w3.org/ns/prov#RightsAssignment
+  RightsHolder: http://www.w3.org/ns/prov#RightsHolder
+  Submit: http://www.w3.org/ns/prov#Submit
+  Dictionary: http://www.w3.org/ns/prov#Dictionary
+  EmptyDictionary: http://www.w3.org/ns/prov#EmptyDictionary
+  KeyEntityPair: http://www.w3.org/ns/prov#KeyEntityPair
+  Insertion: http://www.w3.org/ns/prov#Insertion
+  Removal: http://www.w3.org/ns/prov#Removal
+  atTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#atTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  endedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  startedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.w3.org/ns/prov#value
+  provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
+  pairKey:
+    x-jsonld-id: http://www.w3.org/ns/prov#pairKey
+    x-jsonld-type: http://www.w3.org/2000/01/rdf-schema#Literal
+  removedKey:
+    x-jsonld-id: http://www.w3.org/ns/prov#removedKey
+    x-jsonld-type: http://www.w3.org/2000/01/rdf-schema#Literal
+  actedOnBehalfOf:
+    x-jsonld-id: http://www.w3.org/ns/prov#actedOnBehalfOf
+    x-jsonld-type: '@id'
+  agent:
+    x-jsonld-id: http://www.w3.org/ns/prov#agent
+    x-jsonld-type: '@id'
+  entity:
+    x-jsonld-id: http://www.w3.org/ns/prov#entity
+    x-jsonld-type: '@id'
+  generated:
+    x-jsonld-id: http://www.w3.org/ns/prov#generated
+    x-jsonld-type: '@id'
+  hadActivity:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadActivity
+    x-jsonld-type: '@id'
+  activity:
+    x-jsonld-id: http://www.w3.org/ns/prov#activity
+    x-jsonld-type: '@id'
+  hadGeneration:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadGeneration
+    x-jsonld-type: '@id'
+  hadPlan:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
+    x-jsonld-type: '@id'
+  hadRole:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadRole
+    x-jsonld-type: '@id'
+  hadUsage:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadUsage
+    x-jsonld-type: '@id'
+  influenced:
+    x-jsonld-id: http://www.w3.org/ns/prov#influenced
+    x-jsonld-type: '@id'
+  influencer:
+    x-jsonld-id: http://www.w3.org/ns/prov#influencer
+    x-jsonld-type: '@id'
+  invalidated:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidated
+    x-jsonld-type: '@id'
+  qualifiedAssociation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedAssociation
+    x-jsonld-type: '@id'
+  qualifiedCommunication:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedCommunication
+    x-jsonld-type: '@id'
+  qualifiedDelegation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedDelegation
+    x-jsonld-type: '@id'
+  qualifiedEnd:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
+    x-jsonld-type: '@id'
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
+    x-jsonld-type: '@id'
+  qualifiedStart:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
+    x-jsonld-type: '@id'
+  qualifiedUsage:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedUsage
+    x-jsonld-type: '@id'
+  used:
+    x-jsonld-id: http://www.w3.org/ns/prov#used
+    x-jsonld-type: '@id'
+  wasAssociatedWith:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith
+    x-jsonld-type: '@id'
+  wasEndedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasEndedBy
+    x-jsonld-type: '@id'
+  wasInformedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasInformedBy
+    x-jsonld-type: '@id'
+  wasStartedBy:
+    x-jsonld-id: http://www.w3.org/ns/prov#wasStartedBy
+    x-jsonld-type: '@id'
+  has_anchor:
+    x-jsonld-id: http://www.w3.org/ns/prov#has_anchor
+    x-jsonld-type: '@id'
+  has_query_service:
+    x-jsonld-id: http://www.w3.org/ns/prov#has_query_service
+    x-jsonld-type: '@id'
+  describesService:
+    x-jsonld-id: http://www.w3.org/ns/prov#describesService
+    x-jsonld-type: '@id'
+  pingback:
+    x-jsonld-id: http://www.w3.org/ns/prov#pingback
+    x-jsonld-type: '@id'
+  dictionary:
+    x-jsonld-id: http://www.w3.org/ns/prov#dictionary
+    x-jsonld-type: '@id'
+  derivedByInsertionFrom:
+    x-jsonld-id: http://www.w3.org/ns/prov#derivedByInsertionFrom
+    x-jsonld-type: '@id'
+  derivedByRemovalFrom:
+    x-jsonld-id: http://www.w3.org/ns/prov#derivedByRemovalFrom
+    x-jsonld-type: '@id'
+  insertedKeyEntityPair:
+    x-jsonld-id: http://www.w3.org/ns/prov#insertedKeyEntityPair
+    x-jsonld-type: '@id'
+  hadDictionaryMember:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadDictionaryMember
+    x-jsonld-type: '@id'
+  pairEntity:
+    x-jsonld-id: http://www.w3.org/ns/prov#pairEntity
+    x-jsonld-type: '@id'
+  qualifiedInsertion:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedInsertion
+    x-jsonld-type: '@id'
+  qualifiedRemoval:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRemoval
+    x-jsonld-type: '@id'
+  asInBundle:
+    x-jsonld-id: http://www.w3.org/ns/prov#asInBundle
+    x-jsonld-type: '@id'
+  mentionOf:
+    x-jsonld-id: http://www.w3.org/ns/prov#mentionOf
+    x-jsonld-type: '@id'
+  name: http://www.w3.org/2000/01/rdf-schema#label
+  href:
+    x-jsonld-type: '@id'
+    x-jsonld-id: http://www.w3.org/ns/oa#hasTarget
+  rights: http://www.w3.org/ns/dcat#rights
+  Execution: http://www.w3.org/ns/prov#Activity
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  dcterms: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dct: http://purl.org/dc/terms/
+  rec: https://www.opengis.net/def/ogc-api/records/
+  xsd: http://www.w3.org/2001/XMLSchema#
   dcat: http://www.w3.org/ns/dcat#
-  schema: https://schema.org/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  skos: http://www.w3.org/2004/02/skos/core#
+  thns: https://w3id.org/ogc/stac/themes/
   prov: http://www.w3.org/ns/prov#
-  apkg: https://w3id.org/apkg/terms/
-  cwl: https://w3id.org/cwl/cwl#
-  stac: https://stacspec.org/vocab#
-  cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
+  oa: http://www.w3.org/ns/oa#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  w3ctime: http://www.w3.org/2006/time#
+  dctype: http://purl.org/dc/dcmitype/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  foaf: http://xmlns.com/foaf/0.1/
 
 ```
 
@@ -415,39 +599,7 @@ Links to the schema:
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "application": {
-          "@id": "prov:used",
-          "@type": "@id"
-        },
-        "workflow": {
-          "@id": "prov:hadPlan",
-          "@type": "@id"
-        },
-        "startTime": {
-          "@id": "prov:startedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "endTime": {
-          "@id": "prov:endedAtTime",
-          "@type": "xsd:dateTime"
-        },
-        "status": "seadots:status",
-        "parameters": "seadots:parameters",
-        "inputRecords": {
-          "@id": "prov:used",
-          "@type": "@id",
-          "@container": "@set"
-        },
-        "outputRecords": {
-          "@id": "prov:generated",
-          "@type": "@id",
-          "@container": "@set"
-        }
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": {
       "@context": {
         "coordinates": {
@@ -463,11 +615,19 @@ Links to the schema:
     },
     "links": {
       "@context": {
-        "rel": "http://www.w3.org/ns/iana/link-relations/relation",
-        "href": "@id"
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
       },
-      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
-      "@container": "@set"
+      "@id": "rdfs:seeAlso"
     },
     "conformsTo": {
       "@container": "@set",
@@ -587,86 +747,334 @@ Links to the schema:
         "@vocab": "https://www.opengis.net/def/ogc-api/records/"
       }
     },
-    "coordinates": "geojson:coordinates",
-    "name": "dct:title",
-    "applicationCategory": "schema:applicationCategory",
-    "softwareVersion": "schema:softwareVersion",
-    "programmingLanguage": "schema:programmingLanguage",
-    "applicationPackage": {
-      "@id": "seadots:applicationPackage",
+    "wasInfluencedBy": {
+      "@id": "prov:wasInfluencedBy",
       "@type": "@id"
     },
-    "inputs": {
-      "@id": "apkg:inputs",
-      "@container": "@set"
-    },
-    "outputs": {
-      "@id": "apkg:outputs",
-      "@container": "@set"
-    },
-    "profileId": {
-      "@id": "dct:conformsTo",
+    "qualifiedInfluence": {
+      "@id": "prov:qualifiedInfluence",
       "@type": "@id"
     },
-    "required": {
-      "@id": "seadots:requiredInput",
-      "@type": "xsd:boolean"
+    "hadMember": {
+      "@id": "prov:hadMember",
+      "@type": "@id"
     },
-    "class": "cwl:class",
-    "requirements": {
-      "@id": "cwl:requirements",
-      "@container": "@set"
+    "provType": "@type",
+    "featureType": "@type",
+    "entityType": "@type",
+    "has_provenance": {
+      "@id": "dct:provenance",
+      "@type": "@id"
     },
-    "version": "dct:hasVersion",
-    "method": "dct:method",
-    "timeBoundaryStart": {
-      "@id": "seadots:timeBoundaryStart",
-      "@type": "xsd:date"
+    "wasGeneratedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
     },
-    "timeBoundaryEnd": {
-      "@id": "seadots:timeBoundaryEnd",
-      "@type": "xsd:date"
+    "wasAttributedTo": {
+      "@id": "prov:wasAttributedTo",
+      "@type": "@id"
     },
-    "activity": {
-      "@id": "seadots:activity",
+    "wasDerivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "alternateOf": {
+      "@id": "prov:alternateOf",
+      "@type": "@id"
+    },
+    "hadPrimarySource": {
+      "@id": "prov:hadPrimarySource",
+      "@type": "@id"
+    },
+    "specializationOf": {
+      "@id": "prov:specializationOf",
+      "@type": "@id"
+    },
+    "wasInvalidatedBy": {
+      "@id": "prov:wasInvalidatedBy",
+      "@type": "@id"
+    },
+    "wasQuotedFrom": {
+      "@id": "prov:wasQuotedFrom",
+      "@type": "@id"
+    },
+    "wasRevisionOf": {
+      "@id": "prov:wasRevisionOf",
+      "@type": "@id"
+    },
+    "atLocation": {
+      "@id": "prov:atLocation",
+      "@type": "@id"
+    },
+    "qualifiedGeneration": {
+      "@id": "prov:qualifiedGeneration",
+      "@type": "@id"
+    },
+    "qualifiedInvalidation": {
+      "@id": "prov:qualifiedInvalidation",
+      "@type": "@id"
+    },
+    "qualifiedDerivation": {
+      "@id": "prov:qualifiedDerivation",
+      "@type": "@id"
+    },
+    "qualifiedAttribution": {
+      "@id": "prov:qualifiedAttribution",
+      "@type": "@id"
+    },
+    "activityType": "@type",
+    "agentType": "@type",
+    "Activity": "prov:Activity",
+    "ActivityInfluence": "prov:ActivityInfluence",
+    "Agent": "prov:Agent",
+    "AgentInfluence": "prov:AgentInfluence",
+    "Association": "prov:Association",
+    "Attribution": "prov:Attribution",
+    "Bundle": "prov:Bundle",
+    "Collection": "prov:Collection",
+    "Communication": "prov:Communication",
+    "Delegation": "prov:Delegation",
+    "Derivation": "prov:Derivation",
+    "EmptyCollection": "prov:EmptyCollection",
+    "End": "prov:End",
+    "Entity": "prov:Entity",
+    "EntityInfluence": "prov:EntityInfluence",
+    "Generation": "prov:Generation",
+    "Influence": "prov:Influence",
+    "InstantaneousEvent": "prov:InstantaneousEvent",
+    "Invalidation": "prov:Invalidation",
+    "Location": "prov:Location",
+    "Organization": "prov:Organization",
+    "Person": "prov:Person",
+    "Plan": "prov:Plan",
+    "PrimarySource": "prov:PrimarySource",
+    "Quotation": "prov:Quotation",
+    "Revision": "prov:Revision",
+    "Role": "prov:Role",
+    "SoftwareAgent": "prov:SoftwareAgent",
+    "Start": "prov:Start",
+    "Usage": "prov:Usage",
+    "ServiceDescription": "prov:ServiceDescription",
+    "DirectQueryService": "prov:DirectQueryService",
+    "Accept": "prov:Accept",
+    "Contribute": "prov:Contribute",
+    "Contributor": "prov:Contributor",
+    "Copyright": "prov:Copyright",
+    "Create": "prov:Create",
+    "Creator": "prov:Creator",
+    "Modify": "prov:Modify",
+    "Publish": "prov:Publish",
+    "Publisher": "prov:Publisher",
+    "Replace": "prov:Replace",
+    "RightsAssignment": "prov:RightsAssignment",
+    "RightsHolder": "prov:RightsHolder",
+    "Submit": "prov:Submit",
+    "Dictionary": "prov:Dictionary",
+    "EmptyDictionary": "prov:EmptyDictionary",
+    "KeyEntityPair": "prov:KeyEntityPair",
+    "Insertion": "prov:Insertion",
+    "Removal": "prov:Removal",
+    "atTime": {
+      "@id": "prov:atTime",
+      "@type": "xsd:dateTime"
+    },
+    "endedAtTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "invalidatedAtTime": {
+      "@id": "prov:invalidatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "value": "prov:value",
+    "provenanceUriTemplate": "prov:provenanceUriTemplate",
+    "pairKey": {
+      "@id": "prov:pairKey",
+      "@type": "rdfs:Literal"
+    },
+    "removedKey": {
+      "@id": "prov:removedKey",
+      "@type": "rdfs:Literal"
+    },
+    "actedOnBehalfOf": {
+      "@id": "prov:actedOnBehalfOf",
       "@type": "@id"
     },
     "agent": {
+      "@id": "prov:agent",
+      "@type": "@id"
+    },
+    "entity": {
+      "@id": "prov:entity",
+      "@type": "@id"
+    },
+    "generated": {
+      "@id": "prov:generated",
+      "@type": "@id"
+    },
+    "hadActivity": {
+      "@id": "prov:hadActivity",
+      "@type": "@id"
+    },
+    "activity": {
+      "@id": "prov:activity",
+      "@type": "@id"
+    },
+    "hadGeneration": {
+      "@id": "prov:hadGeneration",
+      "@type": "@id"
+    },
+    "hadPlan": {
+      "@id": "prov:hadPlan",
+      "@type": "@id"
+    },
+    "hadRole": {
+      "@id": "prov:hadRole",
+      "@type": "@id"
+    },
+    "hadUsage": {
+      "@id": "prov:hadUsage",
+      "@type": "@id"
+    },
+    "influenced": {
+      "@id": "prov:influenced",
+      "@type": "@id"
+    },
+    "influencer": {
+      "@id": "prov:influencer",
+      "@type": "@id"
+    },
+    "invalidated": {
+      "@id": "prov:invalidated",
+      "@type": "@id"
+    },
+    "qualifiedAssociation": {
+      "@id": "prov:qualifiedAssociation",
+      "@type": "@id"
+    },
+    "qualifiedCommunication": {
+      "@id": "prov:qualifiedCommunication",
+      "@type": "@id"
+    },
+    "qualifiedDelegation": {
+      "@id": "prov:qualifiedDelegation",
+      "@type": "@id"
+    },
+    "qualifiedEnd": {
+      "@id": "prov:qualifiedEnd",
+      "@type": "@id"
+    },
+    "qualifiedPrimarySource": {
+      "@id": "prov:qualifiedPrimarySource",
+      "@type": "@id"
+    },
+    "qualifiedQuotation": {
+      "@id": "prov:qualifiedQuotation",
+      "@type": "@id"
+    },
+    "qualifiedRevision": {
+      "@id": "prov:qualifiedRevision",
+      "@type": "@id"
+    },
+    "qualifiedStart": {
+      "@id": "prov:qualifiedStart",
+      "@type": "@id"
+    },
+    "qualifiedUsage": {
+      "@id": "prov:qualifiedUsage",
+      "@type": "@id"
+    },
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "wasAssociatedWith": {
       "@id": "prov:wasAssociatedWith",
       "@type": "@id"
     },
-    "configuration": "seadots:configuration",
-    "containerImage": "seadots:containerImage",
-    "stac_version": "stac:stac_version",
-    "collection": {
-      "@id": "dct:isPartOf",
+    "wasEndedBy": {
+      "@id": "prov:wasEndedBy",
       "@type": "@id"
     },
-    "datetime": {
-      "@id": "dct:date",
-      "@type": "xsd:dateTime"
+    "wasInformedBy": {
+      "@id": "prov:wasInformedBy",
+      "@type": "@id"
     },
-    "convention": "seadots:metadataConvention",
-    "cf:parameter": {
-      "@id": "cf:parameter",
-      "@container": "@set"
+    "wasStartedBy": {
+      "@id": "prov:wasStartedBy",
+      "@type": "@id"
     },
-    "unit": "dct:format",
-    "assets": "stac:assets",
-    "data": "stac:data",
-    "derivedFrom": {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "@id",
-      "@container": "@set"
+    "has_anchor": {
+      "@id": "prov:has_anchor",
+      "@type": "@id"
     },
-    "role": "seadots:role",
-    "mediaType": "dct:format",
-    "dockerPull": "seadots:dockerPull",
-    "itemType": "dct:type",
+    "has_query_service": {
+      "@id": "prov:has_query_service",
+      "@type": "@id"
+    },
+    "describesService": {
+      "@id": "prov:describesService",
+      "@type": "@id"
+    },
+    "pingback": {
+      "@id": "prov:pingback",
+      "@type": "@id"
+    },
+    "dictionary": {
+      "@id": "prov:dictionary",
+      "@type": "@id"
+    },
+    "derivedByInsertionFrom": {
+      "@id": "prov:derivedByInsertionFrom",
+      "@type": "@id"
+    },
+    "derivedByRemovalFrom": {
+      "@id": "prov:derivedByRemovalFrom",
+      "@type": "@id"
+    },
+    "insertedKeyEntityPair": {
+      "@id": "prov:insertedKeyEntityPair",
+      "@type": "@id"
+    },
+    "hadDictionaryMember": {
+      "@id": "prov:hadDictionaryMember",
+      "@type": "@id"
+    },
+    "pairEntity": {
+      "@id": "prov:pairEntity",
+      "@type": "@id"
+    },
+    "qualifiedInsertion": {
+      "@id": "prov:qualifiedInsertion",
+      "@type": "@id"
+    },
+    "qualifiedRemoval": {
+      "@id": "prov:qualifiedRemoval",
+      "@type": "@id"
+    },
+    "asInBundle": {
+      "@id": "prov:asInBundle",
+      "@type": "@id"
+    },
+    "mentionOf": {
+      "@id": "prov:mentionOf",
+      "@type": "@id"
+    },
+    "name": "rdfs:label",
     "href": {
       "@type": "@id",
       "@id": "oa:hasTarget"
     },
+    "rights": "dcat:rights",
+    "Execution": "prov:Activity",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
@@ -683,13 +1091,31 @@ Links to the schema:
     "prov": "http://www.w3.org/ns/prov#",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
-    "apkg": "https://w3id.org/apkg/terms/",
-    "cwl": "https://w3id.org/cwl/cwl#",
-    "stac": "https://stacspec.org/vocab#",
-    "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
+    "workflow": {
+      "@id": "prov:hadPlan",
+      "@type": "@id"
+    },
+    "startTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "status": "seadots:status",
+    "parameters": "seadots:parameters",
+    "inputRecords": {
+      "@id": "prov:used",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "outputRecords": {
+      "@id": "prov:generated",
+      "@container": "@set",
+      "@type": "@id"
+    },
     "@version": 1.1
   }
 }

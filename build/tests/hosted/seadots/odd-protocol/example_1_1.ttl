@@ -17,7 +17,11 @@
     dcterms:modified "2020-03-31" ;
     dcterms:temporal [ ] ;
     dcterms:title "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism" ;
-    rdfs:seeAlso [ rdfs:label "DOI" ;
+    rdfs:seeAlso [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
+        [ rdfs:label "DOI" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
@@ -25,6 +29,10 @@
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
             oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
+        [ rdfs:label "Supplement S2 — Summary ODD templates" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
         [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -32,15 +40,7 @@
         [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
-        [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
-        [ rdfs:label "Supplement S2 — Summary ODD templates" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ] ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -90,14 +90,14 @@
                         odd:parameterization "All parameters must be listed with: symbol, description, value, unit, source (empirical data, literature, or calibration). Calibrated parameters must reference Supplement S7 for experiment design." ] ) ] ;
     rec:format [ rec:mediaType "text/html" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:scopedIdentifier [ rec:id "10.18564/jasss.4259" ;
-            rec:scheme "doi" ],
-        [ rec:id "1460-7425" ;
-            rec:scheme "issn" ] ;
-    rec:themes [ thns:concepts [ thns:id "protocol"^^xsd:string ],
-                [ thns:id "model-documentation"^^xsd:string ],
+    rec:scopedIdentifier [ rec:id "1460-7425" ;
+            rec:scheme "issn" ],
+        [ rec:id "10.18564/jasss.4259" ;
+            rec:scheme "doi" ] ;
+    rec:themes [ thns:concepts [ thns:id "individual-based-model"^^xsd:string ],
+                [ thns:id "simulation"^^xsd:string ],
                 [ thns:id "agent-based-model"^^xsd:string ],
-                [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "simulation"^^xsd:string ] ;
+                [ thns:id "protocol"^^xsd:string ],
+                [ thns:id "model-documentation"^^xsd:string ] ;
             thns:scheme "https://vocabularies.jasss.org/themes" ] .
 

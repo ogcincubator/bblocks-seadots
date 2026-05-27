@@ -1,39 +1,50 @@
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
-@prefix schema: <https://schema.org/> .
+@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
-@prefix stac: <https://stacspec.org/vocab#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/aoi-utsira> a geojson:Feature ;
-    dcterms:isPartOf <file:///github/workspace/seadots-inputs> ;
-    ns1:relation <bblocks://ogc.hosted.seadots.catalog-input> ;
-    geojson:bbox 4.7e+00,
-        5e+00,
-        5.91e+01,
-        5.94e+01 ;
-    geojson:geometry [ a seadots:Polygon ;
-            geojson:coordinates "[4.7, 59.1]",
-                "[4.7, 59.4]",
-                "[5.0, 59.1]",
-                "[5.0, 59.4]" ] ;
-    geojson:properties [ dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
-            dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
-            dcterms:title "Utsira area of interest" ;
-            cf:parameter [ dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
-                    dcterms:format "m2" ;
-                    dcterms:title "area" ;
-                    schema: "http://vocab.nerc.ac.uk/standard_name/" ] ;
-            seadots:metadataConvention "CF-1.10" ;
-            seadots:role "input" ] ;
-    stac:assets [ stac:data <https://example.org/seadots/inputs/aoi-utsira.geojson> ] ;
-    stac:stac_version "1.0.0" .
-
-<bblocks://ogc.hosted.seadots.catalog-input> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;
-    ns1:relation "describedby" .
-
-<https://example.org/seadots/inputs/aoi-utsira.geojson> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    dcterms:title "AOI GeoJSON" .
+    dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
+    dcterms:title "Utsira area of interest" ;
+    rdfs:seeAlso [ rdfs:label "Utsira surroundings AOI" ;
+            dcterms:type "application/geo+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/item> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ],
+        [ rdfs:label "SeaDOTs inputs" ;
+            dcterms:type "application/json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/collection> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs> ],
+        [ dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-input> ] ;
+    geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.7e+00 5.91e+01 ) ( 5e+00 5.91e+01 ) ( 5e+00 5.94e+01 ) ( 4.7e+00 5.94e+01 ) ( 4.7e+00 5.91e+01 ) ) ) ] ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+            qudt:hasUnit "m2" ;
+            ns1:name "area" ] ;
+    seadots:collection "seadots-inputs" ;
+    seadots:metadataConvention "CF-1.10" ;
+    seadots:role "input" ;
+    stac:hasAsset [ seadots:data [ dcterms:format "application/geo+json" ;
+                    dcterms:title "Utsira surroundings AOI" ;
+                    oa:hasTarget <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ;
+                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+                            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+                            qudt:hasUnit "m2" ;
+                            ns1:name "area" ] ;
+                    stac:roles "data",
+                        "input" ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json" ;
+    stac:version "1.0.0" .
 

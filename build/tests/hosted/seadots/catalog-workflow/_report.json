@@ -2,8 +2,8 @@
   "title": "Validation report for ogc.hosted.seadots.catalog-workflow - SeaDOTs Catalog Workflow",
   "bblockName": "SeaDOTs Catalog Workflow",
   "bblockId": "ogc.hosted.seadots.catalog-workflow",
-  "generated": "2026-05-26T22:48:38.577227+00:00",
-  "result": true,
+  "generated": "2026-05-27T00:05:41.516518+00:00",
+  "result": false,
   "items": [
     {
       "source": {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": true,
+      "result": false,
       "sections": [
         {
           "name": "FILES",
@@ -29,20 +29,6 @@
               "op": "jsonld-uplift",
               "isError": false,
               "message": "JSON-LD context is present - uplifting"
-            },
-            {
-              "op": "jsonld-create",
-              "filename": "example_1_1.jsonld",
-              "isError": false,
-              "message": "Output JSON-LD example_1_1.jsonld created"
-            },
-            {
-              "op": "ttl-create",
-              "empty": false,
-              "filename": "example_1_1.ttl",
-              "size": 12,
-              "isError": false,
-              "message": "Output Turtle example_1_1.ttl created"
             }
           ]
         },
@@ -57,6 +43,17 @@
               "message": "Validation passed"
             }
           ]
+        },
+        {
+          "name": "JSON_LD",
+          "title": "JSON-LD",
+          "entries": [
+            {
+              "op": "jsonld-uplift-error",
+              "isError": true,
+              "message": "Error found when uplifting JSON-LD: FileNotFoundError: [Errno 2] No such file or directory: '/github/context.jsonld'"
+            }
+          ]
         }
       ]
     }
@@ -64,7 +61,7 @@
   "globalErrors": {},
   "counts": {
     "total": 1,
-    "passed": 1,
-    "failed": 0
+    "passed": 0,
+    "failed": 1
   }
 }

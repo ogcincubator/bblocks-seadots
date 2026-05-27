@@ -3,6 +3,9 @@
   "id": "aoi-utsira",
   "type": "Feature",
   "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json"
+  ],
   "collection": "seadots-inputs",
   "geometry": {
     "type": "Polygon",
@@ -54,16 +57,40 @@
   },
   "assets": {
     "data": {
-      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "href": "../../area-of-interest/examples/utsira_surroundings_aoi.json",
       "type": "application/geo+json",
-      "title": "AOI GeoJSON"
+      "title": "Utsira surroundings AOI",
+      "cf:parameter": [
+        {
+          "name": "area",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m2",
+          "description": "Optional CF-style parameter declaration for spatial input extent."
+        }
+      ],
+      "roles": [
+        "data",
+        "input"
+      ]
     }
   },
   "links": [
     {
+      "rel": "collection",
+      "href": "https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs",
+      "type": "application/json",
+      "title": "SeaDOTs inputs"
+    },
+    {
       "rel": "describedby",
       "href": "bblocks://ogc.hosted.seadots.catalog-input",
       "type": "application/schema+json"
+    },
+    {
+      "rel": "item",
+      "href": "bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json",
+      "type": "application/geo+json",
+      "title": "Utsira surroundings AOI"
     }
   ]
 }

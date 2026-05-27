@@ -273,17 +273,17 @@ The accompanying calculator script (`_sources/reef-effect/scripts/utsira_reef_bi
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ],
+    rdfs:seeAlso [ rdfs:label "OIM feature profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ],
         [ rdfs:label "Floating-Wind Submerged Infrastructure bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.floating-wind-infrastructure> ],
-        [ rdfs:label "OIM feature profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim> ] ;
+        [ rdfs:label "NVE strategic assessment — Utsira Nord design source" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -321,13 +321,13 @@ The accompanying calculator script (`_sources/reef-effect/scripts/utsira_reef_bi
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.604e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
-                                [ dcterms:identifier "U01" ;
-                                    geojson:latitude 5.93812e+01 ;
-                                    geojson:longitude 4.552e+00 ;
-                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
                                 [ dcterms:identifier "U02" ;
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.578e+00 ;
+                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
+                                [ dcterms:identifier "U01" ;
+                                    geojson:latitude 5.93812e+01 ;
+                                    geojson:longitude 4.552e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ] ;
                             seadots:unitDesign "15 MW semi-submersible (3-column hull, 3-point catenary mooring, drag-embedment anchors)" ] ;
                     seadots:role "feature-of-interest geometry" ] ;

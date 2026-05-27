@@ -33,6 +33,9 @@ dataset. No source properties are intentionally dropped.
   "id": "aoi-utsira",
   "type": "Feature",
   "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json"
+  ],
   "collection": "seadots-inputs",
   "geometry": {
     "type": "Polygon",
@@ -84,16 +87,40 @@ dataset. No source properties are intentionally dropped.
   },
   "assets": {
     "data": {
-      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "href": "../../area-of-interest/examples/utsira_surroundings_aoi.json",
       "type": "application/geo+json",
-      "title": "AOI GeoJSON"
+      "title": "Utsira surroundings AOI",
+      "cf:parameter": [
+        {
+          "name": "area",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m2",
+          "description": "Optional CF-style parameter declaration for spatial input extent."
+        }
+      ],
+      "roles": [
+        "data",
+        "input"
+      ]
     }
   },
   "links": [
     {
+      "rel": "collection",
+      "href": "https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs",
+      "type": "application/json",
+      "title": "SeaDOTs inputs"
+    },
+    {
       "rel": "describedby",
       "href": "bblocks://ogc.hosted.seadots.catalog-input",
       "type": "application/schema+json"
+    },
+    {
+      "rel": "item",
+      "href": "bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json",
+      "type": "application/geo+json",
+      "title": "Utsira surroundings AOI"
     }
   ]
 }
@@ -107,6 +134,9 @@ dataset. No source properties are intentionally dropped.
   "id": "aoi-utsira",
   "type": "Feature",
   "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json"
+  ],
   "collection": "seadots-inputs",
   "geometry": {
     "type": "Polygon",
@@ -158,16 +188,40 @@ dataset. No source properties are intentionally dropped.
   },
   "assets": {
     "data": {
-      "href": "https://example.org/seadots/inputs/aoi-utsira.geojson",
+      "href": "../../area-of-interest/examples/utsira_surroundings_aoi.json",
       "type": "application/geo+json",
-      "title": "AOI GeoJSON"
+      "title": "Utsira surroundings AOI",
+      "cf:parameter": [
+        {
+          "name": "area",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m2",
+          "description": "Optional CF-style parameter declaration for spatial input extent."
+        }
+      ],
+      "roles": [
+        "data",
+        "input"
+      ]
     }
   },
   "links": [
     {
+      "rel": "collection",
+      "href": "https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs",
+      "type": "application/json",
+      "title": "SeaDOTs inputs"
+    },
+    {
       "rel": "describedby",
       "href": "bblocks://ogc.hosted.seadots.catalog-input",
       "type": "application/schema+json"
+    },
+    {
+      "rel": "item",
+      "href": "bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json",
+      "type": "application/geo+json",
+      "title": "Utsira surroundings AOI"
     }
   ]
 }
@@ -178,41 +232,52 @@ dataset. No source properties are intentionally dropped.
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
-@prefix schema: <https://schema.org/> .
+@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
-@prefix stac: <https://stacspec.org/vocab#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/aoi-utsira> a geojson:Feature ;
-    dcterms:isPartOf <file:///github/workspace/seadots-inputs> ;
-    ns1:relation <bblocks://ogc.hosted.seadots.catalog-input> ;
-    geojson:bbox 4.7e+00,
-        5e+00,
-        5.91e+01,
-        5.94e+01 ;
-    geojson:geometry [ a seadots:Polygon ;
-            geojson:coordinates "[4.7, 59.1]",
-                "[4.7, 59.4]",
-                "[5.0, 59.1]",
-                "[5.0, 59.4]" ] ;
-    geojson:properties [ dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
-            dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
-            dcterms:title "Utsira area of interest" ;
-            cf:parameter [ dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
-                    dcterms:format "m2" ;
-                    dcterms:title "area" ;
-                    schema: "http://vocab.nerc.ac.uk/standard_name/" ] ;
-            seadots:metadataConvention "CF-1.10" ;
-            seadots:role "input" ] ;
-    stac:assets [ stac:data <https://example.org/seadots/inputs/aoi-utsira.geojson> ] ;
-    stac:stac_version "1.0.0" .
-
-<bblocks://ogc.hosted.seadots.catalog-input> a <https://w3id.org/ogc/hosted/seadots/catalog#application/schema+json> ;
-    ns1:relation "describedby" .
-
-<https://example.org/seadots/inputs/aoi-utsira.geojson> a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
-    dcterms:title "AOI GeoJSON" .
+    dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
+    dcterms:title "Utsira area of interest" ;
+    rdfs:seeAlso [ rdfs:label "Utsira surroundings AOI" ;
+            dcterms:type "application/geo+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/item> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ],
+        [ rdfs:label "SeaDOTs inputs" ;
+            dcterms:type "application/json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/collection> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs> ],
+        [ dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-input> ] ;
+    geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.7e+00 5.91e+01 ) ( 5e+00 5.91e+01 ) ( 5e+00 5.94e+01 ) ( 4.7e+00 5.94e+01 ) ( 4.7e+00 5.91e+01 ) ) ) ] ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+            qudt:hasUnit "m2" ;
+            ns1:name "area" ] ;
+    seadots:collection "seadots-inputs" ;
+    seadots:metadataConvention "CF-1.10" ;
+    seadots:role "input" ;
+    stac:hasAsset [ seadots:data [ dcterms:format "application/geo+json" ;
+                    dcterms:title "Utsira surroundings AOI" ;
+                    oa:hasTarget <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ;
+                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+                            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+                            qudt:hasUnit "m2" ;
+                            ns1:name "area" ] ;
+                    stac:roles "data",
+                        "input" ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json" ;
+    stac:version "1.0.0" .
 
 
 ```
@@ -225,57 +290,17 @@ title: SeaDOTs Catalog Input
 description: 'STAC Item profile for a concrete input consumed by a SeaDOTs execution.
 
   '
+allOf:
+- $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/item/schema.yaml
+- $ref: https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf/schema.yaml
 type: object
-required:
-- id
-- type
-- stac_version
-- properties
-- geometry
-- bbox
-- assets
 properties:
-  id:
-    type: string
-    x-jsonld-id: '@id'
   type:
     const: Feature
     x-jsonld-id: '@type'
-  stac_version:
-    type: string
-    x-jsonld-id: https://stacspec.org/vocab#stac_version
-  collection:
-    type: string
-    x-jsonld-id: http://purl.org/dc/terms/isPartOf
-    x-jsonld-type: '@id'
-  geometry:
-    type:
-    - object
-    - 'null'
-    x-jsonld-id: https://purl.org/geojson/vocab#geometry
-  bbox:
-    type: array
-    items:
-      type: number
-    x-jsonld-id: https://purl.org/geojson/vocab#bbox
   properties:
     type: object
-    required:
-    - title
-    - description
-    - datetime
     properties:
-      title:
-        type: string
-        x-jsonld-id: http://purl.org/dc/terms/title
-      description:
-        type: string
-        x-jsonld-id: http://purl.org/dc/terms/description
-      datetime:
-        type: string
-        format: date-time
-        x-jsonld-id: http://purl.org/dc/terms/date
-        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
       role:
         type: string
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
@@ -283,179 +308,175 @@ properties:
         type: string
         description: Optional metadata convention declaration, e.g. CF-1.10.
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
-      cf:parameter:
-        type: array
-        description: Optional STAC CF extension parameter declarations.
-        items:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-              description: CF standard name or local parameter name.
-              x-jsonld-id: http://purl.org/dc/terms/title
-            schema:
-              type: string
-              format: uri
-              description: Vocabulary or schema URI for the parameter name.
-              x-jsonld-id: https://schema.org/
-            unit:
-              type: string
-              description: Unit string or URI for the parameter.
-              x-jsonld-id: http://purl.org/dc/terms/format
-            description:
-              type: string
-              x-jsonld-id: http://purl.org/dc/terms/description
-        x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
-        x-jsonld-container: '@set'
     additionalProperties: true
-    x-jsonld-id: https://purl.org/geojson/vocab#properties
-  assets:
-    type: object
-    additionalProperties:
-      type: object
-      required:
-      - href
-      properties:
-        href:
-          type: string
-          x-jsonld-id: '@id'
-        type:
-          type: string
-          x-jsonld-id: '@type'
-        title:
-          type: string
-          x-jsonld-id: http://purl.org/dc/terms/title
-        roles:
-          type: array
-          items:
-            type: string
-    x-jsonld-id: https://stacspec.org/vocab#assets
-  links:
-    type: array
-    items:
-      type: object
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
-        href:
-          type: string
-          x-jsonld-id: '@id'
-        type:
-          type: string
-          x-jsonld-id: '@type'
-        title:
-          type: string
-          x-jsonld-id: http://purl.org/dc/terms/title
-    x-jsonld-id: http://www.w3.org/ns/iana/link-relations/relation
-    x-jsonld-container: '@set'
+    x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
-  coordinates: https://purl.org/geojson/vocab#coordinates
-  itemType: http://purl.org/dc/terms/type
+  FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection
+  GeometryCollection: https://purl.org/geojson/vocab#GeometryCollection
+  LineString: https://purl.org/geojson/vocab#LineString
+  MultiLineString: https://purl.org/geojson/vocab#MultiLineString
+  MultiPoint: https://purl.org/geojson/vocab#MultiPoint
+  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon
+  Point: https://purl.org/geojson/vocab#Point
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  features:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://purl.org/geojson/vocab#features
+  id: '@id'
+  geometry:
+    x-jsonld-context:
+      coordinates:
+        '@container': '@list'
+        '@id': https://purl.org/geojson/vocab#coordinates
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  bbox:
+    x-jsonld-container: '@list'
+    x-jsonld-id: https://purl.org/geojson/vocab#bbox
+  links:
+    x-jsonld-context:
+      rel:
+        '@context':
+          '@base': http://www.iana.org/assignments/relation/
+        '@id': http://www.iana.org/assignments/relation
+        '@type': '@id'
+      type: http://purl.org/dc/terms/type
+      hreflang: http://purl.org/dc/terms/language
+      title: http://www.w3.org/2000/01/rdf-schema#label
+      length: http://purl.org/dc/terms/extent
+    x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#seeAlso
   conformsTo:
+    x-jsonld-container: '@set'
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
+  time: http://purl.org/dc/terms/temporal
+  linkTemplates:
+    x-jsonld-context:
+      rel:
+        '@context':
+          '@base': http://www.iana.org/assignments/relation/
+        '@id': http://www.iana.org/assignments/relation
+        '@type': '@id'
+      type: http://purl.org/dc/terms/format
+      hreflang: http://purl.org/dc/terms/language
+      title: http://www.w3.org/2000/01/rdf-schema#label
+      length: http://purl.org/dc/terms/extent
+      uriTemplate:
+        '@type': http://www.w3.org/2001/XMLSchema#string
+        '@id': https://www.opengis.net/def/ogc-api/records/uriTemplate
+      varBase: https://www.opengis.net/def/ogc-api/records/varBase
+      variables:
+        '@id': https://www.opengis.net/def/ogc-api/records/hasVariable
+        '@container': '@index'
+        '@index': http://purl.org/dc/terms/identifier
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/hasLinkTemplate
+  stac_extensions: https://w3id.org/ogc/stac/core/hasExtension
+  assets:
+    x-jsonld-context:
+      type: http://purl.org/dc/terms/format
+      roles:
+        '@id': https://w3id.org/ogc/stac/core/roles
+        '@container': '@set'
+    x-jsonld-id: https://w3id.org/ogc/stac/core/hasAsset
+    x-jsonld-container: '@set'
+  stac_version: https://w3id.org/ogc/stac/core/version
+  title:
+    x-jsonld-id: http://purl.org/dc/terms/title
+    x-jsonld-container: '@set'
+  description:
+    x-jsonld-id: http://purl.org/dc/terms/description
     x-jsonld-container: '@set'
   keywords:
     x-jsonld-id: http://www.w3.org/ns/dcat#keyword
     x-jsonld-container: '@set'
+  license: http://www.w3.org/ns/dcat#license
+  start_datetime:
+    x-jsonld-id: https://w3id.org/ogc/stac/core/start_datetime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  end_datetime:
+    x-jsonld-id: https://w3id.org/ogc/stac/core/end_datetime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  providers: https://w3id.org/ogc/stac/core/hasProvider
+  media_type: http://purl.org/dc/terms/format
+  href:
+    x-jsonld-type: '@id'
+    x-jsonld-id: http://www.w3.org/ns/oa#hasTarget
+  created: http://purl.org/dc/terms/created
+  updated: http://purl.org/dc/terms/modified
+  language: https://www.opengis.net/def/ogc-api/records/language
+  languages:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/languages
+  resourceLanguages:
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/resourceLanguages
+  externalIds:
+    x-jsonld-context:
+      scheme: https://www.opengis.net/def/ogc-api/records/scheme
+      value: https://www.opengis.net/def/ogc-api/records/id
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/scopedIdentifier
   themes:
-    x-jsonld-id: http://www.w3.org/ns/dcat#theme
+    x-jsonld-context:
+      concepts:
+        '@context':
+          id: https://w3id.org/ogc/stac/themes/id
+          url: '@id'
+        '@id': https://w3id.org/ogc/stac/themes/concepts
+        '@container': '@set'
+      scheme: https://w3id.org/ogc/stac/themes/scheme
     x-jsonld-container: '@set'
-  license:
-    x-jsonld-id: http://purl.org/dc/terms/license
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/themes
+  formats:
+    x-jsonld-context:
+      name: https://www.opengis.net/def/ogc-api/records/name
+      mediaType: https://www.opengis.net/def/ogc-api/records/mediaType
+    x-jsonld-container: '@set'
+    x-jsonld-id: https://www.opengis.net/def/ogc-api/records/format
     x-jsonld-type: '@id'
-  created:
-    x-jsonld-id: http://purl.org/dc/terms/created
+  contacts:
+    x-jsonld-container: '@set'
+    x-jsonld-id: http://www.w3.org/ns/dcat#contactPoint
+    x-jsonld-type: '@id'
+  rights: http://www.w3.org/ns/dcat#rights
+  datetime:
+    x-jsonld-id: http://purl.org/dc/terms/date
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  updated:
-    x-jsonld-id: http://purl.org/dc/terms/modified
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  applicationCategory: https://schema.org/applicationCategory
-  softwareVersion: https://schema.org/softwareVersion
-  programmingLanguage: https://schema.org/programmingLanguage
-  applicationPackage:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
-    x-jsonld-type: '@id'
-  workflow:
-    x-jsonld-id: http://www.w3.org/ns/prov#hadPlan
-    x-jsonld-type: '@id'
-  inputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/inputs
+  extent: http://purl.org/dc/terms/extent
+  name: https://w3id.org/ogc/stac/cf/name
+  unit:
+    x-jsonld-id: http://qudt.org/schema/qudt/hasUnit
+    x-jsonld-context:
+      '@base': http://qudt.org/vocab/unit/
+  cf:parameter:
+    x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
     x-jsonld-container: '@set'
-  outputs:
-    x-jsonld-id: https://w3id.org/apkg/terms/outputs
-    x-jsonld-container: '@set'
-  profileId:
+  schema:
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
-  required:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#requiredInput
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
-  class: https://w3id.org/cwl/cwl#class
-  requirements:
-    x-jsonld-id: https://w3id.org/cwl/cwl#requirements
-    x-jsonld-container: '@set'
-  version: http://purl.org/dc/terms/hasVersion
-  method: http://purl.org/dc/terms/method
-  startTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  endTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  status: https://w3id.org/ogc/hosted/seadots/catalog#status
-  parameters: https://w3id.org/ogc/hosted/seadots/catalog#parameters
-  timeBoundaryStart:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryStart
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
-  timeBoundaryEnd:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#timeBoundaryEnd
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
-  application:
-    x-jsonld-id: http://www.w3.org/ns/prov#used
-    x-jsonld-type: '@id'
-  activity:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#activity
-    x-jsonld-type: '@id'
-  inputRecords:
-    x-jsonld-id: http://www.w3.org/ns/prov#used
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@set'
-  outputRecords:
-    x-jsonld-id: http://www.w3.org/ns/prov#generated
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@set'
-  agent:
-    x-jsonld-id: http://www.w3.org/ns/prov#wasAssociatedWith
-    x-jsonld-type: '@id'
-  configuration: https://w3id.org/ogc/hosted/seadots/catalog#configuration
-  containerImage: https://w3id.org/ogc/hosted/seadots/catalog#containerImage
-  data: https://stacspec.org/vocab#data
-  derivedFrom:
-    x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@set'
-  mediaType: http://purl.org/dc/terms/format
-  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  dcterms: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dct: http://purl.org/dc/terms/
+  rec: https://www.opengis.net/def/ogc-api/records/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  stac: https://w3id.org/ogc/stac/core/
   dcat: http://www.w3.org/ns/dcat#
-  schema: https://schema.org/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
-  prov: http://www.w3.org/ns/prov#
-  apkg: https://w3id.org/apkg/terms/
-  cwl: https://w3id.org/cwl/cwl#
-  stac: https://stacspec.org/vocab#
+  oa: http://www.w3.org/ns/oa#
+  thns: https://w3id.org/ogc/stac/themes/
   cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
+  qudt: http://qudt.org/schema/qudt/
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  dcterms: http://purl.org/dc/terms/
+  skos: http://www.w3.org/2004/02/skos/core#
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  w3ctime: http://www.w3.org/2006/time#
+  dctype: http://purl.org/dc/dcmitype/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  prov: http://www.w3.org/ns/prov#
+  foaf: http://xmlns.com/foaf/0.1/
 
 ```
 
@@ -472,170 +493,205 @@ Links to the schema:
   "@context": {
     "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "Feature": "geojson:Feature",
-    "coordinates": "geojson:coordinates",
-    "itemType": "dcterms:type",
-    "conformsTo": {
-      "@id": "dcterms:conformsTo",
-      "@type": "@id",
-      "@container": "@set"
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
     },
-    "keywords": {
-      "@id": "dcat:keyword",
-      "@container": "@set"
-    },
-    "themes": {
-      "@id": "dcat:theme",
-      "@container": "@set"
-    },
-    "license": {
-      "@id": "dcterms:license",
-      "@type": "@id"
-    },
-    "created": {
-      "@id": "dcterms:created",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "updated": {
-      "@id": "dcterms:modified",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "applicationCategory": "schema:applicationCategory",
-    "softwareVersion": "schema:softwareVersion",
-    "programmingLanguage": "schema:programmingLanguage",
-    "applicationPackage": {
-      "@id": "seadots:applicationPackage",
-      "@type": "@id"
-    },
-    "workflow": {
-      "@id": "prov:hadPlan",
-      "@type": "@id"
-    },
-    "inputs": {
-      "@id": "apkg:inputs",
-      "@container": "@set"
-    },
-    "outputs": {
-      "@id": "apkg:outputs",
-      "@container": "@set"
-    },
-    "profileId": {
-      "@id": "dcterms:conformsTo",
-      "@type": "@id"
-    },
-    "required": {
-      "@id": "seadots:requiredInput",
-      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
-    },
-    "class": "cwl:class",
-    "requirements": {
-      "@id": "cwl:requirements",
-      "@container": "@set"
-    },
-    "version": "dcterms:hasVersion",
-    "method": "dcterms:method",
-    "startTime": {
-      "@id": "prov:startedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "endTime": {
-      "@id": "prov:endedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "status": "seadots:status",
-    "parameters": "seadots:parameters",
-    "timeBoundaryStart": {
-      "@id": "seadots:timeBoundaryStart",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "timeBoundaryEnd": {
-      "@id": "seadots:timeBoundaryEnd",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "application": {
-      "@id": "prov:used",
-      "@type": "@id"
-    },
-    "activity": {
-      "@id": "seadots:activity",
-      "@type": "@id"
-    },
-    "inputRecords": {
-      "@id": "prov:used",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "outputRecords": {
-      "@id": "prov:generated",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "agent": {
-      "@id": "prov:wasAssociatedWith",
-      "@type": "@id"
-    },
-    "configuration": "seadots:configuration",
-    "containerImage": "seadots:containerImage",
-    "data": "stac:data",
-    "derivedFrom": {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "@id",
-      "@container": "@set"
-    },
-    "mediaType": "dcterms:format",
-    "dockerPull": "seadots:dockerPull",
-    "id": "@id",
     "type": "@type",
-    "stac_version": "stac:stac_version",
-    "collection": {
-      "@id": "dcterms:isPartOf",
-      "@type": "@id"
-    },
-    "geometry": "geojson:geometry",
-    "bbox": "geojson:bbox",
-    "properties": {
+    "id": "@id",
+    "properties": "@nest",
+    "geometry": {
       "@context": {
-        "title": "dcterms:title",
-        "description": "dcterms:description",
-        "datetime": {
-          "@id": "dcterms:date",
-          "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-        },
-        "role": "seadots:role",
-        "convention": "seadots:metadataConvention",
-        "name": "dcterms:title",
-        "unit": "dcterms:format",
-        "cf:parameter": {
-          "@container": "@set"
+        "coordinates": {
+          "@container": "@list",
+          "@id": "geojson:coordinates"
         }
       },
-      "@id": "geojson:properties"
+      "@id": "geojson:geometry"
     },
-    "assets": {
-      "@context": {
-        "href": "@id",
-        "title": "dcterms:title"
-      },
-      "@id": "stac:assets"
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
     },
     "links": {
       "@context": {
-        "rel": "http://www.w3.org/ns/iana/link-relations/relation",
-        "href": "@id",
-        "title": "dcterms:title"
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
       },
-      "@id": "http://www.w3.org/ns/iana/link-relations/relation",
+      "@id": "rdfs:seeAlso"
+    },
+    "conformsTo": {
+      "@container": "@set",
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
+    "time": "dct:temporal",
+    "linkTemplates": {
+      "@context": {
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:format",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent",
+        "uriTemplate": {
+          "@type": "xsd:string",
+          "@id": "rec:uriTemplate"
+        },
+        "varBase": "rec:varBase",
+        "variables": {
+          "@id": "rec:hasVariable",
+          "@container": "@index",
+          "@index": "dct:identifier"
+        }
+      },
+      "@id": "rec:hasLinkTemplate"
+    },
+    "stac_extensions": "stac:hasExtension",
+    "assets": {
+      "@context": {
+        "type": "dct:format",
+        "roles": {
+          "@id": "stac:roles",
+          "@container": "@set"
+        }
+      },
+      "@id": "stac:hasAsset",
       "@container": "@set"
     },
+    "stac_version": "stac:version",
+    "title": "dct:title",
+    "description": "dct:description",
+    "keywords": "dct:subject",
+    "license": "dct:license",
+    "start_datetime": {
+      "@id": "stac:start_datetime",
+      "@type": "xsd:dateTime"
+    },
+    "end_datetime": {
+      "@id": "stac:end_datetime",
+      "@type": "xsd:dateTime"
+    },
+    "providers": "stac:hasProvider",
+    "media_type": "dct:format",
+    "extent": "dct:extent",
+    "datetime": {
+      "@id": "dct:date",
+      "@type": "xsd:dateTime"
+    },
+    "name": "https://w3id.org/ogc/stac/cf/name",
+    "unit": {
+      "@id": "qudt:hasUnit",
+      "@context": {
+        "@base": "http://qudt.org/vocab/unit/"
+      }
+    },
+    "href": {
+      "@type": "@id",
+      "@id": "oa:hasTarget"
+    },
+    "created": "dct:created",
+    "updated": "dct:modified",
+    "language": "rec:language",
+    "languages": {
+      "@container": "@set",
+      "@id": "rec:languages"
+    },
+    "resourceLanguages": {
+      "@container": "@set",
+      "@id": "rec:resourceLanguages"
+    },
+    "externalIds": {
+      "@context": {
+        "scheme": "rec:scheme",
+        "value": "rec:id"
+      },
+      "@container": "@set",
+      "@id": "rec:scopedIdentifier"
+    },
+    "themes": {
+      "@context": {
+        "concepts": {
+          "@context": {
+            "id": "thns:id",
+            "url": "@id"
+          },
+          "@id": "thns:concepts",
+          "@container": "@set"
+        },
+        "scheme": "thns:scheme"
+      },
+      "@container": "@set",
+      "@id": "rec:themes"
+    },
+    "formats": {
+      "@context": {
+        "name": "rec:name",
+        "mediaType": "rec:mediaType"
+      },
+      "@container": "@set",
+      "@id": "rec:format",
+      "@type": "@id"
+    },
+    "contacts": {
+      "@container": "@set",
+      "@id": "dcat:contactPoint",
+      "@type": "@id"
+    },
+    "rights": "dcat:rights",
+    "cf:parameter": {
+      "@id": "cf:parameter",
+      "@container": "@set"
+    },
+    "schema": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    },
     "geojson": "https://purl.org/geojson/vocab#",
-    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
     "dcat": "http://www.w3.org/ns/dcat#",
-    "schema": "https://schema.org/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "rec": "https://www.opengis.net/def/ogc-api/records/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "w3ctime": "http://www.w3.org/2006/time#",
+    "dctype": "http://purl.org/dc/dcmitype/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
     "prov": "http://www.w3.org/ns/prov#",
-    "apkg": "https://w3id.org/apkg/terms/",
-    "cwl": "https://w3id.org/cwl/cwl#",
-    "stac": "https://stacspec.org/vocab#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "thns": "https://w3id.org/ogc/stac/themes/",
+    "stac": "https://w3id.org/ogc/stac/core/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "role": "seadots:role",
+    "convention": "seadots:metadataConvention",
     "@version": 1.1
   }
 }
