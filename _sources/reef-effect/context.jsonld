@@ -1,76 +1,94 @@
 {
-  "@context": {
-    "@version": 1.1,
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
-
-    "dcterms": "http://purl.org/dc/terms/",
-    "dcat": "http://www.w3.org/ns/dcat#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "schema": "https://schema.org/",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
-
-    "id": "@id",
-    "type": "@type",
-    "geometry": "https://purl.org/geojson/vocab#geometry",
-    "coordinates": "https://purl.org/geojson/vocab#coordinates",
-    "Feature": "https://purl.org/geojson/vocab#Feature",
-    "Polygon": "https://purl.org/geojson/vocab#Polygon",
-    "properties": "https://purl.org/geojson/vocab#properties",
-    "bbox": "https://purl.org/geojson/vocab#bbox",
-    "links": { "@id": "http://www.w3.org/ns/iana/link-relations/relation", "@container": "@set" },
-    "href": { "@id": "@id" },
-    "rel": "https://purl.org/geojson/vocab#rel",
-    "mediaType": "dcterms:format",
-    "title": "dcterms:title",
-
-    "name": "dcterms:title",
-    "description": "dcterms:description",
-    "created": "dcterms:created",
-    "updated": "dcterms:modified",
-    "language": "dcterms:language",
-    "code": "dcterms:identifier",
-    "license": "dcterms:license",
-    "keywords": { "@id": "dcat:keyword", "@container": "@set" },
-    "themes": { "@id": "dcat:theme", "@container": "@set" },
-    "concepts": { "@id": "skos:Concept", "@container": "@set" },
-    "scheme": "skos:inScheme",
-    "label": "skos:prefLabel",
-    "formats": { "@id": "dcterms:format", "@container": "@set" },
-    "format": "dcterms:format",
-    "conformsTo": { "@id": "dcterms:conformsTo", "@type": "@id", "@container": "@set" },
-    "contacts": { "@id": "dcat:contactPoint", "@container": "@set" },
-    "roles": { "@id": "dcat:hadRole", "@container": "@set" },
-    "organization": "https://schema.org/affiliation",
-    "time": "dcterms:temporal",
-    "interval": "dcterms:temporal",
-    "resolution": "dcat:temporalResolution",
-
-    "experiment": "seadots:experiment",
-    "kind": "seadots:kind",
-    "purpose": "dcterms:purpose",
-    "application": { "@id": "seadots:application", "@type": "@id" },
-    "modelledBy": { "@id": "seadots:modelledBy", "@type": "@id" },
-    "evidenceEquation": { "@id": "seadots:evidenceEquation", "@type": "@id" },
-
-    "parameters": { "@id": "seadots:parameter", "@container": "@set" },
-    "schema": "seadots:parameterSchema",
-    "vocabularyTerm": { "@id": "skos:exactMatch", "@type": "@id" },
-
-    "inputs": { "@id": "seadots:input", "@container": "@set" },
-    "equationBinding": "seadots:equationBinding",
-    "outputs": { "@id": "seadots:output", "@type": "@id", "@container": "@set" },
-
-    "execution": "seadots:execution",
-    "language": "dcterms:language",
-    "languageVersion": "seadots:languageVersion",
-    "dependencies": { "@id": "seadots:dependency", "@container": "@set" },
-    "entrypoint": "seadots:entrypoint",
-    "scheduling": "seadots:scheduling",
-    "reproducibility": "seadots:reproducibility",
-    "seedPolicy": "seadots:seedPolicy",
-    "provenance": "prov:wasGeneratedBy",
-
-    "successCriteria": { "@id": "seadots:successCriterion", "@container": "@set" }
-  }
+  "@context": [
+    "../catalog-workflow/context.jsonld",
+    {
+      "@version": 1.1,
+      "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
+      "dcterms": "http://purl.org/dc/terms/",
+      "prov": "http://www.w3.org/ns/prov#",
+      "schema": "https://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "seadotsReef": "https://w3id.org/ogc/hosted/seadots/reef-effect#",
+      "softwareType": "dcterms:type",
+      "code": "dcterms:identifier",
+      "language": "dcterms:language",
+      "contacts": {
+        "@id": "http://www.w3.org/ns/dcat#contactPoint",
+        "@container": "@set"
+      },
+      "roles": {
+        "@id": "http://www.w3.org/ns/dcat#hadRole",
+        "@container": "@set"
+      },
+      "organization": "schema:affiliation",
+      "time": "dcterms:temporal",
+      "interval": "dcterms:temporal",
+      "resolution": "http://www.w3.org/ns/dcat#temporalResolution",
+      "concepts": {
+        "@id": "skos:Concept",
+        "@container": "@set"
+      },
+      "scheme": "skos:inScheme",
+      "label": "skos:prefLabel",
+      "formats": {
+        "@id": "dcterms:format",
+        "@container": "@set"
+      },
+      "format": "dcterms:format",
+      "mediaType": "dcterms:format",
+      "experiment": {
+        "@id": "seadotsReef:experiment",
+        "@context": {
+          "inputs": {
+            "@id": "seadotsReef:input",
+            "@container": "@set"
+          },
+          "outputs": {
+            "@id": "seadotsReef:output",
+            "@container": "@set",
+            "@type": "@id"
+          }
+        }
+      },
+      "kind": "seadotsReef:kind",
+      "purpose": "dcterms:purpose",
+      "application": {
+        "@id": "seadotsReef:application",
+        "@type": "@id"
+      },
+      "modelledBy": {
+        "@id": "seadotsReef:modelledBy",
+        "@type": "@id"
+      },
+      "evidenceEquation": {
+        "@id": "seadotsReef:evidenceEquation",
+        "@type": "@id"
+      },
+      "parameters": {
+        "@id": "seadotsReef:parameter",
+        "@container": "@set"
+      },
+      "parameterSchema": "seadotsReef:parameterSchema",
+      "vocabularyTerm": {
+        "@id": "skos:exactMatch",
+        "@type": "@id"
+      },
+      "equationBinding": "seadotsReef:equationBinding",
+      "execution": "seadotsReef:execution",
+      "languageVersion": "seadotsReef:languageVersion",
+      "dependencies": {
+        "@id": "seadotsReef:dependency",
+        "@container": "@set"
+      },
+      "entrypoint": "seadotsReef:entrypoint",
+      "scheduling": "seadotsReef:scheduling",
+      "reproducibility": "seadotsReef:reproducibility",
+      "seedPolicy": "seadotsReef:seedPolicy",
+      "provenance": "prov:wasGeneratedBy",
+      "successCriteria": {
+        "@id": "seadotsReef:successCriterion",
+        "@container": "@set"
+      }
+    }
+  ]
 }

@@ -1,0 +1,85 @@
+{
+  "@context": [
+    "../catalog-execution/context.jsonld",
+    {
+      "@version": 1.1,
+      "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-utsira#",
+      "dcterms": "http://purl.org/dc/terms/",
+      "prov": "http://www.w3.org/ns/prov#",
+      "schema": "https://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "seadotsRun": "https://w3id.org/ogc/hosted/seadots/reef-effect-utsira#",
+      "time": "dcterms:temporal",
+      "interval": "dcterms:temporal",
+      "resolution": "http://www.w3.org/ns/dcat#temporalResolution",
+      "title": "dcterms:title",
+      "description": "dcterms:description",
+      "created": {
+        "@id": "dcterms:created",
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "updated": {
+        "@id": "dcterms:modified",
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "license": {
+        "@id": "dcterms:license",
+        "@type": "@id"
+      },
+      "reefEffectRun": "seadotsRun:reefEffectRun",
+      "purpose": "dcterms:purpose",
+      "application": {
+        "@id": "seadotsRun:application",
+        "@type": "@id"
+      },
+      "modelledBy": {
+        "@id": "seadotsRun:modelledBy",
+        "@type": "@id"
+      },
+      "evidenceEquation": {
+        "@id": "seadotsRun:evidenceEquation",
+        "@type": "@id"
+      },
+      "parameters": {
+        "@id": "seadotsRun:parameter",
+        "@container": "@set"
+      },
+      "parameterSchema": "seadotsRun:parameterSchema",
+      "vocabularyTerm": {
+        "@id": "skos:exactMatch",
+        "@type": "@id"
+      },
+      "inputBindings": {
+        "@id": "prov:used",
+        "@container": "@set",
+        "@type": "@id"
+      },
+      "outputBindings": {
+        "@id": "prov:generated",
+        "@container": "@set",
+        "@type": "@id"
+      },
+      "profileId": {
+        "@id": "dcterms:conformsTo",
+        "@type": "@id"
+      },
+      "equationBinding": "seadotsRun:equationBinding",
+      "runtime": "seadotsRun:runtime",
+      "language": "dcterms:language",
+      "languageVersion": "seadotsRun:languageVersion",
+      "dependencies": {
+        "@id": "seadotsRun:dependency",
+        "@container": "@set"
+      },
+      "entrypoint": "seadotsRun:entrypoint",
+      "scheduling": "seadotsRun:scheduling",
+      "reproducibility": "seadotsRun:reproducibility",
+      "seedPolicy": "seadotsRun:seedPolicy",
+      "provenance": "prov:wasGeneratedBy",
+      "successCriteria": {
+        "@id": "seadotsRun:successCriterion",
+        "@container": "@set"
+      }
+    }
+  ]
+}

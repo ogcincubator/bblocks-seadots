@@ -1,10 +1,25 @@
 # Reef Effect
 
-OGC API Records profile for describing one computational experiment that realises a documented model.
+SeaDOTs Catalog Workflow profile for describing one computational experiment that realises a documented model.
 
-A computational experiment is the executable counterpart of an ODD Protocol description: it commits to specific software, specific inputs and a specific output target. The record points at the executable code (Python script, Jupyter notebook, R script, etc.) that runs the experiment, and at standalone per-class input records (e.g. `area-of-interest`, `floating-wind-infrastructure`, `benthic-biomass-density-mareano`, …) and `reef-effect-output` records by URI so they can be reused across runs.
+A computational experiment is the executable counterpart of an ODD Protocol description: it commits to specific software, specific inputs and a specific output target. This block extends [`catalog-workflow`](../catalog-workflow/) so it carries the generic catalog workflow fields (`type: Workflow`, `applicationCategory`, `version`, `method`, `applicationPackage`, `inputs`, and `outputs`) and then adds the reef-effect-specific `experiment` object. The record points at the executable code (Python script, Jupyter notebook, R script, etc.) that runs the experiment, and at standalone per-class input records (e.g. `area-of-interest`, `floating-wind-infrastructure`, `benthic-biomass-density-mareano`, …) and `reef-effect-output` records by URI so they can be reused across runs.
 
 ## What an experiment record carries
+
+At the catalog workflow level:
+
+```
+properties:
+  type                — Workflow
+  applicationCategory — DigitalTwinApplication | Workflow | Transform | Model | Service
+  version             — workflow/profile version
+  method              — reusable method implemented by the workflow
+  applicationPackage  — runnable package, script, notebook, or package description
+  inputs[]            — accepted input profile declarations
+  outputs[]           — produced output profile declarations
+```
+
+The reef-effect extension then carries:
 
 ```
 experiment:
