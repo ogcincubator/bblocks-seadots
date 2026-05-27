@@ -345,28 +345,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     prov:wasDerivedFrom indo:floating-wind-reef-biomass-effect ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)" ;
-    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indp:reef-aggregation-index ;
-            prop-rel:hasBinding [ prop-rel:bindingIndexValue "Asterias rubens" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-asterias ],
-                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
-                    prop-rel:bindingIndexValue "Buccinum undatum" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ],
-                [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingIndexValue "Mytilus edulis" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
-            prop-rel:hasIndex "i" ;
-            prop-rel:hasIndexedBy tc:TaxonConcept ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "AF_i" ;
-            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
-            prop-rel:isIndexed true ],
-        [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
+    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://mareano.no/> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "Norwegian shelf, MAREANO programme" ;
@@ -399,6 +378,27 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "A_sub" ;
             prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
             prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indp:reef-aggregation-index ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingIndexValue "Mytilus edulis" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ],
+                [ prop-rel:bindingIndexValue "Asterias rubens" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-asterias ],
+                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
+                    prop-rel:bindingIndexValue "Buccinum undatum" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
+            prop-rel:hasIndex "i" ;
+            prop-rel:hasIndexedBy tc:TaxonConcept ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "AF_i" ;
+            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
+            prop-rel:isIndexed true ],
         [ prop-rel:fromProperty indp:colonisation-time-factor ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;

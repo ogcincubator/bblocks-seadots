@@ -782,6 +782,7 @@ indo:floating-wind-reef-biomass-effect a ind:Indicator, sosa:ObservableProperty,
     rdfs:label "Floating-wind reef biomass effect"@en ;
     skos:prefLabel "Floating-wind reef biomass effect"@en ;
     skos:definition "Reef-associated biomass attributable to submerged floating-wind infrastructure, calculated as B_reef = sum_i (A_sub * D_pre,i * AF_i * C_t)."@en ;
+    skos:notation """<mathml><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>B</mi><mi>reef</mi></msub><mo>=</mo><munder><mo>&#x2211;</mo><mi>i</mi></munder><mrow><mo>(</mo><msub><mi>A</mi><mi>sub</mi></msub><mo>&#x22C5;</mo><msub><mi>D</mi><mrow><mi>pre</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>&#x22C5;</mo><msub><mi>AF</mi><mi>i</mi></msub><mo>&#x22C5;</mo><msub><mi>C</mi><mi>t</mi></msub><mo>)</mo></mrow></mrow></math></mathml>"""^^<http://www.w3.org/1998/Math/MathML> ;
     skos:inScheme ind:indicators-scheme ;
     qudt:hasQuantityKind quantitykind:Mass ;
     prov:wasDerivedFrom indp:submerged-infrastructure-area,

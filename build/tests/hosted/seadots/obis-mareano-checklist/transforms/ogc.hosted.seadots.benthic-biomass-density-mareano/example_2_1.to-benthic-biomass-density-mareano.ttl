@@ -18,9 +18,6 @@
     rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://mareano.no/> ],
-        [ rdfs:label "OBIS" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://obis.org/> ],
         [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
@@ -28,7 +25,10 @@
         [ rdfs:label "OBIS MAREANO Checklist bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.obis-mareano-checklist> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.obis-mareano-checklist> ],
+        [ rdfs:label "OBIS" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://obis.org/> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -86,8 +86,8 @@
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Buccinum finmarkianum" ;
-                                    dwc:taxonID 160143 ;
+                                    dwc:scientificName "Ophiuroidea" ;
+                                    dwc:taxonID 123084 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ],
@@ -100,22 +100,15 @@
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Echinocucumis hispida" ;
-                                    dwc:taxonID 124593 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Ophiuroidea" ;
-                                    dwc:taxonID 123084 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
                                     dwc:scientificName "Praxillura longissima" ;
                                     dwc:taxonID 130327 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Echinocucumis hispida" ;
+                                    dwc:taxonID 124593 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ],
@@ -135,15 +128,22 @@
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Munida sarsi" ;
-                                    dwc:taxonID 107163 ;
+                                    dwc:scientificName "Lysianassoidea" ;
+                                    dwc:taxonID 176788 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Lysianassoidea" ;
-                                    dwc:taxonID 176788 ;
+                                    dwc:scientificName "Buccinum finmarkianum" ;
+                                    dwc:taxonID 160143 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Munida sarsi" ;
+                                    dwc:taxonID 107163 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ] ] ;
