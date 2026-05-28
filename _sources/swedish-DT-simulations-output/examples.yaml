@@ -1,0 +1,25 @@
+- title: Swedish DT simulation output - source artifact
+  description: >
+    Source simulation output preserved as supplied. The file is a
+    whitespace-delimited table with 60,000 data rows and 63 columns, including
+    `nuts_region_01` ... `nuts_region_17` indicator columns.
+  snippets:
+    - language: text
+      ref: "examples/eurostat nuts regions.qgz"
+
+- title: Swedish DT simulation output - SensorThings Observation
+  description: >
+    SensorThings Observation view over the first source row, carrying the model
+    outputs in `result` and the active NUTS-region indicator set in
+    `parameters.regionIndicators`.
+  snippets:
+    - language: json
+      ref: examples/eurostat-nuts-regions-observation.json
+
+- title: Swedish DT simulation output - GeoParquet header
+  description: >
+    GeoParquet metadata/header declaration for a geometry-joined Parquet
+    representation of the same source artifact.
+  snippets:
+    - language: json
+      ref: examples/eurostat-nuts-regions.geoparquet-header.json

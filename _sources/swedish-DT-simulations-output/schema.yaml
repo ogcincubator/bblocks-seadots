@@ -1,0 +1,125 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Swedish DT Simulations Output
+description: >
+  Swedish Digital Twin fisheries simulation output profile. The source rows are
+  whitespace-delimited model outputs with NUTS-region indicator columns; derived
+  examples may be represented as SensorThings Observations or as GeoParquet
+  metadata/header declarations for a geometry-joined tabular file.
+
+oneOf:
+  - $ref: '#/$defs/SensorThingsObservation'
+  - $ref: '#/$defs/GeoParquetHeader'
+
+$defs:
+  SensorThingsObservation:
+    type: object
+    required:
+      - "@iot.id"
+      - phenomenonTime
+      - resultTime
+      - result
+      - Datastream
+      - FeatureOfInterest
+      - parameters
+    properties:
+      "@iot.id":
+        type: string
+      phenomenonTime:
+        type: string
+      resultTime:
+        type: string
+        format: date-time
+      result:
+        type: object
+        required:
+          - repetitions
+          - ticks
+          - current_year
+          - current_month
+          - mean_biomass_herring
+          - mean_biomas_sprat
+        properties:
+          repetitions: { type: integer, minimum: 0 }
+          ticks: { type: integer, minimum: 0 }
+          current_year: { type: integer, minimum: 0 }
+          current_month: { type: integer, minimum: 1, maximum: 12 }
+          year_tick: { type: integer, minimum: 0 }
+          current_herring_season: { type: string }
+          current_management_season: { type: string }
+          current_TAC_herring: { type: number }
+          TAC_herring_share_sv: { type: number }
+          mean_biomass_herring: { type: number }
+          mean_biomas_sprat: { type: number }
+          catch_herring_SV_All: { type: number }
+          catch_herring_LV_All: { type: number }
+          catch_sprat_SV_All: { type: number }
+          catch_sprat_LV_All: { type: number }
+          VA_SV_All: { type: number }
+          VA_LV_All: { type: number }
+        additionalProperties: true
+      Datastream:
+        type: object
+      FeatureOfInterest:
+        type: object
+      parameters:
+        type: object
+        required:
+          - source
+          - sourceFormat
+          - regionIndicators
+          - columnCount
+          - rowCount
+        properties:
+          source: { type: string }
+          sourceFormat: { type: string }
+          columnCount: { type: integer, minimum: 1 }
+          rowCount: { type: integer, minimum: 1 }
+          regionIndicators:
+            type: object
+            additionalProperties:
+              type: integer
+              enum: [0, 1]
+        additionalProperties: true
+    additionalProperties: true
+
+  GeoParquetHeader:
+    type: object
+    required:
+      - fileName
+      - encoding
+      - parquetSchema
+      - geo
+      - source
+    properties:
+      fileName:
+        type: string
+        pattern: "\\.parquet$"
+      encoding:
+        type: string
+      source:
+        type: object
+        required: [href, sourceFormat, rowCount, columnCount]
+        properties:
+          href: { type: string }
+          sourceFormat: { type: string }
+          rowCount: { type: integer, minimum: 1 }
+          columnCount: { type: integer, minimum: 1 }
+      parquetSchema:
+        type: array
+        items:
+          type: object
+          required: [name, type]
+          properties:
+            name: { type: string }
+            type: { type: string }
+            nullable: { type: boolean }
+            description: { type: string }
+      geo:
+        type: object
+        required: [version, primary_column, columns]
+        properties:
+          version: { type: string }
+          primary_column: { type: string }
+          columns:
+            type: object
+    additionalProperties: true

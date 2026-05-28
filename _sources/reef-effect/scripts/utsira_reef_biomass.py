@@ -49,7 +49,10 @@ from __future__ import annotations
 
 import json
 import math
+import os
+import re
 import sys
+import urllib.request
 from pathlib import Path
 
 # ─── Paths ───────────────────────────────────────────────────────────────
@@ -77,6 +80,8 @@ IMR_REFERENCE = SOURCES / "benthic-biomass-density-imr/examples/imr_ices_iva_fal
 # Feature-of-interest record — referenced by the experiment record, but
 # not loaded into the closed-form arithmetic here (see module docstring).
 AOI_REFERENCE = SOURCES / "area-of-interest/examples/utsira_surroundings_aoi.json"
+LOCAL_VOCABULARY_TTL = SOURCES / "oim-variables/examples/indicators.ttl"
+VOCABULARY_TTL_ENV = "SEADOTS_VOCABULARY_TTL_URL"
 
 
 def load_input(key: str) -> dict:
@@ -84,6 +89,58 @@ def load_input(key: str) -> dict:
     path, prop = INPUT_FILES[key]
     rec = json.loads(path.read_text())
     return rec["properties"][prop]["data"]
+
+
+def _read_vocabulary_ttl() -> tuple[str, str]:
+    """Read the SeaDOTs variables vocabulary from a service URL or local TTL."""
+    vocab_url = os.environ.get(VOCABULARY_TTL_ENV)
+    if vocab_url:
+        with urllib.request.urlopen(vocab_url, timeout=10) as response:
+            return response.read().decode("utf-8"), vocab_url
+    return LOCAL_VOCABULARY_TTL.read_text(), str(LOCAL_VOCABULARY_TTL.relative_to(REPO_ROOT))
+
+
+def _ttl_value(ttl: str, local_name: str) -> float | None:
+    pattern = rf"(?:^|\n)indp:{re.escape(local_name)}\b.*?rdf:value\s+([0-9]+(?:\.[0-9]+)?)\s*(?:;|\.)"
+    match = re.search(pattern, ttl, flags=re.DOTALL)
+    return float(match.group(1)) if match else None
+
+
+def _ttl_notation(ttl: str, local_name: str) -> str | None:
+    pattern = rf"(?:^|\n)indp:{re.escape(local_name)}\b.*?skos:notation\s+\"([^\"]+)\""
+    match = re.search(pattern, ttl, flags=re.DOTALL)
+    return match.group(1) if match else None
+
+
+def load_colonisation_vocabulary() -> dict:
+    """Resolve colonisation-time-factor values from the variables vocabulary.
+
+    The deployed vocabulary can be supplied with SEADOTS_VOCABULARY_TTL_URL.
+    Without it, the script uses the checked-in OIM variables TTL so the worked
+    example stays reproducible offline.
+    """
+    try:
+        ttl, source = _read_vocabulary_ttl()
+    except Exception as exc:
+        return {"source": "unavailable", "error": str(exc), "parameters": {}, "lookup": []}
+
+    parameters = {
+        "L": _ttl_value(ttl, "colonisation-time-factor-default-L"),
+        "k": _ttl_value(ttl, "colonisation-time-factor-default-k"),
+        "t0_months": _ttl_value(ttl, "colonisation-time-factor-default-t0-months"),
+    }
+    lookup = []
+    for months in (0, 6, 12, 18, 24):
+        value = _ttl_value(ttl, f"colonisation-time-factor-default-Ct-{months}-months")
+        if value is not None:
+            lookup.append({"t_months": months, "C_t": value})
+
+    return {
+        "source": source,
+        "formula": _ttl_notation(ttl, "colonisation-time-factor-default"),
+        "parameters": {k: v for k, v in parameters.items() if v is not None},
+        "lookup": lookup,
+    }
 
 
 # ─── Assumed sigma values (not in any input record) ─────────────────────
@@ -110,6 +167,7 @@ def compute() -> dict:
     mareano = load_input("mareano")
     af = load_input("af")
     ct = load_input("ct")
+    ct_vocab = load_colonisation_vocabulary()
 
     # ─── Variables ──────────────────────────────────────────────────────
     A_sub = infra["aggregate"]["submerged_area_total_m2"]      # 109_500 m²
@@ -121,10 +179,13 @@ def compute() -> dict:
     sigma_D = {taxon: SIGMA_D_REL * D[taxon] for taxon in D}
 
     AF = {row["scientificName"]: row["AF_i"] for row in af["perTaxon"]}
+    taxa = [taxon for taxon in AF if taxon in D]
+    skipped_taxa_without_af = sorted(set(D) - set(AF))
 
-    L = ct["parameters"]["L"]
-    k = ct["parameters"]["k"]
-    t0 = ct["parameters"]["t0_months"]
+    vocab_params = ct_vocab.get("parameters", {})
+    L = vocab_params.get("L", ct["parameters"]["L"])
+    k = vocab_params.get("k", ct["parameters"]["k"])
+    t0 = vocab_params.get("t0_months", ct["parameters"]["t0_months"])
 
     def C(t: float) -> float:
         return L / (1 + math.exp(-k * (t - t0)))
@@ -133,7 +194,7 @@ def compute() -> dict:
 
     # ─── Per-taxon contributions at t = 24 ──────────────────────────────
     per_taxon = []
-    for taxon in D:
+    for taxon in taxa:
         B = A_sub * D[taxon] * AF[taxon] * C24
         per_taxon.append({
             "scientificName": taxon,
@@ -149,9 +210,10 @@ def compute() -> dict:
         t["shareOfTotal"] = round(t["B_kg"] / B_reef_kg, 4)
 
     # ─── Time series ────────────────────────────────────────────────────
-    S = sum(D[t] * AF[t] for t in D)
+    S = sum(D[t] * AF[t] for t in taxa)
     time_series = []
-    for row in ct["lookup"]:
+    lookup = ct_vocab.get("lookup") or ct["lookup"]
+    for row in lookup:
         time_series.append({
             "t_months": row["t_months"],
             "C_t": row["C_t"],
@@ -162,7 +224,7 @@ def compute() -> dict:
     # σ²(Dᵢ·AFᵢ) = (Dᵢ·AFᵢ)² · (CV²_D + CV²_AF)   — independent
     per_taxon_var = []
     var_S = 0.0
-    for taxon in D:
+    for taxon in taxa:
         cv_D = sigma_D[taxon] / D[taxon]
         cv_AF = SIGMA_AF_REL
         product = D[taxon] * AF[taxon]
@@ -229,8 +291,11 @@ def compute() -> dict:
                 str(IMR_REFERENCE.relative_to(SOURCES)),
             ],
             "equationRecord": "https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation",
+            "vocabularySource": ct_vocab.get("source"),
+            "colonisationFormula": ct_vocab.get("formula") or ct.get("formula"),
             "computeCode": "reef-effect/scripts/utsira_reef_biomass.py",
             "uncertaintyMethod": "log-linear CV propagation; taxa treated independent within S",
+            "skippedTaxaWithoutAggregationIndex": skipped_taxa_without_af,
             "note": "Inputs are illustrative (see each input record's data.provenance). `values: computed` refers to the calculation chain, not to a real-world measurement. The benthic-biomass-density-imr record is referenced by the experiment record as an alternate D_{pre,i} baseline; under its current schema it reports per-sample catch weight (kg) not kg m-2, so it is not consumed here — see `referencedNotConsumed`.",
         },
     }

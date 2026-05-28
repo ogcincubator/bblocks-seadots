@@ -765,12 +765,12 @@ AI Client
   -> Requests / feedback loop streams
 ```
 
-# Auxiliary data
+# Additional Info
 
 The auxiliary sections keep source material that supports the walkthrough but is
 not part of the main narrative. [for review]
 
-## AUX1
+## AUX1 data
 
 Reef Aggregation Index estimated values:
 ```
@@ -873,10 +873,32 @@ ex:Observation_MetaAnalysis_004 a sosa:Observation ;
 ```
 
 
+## Vocabulary service on EDITO
+
+Vocabulary Service used in this script is OGC one, based on Prez application and Fuseki DB. It is an open Source project with deployment and configuration manual avilable here:
+https://ogcincubator.github.io/rainbow-docs/tutorials/applied-ogc-rainbow/introduction
+
+Runinng it on platforms like EDITO may require tailoring to the platform needs. EDITO is Kubernetes & Helm Chart based.
+Complete configuration for this system is available:
+https://gitlab.mercator-ocean.fr/pub/edito-infra/service-playground/-/tree/defs-server/definition-server?ref_type=heads
 
 
+It is also available as a runable service.
 
-# Additional resources from the deck
+Search for definition server in Service catalog:
+![alt text](image-2.png).
+
+Configure: Change DB password:
+![alt text](image-3.png)
+
+Set initial data to be loaded at start:
+![alt text](image-4.png)
+This can be coma separated list of available resources like TTL or any other acceptable by Fuseki server.
+
+!Mind this service is stateless, so good practice is to keep startup data up to date!
+
+
+## Additional resources from the deck
 
 Update indicators list:
 
@@ -884,7 +906,7 @@ Update indicators list:
 /Users/piotr/repos/seadots/data_framework/models/variables/publish.ipynb
 ```
 
-Script-as-process wrapping:
+## Script-as-process wrapping:
 
 Use the OSPD example to wrap the reef-effect script as an executable process:
 

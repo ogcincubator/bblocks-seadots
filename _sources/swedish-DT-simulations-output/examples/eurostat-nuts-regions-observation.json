@@ -1,0 +1,141 @@
+{
+  "@iot.id": "swedish-dt-eurostat-nuts-regions-observation-000001",
+  "phenomenonTime": "model-year-1/month-6/tick-33",
+  "resultTime": "2026-05-27T00:00:00Z",
+  "result": {
+    "repetitions": 1,
+    "ticks": 1,
+    "current_herring_season": "Evenly distributed",
+    "current_management_season": "No closure",
+    "current_TAC_herring": 56669.48663862502,
+    "TAC_herring_share_sv": 0.093,
+    "even_dispersal_rate": 0.08,
+    "winter_dispersal_rate": 0.027,
+    "spawning_dispersal_rate": 0.04,
+    "winter_closure_type": 1,
+    "spawning_closure_type": 0,
+    "trawling_limit": "none",
+    "fishing_algorithm": "profit maximisation",
+    "current_year": 1,
+    "current_month": 6,
+    "year_tick": 33,
+    "herring_price_fish_meal": 2.41,
+    "sprat_price": 2.41,
+    "fuel_price": 0,
+    "fuel_consumption_SV": 0,
+    "fuel_consumption_LV": 0,
+    "stop_herring_growth": false,
+    "mean_biomass_herring": 7392.332485966248,
+    "mean_biomas_sprat": 6483.7546843309965,
+    "landing_value_herring_SV": 3515.510774428327,
+    "landing_value_herring_LV": 555786.1778847649,
+    "landing_value_sprat_SV": 2690.7200569173774,
+    "landing-value_sprat_LV": 696058.3155635783,
+    "catch_herring_SV_All": 1458.718163663206,
+    "catch_herring_LV_All": 230616.67132147925,
+    "catch_sprat_SV_All": 1116.4813514179987,
+    "catch_sprat_LV_All": 288820.877827211,
+    "VA_SV_All": 206.8743610448568,
+    "VA_LV_All": 43167.05149821874,
+    "yearly_growth_herring": 0.52,
+    "winter_closure_length": 120,
+    "TAC_share_B_herring": 0.3,
+    "B_herring_tot": 250000,
+    "K_herring_reg_inc": 1,
+    "TAC_herring_Sweden_impl": 1,
+    "herring_price_human_cons": 11.25,
+    "SV_herring_market": "fish meal",
+    "TAC_herring_est_error": 0.65,
+    "SV_fishing_radius": 5,
+    "TAC_herring_inc_SV": 1,
+    "TAC_herring_type": 0
+  },
+  "Datastream": {
+    "@iot.id": "swedish-dt-eurostat-nuts-regions-simulation",
+    "name": "Swedish DT Eurostat NUTS regions simulation output",
+    "description": "Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.",
+    "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
+    "unitOfMeasurement": {
+      "name": "model output bundle",
+      "symbol": "1",
+      "definition": "https://qudt.org/vocab/unit/UNITLESS"
+    },
+    "ObservedProperty": {
+      "@iot.id": "swedish-dt-fisheries-simulation-state",
+      "name": "Swedish DT fisheries simulation state",
+      "definition": "https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState"
+    },
+    "Sensor": {
+      "@iot.id": "swedish-dt-simulation-model",
+      "name": "Swedish Digital Twin fisheries simulation model",
+      "encodingType": "application/json",
+      "metadata": "Source model output represented from examples/eurostat nuts regions.qgz"
+    },
+    "Thing": {
+      "@iot.id": "swedish-dt-eurostat-nuts-region-set",
+      "name": "Eurostat NUTS region indicator set"
+    }
+  },
+  "FeatureOfInterest": {
+    "@iot.id": "swedish-dt-nuts-region-indicators-000001",
+    "name": "Swedish DT case region - northern Baltic to Gotland",
+    "description": "Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary.",
+    "encodingType": "application/geo+json",
+    "feature": {
+      "type": "Feature",
+      "id": "swedish-dt-case-region-north-to-gotland",
+      "bbox": [16.4, 57.0, 22.5, 65.8],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.0, 57.0],
+          [19.2, 57.0],
+          [20.6, 58.1],
+          [21.6, 60.3],
+          [22.5, 63.4],
+          [21.8, 65.8],
+          [19.0, 65.8],
+          [17.6, 63.0],
+          [16.4, 59.0],
+          [17.0, 57.0]
+        ]]
+      },
+      "properties": {
+        "name": "Swedish DT case region - northern Baltic to Gotland",
+        "geometryStatus": "approximate case-region footprint",
+        "southAnchor": "Gotland Island",
+        "crs": "EPSG:4326"
+      }
+    }
+  },
+  "parameters": {
+    "source": "examples/eurostat nuts regions.qgz",
+    "sourceFormat": "text/plain; delimiter=space; quote=double",
+    "sourceRow": 1,
+    "rowCount": 60000,
+    "columnCount": 63,
+    "regionIndicators": {
+      "nuts_region_01": 0,
+      "nuts_region_02": 0,
+      "nuts_region_03": 0,
+      "nuts_region_04": 0,
+      "nuts_region_05": 0,
+      "nuts_region_06": 0,
+      "nuts_region_07": 0,
+      "nuts_region_08": 0,
+      "nuts_region_09": 0,
+      "nuts_region_10": 0,
+      "nuts_region_11": 0,
+      "nuts_region_12": 0,
+      "nuts_region_13": 0,
+      "nuts_region_14": 0,
+      "nuts_region_15": 0,
+      "nuts_region_16": 0,
+      "nuts_region_17": 0
+    },
+    "conformsTo": [
+      "https://docs.ogc.org/is/18-088/18-088.html",
+      "http://www.w3.org/ns/sosa/Observation"
+    ]
+  }
+}

@@ -7,6 +7,8 @@
     "dwc": "http://rs.tdwg.org/dwc/terms/",
     "prov": "http://www.w3.org/ns/prov#",
     "qudt": "http://qudt.org/schema/qudt/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "sdn": "https://vocab.nerc.ac.uk/collection/SDN/current/",
     "time": "http://www.w3.org/2006/time#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#",
 
@@ -58,18 +60,18 @@
 
     "scientificName": "dwc:scientificName",
     "species": "dwc:scientificName",
-    "sourceSpeciesQuery": "seadots:sourceSpeciesQuery",
+    "sourceSpeciesQuery": "dwc:scientificName",
     "sourceCruiseQuery": "seadots:sourceCruiseQuery",
-    "cruise": "seadots:cruise",
-    "equipment": "seadots:equipment",
-    "Cruise": "seadots:cruise",
-    "Equipment": "seadots:equipment",
+    "cruise": "sdn:cruise",
+    "equipment": "sosa:usedProcedure",
+    "Cruise": "sdn:cruise",
+    "Equipment": "sosa:usedProcedure",
     "Scientific name": "dwc:scientificName",
     "Number": "dwc:individualCount",
-    "Weight": { "@id": "seadots:catchWeight", "@type": "qudt:QuantityValue" },
+    "Weight": { "@id": "sosa:hasSimpleResult", "@type": "qudt:QuantityValue" },
     "Catch Id": "dcterms:identifier",
-    "Sample Number": "seadots:sampleNumber",
-    "Station (R)": "seadots:station",
-    "Bottom depth": "seadots:bottomDepth"
+    "Sample Number": "dwc:materialSampleID",
+    "Station (R)": "dwc:locality",
+    "Bottom depth": "sdn:depthMax"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "@context": [
+    "https://raw.githubusercontent.com/ILIAD-ocean-twin/OIM/main/jsonld/crossDomain-context.jsonld",
+    {
+      "@version": 1.1,
+      "@vocab": "https://w3id.org/ogc/hosted/seadots/swedish-dt#",
+      "sosa": "http://www.w3.org/ns/sosa/",
+      "sta": "http://www.opengis.net/def/ont/sensorthings/",
+      "schema": "https://schema.org/",
+      "dcterms": "http://purl.org/dc/terms/",
+      "geojson": "https://purl.org/geojson/vocab#",
+      "id": "@id",
+      "type": "@type",
+      "phenomenonTime": {
+        "@id": "sosa:phenomenonTime"
+      },
+      "resultTime": {
+        "@id": "sosa:resultTime",
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      },
+      "result": "sosa:hasResult",
+      "Datastream": "sta:Datastream",
+      "FeatureOfInterest": "sosa:hasFeatureOfInterest",
+      "ObservedProperty": "sosa:observedProperty",
+      "Sensor": "sosa:madeBySensor",
+      "Thing": "sosa:hasFeatureOfInterest",
+      "parameters": "schema:variableMeasured",
+      "source": {
+        "@id": "dcterms:source",
+        "@type": "@id"
+      },
+      "sourceFormat": "dcterms:format",
+      "rowCount": "schema:numberOfItems",
+      "columnCount": "schema:numberOfColumns",
+      "regionIndicators": "https://w3id.org/ogc/hosted/seadots/swedish-dt#regionIndicators",
+      "fileName": "schema:contentUrl",
+      "encoding": "schema:encodingFormat",
+      "parquetSchema": "https://geoparquet.org/schema",
+      "geo": "https://geoparquet.org/metadata"
+    }
+  ]
+}
