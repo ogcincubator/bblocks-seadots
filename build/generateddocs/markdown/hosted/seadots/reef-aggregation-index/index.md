@@ -256,14 +256,14 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
                                     indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "soft-sediment, 30-100 m" ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
-                                    indp:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ] ] ;
+                                    indp:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ] ] ;
                     seadots:role "coefficient (per taxon)" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;

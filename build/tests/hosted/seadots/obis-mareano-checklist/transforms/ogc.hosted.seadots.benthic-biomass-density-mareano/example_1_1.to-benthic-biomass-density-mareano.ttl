@@ -34,11 +34,11 @@
     geojson:properties [ a seadots:Dataset ;
             dcterms:conformsTo sosa:Observation,
                 <https://ogcincubator.github.io/geodcat-ogcapi-records/> ;
-            dcterms:created "2026-05-27" ;
+            dcterms:created "2026-05-28" ;
             dcterms:format [ dcterms:format "application/json" ] ;
             dcterms:language [ dcterms:identifier "en" ] ;
             dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
-            dcterms:modified "2026-05-27" ;
+            dcterms:modified "2026-05-28" ;
             dcterms:title "MAREANO benthic biomass density proxy from OBIS checklist" ;
             dcat:keyword "MAREANO",
                 "OBIS",
@@ -57,7 +57,7 @@
                     seadots:data [ dcterms:temporal "unknown" ;
                             qudt:unit "dimensionless occurrence share encoded in kg m-2 field" ;
                             prov:wasAttributedTo "OBIS / MAREANO" ;
-                            prov:wasDerivedFrom [ dcterms:date "2026-05-27" ;
+                            prov:wasDerivedFrom [ dcterms:date "2026-05-28" ;
                                     dcterms:source [ dcterms:title "OBIS checklist API" ;
                                             seadots:url "https://api.obis.org/v3/checklist?size=10&skip=20&datasetid=d556b9d4-7625-4aa2-894d-441eabae47f7,152259dc-9c20-4c1a-9644-8e4b509d4f73,14fa3c3e-259c-4af9-9314-eee1dc3a119b" ] ;
                                     skos:note "Transformed 10 OBIS checklist rows from a response with total=3196 into a MAREANO biomass-density proxy example. Proxy density is records / sum(records in this page); aggregate=0.9999999999." ;
@@ -68,45 +68,21 @@
                                     seadots:verificationGap "The source OBIS response contains occurrence records or occurrence record counts. It does not contain biomass, sampled area, station effort or physical density measurements. `density_kg_m2` is therefore a normalized occurrence-count proxy for testing target bblock interoperability." ] ;
                             indo:baseline-benthic-biomass-density "0.9999999999"^^qudt:QuantityValue ;
                             seadots:perTaxon [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 459 ;
-                                    dwc:scientificName "Sipuncula" ;
-                                    dwc:taxonID 1268 ;
-                                    indo:benthic-biomass-density-mareano "0.1095726904"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 386 ;
+                                    dwc:scientificName "Chone" ;
+                                    dwc:taxonID 129525 ;
+                                    indo:benthic-biomass-density-mareano "0.0921460969"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 459 ;
-                                    seadots:taxonRank "Order" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 388 ;
-                                    dwc:scientificName "Astarte sulcata" ;
-                                    dwc:taxonID 138824 ;
-                                    indo:benthic-biomass-density-mareano "0.0926235378"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 388 ;
-                                    seadots:taxonRank "Species" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 403 ;
-                                    dwc:scientificName "Harpinia" ;
-                                    dwc:taxonID 101716 ;
-                                    indo:benthic-biomass-density-mareano "0.0962043447"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 403 ;
+                                    seadots:obisRecords 386 ;
                                     seadots:taxonRank "Genus" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 410 ;
-                                    dwc:scientificName "Cephalaspidea" ;
-                                    dwc:taxonID 154 ;
-                                    indo:benthic-biomass-density-mareano "0.0978753879"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 432 ;
+                                    dwc:scientificName "Aphelochaeta" ;
+                                    dwc:taxonID 129240 ;
+                                    indo:benthic-biomass-density-mareano "0.103127238"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 410 ;
-                                    seadots:taxonRank "Order" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 413 ;
-                                    dwc:scientificName "Notomastus latericeus" ;
-                                    dwc:taxonID 129898 ;
-                                    indo:benthic-biomass-density-mareano "0.0985915493"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 413 ;
-                                    seadots:taxonRank "Species" ],
+                                    seadots:obisRecords 432 ;
+                                    seadots:taxonRank "Genus" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
                                     dwc:sampleSizeValue 417 ;
                                     dwc:scientificName "Oedicerotidae" ;
@@ -116,13 +92,21 @@
                                     seadots:obisRecords 417 ;
                                     seadots:taxonRank "Family" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 386 ;
-                                    dwc:scientificName "Chone" ;
-                                    dwc:taxonID 129525 ;
-                                    indo:benthic-biomass-density-mareano "0.0921460969"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 403 ;
+                                    dwc:scientificName "Harpinia" ;
+                                    dwc:taxonID 101716 ;
+                                    indo:benthic-biomass-density-mareano "0.0962043447"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 386 ;
+                                    seadots:obisRecords 403 ;
                                     seadots:taxonRank "Genus" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 413 ;
+                                    dwc:scientificName "Notomastus latericeus" ;
+                                    dwc:taxonID 129898 ;
+                                    indo:benthic-biomass-density-mareano "0.0985915493"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 413 ;
+                                    seadots:taxonRank "Species" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
                                     dwc:sampleSizeValue 452 ;
                                     dwc:scientificName "Amphipoda" ;
@@ -130,6 +114,14 @@
                                     indo:benthic-biomass-density-mareano "0.1079016472"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
                                     seadots:obisRecords 452 ;
+                                    seadots:taxonRank "Order" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 459 ;
+                                    dwc:scientificName "Sipuncula" ;
+                                    dwc:taxonID 1268 ;
+                                    indo:benthic-biomass-density-mareano "0.1095726904"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 459 ;
                                     seadots:taxonRank "Order" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
                                     dwc:sampleSizeValue 429 ;
@@ -140,13 +132,21 @@
                                     seadots:obisRecords 429 ;
                                     seadots:taxonRank "Class" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 432 ;
-                                    dwc:scientificName "Aphelochaeta" ;
-                                    dwc:taxonID 129240 ;
-                                    indo:benthic-biomass-density-mareano "0.103127238"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 410 ;
+                                    dwc:scientificName "Cephalaspidea" ;
+                                    dwc:taxonID 154 ;
+                                    indo:benthic-biomass-density-mareano "0.0978753879"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 432 ;
-                                    seadots:taxonRank "Genus" ] ] ;
+                                    seadots:obisRecords 410 ;
+                                    seadots:taxonRank "Order" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 388 ;
+                                    dwc:scientificName "Astarte sulcata" ;
+                                    dwc:taxonID 138824 ;
+                                    indo:benthic-biomass-density-mareano "0.0926235378"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 388 ;
+                                    seadots:taxonRank "Species" ] ] ;
                     seadots:role "primary baseline proxy" ] ;
             seadots:description "Occurrence-weighted proxy derived from OBIS records for selected MAREANO datasets. OBIS records do not provide biomass, sampled area or station geometry; this output is a schema-compatible proxy, not a physical biomass-density measurement." ] .
 

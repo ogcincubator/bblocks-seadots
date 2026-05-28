@@ -1,0 +1,117 @@
+@prefix : <https://w3id.org/ogc/hosted/seadots/swedish-dt#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix sta: <http://www.opengis.net/def/ont/sensorthings/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/swedish-dt-case-region-north-to-gotland> :bbox 1.64e+01,
+        2.25e+01,
+        5.7e+01,
+        6.58e+01 ;
+    :geometry [ :coordinates "[16.4, 59.0]",
+                "[17.0, 57.0]",
+                "[17.6, 63.0]",
+                "[19.0, 65.8]",
+                "[19.2, 57.0]",
+                "[20.6, 58.1]",
+                "[21.6, 60.3]",
+                "[21.8, 65.8]",
+                "[22.5, 63.4]" ;
+            :type "Polygon" ] ;
+    :properties [ :crs "EPSG:4326" ;
+            :geometryStatus "approximate case-region footprint" ;
+            :name "Swedish DT case region - northern Baltic to Gotland" ;
+            :southAnchor "Gotland Island" ] ;
+    :type "Feature" .
+
+[] sta:Datastream [ sosa:hasFeatureOfInterest [ :name "Eurostat NUTS region indicator set" ] ;
+            sosa:madeBySensor [ :encodingType "application/json" ;
+                    :metadata "Source model output represented from examples/eurostat nuts regions.qgz" ;
+                    :name "Swedish Digital Twin fisheries simulation model" ] ;
+            sosa:observedProperty [ skos:definition "https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState" ;
+                    :name "Swedish DT fisheries simulation state" ] ;
+            :description "Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model." ;
+            :name "Swedish DT Eurostat NUTS regions simulation output" ;
+            :observationType "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation" ;
+            :unitOfMeasurement [ skos:definition "https://qudt.org/vocab/unit/UNITLESS" ;
+                    :name "model output bundle" ;
+                    :symbol "1" ] ] ;
+    sosa:hasFeatureOfInterest [ :description "Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary." ;
+            :encodingType "application/geo+json" ;
+            :feature <file:///github/workspace/swedish-dt-case-region-north-to-gotland> ;
+            :name "Swedish DT case region - northern Baltic to Gotland" ] ;
+    sosa:hasResult [ :B_herring_tot 250000 ;
+            :K_herring_reg_inc 1 ;
+            :SV_fishing_radius 5 ;
+            :SV_herring_market "fish meal" ;
+            :TAC_herring_Sweden_impl 1 ;
+            :TAC_herring_est_error 6.5e-01 ;
+            :TAC_herring_inc_SV 1 ;
+            :TAC_herring_share_sv 9.3e-02 ;
+            :TAC_herring_type 0 ;
+            :TAC_share_B_herring 3e-01 ;
+            :VA_LV_All 4.316705e+04 ;
+            :VA_SV_All 2.068744e+02 ;
+            :catch_herring_LV_All 2.306167e+05 ;
+            :catch_herring_SV_All 1.458718e+03 ;
+            :catch_sprat_LV_All 2.888209e+05 ;
+            :catch_sprat_SV_All 1.116481e+03 ;
+            :current_TAC_herring 5.666949e+04 ;
+            :current_herring_season "Evenly distributed" ;
+            :current_management_season "No closure" ;
+            :current_month 6 ;
+            :current_year 1 ;
+            :even_dispersal_rate 8e-02 ;
+            :fishing_algorithm "profit maximisation" ;
+            :fuel_consumption_LV 0 ;
+            :fuel_consumption_SV 0 ;
+            :fuel_price 0 ;
+            :herring_price_fish_meal 2.41e+00 ;
+            :herring_price_human_cons 1.125e+01 ;
+            :landing-value_sprat_LV 6.960583e+05 ;
+            :landing_value_herring_LV 5.557862e+05 ;
+            :landing_value_herring_SV 3.515511e+03 ;
+            :landing_value_sprat_SV 2.69072e+03 ;
+            :mean_biomas_sprat 6.483755e+03 ;
+            :mean_biomass_herring 7.392332e+03 ;
+            :repetitions 1 ;
+            :spawning_closure_type 0 ;
+            :spawning_dispersal_rate 4e-02 ;
+            :sprat_price 2.41e+00 ;
+            :stop_herring_growth false ;
+            :ticks 1 ;
+            :trawling_limit "none" ;
+            :winter_closure_length 120 ;
+            :winter_closure_type 1 ;
+            :winter_dispersal_rate 2.7e-02 ;
+            :year_tick 33 ;
+            :yearly_growth_herring 5.2e-01 ] ;
+    sosa:phenomenonTime <file:///github/workspace/model-year-1/month-6/tick-33> ;
+    sosa:resultTime "2026-05-27T00:00:00+00:00"^^xsd:dateTime ;
+    schema:variableMeasured [ dcterms:format "text/plain; delimiter=space; quote=double" ;
+            dcterms:source <file:///github/workspace/> ;
+            schema:numberOfColumns 63 ;
+            schema:numberOfItems 60000 ;
+            :conformsTo "http://www.w3.org/ns/sosa/Observation",
+                "https://docs.ogc.org/is/18-088/18-088.html" ;
+            :regionIndicators [ :nuts_region_01 0 ;
+                    :nuts_region_02 0 ;
+                    :nuts_region_03 0 ;
+                    :nuts_region_04 0 ;
+                    :nuts_region_05 0 ;
+                    :nuts_region_06 0 ;
+                    :nuts_region_07 0 ;
+                    :nuts_region_08 0 ;
+                    :nuts_region_09 0 ;
+                    :nuts_region_10 0 ;
+                    :nuts_region_11 0 ;
+                    :nuts_region_12 0 ;
+                    :nuts_region_13 0 ;
+                    :nuts_region_14 0 ;
+                    :nuts_region_15 0 ;
+                    :nuts_region_16 0 ;
+                    :nuts_region_17 0 ] ;
+            :sourceRow 1 ] .
+

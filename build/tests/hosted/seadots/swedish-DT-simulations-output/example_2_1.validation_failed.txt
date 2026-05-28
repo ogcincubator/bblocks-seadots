@@ -1,0 +1,94 @@
+Validation report for ogc.hosted.seadots.swedish-DT-simulations-output - Swedish DT Simulations Output
+Generated 2026-05-28T07:01:13.921715+00:00
+=== Files ===
+Using examples/eurostat-nuts-regions-observation.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_2_1.jsonld created
+Output Turtle example_2_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+Validation passed
+=== End JSON Schema ===
+
+=== SHACL ===
+
+** Validation error **
+Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
+  Validation Report
+  Conforms: False
+  Results (1):
+  Constraint Violation in NodeKindConstraintComponent (http://www.w3.org/ns/shacl#NodeKindConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: [ sh:nodeKind sh:IRI ; sh:path sosa:observedProperty ]
+  	Focus Node: [ :description Literal("Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.") ; :name Literal("Swedish DT Eurostat NUTS regions simulation output") ; :observationType Literal("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") ; :unitOfMeasurement [ :name Literal("model output bundle") ; :symbol Literal("1") ; skos:definition Literal("https://qudt.org/vocab/unit/UNITLESS") ] ; sosa:hasFeatureOfInterest [ :name Literal("Eurostat NUTS region indicator set") ] ; sosa:madeBySensor [ :encodingType Literal("application/json") ; :metadata Literal("Source model output represented from examples/eurostat nuts regions.qgz") ; :name Literal("Swedish Digital Twin fisheries simulation model") ] ; sosa:observedProperty [ :name Literal("Swedish DT fisheries simulation state") ; skos:definition Literal("https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState") ] ]
+  	Value Node: [ :name Literal("Swedish DT fisheries simulation state") ; skos:definition Literal("https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState") ]
+  	Result Path: sosa:observedProperty
+  	Message: Value is not of Node Kind sh:IRI
+  
+Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
+ - Shape :force-linked-data-observedProperty: _:Ne6d7da38285a4efb99746b5efdd87175
+
+
+** Validation error **
+Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
+  Validation Report
+  Conforms: False
+  Results (1):
+  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>
+  	Focus Node: [ schema:variableMeasured [ :conformsTo Literal("http://www.w3.org/ns/sosa/Observation"), Literal("https://docs.ogc.org/is/18-088/18-088.html") ; :regionIndicators [ :nuts_region_01 Literal("0", datatype=xsd:integer) ; :nuts_region_02 Literal("0", datatype=xsd:integer) ; :nuts_region_03 Literal("0", datatype=xsd:integer) ; :nuts_region_04 Literal("0", datatype=xsd:integer) ; :nuts_region_05 Literal("0", datatype=xsd:integer) ; :nuts_region_06 Literal("0", datatype=xsd:integer) ; :nuts_region_07 Literal("0", datatype=xsd:integer) ; :nuts_region_08 Literal("0", datatype=xsd:integer) ; :nuts_region_09 Literal("0", datatype=xsd:integer) ; :nuts_region_10 Literal("0", datatype=xsd:integer) ; :nuts_region_11 Literal("0", datatype=xsd:integer) ; :nuts_region_12 Literal("0", datatype=xsd:integer) ; :nuts_region_13 Literal("0", datatype=xsd:integer) ; :nuts_region_14 Literal("0", datatype=xsd:integer) ; :nuts_region_15 Literal("0", datatype=xsd:integer) ; :nuts_region_16 Literal("0", datatype=xsd:integer) ; :nuts_region_17 Literal("0", datatype=xsd:integer) ] ; :sourceRow Literal("1", datatype=xsd:integer) ; dcterms:format Literal("text/plain; delimiter=space; quote=double") ; dcterms:source <file:///github/workspace/> ; schema:numberOfColumns Literal("63", datatype=xsd:integer) ; schema:numberOfItems Literal("60000", datatype=xsd:integer) ] ; sosa:hasFeatureOfInterest [ :description Literal("Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary.") ; :encodingType Literal("application/geo+json") ; :feature <file:///github/workspace/swedish-dt-case-region-north-to-gotland> ; :name Literal("Swedish DT case region - northern Baltic to Gotland") ] ; sosa:hasResult [ :B_herring_tot Literal("250000", datatype=xsd:integer) ; :K_herring_reg_inc Literal("1", datatype=xsd:integer) ; :SV_fishing_radius Literal("5", datatype=xsd:integer) ; :SV_herring_market Literal("fish meal") ; :TAC_herring_Sweden_impl Literal("1", datatype=xsd:integer) ; :TAC_herring_est_error Literal("0.65", datatype=xsd:double) ; :TAC_herring_inc_SV Literal("1", datatype=xsd:integer) ; :TAC_herring_share_sv Literal("0.093", datatype=xsd:double) ; :TAC_herring_type Literal("0", datatype=xsd:integer) ; :TAC_share_B_herring Literal("0.3", datatype=xsd:double) ; :VA_LV_All Literal("43167.05149821874", datatype=xsd:double) ; :VA_SV_All Literal("206.8743610448568", datatype=xsd:double) ; :catch_herring_LV_All Literal("230616.67132147925", datatype=xsd:double) ; :catch_herring_SV_All Literal("1458.718163663206", datatype=xsd:double) ; :catch_sprat_LV_All Literal("288820.877827211", datatype=xsd:double) ; :catch_sprat_SV_All Literal("1116.4813514179987", datatype=xsd:double) ; :current_TAC_herring Literal("56669.48663862502", datatype=xsd:double) ; :current_herring_season Literal("Evenly distributed") ; :current_management_season Literal("No closure") ; :current_month Literal("6", datatype=xsd:integer) ; :current_year Literal("1", datatype=xsd:integer) ; :even_dispersal_rate Literal("0.08", datatype=xsd:double) ; :fishing_algorithm Literal("profit maximisation") ; :fuel_consumption_LV Literal("0", datatype=xsd:integer) ; :fuel_consumption_SV Literal("0", datatype=xsd:integer) ; :fuel_price Literal("0", datatype=xsd:integer) ; :herring_price_fish_meal Literal("2.41", datatype=xsd:double) ; :herring_price_human_cons Literal("11.25", datatype=xsd:double) ; :landing-value_sprat_LV Literal("696058.3155635783", datatype=xsd:double) ; :landing_value_herring_LV Literal("555786.1778847649", datatype=xsd:double) ; :landing_value_herring_SV Literal("3515.510774428327", datatype=xsd:double) ; :landing_value_sprat_SV Literal("2690.7200569173774", datatype=xsd:double) ; :mean_biomas_sprat Literal("6483.7546843309965", datatype=xsd:double) ; :mean_biomass_herring Literal("7392.332485966248", datatype=xsd:double) ; :repetitions Literal("1", datatype=xsd:integer) ; :spawning_closure_type Literal("0", datatype=xsd:integer) ; :spawning_dispersal_rate Literal("0.04", datatype=xsd:double) ; :sprat_price Literal("2.41", datatype=xsd:double) ; :stop_herring_growth Literal("false" = False, datatype=xsd:boolean) ; :ticks Literal("1", datatype=xsd:integer) ; :trawling_limit Literal("none") ; :winter_closure_length Literal("120", datatype=xsd:integer) ; :winter_closure_type Literal("1", datatype=xsd:integer) ; :winter_dispersal_rate Literal("0.027", datatype=xsd:double) ; :year_tick Literal("33", datatype=xsd:integer) ; :yearly_growth_herring Literal("0.52", datatype=xsd:double) ] ; sosa:phenomenonTime <file:///github/workspace/model-year-1/month-6/tick-33> ; sosa:resultTime Literal("2026-05-27T00:00:00+00:00" = 2026-05-27 00:00:00+00:00, datatype=xsd:dateTime) ; sta:Datastream [ :description Literal("Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.") ; :name Literal("Swedish DT Eurostat NUTS regions simulation output") ; :observationType Literal("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") ; :unitOfMeasurement [ :name Literal("model output bundle") ; :symbol Literal("1") ; skos:definition Literal("https://qudt.org/vocab/unit/UNITLESS") ] ; sosa:hasFeatureOfInterest [ :name Literal("Eurostat NUTS region indicator set") ] ; sosa:madeBySensor [ :encodingType Literal("application/json") ; :metadata Literal("Source model output represented from examples/eurostat nuts regions.qgz") ; :name Literal("Swedish Digital Twin fisheries simulation model") ] ; sosa:observedProperty [ :name Literal("Swedish DT fisheries simulation state") ; skos:definition Literal("https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState") ] ] ]
+  	Value Node: Literal("")
+  	Result Path: sosa:observedProperty
+  	Source Constraint: [ sh:message Literal("sosa:observedProperty is required") ; sh:select Literal("
+              PREFIX sh: <http://www.w3.org/ns/shacl#>
+              PREFIX sosa: <http://www.w3.org/ns/sosa/>
+              PREFIX geojson: <https://purl.org/geojson/vocab#>
+              SELECT $this (sosa:observedProperty as ?path) (GROUP_CONCAT(?prop; separator=';') AS ?value)
+              WHERE {
+                  OPTIONAL { $this sosa:observedProperty ?prop .
+                   $this (sosa:hasResult|sosa:hasSimpleResult) ?result_so_observation }
+                  OPTIONAL { ?collection (sosa:hasMember|geojson:features)+ $this ; sosa:observedProperty ?prop }
+              }
+              GROUP BY ?prop
+              HAVING (count(?prop) < 1)
+          ") ]
+  	Message: sosa:observedProperty is required
+  
+Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
+ - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: _:N5f8e17b030d645e8ae3bce49a3cb9c54
+ - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureCollectionShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:FeatureShape: *none*
+
+=== End SHACL ===
+
