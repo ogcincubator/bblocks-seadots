@@ -1,0 +1,76 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Data Tabular
+description: >
+  OGC API Records profile for records describing tabular data assets such as
+  CSV, TSV, Parquet, GeoParquet, or attribute tables. The shared SeaDOTs catalog
+  data semantics are inherited from ogc.hosted.seadots.catalog-data; this block
+  adds only the STAC table extension column descriptors and the profile-link
+  constraint that advertises this building block.
+
+allOf:
+  - $ref: bblocks://ogc.hosted.seadots.catalog-data
+
+type: object
+required:
+  - type
+  - properties
+  - links
+properties:
+  type:
+    const: Feature
+  properties:
+    type: object
+    required:
+      - title
+      - description
+    additionalProperties: true
+    properties:
+      table:columns:
+        type: array
+        description: >
+          Ordered list of columns in the tabular data asset.
+          Based on the STAC table extension column descriptor.
+        items:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              description: Column name as it appears in the data file.
+            description:
+              type: string
+              description: Human-readable description of the column.
+            type:
+              type: string
+              description: >
+                Data type of the column values (e.g. int32, float64, string,
+                geometry, datetime). Follows STAC table extension type vocabulary.
+            unit:
+              type: string
+              description: >
+                Physical unit of the column values expressed as a CF/UDUNITS
+                string (e.g. "m s-1", "degrees_C", "1").
+          additionalProperties: true
+      table:primary_geometry:
+        type: string
+        description: >
+          Name of the primary geometry column in the tabular file.
+          Applicable only when the asset is a GeoParquet file or other
+          spatially-enabled tabular format.
+      table:row_count:
+        type: integer
+        minimum: 0
+        description: Total number of data rows in the tabular asset.
+  links:
+    type: array
+    contains:
+      type: object
+      required:
+        - rel
+        - href
+      properties:
+        rel:
+          const: profile
+        href:
+          const: bblocks://ogc.hosted.seadots.catalog-data-tabular

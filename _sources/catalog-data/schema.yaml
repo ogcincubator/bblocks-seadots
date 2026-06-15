@@ -1,0 +1,68 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Data
+description: >
+  Generic SeaDOTs catalog data profile. It composes the EarthCODE common
+  GeoDCAT/STAC/Records profile, STAC Item provenance, and CF metadata support,
+  then adds only SeaDOTs data-record terms shared by inputs, outputs, and
+  data-type-specific profiles.
+
+allOf:
+  - $ref: bblocks://ogc.osc.geodcat-stac-earthcode.common
+  - $ref: bblocks://ogc.contrib.stac.item-prov
+  - $ref: bblocks://ogc.contrib.stac.extensions.cf
+
+type: object
+required:
+  - type
+  - itemType
+  - properties
+properties:
+  type:
+    const: Feature
+  itemType:
+    const: record
+  properties:
+    type: object
+    required:
+      - title
+      - description
+      - datetime
+    properties:
+      role:
+        type: string
+        enum:
+          - data
+          - input
+          - output
+        description: Data role in a SeaDOTs catalog or workflow context.
+      convention:
+        type: string
+        description: Optional metadata convention declaration, e.g. CF-1.10.
+      derivedFrom:
+        type: array
+        description: Source data records or artefacts from which this data item was derived.
+        items:
+          type: string
+          format: uri-reference
+    additionalProperties: true
+  links:
+    type: array
+    items:
+      type: object
+      properties:
+        rel:
+          type: string
+          description: Link relation, including workflow-neutral data links and role-specific input/output provenance links.
+        href:
+          type: string
+          format: uri-reference
+    contains:
+      type: object
+      required:
+        - rel
+        - href
+      properties:
+        rel:
+          const: describedby
+        href:
+          const: bblocks://ogc.hosted.seadots.catalog-data

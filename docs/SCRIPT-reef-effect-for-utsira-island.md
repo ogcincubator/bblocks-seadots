@@ -533,7 +533,7 @@ typos and broken formatting, because it records what the autonomous process
 returned. [for review]
 
 [TODO: replace this raw transcript with the current `catalog-application`,
-`catalog-workflow`, `catalog-execution`, `catalog-input` and `catalog-output`
+`catalog-workflow`, `catalog-execution` and `catalog-data`
 building-block pattern once the presentation and repo converge.]
 
 Three new bblocks added to _sources/
@@ -672,11 +672,11 @@ It will:
 With a little luck, the service will also be available by default under
 http://localhost:5000
 
- ![alt text](image.png)
+![alt text](image-5.png)
  
 It is a clean configuration, so it contains no other resources.
 
- ![alt text](image-1.png)
+![alt text](image-6.png)
 
  
 Record description is taken from the building-block definition.

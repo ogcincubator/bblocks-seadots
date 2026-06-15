@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "../catalog-data/context.jsonld",
+    {
+      "@version": 1.1,
+      "table": "https://stac-extensions.github.io/table/v1.2.0/schema.json#",
+      "dcterms": "http://purl.org/dc/terms/",
+      "qudt": "http://qudt.org/schema/qudt/",
+      "table:columns": {
+        "@id": "table:columns",
+        "@container": "@list"
+      },
+      "table:primary_geometry": {
+        "@id": "table:primaryGeometry"
+      },
+      "table:row_count": {
+        "@id": "table:rowCount",
+        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+      },
+      "name": "dcterms:title",
+      "description": "dcterms:description",
+      "type": "dcterms:type",
+      "unit": {
+        "@id": "qudt:unit"
+      }
+    }
+  ]
+}

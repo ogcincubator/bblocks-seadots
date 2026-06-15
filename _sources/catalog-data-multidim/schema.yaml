@@ -1,0 +1,38 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Data Multidimensional
+description: >
+  OGC API Records profile for records describing multidimensional gridded or
+  array-oriented data. The structural contract is inherited from the ILIAD
+  STAC/DCAT multidimensional data profile; this block only adds the SeaDOTs
+  profile-link constraint.
+
+allOf:
+  - $ref: bblocks://ogc.hosted.seadots.catalog-data
+  - $ref: bblocks://ogc.hosted.iliad.api.features.stac_multidim_data
+
+type: object
+required:
+  - type
+  - properties
+  - links
+properties:
+  type:
+    const: Feature
+  properties:
+    type: object
+    required:
+      - title
+      - description
+    additionalProperties: true
+  links:
+    type: array
+    contains:
+      type: object
+      required:
+        - rel
+        - href
+      properties:
+        rel:
+          const: profile
+        href:
+          const: bblocks://ogc.hosted.iliad.api.features.stac_multidim_data

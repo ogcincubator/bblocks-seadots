@@ -17,6 +17,11 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prez: <https://prez.dev> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix im: <https://w3id.org/indicators/marine/indicator-model/> .
+@prefix dapsim: <https://w3id.org/indicators/marine/dapsim/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix sdn: <https://vocab.nerc.ac.uk/collection/SDN/current/> .
+
 
 # --- CLASS DECLARATIONS ---
 # Three semantic categories used in this register:
@@ -39,6 +44,7 @@ ind:catalog a dcat:Catalog ;
     dcterms:hasPart ind:ind-rel-scheme ; 
     dcat:dataset ind:indicators-scheme ;
     dcat:dataset ind:parameters-scheme ;
+    dcat:dataset ind:ind-rel-scheme ;
     dcat:dataset ind:ind-rel-scheme .
 
 # --- SCHEME CONFIGURATION ---
@@ -180,6 +186,10 @@ indo:fish-stock-biomass a sosa:ObservableProperty, skos:Concept ;
     skos:definition "Abstract concept: biomass of a simulated fish stock, before specialisation by species or spatial aggregation."@en ;
     skos:inScheme ind:indicators-scheme ;
     qudt:hasQuantityKind quantitykind:Mass ;
+    skos:broader "https://agrovoc.fao.org/browse/agrovoc/en/page/c_24251" ;
+    skos:related: "http://vocab.nerc.ac.uk/collection/S06/current/S0600087/" ;
+    skos:related: "http://vocab.nerc.ac.uk/collection/S06/current/S0600086/" ;
+    skos:related: "https://ec.europa.eu/eurostat/databrowser/view/sdg_14_21/default/table";
     skos:narrower indo:mean_biomass_herring ,
                                       indo:mean_biomass_sprat ,
                                       indo:B_herring_tot .
@@ -777,6 +787,7 @@ indp:submerged-infrastructure-area a ssn:Property, skos:Concept ;
     skos:definition "Wetted submerged hard-substrate area of floating-wind infrastructure available for colonisation."@en ;
     skos:inScheme ind:parameters-scheme ;
     skos:narrower indp:submerged-infrastructure-area-utsira-design ;
+    qudt:quantityKind quantitykind:Area ;
     qudt:hasQuantityKind quantitykind:Area .
 
 # Baseline-density ObservableProperty (indicators-scheme) — measured from surveys, not a model parameter.
@@ -798,6 +809,8 @@ indp:reef-aggregation-index a ssn:Property, skos:Concept ;
     skos:narrower indp:reef-aggregation-index-mytilus,
         indp:reef-aggregation-index-buccinum,
         indp:reef-aggregation-index-asterias ;
+    skos:related "http://vocab.nerc.ac.uk/collection/S06/current/S0600232/" ;
+    skos:related indo:benthic-biomass-density ;
     qudt:hasQuantityKind quantitykind:Dimensionless .
 
 # Colonisation-time-factor Property (parameters-scheme).
