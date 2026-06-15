@@ -1,0 +1,437 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/swedish-DT-simulations-output/context.jsonld",
+  "fileName": "eurostat-nuts-regions.parquet",
+  "encoding": "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB",
+  "source": {
+    "href": "examples/eurostat nuts regions.qgz",
+    "sourceFormat": "text/plain; delimiter=space; quote=double",
+    "rowCount": 60000,
+    "columnCount": 63,
+    "note": "The supplied source carries NUTS region indicator columns but no row-level geometry. This header includes an approximate Swedish case-region footprint spanning northern Baltic/Bothnian Sea case waters southward to Gotland Island. A concrete GeoParquet writer should replace or refine this with authoritative Eurostat NUTS geometries before emitting WKB geometry."
+  },
+  "parquetSchema": [
+    {
+      "name": "geometry",
+      "type": "BYTE_ARRAY/WKB",
+      "nullable": true,
+      "description": "NUTS region geometry after joining `nuts_region_01` ... `nuts_region_17` to an authoritative NUTS geometry table."
+    },
+    {
+      "name": "repetitions",
+      "type": "INT64",
+      "nullable": false
+    },
+    {
+      "name": "ticks",
+      "type": "INT64",
+      "nullable": false
+    },
+    {
+      "name": "current_herring_season",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true
+    },
+    {
+      "name": "current_management_season",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true
+    },
+    {
+      "name": "current_TAC_herring",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "TAC_herring_share_sv",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "even_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "winter_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "spawning_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "winter_closure_type",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "spawning_closure_type",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "trawling_limit",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true
+    },
+    {
+      "name": "fishing_algorithm",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true
+    },
+    {
+      "name": "current_year",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "current_month",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "year_tick",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "herring_price_fish_meal",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "sprat_price",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "fuel_price",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "fuel_consumption_SV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "fuel_consumption_LV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "stop_herring_growth",
+      "type": "BOOLEAN",
+      "nullable": true
+    },
+    {
+      "name": "mean_biomass_herring",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "mean_biomas_sprat",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "landing_value_herring_SV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "landing_value_herring_LV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "landing_value_sprat_SV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "landing-value_sprat_LV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "catch_herring_SV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "catch_herring_LV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "catch_sprat_SV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "catch_sprat_LV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "VA_SV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "VA_LV_All",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "yearly_growth_herring",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "winter_closure_length",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "TAC_share_B_herring",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "B_herring_tot",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "K_herring_reg_inc",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "TAC_herring_Sweden_impl",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "herring_price_human_cons",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "SV_herring_market",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true
+    },
+    {
+      "name": "TAC_herring_est_error",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "SV_fishing_radius",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "TAC_herring_inc_SV",
+      "type": "DOUBLE",
+      "nullable": true
+    },
+    {
+      "name": "TAC_herring_type",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_01",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_02",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_03",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_04",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_05",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_06",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_07",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_08",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_09",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_10",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_11",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_12",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_13",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_14",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_15",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_16",
+      "type": "INT64",
+      "nullable": true
+    },
+    {
+      "name": "nuts_region_17",
+      "type": "INT64",
+      "nullable": true
+    }
+  ],
+  "geo": {
+    "version": "1.1.0",
+    "primary_column": "geometry",
+    "columns": {
+      "geometry": {
+        "encoding": "WKB",
+        "geometry_types": [
+          "Polygon",
+          "MultiPolygon"
+        ],
+        "crs": {
+          "type": "GeographicCRS",
+          "name": "WGS 84",
+          "id": {
+            "authority": "EPSG",
+            "code": 4326
+          }
+        },
+        "edges": "planar",
+        "orientation": "counterclockwise",
+        "bbox": [
+          16.4,
+          57.0,
+          22.5,
+          65.8
+        ],
+        "exampleGeometryGeoJSON": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                17.0,
+                57.0
+              ],
+              [
+                19.2,
+                57.0
+              ],
+              [
+                20.6,
+                58.1
+              ],
+              [
+                21.6,
+                60.3
+              ],
+              [
+                22.5,
+                63.4
+              ],
+              [
+                21.8,
+                65.8
+              ],
+              [
+                19.0,
+                65.8
+              ],
+              [
+                17.6,
+                63.0
+              ],
+              [
+                16.4,
+                59.0
+              ],
+              [
+                17.0,
+                57.0
+              ]
+            ]
+          ]
+        },
+        "covering": {
+          "bbox": {
+            "xmin": [
+              "bbox",
+              "xmin"
+            ],
+            "ymin": [
+              "bbox",
+              "ymin"
+            ],
+            "xmax": [
+              "bbox",
+              "xmax"
+            ],
+            "ymax": [
+              "bbox",
+              "ymax"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "conversionNotes": [
+    "Preserve the original 63 simulation columns.",
+    "Use the included approximate Swedish case-region footprint when a single case geometry is needed, or replace it with authoritative Eurostat NUTS geometries before writing GeoParquet.",
+    "Use the NUTS indicator columns to explode or select rows when multiple regions are active.",
+    "Keep the source artifact link in Parquet file metadata for provenance."
+  ]
+}

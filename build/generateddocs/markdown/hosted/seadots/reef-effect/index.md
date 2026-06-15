@@ -697,18 +697,18 @@ Do not link to placeholder workflows that reference containers or tools that hav
             dcat:temporalResolution "P12M" ] ;
     dcterms:title "Utsira surroundings — reef-biomass experiment" ;
     dcterms:type "SoftwareSourceCode" ;
-    rdfs:seeAlso [ rdfs:label "Reef-biomass equation record" ;
-            dcterms:type "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
+    rdfs:seeAlso [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
+            dcterms:type "text/x-python" ;
+            ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect/scripts/utsira_reef_biomass.py> ],
         [ rdfs:label "Experiment bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect> ],
-        [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
-            dcterms:type "text/x-python" ;
-            ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect/scripts/utsira_reef_biomass.py> ],
+        [ rdfs:label "Reef-biomass equation record" ;
+            dcterms:type "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
         [ rdfs:label "ODD demonstrator that this experiment realises" ;
             dcterms:type "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -729,14 +729,10 @@ Do not link to placeholder workflows that reference containers or tools that hav
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.2" ;
     seadots:applicationPackage <file:///github/scripts/utsira_reef_biomass.py> ;
-    seadots:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.colonisation-time-factor> ;
-            dcterms:description "Colonisation time factor bound to C_t." ;
+    seadots:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+            dcterms:description "Primary MAREANO biomass-density baseline bound to D_{pre,i}." ;
             seadots:required true ;
-            seadots:role "colonisation-time-factor" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
-            dcterms:description "Polygon delimiting the study area; defaults to the surroundings of Utsira island." ;
-            seadots:required true ;
-            seadots:role "area-of-interest" ],
+            seadots:role "primary-benthic-biomass-density" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-imr> ;
             dcterms:description "IMR fallback biomass-density baseline bound to D_{pre,i}." ;
             seadots:required false ;
@@ -749,19 +745,23 @@ Do not link to placeholder workflows that reference containers or tools that hav
             dcterms:description "Floating wind infrastructure layout bound to A_{sub}." ;
             seadots:required true ;
             seadots:role "submerged-infrastructure" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
-            dcterms:description "Primary MAREANO biomass-density baseline bound to D_{pre,i}." ;
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+            dcterms:description "Polygon delimiting the study area; defaults to the surroundings of Utsira island." ;
             seadots:required true ;
-            seadots:role "primary-benthic-biomass-density" ] ;
+            seadots:role "area-of-interest" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.colonisation-time-factor> ;
+            dcterms:description "Colonisation time factor bound to C_t." ;
+            seadots:required true ;
+            seadots:role "colonisation-time-factor" ] ;
     seadots:itemType "record" ;
-    seadots:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-output> ;
-            dcterms:description "Optional catalog/STAC representation for the run output." ;
-            seadots:required false ;
-            seadots:role "stac-catalog-output" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+    seadots:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
             dcterms:description "Structured reef-associated biomass output." ;
             seadots:required true ;
-            seadots:role "reef-biomass-result" ] ;
+            seadots:role "reef-biomass-result" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-output> ;
+            dcterms:description "Optional catalog/STAC representation for the run output." ;
+            seadots:required false ;
+            seadots:role "stac-catalog-output" ] ;
     seadotsReef:experiment [ dcterms:purpose "Evaluate the reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario. Inputs are the six per-class input records cited below; outputs are the two reef-effect-output records cited below. The PROV-O provenance record is embedded in the structured result output." ;
             seadotsReef:application [ a <https://w3id.org/ogc/hosted/seadots/catalog#text/x-python> ;
                     dcterms:title "Utsira reef-biomass calculator (Python script)" ;
@@ -777,34 +777,34 @@ Do not link to placeholder workflows that reference containers or tools that hav
                             seadotsReef:seedPolicy "deterministic — equation is closed-form, no stochastic submodels" ] ;
                     seadotsReef:scheduling "single deterministic pass over taxon_groups (ODD processOverview.scheduling)" ] ;
             seadotsReef:input [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "Reef aggregation index bindings" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "AF_i" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "AOI — surroundings of Utsira island" ;
                     oa:hasTarget <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Colonisation time factor" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "C_t" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Submerged infrastructure layout — Utsira Nord 60 × 15 MW" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "A_{sub}" ],
                 [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "IMR benthic biomass baseline — fallback" ;
                     oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
                     seadotsReef:equationBinding "D_{pre,i}" ],
                 [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "Colonisation time factor" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "C_t" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "MAREANO benthic biomass density — primary baseline" ;
                     oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
                     seadotsReef:equationBinding "D_{pre,i}" ],
                 [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Reef aggregation index bindings" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> ;
+                    dcterms:title "Submerged infrastructure layout — Utsira Nord 60 × 15 MW" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "AF_i" ] ;
+                    seadotsReef:equationBinding "A_{sub}" ] ;
             seadotsReef:kind "computational" ;
             seadotsReef:modelledBy [ dcterms:title "ODD record for the reef-biomass demonstrator" ;
                     oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ;
@@ -825,24 +825,24 @@ Do not link to placeholder workflows that reference containers or tools that hav
                     dcterms:title "Months since installation" ;
                     seadotsReef:parameterSchema [ a seadots:integer ;
                             seadots:minimum 0 ] ],
-                [ rdfs:label "aoi" ;
-                    dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
-                    dcterms:title "Area of interest" ;
-                    skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
-                    seadotsReef:parameterSchema [ dcterms:format "application/geo+json" ] ],
                 [ rdfs:label "taxon_groups" ;
                     dcterms:description "Scientific names iterated by index i." ;
                     dcterms:title "TaxonGroup index values" ;
                     skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
                     seadotsReef:parameterSchema [ a seadots:array ;
-                            seadots:items [ a seadots:string ] ] ] ;
+                            seadots:items [ a seadots:string ] ] ],
+                [ rdfs:label "aoi" ;
+                    dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
+                    dcterms:title "Area of interest" ;
+                    skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
+                    seadotsReef:parameterSchema [ dcterms:format "application/geo+json" ] ] ;
             seadotsReef:successCriterion "B_reef_total > 0 and finite",
                 "Every TaxonGroup has either a MAREANO primary binding or an IMR fallback for every AOI cell; uncovered cells are flagged in PROV",
                 "PROV-O record resolves the equation record and the ODD record by URI",
                 "STAC catalog validates against the SeaDOTs EDITO output conventions" ] ;
     rec:format [ dcterms:format "text/x-python" ],
-        [ dcterms:format "application/geo+json" ],
-        [ dcterms:format "application/json" ] ;
+        [ dcterms:format "application/json" ],
+        [ dcterms:format "application/geo+json" ] ;
     rec:language [ rec:languageCode "en" ] ;
     rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
                     rec:conceptID "reef-effect"^^xsd:string ],

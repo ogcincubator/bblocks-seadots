@@ -9,6 +9,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -456,17 +457,120 @@ indp:TAC_herring_share_sv a skos:Concept,
     skos:notation "TAC_herring_share_sv" ;
     skos:prefLabel "Small vessel share of herring TAC"@en .
 
-indp:colonisation-time-factor-default a skos:Concept,
+indp:colonisation-time-factor-default-Ct-0-months a skos:Concept,
         ssn:Property ;
-    rdfs:label "Colonisation time factor, default"@en ;
-    dcterms:subject ind:emodnet-biology,
-        ind:emodnet-seabed-habitats ;
+    rdfs:label "Default colonisation time factor at 0 months"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
     qudt:hasQuantityKind quantitykind:Dimensionless ;
-    rdfs:seeAlso <https://doi.org/10.5670/oceanog.2020.405> ;
-    skos:broader indp:colonisation-time-factor ;
-    skos:definition "Default sigmoid colonisation-time coefficient, saturating at 24 months."@en ;
+    rdf:value 0.08 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative lookup-table sample value of the default colonisation-time factor at 0 months since installation."@en ;
     skos:inScheme ind:parameters-scheme ;
-    skos:prefLabel "Colonisation time factor, default"@en .
+    skos:notation "C_t(t_months=0)" ;
+    skos:prefLabel "Default colonisation time factor at 0 months"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-Ct-12-months a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation time factor at 12 months"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 0.71 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative lookup-table sample value of the default colonisation-time factor at 12 months since installation."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "C_t(t_months=12)" ;
+    skos:prefLabel "Default colonisation time factor at 12 months"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-Ct-18-months a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation time factor at 18 months"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 0.93 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative lookup-table sample value of the default colonisation-time factor at 18 months since installation."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "C_t(t_months=18)" ;
+    skos:prefLabel "Default colonisation time factor at 18 months"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-Ct-24-months a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation time factor at 24 months"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 0.99 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative lookup-table sample value of the default colonisation-time factor at 24 months since installation."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "C_t(t_months=24)" ;
+    skos:prefLabel "Default colonisation time factor at 24 months"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-Ct-6-months a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation time factor at 6 months"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 0.32 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative lookup-table sample value of the default colonisation-time factor at 6 months since installation."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "C_t(t_months=6)" ;
+    skos:prefLabel "Default colonisation time factor at 6 months"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-L a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation sigmoid saturation level L"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 1.0 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative saturation level of the default logistic colonisation-time curve C(t)."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "L" ;
+    skos:prefLabel "Default colonisation sigmoid saturation level L"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-k a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation sigmoid growth rate k"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdf:value 0.30 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative growth-rate parameter of the default logistic colonisation-time curve C(t)."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "k" ;
+    skos:prefLabel "Default colonisation sigmoid growth rate k"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-saturation-month a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation saturation month"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    rdf:value 24 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative month at which the default colonisation-time curve is treated as saturated for the SeaDOTs worked example."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "saturationMonth" ;
+    skos:prefLabel "Default colonisation saturation month"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
+
+indp:colonisation-time-factor-default-t0-months a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Default colonisation sigmoid midpoint t0"@en ;
+    dcterms:source <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    rdf:value 8 ;
+    skos:broader indp:colonisation-time-factor-default ;
+    skos:definition "Illustrative midpoint of the default logistic colonisation-time curve, expressed as months since installation."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:notation "t0_months" ;
+    skos:prefLabel "Default colonisation sigmoid midpoint t0"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
 
 indp:current_herring_season a skos:Concept,
         ssn:Property ;
@@ -1073,6 +1177,31 @@ indp:reef-aggregation-index a skos:Concept,
         indp:reef-aggregation-index-buccinum,
         indp:reef-aggregation-index-mytilus ;
     skos:prefLabel "Reef aggregation index"@en .
+
+indp:colonisation-time-factor-default a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Colonisation time factor, default"@en ;
+    dcterms:source <https://doi.org/10.5670/oceanog.2020.405> ;
+    dcterms:subject ind:emodnet-biology,
+        ind:emodnet-seabed-habitats ;
+    qudt:hasQuantityKind quantitykind:Dimensionless ;
+    rdfs:seeAlso <https://doi.org/10.5670/oceanog.2020.405>,
+        <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor> ;
+    skos:broader indp:colonisation-time-factor ;
+    skos:definition "Default illustrative sigmoid colonisation-time coefficient, saturating at 24 months. The logistic curve form, parameters, and lookup values are taken from the SeaDOTs colonisation-time-factor example and are linked to Degraer et al. 2020 as a qualitative publication source; Degraer et al. do not publish these exact numeric sigmoid parameters."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:narrower indp:colonisation-time-factor-default-Ct-0-months,
+        indp:colonisation-time-factor-default-Ct-12-months,
+        indp:colonisation-time-factor-default-Ct-18-months,
+        indp:colonisation-time-factor-default-Ct-24-months,
+        indp:colonisation-time-factor-default-Ct-6-months,
+        indp:colonisation-time-factor-default-L,
+        indp:colonisation-time-factor-default-k,
+        indp:colonisation-time-factor-default-saturation-month,
+        indp:colonisation-time-factor-default-t0-months ;
+    skos:notation "C(t) = L / (1 + exp(-k * (t - t0)))" ;
+    skos:prefLabel "Colonisation time factor, default"@en ;
+    prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> .
 
 ind:ind-rel-scheme a skos:ConceptScheme ;
     dcterms:isPartOf ind:catalog ;

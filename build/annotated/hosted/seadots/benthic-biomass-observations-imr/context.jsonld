@@ -110,22 +110,22 @@
           "@context": {
             "scientificName": "dwc:scientificName",
             "species": "dwc:scientificName",
-            "sourceSpeciesQuery": "seadots:sourceSpeciesQuery",
+            "sourceSpeciesQuery": "dwc:scientificName",
             "sourceCruiseQuery": "seadots:sourceCruiseQuery",
-            "cruise": "seadots:cruise",
-            "equipment": "seadots:equipment",
-            "Cruise": "seadots:cruise",
-            "Equipment": "seadots:equipment",
+            "cruise": "sdn:cruise",
+            "equipment": "sosa:usedProcedure",
+            "Cruise": "sdn:cruise",
+            "Equipment": "sosa:usedProcedure",
             "Scientific name": "dwc:scientificName",
             "Number": "dwc:individualCount",
             "Weight": {
-              "@id": "seadots:catchWeight",
+              "@id": "sosa:hasSimpleResult",
               "@type": "qudt:QuantityValue"
             },
             "Catch Id": "dcterms:identifier",
-            "Sample Number": "seadots:sampleNumber",
-            "Station (R)": "seadots:station",
-            "Bottom depth": "seadots:bottomDepth"
+            "Sample Number": "dwc:materialSampleID",
+            "Station (R)": "dwc:locality",
+            "Bottom depth": "sdn:depthMax"
           },
           "@id": "https://purl.org/geojson/vocab#properties"
         }
@@ -139,6 +139,8 @@
     "time": "http://www.w3.org/2006/time#",
     "prov": "http://www.w3.org/ns/prov#",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "sdn": "https://vocab.nerc.ac.uk/collection/SDN/current/",
+    "sosa": "http://www.w3.org/ns/sosa/",
     "qudt": "http://qudt.org/schema/qudt/",
     "@version": 1.1
   }
