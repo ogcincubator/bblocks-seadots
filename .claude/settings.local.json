@@ -111,7 +111,26 @@
       "Bash(grep -c '```$' docs/data-exchange.md)",
       "Bash(REPO_DIR=/Users/piotr/repos/seadots/bblocks-seadots GIT_PUSH=false GIT_BRANCH=concept-edits PORT=8080 nohup node server/index.mjs)",
       "Bash(curl -s -m 5 http://localhost:5173/api/git/status)",
-      "Bash(curl -s -m 5 http://localhost:8080/api/health)"
+      "Bash(curl -s -m 5 http://localhost:8080/api/health)",
+      "Bash(node -e \"console.log\\('strip-types check'\\)\" --experimental-strip-types)",
+      "Bash(./node_modules/.bin/esbuild /tmp/p1test.ts --bundle --platform=node --format=esm --outfile=/tmp/p1test.mjs --log-level=error)",
+      "Bash(node /tmp/p1test.mjs)",
+      "Bash(./node_modules/.bin/esbuild ./_p1test.ts --bundle --platform=node --format=esm --outfile=/tmp/p1test.mjs --log-level=error)",
+      "Bash(curl -s -m 12 -o /dev/null -w '%{http_code} %{content_type}\\\\n' https://project-seadots-definition-server.lab.dive.edito.eu/prez/)",
+      "Bash(curl -s -m 12 -o /dev/null -w '%{http_code} %{content_type}\\\\n' -G https://project-seadots-definition-server.lab.dive.edito.eu/sparql --data-urlencode 'query=ASK{?s ?p ?o}' -H 'Accept: application/sparql-results+json')",
+      "Bash(curl -s -m 12 -o /dev/null -w '%{http_code} %{content_type}\\\\n' -G https://project-seadots-definition-server.lab.dive.edito.eu/prez/sparql --data-urlencode 'query=ASK{?s ?p ?o}' -H 'Accept: application/sparql-results+json')",
+      "Bash(curl -s -m 12 -o /dev/null -w '%{http_code} %{content_type}\\\\n' https://project-seadots-definition-server.lab.dive.edito.eu/catalogs -H 'Accept: application/json')",
+      "Bash(curl -s -m 15 -G https://project-seadots-definition-server.lab.dive.edito.eu/prez/sparql --data-urlencode 'query=SELECT \\(COUNT\\(*\\) AS ?c\\) WHERE { ?s ?p ?o }' -H 'Accept: application/sparql-results+json')",
+      "Bash(curl -s -m 15 -G https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql --data-urlencode 'query=SELECT \\(COUNT\\(*\\) AS ?c\\) WHERE { ?s ?p ?o }' -H 'Accept: application/sparql-results+json')",
+      "Bash(curl -s -m 12 -i -G https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql --data-urlencode 'query=ASK{?s ?p ?o}' -H 'Origin: http://localhost:5173' -H 'Accept: application/sparql-results+json')",
+      "Bash(curl -s -m 15 -G https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql --data-urlencode 'query=SELECT ?s ?p WHERE { ?s ?p ?o . FILTER\\(isBlank\\(?o\\)\\) } LIMIT 5' -H 'Accept: application/sparql-results+json')",
+      "Bash(./node_modules/.bin/esbuild ./_p2test.ts --bundle --platform=node --format=esm --outfile=/tmp/p2test.mjs --log-level=error)",
+      "Bash(node /tmp/p2test.mjs)",
+      "Bash(REPO_DIR=/Users/piotr/repos/seadots/bblocks-seadots GIT_PUSH=false PORT=8080 nohup node server/index.mjs)",
+      "Bash(nohup npm run dev)",
+      "Bash(curl -s -m5 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -m5 http://localhost:5173/api/git/status)",
+      "Bash(curl -s -m12 -G \"https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql\" --data-urlencode \"query=ASK{?s a <http://www.w3.org/2004/02/skos/core#Concept>}\" -H \"Accept: application/sparql-results+json\")"
     ]
   }
 }

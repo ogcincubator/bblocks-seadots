@@ -1,12 +1,18 @@
 import { config } from '../config';
 
-const G = `<${config.graph}>`;
+/**
+ * Wrap a pattern in `GRAPH <g> { … }` when a named graph is configured.
+ * Some stores (e.g. the Prez backend) keep everything in the default graph, in
+ * which case `config.graph` is empty and we query without a GRAPH block.
+ */
+function g(body: string): string {
+  return config.graph ? `GRAPH <${config.graph}> {\n${body}\n}` : body;
+}
 
 /** All concepts with a resolved label, their types and schemes. */
 export const LIST_CONCEPTS = `
 SELECT ?iri ?label ?type ?scheme WHERE {
-  GRAPH ${G} {
-    ?iri a ?type .
+${g(`    ?iri a ?type .
     VALUES ?conceptType {
       <http://www.w3.org/2004/02/skos/core#Concept>
       <http://www.w3.org/ns/sosa/ObservableProperty>
@@ -16,8 +22,7 @@ SELECT ?iri ?label ?type ?scheme WHERE {
     OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#prefLabel> ?pl }
     OPTIONAL { ?iri <http://www.w3.org/2000/01/rdf-schema#label> ?rl }
     BIND(COALESCE(?pl, ?rl, STR(?iri)) AS ?label)
-    OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#inScheme> ?scheme }
-  }
+    OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#inScheme> ?scheme }`)}
 }
 ORDER BY ?label`;
 
@@ -29,8 +34,7 @@ ORDER BY ?label`;
 export function describeConcept(iri: string): string {
   return `
 SELECT ?p ?o ?oKind ?lang ?dt ?bp ?bo ?boKind ?bLang ?bDt WHERE {
-  GRAPH ${G} {
-    <${iri}> ?p ?o .
+${g(`    <${iri}> ?p ?o .
     BIND(IF(isIRI(?o), "iri", IF(isBlank(?o), "bnode", "literal")) AS ?oKind)
     BIND(LANG(?o) AS ?lang)
     BIND(DATATYPE(?o) AS ?dt)
@@ -40,20 +44,17 @@ SELECT ?p ?o ?oKind ?lang ?dt ?bp ?bo ?boKind ?bLang ?bDt WHERE {
       BIND(IF(isIRI(?bo), "iri", IF(isBlank(?bo), "bnode", "literal")) AS ?boKind)
       BIND(LANG(?bo) AS ?bLang)
       BIND(DATATYPE(?bo) AS ?bDt)
-    }
-  }
+    }`)}
 }`;
 }
 
-/** Concept schemes available for the inScheme picker. */
+/** Concept schemes available for the inScheme picker / browse. */
 export const LIST_SCHEMES = `
 SELECT ?iri ?label WHERE {
-  GRAPH ${G} {
-    ?iri a <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+${g(`    ?iri a <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
     OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#prefLabel> ?pl }
     OPTIONAL { ?iri <http://www.w3.org/2000/01/rdf-schema#label> ?rl }
-    BIND(COALESCE(?pl, ?rl, STR(?iri)) AS ?label)
-  }
+    BIND(COALESCE(?pl, ?rl, STR(?iri)) AS ?label)`)}
 }`;
 
 /**
@@ -64,13 +65,11 @@ SELECT ?iri ?label WHERE {
  */
 export const TERM_INDEX = `
 SELECT DISTINCT ?iri ?label ?type WHERE {
-  GRAPH ${G} {
-    ?iri ?labelProp ?label .
+${g(`    ?iri ?labelProp ?label .
     VALUES ?labelProp {
       <http://www.w3.org/2004/02/skos/core#prefLabel>
       <http://www.w3.org/2000/01/rdf-schema#label>
     }
     FILTER(isIRI(?iri))
-    OPTIONAL { ?iri a ?type }
-  }
+    OPTIONAL { ?iri a ?type }`)}
 }`;

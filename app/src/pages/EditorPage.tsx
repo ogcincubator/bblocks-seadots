@@ -109,7 +109,8 @@ export default function EditorPage() {
   function rowsToTriples(): Triple[] {
     const subj = computedSubject;
     return rows
-      .filter((r) => r.value.value.trim() !== '')
+      // Keep blank nodes (no scalar value) but drop empty literal/iri rows.
+      .filter((r) => r.value.kind === 'bnode' || r.value.value.trim() !== '')
       .map((r) => ({ subject: subj, predicate: r.predicate, object: r.value }));
   }
 

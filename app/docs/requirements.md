@@ -13,9 +13,9 @@
 
 ## authentication
 * anonymous user can edit terms in the browser space and export all the changes as RDF - see requiremnts for RDF serialisation
-* application allow to login with github authentication, users with editor role to the git repository provided in configuration are allowed to commit changes or send to db
+* application allow to login with github authentication and RBAC is based on github priviledges
+* users with editor role are allowed to commit changes or send to db
 * git KEY and fuseki credentials are provided in the configuration
-
 
 
 ## Functional requirements
@@ -50,8 +50,8 @@ Application has following pages:
 General manipulation constraints
 - for broader and narrower relationships only terms from the same database are available
 - for Concept scheme only Concepts chemes from this database are available
-- vocabulary based objects selection shall allow to select terms from the same database (regardless of scheme) and 
-- vocabulary based predicate selection shall allow to select terms from the same database (regardless of scheme) and prefixes used in the database - then can be either based on reference content or configuration
+- vocabulary based objects selection shall allow to select terms from the same database (regardless of scheme) and imported vocabularies (configurable)
+- vocabulary based predicate selection shall allow to select terms from the same database (regardless of scheme) and prefixes used in the database - they can be either based on reference content or configuration
 - each edit page shall have download all, Publish and Commit buttons as described in the Save model reqs
 
 
@@ -102,3 +102,8 @@ RDF serialisation shall be human readible:
  ## DB content organisation
 
  - [TODO] how it shall handle support of multiple schemes/dbs with their imported prefixes
+
+ ## Configuration
+ - triplestore endpoint and graphs are in the configuration. test defaut one will be https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql and empty graph
+ - github app will be used for authentication and RBAC
+ - all the environmental variables, endpoints vocabularies etc shall be injectable for docker/helm configuration, do not hardcode any of them

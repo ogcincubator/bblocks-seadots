@@ -25,6 +25,24 @@ export default function ValueEditor({ value, kind, typeFilter, onChange, autoFoc
   const allowIri = kind === 'iri' || kind === 'either';
   const isIri = value.kind === 'iri';
 
+  // Blank nodes are read-only for now (friendly inline editing arrives in
+  // Phase 2). We show their nested properties so editors see the content
+  // without ever touching a raw bnode id; they still serialise correctly.
+  if (value.kind === 'bnode') {
+    return (
+      <div className="value-editor">
+        <div className="bnode-readonly" title="Structured value">
+          {(value.properties ?? []).map((p, i) => (
+            <span className="bnode-prop" key={i}>
+              <code className="bnode-pred">{toCurie(p.predicate)}</code>
+              <span className="bnode-val">{termToString(p.object)}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="value-editor">
       {kind === 'either' && (
