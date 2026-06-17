@@ -1,0 +1,85 @@
+# Default values for seadots-concept-editor.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/ogcincubator/seadots-concept-editor
+  tag: ""            # defaults to .Chart.AppVersion
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # nginx.ingress.kubernetes.io/proxy-body-size: "8m"
+  hosts:
+    - host: concept-editor.seadots.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+    # - secretName: concept-editor-tls
+    #   hosts:
+    #     - concept-editor.seadots.local
+
+# Triplestore (SPARQL) endpoints the app reads/writes. These are consumed by
+# the browser, so they must be reachable from the user's network.
+sparql:
+  query: http://defs-hosted.opengis.net/fuseki-hosted/query
+  update: http://defs-hosted.opengis.net/fuseki-hosted/update
+  graph: https://w3id.org/ogc/hosted/seadots
+
+# Git-commit backend configuration.
+git:
+  enabled: true
+  remoteUrl: https://github.com/ogcincubator/bblocks-seadots.git
+  branch: concept-edits
+  remote: origin
+  editsPath: _sources/oim-variables/edits
+  authorName: SeaDOTs Concept Editor
+  authorEmail: concept-editor@seadots.eu
+  push: true
+  # Personal access / deploy token used for clone + push. Provide ONE of:
+  #   token:                inline (NOT recommended; ends up in the release)
+  #   existingSecret + key: reference a pre-created Secret (recommended)
+  token: ""
+  existingSecret: ""
+  existingSecretKey: token
+
+# Persist the cloned working repo across restarts (optional but recommended).
+persistence:
+  enabled: false
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  mountPath: /repo
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+env: []        # extra raw env vars: [{ name: FOO, value: bar }]

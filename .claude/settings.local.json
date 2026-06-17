@@ -86,7 +86,32 @@
       "Bash(curl -s -L \"https://ogcincubator.github.io/bblocks-openscience/build/register.json\")",
       "Bash(curl -s -L -H \"Accept: text/turtle\" \"https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/catalogs/marine:catalog/collections/marine:indicators-scheme/items/obs:floating-wind-reef-biomass-effect\")",
       "Bash(curl -s -L -H \"Accept: text/turtle\" \"https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation\")",
-      "Read(//Users/piotr/repos/**)"
+      "Read(//Users/piotr/repos/**)",
+      "Bash(curl -s -m 8 \"http://defs-hosted.opengis.net/fuseki-hosted/query\" -H \"Accept: application/sparql-results+json\" --data-urlencode \"query=SELECT \\(COUNT\\(*\\) as ?c\\) WHERE { GRAPH <https://w3id.org/ogc/hosted/seadots> { ?s ?p ?o } }\")",
+      "Bash(npm --version)",
+      "Bash(curl -s -m 8 -i \"http://defs-hosted.opengis.net/fuseki-hosted/query\" -H \"Origin: http://localhost:5173\" -H \"Accept: application/sparql-results+json\" --data-urlencode \"query=ASK{?s ?p ?o}\")",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -m 5 http://localhost:5173/)",
+      "Bash(curl -s -m 10 \"http://defs-hosted.opengis.net/fuseki-hosted/query\" -H \"Accept: application/sparql-results+json\" --data-urlencode 'query=SELECT ?iri ?label ?type ?scheme WHERE { GRAPH <https://w3id.org/ogc/hosted/seadots> { VALUES ?conceptType { <http://www.w3.org/2004/02/skos/core#Concept> <http://www.w3.org/ns/sosa/ObservableProperty> <http://www.w3.org/ns/ssn/Property> } ?iri a ?conceptType ; a ?type . OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#prefLabel> ?pl } OPTIONAL { ?iri <http://www.w3.org/2000/01/rdf-schema#label> ?rl } BIND\\(COALESCE\\(?pl,?rl,STR\\(?iri\\)\\) AS ?label\\) OPTIONAL { ?iri <http://www.w3.org/2004/02/skos/core#inScheme> ?scheme } } } ORDER BY ?label LIMIT 5')",
+      "Bash(curl -s -m 10 \"http://defs-hosted.opengis.net/fuseki-hosted/query\" -H \"Accept: application/sparql-results+json\" --data-urlencode 'query=SELECT \\(COUNT\\(DISTINCT ?iri\\) AS ?c\\) WHERE { GRAPH <https://w3id.org/ogc/hosted/seadots> { ?iri ?lp ?l . VALUES ?lp { <http://www.w3.org/2004/02/skos/core#prefLabel> <http://www.w3.org/2000/01/rdf-schema#label> } FILTER\\(isIRI\\(?iri\\)\\) } }')",
+      "Bash(pkill -f \"vite\")",
+      "Bash(curl -s -m 5 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -m 5 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/src/main.tsx)",
+      "Bash(pkill -f \"server/index.mjs\")",
+      "Bash(rm -rf /tmp/gittest)",
+      "Bash(command -v helm)",
+      "Bash(helm lint *)",
+      "Bash(helm template *)",
+      "Bash(SPARQL_QUERY=http://example.org/q SPARQL_GRAPH=urn:test GIT_PUSH=false REPO_DIR=/tmp/nonexistent PORT=8091 node server/index.mjs)",
+      "Bash(curl -s -m 5 http://localhost:8091/config.js)",
+      "Bash(curl -s -m 5 http://localhost:8091/)",
+      "Bash(curl -s -m 5 -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8091/concept/new)",
+      "Bash(grep -c '```mermaid' docs/data-exchange.md)",
+      "Bash(grep -c '```$' docs/data-exchange.md)",
+      "Bash(REPO_DIR=/Users/piotr/repos/seadots/bblocks-seadots GIT_PUSH=false GIT_BRANCH=concept-edits PORT=8080 nohup node server/index.mjs)",
+      "Bash(curl -s -m 5 http://localhost:5173/api/git/status)",
+      "Bash(curl -s -m 5 http://localhost:8080/api/health)"
     ]
   }
 }

@@ -1,0 +1,153 @@
+:root {
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --ink: #1c2733;
+  --muted: #6b7a89;
+  --line: #dce3ea;
+  --accent: #0a6e8c;
+  --accent-ink: #ffffff;
+  --ins: #1a7f37;
+  --ins-bg: #e6f4ea;
+  --del: #b3261e;
+  --del-bg: #fce8e6;
+  --chip: #eef3f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.app { min-height: 100vh; }
+
+/* Top bar ----------------------------------------------------------------- */
+.topbar {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0.75rem 1.5rem; background: var(--panel);
+  border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20;
+}
+.brand { font-weight: 700; text-decoration: none; color: var(--ink); font-size: 1.05rem; }
+.topbar nav { display: flex; gap: 1rem; }
+.topbar nav a { text-decoration: none; color: var(--muted); font-weight: 500; padding: 0.25rem 0; }
+.topbar nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.topbar-status { margin-left: auto; font-size: 0.85rem; }
+
+.content { max-width: 980px; margin: 0 auto; padding: 1.5rem; }
+.muted { color: var(--muted); }
+.error { color: var(--del); }
+.ok { color: var(--ins); }
+
+/* Buttons ----------------------------------------------------------------- */
+button { font: inherit; cursor: pointer; border-radius: 6px; }
+.primary { background: var(--accent); color: var(--accent-ink); border: none; padding: 0.5rem 1rem; }
+.secondary { background: var(--panel); color: var(--ink); border: 1px solid var(--line); padding: 0.5rem 1rem; }
+.link-btn { background: none; border: none; color: var(--accent); padding: 0.25rem; }
+.link-btn.danger { color: var(--del); }
+.icon-btn { background: none; border: none; font-size: 1rem; opacity: 0.6; }
+.icon-btn:hover { opacity: 1; }
+
+/* Browser ----------------------------------------------------------------- */
+.filters { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+.search { flex: 1; min-width: 220px; padding: 0.5rem 0.75rem; border: 1px solid var(--line); border-radius: 6px; }
+.filters select { padding: 0.5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.count { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+
+.concept-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.concept-card {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1rem; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; text-decoration: none; color: inherit;
+}
+.concept-card:hover { border-color: var(--accent); }
+.concept-main { display: flex; flex-direction: column; gap: 0.15rem; }
+.concept-label { font-weight: 600; }
+.concept-curie { color: var(--muted); font-size: 0.8rem; }
+.concept-tags { display: flex; gap: 0.35rem; }
+.tag { background: var(--chip); color: var(--accent); font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px; }
+
+/* Editor ------------------------------------------------------------------ */
+.editor-head { margin-bottom: 1.25rem; }
+.editor-head h1 { margin: 0 0 0.5rem; font-size: 1.4rem; }
+.iri-builder { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.iri-builder label { font-weight: 600; }
+.iri-builder select, .local-input { padding: 0.4rem 0.5rem; border: 1px solid var(--line); border-radius: 6px; }
+.local-input { min-width: 260px; }
+.iri-preview { color: var(--muted); font-size: 0.8rem; }
+.iri-preview.big { font-size: 0.95rem; color: var(--accent); }
+
+.fields { display: grid; gap: 1rem; }
+.field-group {
+  display: grid; grid-template-columns: 220px 1fr; gap: 1rem;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1rem;
+}
+.field-label { display: flex; flex-direction: column; gap: 0.15rem; }
+.field-label { font-weight: 600; }
+.field-curie { color: var(--muted); font-size: 0.72rem; font-family: ui-monospace, monospace; }
+.field-hint { color: var(--muted); font-size: 0.75rem; font-weight: 400; }
+.field-values { display: grid; gap: 0.5rem; }
+.field-value-row { display: flex; gap: 0.5rem; align-items: flex-start; }
+.field-value-row .value-editor { flex: 1; }
+
+.add-field { margin: 1.25rem 0; }
+.add-field-pick { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.add-field-pick select, .add-field-pick input { padding: 0.45rem; border: 1px solid var(--line); border-radius: 6px; }
+.add-field-pick .or { color: var(--muted); }
+
+.editor-actions { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+
+/* Value editor ------------------------------------------------------------ */
+.value-editor { display: grid; gap: 0.35rem; }
+.value-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; width: fit-content; }
+.seg { background: var(--panel); border: none; padding: 0.25rem 0.7rem; font-size: 0.8rem; color: var(--muted); }
+.seg.active { background: var(--accent); color: var(--accent-ink); }
+.literal-row { display: flex; gap: 0.5rem; }
+.literal-input { flex: 1; padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; resize: vertical; min-height: 38px; font: inherit; }
+.lang-input { width: 56px; padding: 0.45rem; border: 1px solid var(--line); border-radius: 6px; text-align: center; }
+
+/* Autocomplete ------------------------------------------------------------ */
+.autocomplete { position: relative; }
+.ac-input { width: 100%; padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+.ac-chip {
+  display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+  background: var(--chip); border: 1px solid var(--line); border-radius: 6px; padding: 0.35rem 0.6rem;
+}
+.ac-chip-label { font-weight: 500; }
+.ac-chip-curie { color: var(--muted); font-size: 0.75rem; }
+.ac-chip-clear { background: none; border: none; color: var(--muted); font-size: 1rem; line-height: 1; }
+.ac-list {
+  list-style: none; margin: 0.25rem 0 0; padding: 0.25rem; position: absolute; z-index: 30;
+  left: 0; right: 0; max-height: 260px; overflow: auto; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.ac-item { display: flex; justify-content: space-between; gap: 1rem; padding: 0.4rem 0.6rem; border-radius: 6px; cursor: pointer; }
+.ac-item.active, .ac-item:hover { background: var(--chip); }
+.ac-item-curie { color: var(--muted); font-size: 0.75rem; }
+.ac-raw { color: var(--accent); font-style: italic; }
+
+/* Changes panel ----------------------------------------------------------- */
+.changes-panel {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; width: 420px; max-width: calc(100vw - 2rem);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18); z-index: 40;
+}
+.changes-toggle {
+  width: 100%; text-align: left; background: var(--accent); color: var(--accent-ink);
+  border: none; border-radius: 10px 10px 0 0; padding: 0.6rem 0.9rem; font-weight: 600;
+}
+.changes-panel:not(.open) .changes-toggle { border-radius: 10px; }
+.badge { background: rgba(255,255,255,0.25); border-radius: 999px; padding: 0.05rem 0.5rem; margin-left: 0.4rem; }
+.changes-body { padding: 0.75rem 0.9rem; max-height: 60vh; overflow: auto; }
+.diff-h { margin: 0.5rem 0 0.25rem; font-size: 0.8rem; }
+.diff-h.ins { color: var(--ins); }
+.diff-h.del { color: var(--del); }
+.diff { list-style: none; margin: 0; padding: 0; font-size: 0.78rem; font-family: ui-monospace, monospace; }
+.diff li { padding: 0.15rem 0.4rem; border-radius: 4px; white-space: pre-wrap; word-break: break-word; }
+.diff li.ins { background: var(--ins-bg); }
+.diff li.del { background: var(--del-bg); }
+.changes-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.75rem; }
+.ttl-preview {
+  background: #0f1b24; color: #cfe6ef; padding: 0.75rem; border-radius: 8px; font-size: 0.72rem;
+  overflow: auto; max-height: 220px;
+}
+.git-commit { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.commit-msg { flex: 1; padding: 0.4rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; font: inherit; }

@@ -1,0 +1,22 @@
+SeaDOTs Concept Editor deployed as {{ include "editor.fullname" . }}.
+
+{{- if .Values.ingress.enabled }}
+Reachable at:
+{{- range .Values.ingress.hosts }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .host }}
+{{- end }}
+{{- else }}
+Port-forward to try it locally:
+  kubectl port-forward svc/{{ include "editor.fullname" . }} 8080:{{ .Values.service.port }}
+  open http://localhost:8080
+{{- end }}
+
+SPARQL query : {{ .Values.sparql.query }}
+SPARQL graph : {{ .Values.sparql.graph }}
+Git commits  : {{ if .Values.git.enabled }}branch '{{ .Values.git.branch }}' on {{ .Values.git.remoteUrl }} (push={{ .Values.git.push }}){{ else }}disabled{{ end }}
+
+{{- if and .Values.git.enabled (not .Values.git.token) (not .Values.git.existingSecret) }}
+
+WARNING: git.enabled is true but no token was provided. Commits will be made
+locally inside the pod but pushes will fail. Set git.token or git.existingSecret.
+{{- end }}
