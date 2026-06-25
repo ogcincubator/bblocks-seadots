@@ -6,7 +6,6 @@
 * App should allow to manipulate the data without expertise in RDF.
 * Data stored in Voceprez is organised as SKOS hierarchy.
 * Sample data is in the bblocks-seadots/_sources/oim-variables/examples.
-* application shall keep configuration for secrets, credentials, endpoints, additional rdf validators
 * front end aplication shall be fast and use browser store for any changes done by the user
 * changes in the triplestore and git shall be commited only on the user request
 * change commits shall be allowed only for authenticated user

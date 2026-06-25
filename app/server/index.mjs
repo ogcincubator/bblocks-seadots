@@ -27,8 +27,17 @@ app.get('/config.js', (_req, res) => {
     graph: process.env.SPARQL_GRAPH || process.env.VITE_GRAPH || '',
     apiBase: process.env.API_BASE || '',
   };
-  // Drop empty values so the app's compiled-in defaults win.
+  // Drop empty string values so the app's compiled-in defaults win.
   const filtered = Object.fromEntries(Object.entries(cfg).filter(([, v]) => v));
+  // Booleans / lists are always emitted (false and [] are meaningful).
+  if (process.env.FEATURE_PUBLISH !== undefined)
+    filtered.publishEnabled = process.env.FEATURE_PUBLISH === 'true';
+  if (process.env.FEATURE_COMMIT !== undefined)
+    filtered.commitEnabled = process.env.FEATURE_COMMIT === 'true';
+  if (process.env.IMPORTED_NAMESPACES !== undefined)
+    filtered.importedNamespaces = process.env.IMPORTED_NAMESPACES.split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
   res.type('application/javascript');
   res.send(`window.__APP_CONFIG__ = ${JSON.stringify(filtered)};`);
 });

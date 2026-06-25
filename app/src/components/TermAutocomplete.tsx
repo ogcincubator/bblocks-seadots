@@ -10,6 +10,8 @@ interface Props {
   placeholder?: string;
   /** Restrict suggestions to terms whose type is one of these IRIs. */
   typeFilter?: string[];
+  /** Restrict suggestions by origin: 'db' = same database only. */
+  sourceFilter?: 'db' | 'imported';
   autoFocus?: boolean;
 }
 
@@ -23,6 +25,7 @@ export default function TermAutocomplete({
   onChange,
   placeholder,
   typeFilter,
+  sourceFilter,
   autoFocus,
 }: Props) {
   const terms = useStore((s) => s.terms);
@@ -32,9 +35,13 @@ export default function TermAutocomplete({
   const boxRef = useRef<HTMLDivElement>(null);
 
   const pool = useMemo(() => {
-    if (!typeFilter || typeFilter.length === 0) return terms;
-    return terms.filter((t) => t.types.some((ty) => typeFilter.includes(ty)));
-  }, [terms, typeFilter]);
+    return terms.filter((t) => {
+      if (typeFilter && typeFilter.length && !t.types.some((ty) => typeFilter.includes(ty)))
+        return false;
+      if (sourceFilter && t.source !== sourceFilter) return false;
+      return true;
+    });
+  }, [terms, typeFilter, sourceFilter]);
 
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase();

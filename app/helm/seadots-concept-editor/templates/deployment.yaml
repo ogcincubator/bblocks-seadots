@@ -39,6 +39,12 @@ spec:
               value: {{ .Values.sparql.update | quote }}
             - name: SPARQL_GRAPH
               value: {{ .Values.sparql.graph | quote }}
+            - name: FEATURE_PUBLISH
+              value: {{ .Values.features.publish | quote }}
+            - name: FEATURE_COMMIT
+              value: {{ .Values.features.commit | quote }}
+            - name: IMPORTED_NAMESPACES
+              value: {{ join "," .Values.importedNamespaces | quote }}
             {{- if .Values.git.enabled }}
             - name: REPO_DIR
               value: {{ .Values.persistence.mountPath | quote }}

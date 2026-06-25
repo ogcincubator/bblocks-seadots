@@ -117,11 +117,13 @@ export default function ChangesPanel() {
 
           <div className="changes-actions">
             <button className="secondary" onClick={download}>
-              ⬇ Download Turtle
+              ⬇ Download All
             </button>
-            <button className="primary" onClick={doPush} disabled={pushing}>
-              {pushing ? 'Pushing…' : '↥ Push to triplestore'}
-            </button>
+            {config.publishEnabled && (
+              <button className="primary" onClick={doPush} disabled={pushing}>
+                {pushing ? 'Publishing…' : '↥ Publish'}
+              </button>
+            )}
             <button className="link-btn" onClick={() => setShowTtl((v) => !v)}>
               {showTtl ? 'hide' : 'view'} SPARQL
             </button>
@@ -130,7 +132,7 @@ export default function ChangesPanel() {
             </button>
           </div>
 
-          {gitEnabled && (
+          {config.commitEnabled && gitEnabled && (
             <div className="git-commit">
               <input
                 className="commit-msg"
@@ -139,9 +141,14 @@ export default function ChangesPanel() {
                 onChange={(e) => setCommitMsg(e.target.value)}
               />
               <button className="secondary" onClick={doCommit} disabled={committing || added.length === 0}>
-                {committing ? 'Committing…' : ' Commit to Git'}
+                {committing ? 'Committing…' : ' Commit'}
               </button>
             </div>
+          )}
+          {!config.publishEnabled && !config.commitEnabled && (
+            <p className="muted hint-line">
+              Publish & Commit are disabled by configuration. Use Download All to export your edits.
+            </p>
           )}
           {msg && <p className={msg.startsWith('✓') ? 'ok' : 'error'}>{msg}</p>}
           {showTtl && <pre className="ttl-preview">{toSparqlUpdate(added, removed)}</pre>}

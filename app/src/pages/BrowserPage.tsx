@@ -3,26 +3,51 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { toCurie } from '../rdf/terms';
 
+const CONCEPT_SCHEME = 'http://www.w3.org/2004/02/skos/core#ConceptScheme';
+
 const TYPE_LABELS: Record<string, string> = {
   'https://w3id.org/indicators/marine/Indicator': 'Indicator',
   'http://www.w3.org/ns/sosa/ObservableProperty': 'Observable property',
   'http://www.w3.org/ns/ssn/Property': 'Model parameter',
   'https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship': 'Relationship',
   'http://www.w3.org/2004/02/skos/core#Concept': 'Concept',
+  [CONCEPT_SCHEME]: 'Concept scheme',
 };
 
 function typeName(iri: string): string {
   return TYPE_LABELS[iri] ?? toCurie(iri);
 }
 
+interface Entity {
+  iri: string;
+  label: string;
+  kind: 'concept' | 'scheme';
+  types: string[];
+  schemes: string[];
+}
+
 export default function BrowserPage() {
   const conceptList = useStore((s) => s.conceptList);
-  const schemes = useStore((s) => s.schemes);
+  const schemeList = useStore((s) => s.schemes);
   const loading = useStore((s) => s.loading);
 
   const [q, setQ] = useState('');
+  const [kind, setKind] = useState<'' | 'concept' | 'scheme'>('');
   const [scheme, setScheme] = useState('');
   const [type, setType] = useState('');
+
+  // Concepts and concept schemes are browsed together as first-class entities.
+  const entities = useMemo<Entity[]>(() => {
+    const concepts: Entity[] = conceptList.map((c) => ({ ...c, kind: 'concept' }));
+    const schemes: Entity[] = schemeList.map((s) => ({
+      iri: s.iri,
+      label: s.label,
+      kind: 'scheme',
+      types: [CONCEPT_SCHEME],
+      schemes: [],
+    }));
+    return [...schemes, ...concepts];
+  }, [conceptList, schemeList]);
 
   const allTypes = useMemo(() => {
     const set = new Set<string>();
@@ -32,18 +57,19 @@ export default function BrowserPage() {
 
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    return conceptList
-      .filter((c) => {
-        if (scheme && !c.schemes.includes(scheme)) return false;
-        if (type && !c.types.includes(type)) return false;
+    return entities
+      .filter((e) => {
+        if (kind && e.kind !== kind) return false;
+        if (scheme && !e.schemes.includes(scheme)) return false;
+        if (type && !e.types.includes(type)) return false;
         if (needle) {
-          const hay = (c.label + ' ' + toCurie(c.iri)).toLowerCase();
+          const hay = (e.label + ' ' + toCurie(e.iri)).toLowerCase();
           if (!hay.includes(needle)) return false;
         }
         return true;
       })
       .sort((a, b) => a.label.localeCompare(b.label));
-  }, [conceptList, q, scheme, type]);
+  }, [entities, q, kind, scheme, type]);
 
   return (
     <div className="browser">
@@ -51,18 +77,23 @@ export default function BrowserPage() {
         <input
           className="search"
           value={q}
-          placeholder="Search concepts by name…"
+          placeholder="Search by name…"
           onChange={(e) => setQ(e.target.value)}
         />
-        <select value={scheme} onChange={(e) => setScheme(e.target.value)}>
+        <select value={kind} onChange={(e) => setKind(e.target.value as typeof kind)}>
+          <option value="">Concepts & schemes</option>
+          <option value="concept">Concepts</option>
+          <option value="scheme">Concept schemes</option>
+        </select>
+        <select value={scheme} onChange={(e) => setScheme(e.target.value)} disabled={kind === 'scheme'}>
           <option value="">All schemes</option>
-          {schemes.map((s) => (
+          {schemeList.map((s) => (
             <option key={s.iri} value={s.iri}>
               {s.label}
             </option>
           ))}
         </select>
-        <select value={type} onChange={(e) => setType(e.target.value)}>
+        <select value={type} onChange={(e) => setType(e.target.value)} disabled={kind === 'scheme'}>
           <option value="">All types</option>
           {allTypes.map((t) => (
             <option key={t} value={t}>
@@ -70,26 +101,32 @@ export default function BrowserPage() {
             </option>
           ))}
         </select>
-        <span className="count">{filtered.length} concepts</span>
+        <span className="count">{filtered.length} items</span>
       </div>
 
-      {loading && conceptList.length === 0 ? (
-        <p className="muted">Loading concepts from the triplestore…</p>
+      {loading && entities.length === 0 ? (
+        <p className="muted">Loading from the triplestore…</p>
       ) : (
         <ul className="concept-list">
-          {filtered.map((c) => (
-            <li key={c.iri}>
-              <Link to={`/concept/${encodeURIComponent(c.iri)}`} className="concept-card">
+          {filtered.map((e) => (
+            <li key={e.iri}>
+              <Link
+                to={`/concept/${encodeURIComponent(e.iri)}`}
+                className={e.kind === 'scheme' ? 'concept-card scheme' : 'concept-card'}
+              >
                 <div className="concept-main">
-                  <span className="concept-label">{c.label}</span>
-                  <code className="concept-curie">{toCurie(c.iri)}</code>
+                  <span className="concept-label">{e.label}</span>
+                  <code className="concept-curie">{toCurie(e.iri)}</code>
                 </div>
                 <div className="concept-tags">
-                  {c.types.filter((t) => TYPE_LABELS[t]).map((t) => (
-                    <span className="tag" key={t}>
-                      {typeName(t)}
-                    </span>
-                  ))}
+                  {e.kind === 'scheme' && <span className="tag scheme-tag">Concept scheme</span>}
+                  {e.types
+                    .filter((t) => TYPE_LABELS[t] && t !== CONCEPT_SCHEME)
+                    .map((t) => (
+                      <span className="tag" key={t}>
+                        {typeName(t)}
+                      </span>
+                    ))}
                 </div>
               </Link>
             </li>

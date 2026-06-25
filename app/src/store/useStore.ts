@@ -6,6 +6,7 @@ import {
   fetchConcept,
   fetchSchemes,
   fetchTermIndex,
+  fetchPredicates,
   update as sparqlUpdate,
   type ConceptListItem,
   type SchemeItem,
@@ -24,6 +25,7 @@ interface StoreState {
   conceptList: ConceptListItem[];
   schemes: SchemeItem[];
   terms: Term[];
+  predicates: string[];
   loading: boolean;
   loadError: string | null;
   loadCatalog: () => Promise<void>;
@@ -62,18 +64,20 @@ export const useStore = create<StoreState>((set, get) => ({
   conceptList: [],
   schemes: [],
   terms: [],
+  predicates: [],
   loading: false,
   loadError: null,
 
   async loadCatalog() {
     set({ loading: true, loadError: null });
     try {
-      const [conceptList, schemes, terms] = await Promise.all([
+      const [conceptList, schemes, terms, predicates] = await Promise.all([
         fetchConceptList(),
         fetchSchemes(),
         fetchTermIndex(),
+        fetchPredicates(),
       ]);
-      set({ conceptList, schemes, terms, loading: false });
+      set({ conceptList, schemes, terms, predicates, loading: false });
     } catch (e) {
       set({ loading: false, loadError: (e as Error).message });
     }

@@ -33,10 +33,21 @@ ingress:
 
 # Triplestore (SPARQL) endpoints the app reads/writes. These are consumed by
 # the browser, so they must be reachable from the user's network.
+# Default points at the SeaDOTs Prez backend (data in the default graph).
 sparql:
-  query: http://defs-hosted.opengis.net/fuseki-hosted/query
-  update: http://defs-hosted.opengis.net/fuseki-hosted/update
-  graph: https://w3id.org/ogc/hosted/seadots
+  query: https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/sparql
+  update: https://project-seadots-definition-server.lab.dive.edito.eu/prez-b/update
+  graph: ""   # empty = default graph
+
+# Write-path feature flags (disabled by default; RBAC also applies in Phase 5)
+# and imported-vocabulary namespaces offered in autocomplete but excluded from
+# same-DB-only pickers (broader/narrower/inScheme).
+features:
+  publish: false
+  commit: false
+importedNamespaces: []
+  # - http://qudt.org/vocab/quantitykind/
+  # - http://aims.fao.org/aos/agrovoc/
 
 # Git-commit backend configuration.
 git:

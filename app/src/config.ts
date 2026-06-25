@@ -17,9 +17,21 @@ interface RuntimeConfig {
   updateEndpoint?: string;
   graph?: string;
   apiBase?: string;
+  publishEnabled?: boolean;
+  commitEnabled?: boolean;
+  importedNamespaces?: string[];
 }
 const rt: RuntimeConfig =
   (typeof window !== 'undefined' && (window as { __APP_CONFIG__?: RuntimeConfig }).__APP_CONFIG__) || {};
+
+function envBool(v: string | undefined): boolean | undefined {
+  if (v === undefined) return undefined;
+  return v === 'true' || v === '1';
+}
+function envList(v: string | undefined): string[] | undefined {
+  if (v === undefined) return undefined;
+  return v.split(',').map((s) => s.trim()).filter(Boolean);
+}
 
 const PREZ = 'https://project-seadots-definition-server.lab.dive.edito.eu/prez-b';
 
@@ -42,4 +54,19 @@ export const config = {
    * the Vite proxy forwards /api to the backend, so empty also works.
    */
   apiBase: rt.apiBase ?? env.VITE_API_BASE ?? '',
+
+  /**
+   * Write-path feature flags. Disabled by default per requirements; the actual
+   * button visibility also depends on RBAC role (Phase 5).
+   */
+  publishEnabled: rt.publishEnabled ?? envBool(env.VITE_PUBLISH_ENABLED) ?? false,
+  commitEnabled: rt.commitEnabled ?? envBool(env.VITE_COMMIT_ENABLED) ?? false,
+
+  /**
+   * Namespace IRIs treated as *imported* vocabularies. Terms under these
+   * prefixes are offered as autocomplete objects but excluded from same-DB-only
+   * pickers (broader/narrower/inScheme). Everything else counts as in-DB.
+   */
+  importedNamespaces:
+    rt.importedNamespaces ?? envList(env.VITE_IMPORTED_NAMESPACES) ?? [],
 };

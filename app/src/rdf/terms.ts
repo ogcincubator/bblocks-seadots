@@ -45,12 +45,20 @@ export interface PredicateDef {
   langText?: boolean;
 }
 
+// Predicates that the VocPrez convention keeps redundant & mirrored. The editor
+// presents them as a single "Label" field (MERGED_LABEL) and expands it to both
+// on save, prefLabel being primary.
+export const SKOS_PREF_LABEL = 'http://www.w3.org/2004/02/skos/core#prefLabel';
+export const RDFS_LABEL = 'http://www.w3.org/2000/01/rdf-schema#label';
+/** Synthetic predicate for the merged label field (never serialised directly). */
+export const MERGED_LABEL = 'urn:seadots:mergedLabel';
+export const MERGED_LABEL_EXPANDS_TO = [SKOS_PREF_LABEL, RDFS_LABEL];
+
 // The palette of predicates a user can add to a concept. Curated from the
 // patterns actually used in indicators.ttl plus common SKOS annotation props.
 export const PREDICATES: PredicateDef[] = [
-  { iri: 'http://www.w3.org/2004/02/skos/core#prefLabel', label: 'Preferred label', hint: 'Main human-readable name', valueKind: 'literal', langText: true },
+  { iri: MERGED_LABEL, label: 'Label', hint: 'Name — sets skos:prefLabel + rdfs:label', valueKind: 'literal', langText: true },
   { iri: 'http://www.w3.org/2004/02/skos/core#altLabel', label: 'Alternative label', hint: 'Synonym or alternate name', valueKind: 'literal', langText: true },
-  { iri: 'http://www.w3.org/2000/01/rdf-schema#label', label: 'Label (rdfs)', hint: 'Generic label', valueKind: 'literal', langText: true },
   { iri: 'http://www.w3.org/2004/02/skos/core#definition', label: 'Definition', hint: 'What this concept means', valueKind: 'literal', langText: true },
   { iri: 'http://www.w3.org/2000/01/rdf-schema#comment', label: 'Comment', hint: 'Free-text note', valueKind: 'literal', langText: true },
   { iri: 'http://www.w3.org/2004/02/skos/core#scopeNote', label: 'Scope note', hint: 'Usage / provenance note', valueKind: 'literal', langText: true },

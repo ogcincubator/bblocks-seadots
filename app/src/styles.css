@@ -64,6 +64,8 @@ button { font: inherit; cursor: pointer; border-radius: 6px; }
 .concept-curie { color: var(--muted); font-size: 0.8rem; }
 .concept-tags { display: flex; gap: 0.35rem; }
 .tag { background: var(--chip); color: var(--accent); font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px; }
+.scheme-tag { background: var(--accent); color: var(--accent-ink); }
+.concept-card.scheme { border-left: 3px solid var(--accent); }
 
 /* Editor ------------------------------------------------------------------ */
 .editor-head { margin-bottom: 1.25rem; }
@@ -149,6 +151,8 @@ button { font: inherit; cursor: pointer; border-radius: 6px; }
   background: #0f1b24; color: #cfe6ef; padding: 0.75rem; border-radius: 8px; font-size: 0.72rem;
   overflow: auto; max-height: 220px;
 }
+.bnode-edit { display: flex; gap: 0.5rem; align-items: center; }
+.bnode-edit .literal-input { flex: 1; min-height: 38px; }
 .bnode-readonly { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.35rem 0.5rem; background: var(--chip); border: 1px dashed var(--line); border-radius: 6px; }
 .bnode-prop { display: inline-flex; gap: 0.35rem; align-items: baseline; }
 .bnode-pred { color: var(--muted); font-size: 0.72rem; }
@@ -156,3 +160,4 @@ button { font: inherit; cursor: pointer; border-radius: 6px; }
 
 .git-commit { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
 .commit-msg { flex: 1; padding: 0.4rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+.hint-line { font-size: 0.78rem; margin: 0.5rem 0 0; }

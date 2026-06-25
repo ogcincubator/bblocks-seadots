@@ -3,6 +3,7 @@ import type { Concept, Term, Triple, RdfValue } from '../rdf/model';
 import {
   LIST_CONCEPTS,
   LIST_SCHEMES,
+  LIST_PREDICATES,
   TERM_INDEX,
   describeConcept,
 } from './queries';
@@ -137,15 +138,24 @@ export async function fetchSchemes(): Promise<SchemeItem[]> {
 
 export async function fetchTermIndex(): Promise<Term[]> {
   const rows = await select(TERM_INDEX);
+  const imported = config.importedNamespaces;
   const byIri = new Map<string, Term>();
   for (const r of rows) {
     const iri = r.iri.value;
     let t = byIri.get(iri);
     if (!t) {
-      t = { iri, label: r.label?.value ?? iri, source: 'seadots', types: [] };
+      // Classify by namespace: imported vocabularies vs this database.
+      const source = imported.some((ns) => iri.startsWith(ns)) ? 'imported' : 'db';
+      t = { iri, label: r.label?.value ?? iri, source, types: [] };
       byIri.set(iri, t);
     }
     if (r.type && !t.types.includes(r.type.value)) t.types.push(r.type.value);
   }
   return [...byIri.values()];
+}
+
+/** Distinct predicate IRIs actually used in the database (for the field picker). */
+export async function fetchPredicates(): Promise<string[]> {
+  const rows = await select(LIST_PREDICATES);
+  return rows.map((r) => r.p.value);
 }

@@ -57,6 +57,12 @@ ${g(`    ?iri a <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
     BIND(COALESCE(?pl, ?rl, STR(?iri)) AS ?label)`)}
 }`;
 
+/** Distinct predicates actually used in the database, for the field picker. */
+export const LIST_PREDICATES = `
+SELECT DISTINCT ?p WHERE {
+${g(`    ?s ?p ?o .`)}
+}`;
+
 /**
  * The term index used for object-value autocomplete: every IRI in the graph
  * that carries a label, regardless of type. This includes concepts from this

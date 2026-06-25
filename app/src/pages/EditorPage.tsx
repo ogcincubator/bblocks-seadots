@@ -6,6 +6,10 @@ import { tripleKey } from '../rdf/model';
 import {
   PREDICATES,
   PREFIXES,
+  MERGED_LABEL,
+  MERGED_LABEL_EXPANDS_TO,
+  SKOS_PREF_LABEL,
+  RDFS_LABEL,
   expandCurie,
   predicateLabel,
   toCurie,
@@ -17,6 +21,32 @@ interface Row {
   id: string;
   predicate: string;
   value: RdfValue;
+}
+
+/**
+ * Collapse the redundant skos:prefLabel / rdfs:label triples into a single
+ * MERGED_LABEL row (prefLabel primary). Other triples pass through unchanged.
+ */
+function collapseLabels(triples: Triple[]): Row[] {
+  const rows: Row[] = [];
+  const seenLabel = new Set<string>(); // value|lang already emitted as merged
+  const prefByKey = new Map<string, RdfValue>();
+  for (const t of triples) {
+    if (t.predicate === SKOS_PREF_LABEL) prefByKey.set(`${t.object.value}|${t.object.lang ?? ''}`, t.object);
+  }
+  for (const t of triples) {
+    if (t.predicate === SKOS_PREF_LABEL || t.predicate === RDFS_LABEL) {
+      const key = `${t.object.value}|${t.object.lang ?? ''}`;
+      // Prefer the prefLabel instance; emit each distinct label value once.
+      const primary = prefByKey.get(key) ?? t.object;
+      if (seenLabel.has(key)) continue;
+      seenLabel.add(key);
+      rows.push({ id: newId(), predicate: MERGED_LABEL, value: primary });
+      continue;
+    }
+    rows.push({ id: newId(), predicate: t.predicate, value: t.object });
+  }
+  return rows;
 }
 
 const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
@@ -34,10 +64,29 @@ function predicateDef(iri: string): PredicateDef {
   );
 }
 
-/** Object suggestions are narrowed for a couple of well-known predicates. */
+const SKOS = 'http://www.w3.org/2004/02/skos/core#';
+// Hierarchical/scheme predicates whose objects must come from this database.
+const SAME_DB_PREDS = new Set([
+  `${SKOS}broader`,
+  `${SKOS}narrower`,
+  `${SKOS}related`,
+  `${SKOS}inScheme`,
+  `${SKOS}topConceptOf`,
+  `${SKOS}hasTopConcept`,
+]);
+
+/** Object suggestions are narrowed by rdf:type for a few well-known predicates. */
 function typeFilterFor(predicate: string): string[] | undefined {
-  if (predicate === 'http://www.w3.org/2004/02/skos/core#inScheme') return [CONCEPT_SCHEME];
+  if (predicate === `${SKOS}inScheme` || predicate === `${SKOS}topConceptOf`)
+    return [CONCEPT_SCHEME];
+  if (predicate === `${SKOS}broader` || predicate === `${SKOS}narrower` || predicate === `${SKOS}related`)
+    return [SKOS_CONCEPT];
   return undefined;
+}
+
+/** Same-DB-only predicates restrict suggestions to terms from this database. */
+function sourceFilterFor(predicate: string): 'db' | undefined {
+  return SAME_DB_PREDS.has(predicate) ? 'db' : undefined;
 }
 
 let rowSeq = 0;
@@ -52,6 +101,13 @@ export default function EditorPage() {
   const loadConcept = useStore((s) => s.loadConcept);
   const addTriple = useStore((s) => s.addTriple);
   const removeTriple = useStore((s) => s.removeTriple);
+  const dbPredicates = useStore((s) => s.predicates);
+
+  // DB predicates not already covered by the curated palette.
+  const extraDbPredicates = useMemo(() => {
+    const known = new Set(PREDICATES.map((p) => p.iri));
+    return dbPredicates.filter((p) => !known.has(p)).sort((a, b) => toCurie(a).localeCompare(toCurie(b)));
+  }, [dbPredicates]);
 
   const [subject, setSubject] = useState<string>(iri ?? '');
   const [newPrefix, setNewPrefix] = useState('indo');
@@ -68,13 +124,13 @@ export default function EditorPage() {
     if (isNew) {
       setRows([
         { id: newId(), predicate: RDF_TYPE, value: { kind: 'iri', value: SKOS_CONCEPT } },
-        { id: newId(), predicate: 'http://www.w3.org/2004/02/skos/core#prefLabel', value: { kind: 'literal', value: '', lang: 'en' } },
+        { id: newId(), predicate: MERGED_LABEL, value: { kind: 'literal', value: '', lang: 'en' } },
       ]);
       return;
     }
     void loadConcept(iri!).then((c) => {
       setOriginal(c.triples);
-      setRows(c.triples.map((t) => ({ id: newId(), predicate: t.predicate, value: t.object })));
+      setRows(collapseLabels(c.triples));
     });
   }, [iri, isNew, loadConcept]);
 
@@ -108,10 +164,20 @@ export default function EditorPage() {
 
   function rowsToTriples(): Triple[] {
     const subj = computedSubject;
-    return rows
-      // Keep blank nodes (no scalar value) but drop empty literal/iri rows.
-      .filter((r) => r.value.kind === 'bnode' || r.value.value.trim() !== '')
-      .map((r) => ({ subject: subj, predicate: r.predicate, object: r.value }));
+    const out: Triple[] = [];
+    for (const r of rows) {
+      // Drop empty literal/iri rows (blank nodes have no scalar value).
+      if (r.value.kind !== 'bnode' && r.value.value.trim() === '') continue;
+      if (r.predicate === MERGED_LABEL) {
+        // Expand to both prefLabel and rdfs:label (mirrored), prefLabel primary.
+        for (const p of MERGED_LABEL_EXPANDS_TO) {
+          out.push({ subject: subj, predicate: p, object: r.value });
+        }
+      } else {
+        out.push({ subject: subj, predicate: r.predicate, object: r.value });
+      }
+    }
+    return out;
   }
 
   function save() {
@@ -187,7 +253,9 @@ export default function EditorPage() {
             <div className="field-group" key={predicate}>
               <div className="field-label" title={predicate}>
                 {predicateLabel(predicate)}
-                <span className="field-curie">{toCurie(predicate)}</span>
+                <span className="field-curie">
+                  {predicate === MERGED_LABEL ? 'skos:prefLabel + rdfs:label' : toCurie(predicate)}
+                </span>
                 <span className="field-hint">{def.hint}</span>
               </div>
               <div className="field-values">
@@ -197,6 +265,7 @@ export default function EditorPage() {
                       value={r.value}
                       kind={def.valueKind}
                       typeFilter={typeFilterFor(predicate)}
+                      sourceFilter={sourceFilterFor(predicate)}
                       onChange={(v) => updateRow(r.id, v)}
                     />
                     <button type="button" className="icon-btn" title="Remove value" onClick={() => deleteRow(r.id)}>
@@ -225,11 +294,22 @@ export default function EditorPage() {
               <option value="" disabled>
                 Choose a property to add…
               </option>
-              {PREDICATES.map((p) => (
-                <option key={p.iri} value={p.iri}>
-                  {p.label} ({toCurie(p.iri)})
-                </option>
-              ))}
+              <optgroup label="Common properties">
+                {PREDICATES.map((p) => (
+                  <option key={p.iri} value={p.iri}>
+                    {p.label} ({toCurie(p.iri)})
+                  </option>
+                ))}
+              </optgroup>
+              {extraDbPredicates.length > 0 && (
+                <optgroup label="Other properties used in this database">
+                  {extraDbPredicates.map((p) => (
+                    <option key={p} value={p}>
+                      {toCurie(p)}
+                    </option>
+                  ))}
+                </optgroup>
+              )}
             </select>
             <span className="or">or</span>
             <input
