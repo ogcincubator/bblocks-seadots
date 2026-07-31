@@ -37,7 +37,7 @@ dataset. No source properties are intentionally dropped.
 {
   "@context": [
     "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
-    "../context.jsonld"
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld"
   ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
   "type": "Feature",
@@ -51,10 +51,10 @@ dataset. No source properties are intentionally dropped.
     "type": "Execution",
     "workflow": "../../catalog-workflow/examples/workflow.json",
     "inputRecords": [
-      "../../catalog-input/examples/input-stac-item.json"
+      "../../catalog-data/examples/input-stac-item.json"
     ],
     "outputRecords": [
-      "../../catalog-output/examples/output-stac-item.json"
+      "../../catalog-data/examples/output-stac-item.json"
     ]
   },
   "links": [
@@ -65,16 +65,93 @@ dataset. No source properties are intentionally dropped.
     },
     {
       "rel": "related",
-      "href": "bblocks://ogc.hosted.seadots.catalog-input/examples/input-stac-item.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json",
       "type": "application/geo+json"
     },
     {
       "rel": "related",
-      "href": "bblocks://ogc.hosted.seadots.catalog-output/examples/output-stac-item.json",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json",
       "type": "application/geo+json"
     }
   ]
 }
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld"
+  ],
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
+  "type": "Feature",
+  "itemType": "record",
+  "conformsTo": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "geometry": null,
+  "properties": {
+    "type": "Execution",
+    "workflow": "../../catalog-workflow/examples/workflow.json",
+    "inputRecords": [
+      "../../catalog-data/examples/input-stac-item.json"
+    ],
+    "outputRecords": [
+      "../../catalog-data/examples/output-stac-item.json"
+    ]
+  },
+  "links": [
+    {
+      "rel": "related",
+      "href": "bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json",
+      "type": "application/geo+json"
+    },
+    {
+      "rel": "related",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json",
+      "type": "application/geo+json"
+    },
+    {
+      "rel": "related",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json",
+      "type": "application/geo+json"
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a prov:Activity,
+        geojson:Feature ;
+    dct:conformsTo <http://www.w3.org/TR/prov-o/>,
+        <https://docs.ogc.org/is/20-004/20-004.html> ;
+    rdfs:seeAlso [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],
+        [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
+        [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ] ;
+    prov:generated <file:///catalog-data/examples/output-stac-item.json> ;
+    prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
+    prov:used <file:///catalog-data/examples/input-stac-item.json> ;
+    seadots:itemType "record" .
+
 
 ```
 
@@ -331,6 +408,22 @@ x-jsonld-extra-terms:
   wasRevisionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
     x-jsonld-type: '@id'
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.w3.org/ns/prov#value
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
+    x-jsonld-type: '@id'
   atLocation:
     x-jsonld-id: http://www.w3.org/ns/prov#atLocation
     x-jsonld-type: '@id'
@@ -404,16 +497,9 @@ x-jsonld-extra-terms:
   endedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  generatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  invalidatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   startedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  value: http://www.w3.org/ns/prov#value
   provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
   pairKey:
     x-jsonld-id: http://www.w3.org/ns/prov#pairKey
@@ -471,15 +557,6 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   qualifiedEnd:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
-    x-jsonld-type: '@id'
-  qualifiedPrimarySource:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
-    x-jsonld-type: '@id'
-  qualifiedQuotation:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
-    x-jsonld-type: '@id'
-  qualifiedRevision:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   qualifiedStart:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
@@ -802,6 +879,27 @@ Links to the schema:
       "@id": "prov:wasRevisionOf",
       "@type": "@id"
     },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "invalidatedAtTime": {
+      "@id": "prov:invalidatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "value": "prov:value",
+    "qualifiedPrimarySource": {
+      "@id": "prov:qualifiedPrimarySource",
+      "@type": "@id"
+    },
+    "qualifiedQuotation": {
+      "@id": "prov:qualifiedQuotation",
+      "@type": "@id"
+    },
+    "qualifiedRevision": {
+      "@id": "prov:qualifiedRevision",
+      "@type": "@id"
+    },
     "atLocation": {
       "@id": "prov:atLocation",
       "@type": "@id"
@@ -882,19 +980,10 @@ Links to the schema:
       "@id": "prov:endedAtTime",
       "@type": "xsd:dateTime"
     },
-    "generatedAtTime": {
-      "@id": "prov:generatedAtTime",
-      "@type": "xsd:dateTime"
-    },
-    "invalidatedAtTime": {
-      "@id": "prov:invalidatedAtTime",
-      "@type": "xsd:dateTime"
-    },
     "startedAtTime": {
       "@id": "prov:startedAtTime",
       "@type": "xsd:dateTime"
     },
-    "value": "prov:value",
     "provenanceUriTemplate": "prov:provenanceUriTemplate",
     "pairKey": {
       "@id": "prov:pairKey",
@@ -970,18 +1059,6 @@ Links to the schema:
     },
     "qualifiedEnd": {
       "@id": "prov:qualifiedEnd",
-      "@type": "@id"
-    },
-    "qualifiedPrimarySource": {
-      "@id": "prov:qualifiedPrimarySource",
-      "@type": "@id"
-    },
-    "qualifiedQuotation": {
-      "@id": "prov:qualifiedQuotation",
-      "@type": "@id"
-    },
-    "qualifiedRevision": {
-      "@id": "prov:qualifiedRevision",
       "@type": "@id"
     },
     "qualifiedStart": {

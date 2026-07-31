@@ -1,0 +1,26 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a prov:Activity,
+        geojson:Feature ;
+    dct:conformsTo <http://www.w3.org/TR/prov-o/>,
+        <https://docs.ogc.org/is/20-004/20-004.html> ;
+    rdfs:seeAlso [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],
+        [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
+        [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ] ;
+    prov:generated <file:///catalog-data/examples/output-stac-item.json> ;
+    prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
+    prov:used <file:///catalog-data/examples/input-stac-item.json> ;
+    seadots:itemType "record" .
+

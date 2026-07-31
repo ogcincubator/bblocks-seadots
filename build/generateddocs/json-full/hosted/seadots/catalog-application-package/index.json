@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "dateOfLastChange": "2026-05-28",
+  "dateOfLastChange": "2026-07-31",
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "tags": [
     "catalog",
@@ -70,16 +70,19 @@
           "language": "json",
           "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/examples/application-package.json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.json",
+          "sizeBytes": 907,
           "code": "{\n  \"id\": \"reef-effect\",\n  \"type\": \"ApplicationPackage\",\n  \"title\": \"Reef-effect CWL application package\",\n  \"description\": \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\",\n  \"cwlVersion\": \"v1.2\",\n  \"class\": \"CommandLineTool\",\n  \"baseCommand\": \"reef-effect\",\n  \"inputs\": [\n    {\n      \"id\": \"areaOfInterest\",\n      \"type\": \"File\",\n      \"description\": \"GeoJSON Feature describing the AOI.\"\n    },\n    {\n      \"id\": \"benthicBiomassDensity\",\n      \"type\": \"File\",\n      \"description\": \"Input biomass-density STAC Item or OGC Record.\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"id\": \"reefBiomassOutput\",\n      \"type\": \"File\",\n      \"description\": \"STAC/OGC Records output item.\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"class\": \"DockerRequirement\",\n      \"dockerPull\": \"ghcr.io/seadots/reef-effect:0.1.0\"\n    }\n  ],\n  \"softwareVersion\": \"0.1.0\",\n  \"programmingLanguage\": \"Python\"\n}\n"
         },
         {
           "language": "jsonld",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.jsonld",
+          "sizeBytes": 1044,
           "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld\",\n  \"id\": \"reef-effect\",\n  \"type\": \"ApplicationPackage\",\n  \"title\": \"Reef-effect CWL application package\",\n  \"description\": \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\",\n  \"cwlVersion\": \"v1.2\",\n  \"class\": \"CommandLineTool\",\n  \"baseCommand\": \"reef-effect\",\n  \"inputs\": [\n    {\n      \"id\": \"areaOfInterest\",\n      \"type\": \"File\",\n      \"description\": \"GeoJSON Feature describing the AOI.\"\n    },\n    {\n      \"id\": \"benthicBiomassDensity\",\n      \"type\": \"File\",\n      \"description\": \"Input biomass-density STAC Item or OGC Record.\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"id\": \"reefBiomassOutput\",\n      \"type\": \"File\",\n      \"description\": \"STAC/OGC Records output item.\"\n    }\n  ],\n  \"requirements\": [\n    {\n      \"class\": \"DockerRequirement\",\n      \"dockerPull\": \"ghcr.io/seadots/reef-effect:0.1.0\"\n    }\n  ],\n  \"softwareVersion\": \"0.1.0\",\n  \"programmingLanguage\": \"Python\"\n}"
         },
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-application-package/example_1_1.ttl",
+          "sizeBytes": 1353,
           "code": "@prefix apkg: <https://w3id.org/apkg/terms/> .\n@prefix cwl: <https://w3id.org/cwl/cwl#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n\n<file:///github/workspace/reef-effect> a apkg:ApplicationPackage ;\n    dcterms:description \"Minimal APKG/CWL package contract for the reef-effect biomass calculation.\" ;\n    dcterms:title \"Reef-effect CWL application package\" ;\n    schema:programmingLanguage \"Python\" ;\n    schema:softwareVersion \"0.1.0\" ;\n    apkg:inputs <file:///github/workspace/areaOfInterest>,\n        <file:///github/workspace/benthicBiomassDensity> ;\n    apkg:outputs <file:///github/workspace/reefBiomassOutput> ;\n    cwl:class \"CommandLineTool\" ;\n    cwl:requirements [ cwl:class \"DockerRequirement\" ;\n            seadots:dockerPull \"ghcr.io/seadots/reef-effect:0.1.0\" ] ;\n    seadots:baseCommand \"reef-effect\" ;\n    seadots:cwlVersion \"v1.2\" .\n\n<file:///github/workspace/areaOfInterest> a seadots:File ;\n    dcterms:description \"GeoJSON Feature describing the AOI.\" .\n\n<file:///github/workspace/benthicBiomassDensity> a seadots:File ;\n    dcterms:description \"Input biomass-density STAC Item or OGC Record.\" .\n\n<file:///github/workspace/reefBiomassOutput> a seadots:File ;\n    dcterms:description \"STAC/OGC Records output item.\" .\n\n"
         }
       ]

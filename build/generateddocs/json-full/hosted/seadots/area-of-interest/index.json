@@ -9,13 +9,17 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "dateOfLastChange": "2026-05-28",
+  "dateOfLastChange": "2026-07-31",
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "tags": [
     "AOI",
     "marine",
     "OGC Feature",
-    "GeoJSON"
+    "GeoJSON",
+    "area-of-interest",
+    "German demo",
+    "Swedish demo",
+    "Norwegian demo"
   ],
   "authors": [
     {
@@ -52,17 +56,20 @@
           "language": "json",
           "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/area-of-interest/examples/utsira_surroundings_aoi.json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/area-of-interest/example_1_1.json",
+          "sizeBytes": 790,
           "code": "{\n  \"id\": \"https://example.org/norwegian-ses/area-of-interest/utsira-surroundings\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [[\n      [4.20, 59.10],\n      [5.30, 59.10],\n      [5.30, 59.70],\n      [4.20, 59.70],\n      [4.20, 59.10]\n    ]]\n  },\n  \"properties\": {\n    \"title\": \"AOI \u2014 surroundings of Utsira island\",\n    \"description\": \"Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator.\"\n  },\n  \"links\": [\n    { \"rel\": \"describedby\", \"href\": \"bblocks://ogc.hosted.seadots.area-of-interest\", \"type\": \"application/schema+json\", \"title\": \"Marine Area of Interest bblock\" }\n  ]\n}\n"
         },
         {
           "language": "jsonld",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/area-of-interest/example_1_1.jsonld",
+          "sizeBytes": 1111,
           "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/area-of-interest/context.jsonld\",\n  \"id\": \"https://example.org/norwegian-ses/area-of-interest/utsira-surroundings\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          4.2,\n          59.1\n        ],\n        [\n          5.3,\n          59.1\n        ],\n        [\n          5.3,\n          59.7\n        ],\n        [\n          4.2,\n          59.7\n        ],\n        [\n          4.2,\n          59.1\n        ]\n      ]\n    ]\n  },\n  \"properties\": {\n    \"title\": \"AOI \\u2014 surroundings of Utsira island\",\n    \"description\": \"Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator.\"\n  },\n  \"links\": [\n    {\n      \"rel\": \"describedby\",\n      \"href\": \"bblocks://ogc.hosted.seadots.area-of-interest\",\n      \"type\": \"application/schema+json\",\n      \"title\": \"Marine Area of Interest bblock\"\n    }\n  ]\n}"
         },
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/area-of-interest/example_1_1.ttl",
-          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ns1: <https://purl.org/geojson/vocab#> .\n@prefix ns2: <http://www.w3.org/ns/iana/link-relations/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a ns1:Feature ;\n    ns2:relation <bblocks://ogc.hosted.seadots.area-of-interest> ;\n    ns1:geometry [ a ns1:Polygon ;\n            ns1:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;\n    ns1:properties [ dcterms:description \"Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator.\" ;\n            dcterms:title \"AOI \u2014 surroundings of Utsira island\" ] .\n\n<bblocks://ogc.hosted.seadots.area-of-interest> a <file:///github/workspace/application/schema+json> ;\n    ns1:rel \"describedby\" .\n\n"
+          "sizeBytes": 1079,
+          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .\n@prefix ns2: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a ns2:Feature ;\n    ns1:relation <bblocks://ogc.hosted.seadots.area-of-interest> ;\n    ns2:geometry [ a ns2:Polygon ;\n            ns2:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;\n    ns2:properties [ dcterms:description \"Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator.\" ;\n            dcterms:title \"AOI \u2014 surroundings of Utsira island\" ] .\n\n<bblocks://ogc.hosted.seadots.area-of-interest> a <file:///github/workspace/application/schema+json> ;\n    ns2:rel \"describedby\" .\n\n"
         }
       ]
     }

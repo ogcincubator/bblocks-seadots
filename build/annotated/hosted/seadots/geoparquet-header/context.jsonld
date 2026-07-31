@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "fileName": "schema:contentUrl",
+    "encoding": "schema:encodingFormat",
+    "source": {
+      "@context": {
+        "href": {
+          "@id": "dct:references",
+          "@type": "@id"
+        },
+        "sourceFormat": "dct:format",
+        "rowCount": "schema:numberOfItems",
+        "columnCount": "schema:numberOfColumns",
+        "note": "schema:comment"
+      },
+      "@id": "dct:source"
+    },
+    "parquetSchema": {
+      "@context": {
+        "name": "csvw:name",
+        "type": "csvw:datatype",
+        "nullable": "https://geoparquet.org/schema#nullable",
+        "description": "dct:description",
+        "propertyUrl": {
+          "@id": "csvw:propertyUrl",
+          "@type": "@id"
+        }
+      },
+      "@id": "https://geoparquet.org/schema",
+      "@container": "@list"
+    },
+    "geo": {
+      "@context": {
+        "version": "schema:version",
+        "primary_column": "https://geoparquet.org/metadata#primary_column",
+        "columns": {
+          "@context": {
+            "geometry_types": "https://geoparquet.org/metadata#geometry_types",
+            "crs": {
+              "@context": {
+                "type": "csvw:datatype"
+              },
+              "@id": "https://geoparquet.org/metadata#crs"
+            },
+            "edges": "https://geoparquet.org/metadata#edges",
+            "orientation": "https://geoparquet.org/metadata#orientation",
+            "bbox": "https://geoparquet.org/metadata#bbox",
+            "covering": "https://geoparquet.org/metadata#covering"
+          },
+          "@id": "https://geoparquet.org/metadata#columns"
+        }
+      },
+      "@id": "https://geoparquet.org/metadata"
+    },
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@version": 1.1
+  }
+}

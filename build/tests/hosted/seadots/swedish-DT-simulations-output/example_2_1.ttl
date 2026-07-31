@@ -1,117 +1,268 @@
 @prefix : <https://w3id.org/ogc/hosted/seadots/swedish-dt#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix schema: <https://schema.org/> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/swedish-dt#$> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix sta: <http://www.opengis.net/def/ont/sensorthings/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<file:///github/workspace/swedish-dt-case-region-north-to-gotland> :bbox 1.64e+01,
-        2.25e+01,
-        5.7e+01,
-        6.58e+01 ;
-    :geometry [ :coordinates "[16.4, 59.0]",
-                "[17.0, 57.0]",
-                "[17.6, 63.0]",
-                "[19.0, 65.8]",
-                "[19.2, 57.0]",
-                "[20.6, 58.1]",
-                "[21.6, 60.3]",
-                "[21.8, 65.8]",
-                "[22.5, 63.4]" ;
-            :type "Polygon" ] ;
-    :properties [ :crs "EPSG:4326" ;
-            :geometryStatus "approximate case-region footprint" ;
-            :name "Swedish DT case region - northern Baltic to Gotland" ;
-            :southAnchor "Gotland Island" ] ;
-    :type "Feature" .
-
-[] sta:Datastream [ sosa:hasFeatureOfInterest [ :name "Eurostat NUTS region indicator set" ] ;
-            sosa:madeBySensor [ :encodingType "application/json" ;
-                    :metadata "Source model output represented from examples/eurostat nuts regions.qgz" ;
-                    :name "Swedish Digital Twin fisheries simulation model" ] ;
-            sosa:observedProperty [ skos:definition "https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState" ;
-                    :name "Swedish DT fisheries simulation state" ] ;
-            :description "Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model." ;
-            :name "Swedish DT Eurostat NUTS regions simulation output" ;
-            :observationType "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation" ;
-            :unitOfMeasurement [ skos:definition "https://qudt.org/vocab/unit/UNITLESS" ;
-                    :name "model output bundle" ;
-                    :symbol "1" ] ] ;
-    sosa:hasFeatureOfInterest [ :description "Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary." ;
-            :encodingType "application/geo+json" ;
-            :feature <file:///github/workspace/swedish-dt-case-region-north-to-gotland> ;
-            :name "Swedish DT case region - northern Baltic to Gotland" ] ;
-    sosa:hasResult [ :B_herring_tot 250000 ;
-            :K_herring_reg_inc 1 ;
-            :SV_fishing_radius 5 ;
-            :SV_herring_market "fish meal" ;
-            :TAC_herring_Sweden_impl 1 ;
-            :TAC_herring_est_error 6.5e-01 ;
-            :TAC_herring_inc_SV 1 ;
-            :TAC_herring_share_sv 9.3e-02 ;
-            :TAC_herring_type 0 ;
-            :TAC_share_B_herring 3e-01 ;
-            :VA_LV_All 4.316705e+04 ;
-            :VA_SV_All 2.068744e+02 ;
-            :catch_herring_LV_All 2.306167e+05 ;
-            :catch_herring_SV_All 1.458718e+03 ;
-            :catch_sprat_LV_All 2.888209e+05 ;
-            :catch_sprat_SV_All 1.116481e+03 ;
-            :current_TAC_herring 5.666949e+04 ;
-            :current_herring_season "Evenly distributed" ;
-            :current_management_season "No closure" ;
-            :current_month 6 ;
-            :current_year 1 ;
-            :even_dispersal_rate 8e-02 ;
-            :fishing_algorithm "profit maximisation" ;
-            :fuel_consumption_LV 0 ;
-            :fuel_consumption_SV 0 ;
-            :fuel_price 0 ;
-            :herring_price_fish_meal 2.41e+00 ;
-            :herring_price_human_cons 1.125e+01 ;
-            :landing-value_sprat_LV 6.960583e+05 ;
-            :landing_value_herring_LV 5.557862e+05 ;
-            :landing_value_herring_SV 3.515511e+03 ;
-            :landing_value_sprat_SV 2.69072e+03 ;
-            :mean_biomas_sprat 6.483755e+03 ;
-            :mean_biomass_herring 7.392332e+03 ;
-            :repetitions 1 ;
-            :spawning_closure_type 0 ;
-            :spawning_dispersal_rate 4e-02 ;
-            :sprat_price 2.41e+00 ;
-            :stop_herring_growth false ;
-            :ticks 1 ;
-            :trawling_limit "none" ;
-            :winter_closure_length 120 ;
-            :winter_closure_type 1 ;
-            :winter_dispersal_rate 2.7e-02 ;
-            :year_tick 33 ;
-            :yearly_growth_herring 5.2e-01 ] ;
-    sosa:phenomenonTime <file:///github/workspace/model-year-1/month-6/tick-33> ;
-    sosa:resultTime "2026-05-27T00:00:00+00:00"^^xsd:dateTime ;
-    schema:variableMeasured [ dcterms:format "text/plain; delimiter=space; quote=double" ;
-            dcterms:source <file:///github/workspace/> ;
-            schema:numberOfColumns 63 ;
-            schema:numberOfItems 60000 ;
-            :conformsTo "http://www.w3.org/ns/sosa/Observation",
-                "https://docs.ogc.org/is/18-088/18-088.html" ;
-            :regionIndicators [ :nuts_region_01 0 ;
-                    :nuts_region_02 0 ;
-                    :nuts_region_03 0 ;
-                    :nuts_region_04 0 ;
-                    :nuts_region_05 0 ;
-                    :nuts_region_06 0 ;
-                    :nuts_region_07 0 ;
-                    :nuts_region_08 0 ;
-                    :nuts_region_09 0 ;
-                    :nuts_region_10 0 ;
-                    :nuts_region_11 0 ;
-                    :nuts_region_12 0 ;
-                    :nuts_region_13 0 ;
-                    :nuts_region_14 0 ;
-                    :nuts_region_15 0 ;
-                    :nuts_region_16 0 ;
-                    :nuts_region_17 0 ] ;
-            :sourceRow 1 ] .
+[] dct:format "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB" ;
+    dct:identifier "eurostat-nuts-regions.parquet" ;
+    dct:source [ dct:references <file:///github/workspace/> ;
+            skos:note "The supplied source carries no row-level geometry. Columns `fu_01` .. `fu_17` are reserved-for-future-use placeholders (always 0 in the current data, see indp:reserved-for-future-use) and are not resolved NUTS-region or FU-area codes; do not join them to region geometry until the model owner confirms their intended meaning. This header includes an approximate Swedish case-region footprint spanning northern Baltic/Bothnian Sea case waters southward to Gotland Island as a placeholder single-region geometry. A concrete GeoParquet writer should replace or refine this with authoritative geometry once the real region semantics are known." ;
+            :columnCount 63 ;
+            :rowCount 60000 ;
+            :sourceFormat "text/plain; delimiter=space; quote=double" ] ;
+    geo: [ :columns [ :geometry [ dct:format "WKB" ;
+                            :bbox 1.64e+01,
+                                2.25e+01,
+                                5.7e+01,
+                                6.58e+01 ;
+                            :crs [ a :GeographicCRS ;
+                                    csvw:name "WGS 84 (CRS84)" ;
+                                    ns2:schema "https://proj.org/schemas/v0.7/projjson.schema.json" ;
+                                    :area "World." ;
+                                    :bbox [ :east_longitude 180 ;
+                                            :north_latitude 90 ;
+                                            :south_latitude -90 ;
+                                            :west_longitude -180 ] ;
+                                    :coordinate_system [ :axis [ ns1:unit <file:///github/workspace/degree> ;
+                                                    csvw:name "Geodetic longitude" ;
+                                                    :abbreviation "Lon" ;
+                                                    :direction "east" ],
+                                                [ ns1:unit <file:///github/workspace/degree> ;
+                                                    csvw:name "Geodetic latitude" ;
+                                                    :abbreviation "Lat" ;
+                                                    :direction "north" ] ;
+                                            :subtype "ellipsoidal" ] ;
+                                    :datum_ensemble [ csvw:name "World Geodetic System 1984 ensemble" ;
+                                            :accuracy "2.0" ;
+                                            :ellipsoid [ csvw:name "WGS 84" ;
+                                                    :inverse_flattening 2.982572e+02 ;
+                                                    :semi_major_axis 6378137 ] ;
+                                            :members [ csvw:name "World Geodetic System 1984 (G1150)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G730)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G873)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
+                                                [ csvw:name "World Geodetic System 1984 (Transit)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2139)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1762)" ] ] ;
+                                    :scope "Not known." ] ;
+                            :edges "planar" ;
+                            :exampleGeometryGeoJSON [ a <http://www.opengis.net/ont/sf#Polygon> ;
+                                    :coordinates "[16.4, 59.0]",
+                                        "[17.0, 57.0]",
+                                        "[17.6, 63.0]",
+                                        "[19.0, 65.8]",
+                                        "[19.2, 57.0]",
+                                        "[20.6, 58.1]",
+                                        "[21.6, 60.3]",
+                                        "[21.8, 65.8]",
+                                        "[22.5, 63.4]" ] ;
+                            :geometry_types "Polygon" ;
+                            :orientation "counterclockwise" ] ] ;
+            :primary_column "geometry" ;
+            :version "1.1.0" ] ;
+    csvw:tableSchema ( [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/WKB> ;
+                dct:description "Placeholder single-region geometry for the case-study area. Not currently derived from `fu_01` .. `fu_17`, which are reserved-for-future-use columns, not region keys." ;
+                csvw:name "geometry" ;
+                csvw:propertyUrl geo:hasGeometry ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "repetitions" ;
+                csvw:propertyUrl indp:repetitions ;
+                :nullable false ] [ a :INT64 ;
+                csvw:name "ticks" ;
+                csvw:propertyUrl indp:ticks ;
+                :nullable false ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                csvw:name "current_herring_season" ;
+                csvw:propertyUrl indp:current_herring_season ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                csvw:name "current_management_season" ;
+                csvw:propertyUrl indp:current_management_season ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "current_TAC_herring" ;
+                csvw:propertyUrl indp:current_TAC_herring ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "TAC_herring_share_sv" ;
+                csvw:propertyUrl indp:TAC_herring_share_sv ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "even_dispersal_rate" ;
+                csvw:propertyUrl indp:even_dispersal_rate ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "winter_dispersal_rate" ;
+                csvw:propertyUrl indp:winter_dispersal_rate ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "spawning_dispersal_rate" ;
+                csvw:propertyUrl indp:spawning_dispersal_rate ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "winter_closure_type" ;
+                csvw:propertyUrl indp:winter_closure_type ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "spawning_closure_type" ;
+                csvw:propertyUrl indp:spawning_closure_type ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                csvw:name "trawling_limit" ;
+                csvw:propertyUrl indp:trawling_limit ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                csvw:name "fishing_algorithm" ;
+                csvw:propertyUrl indp:fishing_algorithm ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "current_year" ;
+                csvw:propertyUrl indp:current_year ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "current_month" ;
+                csvw:propertyUrl indp:current_month ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "year_tick" ;
+                csvw:propertyUrl indp:year_tick ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "herring_price_fish_meal" ;
+                csvw:propertyUrl indo:herring_price_fish_meal ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "sprat_price" ;
+                csvw:propertyUrl indo:sprat_price ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "fuel_price" ;
+                csvw:propertyUrl indo:fuel_price ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "fuel_consumption_SV" ;
+                csvw:propertyUrl indo:fuel_consumption_SV ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "fuel_consumption_LV" ;
+                csvw:propertyUrl indo:fuel_consumption_LV ;
+                :nullable true ] [ a :BOOLEAN ;
+                csvw:name "stop_herring_growth" ;
+                csvw:propertyUrl indo:stop_herring_growth ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "mean_biomass_herring" ;
+                csvw:propertyUrl indo:mean_biomass_herring ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "mean_biomas_sprat" ;
+                csvw:propertyUrl indo:mean_biomass_sprat ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "landing_value_herring_SV" ;
+                csvw:propertyUrl indo:landing_value_herring_SV ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "landing_value_herring_LV" ;
+                csvw:propertyUrl indo:landing_value_herring_LV ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "landing_value_sprat_SV" ;
+                csvw:propertyUrl indo:landing_value_sprat_SV ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "landing-value_sprat_LV" ;
+                csvw:propertyUrl indo:landing_value_sprat_LV ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "catch_herring_SV_All" ;
+                csvw:propertyUrl indo:catch_herring_SV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "catch_herring_LV_All" ;
+                csvw:propertyUrl indo:catch_herring_LV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "catch_sprat_SV_All" ;
+                csvw:propertyUrl indo:catch_sprat_SV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "catch_sprat_LV_All" ;
+                csvw:propertyUrl indo:catch_sprat_LV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "VA_SV_All" ;
+                csvw:propertyUrl indo:VA_SV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "VA_LV_All" ;
+                csvw:propertyUrl indo:VA_LV_All ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "yearly_growth_herring" ;
+                csvw:propertyUrl indo:yearly_growth_herring ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "winter_closure_length" ;
+                csvw:propertyUrl indo:winter_closure_length ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "TAC_share_B_herring" ;
+                csvw:propertyUrl indo:TAC_share_B_herring ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "B_herring_tot" ;
+                csvw:propertyUrl indo:B_herring_tot ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "K_herring_reg_inc" ;
+                csvw:propertyUrl indo:K_herring_reg_inc ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "TAC_herring_Sweden_impl" ;
+                csvw:propertyUrl indo:TAC_herring_Sweden_impl ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "herring_price_human_cons" ;
+                csvw:propertyUrl indo:herring_price_human_cons ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                csvw:name "SV_herring_market" ;
+                csvw:propertyUrl indo:SV_herring_market ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "TAC_herring_est_error" ;
+                csvw:propertyUrl indo:TAC_herring_est_error ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "SV_fishing_radius" ;
+                csvw:propertyUrl indo:SV_fishing_radius ;
+                :nullable true ] [ a :DOUBLE ;
+                csvw:name "TAC_herring_inc_SV" ;
+                csvw:propertyUrl indo:TAC_herring_inc_SV ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "TAC_herring_type" ;
+                csvw:propertyUrl indo:TAC_herring_type ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_01" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_02" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_03" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_04" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_05" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_06" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_07" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_08" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_09" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_10" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_11" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_12" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_13" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_14" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_15" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_16" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] [ a :INT64 ;
+                csvw:name "fu_17" ;
+                csvw:propertyUrl indp:reserved-for-future-use ;
+                :nullable true ] ) ;
+    :conversionNotes "Keep the source artifact link in Parquet file metadata for provenance.",
+        "Preserve the original 63 simulation columns.",
+        "Use the included approximate Swedish case-region footprint as a single case geometry until the `fu_01` .. `fu_17` reserved-for-future-use columns are given real region semantics." .
 

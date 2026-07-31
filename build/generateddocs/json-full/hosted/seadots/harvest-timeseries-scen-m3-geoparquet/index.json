@@ -1,0 +1,108 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet",
+  "name": "Harvest time series scenario Scen M3 \u2014 GeoParquet representation",
+  "abstract": "GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-31T00:00:00Z",
+  "dateOfLastChange": "2026-07-31",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dependsOn": [
+    "ogc.hosted.seadots.geoparquet-header",
+    "ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+  ],
+  "tags": [
+    "seadots",
+    "geoparquet",
+    "vector",
+    "timeseries",
+    "scenario",
+    "harvest",
+    "target"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SeaDOTs"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Harvest time series scenario Scen M3 \u2014 source GeoJSON",
+      "link": "bblocks://ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+    },
+    {
+      "title": "GeoParquet specification",
+      "link": "https://geoparquet.org/"
+    }
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://geoparquet.org/"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.hosted.seadots.oim-variables": [
+      "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
+    ],
+    "ogc.model.cross-domain.qudt": [
+      "http://qudt.org/2.1/schema/shacl/qudt"
+    ],
+    "ogc.model.cross-domain.sosa": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+    ],
+    "ogc.skos.common": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+    ],
+    "ogc.skos.concept": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+    ]
+  },
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/",
+  "description": "# Harvest time series scenario Scen M3 \u2014 GeoParquet representation\n\nGeoParquet representation of the same source data as\n[harvest-timeseries-scen-m3-source](../harvest-timeseries-scen-m3-source/):\n19,920 Point features (83 spatial-series identifiers \u00d7 240 timestamps), each\nwith a numeric `bwmus` value and a `time` string, unchanged from the source.\nThis block adds no properties and resolves no additional semantics beyond\nwhat `harvest-timeseries-scen-m3-source`'s own `context.jsonld` already\ndefines \u2014 it exists to declare a GeoParquet physical representation of the\nsame data, built on the shared [GeoParquet Header](../geoparquet-header/)\nenvelope schema.\n\n## Provenance\n\nThe example header (`examples/harvest-timeseries-scen-m3-header.json`) was\ngenerated directly from\n`harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson`\nusing the `geojson-to-geoparquet` skill (ogcaibb\n`skills/geojson-to-geoparquet/scripts/geojson_to_geoparquet.py`):\n\n```bash\npython3 <path-to-ogcaibb>/skills/geojson-to-geoparquet/scripts/geojson_to_geoparquet.py \\\n  --input ../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson \\\n  --output harvest-timeseries-scen-m3.geoparquet \\\n  --write-header examples/harvest-timeseries-scen-m3-header.json \\\n  --source-href \"../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson\" \\\n  --context ../harvest-timeseries-scen-m3-source/context.jsonld\n```\n\n`geometry_types` (`[\"Point\"]`), the `bbox`, and the row/column counts in the\nheader are computed from the real 19,920-feature source, not asserted by\nhand. The `crs` is a full PROJJSON `OGC:CRS84` object (the script's built-in\ndefault) \u2014 never the hand-typed shorthand that, in an earlier revision of\nthe sibling `swedish-DT-simulations-output` block, parsed as JSON but broke\nreal GeoParquet readers at read time; the shared `geoparquet-header` schema\nnow rejects that shape outright.\n\n`examples/harvest-timeseries-scen-m3.geoparquet` itself is a derived build\nartifact and is **not** committed \u2014 regenerate it with the command above\n(drop `--write-header` if you only need the Parquet file) and sanity-check\nit opens before trusting it:\n\n```bash\npython3 -c \"import geopandas as gpd; print(gpd.read_parquet('harvest-timeseries-scen-m3.geoparquet').shape)\"\n```\n\n## Known gaps (inherited from the source)\n\nSame as `harvest-timeseries-scen-m3-source`: `bwmus` has no authoritative\nscientific definition or unit, and `time` has no declared timezone or\ncalendar. This block does not resolve either \u2014 see that block's description\nfor details and recommended fallbacks.\n",
+  "examples": [
+    {
+      "title": "Harvest time series scenario Scen M3 \u2014 GeoParquet header",
+      "description": "GeoParquetHeader document generated directly from the full source GeoJSON (19,920 Point features) using the geojson-to-geoparquet skill: geometry_types, bbox and CRS are computed from the actual data, not declared placeholders. propertyUrls are resolved from harvest-timeseries-scen-m3-source's context.jsonld.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/examples/harvest-timeseries-scen-m3-header.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/example_1_1.json",
+          "sizeBytes": 3487,
+          "code": "{\n  \"fileName\": \"harvest-timeseries-scen-m3.geoparquet\",\n  \"encoding\": \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\",\n  \"source\": {\n    \"href\": \"../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson\",\n    \"sourceFormat\": \"application/geo+json\",\n    \"rowCount\": 19920,\n    \"columnCount\": 4\n  },\n  \"parquetSchema\": [\n    {\n      \"name\": \"id\",\n      \"type\": \"INT64\",\n      \"nullable\": false,\n      \"propertyUrl\": \"http://purl.org/dc/terms/identifier\"\n    },\n    {\n      \"name\": \"geometry\",\n      \"type\": \"BYTE_ARRAY/WKB\",\n      \"nullable\": true,\n      \"propertyUrl\": \"https://purl.org/geojson/vocab#geometry\"\n    },\n    {\n      \"name\": \"bwmus\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": false,\n      \"propertyUrl\": \"https://w3id.org/iliad/property/bwmus\"\n    },\n    {\n      \"name\": \"time\",\n      \"type\": \"BYTE_ARRAY/UTF8\",\n      \"nullable\": false,\n      \"propertyUrl\": \"http://purl.org/dc/terms/temporal\"\n    }\n  ],\n  \"geo\": {\n    \"version\": \"1.1.0\",\n    \"primary_column\": \"geometry\",\n    \"columns\": {\n      \"geometry\": {\n        \"encoding\": \"WKB\",\n        \"geometry_types\": [\n          \"Point\"\n        ],\n        \"crs\": {\n          \"$schema\": \"https://proj.org/schemas/v0.7/projjson.schema.json\",\n          \"type\": \"GeographicCRS\",\n          \"name\": \"WGS 84 (CRS84)\",\n          \"datum_ensemble\": {\n            \"name\": \"World Geodetic System 1984 ensemble\",\n            \"members\": [\n              {\n                \"name\": \"World Geodetic System 1984 (Transit)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G730)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G873)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1150)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1674)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1762)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G2139)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G2296)\"\n              }\n            ],\n            \"ellipsoid\": {\n              \"name\": \"WGS 84\",\n              \"semi_major_axis\": 6378137,\n              \"inverse_flattening\": 298.257223563\n            },\n            \"accuracy\": \"2.0\",\n            \"id\": {\n              \"authority\": \"EPSG\",\n              \"code\": 6326\n            }\n          },\n          \"coordinate_system\": {\n            \"subtype\": \"ellipsoidal\",\n            \"axis\": [\n              {\n                \"name\": \"Geodetic longitude\",\n                \"abbreviation\": \"Lon\",\n                \"direction\": \"east\",\n                \"unit\": \"degree\"\n              },\n              {\n                \"name\": \"Geodetic latitude\",\n                \"abbreviation\": \"Lat\",\n                \"direction\": \"north\",\n                \"unit\": \"degree\"\n              }\n            ]\n          },\n          \"scope\": \"Not known.\",\n          \"area\": \"World.\",\n          \"bbox\": {\n            \"south_latitude\": -90,\n            \"west_longitude\": -180,\n            \"north_latitude\": 90,\n            \"east_longitude\": 180\n          },\n          \"id\": {\n            \"authority\": \"OGC\",\n            \"code\": \"CRS84\"\n          }\n        },\n        \"bbox\": [\n          7.642570856666667,\n          54.37364839,\n          7.713492693333333,\n          54.40949512\n        ]\n      }\n    }\n  }\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/example_1_1.jsonld",
+          "sizeBytes": 3634,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/context.jsonld\",\n  \"fileName\": \"harvest-timeseries-scen-m3.geoparquet\",\n  \"encoding\": \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\",\n  \"source\": {\n    \"href\": \"../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson\",\n    \"sourceFormat\": \"application/geo+json\",\n    \"rowCount\": 19920,\n    \"columnCount\": 4\n  },\n  \"parquetSchema\": [\n    {\n      \"name\": \"id\",\n      \"type\": \"INT64\",\n      \"nullable\": false,\n      \"propertyUrl\": \"http://purl.org/dc/terms/identifier\"\n    },\n    {\n      \"name\": \"geometry\",\n      \"type\": \"BYTE_ARRAY/WKB\",\n      \"nullable\": true,\n      \"propertyUrl\": \"https://purl.org/geojson/vocab#geometry\"\n    },\n    {\n      \"name\": \"bwmus\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": false,\n      \"propertyUrl\": \"https://w3id.org/iliad/property/bwmus\"\n    },\n    {\n      \"name\": \"time\",\n      \"type\": \"BYTE_ARRAY/UTF8\",\n      \"nullable\": false,\n      \"propertyUrl\": \"http://purl.org/dc/terms/temporal\"\n    }\n  ],\n  \"geo\": {\n    \"version\": \"1.1.0\",\n    \"primary_column\": \"geometry\",\n    \"columns\": {\n      \"geometry\": {\n        \"encoding\": \"WKB\",\n        \"geometry_types\": [\n          \"Point\"\n        ],\n        \"crs\": {\n          \"$schema\": \"https://proj.org/schemas/v0.7/projjson.schema.json\",\n          \"type\": \"GeographicCRS\",\n          \"name\": \"WGS 84 (CRS84)\",\n          \"datum_ensemble\": {\n            \"name\": \"World Geodetic System 1984 ensemble\",\n            \"members\": [\n              {\n                \"name\": \"World Geodetic System 1984 (Transit)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G730)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G873)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1150)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1674)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G1762)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G2139)\"\n              },\n              {\n                \"name\": \"World Geodetic System 1984 (G2296)\"\n              }\n            ],\n            \"ellipsoid\": {\n              \"name\": \"WGS 84\",\n              \"semi_major_axis\": 6378137,\n              \"inverse_flattening\": 298.257223563\n            },\n            \"accuracy\": \"2.0\",\n            \"id\": {\n              \"authority\": \"EPSG\",\n              \"code\": 6326\n            }\n          },\n          \"coordinate_system\": {\n            \"subtype\": \"ellipsoidal\",\n            \"axis\": [\n              {\n                \"name\": \"Geodetic longitude\",\n                \"abbreviation\": \"Lon\",\n                \"direction\": \"east\",\n                \"unit\": \"degree\"\n              },\n              {\n                \"name\": \"Geodetic latitude\",\n                \"abbreviation\": \"Lat\",\n                \"direction\": \"north\",\n                \"unit\": \"degree\"\n              }\n            ]\n          },\n          \"scope\": \"Not known.\",\n          \"area\": \"World.\",\n          \"bbox\": {\n            \"south_latitude\": -90,\n            \"west_longitude\": -180,\n            \"north_latitude\": 90,\n            \"east_longitude\": 180\n          },\n          \"id\": {\n            \"authority\": \"OGC\",\n            \"code\": \"CRS84\"\n          }\n        },\n        \"bbox\": [\n          7.642570856666667,\n          54.37364839,\n          7.713492693333333,\n          54.40949512\n        ]\n      }\n    }\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/example_1_1.ttl",
+          "sizeBytes": 2178,
+          "code": "@prefix csvw: <http://www.w3.org/ns/csvw#> .\n@prefix dct: <http://purl.org/dc/terms/> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <https://geoparquet.org/metadata#> .\n@prefix ns2: <https://geoparquet.org/schema#> .\n@prefix ns3: <https://geoparquet.org/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix schema: <https://schema.org/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] dct:source [ dct:format \"application/geo+json\" ;\n            dct:references <file:///github/harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ;\n            schema:numberOfColumns 4 ;\n            schema:numberOfItems 19920 ] ;\n    ns3:metadata [ ns1:columns [ geojson:geometry [ ns1:bbox 7.642571e+00,\n                                7.713493e+00,\n                                5.437365e+01,\n                                5.44095e+01 ;\n                            ns1:crs [ dct:identifier [ ] ;\n                                    csvw:datatype \"GeographicCRS\" ;\n                                    csvw:name \"WGS 84 (CRS84)\" ;\n                                    ns1:bbox [ ] ] ;\n                            ns1:geometry_types \"Point\" ;\n                            schema:encodingFormat \"WKB\" ] ] ;\n            ns1:primary_column \"geometry\" ;\n            schema:version \"1.1.0\" ] ;\n    ns3:schema ( [ csvw:datatype \"INT64\" ;\n                csvw:name \"id\" ;\n                csvw:propertyUrl dct:identifier ;\n                ns2:nullable false ] [ csvw:datatype \"BYTE_ARRAY/WKB\" ;\n                csvw:name \"geometry\" ;\n                csvw:propertyUrl geojson:geometry ;\n                ns2:nullable true ] [ csvw:datatype \"DOUBLE\" ;\n                csvw:name \"bwmus\" ;\n                csvw:propertyUrl <https://w3id.org/iliad/property/bwmus> ;\n                ns2:nullable false ] [ csvw:datatype \"BYTE_ARRAY/UTF8\" ;\n                csvw:name \"time\" ;\n                csvw:propertyUrl dct:temporal ;\n                ns2:nullable false ] ) ;\n    schema:contentUrl \"harvest-timeseries-scen-m3.geoparquet\" ;\n    schema:encodingFormat \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\" .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: \"Harvest time series scenario Scen M3 \\u2014 GeoParquet representation\"\ndescription: 'GeoParquet representation header for the source-faithful harvest time\n  series scenario Scen M3 point time series (see harvest-timeseries-scen-m3-source).\n  Declares the four physical columns (id, geometry, bwmus, time) via the shared GeoParquetHeader\n  envelope. propertyUrls are resolved against harvest-timeseries-scen-m3-source''s\n  own context.jsonld (dct:identifier, geojson:geometry, the provisional bwmus IRI,\n  dct:temporal), not redefined here.\n\n  '\n$ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.yaml\nx-jsonld-extra-terms:\n  fileName: https://schema.org/contentUrl\n  encoding: https://schema.org/encodingFormat\n  source: http://purl.org/dc/terms/source\n  href:\n    x-jsonld-id: http://purl.org/dc/terms/references\n    x-jsonld-type: '@id'\n  sourceFormat: http://purl.org/dc/terms/format\n  rowCount: https://schema.org/numberOfItems\n  columnCount: https://schema.org/numberOfColumns\n  parquetSchema:\n    x-jsonld-id: https://geoparquet.org/schema\n    x-jsonld-container: '@list'\n  name: http://www.w3.org/ns/csvw#name\n  description: http://purl.org/dc/terms/description\n  type: http://www.w3.org/ns/csvw#datatype\n  nullable: https://geoparquet.org/schema#nullable\n  propertyUrl:\n    x-jsonld-id: http://www.w3.org/ns/csvw#propertyUrl\n    x-jsonld-type: '@id'\n  geo: https://geoparquet.org/metadata\n  version: https://schema.org/version\n  primary_column: https://geoparquet.org/metadata#primary_column\n  columns: https://geoparquet.org/metadata#columns\n  geometry_types: https://geoparquet.org/metadata#geometry_types\n  crs: https://geoparquet.org/metadata#crs\n  bbox: https://geoparquet.org/metadata#bbox\n  id:\n    x-jsonld-id: http://purl.org/dc/terms/identifier\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n  geometry: https://purl.org/geojson/vocab#geometry\n  time: http://purl.org/dc/terms/temporal\n  bwmus:\n    x-jsonld-id: https://w3id.org/iliad/property/bwmus\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#double\nx-jsonld-prefixes:\n  schema: https://schema.org/\n  dct: http://purl.org/dc/terms/\n  csvw: http://www.w3.org/ns/csvw#\n  xsd: http://www.w3.org/2001/XMLSchema#\n  geojson: https://purl.org/geojson/vocab#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/harvest-timeseries-scen-m3-geoparquet"
+}

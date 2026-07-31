@@ -1,0 +1,90 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.geoparquet-header",
+  "name": "GeoParquet Header",
+  "abstract": "Generic, reusable CSVW + GeoParquet 1.1 metadata header envelope shape (fileName, source, parquetSchema, geo). Dataset-specific GeoParquet profiles reference this schema via $ref rather than redefining the envelope inline.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-31T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-07-31",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "geoparquet",
+    "csvw",
+    "schema",
+    "envelope",
+    "seadots"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "GeoParquet specification",
+      "link": "https://geoparquet.org/"
+    },
+    {
+      "title": "PROJJSON schema",
+      "link": "https://proj.org/en/stable/schemas/index.html"
+    },
+    {
+      "title": "CSVW (CSV on the Web)",
+      "link": "https://www.w3.org/TR/tabular-data-primer/"
+    }
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://geoparquet.org/"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {},
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/geoparquet-header/",
+  "description": "# GeoParquet Header\n\nThis building block defines the generic, reusable envelope shape for a CSVW +\nGeoParquet 1.1 metadata header: `fileName`, `encoding`, `source`\n(`href`/`sourceFormat`/`rowCount`/`columnCount`), `parquetSchema` (per-column\n`name`/`type`/`nullable`/`description`/`propertyUrl`), and `geo`\n(`version`/`primary_column`/`columns`, including a `crs` block that must be\neither omitted, a CRS identifier string, or a full PROJJSON object).\n\nIt exists so that dataset-specific GeoParquet profiles \u2014 such as\n[Swedish DT Simulations Output](../swedish-DT-simulations-output/) and\n[Harvest time series scenario Scen M3 \u2014 GeoParquet representation](../harvest-timeseries-scen-m3-geoparquet/)\n\u2014 can `$ref` a single shared envelope definition instead of each redefining\nit inline. The envelope was factored out of `swedish-DT-simulations-output`'s\n`schema.yaml`, where it was originally defined ad hoc.\n\n## Why `crs` is constrained\n\nA previous dataset-specific header shipped a hand-written CRS shorthand\n(`{\"type\": \"GeographicCRS\", \"name\": \"WGS 84\", \"id\": {\"authority\": \"EPSG\",\n\"code\": 4326}}`) that parses as valid JSON but is not valid PROJJSON \u2014 it is\nmissing the `datum`/`datum_ensemble` (or `base_crs`/`source_crs`) keys a real\nCRS definition requires. That header validated fine against a schema with no\n`crs` constraint, but `geopandas.read_parquet()` (via `proj`) rejected the\nresulting file outright with a `CRSError`. This schema's `crs` property\nrequires either `null` (the GeoParquet-spec default, meaning OGC:CRS84), a\nplain identifier string, or an object that at minimum claims one of the keys\nthat makes a CRS definition complete \u2014 catching that exact mistake at schema\nvalidation time instead of at read time.\n\n## Producing a conformant header\n\n- `csv-to-geoparquet` and `geojson-to-geoparquet` (ogcaibb skills) both emit\n  headers that validate against this schema, and both refuse to emit the\n  invalid CRS shorthand described above.\n",
+  "examples": [
+    {
+      "title": "Generic stations GeoParquet header",
+      "description": "Minimal, dataset-agnostic example of the GeoParquetHeader envelope: four columns (a Point geometry plus three scalar properties) over a tiny synthetic stations source. `crs` is explicitly `null`, illustrating the spec-conformant default-to-OGC:CRS84 case rather than a hand-typed CRS shorthand.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/examples/generic-stations-header.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/geoparquet-header/example_1_1.json",
+          "sizeBytes": 1776,
+          "code": "{\n  \"@context\": {\n    \"@version\": 1.1,\n    \"csvw\": \"http://www.w3.org/ns/csvw#\",\n    \"dct\": \"http://purl.org/dc/terms/\",\n    \"geo\": \"http://www.opengis.net/ont/geosparql#\",\n    \"ex\": \"https://example.org/vocab/\",\n    \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n    \"fileName\": \"dct:identifier\",\n    \"encoding\": \"dct:format\",\n    \"source\": \"dct:source\",\n    \"href\": {\n      \"@id\": \"dct:references\",\n      \"@type\": \"@id\"\n    },\n    \"parquetSchema\": {\n      \"@id\": \"csvw:tableSchema\",\n      \"@container\": \"@list\"\n    },\n    \"name\": \"csvw:name\",\n    \"description\": \"dct:description\",\n    \"propertyUrl\": {\n      \"@id\": \"csvw:propertyUrl\",\n      \"@type\": \"@id\"\n    }\n  },\n  \"fileName\": \"stations.parquet\",\n  \"encoding\": \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\",\n  \"source\": {\n    \"href\": \"examples/stations.csv\",\n    \"sourceFormat\": \"text/csv\",\n    \"rowCount\": 2,\n    \"columnCount\": 4\n  },\n  \"parquetSchema\": [\n    {\n      \"name\": \"geometry\",\n      \"type\": \"BYTE_ARRAY/WKB\",\n      \"nullable\": true,\n      \"propertyUrl\": \"geo:hasGeometry\"\n    },\n    {\n      \"name\": \"station_id\",\n      \"type\": \"BYTE_ARRAY/UTF8\",\n      \"nullable\": false,\n      \"propertyUrl\": \"ex:stationId\"\n    },\n    {\n      \"name\": \"temperature\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": true,\n      \"propertyUrl\": \"ex:temperature\"\n    },\n    {\n      \"name\": \"salinity\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": true,\n      \"propertyUrl\": \"ex:salinity\"\n    }\n  ],\n  \"geo\": {\n    \"version\": \"1.1.0\",\n    \"primary_column\": \"geometry\",\n    \"columns\": {\n      \"geometry\": {\n        \"encoding\": \"WKB\",\n        \"geometry_types\": [\n          \"Point\"\n        ],\n        \"crs\": null,\n        \"bbox\": [\n          11.9,\n          57.7,\n          11.9,\n          57.7\n        ]\n      }\n    }\n  }\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/geoparquet-header/example_1_1.jsonld",
+          "sizeBytes": 1951,
+          "code": "{\n  \"@context\": [\n    \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/context.jsonld\",\n    {\n      \"@version\": 1.1,\n      \"csvw\": \"http://www.w3.org/ns/csvw#\",\n      \"dct\": \"http://purl.org/dc/terms/\",\n      \"geo\": \"http://www.opengis.net/ont/geosparql#\",\n      \"ex\": \"https://example.org/vocab/\",\n      \"xsd\": \"http://www.w3.org/2001/XMLSchema#\",\n      \"fileName\": \"dct:identifier\",\n      \"encoding\": \"dct:format\",\n      \"source\": \"dct:source\",\n      \"href\": {\n        \"@id\": \"dct:references\",\n        \"@type\": \"@id\"\n      },\n      \"parquetSchema\": {\n        \"@id\": \"csvw:tableSchema\",\n        \"@container\": \"@list\"\n      },\n      \"name\": \"csvw:name\",\n      \"description\": \"dct:description\",\n      \"propertyUrl\": {\n        \"@id\": \"csvw:propertyUrl\",\n        \"@type\": \"@id\"\n      }\n    }\n  ],\n  \"fileName\": \"stations.parquet\",\n  \"encoding\": \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\",\n  \"source\": {\n    \"href\": \"examples/stations.csv\",\n    \"sourceFormat\": \"text/csv\",\n    \"rowCount\": 2,\n    \"columnCount\": 4\n  },\n  \"parquetSchema\": [\n    {\n      \"name\": \"geometry\",\n      \"type\": \"BYTE_ARRAY/WKB\",\n      \"nullable\": true,\n      \"propertyUrl\": \"geo:hasGeometry\"\n    },\n    {\n      \"name\": \"station_id\",\n      \"type\": \"BYTE_ARRAY/UTF8\",\n      \"nullable\": false,\n      \"propertyUrl\": \"ex:stationId\"\n    },\n    {\n      \"name\": \"temperature\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": true,\n      \"propertyUrl\": \"ex:temperature\"\n    },\n    {\n      \"name\": \"salinity\",\n      \"type\": \"DOUBLE\",\n      \"nullable\": true,\n      \"propertyUrl\": \"ex:salinity\"\n    }\n  ],\n  \"geo\": {\n    \"version\": \"1.1.0\",\n    \"primary_column\": \"geometry\",\n    \"columns\": {\n      \"geometry\": {\n        \"encoding\": \"WKB\",\n        \"geometry_types\": [\n          \"Point\"\n        ],\n        \"crs\": null,\n        \"bbox\": [\n          11.9,\n          57.7,\n          11.9,\n          57.7\n        ]\n      }\n    }\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/geoparquet-header/example_1_1.ttl",
+          "sizeBytes": 800,
+          "code": "@prefix csvw: <http://www.w3.org/ns/csvw#> .\n@prefix dct: <http://purl.org/dc/terms/> .\n@prefix ex: <https://example.org/vocab/> .\n@prefix geo: <http://www.opengis.net/ont/geosparql#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n[] dct:format \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\" ;\n    dct:identifier \"stations.parquet\" ;\n    dct:source [ dct:references <file:///github/workspace/examples/stations.csv> ] ;\n    geo: [ ] ;\n    csvw:tableSchema ( [ csvw:name \"geometry\" ;\n                csvw:propertyUrl geo:hasGeometry ] [ csvw:name \"station_id\" ;\n                csvw:propertyUrl ex:stationId ] [ csvw:name \"temperature\" ;\n                csvw:propertyUrl ex:temperature ] [ csvw:name \"salinity\" ;\n                csvw:propertyUrl ex:salinity ] ) .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: GeoParquet Header\ndescription: 'Generic CSVW + GeoParquet 1.1 metadata header envelope: describes the\n  physical columns of a GeoParquet file (name, Parquet logical type, nullability,\n  CSVW propertyUrl annotation) and the GeoParquet `geo` metadata block for the primary\n  geometry column. This schema defines only the reusable envelope shape; dataset-specific\n  column lists and semantics are defined by profiles that `$ref` this schema (e.g.\n  a source-specific building block''s own GeoParquetHeader definition).\n\n  '\ntype: object\nrequired:\n- fileName\n- encoding\n- source\n- parquetSchema\n- geo\nproperties:\n  fileName:\n    type: string\n    pattern: \\.(geo)?parquet$\n    x-jsonld-id: https://schema.org/contentUrl\n  encoding:\n    type: string\n    description: Free-text encoding statement, e.g. \"GeoParquet 1.1.0; Parquet logical\n      types; geometry encoded as WKB\".\n    x-jsonld-id: https://schema.org/encodingFormat\n  source:\n    type: object\n    required:\n    - href\n    - sourceFormat\n    - rowCount\n    - columnCount\n    properties:\n      href:\n        type: string\n        description: Path or URL to the original source artifact this header was derived\n          from.\n        x-jsonld-id: http://purl.org/dc/terms/references\n        x-jsonld-type: '@id'\n      sourceFormat:\n        type: string\n        description: Media type or free-text description of the source format, e.g.\n          \"application/geo+json\".\n        x-jsonld-id: http://purl.org/dc/terms/format\n      rowCount:\n        type: integer\n        minimum: 1\n        x-jsonld-id: https://schema.org/numberOfItems\n      columnCount:\n        type: integer\n        minimum: 1\n        x-jsonld-id: https://schema.org/numberOfColumns\n      note:\n        type: string\n        x-jsonld-id: https://schema.org/comment\n    additionalProperties: true\n    x-jsonld-id: http://purl.org/dc/terms/source\n  parquetSchema:\n    type: array\n    items:\n      type: object\n      required:\n      - name\n      - type\n      properties:\n        name:\n          type: string\n          x-jsonld-id: http://www.w3.org/ns/csvw#name\n        type:\n          type: string\n          description: Parquet logical type, e.g. INT32, INT64, FLOAT, DOUBLE, BOOLEAN,\n            BYTE_ARRAY/UTF8, BYTE_ARRAY/WKB.\n          x-jsonld-id: http://www.w3.org/ns/csvw#datatype\n        nullable:\n          type: boolean\n          x-jsonld-id: https://geoparquet.org/schema#nullable\n        description:\n          type: string\n          x-jsonld-id: http://purl.org/dc/terms/description\n        propertyUrl:\n          type: string\n          description: CSVW-style compact IRI or full IRI naming this column's semantic\n            mapping.\n          x-jsonld-id: http://www.w3.org/ns/csvw#propertyUrl\n          x-jsonld-type: '@id'\n      additionalProperties: true\n    x-jsonld-id: https://geoparquet.org/schema\n    x-jsonld-container: '@list'\n  geo:\n    type: object\n    required:\n    - version\n    - primary_column\n    - columns\n    properties:\n      version:\n        type: string\n        x-jsonld-id: https://schema.org/version\n      primary_column:\n        type: string\n        x-jsonld-id: https://geoparquet.org/metadata#primary_column\n      columns:\n        type: object\n        additionalProperties:\n          type: object\n          required:\n          - encoding\n          properties:\n            encoding:\n              type: string\n              x-jsonld-id: https://schema.org/encodingFormat\n            geometry_types:\n              type: array\n              items:\n                type: string\n                enum:\n                - Point\n                - LineString\n                - Polygon\n                - MultiPoint\n                - MultiLineString\n                - MultiPolygon\n                - GeometryCollection\n              x-jsonld-id: https://geoparquet.org/metadata#geometry_types\n            crs:\n              description: \"Must be omitted/null (defaults to OGC:CRS84), a CRS identifier\n                string (e.g. \\\"OGC:CRS84\\\"), or a full PROJJSON object. A shorthand\n                object that merely looks like PROJJSON (has a \\\"type\\\" but none of\n                the keys that make a CRS definition complete) is exactly the authoring\n                mistake that breaks real GeoParquet readers (e.g. geopandas, via proj)\n                at read time \\u2014 this schema rejects that shape rather than silently\n                accepting it.\\n\"\n              oneOf:\n              - type: 'null'\n              - type: string\n              - type: object\n                required:\n                - type\n                properties:\n                  type:\n                    enum:\n                    - GeographicCRS\n                    - ProjectedCRS\n                    - GeodeticCRS\n                    - CompoundCRS\n                    - VerticalCRS\n                    x-jsonld-id: http://www.w3.org/ns/csvw#datatype\n                anyOf:\n                - required:\n                  - datum\n                - required:\n                  - datum_ensemble\n                - required:\n                  - base_crs\n                - required:\n                  - source_crs\n              x-jsonld-id: https://geoparquet.org/metadata#crs\n            edges:\n              type: string\n              enum:\n              - planar\n              - spherical\n              x-jsonld-id: https://geoparquet.org/metadata#edges\n            orientation:\n              type: string\n              x-jsonld-id: https://geoparquet.org/metadata#orientation\n            bbox:\n              type: array\n              items:\n                type: number\n              minItems: 4\n              maxItems: 4\n              x-jsonld-id: https://geoparquet.org/metadata#bbox\n            covering:\n              type: object\n              x-jsonld-id: https://geoparquet.org/metadata#covering\n          additionalProperties: true\n        x-jsonld-id: https://geoparquet.org/metadata#columns\n    additionalProperties: true\n    x-jsonld-id: https://geoparquet.org/metadata\nadditionalProperties: true\nx-jsonld-prefixes:\n  schema: https://schema.org/\n  dct: http://purl.org/dc/terms/\n  csvw: http://www.w3.org/ns/csvw#\n  xsd: http://www.w3.org/2001/XMLSchema#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/geoparquet-header"
+}

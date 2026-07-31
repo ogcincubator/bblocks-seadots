@@ -1,0 +1,45 @@
+@prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns3: <https://w3id.org/ogc/stac/assets/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/seadots-generic-data-item> a geojson:Feature ;
+    dcterms:date "2026-06-10T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Generic catalog data item used to demonstrate the shared SeaDOTs data profile." ;
+    dcterms:license "CC-BY-4.0" ;
+    dcterms:title "SeaDOTs generic data item" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
+    geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.7e+00 5.91e+01 ) ( 5e+00 5.91e+01 ) ( 5e+00 5.94e+01 ) ( 4.7e+00 5.94e+01 ) ( 4.7e+00 5.91e+01 ) ) ) ] ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Example CF-style parameter declaration." ;
+            qudt:hasUnit "K" ;
+            ns1:name "sea_water_temperature" ] ;
+    seadots:itemType "record" ;
+    seadots:metadataConvention "CF-1.10" ;
+    seadots:role "data" ;
+    stac:hasAsset [ ns3:data [ dcterms:format "application/x-netcdf" ;
+                    dcterms:title "Generic data asset" ;
+                    oa:hasTarget <https://example.org/seadots/catalog-data.nc> ;
+                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+                            dcterms:description "Example CF-style parameter declaration." ;
+                            qudt:hasUnit "K" ;
+                            ns1:name "sea_water_temperature" ] ;
+                    stac:roles "data" ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+        "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
+    stac:version "1.0.0" .
+

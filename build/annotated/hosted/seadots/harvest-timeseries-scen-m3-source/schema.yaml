@@ -1,0 +1,76 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Harvest time series scenario Scen M3 source GeoJSON
+description: Source-faithful GeoJSON FeatureCollection profile. The meaning and unit
+  of bwmus are not available in the supplied file.
+type: object
+required:
+- type
+- features
+properties:
+  type:
+    const: FeatureCollection
+    x-jsonld-id: '@type'
+  features:
+    type: array
+    items:
+      type: object
+      required:
+      - type
+      - id
+      - geometry
+      - properties
+      properties:
+        type:
+          const: Feature
+          x-jsonld-id: '@type'
+        id:
+          type: integer
+          minimum: 1
+          description: Source spatial-series identifier; repeated across time steps.
+          x-jsonld-id: http://purl.org/dc/terms/identifier
+          x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+        geometry:
+          type: object
+          required:
+          - type
+          - coordinates
+          properties:
+            type:
+              const: Point
+              x-jsonld-id: '@type'
+            coordinates:
+              type: array
+              minItems: 2
+              maxItems: 2
+              items:
+                type: number
+              x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+          additionalProperties: false
+          x-jsonld-id: https://purl.org/geojson/vocab#geometry
+        properties:
+          type: object
+          required:
+          - bwmus
+          - time
+          properties:
+            bwmus:
+              type: number
+              description: Opaque numeric source variable; definition and unit are
+                not supplied.
+              x-jsonld-id: https://w3id.org/iliad/property/bwmus
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            time:
+              type: string
+              pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$
+              description: Source timestamp, preserved exactly as a timezone-unspecified
+                string.
+              x-jsonld-id: http://purl.org/dc/terms/temporal
+          additionalProperties: false
+          x-jsonld-id: https://purl.org/geojson/vocab#properties
+      additionalProperties: false
+    x-jsonld-id: https://purl.org/geojson/vocab#features
+additionalProperties: false
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  dct: http://purl.org/dc/terms/
+  xsd: http://www.w3.org/2001/XMLSchema#

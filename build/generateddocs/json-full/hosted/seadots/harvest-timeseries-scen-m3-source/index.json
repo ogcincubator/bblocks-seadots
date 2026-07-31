@@ -1,0 +1,112 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.harvest-timeseries-scen-m3-source",
+  "name": "Harvest time series scenario Scen M3 \u2014 source GeoJSON",
+  "abstract": "Source-faithful GeoJSON point time-series profile for the supplied harvest_timeseries_scenario_Scen_M3 export. It preserves the source feature identifier, Point geometry, bwmus numeric measurement and time string without assigning undocumented scientific meaning or units.",
+  "itemClass": "schema",
+  "status": "under-development",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateTimeAddition": "2026-07-28T00:00:00Z",
+  "dateOfLastChange": "2026-07-31",
+  "dependsOn": [
+    "ogc.hosted.seadots.oim-variable-observation"
+  ],
+  "tags": [
+    "seadots",
+    "geojson",
+    "vector",
+    "timeseries",
+    "scenario",
+    "harvest",
+    "source"
+  ],
+  "shaclShapes": {
+    "ogc.hosted.seadots.oim-variables": [
+      "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
+    ],
+    "ogc.model.cross-domain.qudt": [
+      "http://qudt.org/2.1/schema/shacl/qudt"
+    ],
+    "ogc.model.cross-domain.sosa": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+    ],
+    "ogc.skos.common": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+    ],
+    "ogc.skos.concept": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+    ]
+  },
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/context.jsonld",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/harvest-timeseries-scen-m3-source/",
+  "transforms": [
+    {
+      "id": "geojson-to-oim-observation",
+      "description": "Converts each raw point/time/value feature to an OIM observation-shaped feature. Source time becomes sosa:phenomenonTime and bwmus becomes sosa:hasResult.value; source id and geometry are retained. The bwmus IRI is a provisional local IRI, not a claim about the variable's scientific meaning.\n",
+      "type": "jq",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ],
+        "profiles": [
+          "bblocks://ogc.hosted.seadots.oim-variable-observation"
+        ]
+      },
+      "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/transforms/geojson-to-oim-observation.jq",
+      "excluded": {},
+      "code": "# Source GeoJSON FeatureCollection -> OIM observation-shaped GeoJSON FeatureCollection.\n# The semantic IRI remains provisional until the owner defines bwmus and its unit.\n{\n  type: \"FeatureCollection\",\n  features: [\n    .features[] |\n    {\n      type: \"Feature\",\n      id: (.id | tostring),\n      geometry: .geometry,\n      properties: {\n        observedProperty: \"https://w3id.org/iliad/property/bwmus\",\n        phenomenonTime: (.properties.time | sub(\" \"; \"T\") + \"Z\"),\n        hasResult: {value: .properties.bwmus}\n      }\n    }\n  ]\n}\n"
+    }
+  ],
+  "description": "# Harvest time series scenario Scen M3 \u2014 source GeoJSON\n\nThis source-side block is intentionally lossless for the supplied GeoJSON. It contains\n19,920 Point features: 83 repeated feature identifiers over 240 source timestamps.\n\n## Source-property coverage gaps\n\n| name | reason it cannot be fully mapped | recommended fallback |\n|---|---|---|\n| `bwmus` | The file contains no variable definition, unit, vocabulary URI, owner, or model documentation. | Obtain the scenario model documentation and map to a NERC/CF term where applicable. |\n| `time` | The source string has no timezone or calendar declaration. | Confirm timezone and calendar; then serialise as ISO 8601 date-time with offset. |\n\n## Provenance\n\nThe attached filename and SHA-256 checksum are: `harvest_timeseries_scenario_Scen_M3[539974].geojson`,\n`be2abe4e83f239888eb9540d7aa1b9bf5c85516546ffec18067147a3f454a554`.\nNo API endpoint, landing page, licence, or owner metadata accompanied the attachment.\n",
+  "examples": [
+    {
+      "title": "Full source GeoJSON export",
+      "description": "The complete supplied harvest_timeseries_scenario_Scen_M3 export, unmodified: 19,920 Point features (83 spatial-series identifiers x 240 timestamps). Provenance is the supplied local export; no source endpoint was provided. Run transforms/extract-representative-sample.jq against this file to derive a smaller six-feature representative subset (identifiers 1, 42 and 83 at the first and final timestamps) when a compact example is more useful than the full export.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-source/example_1_1.json",
+          "sizeBytes": 8128535
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-source/example_1_1.jsonld",
+          "sizeBytes": 6029426
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/harvest-timeseries-scen-m3-source/example_1_1.ttl",
+          "sizeBytes": 7201371
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: Harvest time series scenario Scen M3 source GeoJSON\ndescription: Source-faithful GeoJSON FeatureCollection profile. The meaning and unit\n  of bwmus are not available in the supplied file.\ntype: object\nrequired:\n- type\n- features\nproperties:\n  type:\n    const: FeatureCollection\n    x-jsonld-id: '@type'\n  features:\n    type: array\n    items:\n      type: object\n      required:\n      - type\n      - id\n      - geometry\n      - properties\n      properties:\n        type:\n          const: Feature\n          x-jsonld-id: '@type'\n        id:\n          type: integer\n          minimum: 1\n          description: Source spatial-series identifier; repeated across time steps.\n          x-jsonld-id: http://purl.org/dc/terms/identifier\n          x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n        geometry:\n          type: object\n          required:\n          - type\n          - coordinates\n          properties:\n            type:\n              const: Point\n              x-jsonld-id: '@type'\n            coordinates:\n              type: array\n              minItems: 2\n              maxItems: 2\n              items:\n                type: number\n              x-jsonld-id: https://purl.org/geojson/vocab#coordinates\n          additionalProperties: false\n          x-jsonld-id: https://purl.org/geojson/vocab#geometry\n        properties:\n          type: object\n          required:\n          - bwmus\n          - time\n          properties:\n            bwmus:\n              type: number\n              description: Opaque numeric source variable; definition and unit are\n                not supplied.\n              x-jsonld-id: https://w3id.org/iliad/property/bwmus\n              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double\n            time:\n              type: string\n              pattern: ^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$\n              description: Source timestamp, preserved exactly as a timezone-unspecified\n                string.\n              x-jsonld-id: http://purl.org/dc/terms/temporal\n          additionalProperties: false\n          x-jsonld-id: https://purl.org/geojson/vocab#properties\n      additionalProperties: false\n    x-jsonld-id: https://purl.org/geojson/vocab#features\nadditionalProperties: false\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  dct: http://purl.org/dc/terms/\n  xsd: http://www.w3.org/2001/XMLSchema#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/harvest-timeseries-scen-m3-source"
+}

@@ -1,0 +1,74 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
+@prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences> dcterms:date "2026-06-11T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Synthetic SeaDOTs catalog record for a GeoParquet tabular dataset of Atlantic cod (Gadus morhua) occurrence records in the North Sea. All values are synthetic documentation data; this record does not represent a real dataset." ;
+    dcterms:license "CC-BY-4.0" ;
+    dcterms:subject "Gadus morhua",
+        "GeoParquet",
+        "ICES",
+        "North Sea",
+        "SeaDOTs",
+        "cod",
+        "occurrence",
+        "tabular" ;
+    dcterms:title "North Sea cod occurrence table (synthetic)" ;
+    dcterms:type "Feature" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
+    geojson:bbox ( 3e+00 5.6e+01 9e+00 6.1e+01 ) ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 3e+00 5.6e+01 ) ( 9e+00 5.6e+01 ) ( 9e+00 6.1e+01 ) ( 3e+00 6.1e+01 ) ( 3e+00 5.6e+01 ) ) ) ] ;
+    table:columns ( [ dcterms:description "Unique identifier for the occurrence record." ;
+                dcterms:title "occurrence_id" ;
+                dcterms:type "string" ] [ dcterms:description "Scientific species name." ;
+                dcterms:title "species" ;
+                dcterms:type "string" ] [ dcterms:description "Decimal longitude of the observation (WGS84)." ;
+                dcterms:title "longitude" ;
+                dcterms:type "float64" ;
+                qudt:unit "degrees_east" ] [ dcterms:description "Decimal latitude of the observation (WGS84)." ;
+                dcterms:title "latitude" ;
+                dcterms:type "float64" ;
+                qudt:unit "degrees_north" ] [ dcterms:description "Observation depth below sea surface." ;
+                dcterms:title "depth" ;
+                dcterms:type "float32" ;
+                qudt:unit "m" ] [ dcterms:description "In-situ sea water temperature at the observation depth." ;
+                dcterms:title "sea_water_temperature" ;
+                dcterms:type "float32" ;
+                qudt:unit "degrees_C" ] [ dcterms:description "Number of individuals recorded in the observation event." ;
+                dcterms:title "count" ;
+                dcterms:type "int32" ;
+                qudt:unit "1" ] [ dcterms:description "Point geometry of the observation location (WGS84, GeoParquet encoding)." ;
+                dcterms:title "geometry" ;
+                dcterms:type "geometry" ] ) ;
+    table:primary_geometry "geometry" ;
+    table:row_count 42150 ;
+    seadots:itemType "record" ;
+    seadots:role "data" ;
+    stac:end_datetime "2024-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    stac:hasAsset [ ns2:geoparquet [ dcterms:format "application/x-parquet" ;
+                    dcterms:title "GeoParquet occurrence table" ;
+                    oa:hasTarget <https://example.org/seadots/north-sea-cod-occurrences.parquet> ;
+                    stac:roles "data" ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+        "https://stac-extensions.github.io/prov/v1.0.0/schema.json",
+        "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
+    stac:start_datetime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    stac:version "1.0.0" .
+

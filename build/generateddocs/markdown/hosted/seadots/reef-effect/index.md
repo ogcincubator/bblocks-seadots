@@ -109,7 +109,7 @@ Do not link to placeholder workflows that reference containers or tools that hav
     "applicationCategory": "DigitalTwinApplication",
     "version": "0.2",
     "method": "Evaluate the deterministic reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) over the Utsira surroundings area using linked per-class input records and produce reef-effect-output records.",
-    "activity": "https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation",
+    "activity": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
     "softwareVersion": "0.2",
     "programmingLanguage": "Python",
     "applicationPackage": "../scripts/utsira_reef_biomass.py",
@@ -159,9 +159,9 @@ Do not link to placeholder workflows that reference containers or tools that hav
         "description": "Structured reef-associated biomass output."
       },
       {
-        "profileId": "ogc.hosted.seadots.catalog-output",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": false,
-        "role": "stac-catalog-output",
+        "role": "output",
         "description": "Optional catalog/STAC representation for the run output."
       }
     ],
@@ -390,7 +390,7 @@ Do not link to placeholder workflows that reference containers or tools that hav
     "applicationCategory": "DigitalTwinApplication",
     "version": "0.2",
     "method": "Evaluate the deterministic reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) over the Utsira surroundings area using linked per-class input records and produce reef-effect-output records.",
-    "activity": "https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation",
+    "activity": "https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect",
     "softwareVersion": "0.2",
     "programmingLanguage": "Python",
     "applicationPackage": "../scripts/utsira_reef_biomass.py",
@@ -440,9 +440,9 @@ Do not link to placeholder workflows that reference containers or tools that hav
         "description": "Structured reef-associated biomass output."
       },
       {
-        "profileId": "ogc.hosted.seadots.catalog-output",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": false,
-        "role": "stac-catalog-output",
+        "role": "output",
         "description": "Optional catalog/STAC representation for the run output."
       }
     ],
@@ -697,7 +697,11 @@ Do not link to placeholder workflows that reference containers or tools that hav
             dcat:temporalResolution "P12M" ] ;
     dcterms:title "Utsira surroundings — reef-biomass experiment" ;
     dcterms:type "SoftwareSourceCode" ;
-    rdfs:seeAlso [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
+    rdfs:seeAlso [ rdfs:label "ODD demonstrator that this experiment realises" ;
+            dcterms:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ],
+        [ rdfs:label "Reproducibility script — runs the worked example end-to-end" ;
             dcterms:type "text/x-python" ;
             ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect/scripts/utsira_reef_biomass.py> ],
@@ -708,11 +712,7 @@ Do not link to placeholder workflows that reference containers or tools that hav
         [ rdfs:label "Reef-biomass equation record" ;
             dcterms:type "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
-        [ rdfs:label "ODD demonstrator that this experiment realises" ;
-            dcterms:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ] ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ] ;
     dcat:contactPoint [ rdfs:label "Utsira biomass upscaler v1" ;
             dcat:hadRole "author" ;
             schema:affiliation "SINTEF Ocean (SeaDOTs)" ] ;
@@ -722,46 +722,46 @@ Do not link to placeholder workflows that reference containers or tools that hav
         "reef biomass",
         "reef-effect",
         "surroundings" ;
-    prov:activity <https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation> ;
+    prov:activity <https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect> ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
     schema:applicationCategory "DigitalTwinApplication" ;
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.2" ;
     seadots:applicationPackage <file:///github/scripts/utsira_reef_biomass.py> ;
-    seadots:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
-            dcterms:description "Primary MAREANO biomass-density baseline bound to D_{pre,i}." ;
+    seadots:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.floating-wind-infrastructure> ;
+            dcterms:description "Floating wind infrastructure layout bound to A_{sub}." ;
             seadots:required true ;
-            seadots:role "primary-benthic-biomass-density" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-imr> ;
-            dcterms:description "IMR fallback biomass-density baseline bound to D_{pre,i}." ;
-            seadots:required false ;
-            seadots:role "fallback-benthic-biomass-density" ],
+            seadots:role "submerged-infrastructure" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-aggregation-index> ;
             dcterms:description "Taxon-specific aggregation factor bound to AF_i." ;
             seadots:required true ;
             seadots:role "reef-aggregation-index" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.floating-wind-infrastructure> ;
-            dcterms:description "Floating wind infrastructure layout bound to A_{sub}." ;
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.colonisation-time-factor> ;
+            dcterms:description "Colonisation time factor bound to C_t." ;
             seadots:required true ;
-            seadots:role "submerged-infrastructure" ],
+            seadots:role "colonisation-time-factor" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
             dcterms:description "Polygon delimiting the study area; defaults to the surroundings of Utsira island." ;
             seadots:required true ;
             seadots:role "area-of-interest" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.colonisation-time-factor> ;
-            dcterms:description "Colonisation time factor bound to C_t." ;
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-imr> ;
+            dcterms:description "IMR fallback biomass-density baseline bound to D_{pre,i}." ;
+            seadots:required false ;
+            seadots:role "fallback-benthic-biomass-density" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+            dcterms:description "Primary MAREANO biomass-density baseline bound to D_{pre,i}." ;
             seadots:required true ;
-            seadots:role "colonisation-time-factor" ] ;
+            seadots:role "primary-benthic-biomass-density" ] ;
     seadots:itemType "record" ;
-    seadots:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
-            dcterms:description "Structured reef-associated biomass output." ;
-            seadots:required true ;
-            seadots:role "reef-biomass-result" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-output> ;
+    seadots:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Optional catalog/STAC representation for the run output." ;
             seadots:required false ;
-            seadots:role "stac-catalog-output" ] ;
+            seadots:role "output" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+            dcterms:description "Structured reef-associated biomass output." ;
+            seadots:required true ;
+            seadots:role "reef-biomass-result" ] ;
     seadotsReef:experiment [ dcterms:purpose "Evaluate the reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario. Inputs are the six per-class input records cited below; outputs are the two reef-effect-output records cited below. The PROV-O provenance record is embedded in the structured result output." ;
             seadotsReef:application [ a <https://w3id.org/ogc/hosted/seadots/catalog#text/x-python> ;
                     dcterms:title "Utsira reef-biomass calculator (Python script)" ;
@@ -777,6 +777,26 @@ Do not link to placeholder workflows that reference containers or tools that hav
                             seadotsReef:seedPolicy "deterministic — equation is closed-form, no stochastic submodels" ] ;
                     seadotsReef:scheduling "single deterministic pass over taxon_groups (ODD processOverview.scheduling)" ] ;
             seadotsReef:input [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "Colonisation time factor" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "C_t" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "Submerged infrastructure layout — Utsira Nord 60 × 15 MW" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "A_{sub}" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "IMR benthic biomass baseline — fallback" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "D_{pre,i}" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "MAREANO benthic biomass density — primary baseline" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsReef:equationBinding "D_{pre,i}" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "Reef aggregation index bindings" ;
                     oa:hasTarget <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
@@ -784,65 +804,45 @@ Do not link to placeholder workflows that reference containers or tools that hav
                 [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "AOI — surroundings of Utsira island" ;
                     oa:hasTarget <https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "IMR benthic biomass baseline — fallback" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-imr/ices-iva-fallback> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "D_{pre,i}" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Colonisation time factor" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "C_t" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "MAREANO benthic biomass density — primary baseline" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/benthic-biomass-density-mareano/norwegian-shelf> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "D_{pre,i}" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Submerged infrastructure layout — Utsira Nord 60 × 15 MW" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/floating-wind-infrastructure/utsira-nord-60x15mw> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsReef:equationBinding "A_{sub}" ] ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ] ;
             seadotsReef:kind "computational" ;
             seadotsReef:modelledBy [ dcterms:title "ODD record for the reef-biomass demonstrator" ;
                     oa:hasTarget <https://w3id.org/ogc/hosted/seadots/odd-protocol/examples/utsira_reef_biomass_demonstrator> ;
                     seadots:rel "describedby" ] ;
             seadotsReef:output [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:title "Reef-associated biomass — structured result" ;
-                    oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:title "STAC catalog for the run" ;
                     oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/stac-catalog> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:title "Reef-associated biomass — structured result" ;
+                    oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ] ;
-            seadotsReef:parameter [ rdfs:label "scenario_t0" ;
-                    dcterms:title "Scenario start date" ;
-                    seadotsReef:parameterSchema [ a seadots:string ;
-                            dcterms:format "date" ] ],
-                [ rdfs:label "colonisation_months" ;
-                    dcterms:title "Months since installation" ;
-                    seadotsReef:parameterSchema [ a seadots:integer ;
-                            seadots:minimum 0 ] ],
-                [ rdfs:label "taxon_groups" ;
+            seadotsReef:parameter [ rdfs:label "taxon_groups" ;
                     dcterms:description "Scientific names iterated by index i." ;
                     dcterms:title "TaxonGroup index values" ;
                     skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
                     seadotsReef:parameterSchema [ a seadots:array ;
                             seadots:items [ a seadots:string ] ] ],
+                [ rdfs:label "scenario_t0" ;
+                    dcterms:title "Scenario start date" ;
+                    seadotsReef:parameterSchema [ a seadots:string ;
+                            dcterms:format "date" ] ],
                 [ rdfs:label "aoi" ;
                     dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
                     dcterms:title "Area of interest" ;
                     skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
-                    seadotsReef:parameterSchema [ dcterms:format "application/geo+json" ] ] ;
+                    seadotsReef:parameterSchema [ dcterms:format "application/geo+json" ] ],
+                [ rdfs:label "colonisation_months" ;
+                    dcterms:title "Months since installation" ;
+                    seadotsReef:parameterSchema [ a seadots:integer ;
+                            seadots:minimum 0 ] ] ;
             seadotsReef:successCriterion "B_reef_total > 0 and finite",
                 "Every TaxonGroup has either a MAREANO primary binding or an IMR fallback for every AOI cell; uncovered cells are flagged in PROV",
                 "PROV-O record resolves the equation record and the ODD record by URI",
                 "STAC catalog validates against the SeaDOTs EDITO output conventions" ] ;
     rec:format [ dcterms:format "text/x-python" ],
-        [ dcterms:format "application/json" ],
-        [ dcterms:format "application/geo+json" ] ;
+        [ dcterms:format "application/geo+json" ],
+        [ dcterms:format "application/json" ] ;
     rec:language [ rec:languageCode "en" ] ;
     rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
                     rec:conceptID "reef-effect"^^xsd:string ],
@@ -1236,6 +1236,22 @@ x-jsonld-extra-terms:
   wasRevisionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
     x-jsonld-type: '@id'
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.w3.org/ns/prov#value
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
+    x-jsonld-type: '@id'
   atLocation:
     x-jsonld-id: http://www.w3.org/ns/prov#atLocation
     x-jsonld-type: '@id'
@@ -1309,16 +1325,9 @@ x-jsonld-extra-terms:
   endedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  generatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  invalidatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   startedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  value: http://www.w3.org/ns/prov#value
   provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
   pairKey:
     x-jsonld-id: http://www.w3.org/ns/prov#pairKey
@@ -1376,15 +1385,6 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   qualifiedEnd:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
-    x-jsonld-type: '@id'
-  qualifiedPrimarySource:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
-    x-jsonld-type: '@id'
-  qualifiedQuotation:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
-    x-jsonld-type: '@id'
-  qualifiedRevision:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   qualifiedStart:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
@@ -1735,6 +1735,27 @@ Links to the schema:
       "@id": "prov:wasRevisionOf",
       "@type": "@id"
     },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "invalidatedAtTime": {
+      "@id": "prov:invalidatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "value": "prov:value",
+    "qualifiedPrimarySource": {
+      "@id": "prov:qualifiedPrimarySource",
+      "@type": "@id"
+    },
+    "qualifiedQuotation": {
+      "@id": "prov:qualifiedQuotation",
+      "@type": "@id"
+    },
+    "qualifiedRevision": {
+      "@id": "prov:qualifiedRevision",
+      "@type": "@id"
+    },
     "atLocation": {
       "@id": "prov:atLocation",
       "@type": "@id"
@@ -1815,19 +1836,10 @@ Links to the schema:
       "@id": "prov:endedAtTime",
       "@type": "xsd:dateTime"
     },
-    "generatedAtTime": {
-      "@id": "prov:generatedAtTime",
-      "@type": "xsd:dateTime"
-    },
-    "invalidatedAtTime": {
-      "@id": "prov:invalidatedAtTime",
-      "@type": "xsd:dateTime"
-    },
     "startedAtTime": {
       "@id": "prov:startedAtTime",
       "@type": "xsd:dateTime"
     },
-    "value": "prov:value",
     "provenanceUriTemplate": "prov:provenanceUriTemplate",
     "pairKey": {
       "@id": "prov:pairKey",
@@ -1903,18 +1915,6 @@ Links to the schema:
     },
     "qualifiedEnd": {
       "@id": "prov:qualifiedEnd",
-      "@type": "@id"
-    },
-    "qualifiedPrimarySource": {
-      "@id": "prov:qualifiedPrimarySource",
-      "@type": "@id"
-    },
-    "qualifiedQuotation": {
-      "@id": "prov:qualifiedQuotation",
-      "@type": "@id"
-    },
-    "qualifiedRevision": {
-      "@id": "prov:qualifiedRevision",
       "@type": "@id"
     },
     "qualifiedStart": {

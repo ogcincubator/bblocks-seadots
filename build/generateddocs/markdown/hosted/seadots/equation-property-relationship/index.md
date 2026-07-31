@@ -345,32 +345,19 @@ because the record describes the equation as a whole, not a single symbol-edge.
     prov:wasDerivedFrom indo:floating-wind-reef-biomass-effect ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)" ;
-    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indp:colonisation-time-factor ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
-                    prop-rel:bindingVariable indp:colonisation-time-factor-default ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "C_t" ;
-            prop-rel:hasSymbolAlias "C_time",
-                "C_{t}" ;
-            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
-            prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indp:reef-aggregation-index ;
+    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indp:reef-aggregation-index ;
             prop-rel:hasBinding [ prop-rel:bindingIndexValue "Asterias rubens" ;
                     prop-rel:bindingRole <file:///github/workspace/expansion> ;
                     prop-rel:bindingVariable indp:reef-aggregation-index-asterias ],
+                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
+                    prop-rel:bindingIndexValue "Buccinum undatum" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ],
                 [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
                     prop-rel:bindingIndexValue "Mytilus edulis" ;
                     prop-rel:bindingRole <file:///github/workspace/expansion> ;
                     prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ],
-                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
-                    prop-rel:bindingIndexValue "Buccinum undatum" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ] ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ] ;
             prop-rel:hasDimensionKind quantitykind:Dimensionless ;
             prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
             prop-rel:hasIndex "i" ;
@@ -378,26 +365,6 @@ because the record describes the equation as a whole, not a single symbol-edge.
             prop-rel:hasOperator <file:///github/workspace/product> ;
             prop-rel:hasSymbol "AF_i" ;
             prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
-            prop-rel:isIndexed true ],
-        [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://mareano.no/> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Norwegian shelf, MAREANO programme" ;
-                    prop-rel:bindingVariable indo:benthic-biomass-density-mareano ],
-                [ prov:wasDerivedFrom <https://www.hi.no/> ;
-                    prop-rel:bindingRole <file:///github/workspace/fallback> ;
-                    prop-rel:bindingValidityScope "regional default when MAREANO has no taxon coverage at i" ;
-                    prop-rel:bindingVariable indo:benthic-biomass-density-imr-baseline ] ;
-            prop-rel:hasDimensionKind quantitykind:SurfaceDensity ;
-            prop-rel:hasEquationRole <file:///github/workspace/input> ;
-            prop-rel:hasIndex "i" ;
-            prop-rel:hasIndexedBy tc:TaxonConcept ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "D_{pre,i}" ;
-            prop-rel:hasSymbolAlias "D_pre",
-                "D_pre,i",
-                "D_pre_i" ;
-            prop-rel:hasVariableKind <file:///github/workspace/intensiveQuantity> ;
             prop-rel:isIndexed true ],
         [ prop-rel:fromProperty indp:submerged-infrastructure-area ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
@@ -411,7 +378,40 @@ because the record describes the equation as a whole, not a single symbol-edge.
             prop-rel:hasSymbolAlias "A_s",
                 "A_sub" ;
             prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
-            prop-rel:isIndexed false ] ;
+            prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indp:colonisation-time-factor ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
+                    prop-rel:bindingVariable indp:colonisation-time-factor-default ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "C_t" ;
+            prop-rel:hasSymbolAlias "C_time",
+                "C_{t}" ;
+            prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
+            prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.hi.no/> ;
+                    prop-rel:bindingRole <file:///github/workspace/fallback> ;
+                    prop-rel:bindingValidityScope "regional default when MAREANO has no taxon coverage at i" ;
+                    prop-rel:bindingVariable indo:benthic-biomass-density-imr-baseline ],
+                [ prov:wasDerivedFrom <https://mareano.no/> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Norwegian shelf, MAREANO programme" ;
+                    prop-rel:bindingVariable indo:benthic-biomass-density-mareano ] ;
+            prop-rel:hasDimensionKind quantitykind:SurfaceDensity ;
+            prop-rel:hasEquationRole <file:///github/workspace/input> ;
+            prop-rel:hasIndex "i" ;
+            prop-rel:hasIndexedBy tc:TaxonConcept ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "D_{pre,i}" ;
+            prop-rel:hasSymbolAlias "D_pre",
+                "D_pre,i",
+                "D_pre_i" ;
+            prop-rel:hasVariableKind <file:///github/workspace/intensiveQuantity> ;
+            prop-rel:isIndexed true ] ;
     prop-rel:targetDefinition indo:floating-wind-reef-biomass-effect ;
     prop-rel:toProperty indo:floating-wind-reef-biomass-effect .
 
@@ -602,20 +602,7 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
     prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{qa} = B_{total} \\cdot (1 - U)" ;
-    prop-rel:hasEquationSymbol [ prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
-                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "U" ;
-            prop-rel:hasSymbolAlias "U_data",
-                "U_{data}" ;
-            prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
-            prop-rel:isIndexed false ],
-        [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
+    prop-rel:hasEquationSymbol [ rdfs:comment "Chained input: B_total is itself a derived indicator computed by a sibling equation." ;
             prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/wind-park-biomass-effect> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
@@ -627,6 +614,19 @@ data-quality uncertainty factor computed at run-time from QI_* scores.
             prop-rel:hasSymbol "B_{total}" ;
             prop-rel:hasSymbolAlias "B_total" ;
             prop-rel:hasVariableKind <file:///github/workspace/extensiveQuantity> ;
+            prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Computed at run-time as 1 - mean(QI_lineage, QI_representativeness, QI_temporal, QI_spatial, QI_method, QI_uncertainty); see dataset-qa skill output for per-input values." ;
+                    prop-rel:bindingVariable <https://example.org/norwegian-ses/indicator/data-quality-uncertainty-factor> ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/uncertaintyTerm> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "U" ;
+            prop-rel:hasSymbolAlias "U_data",
+                "U_{data}" ;
+            prop-rel:hasVariableKind <file:///github/workspace/uncertaintyFactor> ;
             prop-rel:isIndexed false ] ;
     prop-rel:targetDefinition <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> ;
     prop-rel:toProperty <https://example.org/norwegian-ses/indicator/quality-adjusted-biomass-effect> .

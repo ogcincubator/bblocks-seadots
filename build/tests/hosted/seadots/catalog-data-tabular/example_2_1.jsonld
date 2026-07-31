@@ -1,0 +1,83 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/context.jsonld",
+  "id": "harvest-timeseries-scen-m3-tabular",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+      [
+        7.64260227,
+        54.39245755
+      ],
+      [
+        7.6640575066666665,
+        54.39902519666666
+      ],
+      [
+        7.6800021166666665,
+        54.39909727
+      ]
+    ]
+  },
+  "bbox": [
+    7.64260227,
+    54.39245755,
+    7.6800021166666665,
+    54.39909727
+  ],
+  "properties": {
+    "title": "Harvest time-series scenario Scen M3 tabular catalog record",
+    "description": "Tabular catalog record for the SeaDOTs harvest scenario sample, describing the GeoJSON feature table as a tabular asset.",
+    "datetime": "2020-04-30T00:00:00Z",
+    "role": "data",
+    "convention": "CF-1.10",
+    "license": "Not supplied",
+    "table:columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "description": "Feature identifier from the source GeoJSON"
+      },
+      {
+        "name": "geometry",
+        "type": "geometry",
+        "description": "Point geometry for each feature"
+      },
+      {
+        "name": "bwmus",
+        "type": "number",
+        "description": "Scenario value",
+        "unit": "1"
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "description": "Timestamp string from the source GeoJSON"
+      }
+    ],
+    "table:primary_geometry": "geometry",
+    "table:row_count": 19920
+  },
+  "assets": {
+    "data": {
+      "href": "../../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson",
+      "type": "application/geo+json",
+      "title": "Harvest time-series sample GeoJSON"
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-tabular",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Tabular bblock"
+    }
+  ]
+}

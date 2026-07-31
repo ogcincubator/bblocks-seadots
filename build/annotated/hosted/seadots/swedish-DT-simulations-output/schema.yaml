@@ -126,77 +126,7 @@ $defs:
         x-jsonld-id: https://schema.org/variableMeasured
     additionalProperties: true
   GeoParquetHeader:
-    type: object
-    required:
-    - fileName
-    - encoding
-    - parquetSchema
-    - geo
-    - source
-    properties:
-      fileName:
-        type: string
-        pattern: \.parquet$
-        x-jsonld-id: https://schema.org/contentUrl
-      encoding:
-        type: string
-        x-jsonld-id: https://schema.org/encodingFormat
-      source:
-        type: object
-        required:
-        - href
-        - sourceFormat
-        - rowCount
-        - columnCount
-        properties:
-          href:
-            type: string
-          sourceFormat:
-            type: string
-            x-jsonld-id: http://purl.org/dc/terms/format
-          rowCount:
-            type: integer
-            minimum: 1
-            x-jsonld-id: https://schema.org/numberOfItems
-          columnCount:
-            type: integer
-            minimum: 1
-            x-jsonld-id: https://schema.org/numberOfColumns
-        x-jsonld-id: http://purl.org/dc/terms/source
-        x-jsonld-type: '@id'
-      parquetSchema:
-        type: array
-        items:
-          type: object
-          required:
-          - name
-          - type
-          properties:
-            name:
-              type: string
-            type:
-              type: string
-              x-jsonld-id: '@type'
-            nullable:
-              type: boolean
-            description:
-              type: string
-        x-jsonld-id: https://geoparquet.org/schema
-      geo:
-        type: object
-        required:
-        - version
-        - primary_column
-        - columns
-        properties:
-          version:
-            type: string
-          primary_column:
-            type: string
-          columns:
-            type: object
-        x-jsonld-id: https://geoparquet.org/metadata
-    additionalProperties: true
+    $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.yaml
 x-jsonld-extra-terms:
   PhotonFluxDensity: http://purl.oclc.org/NET/ssnx/qu/dim#PhotonFluxDensity
   implements:
@@ -528,7 +458,12 @@ x-jsonld-extra-terms:
   schema.name: https://schema.org/name
   QuantityKind: http://qudt.org/schema/qudt/QuantityKind
   id: '@id'
+  type: '@type'
   ObservedProperty: http://www.w3.org/ns/sosa/observedProperty
+  fileName: https://schema.org/contentUrl
+  encoding: https://schema.org/encodingFormat
+  parquetSchema: https://geoparquet.org/schema
+  geo: https://geoparquet.org/metadata
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/swedish-dt#
 x-jsonld-prefixes:
   sosa: http://www.w3.org/ns/sosa/

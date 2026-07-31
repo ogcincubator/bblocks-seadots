@@ -1,0 +1,97 @@
+{
+  "id": "aoi-utsira",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "collection": "seadots-inputs",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.7,
+          59.1
+        ],
+        [
+          5.0,
+          59.1
+        ],
+        [
+          5.0,
+          59.4
+        ],
+        [
+          4.7,
+          59.4
+        ],
+        [
+          4.7,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    4.7,
+    59.1,
+    5.0,
+    59.4
+  ],
+  "properties": {
+    "title": "Utsira area of interest",
+    "description": "Example area-of-interest input for a SeaDOTs execution.",
+    "datetime": "2026-05-26T00:00:00Z",
+    "role": "input",
+    "convention": "CF-1.10",
+    "cf:parameter": [
+      {
+        "name": "area",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m2",
+        "description": "Optional CF-style parameter declaration for spatial input extent."
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "../../area-of-interest/examples/utsira_surroundings_aoi.json",
+      "type": "application/geo+json",
+      "title": "Utsira surroundings AOI",
+      "cf:parameter": [
+        {
+          "name": "area",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m2",
+          "description": "Optional CF-style parameter declaration for spatial input extent."
+        }
+      ],
+      "roles": [
+        "data",
+        "input"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "collection",
+      "href": "https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs",
+      "type": "application/json",
+      "title": "SeaDOTs inputs"
+    },
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data",
+      "type": "application/schema+json"
+    },
+    {
+      "rel": "item",
+      "href": "bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json",
+      "type": "application/geo+json",
+      "title": "Utsira surroundings AOI"
+    }
+  ]
+}

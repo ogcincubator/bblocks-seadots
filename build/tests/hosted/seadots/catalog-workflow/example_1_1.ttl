@@ -1,0 +1,58 @@
+@prefix apkg: <https://w3id.org/apkg/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,
+        geojson:Feature ;
+    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
+        <https://docs.ogc.org/is/20-004/20-004.html> ;
+    dcterms:description "Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure." ;
+    dcterms:hasVersion "0.1.0" ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:method "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters." ;
+    dcterms:title "Utsira reef-effect biomass workflow" ;
+    rdfs:seeAlso [ dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ],
+        [ rdfs:label "Reef-effect application package" ;
+            dcterms:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ] ;
+    dcat:keyword "digital-twin",
+        "offshore-wind",
+        "open-science" ;
+    prov:activity <https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation> ;
+    schema:applicationCategory "DigitalTwinApplication" ;
+    schema:programmingLanguage "Python" ;
+    schema:softwareVersion "0.1.0" ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
+            seadots:required true ;
+            seadots:role "input" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+            dcterms:description "Optional baseline benthic biomass-density input profile." ;
+            seadots:required false ;
+            seadots:role "benthic-biomass-density" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+            seadots:required true ;
+            seadots:role "area-of-interest" ] ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item produced by this workflow." ;
+            seadots:required true ;
+            seadots:role "output" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+            dcterms:description "Structured reef-effect biomass output record." ;
+            seadots:required true ;
+            seadots:role "reef-biomass-result" ] ;
+    seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;
+    seadots:itemType "record" .
+

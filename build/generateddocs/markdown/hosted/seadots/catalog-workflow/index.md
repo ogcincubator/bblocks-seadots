@@ -40,7 +40,7 @@ dataset. No source properties are intentionally dropped.
 {
   "@context": [
     "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
-    "../context.jsonld"
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld"
   ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
   "type": "Feature",
@@ -63,10 +63,10 @@ dataset. No source properties are intentionally dropped.
     "applicationPackage": "../../catalog-application-package/examples/application-package.json",
     "inputs": [
       {
-        "profileId": "ogc.hosted.seadots.catalog-input",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": true,
-        "role": "catalog-input",
-        "description": "Generic STAC input item accepted by this workflow."
+        "role": "input",
+        "description": "Generic STAC catalog data item accepted by this workflow."
       },
       {
         "profileId": "ogc.hosted.seadots.area-of-interest",
@@ -83,10 +83,10 @@ dataset. No source properties are intentionally dropped.
     ],
     "outputs": [
       {
-        "profileId": "ogc.hosted.seadots.catalog-output",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": true,
-        "role": "catalog-output",
-        "description": "Generic STAC output item produced by this workflow."
+        "role": "output",
+        "description": "Generic STAC catalog data item produced by this workflow."
       },
       {
         "profileId": "ogc.hosted.seadots.reef-effect-output",
@@ -116,6 +116,153 @@ dataset. No source properties are intentionally dropped.
     }
   ]
 }
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld"
+  ],
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
+  "type": "Feature",
+  "itemType": "record",
+  "conformsTo": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "geometry": null,
+  "properties": {
+    "title": "Utsira reef-effect biomass workflow",
+    "description": "Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure.",
+    "type": "Workflow",
+    "applicationCategory": "DigitalTwinApplication",
+    "version": "0.1.0",
+    "method": "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters.",
+    "activity": "https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation",
+    "softwareVersion": "0.1.0",
+    "programmingLanguage": "Python",
+    "applicationPackage": "../../catalog-application-package/examples/application-package.json",
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-data",
+        "required": true,
+        "role": "input",
+        "description": "Generic STAC catalog data item accepted by this workflow."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.area-of-interest",
+        "required": true,
+        "role": "area-of-interest",
+        "description": "GeoJSON Feature defining the spatial area for the calculation."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "required": false,
+        "role": "benthic-biomass-density",
+        "description": "Optional baseline benthic biomass-density input profile."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-data",
+        "required": true,
+        "role": "output",
+        "description": "Generic STAC catalog data item produced by this workflow."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.reef-effect-output",
+        "required": true,
+        "role": "reef-biomass-result",
+        "description": "Structured reef-effect biomass output record."
+      }
+    ],
+    "keywords": [
+      "open-science",
+      "digital-twin",
+      "offshore-wind"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-workflow",
+      "type": "application/schema+json"
+    },
+    {
+      "rel": "related",
+      "href": "bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json",
+      "type": "application/json",
+      "title": "Reef-effect application package"
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix apkg: <https://w3id.org/apkg/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,
+        geojson:Feature ;
+    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
+        <https://docs.ogc.org/is/20-004/20-004.html> ;
+    dcterms:description "Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure." ;
+    dcterms:hasVersion "0.1.0" ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:method "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters." ;
+    dcterms:title "Utsira reef-effect biomass workflow" ;
+    rdfs:seeAlso [ dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ],
+        [ rdfs:label "Reef-effect application package" ;
+            dcterms:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ] ;
+    dcat:keyword "digital-twin",
+        "offshore-wind",
+        "open-science" ;
+    prov:activity <https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation> ;
+    schema:applicationCategory "DigitalTwinApplication" ;
+    schema:programmingLanguage "Python" ;
+    schema:softwareVersion "0.1.0" ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
+            seadots:required true ;
+            seadots:role "input" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+            dcterms:description "Optional baseline benthic biomass-density input profile." ;
+            seadots:required false ;
+            seadots:role "benthic-biomass-density" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+            seadots:required true ;
+            seadots:role "area-of-interest" ] ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item produced by this workflow." ;
+            seadots:required true ;
+            seadots:role "output" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+            dcterms:description "Structured reef-effect biomass output record." ;
+            seadots:required true ;
+            seadots:role "reef-biomass-result" ] ;
+    seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;
+    seadots:itemType "record" .
+
 
 ```
 
@@ -159,7 +306,6 @@ properties:
     - applicationCategory
     - version
     - method
-    - applicationPackage
     properties:
       type:
         const: Workflow
@@ -436,6 +582,22 @@ x-jsonld-extra-terms:
   wasRevisionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
     x-jsonld-type: '@id'
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.w3.org/ns/prov#value
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
+    x-jsonld-type: '@id'
   atLocation:
     x-jsonld-id: http://www.w3.org/ns/prov#atLocation
     x-jsonld-type: '@id'
@@ -509,16 +671,9 @@ x-jsonld-extra-terms:
   endedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  generatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  invalidatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   startedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  value: http://www.w3.org/ns/prov#value
   provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
   pairKey:
     x-jsonld-id: http://www.w3.org/ns/prov#pairKey
@@ -573,15 +728,6 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   qualifiedEnd:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
-    x-jsonld-type: '@id'
-  qualifiedPrimarySource:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
-    x-jsonld-type: '@id'
-  qualifiedQuotation:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
-    x-jsonld-type: '@id'
-  qualifiedRevision:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   qualifiedStart:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
@@ -903,6 +1049,27 @@ Links to the schema:
       "@id": "prov:wasRevisionOf",
       "@type": "@id"
     },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "invalidatedAtTime": {
+      "@id": "prov:invalidatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "value": "prov:value",
+    "qualifiedPrimarySource": {
+      "@id": "prov:qualifiedPrimarySource",
+      "@type": "@id"
+    },
+    "qualifiedQuotation": {
+      "@id": "prov:qualifiedQuotation",
+      "@type": "@id"
+    },
+    "qualifiedRevision": {
+      "@id": "prov:qualifiedRevision",
+      "@type": "@id"
+    },
     "atLocation": {
       "@id": "prov:atLocation",
       "@type": "@id"
@@ -983,19 +1150,10 @@ Links to the schema:
       "@id": "prov:endedAtTime",
       "@type": "xsd:dateTime"
     },
-    "generatedAtTime": {
-      "@id": "prov:generatedAtTime",
-      "@type": "xsd:dateTime"
-    },
-    "invalidatedAtTime": {
-      "@id": "prov:invalidatedAtTime",
-      "@type": "xsd:dateTime"
-    },
     "startedAtTime": {
       "@id": "prov:startedAtTime",
       "@type": "xsd:dateTime"
     },
-    "value": "prov:value",
     "provenanceUriTemplate": "prov:provenanceUriTemplate",
     "pairKey": {
       "@id": "prov:pairKey",
@@ -1071,18 +1229,6 @@ Links to the schema:
     },
     "qualifiedEnd": {
       "@id": "prov:qualifiedEnd",
-      "@type": "@id"
-    },
-    "qualifiedPrimarySource": {
-      "@id": "prov:qualifiedPrimarySource",
-      "@type": "@id"
-    },
-    "qualifiedQuotation": {
-      "@id": "prov:qualifiedQuotation",
-      "@type": "@id"
-    },
-    "qualifiedRevision": {
-      "@id": "prov:qualifiedRevision",
       "@type": "@id"
     },
     "qualifiedStart": {

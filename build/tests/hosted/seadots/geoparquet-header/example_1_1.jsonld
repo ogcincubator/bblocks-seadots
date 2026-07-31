@@ -1,0 +1,83 @@
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/context.jsonld",
+    {
+      "@version": 1.1,
+      "csvw": "http://www.w3.org/ns/csvw#",
+      "dct": "http://purl.org/dc/terms/",
+      "geo": "http://www.opengis.net/ont/geosparql#",
+      "ex": "https://example.org/vocab/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "fileName": "dct:identifier",
+      "encoding": "dct:format",
+      "source": "dct:source",
+      "href": {
+        "@id": "dct:references",
+        "@type": "@id"
+      },
+      "parquetSchema": {
+        "@id": "csvw:tableSchema",
+        "@container": "@list"
+      },
+      "name": "csvw:name",
+      "description": "dct:description",
+      "propertyUrl": {
+        "@id": "csvw:propertyUrl",
+        "@type": "@id"
+      }
+    }
+  ],
+  "fileName": "stations.parquet",
+  "encoding": "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB",
+  "source": {
+    "href": "examples/stations.csv",
+    "sourceFormat": "text/csv",
+    "rowCount": 2,
+    "columnCount": 4
+  },
+  "parquetSchema": [
+    {
+      "name": "geometry",
+      "type": "BYTE_ARRAY/WKB",
+      "nullable": true,
+      "propertyUrl": "geo:hasGeometry"
+    },
+    {
+      "name": "station_id",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": false,
+      "propertyUrl": "ex:stationId"
+    },
+    {
+      "name": "temperature",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "ex:temperature"
+    },
+    {
+      "name": "salinity",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "ex:salinity"
+    }
+  ],
+  "geo": {
+    "version": "1.1.0",
+    "primary_column": "geometry",
+    "columns": {
+      "geometry": {
+        "encoding": "WKB",
+        "geometry_types": [
+          "Point"
+        ],
+        "crs": null,
+        "bbox": [
+          11.9,
+          57.7,
+          11.9,
+          57.7
+        ]
+      }
+    }
+  }
+}

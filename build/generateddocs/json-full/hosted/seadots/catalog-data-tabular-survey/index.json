@@ -1,0 +1,111 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.catalog-data-tabular-survey",
+  "name": "SeaDOTs Catalog Data Tabular Survey",
+  "abstract": "Tabular survey-data profile for the saltmarsh perceptions questionnaire, designed to carry ELSST thesaurus mappings, CESSDA controlled-vocabulary references, and DDI-style descriptive metadata for questionnaire variables and response categories.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-31T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-07-31",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "survey",
+    "tabular",
+    "questionnaire",
+    "cessda",
+    "elsst",
+    "ddi",
+    "controlled-vocabulary",
+    "catalog"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Saltmarsh perceptions survey workbook",
+      "link": "https://github.com/seadots/saltmarsh_perceptions"
+    },
+    {
+      "title": "ELSST thesaurus",
+      "link": "https://elsst.uk/"
+    },
+    {
+      "title": "CESSDA controlled vocabularies",
+      "link": "https://www.cessda.eu/"
+    },
+    {
+      "title": "DDI Lifecycle",
+      "link": "https://ddialliance.org/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.hosted.seadots.catalog-data-tabular"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "https://github.com/radiantearth/stac-spec",
+    "https://github.com/stac-extensions/table",
+    "https://ddialliance.org/",
+    "https://elsst.uk/"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.api.records.v1.schemas.linkTemplate": [
+      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ]
+  },
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-data-tabular-survey/",
+  "description": "# SeaDOTs Catalog Data Tabular Survey\n\nThis profile is intended for survey-style tabular datasets such as the Norwegian saltmarsh perceptions workbook. It extends the SeaDOTs tabular catalog profile with survey-specific metadata for questionnaire variables, controlled-vocabulary links, and DDI-style variable descriptions.\n\n## Why this is tabular rather than generic\n\nThe source is a rectangular questionnaire export with repeated response columns and coded categories. That makes it a good fit for the tabular catalog profile, because the data asset is still a table with rows and columns, even though the metadata is richer than a generic data record. The richer semantics are captured here without forcing the entire dataset into a generic catalog record.\n\n## Semantic hooks\n\n- ELSST: use the `survey:conceptUri` and `survey:controlledVocabulary` fields to reference thesaurus concepts for environmental and social-science terms.\n- CESSDA: use `survey:controlledVocabulary` with a `scheme` and `uri` to point at controlled vocabularies used by survey instruments.\n- DDI: use `survey:variableMetadata[].ddi:variableDescription` and `survey:studyDescription` to preserve questionnaire and variable-level documentation.\n\n## Recommended usage\n\nUse this block when the data asset is an Excel/CSV/Parquet survey export and you need to describe questionnaire variables and their controlled-vocabulary mappings in the catalog record.\n",
+  "examples": [
+    {
+      "title": "SeaDOTs catalog data tabular survey example",
+      "description": "Example record for a survey-style tabular dataset that links questionnaire variables to ELSST, CESSDA, and DDI-style descriptions.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/examples/saltmarsh-perceptions-survey.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular-survey/example_1_1.json",
+          "sizeBytes": 3171,
+          "code": "{\n  \"id\": \"saltmarsh-perceptions-norway\",\n  \"type\": \"Feature\",\n  \"itemType\": \"record\",\n  \"stac_version\": \"1.0.0\",\n  \"stac_extensions\": [\n    \"https://stac-extensions.github.io/table/v1.2.0/schema.json\",\n    \"https://stac-extensions.github.io/cf/v0.2.0/schema.json\"\n  ],\n  \"properties\": {\n    \"title\": \"Saltmarsh perceptions survey (Norway)\",\n    \"description\": \"Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.\",\n    \"datetime\": \"2024-03-01T00:00:00Z\",\n    \"role\": \"data\",\n    \"license\": \"CC BY-NC-SA 4.0\",\n    \"table:columns\": [\n      {\n        \"name\": \"caseid\",\n        \"type\": \"string\",\n        \"description\": \"Respondent identifier\"\n      },\n      {\n        \"name\": \"Country\",\n        \"type\": \"string\",\n        \"description\": \"Country of residence\"\n      },\n      {\n        \"name\": \"Q1\",\n        \"type\": \"string\",\n        \"description\": \"Respondent age group\"\n      },\n      {\n        \"name\": \"Q2\",\n        \"type\": \"string\",\n        \"description\": \"Respondent gender\"\n      }\n    ],\n    \"table:primary_geometry\": \"none\",\n    \"table:row_count\": 5046,\n    \"survey:studyTitle\": \"Saltmarsh perceptions survey\",\n    \"survey:studyDescription\": \"Monadic survey on attitudes toward saltmarsh management in Norway.\",\n    \"survey:variableMetadata\": [\n      {\n        \"variableName\": \"Q1\",\n        \"label\": \"Age group\",\n        \"questionText\": \"What is your age group?\",\n        \"conceptUri\": \"https://elsst.uk/terms/age\",\n        \"vocabularyUri\": \"https://www.cessda.eu/cessda-vocabularies#age\",\n        \"ddi:variableDescription\": \"Age group of the respondent\"\n      },\n      {\n        \"variableName\": \"Q5_1\",\n        \"label\": \"Environmental concern\",\n        \"questionText\": \"How important is the protection of the environment to you?\",\n        \"conceptUri\": \"https://elsst.uk/terms/environmental-concern\",\n        \"vocabularyUri\": \"https://www.cessda.eu/cessda-vocabularies#environmental-attitudes\",\n        \"ddi:variableDescription\": \"Likert-style attitude question\"\n      }\n    ],\n    \"survey:controlledVocabulary\": [\n      {\n        \"scheme\": \"ELSST\",\n        \"uri\": \"https://elsst.uk/\",\n        \"label\": \"European Language Social Science Thesaurus\"\n      },\n      {\n        \"scheme\": \"CESSDA\",\n        \"uri\": \"https://www.cessda.eu/\",\n        \"label\": \"CESSDA controlled vocabularies\"\n      }\n    ]\n  },\n  \"assets\": {\n    \"data\": {\n      \"href\": \"https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads\",\n      \"type\": \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\n      \"title\": \"Norway monadic survey workbook\"\n    }\n  },\n  \"links\": [\n    {\n      \"rel\": \"profile\",\n      \"href\": \"bblocks://ogc.hosted.seadots.catalog-data-tabular-survey\",\n      \"type\": \"application/schema+json\",\n      \"title\": \"SeaDOTs Catalog Data Tabular Survey\"\n    },\n    {\n      \"rel\": \"describedby\",\n      \"href\": \"https://www.sciencedirect.com/science/article/pii/S0964569124000942\",\n      \"type\": \"text/html\",\n      \"title\": \"Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management\"\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular-survey/example_1_1.jsonld",
+          "sizeBytes": 3308,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/context.jsonld\",\n  \"id\": \"saltmarsh-perceptions-norway\",\n  \"type\": \"Feature\",\n  \"itemType\": \"record\",\n  \"stac_version\": \"1.0.0\",\n  \"stac_extensions\": [\n    \"https://stac-extensions.github.io/table/v1.2.0/schema.json\",\n    \"https://stac-extensions.github.io/cf/v0.2.0/schema.json\"\n  ],\n  \"properties\": {\n    \"title\": \"Saltmarsh perceptions survey (Norway)\",\n    \"description\": \"Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.\",\n    \"datetime\": \"2024-03-01T00:00:00Z\",\n    \"role\": \"data\",\n    \"license\": \"CC BY-NC-SA 4.0\",\n    \"table:columns\": [\n      {\n        \"name\": \"caseid\",\n        \"type\": \"string\",\n        \"description\": \"Respondent identifier\"\n      },\n      {\n        \"name\": \"Country\",\n        \"type\": \"string\",\n        \"description\": \"Country of residence\"\n      },\n      {\n        \"name\": \"Q1\",\n        \"type\": \"string\",\n        \"description\": \"Respondent age group\"\n      },\n      {\n        \"name\": \"Q2\",\n        \"type\": \"string\",\n        \"description\": \"Respondent gender\"\n      }\n    ],\n    \"table:primary_geometry\": \"none\",\n    \"table:row_count\": 5046,\n    \"survey:studyTitle\": \"Saltmarsh perceptions survey\",\n    \"survey:studyDescription\": \"Monadic survey on attitudes toward saltmarsh management in Norway.\",\n    \"survey:variableMetadata\": [\n      {\n        \"variableName\": \"Q1\",\n        \"label\": \"Age group\",\n        \"questionText\": \"What is your age group?\",\n        \"conceptUri\": \"https://elsst.uk/terms/age\",\n        \"vocabularyUri\": \"https://www.cessda.eu/cessda-vocabularies#age\",\n        \"ddi:variableDescription\": \"Age group of the respondent\"\n      },\n      {\n        \"variableName\": \"Q5_1\",\n        \"label\": \"Environmental concern\",\n        \"questionText\": \"How important is the protection of the environment to you?\",\n        \"conceptUri\": \"https://elsst.uk/terms/environmental-concern\",\n        \"vocabularyUri\": \"https://www.cessda.eu/cessda-vocabularies#environmental-attitudes\",\n        \"ddi:variableDescription\": \"Likert-style attitude question\"\n      }\n    ],\n    \"survey:controlledVocabulary\": [\n      {\n        \"scheme\": \"ELSST\",\n        \"uri\": \"https://elsst.uk/\",\n        \"label\": \"European Language Social Science Thesaurus\"\n      },\n      {\n        \"scheme\": \"CESSDA\",\n        \"uri\": \"https://www.cessda.eu/\",\n        \"label\": \"CESSDA controlled vocabularies\"\n      }\n    ]\n  },\n  \"assets\": {\n    \"data\": {\n      \"href\": \"https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads\",\n      \"type\": \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\n      \"title\": \"Norway monadic survey workbook\"\n    }\n  },\n  \"links\": [\n    {\n      \"rel\": \"profile\",\n      \"href\": \"bblocks://ogc.hosted.seadots.catalog-data-tabular-survey\",\n      \"type\": \"application/schema+json\",\n      \"title\": \"SeaDOTs Catalog Data Tabular Survey\"\n    },\n    {\n      \"rel\": \"describedby\",\n      \"href\": \"https://www.sciencedirect.com/science/article/pii/S0964569124000942\",\n      \"type\": \"text/html\",\n      \"title\": \"Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular-survey/example_1_1.ttl",
+          "sizeBytes": 4194,
+          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ddi: <https://ddialliance.org/terms#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix ns2: <https://w3id.org/ogc/stac/assets/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n@prefix stac: <https://w3id.org/ogc/stac/core/> .\n@prefix survey: <https://example.org/seadots/survey#> .\n@prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .\n@prefix thns: <https://w3id.org/ogc/stac/themes/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<file:///github/workspace/saltmarsh-perceptions-norway> dcterms:date \"2024-03-01T00:00:00+00:00\"^^xsd:dateTime ;\n    dcterms:description \"Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.\" ;\n    dcterms:license \"CC BY-NC-SA 4.0\" ;\n    dcterms:title \"Saltmarsh perceptions survey (Norway)\" ;\n    dcterms:type \"Feature\" ;\n    rdfs:seeAlso [ rdfs:label \"Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management\" ;\n            dcterms:type \"text/html\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;\n            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],\n        [ rdfs:label \"SeaDOTs Catalog Data Tabular Survey\" ;\n            dcterms:type \"application/schema+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/profile> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;\n    survey:controlledVocabulary [ seadots:label \"CESSDA controlled vocabularies\" ;\n            seadots:uri \"https://www.cessda.eu/\" ;\n            thns:scheme \"CESSDA\" ],\n        [ seadots:label \"European Language Social Science Thesaurus\" ;\n            seadots:uri \"https://elsst.uk/\" ;\n            thns:scheme \"ELSST\" ] ;\n    survey:studyDescription \"Monadic survey on attitudes toward saltmarsh management in Norway.\" ;\n    survey:studyTitle \"Saltmarsh perceptions survey\" ;\n    survey:variableMetadata [ ddi:variableDescription \"Age group of the respondent\" ;\n            survey:conceptUri \"https://elsst.uk/terms/age\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#age\" ;\n            seadots:label \"Age group\" ;\n            seadots:questionText \"What is your age group?\" ;\n            seadots:variableName \"Q1\" ],\n        [ ddi:variableDescription \"Likert-style attitude question\" ;\n            survey:conceptUri \"https://elsst.uk/terms/environmental-concern\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#environmental-attitudes\" ;\n            seadots:label \"Environmental concern\" ;\n            seadots:questionText \"How important is the protection of the environment to you?\" ;\n            seadots:variableName \"Q5_1\" ] ;\n    table:columns ( [ dcterms:description \"Respondent identifier\" ;\n                dcterms:title \"caseid\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Country of residence\" ;\n                dcterms:title \"Country\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent age group\" ;\n                dcterms:title \"Q1\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent gender\" ;\n                dcterms:title \"Q2\" ;\n                dcterms:type \"string\" ] ) ;\n    table:primary_geometry \"none\" ;\n    table:row_count 5046 ;\n    seadots:itemType \"record\" ;\n    seadots:role \"data\" ;\n    stac:hasAsset [ ns2:data [ dcterms:format \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\" ;\n                    dcterms:title \"Norway monadic survey workbook\" ;\n                    oa:hasTarget <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ] ;\n    stac:hasExtension \"https://stac-extensions.github.io/cf/v0.2.0/schema.json\",\n        \"https://stac-extensions.github.io/table/v1.2.0/schema.json\" ;\n    stac:version \"1.0.0\" .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: SeaDOTs Catalog Data Tabular Survey\ndescription: 'Survey-style tabular profile for saltmarsh perceptions data. It extends\n  the SeaDOTs tabular catalog record profile with questionnaire-variable metadata,\n  ELSST/CESSDA vocabulary links, and DDI-style descriptions.\n\n  '\nallOf:\n- $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/schema.yaml\ntype: object\nrequired:\n- type\n- properties\n- links\nproperties:\n  type:\n    const: Feature\n  properties:\n    type: object\n    additionalProperties: true\n    properties:\n      survey:studyTitle:\n        type: string\n        x-jsonld-id: https://example.org/seadots/survey#studyTitle\n      survey:studyDescription:\n        type: string\n        x-jsonld-id: https://example.org/seadots/survey#studyDescription\n      survey:variableMetadata:\n        type: array\n        items:\n          type: object\n          required:\n          - variableName\n          properties:\n            variableName:\n              type: string\n            questionText:\n              type: string\n            label:\n              type: string\n            conceptUri:\n              type: string\n              x-jsonld-id: https://example.org/seadots/survey#conceptUri\n            vocabularyUri:\n              type: string\n              x-jsonld-id: https://example.org/seadots/survey#vocabularyUri\n            ddi:variableDescription:\n              type: string\n              x-jsonld-id: https://ddialliance.org/terms#variableDescription\n        x-jsonld-id: https://example.org/seadots/survey#variableMetadata\n      survey:controlledVocabulary:\n        type: array\n        items:\n          type: object\n          properties:\n            scheme:\n              type: string\n            uri:\n              type: string\n            label:\n              type: string\n        x-jsonld-id: https://example.org/seadots/survey#controlledVocabulary\n  links:\n    type: array\n    contains:\n      type: object\n      required:\n      - rel\n      - href\n      properties:\n        rel:\n          const: profile\n        href:\n          const: bblocks://ogc.hosted.seadots.catalog-data-tabular-survey\nx-jsonld-prefixes:\n  survey: https://example.org/seadots/survey#\n  ddi: https://ddialliance.org/terms#\n  elsst: https://elsst.uk/terms#\n  cessda: https://vocabularies.cessda.eu/terms#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/catalog-data-tabular-survey"
+}

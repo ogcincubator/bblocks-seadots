@@ -2,8 +2,8 @@
   "title": "Validation report for ogc.hosted.seadots.swedish-DT-simulations-output - Swedish DT Simulations Output",
   "bblockName": "Swedish DT Simulations Output",
   "bblockId": "ogc.hosted.seadots.swedish-DT-simulations-output",
-  "generated": "2026-05-28T07:01:13.969760+00:00",
-  "result": false,
+  "generated": "2026-07-31T22:08:22.594303+00:00",
+  "result": true,
   "items": [
     {
       "source": {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": false,
+      "result": true,
       "sections": [
         {
           "name": "FILES",
@@ -23,7 +23,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using examples/eurostat-nuts-regions-observation.json from examples"
+              "message": "Using examples/simulation_1.geoparquet-header.json from examples"
             },
             {
               "op": "jsonld-uplift",
@@ -40,193 +40,9 @@
               "op": "ttl-create",
               "empty": false,
               "filename": "example_2_1.ttl",
-              "size": 118,
+              "size": 467,
               "isError": false,
               "message": "Output Turtle example_2_1.ttl created"
-            }
-          ]
-        },
-        {
-          "name": "JSON_SCHEMA",
-          "title": "JSON Schema",
-          "entries": [
-            {
-              "op": "validation",
-              "result": true,
-              "isError": false,
-              "message": "Validation passed"
-            }
-          ]
-        },
-        {
-          "name": "SHACL",
-          "title": "SHACL",
-          "entries": [
-            {
-              "op": "shacl-report",
-              "shaclFile": "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl",
-              "graph": "@prefix ns1: <https://w3id.org/ogc/hosted/seadots/swedish-dt#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix sosa: <http://www.w3.org/ns/sosa/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode [ sosa:hasFeatureOfInterest [ ns1:name \"Eurostat NUTS region indicator set\" ] ;\n                    sosa:madeBySensor [ ns1:encodingType \"application/json\" ;\n                            ns1:metadata \"Source model output represented from examples/eurostat nuts regions.qgz\" ;\n                            ns1:name \"Swedish Digital Twin fisheries simulation model\" ] ;\n                    sosa:observedProperty [ skos:definition \"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\" ;\n                            ns1:name \"Swedish DT fisheries simulation state\" ] ;\n                    ns1:description \"Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.\" ;\n                    ns1:name \"Swedish DT Eurostat NUTS regions simulation output\" ;\n                    ns1:observationType \"http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation\" ;\n                    ns1:unitOfMeasurement [ skos:definition \"https://qudt.org/vocab/unit/UNITLESS\" ;\n                            ns1:name \"model output bundle\" ;\n                            ns1:symbol \"1\" ] ] ;\n            sh:resultMessage \"Value is not of Node Kind sh:IRI\" ;\n            sh:resultPath sosa:observedProperty ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeKindConstraintComponent ;\n            sh:sourceShape [ sh:nodeKind sh:IRI ;\n                    sh:path sosa:observedProperty ] ;\n            sh:value [ skos:definition \"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\" ;\n                    ns1:name \"Swedish DT fisheries simulation state\" ] ] .\n\n",
-              "isError": true,
-              "message": "Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in NodeKindConstraintComponent (http://www.w3.org/ns/shacl#NodeKindConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:nodeKind sh:IRI ; sh:path sosa:observedProperty ]\n  \tFocus Node: [ :description Literal(\"Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.\") ; :name Literal(\"Swedish DT Eurostat NUTS regions simulation output\") ; :observationType Literal(\"http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation\") ; :unitOfMeasurement [ :name Literal(\"model output bundle\") ; :symbol Literal(\"1\") ; skos:definition Literal(\"https://qudt.org/vocab/unit/UNITLESS\") ] ; sosa:hasFeatureOfInterest [ :name Literal(\"Eurostat NUTS region indicator set\") ] ; sosa:madeBySensor [ :encodingType Literal(\"application/json\") ; :metadata Literal(\"Source model output represented from examples/eurostat nuts regions.qgz\") ; :name Literal(\"Swedish Digital Twin fisheries simulation model\") ] ; sosa:observedProperty [ :name Literal(\"Swedish DT fisheries simulation state\") ; skos:definition Literal(\"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\") ] ]\n  \tValue Node: [ :name Literal(\"Swedish DT fisheries simulation state\") ; skos:definition Literal(\"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\") ]\n  \tResult Path: sosa:observedProperty\n  \tMessage: Value is not of Node Kind sh:IRI\n  "
-            },
-            {
-              "shaclFile": "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl",
-              "focusNodes": {
-                ":force-linked-data-observedProperty": {
-                  "nodes": [
-                    "_:Ne6d7da38285a4efb99746b5efdd87175"
-                  ]
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:\n - Shape :force-linked-data-observedProperty: _:Ne6d7da38285a4efb99746b5efdd87175\n"
-            },
-            {
-              "op": "shacl-report",
-              "shaclFile": "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl",
-              "graph": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ns1: <https://w3id.org/ogc/hosted/seadots/swedish-dt#> .\n@prefix ns2: <http://www.opengis.net/def/ont/sensorthings/> .\n@prefix schema: <https://schema.org/> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix sosa: <http://www.w3.org/ns/sosa/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode [ ns2:Datastream [ sosa:hasFeatureOfInterest [ ns1:name \"Eurostat NUTS region indicator set\" ] ;\n                            sosa:madeBySensor [ ns1:encodingType \"application/json\" ;\n                                    ns1:metadata \"Source model output represented from examples/eurostat nuts regions.qgz\" ;\n                                    ns1:name \"Swedish Digital Twin fisheries simulation model\" ] ;\n                            sosa:observedProperty [ skos:definition \"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\" ;\n                                    ns1:name \"Swedish DT fisheries simulation state\" ] ;\n                            ns1:description \"Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.\" ;\n                            ns1:name \"Swedish DT Eurostat NUTS regions simulation output\" ;\n                            ns1:observationType \"http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation\" ;\n                            ns1:unitOfMeasurement [ skos:definition \"https://qudt.org/vocab/unit/UNITLESS\" ;\n                                    ns1:name \"model output bundle\" ;\n                                    ns1:symbol \"1\" ] ] ;\n                    sosa:hasFeatureOfInterest [ ns1:description \"Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary.\" ;\n                            ns1:encodingType \"application/geo+json\" ;\n                            ns1:feature <file:///github/workspace/swedish-dt-case-region-north-to-gotland> ;\n                            ns1:name \"Swedish DT case region - northern Baltic to Gotland\" ] ;\n                    sosa:hasResult [ ns1:B_herring_tot 250000 ;\n                            ns1:K_herring_reg_inc 1 ;\n                            ns1:SV_fishing_radius 5 ;\n                            ns1:SV_herring_market \"fish meal\" ;\n                            ns1:TAC_herring_Sweden_impl 1 ;\n                            ns1:TAC_herring_est_error 6.5e-01 ;\n                            ns1:TAC_herring_inc_SV 1 ;\n                            ns1:TAC_herring_share_sv 9.3e-02 ;\n                            ns1:TAC_herring_type 0 ;\n                            ns1:TAC_share_B_herring 3e-01 ;\n                            ns1:VA_LV_All 4.316705e+04 ;\n                            ns1:VA_SV_All 2.068744e+02 ;\n                            ns1:catch_herring_LV_All 2.306167e+05 ;\n                            ns1:catch_herring_SV_All 1.458718e+03 ;\n                            ns1:catch_sprat_LV_All 2.888209e+05 ;\n                            ns1:catch_sprat_SV_All 1.116481e+03 ;\n                            ns1:current_TAC_herring 5.666949e+04 ;\n                            ns1:current_herring_season \"Evenly distributed\" ;\n                            ns1:current_management_season \"No closure\" ;\n                            ns1:current_month 6 ;\n                            ns1:current_year 1 ;\n                            ns1:even_dispersal_rate 8e-02 ;\n                            ns1:fishing_algorithm \"profit maximisation\" ;\n                            ns1:fuel_consumption_LV 0 ;\n                            ns1:fuel_consumption_SV 0 ;\n                            ns1:fuel_price 0 ;\n                            ns1:herring_price_fish_meal 2.41e+00 ;\n                            ns1:herring_price_human_cons 1.125e+01 ;\n                            ns1:landing-value_sprat_LV 6.960583e+05 ;\n                            ns1:landing_value_herring_LV 5.557862e+05 ;\n                            ns1:landing_value_herring_SV 3.515511e+03 ;\n                            ns1:landing_value_sprat_SV 2.69072e+03 ;\n                            ns1:mean_biomas_sprat 6.483755e+03 ;\n                            ns1:mean_biomass_herring 7.392332e+03 ;\n                            ns1:repetitions 1 ;\n                            ns1:spawning_closure_type 0 ;\n                            ns1:spawning_dispersal_rate 4e-02 ;\n                            ns1:sprat_price 2.41e+00 ;\n                            ns1:stop_herring_growth false ;\n                            ns1:ticks 1 ;\n                            ns1:trawling_limit \"none\" ;\n                            ns1:winter_closure_length 120 ;\n                            ns1:winter_closure_type 1 ;\n                            ns1:winter_dispersal_rate 2.7e-02 ;\n                            ns1:year_tick 33 ;\n                            ns1:yearly_growth_herring 5.2e-01 ] ;\n                    sosa:phenomenonTime <file:///github/workspace/model-year-1/month-6/tick-33> ;\n                    sosa:resultTime \"2026-05-27T00:00:00+00:00\"^^xsd:dateTime ;\n                    schema:variableMeasured [ dcterms:format \"text/plain; delimiter=space; quote=double\" ;\n                            dcterms:source <file:///github/workspace/> ;\n                            schema:numberOfColumns 63 ;\n                            schema:numberOfItems 60000 ;\n                            ns1:conformsTo \"http://www.w3.org/ns/sosa/Observation\",\n                                \"https://docs.ogc.org/is/18-088/18-088.html\" ;\n                            ns1:regionIndicators [ ns1:nuts_region_01 0 ;\n                                    ns1:nuts_region_02 0 ;\n                                    ns1:nuts_region_03 0 ;\n                                    ns1:nuts_region_04 0 ;\n                                    ns1:nuts_region_05 0 ;\n                                    ns1:nuts_region_06 0 ;\n                                    ns1:nuts_region_07 0 ;\n                                    ns1:nuts_region_08 0 ;\n                                    ns1:nuts_region_09 0 ;\n                                    ns1:nuts_region_10 0 ;\n                                    ns1:nuts_region_11 0 ;\n                                    ns1:nuts_region_12 0 ;\n                                    ns1:nuts_region_13 0 ;\n                                    ns1:nuts_region_14 0 ;\n                                    ns1:nuts_region_15 0 ;\n                                    ns1:nuts_region_16 0 ;\n                                    ns1:nuts_region_17 0 ] ;\n                            ns1:sourceRow 1 ] ] ;\n            sh:resultMessage \"sosa:observedProperty is required\" ;\n            sh:resultPath sosa:observedProperty ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraint [ sh:message \"sosa:observedProperty is required\" ;\n                    sh:select \"\"\"\n            PREFIX sh: <http://www.w3.org/ns/shacl#>\n            PREFIX sosa: <http://www.w3.org/ns/sosa/>\n            PREFIX geojson: <https://purl.org/geojson/vocab#>\n            SELECT $this (sosa:observedProperty as ?path) (GROUP_CONCAT(?prop; separator=';') AS ?value)\n            WHERE {\n                OPTIONAL { $this sosa:observedProperty ?prop .\n                 $this (sosa:hasResult|sosa:hasSimpleResult) ?result_so_observation }\n                OPTIONAL { ?collection (sosa:hasMember|geojson:features)+ $this ; sosa:observedProperty ?prop }\n            }\n            GROUP BY ?prop\n            HAVING (count(?prop) < 1)\n        \"\"\" ] ;\n            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;\n            sh:sourceShape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent> ;\n            sh:value \"\" ] .\n\n",
-              "isError": true,
-              "message": "Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>\n  \tFocus Node: [ schema:variableMeasured [ :conformsTo Literal(\"http://www.w3.org/ns/sosa/Observation\"), Literal(\"https://docs.ogc.org/is/18-088/18-088.html\") ; :regionIndicators [ :nuts_region_01 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_02 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_03 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_04 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_05 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_06 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_07 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_08 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_09 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_10 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_11 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_12 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_13 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_14 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_15 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_16 Literal(\"0\", datatype=xsd:integer) ; :nuts_region_17 Literal(\"0\", datatype=xsd:integer) ] ; :sourceRow Literal(\"1\", datatype=xsd:integer) ; dcterms:format Literal(\"text/plain; delimiter=space; quote=double\") ; dcterms:source <file:///github/workspace/> ; schema:numberOfColumns Literal(\"63\", datatype=xsd:integer) ; schema:numberOfItems Literal(\"60000\", datatype=xsd:integer) ] ; sosa:hasFeatureOfInterest [ :description Literal(\"Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary.\") ; :encodingType Literal(\"application/geo+json\") ; :feature <file:///github/workspace/swedish-dt-case-region-north-to-gotland> ; :name Literal(\"Swedish DT case region - northern Baltic to Gotland\") ] ; sosa:hasResult [ :B_herring_tot Literal(\"250000\", datatype=xsd:integer) ; :K_herring_reg_inc Literal(\"1\", datatype=xsd:integer) ; :SV_fishing_radius Literal(\"5\", datatype=xsd:integer) ; :SV_herring_market Literal(\"fish meal\") ; :TAC_herring_Sweden_impl Literal(\"1\", datatype=xsd:integer) ; :TAC_herring_est_error Literal(\"0.65\", datatype=xsd:double) ; :TAC_herring_inc_SV Literal(\"1\", datatype=xsd:integer) ; :TAC_herring_share_sv Literal(\"0.093\", datatype=xsd:double) ; :TAC_herring_type Literal(\"0\", datatype=xsd:integer) ; :TAC_share_B_herring Literal(\"0.3\", datatype=xsd:double) ; :VA_LV_All Literal(\"43167.05149821874\", datatype=xsd:double) ; :VA_SV_All Literal(\"206.8743610448568\", datatype=xsd:double) ; :catch_herring_LV_All Literal(\"230616.67132147925\", datatype=xsd:double) ; :catch_herring_SV_All Literal(\"1458.718163663206\", datatype=xsd:double) ; :catch_sprat_LV_All Literal(\"288820.877827211\", datatype=xsd:double) ; :catch_sprat_SV_All Literal(\"1116.4813514179987\", datatype=xsd:double) ; :current_TAC_herring Literal(\"56669.48663862502\", datatype=xsd:double) ; :current_herring_season Literal(\"Evenly distributed\") ; :current_management_season Literal(\"No closure\") ; :current_month Literal(\"6\", datatype=xsd:integer) ; :current_year Literal(\"1\", datatype=xsd:integer) ; :even_dispersal_rate Literal(\"0.08\", datatype=xsd:double) ; :fishing_algorithm Literal(\"profit maximisation\") ; :fuel_consumption_LV Literal(\"0\", datatype=xsd:integer) ; :fuel_consumption_SV Literal(\"0\", datatype=xsd:integer) ; :fuel_price Literal(\"0\", datatype=xsd:integer) ; :herring_price_fish_meal Literal(\"2.41\", datatype=xsd:double) ; :herring_price_human_cons Literal(\"11.25\", datatype=xsd:double) ; :landing-value_sprat_LV Literal(\"696058.3155635783\", datatype=xsd:double) ; :landing_value_herring_LV Literal(\"555786.1778847649\", datatype=xsd:double) ; :landing_value_herring_SV Literal(\"3515.510774428327\", datatype=xsd:double) ; :landing_value_sprat_SV Literal(\"2690.7200569173774\", datatype=xsd:double) ; :mean_biomas_sprat Literal(\"6483.7546843309965\", datatype=xsd:double) ; :mean_biomass_herring Literal(\"7392.332485966248\", datatype=xsd:double) ; :repetitions Literal(\"1\", datatype=xsd:integer) ; :spawning_closure_type Literal(\"0\", datatype=xsd:integer) ; :spawning_dispersal_rate Literal(\"0.04\", datatype=xsd:double) ; :sprat_price Literal(\"2.41\", datatype=xsd:double) ; :stop_herring_growth Literal(\"false\" = False, datatype=xsd:boolean) ; :ticks Literal(\"1\", datatype=xsd:integer) ; :trawling_limit Literal(\"none\") ; :winter_closure_length Literal(\"120\", datatype=xsd:integer) ; :winter_closure_type Literal(\"1\", datatype=xsd:integer) ; :winter_dispersal_rate Literal(\"0.027\", datatype=xsd:double) ; :year_tick Literal(\"33\", datatype=xsd:integer) ; :yearly_growth_herring Literal(\"0.52\", datatype=xsd:double) ] ; sosa:phenomenonTime <file:///github/workspace/model-year-1/month-6/tick-33> ; sosa:resultTime Literal(\"2026-05-27T00:00:00+00:00\" = 2026-05-27 00:00:00+00:00, datatype=xsd:dateTime) ; sta:Datastream [ :description Literal(\"Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.\") ; :name Literal(\"Swedish DT Eurostat NUTS regions simulation output\") ; :observationType Literal(\"http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation\") ; :unitOfMeasurement [ :name Literal(\"model output bundle\") ; :symbol Literal(\"1\") ; skos:definition Literal(\"https://qudt.org/vocab/unit/UNITLESS\") ] ; sosa:hasFeatureOfInterest [ :name Literal(\"Eurostat NUTS region indicator set\") ] ; sosa:madeBySensor [ :encodingType Literal(\"application/json\") ; :metadata Literal(\"Source model output represented from examples/eurostat nuts regions.qgz\") ; :name Literal(\"Swedish Digital Twin fisheries simulation model\") ] ; sosa:observedProperty [ :name Literal(\"Swedish DT fisheries simulation state\") ; skos:definition Literal(\"https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState\") ] ] ]\n  \tValue Node: Literal(\"\")\n  \tResult Path: sosa:observedProperty\n  \tSource Constraint: [ sh:message Literal(\"sosa:observedProperty is required\") ; sh:select Literal(\"\n              PREFIX sh: <http://www.w3.org/ns/shacl#>\n              PREFIX sosa: <http://www.w3.org/ns/sosa/>\n              PREFIX geojson: <https://purl.org/geojson/vocab#>\n              SELECT $this (sosa:observedProperty as ?path) (GROUP_CONCAT(?prop; separator=';') AS ?value)\n              WHERE {\n                  OPTIONAL { $this sosa:observedProperty ?prop .\n                   $this (sosa:hasResult|sosa:hasSimpleResult) ?result_so_observation }\n                  OPTIONAL { ?collection (sosa:hasMember|geojson:features)+ $this ; sosa:observedProperty ?prop }\n              }\n              GROUP BY ?prop\n              HAVING (count(?prop) < 1)\n          \") ]\n  \tMessage: sosa:observedProperty is required\n  "
-            },
-            {
-              "shaclFile": "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl",
-              "focusNodes": {
-                "<https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testRequiredTime>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testFeatureOfInterest>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>": {
-                  "nodes": [
-                    "_:N5f8e17b030d645e8ae3bce49a3cb9c54"
-                  ]
-                },
-                "<https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testResult>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: _:N5f8e17b030d645e8ae3bce49a3cb9c54\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*\n"
-            },
-            {
-              "op": "shacl-report",
-              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
-              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
-              "isError": false,
-              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
-            },
-            {
-              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
-              "focusNodes": {
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
-                },
-                "geojson:FeatureShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:first": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
-            },
-            {
-              "op": "shacl-report",
-              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
-              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
-              "isError": false,
-              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
-            },
-            {
-              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
-              "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
-                },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
-                "geojson:FeatureShape": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "source": {
-        "type": "EXAMPLE",
-        "requireFail": false,
-        "filename": "build/tests/hosted/seadots/swedish-DT-simulations-output/example_3_1.json",
-        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/swedish-DT-simulations-output/example_3_1.json",
-        "exampleIndex": 3,
-        "snippetIndex": 1,
-        "language": "application/json"
-      },
-      "result": true,
-      "sections": [
-        {
-          "name": "FILES",
-          "title": "Files",
-          "entries": [
-            {
-              "isError": false,
-              "message": "Using examples/eurostat-nuts-regions.geoparquet-header.json from examples"
-            },
-            {
-              "op": "jsonld-uplift",
-              "isError": false,
-              "message": "JSON-LD context is present - uplifting"
-            },
-            {
-              "op": "jsonld-create",
-              "filename": "example_3_1.jsonld",
-              "isError": false,
-              "message": "Output JSON-LD example_3_1.jsonld created"
-            },
-            {
-              "op": "ttl-create",
-              "empty": false,
-              "filename": "example_3_1.ttl",
-              "size": 307,
-              "isError": false,
-              "message": "Output Turtle example_3_1.ttl created"
             }
           ]
         },
@@ -273,36 +89,36 @@
             {
               "shaclFile": "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl",
               "focusNodes": {
-                "<https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testRequiredTime>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/sosa/#testFeatureOfInterest>": {
+                "<https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>": {
                   "nodes": []
                 },
+                "<https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>": {
+                  "nodes": []
+                },
                 "<https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/sosa/#testResult>": {
+                "<https://www.ogc.org/rules/sosa/#testRequiredTime>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>": {
+                "<https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>": {
                   "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testFeatureOfInterest>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testResult>": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -314,24 +130,24 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:FeatureShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -343,7 +159,10 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
+                "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureCollectionShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
@@ -352,18 +171,15 @@
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": []
-                },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n"
             }
           ]
         }
@@ -372,8 +188,8 @@
   ],
   "globalErrors": {},
   "counts": {
-    "total": 2,
+    "total": 1,
     "passed": 1,
-    "failed": 1
+    "failed": 0
   }
 }

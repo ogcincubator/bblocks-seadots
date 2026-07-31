@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "1.0",
-  "dateOfLastChange": "2026-05-28",
+  "dateOfLastChange": "2026-07-31",
   "dependsOn": [
     "ogc.hosted.seadots.ontology",
     "ogc.ogc-utils.iri-or-curie"
@@ -45,16 +45,19 @@
           "language": "json",
           "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/property-relationship/examples/minimal.json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_1_1.json",
+          "sizeBytes": 177,
           "code": "{\n  \"fromProperty\": \"utsira:fisheries-production\",\n  \"toProperty\": \"utsira:number-of-turbines\",\n  \"weight\": {\n    \"value\": 0.5\n  },\n  \"model\": {\n    \"id\": \"crossImpact-v1\"\n  }\n}"
         },
         {
           "language": "jsonld",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_1_1.jsonld",
+          "sizeBytes": 386,
           "code": "{\n  \"@context\": [\n    {\n      \"utsira\": \"https://example.org/seadots/utsira/\"\n    },\n    \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld\"\n  ],\n  \"fromProperty\": \"utsira:fisheries-production\",\n  \"toProperty\": \"utsira:number-of-turbines\",\n  \"weight\": {\n    \"value\": 0.5\n  },\n  \"model\": {\n    \"id\": \"crossImpact-v1\"\n  }\n}"
         },
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_1_1.ttl",
+          "sizeBytes": 535,
           "code": "@prefix dct: <http://purl.org/dc/terms/> .\n@prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix qudt: <http://qudt.org/schema/qudt/> .\n@prefix utsira: <https://example.org/seadots/utsira/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] prov:wasAttributedTo [ dct:identifier \"crossImpact-v1\" ] ;\n    prop-rel:fromProperty utsira:fisheries-production ;\n    prop-rel:hasWeight [ qudt:numericValue 5e-01 ] ;\n    prop-rel:toProperty utsira:number-of-turbines .\n\n"
         }
       ],
@@ -70,16 +73,19 @@
           "language": "json",
           "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/property-relationship/examples/with-model.json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_2_1.json",
+          "sizeBytes": 330,
           "code": "{\n  \"type\": \"PropertyRelationship\",\n  \"fromProperty\": \"utsira:fisheries-production\",\n  \"toProperty\": \"utsira:area-use-by-wind-park\",\n  \"weight\": {\n    \"value\": -0.5\n  },\n  \"model\": {\n    \"id\": \"utsira:crossImpact-v1\",\n    \"name\": \"Cross-Impact Analysis Model\",\n    \"uri\": \"https://example.org/seadots/models/crossImpact-v1\"\n  }\n}\n"
         },
         {
           "language": "jsonld",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_2_1.jsonld",
+          "sizeBytes": 538,
           "code": "{\n  \"@context\": [\n    {\n      \"utsira\": \"https://example.org/seadots/utsira/\"\n    },\n    \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld\"\n  ],\n  \"type\": \"PropertyRelationship\",\n  \"fromProperty\": \"utsira:fisheries-production\",\n  \"toProperty\": \"utsira:area-use-by-wind-park\",\n  \"weight\": {\n    \"value\": -0.5\n  },\n  \"model\": {\n    \"id\": \"utsira:crossImpact-v1\",\n    \"name\": \"Cross-Impact Analysis Model\",\n    \"uri\": \"https://example.org/seadots/models/crossImpact-v1\"\n  }\n}"
         },
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_2_1.ttl",
+          "sizeBytes": 790,
           "code": "@prefix dct: <http://purl.org/dc/terms/> .\n@prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix qudt: <http://qudt.org/schema/qudt/> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix utsira: <https://example.org/seadots/utsira/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/seadots/models/crossImpact-v1> rdfs:label \"Cross-Impact Analysis Model\" ;\n    dct:identifier \"utsira:crossImpact-v1\" .\n\n[] a prop-rel:PropertyRelationship ;\n    prov:wasAttributedTo <https://example.org/seadots/models/crossImpact-v1> ;\n    prop-rel:fromProperty utsira:fisheries-production ;\n    prop-rel:hasWeight [ qudt:numericValue -5e-01 ] ;\n    prop-rel:toProperty utsira:area-use-by-wind-park .\n\n"
         }
       ],
@@ -95,16 +101,19 @@
           "language": "json",
           "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/property-relationship/examples/with-experiment.json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_3_1.json",
+          "sizeBytes": 551,
           "code": "{\n  \"type\": \"PropertyRelationship\",\n  \"id\": \"utsira:runs/e7c5de87-940b-458c-b9b2-1bd000ec4328\",\n  \"fromProperty\": \"utsira:number-of-jobs\",\n  \"toProperty\": \"utsira:bird-tourism\",\n  \"weight\": {\n    \"value\": 0.52\n  },\n  \"model\": {\n    \"id\": \"utsira:crossImpact-v1\",\n    \"name\": \"Cross-Impact Analysis Model\",\n    \"uri\": \"https://example.org/seadots/models/crossImpact-v1\"\n  },\n  \"experiment\": {\n    \"id\": \"utsira:exp-2024-01\",\n    \"name\": \"Utsira Wind Farm Impact Assessment\",\n    \"start\": \"2024-01-15T08:00:00Z\",\n    \"end\": \"2024-01-15T17:30:00Z\"\n  }\n}\n"
         },
         {
           "language": "jsonld",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_3_1.jsonld",
+          "sizeBytes": 759,
           "code": "{\n  \"@context\": [\n    {\n      \"utsira\": \"https://example.org/seadots/utsira/\"\n    },\n    \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/property-relationship/context.jsonld\"\n  ],\n  \"type\": \"PropertyRelationship\",\n  \"id\": \"utsira:runs/e7c5de87-940b-458c-b9b2-1bd000ec4328\",\n  \"fromProperty\": \"utsira:number-of-jobs\",\n  \"toProperty\": \"utsira:bird-tourism\",\n  \"weight\": {\n    \"value\": 0.52\n  },\n  \"model\": {\n    \"id\": \"utsira:crossImpact-v1\",\n    \"name\": \"Cross-Impact Analysis Model\",\n    \"uri\": \"https://example.org/seadots/models/crossImpact-v1\"\n  },\n  \"experiment\": {\n    \"id\": \"utsira:exp-2024-01\",\n    \"name\": \"Utsira Wind Farm Impact Assessment\",\n    \"start\": \"2024-01-15T08:00:00Z\",\n    \"end\": \"2024-01-15T17:30:00Z\"\n  }\n}"
         },
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/property-relationship/example_3_1.ttl",
+          "sizeBytes": 1128,
           "code": "@prefix dct: <http://purl.org/dc/terms/> .\n@prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix qudt: <http://qudt.org/schema/qudt/> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix utsira: <https://example.org/seadots/utsira/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/seadots/utsira/runs/e7c5de87-940b-458c-b9b2-1bd000ec4328> a prop-rel:PropertyRelationship ;\n    prov:wasAttributedTo <https://example.org/seadots/models/crossImpact-v1> ;\n    prov:wasGeneratedBy [ rdfs:label \"Utsira Wind Farm Impact Assessment\" ;\n            dct:identifier \"utsira:exp-2024-01\" ;\n            prov:endedAtTime \"2024-01-15T17:30:00+00:00\"^^xsd:dateTime ;\n            prov:startedAtTime \"2024-01-15T08:00:00+00:00\"^^xsd:dateTime ] ;\n    prop-rel:fromProperty utsira:number-of-jobs ;\n    prop-rel:hasWeight [ qudt:numericValue 5.2e-01 ] ;\n    prop-rel:toProperty utsira:bird-tourism .\n\n<https://example.org/seadots/models/crossImpact-v1> rdfs:label \"Cross-Impact Analysis Model\" ;\n    dct:identifier \"utsira:crossImpact-v1\" .\n\n"
         }
       ],

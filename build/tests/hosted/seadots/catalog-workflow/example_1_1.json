@@ -1,7 +1,7 @@
 {
   "@context": [
     "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
-    "../context.jsonld"
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld"
   ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
   "type": "Feature",
@@ -24,10 +24,10 @@
     "applicationPackage": "../../catalog-application-package/examples/application-package.json",
     "inputs": [
       {
-        "profileId": "ogc.hosted.seadots.catalog-input",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": true,
-        "role": "catalog-input",
-        "description": "Generic STAC input item accepted by this workflow."
+        "role": "input",
+        "description": "Generic STAC catalog data item accepted by this workflow."
       },
       {
         "profileId": "ogc.hosted.seadots.area-of-interest",
@@ -44,10 +44,10 @@
     ],
     "outputs": [
       {
-        "profileId": "ogc.hosted.seadots.catalog-output",
+        "profileId": "ogc.hosted.seadots.catalog-data",
         "required": true,
-        "role": "catalog-output",
-        "description": "Generic STAC output item produced by this workflow."
+        "role": "output",
+        "description": "Generic STAC catalog data item produced by this workflow."
       },
       {
         "profileId": "ogc.hosted.seadots.reef-effect-output",

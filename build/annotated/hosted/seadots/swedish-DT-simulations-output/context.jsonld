@@ -7,13 +7,17 @@
     },
     "resultTime": {
       "@id": "sosa:resultTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      "@type": "xsd:dateTime"
     },
     "result": "sosa:hasResult",
     "Datastream": "sta:Datastream",
     "FeatureOfInterest": "sosa:hasFeatureOfInterest",
     "parameters": {
       "@context": {
+        "source": {
+          "@id": "dcterms:source",
+          "@type": "@id"
+        },
         "sourceFormat": "dcterms:format",
         "columnCount": "schema:numberOfColumns",
         "rowCount": "schema:numberOfItems",
@@ -25,20 +29,54 @@
     "encoding": "schema:encodingFormat",
     "source": {
       "@context": {
+        "href": {
+          "@id": "dcterms:references",
+          "@type": "@id"
+        },
         "sourceFormat": "dcterms:format",
         "rowCount": "schema:numberOfItems",
-        "columnCount": "schema:numberOfColumns"
+        "columnCount": "schema:numberOfColumns",
+        "note": "schema:comment"
       },
-      "@id": "dcterms:source",
-      "@type": "@id"
+      "@id": "dcterms:source"
     },
     "parquetSchema": {
       "@context": {
-        "type": "@type"
+        "name": "csvw:name",
+        "type": "csvw:datatype",
+        "nullable": "https://geoparquet.org/schema#nullable",
+        "description": "dcterms:description",
+        "propertyUrl": {
+          "@id": "csvw:propertyUrl",
+          "@type": "@id"
+        }
       },
-      "@id": "https://geoparquet.org/schema"
+      "@id": "https://geoparquet.org/schema",
+      "@container": "@list"
     },
-    "geo": "https://geoparquet.org/metadata",
+    "geo": {
+      "@context": {
+        "version": "schema:version",
+        "primary_column": "https://geoparquet.org/metadata#primary_column",
+        "columns": {
+          "@context": {
+            "geometry_types": "https://geoparquet.org/metadata#geometry_types",
+            "crs": {
+              "@context": {
+                "type": "csvw:datatype"
+              },
+              "@id": "https://geoparquet.org/metadata#crs"
+            },
+            "edges": "https://geoparquet.org/metadata#edges",
+            "orientation": "https://geoparquet.org/metadata#orientation",
+            "bbox": "https://geoparquet.org/metadata#bbox",
+            "covering": "https://geoparquet.org/metadata#covering"
+          },
+          "@id": "https://geoparquet.org/metadata#columns"
+        }
+      },
+      "@id": "https://geoparquet.org/metadata"
+    },
     "PhotonFluxDensity": "http://purl.oclc.org/NET/ssnx/qu/dim#PhotonFluxDensity",
     "implements": {
       "@id": "http://www.w3.org/ns/ssn/implements",
@@ -46,7 +84,7 @@
     },
     "invalidatedAtTime": {
       "@id": "http://www.w3.org/ns/prov#invalidatedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      "@type": "xsd:dateTime"
     },
     "MultiLineString": "http://www.opengis.net/ont/sf#MultiLineString",
     "Attachable": "http://purl.org/linked-data/cube#Attachable",
@@ -61,7 +99,7 @@
     "versionInfo": "http://www.w3.org/2002/07/owl#versionInfo",
     "generatedAtTime": {
       "@id": "http://www.w3.org/ns/prov#generatedAtTime",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      "@type": "xsd:dateTime"
     },
     "example": "http://www.w3.org/2004/02/skos/core#example",
     "Slice": "http://purl.org/linked-data/cube#Slice",
@@ -178,7 +216,7 @@
     "MassPerTimePerArea": "http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea",
     "numericDuration": {
       "@id": "http://www.w3.org/2006/time#numericDuration",
-      "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+      "@type": "xsd:decimal"
     },
     "ElectricConductivity": "http://purl.oclc.org/NET/ssnx/qu/dim#ElectricConductivity",
     "Temperature": "http://purl.oclc.org/NET/ssnx/qu/dim#Temperature",
@@ -288,7 +326,7 @@
     },
     "order": {
       "@id": "http://purl.org/linked-data/cube#order",
-      "@type": "http://www.w3.org/2001/XMLSchema#int"
+      "@type": "xsd:int"
     },
     "hasGeometry": {
       "@id": "http://www.opengis.net/ont/geosparql#hasGeometry",
@@ -309,7 +347,7 @@
     "Molality": "http://purl.oclc.org/NET/ssnx/qu/dim#Molality",
     "inXSDDateTimeStamp": {
       "@id": "http://www.w3.org/2006/time#inXSDDateTimeStamp",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+      "@type": "xsd:dateTimeStamp"
     },
     "MeasureProperty": "http://purl.org/linked-data/cube#MeasureProperty",
     "PropertyKind": "http://purl.oclc.org/NET/ssnx/qu/qu#PropertyKind",
@@ -380,7 +418,7 @@
     },
     "inXSDDate": {
       "@id": "http://www.w3.org/2006/time#inXSDDate",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
+      "@type": "xsd:date"
     },
     "GFI_DomainFeature": "http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#GFI_DomainFeature",
     "Actuation": "sosa:Actuation",
@@ -431,12 +469,16 @@
     "schema.name": "schema:name",
     "QuantityKind": "http://qudt.org/schema/qudt/QuantityKind",
     "id": "@id",
+    "type": "@type",
     "ObservedProperty": "sosa:observedProperty",
     "sosa": "http://www.w3.org/ns/sosa/",
     "sta": "http://www.opengis.net/def/ont/sensorthings/",
     "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "geojson": "https://purl.org/geojson/vocab#",
+    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "@version": 1.1
   }
 }

@@ -1,0 +1,233 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.catalog-data-tabular - SeaDOTs Catalog Data Tabular",
+  "bblockName": "SeaDOTs Catalog Data Tabular",
+  "bblockId": "ogc.hosted.seadots.catalog-data-tabular",
+  "generated": "2026-07-31T22:09:01.186908+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/catalog-data-tabular/example_1_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/catalog-data-tabular.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 129,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": false,
+              "exception": "ValidationError",
+              "errorMessage": "{'id': 'https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences', 'type': 'Feature', 'itemType': 'record', 'stac_version': '1.0.0', 'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json', 'https://stac-extensions.github.io/cf/v0.2.0/schema.json', 'https://stac-extensions.github.io/prov/v1.0.0/schema.json'], 'geometry': {'type': 'Polygon', 'coordinates': [[[3.0, 56.0], [9.0, 56.0], [9.0, 61.0], [3.0, 61.0], [3.0, 56.0]]]}, 'bbox': [3.0, 56.0, 9.0, 61.0], 'properties': {'title': 'North Sea cod occurrence table (synthetic)', 'description': 'Synthetic SeaDOTs catalog record for a GeoParquet tabular dataset of Atlantic cod (Gadus morhua) occurrence records in the North Sea. All values are synthetic documentation data; this record does not represent a real dataset.', 'datetime': '2026-06-11T00:00:00Z', 'start_datetime': '2024-01-01T00:00:00Z', 'end_datetime': '2024-12-31T00:00:00Z', 'keywords': ['SeaDOTs', 'tabular', 'GeoParquet', 'occurrence', 'cod', 'Gadus morhua', 'North Sea', 'ICES'], 'license': 'CC-BY-4.0', 'role': 'data', 'table:columns': [{'name': 'occurrence_id', 'description': 'Unique identifier for the occurrence record.', 'type': 'string'}, {'name': 'species', 'description': 'Scientific species name.', 'type': 'string'}, {'name': 'longitude', 'description': 'Decimal longitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_east'}, {'name': 'latitude', 'description': 'Decimal latitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_north'}, {'name': 'depth', 'description': 'Observation depth below sea surface.', 'type': 'float32', 'unit': 'm'}, {'name': 'sea_water_temperature', 'description': 'In-situ sea water temperature at the observation depth.', 'type': 'float32', 'unit': 'degrees_C'}, {'name': 'count', 'description': 'Number of individuals recorded in the observation event.', 'type': 'int32', 'unit': '1'}, {'name': 'geometry', 'description': 'Point geometry of the observation location (WGS84, GeoParquet encoding).', 'type': 'geometry'}], 'table:primary_geometry': 'geometry', 'table:row_count': 42150}, 'assets': {'geoparquet': {'href': 'https://example.org/seadots/north-sea-cod-occurrences.parquet', 'type': 'application/x-parquet', 'title': 'GeoParquet occurrence table', 'roles': ['data']}}, 'links': [{'rel': 'describedby', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular bblock'}, {'rel': 'profile', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular profile'}]} is not valid under any of the given schemas",
+              "isError": true,
+              "message": "ValidationError: {'id': 'https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences', 'type': 'Feature', 'itemType': 'record', 'stac_version': '1.0.0', 'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json', 'https://stac-extensions.github.io/cf/v0.2.0/schema.json', 'https://stac-extensions.github.io/prov/v1.0.0/schema.json'], 'geometry': {'type': 'Polygon', 'coordinates': [[[3.0, 56.0], [9.0, 56.0], [9.0, 61.0], [3.0, 61.0], [3.0, 56.0]]]}, 'bbox': [3.0, 56.0, 9.0, 61.0], 'properties': {'title': 'North Sea cod occurrence table (synthetic)', 'description': 'Synthetic SeaDOTs catalog record for a GeoParquet tabular dataset of Atlantic cod (Gadus morhua) occurrence records in the North Sea. All values are synthetic documentation data; this record does not represent a real dataset.', 'datetime': '2026-06-11T00:00:00Z', 'start_datetime': '2024-01-01T00:00:00Z', 'end_datetime': '2024-12-31T00:00:00Z', 'keywords': ['SeaDOTs', 'tabular', 'GeoParquet', 'occurrence', 'cod', 'Gadus morhua', 'North Sea', 'ICES'], 'license': 'CC-BY-4.0', 'role': 'data', 'table:columns': [{'name': 'occurrence_id', 'description': 'Unique identifier for the occurrence record.', 'type': 'string'}, {'name': 'species', 'description': 'Scientific species name.', 'type': 'string'}, {'name': 'longitude', 'description': 'Decimal longitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_east'}, {'name': 'latitude', 'description': 'Decimal latitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_north'}, {'name': 'depth', 'description': 'Observation depth below sea surface.', 'type': 'float32', 'unit': 'm'}, {'name': 'sea_water_temperature', 'description': 'In-situ sea water temperature at the observation depth.', 'type': 'float32', 'unit': 'degrees_C'}, {'name': 'count', 'description': 'Number of individuals recorded in the observation event.', 'type': 'int32', 'unit': '1'}, {'name': 'geometry', 'description': 'Point geometry of the observation location (WGS84, GeoParquet encoding).', 'type': 'geometry'}], 'table:primary_geometry': 'geometry', 'table:row_count': 42150}, 'assets': {'geoparquet': {'href': 'https://example.org/seadots/north-sea-cod-occurrences.parquet', 'type': 'application/x-parquet', 'title': 'GeoParquet occurrence table', 'roles': ['data']}}, 'links': [{'rel': 'describedby', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular bblock'}, {'rel': 'profile', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular profile'}]} is not valid under any of the given schemas\n\nFailed validating 'oneOf' in schema['allOf'][0]['allOf'][2]['allOf'][1]:\n    {'$id': 'https://stac-extensions.github.io/cf/v0.2.0/schema.json#',\n     '$schema': 'http://json-schema.org/draft-07/schema#',\n     'definitions': {'cf_in_assets': {'properties': {'assets': {'not': {'additionalProperties': {'not': {'allOf': [{'required': ['cf:parameter']},\n                                                                                                                   {'$ref': '#/definitions/fields'}]}}}}},\n                                      'required': ['assets']},\n                     'fields': {'additionalProperties': False,\n                                'patternProperties': {'^(?!cf:)': {'$comment': 'Above, '\n                                                                               'change '\n                                                                               '`cf` '\n                                                                               'to '\n                                                                               'the '\n                                                                               'prefix '\n                                                                               'of '\n                                                                               'this '\n                                                                               'extension'}},\n                                'properties': {'cf:parameter': {'items': {'properties': {'name': {'minLength': 1,\n                                                                                                  'type': 'string'},\n                                                                                         'unit': {'type': 'string'}},\n                                                                          'required': ['name'],\n                                                                          'type': 'object'},\n                                                                'minItems': 1,\n                                                                'type': 'array'}},\n                                'type': 'object'},\n                     'forbid_fields': {'additionalProperties': False,\n                                       'patternProperties': {'^(?!cf:)': {}}}},\n     'description': 'STAC CF Extension for STAC Items and STAC '\n                    'Collections.',\n     'oneOf': [{'$comment': 'Schema for Collections',\n                'allOf': [{'$ref': '#/definitions/fields'}],\n                'properties': {'item_assets': {'additionalProperties': {'$ref': '#/definitions/fields'},\n                                               'type': 'object'},\n                               'summaries': {'oneOf': [{'$ref': '#/definitions/fields'},\n                                                       {'$comment': 'JSON '\n                                                                    'Schema '\n                                                                    'summary',\n                                                        'additionalProperties': False,\n                                                        'patternProperties': {'^(?!cf:)': {'$comment': 'Above, '\n                                                                                                       'change '\n                                                                                                       '`cf` '\n                                                                                                       'to '\n                                                                                                       'the '\n                                                                                                       'prefix '\n                                                                                                       'of '\n                                                                                                       'this '\n                                                                                                       'extension'}},\n                                                        'properties': {'cf:parameter': {'properties': {'type': {'const': 'array'}},\n                                                                                        'type': 'object'}},\n                                                        'type': 'object'}]},\n                               'type': {'const': 'Collection'}},\n                'required': ['type'],\n                'type': 'object'},\n               {'$comment': 'Schema for Items',\n                'allOf': [{'$ref': '#/definitions/cf_in_assets'}],\n                'properties': {'properties': {'$ref': '#/definitions/fields'},\n                               'type': {'const': 'Feature'}},\n                'required': ['type'],\n                'type': 'object'}],\n     'properties': {'assets': {'additionalProperties': {'$ref': '#/definitions/fields'},\n                               'type': 'object'},\n                    'stac_extensions': {'contains': {'const': 'https://stac-extensions.github.io/cf/v0.2.0/schema.json'},\n                                        'type': 'array'}},\n     'required': ['stac_extensions'],\n     'title': 'CF Extension',\n     'type': 'object'}\n\nOn instance:\n    {'assets': {'geoparquet': {'href': 'https://example.org/seadots/north-sea-cod-occurrences.parquet',\n                               'roles': ['data'],\n                               'title': 'GeoParquet occurrence table',\n                               'type': 'application/x-parquet'}},\n     'bbox': [3.0, 56.0, 9.0, 61.0],\n     'geometry': {'coordinates': [[[3.0, 56.0],\n                                   [9.0, 56.0],\n                                   [9.0, 61.0],\n                                   [3.0, 61.0],\n                                   [3.0, 56.0]]],\n                  'type': 'Polygon'},\n     'id': 'https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences',\n     'itemType': 'record',\n     'links': [{'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular',\n                'rel': 'describedby',\n                'title': 'SeaDOTs Catalog Data Tabular bblock',\n                'type': 'application/schema+json'},\n               {'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular',\n                'rel': 'profile',\n                'title': 'SeaDOTs Catalog Data Tabular profile',\n                'type': 'application/schema+json'}],\n     'properties': {'datetime': '2026-06-11T00:00:00Z',\n                    'description': 'Synthetic SeaDOTs catalog record for a '\n                                   'GeoParquet tabular dataset of Atlantic '\n                                   'cod (Gadus morhua) occurrence records '\n                                   'in the North Sea. All values are '\n                                   'synthetic documentation data; this '\n                                   'record does not represent a real '\n                                   'dataset.',\n                    'end_datetime': '2024-12-31T00:00:00Z',\n                    'keywords': ['SeaDOTs',\n                                 'tabular',\n                                 'GeoParquet',\n                                 'occurrence',\n                                 'cod',\n                                 'Gadus morhua',\n                                 'North Sea',\n                                 'ICES'],\n                    'license': 'CC-BY-4.0',\n                    'role': 'data',\n                    'start_datetime': '2024-01-01T00:00:00Z',\n                    'table:columns': [{'description': 'Unique identifier '\n                                                      'for the occurrence '\n                                                      'record.',\n                                       'name': 'occurrence_id',\n                                       'type': 'string'},\n                                      {'description': 'Scientific species '\n                                                      'name.',\n                                       'name': 'species',\n                                       'type': 'string'},\n                                      {'description': 'Decimal longitude '\n                                                      'of the observation '\n                                                      '(WGS84).',\n                                       'name': 'longitude',\n                                       'type': 'float64',\n                                       'unit': 'degrees_east'},\n                                      {'description': 'Decimal latitude of '\n                                                      'the observation '\n                                                      '(WGS84).',\n                                       'name': 'latitude',\n                                       'type': 'float64',\n                                       'unit': 'degrees_north'},\n                                      {'description': 'Observation depth '\n                                                      'below sea surface.',\n                                       'name': 'depth',\n                                       'type': 'float32',\n                                       'unit': 'm'},\n                                      {'description': 'In-situ sea water '\n                                                      'temperature at the '\n                                                      'observation depth.',\n                                       'name': 'sea_water_temperature',\n                                       'type': 'float32',\n                                       'unit': 'degrees_C'},\n                                      {'description': 'Number of '\n                                                      'individuals '\n                                                      'recorded in the '\n                                                      'observation event.',\n                                       'name': 'count',\n                                       'type': 'int32',\n                                       'unit': '1'},\n                                      {'description': 'Point geometry of '\n                                                      'the observation '\n                                                      'location (WGS84, '\n                                                      'GeoParquet '\n                                                      'encoding).',\n                                       'name': 'geometry',\n                                       'type': 'geometry'}],\n                    'table:primary_geometry': 'geometry',\n                    'table:row_count': 42150,\n                    'title': 'North Sea cod occurrence table (synthetic)'},\n     'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json',\n                         'https://stac-extensions.github.io/cf/v0.2.0/schema.json',\n                         'https://stac-extensions.github.io/prov/v1.0.0/schema.json'],\n     'stac_version': '1.0.0',\n     'type': 'Feature'}"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
+              "focusNodes": {
+                "rec:testAllVarsInTemplate": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n - Shape rec:testAllVarsInTemplate: *none*\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/catalog-data-tabular/example_2_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular/example_2_1.json",
+        "exampleIndex": 2,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/harvest-timeseries-scen-m3-tabular.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_2_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_2_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_2_1.ttl",
+              "size": 76,
+              "isError": false,
+              "message": "Output Turtle example_2_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": false,
+              "exception": "ValidationError",
+              "errorMessage": "'Not supplied' does not match '^[\\\\w\\\\-\\\\.\\\\+]+$'",
+              "isError": true,
+              "message": "ValidationError: 'Not supplied' does not match '^[\\\\w\\\\-\\\\.\\\\+]+$'\n\nFailed validating 'pattern' in schema[0]['allOf'][1]['allOf'][2]['properties']['properties']['allOf'][0]['allOf'][5]['properties']['license']:\n    {'pattern': '^[\\\\w\\\\-\\\\.\\\\+]+$', 'type': 'string'}\n\nOn instance['properties']['license']:\n    'Not supplied'"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
+              "focusNodes": {
+                "rec:testAllVarsInTemplate": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n - Shape rec:testAllVarsInTemplate: *none*\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  }
+}

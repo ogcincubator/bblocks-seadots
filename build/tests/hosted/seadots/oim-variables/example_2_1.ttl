@@ -1,0 +1,488 @@
+@prefix dapsim: <https://w3id.org/indicators/marine/dapsim/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix im: <https://w3id.org/indicators/marine/indicator-model/> .
+@prefix ind: <https://w3id.org/indicators/marine/> .
+@prefix indo: <https://w3id.org/indicators/marine/obs/> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sdn: <https://vocab.nerc.ac.uk/collection/SDN/current/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dapsim:causallyPrecedes a rdf:Property ;
+    rdfs:label "causally precedes"@en ;
+    skos:definition "Links DAPSIM elements in the recommended causal order from Drivers and Activities through Pressures and State to Impacts and Measures."@en .
+
+dapsim:hasDAPSIMRole a rdf:Property ;
+    rdfs:label "has DAPSIM role"@en ;
+    rdfs:domain sosa:ObservableProperty ;
+    rdfs:range dapsim:DAPSIMElement .
+
+im:hasComponent a rdf:Property ;
+    rdfs:label "has indicator component"@en ;
+    rdfs:domain sosa:ObservableProperty ;
+    rdfs:range im:IndicatorComponent .
+
+im:hasFormula a rdf:Property ;
+    rdfs:label "has formula"@en ;
+    skos:definition "Plain-text or machine-readable expression used to compute an indicator or variable."@en .
+
+im:hasPipelineStage a rdf:Property ;
+    rdfs:label "has pipeline stage"@en ;
+    rdfs:domain sosa:ObservableProperty ;
+    rdfs:range im:PipelineStage .
+
+im:requiresValidation a rdf:Property ;
+    rdfs:label "requires validation"@en ;
+    skos:definition "Links an indicator to a validation requirement or SHACL shape."@en .
+
+im:usesVocabulary a rdf:Property ;
+    rdfs:label "uses vocabulary"@en ;
+    skos:definition "External controlled vocabulary used by the model for semantic harmony."@en .
+
+ind:catalog a dcat:Catalog ;
+    rdfs:label "SEADOTS Resource Catalog"@en ;
+    dcterms:description "Main catalog for SEADOTS indicators and conceptual models."@en ;
+    dcterms:hasPart ind:dapsim-scheme ;
+    dcterms:title "SEADOTS Resource Catalog"@en ;
+    dcat:dataset ind:dapsim-scheme .
+
+im:biomass-density-assessment-protocol a skos:Concept,
+        im:AssessmentProtocol ;
+    skos:broader im:AssessmentProtocol ;
+    skos:definition "Compute taxon-indexed density from harmonised observations, preserve provenance, compare against thresholds where agreed, and expose uncertainty and validation status."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Assessment protocol for benthic biomass density"@en .
+
+im:biomass-density-data-availability a skos:Concept,
+        im:PipelineStage ;
+    skos:broader im:PipelineStage ;
+    skos:definition "Map raw survey observations to density-estimation inputs with controlled terms for taxa, samples, gear, station, depth and weight."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Data availability"@en .
+
+im:biomass-density-data-management a skos:Concept,
+        im:DataManagement ;
+    dcterms:conformsTo <https://www.go-fair.org/fair-principles/> ;
+    skos:broader im:DataManagement ;
+    skos:definition "Indicator data must be findable, accessible, interoperable and reusable, with source API links, licence, provenance, temporal scope, geometry, vocabulary mappings and validation reports."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Data management for benthic biomass density"@en .
+
+im:biomass-density-evaluation-result a skos:Concept,
+        im:EvaluationResult ;
+    dcterms:conformsTo sosa:Observation ;
+    skos:broader im:EvaluationResult ;
+    skos:definition "An evaluation result should carry density values, units, feature of interest, observation time, uncertainty, data-quality status and threshold comparison where thresholds exist."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Evaluation result for benthic biomass density"@en .
+
+im:biomass-density-model-binding a skos:Concept,
+        im:PipelineStage ;
+    skos:broader im:PipelineStage ;
+    skos:definition "Bind MAREANO/IMR observations to standard assessment templates and to the SeaDOTs `baseline-benthic-biomass-density` property."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Model binding"@en ;
+    prov:used indo:benthic-biomass-density-imr-baseline,
+        indo:benthic-biomass-density-mareano .
+
+im:biomass-density-model-definition a skos:Concept,
+        im:PipelineStage ;
+    skos:broader im:PipelineStage ;
+    skos:definition "Define variables, equations, units and semantic identifiers for biomass-density computation."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Model definition"@en ;
+    im:hasFormula "D_pre,i = biomass_i / sampled_area" .
+
+im:biomass-density-monitoring-methodology a skos:Concept,
+        im:MonitoringMethodology ;
+    skos:broader im:MonitoringMethodology ;
+    skos:definition "Accept source observations from MAREANO, IMR or compatible survey programmes, with scientific name, sample identifier, station/locality, equipment/procedure, depth, count and weight mapped to controlled vocabularies."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Monitoring methodology for benthic biomass density"@en ;
+    im:usesVocabulary dwc:individualCount,
+        dwc:materialSampleID,
+        dwc:scientificName,
+        sosa:usedProcedure,
+        sdn:cruise,
+        sdn:depthMax .
+
+im:biomass-density-policy-context a skos:Concept,
+        im:PolicyContext ;
+    rdfs:seeAlso <https://helcom.fi/baltic-sea-action-plan/> ;
+    skos:broader im:PolicyContext ;
+    skos:definition "Benthic biomass-density outputs support Baltic Sea Action Plan style ecosystem assessment and the traceability of routes from activity and pressure to environmental state and management measures."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Policy context for benthic biomass density"@en .
+
+im:biomass-density-scaling a skos:Concept,
+        im:PipelineStage ;
+    skos:broader im:PipelineStage ;
+    skos:definition "Deploy persistent building blocks and vocabularies for regional reuse across assessment units, taxa and time windows."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Scaling"@en .
+
+im:biomass-density-scientific-concept a skos:Concept,
+        im:ScientificConcept ;
+    qudt:hasQuantityKind quantitykind:SurfaceDensity ;
+    skos:broader im:ScientificConcept ;
+    skos:definition "Benthic biomass density is biomass per seabed area for a taxon or assemblage, used as a baseline ecosystem-state variable."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Scientific concept for benthic biomass density"@en ;
+    schema:unitText "kg m-2" .
+
+im:biomass-density-test-execution a skos:Concept,
+        im:PipelineStage ;
+    skos:broader im:PipelineStage ;
+    skos:definition "Execute the building-block harness and sandbox validation so results are not black-box outputs."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Test execution"@en ;
+    prov:used <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr>,
+        <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano> .
+
+im:biomass-density-validation-shape a skos:Concept,
+        sh:NodeShape,
+        im:ValidationProtocol ;
+    rdfs:label "Benthic biomass-density validation shape"@en ;
+    skos:broader im:ValidationProtocol ;
+    skos:definition "Conceptual validation hook: observation features should identify the observed property, feature of interest, result value and unit before being accepted into an assessment pipeline."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Benthic biomass-density validation shape"@en ;
+    sh:property [ sh:hasValue indo:baseline-benthic-biomass-density ;
+            sh:minCount 1 ;
+            sh:path sosa:observedProperty ],
+        [ sh:minCount 1 ;
+            sh:path sosa:hasFeatureOfInterest ],
+        [ sh:minCount 1 ;
+            sh:path sosa:hasSimpleResult ] ;
+    sh:targetClass sosa:Observation .
+
+im:good-status-threshold-availability a skos:Concept,
+        dqv:Dimension ;
+    skos:broader im:biomass-density-threshold ;
+    skos:definition "Whether a regionally agreed and scientifically justified Good Status threshold is available for this indicator."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Good Status threshold availability"@en .
+
+im:offshore-renewable-energy-demand a skos:Concept,
+        dapsim:Driver ;
+    skos:broader dapsim:Driver,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "Societal and policy demand for offshore renewable energy that motivates marine infrastructure planning."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Offshore renewable energy demand"@en ;
+    dapsim:causallyPrecedes im:floating-wind-farm-development .
+
+dapsim:Activity a owl:Class,
+        skos:Concept ;
+    rdfs:label "Activity"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "A human activity or operational process that can produce pressures or collect evidence."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:floating-wind-farm-development ;
+    skos:prefLabel "Activity"@en .
+
+dapsim:Driver a owl:Class,
+        skos:Concept ;
+    rdfs:label "Driver"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "A societal or natural driver that motivates activities affecting the marine environment."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:offshore-renewable-energy-demand ;
+    skos:prefLabel "Driver"@en .
+
+dapsim:Impact a owl:Class,
+        skos:Concept ;
+    rdfs:label "Impact"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "A consequence of state change for ecosystems or society."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:reef-associated-biomass-impact ;
+    skos:prefLabel "Impact"@en .
+
+dapsim:Measure a owl:Class,
+        skos:Concept ;
+    rdfs:label "Measure"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "A management response, policy action, mitigation or monitoring measure."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:monitoring-and-adaptive-management ;
+    skos:prefLabel "Measure"@en .
+
+dapsim:Pressure a owl:Class,
+        skos:Concept ;
+    rdfs:label "Pressure"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "A direct pressure exerted on the ecosystem by an activity."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:hard-substrate-introduction ;
+    skos:prefLabel "Pressure"@en .
+
+im:AssessmentProtocol a owl:Class,
+        skos:Concept ;
+    rdfs:label "Assessment protocol"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-assessment-protocol ;
+    skos:prefLabel "Assessment protocol"@en .
+
+im:DataManagement a owl:Class,
+        skos:Concept ;
+    rdfs:label "Data management"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-data-management ;
+    skos:prefLabel "Data management"@en .
+
+im:EvaluationResult a owl:Class,
+        skos:Concept ;
+    rdfs:label "Evaluation result"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-evaluation-result ;
+    skos:prefLabel "Evaluation result"@en .
+
+im:MonitoringMethodology a owl:Class,
+        skos:Concept ;
+    rdfs:label "Monitoring or methodology"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-monitoring-methodology ;
+    skos:prefLabel "Monitoring or methodology"@en .
+
+im:PolicyContext a owl:Class,
+        skos:Concept ;
+    rdfs:label "Policy context"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-policy-context ;
+    skos:prefLabel "Policy context"@en .
+
+im:ScientificConcept a owl:Class,
+        skos:Concept ;
+    rdfs:label "Scientific concept"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-scientific-concept ;
+    skos:prefLabel "Scientific concept"@en .
+
+im:ThresholdValue a owl:Class,
+        skos:Concept ;
+    rdfs:label "Threshold value"@en ;
+    rdfs:subClassOf im:IndicatorComponent ;
+    skos:broader im:IndicatorComponent ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-threshold ;
+    skos:prefLabel "Threshold value"@en .
+
+im:ValidationProtocol a owl:Class,
+        skos:Concept ;
+    rdfs:label "Validation protocol"@en ;
+    skos:definition "A validation hook or rule set used to test whether indicator observations satisfy the conceptual model requirements."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-validation-shape ;
+    skos:prefLabel "Validation protocol"@en .
+
+im:biomass-density-threshold a skos:Concept,
+        im:ThresholdValue ;
+    rdf:value "threshold-to-be-defined-regionally" ;
+    skos:broader im:ThresholdValue ;
+    skos:definition "Regionally agreed Good Status threshold for benthic biomass density. The current SeaDOTs examples do not assert a threshold; this node records the requirement and can be specialised per assessment unit, habitat or taxon."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:good-status-threshold-availability ;
+    skos:prefLabel "Benthic biomass-density threshold placeholder"@en ;
+    dqv:inDimension im:good-status-threshold-availability .
+
+im:floating-wind-farm-development a skos:Concept,
+        dapsim:Activity ;
+    skos:broader dapsim:Activity,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "Planning, installation and operation of floating offshore wind infrastructure."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Floating wind farm development"@en ;
+    dapsim:causallyPrecedes im:hard-substrate-introduction .
+
+im:hard-substrate-introduction a skos:Concept,
+        dapsim:Pressure ;
+    skos:broader dapsim:Pressure,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "Introduction of submerged artificial hard substrate that changes available habitat and colonisation opportunity."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Hard-substrate introduction"@en ;
+    dapsim:causallyPrecedes im:benthic-biomass-density-state .
+
+im:monitoring-and-adaptive-management a skos:Concept,
+        dapsim:Measure ;
+    skos:broader dapsim:Measure,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "Measures that use transparent indicator results, thresholds and validation evidence to adapt monitoring or management."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Monitoring and adaptive management"@en .
+
+im:reef-associated-biomass-impact a skos:Concept,
+        dapsim:Impact ;
+    skos:broader dapsim:Impact,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "Estimated change in reef-associated biomass attributable to infrastructure and colonisation."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:prefLabel "Reef-associated biomass impact"@en ;
+    skos:related indo:floating-wind-reef-biomass-effect ;
+    prov:wasDerivedFrom indo:baseline-benthic-biomass-density,
+        indp:colonisation-time-factor,
+        indp:reef-aggregation-index,
+        indp:submerged-infrastructure-area ;
+    dapsim:causallyPrecedes im:monitoring-and-adaptive-management .
+
+im:benthic-biomass-density-state a skos:Concept,
+        dapsim:State ;
+    skos:broader dapsim:State,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:definition "State of benthic biomass per seabed area, indexed by taxon, area and time."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower indo:baseline-benthic-biomass-density ;
+    skos:prefLabel "Benthic biomass-density state"@en ;
+    skos:related indo:baseline-benthic-biomass-density ;
+    dapsim:causallyPrecedes im:reef-associated-biomass-impact ;
+    dapsim:hasDAPSIMRole dapsim:State .
+
+indo:baseline-benthic-biomass-density a skos:Concept,
+        dapsim:State ;
+    skos:broader im:benthic-biomass-density-state ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:scopeNote "In the DAPSIM model this is a State indicator: it describes ecosystem condition before installation or in a matched control area, and it can feed Impact indicators such as floating-wind reef biomass effect."@en ;
+    dapsim:hasDAPSIMRole dapsim:State ;
+    im:hasComponent im:biomass-density-assessment-protocol,
+        im:biomass-density-data-management,
+        im:biomass-density-evaluation-result,
+        im:biomass-density-monitoring-methodology,
+        im:biomass-density-policy-context,
+        im:biomass-density-scientific-concept,
+        im:biomass-density-threshold ;
+    im:hasFormula "D_pre,i = sum(weight_kg) / sum(sampled_area_m2), grouped by taxon i, area and time" ;
+    im:hasPipelineStage im:biomass-density-data-availability,
+        im:biomass-density-model-binding,
+        im:biomass-density-model-definition,
+        im:biomass-density-scaling,
+        im:biomass-density-test-execution ;
+    im:requiresValidation im:biomass-density-validation-shape ;
+    im:usesVocabulary qudt:QuantityValue,
+        quantitykind:SurfaceDensity,
+        dwc:individualCount,
+        dwc:materialSampleID,
+        dwc:scientificName,
+        sosa:hasSimpleResult,
+        sosa:usedProcedure,
+        sdn:cruise,
+        sdn:depthMax .
+
+dapsim:State a owl:Class,
+        skos:Concept ;
+    rdfs:label "State"@en ;
+    rdfs:subClassOf dapsim:DAPSIMElement ;
+    skos:broader dapsim:DAPSIMElement ;
+    skos:definition "An environmental state variable or indicator describing ecosystem condition."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:benthic-biomass-density-state ;
+    skos:prefLabel "State"@en .
+
+im:dapsim-biomass-density-conceptual-model a skos:Concept,
+        dcat:Dataset ;
+    rdfs:label "DAPSIM conceptual model for benthic biomass-density indicators"@en ;
+    dcterms:description "Conceptual TTL model for representing benthic biomass density as a transparent DAPSIM State indicator with HELCOM-style indicator components, FAIR semantic bindings, deterministic pipeline stages, validation hooks and policy context."@en ;
+    dcterms:references <https://dwc.tdwg.org/>,
+        <https://helcom.fi/baltic-sea-action-plan/>,
+        <https://vocab.nerc.ac.uk/>,
+        indo:baseline-benthic-biomass-density,
+        indo:benthic-biomass-density-imr-baseline,
+        indo:benthic-biomass-density-mareano,
+        <https://www.ices.dk/> ;
+    dcterms:source [ dcterms:description "User-provided recommendations document summarising DAPSIM alignment, HELCOM indicator components, FAIR semantics, deterministic workflows and validation protocols."@en ;
+            dcterms:title "DAPSIM Framework and Technical Indicator Requirements"@en ] ;
+    dcterms:title "DAPSIM conceptual model for benthic biomass-density indicators"@en ;
+    skos:definition "Conceptual model for representing benthic biomass density as a transparent DAPSIM State indicator with HELCOM-style components, FAIR semantic bindings, deterministic pipeline stages, validation hooks and policy context."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:benthic-biomass-density-state,
+        im:floating-wind-farm-development,
+        im:hard-substrate-introduction,
+        im:monitoring-and-adaptive-management,
+        im:offshore-renewable-energy-demand,
+        im:reef-associated-biomass-impact ;
+    skos:prefLabel "DAPSIM conceptual model for benthic biomass-density indicators"@en ;
+    dcat:keyword "DAPSIM",
+        "Digital Twin",
+        "FAIR",
+        "HELCOM",
+        "benthic biomass density",
+        "indicator" .
+
+im:PipelineStage a owl:Class,
+        skos:Concept ;
+    rdfs:label "Digital Twin indicator pipeline stage"@en ;
+    skos:definition "A deterministic workflow stage used to move an indicator from model definition to regional deployment."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:biomass-density-data-availability,
+        im:biomass-density-model-binding,
+        im:biomass-density-model-definition,
+        im:biomass-density-scaling,
+        im:biomass-density-test-execution ;
+    skos:prefLabel "Digital Twin indicator pipeline stage"@en .
+
+dapsim:DAPSIMElement a owl:Class,
+        skos:Concept ;
+    rdfs:label "DAPSIM element"@en ;
+    skos:definition "A causal-chain role in the DAPSIM framework: Driver, Activity, Pressure, State, Impact or Measure."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower dapsim:Activity,
+        dapsim:Driver,
+        dapsim:Impact,
+        dapsim:Measure,
+        dapsim:Pressure,
+        dapsim:State ;
+    skos:prefLabel "DAPSIM element"@en .
+
+im:IndicatorComponent a owl:Class,
+        skos:Concept ;
+    rdfs:label "Indicator component"@en ;
+    skos:definition "A transparent indicator component recommended by HELCOM-style indicator guidance."@en ;
+    skos:inScheme ind:dapsim-scheme ;
+    skos:narrower im:AssessmentProtocol,
+        im:DataManagement,
+        im:EvaluationResult,
+        im:MonitoringMethodology,
+        im:PolicyContext,
+        im:ScientificConcept,
+        im:ThresholdValue ;
+    skos:prefLabel "Indicator component"@en .
+
+ind:dapsim-scheme a skos:ConceptScheme ;
+    dcterms:isPartOf ind:catalog ;
+    skos:definition "A concept scheme for DAPSIM-aligned SeaDOTs indicator conceptual models, roles, components, pipeline stages and validation hooks."@en ;
+    skos:hasTopConcept dapsim:DAPSIMElement,
+        im:IndicatorComponent,
+        im:PipelineStage,
+        im:ValidationProtocol,
+        im:dapsim-biomass-density-conceptual-model ;
+    skos:prefLabel "SEADOTS DAPSIM Indicator Model Scheme"@en .
+

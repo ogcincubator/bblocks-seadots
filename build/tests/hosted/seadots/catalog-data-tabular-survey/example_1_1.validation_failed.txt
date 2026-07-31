@@ -1,0 +1,154 @@
+Validation report for ogc.hosted.seadots.catalog-data-tabular-survey - SeaDOTs Catalog Data Tabular Survey
+Generated 2026-07-31T22:09:02.904919+00:00
+=== Files ===
+Using examples/saltmarsh-perceptions-survey.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_1_1.jsonld created
+Output Turtle example_1_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+
+** Validation error **
+ValidationError: {'id': 'saltmarsh-perceptions-norway', 'type': 'Feature', 'itemType': 'record', 'stac_version': '1.0.0', 'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json', 'https://stac-extensions.github.io/cf/v0.2.0/schema.json'], 'properties': {'title': 'Saltmarsh perceptions survey (Norway)', 'description': 'Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.', 'datetime': '2024-03-01T00:00:00Z', 'role': 'data', 'license': 'CC BY-NC-SA 4.0', 'table:columns': [{'name': 'caseid', 'type': 'string', 'description': 'Respondent identifier'}, {'name': 'Country', 'type': 'string', 'description': 'Country of residence'}, {'name': 'Q1', 'type': 'string', 'description': 'Respondent age group'}, {'name': 'Q2', 'type': 'string', 'description': 'Respondent gender'}], 'table:primary_geometry': 'none', 'table:row_count': 5046, 'survey:studyTitle': 'Saltmarsh perceptions survey', 'survey:studyDescription': 'Monadic survey on attitudes toward saltmarsh management in Norway.', 'survey:variableMetadata': [{'variableName': 'Q1', 'label': 'Age group', 'questionText': 'What is your age group?', 'conceptUri': 'https://elsst.uk/terms/age', 'vocabularyUri': 'https://www.cessda.eu/cessda-vocabularies#age', 'ddi:variableDescription': 'Age group of the respondent'}, {'variableName': 'Q5_1', 'label': 'Environmental concern', 'questionText': 'How important is the protection of the environment to you?', 'conceptUri': 'https://elsst.uk/terms/environmental-concern', 'vocabularyUri': 'https://www.cessda.eu/cessda-vocabularies#environmental-attitudes', 'ddi:variableDescription': 'Likert-style attitude question'}], 'survey:controlledVocabulary': [{'scheme': 'ELSST', 'uri': 'https://elsst.uk/', 'label': 'European Language Social Science Thesaurus'}, {'scheme': 'CESSDA', 'uri': 'https://www.cessda.eu/', 'label': 'CESSDA controlled vocabularies'}]}, 'assets': {'data': {'href': 'https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads', 'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'title': 'Norway monadic survey workbook'}}, 'links': [{'rel': 'profile', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular-survey', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular Survey'}, {'rel': 'describedby', 'href': 'https://www.sciencedirect.com/science/article/pii/S0964569124000942', 'type': 'text/html', 'title': 'Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management'}]} is not valid under any of the given schemas
+
+Failed validating 'anyOf' in schema['allOf'][0]['allOf'][0]['allOf'][0]:
+    {'$defs': {'osc:project': {'format': 'osc-project',
+                               'minLength': 1,
+                               'title': 'Project',
+                               'type': 'string'},
+               'osc:workflow': {'format': 'osc-workflow',
+                                'minLength': 1,
+                                'title': 'Workflow',
+                                'type': 'string'},
+               'via_links': {'properties': {'rel': {'enum': ['via']},
+                                            'type': {'enum': ['application/json',
+                                                              'application/pdf',
+                                                              'application/zip',
+                                                              'text/html',
+                                                              'text/plain'],
+                                                     'options': {'enum_titles': ['JSON',
+                                                                                 'PDF',
+                                                                                 'ZIP',
+                                                                                 'HTML',
+                                                                                 'Text']}}},
+                             'title': 'Via Link'}},
+     '$schema': 'https://json-schema.org/draft/2020-12/schema',
+     'anyOf': [{'allOf': [{'anyOf': [{'$ref': 'https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/stac/geodcat-stac-item/schema.yaml'},
+                                     {'$ref': 'https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/stac/geodcat-stac-collection/schema.yaml'}]},
+                          {'$ref': 'https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/themes/schema.yaml'},
+                          {'$ref': 'https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc/schema.yaml'}]},
+               {'$ref': 'https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml'}],
+     'description': 'Schema for OGCAPI records profile and STAC profile '
+                    'used by EarthCODE'}
+
+On instance:
+    {'assets': {'data': {'href': 'https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads',
+                         'title': 'Norway monadic survey workbook',
+                         'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}},
+     'id': 'saltmarsh-perceptions-norway',
+     'itemType': 'record',
+     'links': [{'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular-survey',
+                'rel': 'profile',
+                'title': 'SeaDOTs Catalog Data Tabular Survey',
+                'type': 'application/schema+json'},
+               {'href': 'https://www.sciencedirect.com/science/article/pii/S0964569124000942',
+                'rel': 'describedby',
+                'title': 'Do citizens value climate change mitigation over '
+                         'biodiversity protection? Exploring citizen '
+                         'support for salt marsh management',
+                'type': 'text/html'}],
+     'properties': {'datetime': '2024-03-01T00:00:00Z',
+                    'description': 'Questionnaire export describing public '
+                                   'perceptions of saltmarsh management '
+                                   'and coastal ecosystem services.',
+                    'license': 'CC BY-NC-SA 4.0',
+                    'role': 'data',
+                    'survey:controlledVocabulary': [{'label': 'European '
+                                                              'Language '
+                                                              'Social '
+                                                              'Science '
+                                                              'Thesaurus',
+                                                     'scheme': 'ELSST',
+                                                     'uri': 'https://elsst.uk/'},
+                                                    {'label': 'CESSDA '
+                                                              'controlled '
+                                                              'vocabularies',
+                                                     'scheme': 'CESSDA',
+                                                     'uri': 'https://www.cessda.eu/'}],
+                    'survey:studyDescription': 'Monadic survey on '
+                                               'attitudes toward saltmarsh '
+                                               'management in Norway.',
+                    'survey:studyTitle': 'Saltmarsh perceptions survey',
+                    'survey:variableMetadata': [{'conceptUri': 'https://elsst.uk/terms/age',
+                                                 'ddi:variableDescription': 'Age '
+                                                                            'group '
+                                                                            'of '
+                                                                            'the '
+                                                                            'respondent',
+                                                 'label': 'Age group',
+                                                 'questionText': 'What is '
+                                                                 'your age '
+                                                                 'group?',
+                                                 'variableName': 'Q1',
+                                                 'vocabularyUri': 'https://www.cessda.eu/cessda-vocabularies#age'},
+                                                {'conceptUri': 'https://elsst.uk/terms/environmental-concern',
+                                                 'ddi:variableDescription': 'Likert-style '
+                                                                            'attitude '
+                                                                            'question',
+                                                 'label': 'Environmental '
+                                                          'concern',
+                                                 'questionText': 'How '
+                                                                 'important '
+                                                                 'is the '
+                                                                 'protection '
+                                                                 'of the '
+                                                                 'environment '
+                                                                 'to you?',
+                                                 'variableName': 'Q5_1',
+                                                 'vocabularyUri': 'https://www.cessda.eu/cessda-vocabularies#environmental-attitudes'}],
+                    'table:columns': [{'description': 'Respondent '
+                                                      'identifier',
+                                       'name': 'caseid',
+                                       'type': 'string'},
+                                      {'description': 'Country of '
+                                                      'residence',
+                                       'name': 'Country',
+                                       'type': 'string'},
+                                      {'description': 'Respondent age '
+                                                      'group',
+                                       'name': 'Q1',
+                                       'type': 'string'},
+                                      {'description': 'Respondent gender',
+                                       'name': 'Q2',
+                                       'type': 'string'}],
+                    'table:primary_geometry': 'none',
+                    'table:row_count': 5046,
+                    'title': 'Saltmarsh perceptions survey (Norway)'},
+     'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json',
+                         'https://stac-extensions.github.io/cf/v0.2.0/schema.json'],
+     'stac_version': '1.0.0',
+     'type': 'Feature'}
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
+
+Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+ - Shape rec:testAllVarsInTemplate: *none*
+
+=== End SHACL ===
+

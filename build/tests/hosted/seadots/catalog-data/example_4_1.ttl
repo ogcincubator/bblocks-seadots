@@ -1,0 +1,37 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/harvest-timeseries-scen-m3-catalog-item> a geojson:Feature ;
+    dcterms:date "2020-04-30T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Catalog record for a SeaDOTs harvest scenario time-series sample containing point-based bwmus values over multiple timestamps." ;
+    dcterms:license "Not supplied" ;
+    dcterms:subject "geojson",
+        "harvest",
+        "scenario",
+        "time-series" ;
+    dcterms:title "Harvest time series scenario Scen M3 sample catalog record" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
+    geojson:bbox ( 7.642602e+00 5.439246e+01 7.680002e+00 5.43991e+01 ) ;
+    geojson:geometry [ a geojson:MultiPoint ;
+            geojson:coordinates ( ( 7.642602e+00 5.439246e+01 ) ( 7.664058e+00 5.439903e+01 ) ( 7.680002e+00 5.43991e+01 ) ) ] ;
+    seadots:itemType "record" ;
+    seadots:metadataConvention "CF-1.10" ;
+    seadots:role "data" ;
+    stac:hasAsset [ ns2:data [ dcterms:format "application/geo+json" ;
+                    dcterms:title "Harvest time-series sample GeoJSON" ;
+                    oa:hasTarget <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+        "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
+    stac:version "1.0.0" .
+

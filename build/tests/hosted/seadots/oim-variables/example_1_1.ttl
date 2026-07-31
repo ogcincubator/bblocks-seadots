@@ -677,6 +677,14 @@ indp:repetitions a skos:Concept,
     skos:notation "repetitions" ;
     skos:prefLabel "Simulation repetitions"@en .
 
+indp:reserved-for-future-use a skos:Concept,
+        ssn:Property ;
+    rdfs:label "Reserved for future use"@en ;
+    skos:definition "Placeholder property for a simulation output column reserved for future use. Current values are void/dummy (0) and carry no defined semantics; all reserved columns in a given output row share this single concept until a real, distinct property is defined for each."@en ;
+    skos:inScheme ind:parameters-scheme ;
+    skos:prefLabel "Reserved for future use"@en ;
+    skos:scopeNote "Do not treat as a region, NUTS, or FU-area indicator without confirming with the model owner: source column name prefixes such as 'fu_' are naming artifacts of the originating model, not resolved vocabulary terms."@en .
+
 indp:spawning_closure_type a skos:Concept,
         ssn:Property ;
     rdfs:label "Spawning closure type"@en ;
@@ -1046,6 +1054,7 @@ indp:submerged-infrastructure-area a skos:Concept,
     dcterms:subject ind:emodnet-human-activities,
         ind:emodnet-seabed-habitats ;
     qudt:hasQuantityKind quantitykind:Area ;
+    qudt:quantityKind quantitykind:Area ;
     skos:definition "Wetted submerged hard-substrate area of floating-wind infrastructure available for colonisation."@en ;
     skos:inScheme ind:parameters-scheme ;
     skos:narrower indp:submerged-infrastructure-area-utsira-design ;
@@ -1080,12 +1089,16 @@ indo:fish-stock-biomass a skos:Concept,
     rdfs:label "Fish stock biomass"@en ;
     dcterms:subject ind:emodnet-biology ;
     qudt:hasQuantityKind quantitykind:Mass ;
+    skos:broader "https://agrovoc.fao.org/browse/agrovoc/en/page/c_24251" ;
     skos:definition "Abstract concept: biomass of a simulated fish stock, before specialisation by species or spatial aggregation."@en ;
     skos:inScheme ind:indicators-scheme ;
     skos:narrower indo:B_herring_tot,
         indo:mean_biomass_herring,
         indo:mean_biomass_sprat ;
-    skos:prefLabel "Fish stock biomass"@en .
+    skos:prefLabel "Fish stock biomass"@en ;
+    skos:related "http://vocab.nerc.ac.uk/collection/S06/current/S0600086/",
+        "http://vocab.nerc.ac.uk/collection/S06/current/S0600087/",
+        "https://ec.europa.eu/eurostat/databrowser/view/sdg_14_21/default/table" .
 
 indo:number-of-jobs a skos:Concept,
         sosa:ObservableProperty,
@@ -1176,7 +1189,9 @@ indp:reef-aggregation-index a skos:Concept,
     skos:narrower indp:reef-aggregation-index-asterias,
         indp:reef-aggregation-index-buccinum,
         indp:reef-aggregation-index-mytilus ;
-    skos:prefLabel "Reef aggregation index"@en .
+    skos:prefLabel "Reef aggregation index"@en ;
+    skos:related indo:benthic-biomass-density,
+        "http://vocab.nerc.ac.uk/collection/S06/current/S0600232/" .
 
 indp:colonisation-time-factor-default a skos:Concept,
         ssn:Property ;
@@ -1243,7 +1258,7 @@ ind:emodnet-biology a skos:Concept ;
 
 ind:parameters-scheme a skos:ConceptScheme ;
     dcterms:isPartOf ind:catalog ;
-    skos:definition "A concept scheme for SEADOTS indicator concepts and observed properties."@en ;
+    skos:definition "A concept scheme for SEADOTS Digital Twins' parameters. Parameters can be sourced starting conditions, sourced time series of conditions for the period of simulations or model specific parameters including expert knowledge sourced factors."@en ;
     skos:hasTopConcept indp:area-use-by-wind-park,
         indp:closure_type_property,
         indp:colonisation-time-factor,
@@ -1255,6 +1270,7 @@ ind:parameters-scheme a skos:ConceptScheme ;
         indp:number-of-turbines,
         indp:reef-aggregation-index,
         indp:repetitions,
+        indp:reserved-for-future-use,
         indp:submerged-infrastructure-area,
         indp:ticks,
         indp:total-allowable-catch,

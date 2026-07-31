@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+    "Feature": "geojson:Feature",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "id": "@id",
+    "type": "@type",
+    "geometry": {
+      "@context": {
+        "coordinates": {
+          "@id": "geojson:coordinates",
+          "@container": "@list"
+        }
+      },
+      "@id": "geojson:geometry"
+    },
+    "properties": {
+      "@context": {
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "@vocab"
+        },
+        "n_turbines": "seadots:nTurbines",
+        "power_mw": "seadots:powerMW",
+        "status": {
+          "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+          "@type": "@vocab"
+        },
+        "type_inst": "schema:additionalType",
+        "updateyear": "seadots:updateYear",
+        "year": "seadots:year",
+        "dist_coast": "seadots:distanceToCoast",
+        "notes": "dcterms:description"
+      },
+      "@id": "geojson:properties"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "schema": "https://schema.org/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+    "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "@version": 1.1
+  }
+}

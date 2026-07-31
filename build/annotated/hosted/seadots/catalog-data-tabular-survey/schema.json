@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SeaDOTs Catalog Data Tabular Survey",
+  "description": "Survey-style tabular profile for saltmarsh perceptions data. It extends the SeaDOTs tabular catalog record profile with questionnaire-variable metadata, ELSST/CESSDA vocabulary links, and DDI-style descriptions.\n",
+  "allOf": [
+    {
+      "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "type",
+    "properties",
+    "links"
+  ],
+  "properties": {
+    "type": {
+      "const": "Feature"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "survey:studyTitle": {
+          "type": "string",
+          "x-jsonld-id": "https://example.org/seadots/survey#studyTitle"
+        },
+        "survey:studyDescription": {
+          "type": "string",
+          "x-jsonld-id": "https://example.org/seadots/survey#studyDescription"
+        },
+        "survey:variableMetadata": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "variableName"
+            ],
+            "properties": {
+              "variableName": {
+                "type": "string"
+              },
+              "questionText": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "conceptUri": {
+                "type": "string",
+                "x-jsonld-id": "https://example.org/seadots/survey#conceptUri"
+              },
+              "vocabularyUri": {
+                "type": "string",
+                "x-jsonld-id": "https://example.org/seadots/survey#vocabularyUri"
+              },
+              "ddi:variableDescription": {
+                "type": "string",
+                "x-jsonld-id": "https://ddialliance.org/terms#variableDescription"
+              }
+            }
+          },
+          "x-jsonld-id": "https://example.org/seadots/survey#variableMetadata"
+        },
+        "survey:controlledVocabulary": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheme": {
+                "type": "string"
+              },
+              "uri": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          },
+          "x-jsonld-id": "https://example.org/seadots/survey#controlledVocabulary"
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "required": [
+          "rel",
+          "href"
+        ],
+        "properties": {
+          "rel": {
+            "const": "profile"
+          },
+          "href": {
+            "const": "bblocks://ogc.hosted.seadots.catalog-data-tabular-survey"
+          }
+        }
+      }
+    }
+  },
+  "x-jsonld-prefixes": {
+    "survey": "https://example.org/seadots/survey#",
+    "ddi": "https://ddialliance.org/terms#",
+    "elsst": "https://elsst.uk/terms#",
+    "cessda": "https://vocabularies.cessda.eu/terms#"
+  }
+}

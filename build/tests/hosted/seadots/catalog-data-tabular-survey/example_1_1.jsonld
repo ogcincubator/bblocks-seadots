@@ -1,0 +1,95 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/context.jsonld",
+  "id": "saltmarsh-perceptions-norway",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json"
+  ],
+  "properties": {
+    "title": "Saltmarsh perceptions survey (Norway)",
+    "description": "Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.",
+    "datetime": "2024-03-01T00:00:00Z",
+    "role": "data",
+    "license": "CC BY-NC-SA 4.0",
+    "table:columns": [
+      {
+        "name": "caseid",
+        "type": "string",
+        "description": "Respondent identifier"
+      },
+      {
+        "name": "Country",
+        "type": "string",
+        "description": "Country of residence"
+      },
+      {
+        "name": "Q1",
+        "type": "string",
+        "description": "Respondent age group"
+      },
+      {
+        "name": "Q2",
+        "type": "string",
+        "description": "Respondent gender"
+      }
+    ],
+    "table:primary_geometry": "none",
+    "table:row_count": 5046,
+    "survey:studyTitle": "Saltmarsh perceptions survey",
+    "survey:studyDescription": "Monadic survey on attitudes toward saltmarsh management in Norway.",
+    "survey:variableMetadata": [
+      {
+        "variableName": "Q1",
+        "label": "Age group",
+        "questionText": "What is your age group?",
+        "conceptUri": "https://elsst.uk/terms/age",
+        "vocabularyUri": "https://www.cessda.eu/cessda-vocabularies#age",
+        "ddi:variableDescription": "Age group of the respondent"
+      },
+      {
+        "variableName": "Q5_1",
+        "label": "Environmental concern",
+        "questionText": "How important is the protection of the environment to you?",
+        "conceptUri": "https://elsst.uk/terms/environmental-concern",
+        "vocabularyUri": "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes",
+        "ddi:variableDescription": "Likert-style attitude question"
+      }
+    ],
+    "survey:controlledVocabulary": [
+      {
+        "scheme": "ELSST",
+        "uri": "https://elsst.uk/",
+        "label": "European Language Social Science Thesaurus"
+      },
+      {
+        "scheme": "CESSDA",
+        "uri": "https://www.cessda.eu/",
+        "label": "CESSDA controlled vocabularies"
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads",
+      "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "title": "Norway monadic survey workbook"
+    }
+  },
+  "links": [
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-tabular-survey",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Tabular Survey"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://www.sciencedirect.com/science/article/pii/S0964569124000942",
+      "type": "text/html",
+      "title": "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management"
+    }
+  ]
+}

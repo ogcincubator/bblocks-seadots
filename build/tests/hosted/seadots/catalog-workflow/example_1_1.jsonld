@@ -1,0 +1,80 @@
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld"
+  ],
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect",
+  "type": "Feature",
+  "itemType": "record",
+  "conformsTo": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "geometry": null,
+  "properties": {
+    "title": "Utsira reef-effect biomass workflow",
+    "description": "Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure.",
+    "type": "Workflow",
+    "applicationCategory": "DigitalTwinApplication",
+    "version": "0.1.0",
+    "method": "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters.",
+    "activity": "https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation",
+    "softwareVersion": "0.1.0",
+    "programmingLanguage": "Python",
+    "applicationPackage": "../../catalog-application-package/examples/application-package.json",
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-data",
+        "required": true,
+        "role": "input",
+        "description": "Generic STAC catalog data item accepted by this workflow."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.area-of-interest",
+        "required": true,
+        "role": "area-of-interest",
+        "description": "GeoJSON Feature defining the spatial area for the calculation."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "required": false,
+        "role": "benthic-biomass-density",
+        "description": "Optional baseline benthic biomass-density input profile."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.catalog-data",
+        "required": true,
+        "role": "output",
+        "description": "Generic STAC catalog data item produced by this workflow."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.reef-effect-output",
+        "required": true,
+        "role": "reef-biomass-result",
+        "description": "Structured reef-effect biomass output record."
+      }
+    ],
+    "keywords": [
+      "open-science",
+      "digital-twin",
+      "offshore-wind"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-workflow",
+      "type": "application/schema+json"
+    },
+    {
+      "rel": "related",
+      "href": "bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json",
+      "type": "application/json",
+      "title": "Reef-effect application package"
+    }
+  ]
+}

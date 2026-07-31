@@ -1,0 +1,86 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data/context.jsonld",
+  "id": "seadots-generic-data-item",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.7,
+          59.1
+        ],
+        [
+          5.0,
+          59.1
+        ],
+        [
+          5.0,
+          59.4
+        ],
+        [
+          4.7,
+          59.4
+        ],
+        [
+          4.7,
+          59.1
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    4.7,
+    59.1,
+    5.0,
+    59.4
+  ],
+  "properties": {
+    "title": "SeaDOTs generic data item",
+    "description": "Generic catalog data item used to demonstrate the shared SeaDOTs data profile.",
+    "datetime": "2026-06-10T00:00:00Z",
+    "role": "data",
+    "convention": "CF-1.10",
+    "license": "CC-BY-4.0",
+    "cf:parameter": [
+      {
+        "name": "sea_water_temperature",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "K",
+        "description": "Example CF-style parameter declaration."
+      }
+    ]
+  },
+  "assets": {
+    "data": {
+      "href": "https://example.org/seadots/catalog-data.nc",
+      "type": "application/x-netcdf",
+      "title": "Generic data asset",
+      "cf:parameter": [
+        {
+          "name": "sea_water_temperature",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "K",
+          "description": "Example CF-style parameter declaration."
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data bblock"
+    }
+  ]
+}

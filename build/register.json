@@ -2,12 +2,12 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-05-28T06:59:49.230724",
+  "modified": "2026-07-31T22:06:53.084332",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"ccc2722ff09e6ff35b4415d9a62b15eb66c2dc45",
-      "shortCommitId": "\"ccc272",
-      "date": "2026-05-26T10:12:47+00:00\""
+      "commitId": "\"f3952c38e56b44bfa91d3b3ddf5a320e0c4efa8a",
+      "shortCommitId": "\"f3952c",
+      "date": "2026-07-30T14:19:42+00:00\""
     }
   },
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
@@ -37,13 +37,17 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "AOI",
         "marine",
         "OGC Feature",
-        "GeoJSON"
+        "GeoJSON",
+        "area-of-interest",
+        "German demo",
+        "Swedish demo",
+        "Norwegian demo"
       ],
       "authors": [
         {
@@ -71,13 +75,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/area-of-interest/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/area-of-interest/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/area-of-interest/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/area-of-interest/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -94,7 +98,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "IMR",
@@ -183,17 +187,88 @@
         }
       ],
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-observations-imr/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-observations-imr/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-observations-imr/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.benthic-biomass-observations-imr"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.geoparquet-header",
+      "name": "GeoParquet Header",
+      "abstract": "Generic, reusable CSVW + GeoParquet 1.1 metadata header envelope shape (fileName, source, parquetSchema, geo). Dataset-specific GeoParquet profiles reference this schema via $ref rather than redefining the envelope inline.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-31T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "geoparquet",
+        "csvw",
+        "schema",
+        "envelope",
+        "seadots"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GeoParquet specification",
+          "link": "https://geoparquet.org/"
+        },
+        {
+          "title": "PROJJSON schema",
+          "link": "https://proj.org/en/stable/schemas/index.html"
+        },
+        {
+          "title": "CSVW (CSV on the Web)",
+          "link": "https://www.w3.org/TR/tabular-data-primer/"
+        }
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://geoparquet.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {},
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/geoparquet-header/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/geoparquet-header/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/geoparquet-header/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/geoparquet-header/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.geoparquet-header"
         }
       }
     },
@@ -206,7 +281,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "OBIS",
@@ -283,13 +358,13 @@
         }
       ],
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/obis-mareano-checklist/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/obis-mareano-checklist/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/obis-mareano-checklist/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -306,7 +381,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -322,13 +397,13 @@
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/",
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/ontology/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/ontology/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/ontology/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -345,7 +420,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -357,13 +432,13 @@
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/properties/",
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/properties/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/properties/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -380,10 +455,10 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [
-        "ogc.hosted.seadots.ontology",
-        "ogc.ogc-utils.iri-or-curie"
+        "bblocks://ogc.hosted.seadots.ontology",
+        "bblocks://ogc.ogc-utils.iri-or-curie"
       ],
       "tags": [
         "seadots",
@@ -407,13 +482,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/property-relationship/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/property-relationship/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/property-relationship/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/property-relationship/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -430,10 +505,10 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [
-        "ogc.hosted.seadots.property-relationship",
-        "ogc.ogc-utils.iri-or-curie"
+        "bblocks://ogc.ogc-utils.iri-or-curie",
+        "bblocks://ogc.hosted.seadots.property-relationship"
       ],
       "tags": [
         "seadots",
@@ -460,17 +535,92 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/equation-property-relationship/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/equation-property-relationship/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/equation-property-relationship/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/equation-property-relationship/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.equation-property-relationship"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-application-package",
+      "name": "SeaDOTs Catalog Application Package",
+      "abstract": "Generic APKG/CWL-aligned profile for the executable package attached to a SeaDOTs application record.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-05-26T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "application-package",
+        "apkg",
+        "cwl",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        },
+        {
+          "title": "OGC bblocks-openscience",
+          "link": "https://github.com/ogcincubator/bblocks-openscience"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.osc.application-package"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://w3id.org/apkg/",
+        "https://www.commonwl.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {},
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-application-package/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-application-package/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-application-package/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-application-package"
         }
       }
     },
@@ -483,9 +633,9 @@
       "itemClass": "model",
       "register": "ogc-incubator",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [
-        "ogc.model.cross-domain.all"
+        "bblocks://ogc.model.cross-domain.all"
       ],
       "sources": [
         {
@@ -526,92 +676,17 @@
       "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/oim-variables/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variables/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variables/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variables/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.oim-variables"
-        }
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.catalog-application-package",
-      "name": "SeaDOTs Catalog Application Package",
-      "abstract": "Generic APKG/CWL-aligned profile for the executable package attached to a SeaDOTs application record.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-26T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "catalog",
-        "application-package",
-        "apkg",
-        "cwl",
-        "open-science"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
-          "link": "https://github.com/ogcincubator/bblocks-seadots"
-        },
-        {
-          "title": "OGC API - Records",
-          "link": "https://docs.ogc.org/is/20-004/20-004.html"
-        },
-        {
-          "title": "OGC bblocks-openscience",
-          "link": "https://github.com/ogcincubator/bblocks-openscience"
-        }
-      ],
-      "dependsOn": [
-        "ogc.osc.application-package"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://w3id.org/apkg/",
-        "https://www.commonwl.org/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {},
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-application-package/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-application-package/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-application-package/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-application-package/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-application-package/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-application-package"
         }
       }
     },
@@ -624,7 +699,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -647,7 +722,7 @@
         }
       ],
       "dependsOn": [
-        "ogc.geo.geodcat.geodcat-records"
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/colonisation-time-factor/context.jsonld",
       "shaclRules": [],
@@ -673,17 +748,102 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/colonisation-time-factor/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/colonisation-time-factor/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/colonisation-time-factor/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/colonisation-time-factor/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.colonisation-time-factor"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm",
+      "name": "EMODnet-compliant windfarm",
+      "abstract": "GeoJSON Feature profile aligned to the official EMODnet Human Activities windfarms XSD. It preserves the service's published field names and primitive types for country, turbine count, power output, status, installation type, year fields, distance to coast, and notes.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-24T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "EMODnet",
+        "Human Activities",
+        "energy",
+        "windfarm",
+        "WFS",
+        "XSD",
+        "GeoJSON"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet Human Activities \u2014 Wind Farms service",
+          "link": "https://www.emodnet-humanactivities.eu/"
+        },
+        {
+          "title": "EMODnet windfarms XSD",
+          "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
+        },
+        {
+          "title": "EU Publications Office Country authority table",
+          "link": "http://publications.europa.eu/resource/authority/country/"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.geodcat.geodcat-records"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "https://inspire.ec.europa.eu/id/document/tg/er"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ]
+      },
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/ontology.ttl",
+      "dateOfLastChange": "2026-07-24",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-compliant-windfarm/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-compliant-windfarm/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-compliant-windfarm"
         }
       }
     },
@@ -696,7 +856,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -718,7 +878,7 @@
         }
       ],
       "dependsOn": [
-        "ogc.geo.geodcat.geodcat-records"
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-aggregation-index/context.jsonld",
       "shaclRules": [],
@@ -746,13 +906,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-aggregation-index/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-aggregation-index/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-aggregation-index/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-aggregation-index/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -769,7 +929,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -791,7 +951,7 @@
         }
       ],
       "dependsOn": [
-        "ogc.geo.geodcat.geodcat-records"
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-output/context.jsonld",
       "shaclRules": [],
@@ -820,100 +980,17 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect-output/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-output/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect-output/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-output/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-effect-output"
-        }
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.catalog-input",
-      "name": "SeaDOTs Catalog Input",
-      "abstract": "Generic STAC Item profile for a concrete dataset, parameter file, or configuration consumed by an execution.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-26T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "catalog",
-        "stac",
-        "input",
-        "prov-o",
-        "open-science"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SeaDOTs"
-        }
-      ],
-      "sources": [
-        {
-          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
-          "link": "https://github.com/ogcincubator/bblocks-seadots"
-        },
-        {
-          "title": "OGC API - Records",
-          "link": "https://docs.ogc.org/is/20-004/20-004.html"
-        },
-        {
-          "title": "OGC bblocks-openscience",
-          "link": "https://github.com/ogcincubator/bblocks-openscience"
-        }
-      ],
-      "dependsOn": [
-        "ogc.contrib.stac.item",
-        "ogc.contrib.stac.extensions.cf"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://github.com/radiantearth/stac-spec",
-        "http://www.w3.org/TR/prov-o/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ]
-      },
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-input/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-input/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-input/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-input/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-input/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-input"
         }
       }
     },
@@ -926,7 +1003,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "IMR",
@@ -951,8 +1028,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs",
-        "ogc.hosted.seadots.benthic-biomass-observations-imr"
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-imr/context.jsonld",
       "shaclRules": [],
@@ -987,13 +1064,13 @@
       "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/benthic-biomass-density-imr/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-imr/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-density-imr/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-imr/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1010,7 +1087,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "MAREANO",
@@ -1034,7 +1111,7 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs"
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/benthic-biomass-density-mareano/context.jsonld",
       "shaclRules": [],
@@ -1069,13 +1146,13 @@
       "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/benthic-biomass-density-mareano/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-mareano/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/benthic-biomass-density-mareano/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/benthic-biomass-density-mareano/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1086,25 +1163,24 @@
     {
       "itemIdentifier": "ogc.hosted.seadots.swedish-DT-simulations-output",
       "name": "Swedish DT Simulations Output",
-      "abstract": "Profile for Swedish Digital Twin simulation output rows keyed by Eurostat NUTS region indicators, with examples for the raw tabular artifact, a SensorThings Observation view, and a GeoParquet representation header.",
+      "abstract": "Profile for Swedish Digital Twin herring/sprat fishery simulation output rows, with examples for the raw tabular artifact, a SensorThings Observation view, and a GeoParquet representation header. 17 of the 63 source columns are reserved-for-future-use placeholders, not region indicators.",
       "status": "under-development",
       "dateTimeAddition": "2026-05-27T00:00:00Z",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "swedish-dt",
         "simulation-output",
         "sensorthings",
-        "geoparquet",
-        "nuts"
+        "geoparquet"
       ],
       "authors": [
         {
           "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
+          "organization": "SeaDOTs"
         }
       ],
       "sources": [
@@ -1122,7 +1198,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim-obs"
+        "bblocks://ogc.hosted.seadots.geoparquet-header",
+        "bblocks://ogc.hosted.iliad.api.features.oim-obs"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/swedish-DT-simulations-output/context.jsonld",
       "shaclRules": [],
@@ -1154,16 +1231,16 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/swedish-DT-simulations-output/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/swedish-DT-simulations-output/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/swedish-DT-simulations-output/",
-      "validationPassed": false,
+      "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/swedish-DT-simulations-output/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/swedish-DT-simulations-output/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/swedish-DT-simulations-output/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/swedish-DT-simulations-output/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1180,7 +1257,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "floating-wind",
@@ -1202,8 +1279,8 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.iliad.api.features.oim",
-        "ogc.geo.geodcat.geodcat-records"
+        "bblocks://ogc.hosted.iliad.api.features.oim",
+        "bblocks://ogc.geo.geodcat.geodcat-records"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/floating-wind-infrastructure/context.jsonld",
       "shaclRules": [],
@@ -1243,13 +1320,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/floating-wind-infrastructure/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/floating-wind-infrastructure/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/floating-wind-infrastructure/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/floating-wind-infrastructure/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1266,9 +1343,9 @@
       "itemClass": "schema",
       "register": "iliad-apis",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "dependsOn": [
-        "ogc.hosted.seadots.oim-variables"
+        "bblocks://ogc.hosted.seadots.oim-variables"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld",
       "sources": [
@@ -1318,102 +1395,17 @@
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variable-observation/",
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variable-observation/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/oim-variable-observation/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/oim-variable-observation/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.oim-variable-observation"
-        }
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.catalog-output",
-      "name": "SeaDOTs Catalog Output",
-      "abstract": "Generic STAC Item and PROV-O profile for a concrete product generated by an execution.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-05-26T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
-      "license": "https://creativecommons.org/licenses/by/4.0/",
-      "tags": [
-        "catalog",
-        "stac",
-        "output",
-        "prov-o",
-        "open-science"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
-          "link": "https://github.com/ogcincubator/bblocks-seadots"
-        },
-        {
-          "title": "OGC API - Records",
-          "link": "https://docs.ogc.org/is/20-004/20-004.html"
-        },
-        {
-          "title": "OGC bblocks-openscience",
-          "link": "https://github.com/ogcincubator/bblocks-openscience"
-        }
-      ],
-      "dependsOn": [
-        "ogc.hosted.seadots.catalog-input",
-        "ogc.contrib.stac.item",
-        "ogc.contrib.stac.extensions.cf",
-        "ogc.ogc-utils.prov-entity"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://github.com/radiantearth/stac-spec",
-        "http://www.w3.org/TR/prov-o/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ]
-      },
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-output/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-output/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-output/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-output/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-output/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-output"
         }
       }
     },
@@ -1426,7 +1418,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "ODD",
@@ -1459,9 +1451,9 @@
         }
       ],
       "dependsOn": [
-        "ogc.osc.ontology.openscience",
-        "ogc.geo.geodcat.geodcat-records-prov",
-        "ogc.geo.geodcat.geodcat-records"
+        "bblocks://ogc.geo.geodcat.geodcat-records-prov",
+        "bblocks://ogc.geo.geodcat.geodcat-records",
+        "bblocks://ogc.osc.ontology.openscience"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/context.jsonld",
       "shaclRules": [],
@@ -1489,16 +1481,16 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/odd-protocol/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/",
-      "validationPassed": true,
+      "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/odd-protocol/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/odd-protocol/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/odd-protocol/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1515,7 +1507,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "ogcapi-processes",
@@ -1550,16 +1542,16 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "ogc.api.processes.v1.schemas.outputDescription",
-        "ogc.hosted.seadots.colonisation-time-factor",
-        "ogc.api.processes.v1.schemas.processSummary",
-        "ogc.hosted.seadots.benthic-biomass-density-imr",
-        "ogc.hosted.seadots.reef-effect-output",
-        "ogc.hosted.seadots.area-of-interest",
-        "ogc.hosted.seadots.reef-aggregation-index",
-        "ogc.hosted.seadots.floating-wind-infrastructure",
-        "ogc.api.processes.v1.schemas.inputDescription"
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.hosted.seadots.reef-effect-output",
+        "bblocks://ogc.api.processes.v1.schemas.processSummary",
+        "bblocks://ogc.api.processes.v1.schemas.outputDescription",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
+        "bblocks://ogc.api.processes.v1.schemas.inputDescription"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-process/context.jsonld",
       "shaclRules": [],
@@ -1609,17 +1601,478 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect-process/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-process/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect-process/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-process/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.reef-effect-process"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.harvest-timeseries-scen-m3-source",
+      "name": "Harvest time series scenario Scen M3 \u2014 source GeoJSON",
+      "abstract": "Source-faithful GeoJSON point time-series profile for the supplied harvest_timeseries_scenario_Scen_M3 export. It preserves the source feature identifier, Point geometry, bwmus numeric measurement and time string without assigning undocumented scientific meaning or units.",
+      "itemClass": "schema",
+      "status": "under-development",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateTimeAddition": "2026-07-28T00:00:00Z",
+      "dateOfLastChange": "2026-07-31",
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.oim-variable-observation"
+      ],
+      "tags": [
+        "seadots",
+        "geojson",
+        "vector",
+        "timeseries",
+        "scenario",
+        "harvest",
+        "source"
+      ],
+      "shaclShapes": {
+        "ogc.hosted.seadots.oim-variables": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
+        ],
+        "ogc.model.cross-domain.qudt": [
+          "http://qudt.org/2.1/schema/shacl/qudt"
+        ],
+        "ogc.model.cross-domain.sosa": [
+          "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+        ],
+        "ogc.skos.common": [
+          "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+        ],
+        "ogc.skos.concept": [
+          "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+        ]
+      },
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/context.jsonld",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-source/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/harvest-timeseries-scen-m3-source/",
+      "transforms": [
+        {
+          "id": "geojson-to-oim-observation",
+          "description": "Converts each raw point/time/value feature to an OIM observation-shaped feature. Source time becomes sosa:phenomenonTime and bwmus becomes sosa:hasResult.value; source id and geometry are retained. The bwmus IRI is a provisional local IRI, not a claim about the variable's scientific meaning.\n",
+          "type": "jq",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.oim-variable-observation"
+            ]
+          },
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-source/transforms/geojson-to-oim-observation.jq",
+          "excluded": {},
+          "code": "# Source GeoJSON FeatureCollection -> OIM observation-shaped GeoJSON FeatureCollection.\n# The semantic IRI remains provisional until the owner defines bwmus and its unit.\n{\n  type: \"FeatureCollection\",\n  features: [\n    .features[] |\n    {\n      type: \"Feature\",\n      id: (.id | tostring),\n      geometry: .geometry,\n      properties: {\n        observedProperty: \"https://w3id.org/iliad/property/bwmus\",\n        phenomenonTime: (.properties.time | sub(\" \"; \"T\") + \"Z\"),\n        hasResult: {value: .properties.bwmus}\n      }\n    }\n  ]\n}\n"
+        }
+      ],
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/harvest-timeseries-scen-m3-source/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/harvest-timeseries-scen-m3-source/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-data",
+      "name": "SeaDOTs Catalog Data",
+      "abstract": "Generic Records/DCAT, STAC Item, CF, and provenance profile for SeaDOTs catalog records that describe data artefacts independent of their workflow role or data type.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-06-10T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "data",
+        "records",
+        "dcat",
+        "geodcat",
+        "stac",
+        "cf",
+        "prov-o",
+        "open-science"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "STAC CF extension building block",
+          "link": "https://ogcincubator.github.io/bblocks-stac/bblock/ogc.contrib.stac.extensions.cf"
+        },
+        {
+          "title": "STAC Item provenance building block",
+          "link": "https://ogcincubator.github.io/bblocks-stac/bblock/ogc.contrib.stac.item-prov"
+        },
+        {
+          "title": "EarthCODE common GeoDCAT/STAC profile",
+          "link": "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.geodcat-stac-earthcode.common"
+        },
+        {
+          "title": "EarthCODE products profile",
+          "link": "https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.geodcat-stac-earthcode.products"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.contrib.stac.item-prov",
+        "bblocks://ogc.osc.geodcat-stac-earthcode.common",
+        "bblocks://ogc.contrib.stac.extensions.cf"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "http://www.opengis.net/def/metamodel/profiles/geodcat",
+        "https://github.com/radiantearth/stac-spec",
+        "https://cfconventions.org/",
+        "http://www.w3.org/TR/prov-o/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-data/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-data/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-data/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-data"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet",
+      "name": "Harvest time series scenario Scen M3 \u2014 GeoParquet representation",
+      "abstract": "GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-31T00:00:00Z",
+      "dateOfLastChange": "2026-07-31",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.geoparquet-header",
+        "bblocks://ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+      ],
+      "tags": [
+        "seadots",
+        "geoparquet",
+        "vector",
+        "timeseries",
+        "scenario",
+        "harvest",
+        "target"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SeaDOTs"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Harvest time series scenario Scen M3 \u2014 source GeoJSON",
+          "link": "bblocks://ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+        },
+        {
+          "title": "GeoParquet specification",
+          "link": "https://geoparquet.org/"
+        }
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://geoparquet.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.hosted.seadots.oim-variables": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
+        ],
+        "ogc.model.cross-domain.qudt": [
+          "http://qudt.org/2.1/schema/shacl/qudt"
+        ],
+        "ogc.model.cross-domain.sosa": [
+          "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
+        ],
+        "ogc.skos.common": [
+          "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+        ],
+        "ogc.skos.concept": [
+          "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/harvest-timeseries-scen-m3-geoparquet/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-data-multidim",
+      "name": "SeaDOTs Catalog Data Multidimensional",
+      "abstract": "OGC API Records profile for catalog records that describe multidimensional gridded or array-oriented data products, reusing the ILIAD STAC/DCAT multidimensional data profile.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-06-10T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "records",
+        "stac",
+        "multidimensional",
+        "netcdf",
+        "zarr",
+        "cf"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "ILIAD STAC/DCAT dimensional data building block",
+          "link": "https://ogcincubator.github.io/iliad-apis-features/bblock/ogc.hosted.iliad.api.features.stac_multidim_data"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.catalog-data",
+        "bblocks://ogc.hosted.iliad.api.features.stac_multidim_data"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "https://github.com/radiantearth/stac-spec",
+        "https://cfconventions.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-multidim/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-multidim/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-multidim/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-data-multidim/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-data-multidim/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-data-multidim/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-data-multidim"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-data-tabular",
+      "name": "SeaDOTs Catalog Data Tabular",
+      "abstract": "OGC API Records profile for catalog records that describe tabular data products (CSV/TSV, GeoParquet, Parquet, attribute tables), reusing the shared SeaDOTs catalog-data profile and adding tabular structural metadata (STAC table extension columns and GeoParquet column metadata).",
+      "status": "under-development",
+      "dateTimeAddition": "2026-06-10T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "catalog",
+        "records",
+        "stac",
+        "tabular",
+        "csv",
+        "geoparquet",
+        "table",
+        "cf"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SeaDOTs Interoperability Framework - Catalog Metadata Model",
+          "link": "https://github.com/ogcincubator/bblocks-seadots"
+        },
+        {
+          "title": "STAC table extension",
+          "link": "https://github.com/stac-extensions/table"
+        },
+        {
+          "title": "GeoParquet specification",
+          "link": "https://geoparquet.org/"
+        },
+        {
+          "title": "OGC API - Records",
+          "link": "https://docs.ogc.org/is/20-004/20-004.html"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.catalog-data"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "https://github.com/radiantearth/stac-spec",
+        "https://github.com/stac-extensions/table",
+        "https://geoparquet.org/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-data-tabular/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-data-tabular/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-data-tabular/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-data-tabular"
         }
       }
     },
@@ -1632,7 +2085,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "catalog",
@@ -1661,14 +2114,10 @@
         }
       ],
       "dependsOn": [
-        "ogc.ogc-utils.prov-entity",
-        "ogc.geo.geodcat.geodcat-records",
-        "ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "ogc.hosted.seadots.area-of-interest",
-        "ogc.hosted.seadots.reef-effect-output",
-        "ogc.hosted.seadots.catalog-input",
-        "ogc.hosted.seadots.catalog-output",
-        "ogc.hosted.seadots.catalog-application-package"
+        "bblocks://ogc.ogc-utils.prov-entity",
+        "bblocks://ogc.geo.geodcat.geodcat-records",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.catalog-data"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
       "shaclRules": [],
@@ -1684,15 +2133,6 @@
         ],
         "ogc.api.records.v1.schemas.linkTemplate": [
           "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ],
-        "ogc.hosted.iliad.api.features.oim-obs": [
-          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-        ],
-        "ogc.sosa.properties.observation": [
-          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-        ],
-        "ogc.geo.features.featureCollection": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ]
       },
       "schema": {
@@ -1703,20 +2143,112 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-workflow/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-workflow/",
-      "validationPassed": false,
+      "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-workflow/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-workflow/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-workflow/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-workflow/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-workflow"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.catalog-data-tabular-survey",
+      "name": "SeaDOTs Catalog Data Tabular Survey",
+      "abstract": "Tabular survey-data profile for the saltmarsh perceptions questionnaire, designed to carry ELSST thesaurus mappings, CESSDA controlled-vocabulary references, and DDI-style descriptive metadata for questionnaire variables and response categories.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-31T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-07-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "tags": [
+        "survey",
+        "tabular",
+        "questionnaire",
+        "cessda",
+        "elsst",
+        "ddi",
+        "controlled-vocabulary",
+        "catalog"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Saltmarsh perceptions survey workbook",
+          "link": "https://github.com/seadots/saltmarsh_perceptions"
+        },
+        {
+          "title": "ELSST thesaurus",
+          "link": "https://elsst.uk/"
+        },
+        {
+          "title": "CESSDA controlled vocabularies",
+          "link": "https://www.cessda.eu/"
+        },
+        {
+          "title": "DDI Lifecycle",
+          "link": "https://ddialliance.org/"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.catalog-data-tabular"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://docs.ogc.org/is/20-004/20-004.html",
+        "https://github.com/radiantearth/stac-spec",
+        "https://github.com/stac-extensions/table",
+        "https://ddialliance.org/",
+        "https://elsst.uk/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-tabular-survey/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-data-tabular-survey/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-data-tabular-survey/",
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-data-tabular-survey/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-data-tabular-survey/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.catalog-data-tabular-survey"
         }
       }
     },
@@ -1729,7 +2261,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "catalog",
@@ -1760,10 +2292,9 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.catalog-input",
-        "ogc.hosted.seadots.catalog-workflow",
-        "ogc.geo.geodcat.geodcat-records-prov",
-        "ogc.hosted.seadots.catalog-output"
+        "bblocks://ogc.hosted.seadots.catalog-workflow",
+        "bblocks://ogc.geo.geodcat.geodcat-records-prov",
+        "bblocks://ogc.hosted.seadots.catalog-data"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
       "shaclRules": [],
@@ -1779,15 +2310,6 @@
         ],
         "ogc.api.records.v1.schemas.linkTemplate": [
           "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ],
-        "ogc.hosted.iliad.api.features.oim-obs": [
-          "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
-        ],
-        "ogc.sosa.properties.observation": [
-          "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
-        ],
-        "ogc.geo.features.featureCollection": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ]
       },
       "schema": {
@@ -1798,16 +2320,16 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-execution/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/catalog-execution/",
-      "validationPassed": false,
+      "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/catalog-execution/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-execution/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/catalog-execution/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/catalog-execution/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1824,7 +2346,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "reef-effect",
@@ -1853,15 +2375,15 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.catalog-output",
-        "ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "ogc.hosted.seadots.equation-property-relationship",
-        "ogc.hosted.seadots.colonisation-time-factor",
-        "ogc.hosted.seadots.catalog-workflow",
-        "ogc.hosted.seadots.reef-effect-output",
-        "ogc.hosted.seadots.area-of-interest",
-        "ogc.hosted.seadots.reef-aggregation-index",
-        "ogc.hosted.seadots.floating-wind-infrastructure"
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.hosted.seadots.equation-property-relationship",
+        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.hosted.seadots.reef-effect-output",
+        "bblocks://ogc.hosted.seadots.catalog-workflow",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
+        "bblocks://ogc.hosted.seadots.catalog-data"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect/context.jsonld",
       "shaclRules": [],
@@ -1873,23 +2395,23 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ],
         "ogc.hosted.iliad.api.features.oim-obs": [
           "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
         ],
         "ogc.sosa.properties.observation": [
           "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
         ],
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.hosted.seadots.ontology": [
           "https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
@@ -1915,13 +2437,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1938,7 +2460,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-05-28",
+      "dateOfLastChange": "2026-07-31",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "tags": [
         "catalog",
@@ -1965,16 +2487,16 @@
         }
       ],
       "dependsOn": [
-        "ogc.hosted.seadots.catalog-output",
-        "ogc.hosted.seadots.benthic-biomass-density-mareano",
-        "ogc.hosted.seadots.colonisation-time-factor",
-        "ogc.hosted.seadots.reef-effect",
-        "ogc.hosted.seadots.benthic-biomass-density-imr",
-        "ogc.hosted.seadots.reef-effect-output",
-        "ogc.hosted.seadots.area-of-interest",
-        "ogc.hosted.seadots.reef-aggregation-index",
-        "ogc.hosted.seadots.floating-wind-infrastructure",
-        "ogc.hosted.seadots.catalog-execution"
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano",
+        "bblocks://ogc.hosted.seadots.reef-effect",
+        "bblocks://ogc.hosted.seadots.reef-aggregation-index",
+        "bblocks://ogc.hosted.seadots.area-of-interest",
+        "bblocks://ogc.hosted.seadots.benthic-biomass-density-imr",
+        "bblocks://ogc.hosted.seadots.colonisation-time-factor",
+        "bblocks://ogc.hosted.seadots.reef-effect-output",
+        "bblocks://ogc.hosted.seadots.catalog-execution",
+        "bblocks://ogc.hosted.seadots.floating-wind-infrastructure",
+        "bblocks://ogc.hosted.seadots.catalog-data"
       ],
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/reef-effect-utsira/context.jsonld",
       "shaclRules": [],
@@ -1985,23 +2507,23 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ],
         "ogc.hosted.iliad.api.features.oim-obs": [
           "https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl"
         ],
         "ogc.sosa.properties.observation": [
           "https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl"
         ],
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.hosted.seadots.ontology": [
           "https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
         ],
         "ogc.model.cross-domain.qudt": [
           "http://qudt.org/2.1/schema/shacl/qudt"
@@ -2027,13 +2549,13 @@
       "validationPassed": true,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/reef-effect-utsira/",
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-utsira/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/reef-effect-utsira/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/reef-effect-utsira/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",

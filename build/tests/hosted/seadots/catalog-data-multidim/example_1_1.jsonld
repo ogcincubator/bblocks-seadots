@@ -1,0 +1,111 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/context.jsonld",
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-temperature-forecast",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          2.0,
+          56.0
+        ],
+        [
+          9.0,
+          56.0
+        ],
+        [
+          9.0,
+          61.0
+        ],
+        [
+          2.0,
+          61.0
+        ],
+        [
+          2.0,
+          56.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    2.0,
+    56.0,
+    9.0,
+    61.0
+  ],
+  "properties": {
+    "title": "North Sea temperature forecast cube",
+    "description": "Synthetic SeaDOTs catalog record for a multidimensional sea-water temperature data cube.",
+    "datetime": "2026-06-10T00:00:00Z",
+    "start_datetime": "2026-06-10T00:00:00Z",
+    "end_datetime": "2026-06-11T00:00:00Z",
+    "keywords": [
+      "SeaDOTs",
+      "multidimensional",
+      "NetCDF",
+      "CF",
+      "temperature"
+    ],
+    "license": "CC-BY-4.0",
+    "formats": [
+      {
+        "name": "NetCDF",
+        "mediaType": "application/x-netcdf"
+      }
+    ],
+    "variables": {
+      "sea_water_temperature": {
+        "title": "Sea water temperature",
+        "description": "Sea water temperature forecast variable.",
+        "unit": "K"
+      }
+    }
+  },
+  "assets": {
+    "netcdf": {
+      "href": "https://example.org/seadots/north-sea-temperature-forecast.nc",
+      "type": "application/x-netcdf",
+      "title": "NetCDF data cube",
+      "cf:parameter": [
+        {
+          "name": "sea_water_temperature",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "K",
+          "description": "Sea water temperature forecast variable."
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data bblock"
+    },
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-multidim",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Multidimensional bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.stac_multidim_data",
+      "type": "application/schema+json",
+      "title": "ILIAD STAC/DCAT multidimensional data profile"
+    }
+  ]
+}

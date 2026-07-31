@@ -1,0 +1,63 @@
+@prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix stac: <https://w3id.org/ogc/stac/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-temperature-forecast> a geojson:Feature ;
+    dcterms:date "2026-06-10T00:00:00+00:00"^^xsd:dateTime ;
+    dcterms:description "Synthetic SeaDOTs catalog record for a multidimensional sea-water temperature data cube." ;
+    dcterms:license "CC-BY-4.0" ;
+    dcterms:subject "CF",
+        "NetCDF",
+        "SeaDOTs",
+        "multidimensional",
+        "temperature" ;
+    dcterms:title "North Sea temperature forecast cube" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
+        [ rdfs:label "SeaDOTs Catalog Data Multidimensional bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ],
+        [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ] ;
+    geojson:bbox ( 2e+00 5.6e+01 9e+00 6.1e+01 ) ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 2e+00 5.6e+01 ) ( 9e+00 5.6e+01 ) ( 9e+00 6.1e+01 ) ( 2e+00 6.1e+01 ) ( 2e+00 5.6e+01 ) ) ) ] ;
+    seadots:itemType "record" ;
+    stac:end_datetime "2026-06-11T00:00:00+00:00"^^xsd:dateTime ;
+    stac:hasAsset [ ns2:netcdf [ dcterms:format "application/x-netcdf" ;
+                    dcterms:title "NetCDF data cube" ;
+                    oa:hasTarget <https://example.org/seadots/north-sea-temperature-forecast.nc> ;
+                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+                            dcterms:description "Sea water temperature forecast variable." ;
+                            qudt:unit <http://qudt.org/vocab/unit/K> ;
+                            foaf:name "sea_water_temperature"^^rdfs:Literal ] ;
+                    stac:roles "data" ] ] ;
+    stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+        "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
+        "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
+    stac:start_datetime "2026-06-10T00:00:00+00:00"^^xsd:dateTime ;
+    stac:version "1.0.0" ;
+    rec:format [ dcterms:mediaType "application/x-netcdf" ;
+            rec:name "NetCDF" ] ;
+    rec:hasVariable <http://example.com/variables/sea_water_temperature> .
+
+<http://example.com/variables/sea_water_temperature> dcterms:description "Sea water temperature forecast variable." ;
+    dcterms:title "Sea water temperature" ;
+    qudt:unit <http://qudt.org/vocab/unit/K> .
+

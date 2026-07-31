@@ -1,178 +1,601 @@
 {
-  "@iot.id": "swedish-dt-eurostat-nuts-regions-observation-000001",
-  "phenomenonTime": "model-year-1/month-6/tick-33",
-  "resultTime": "2026-05-27T00:00:00Z",
-  "result": {
-    "repetitions": 1,
-    "ticks": 1,
-    "current_herring_season": "Evenly distributed",
-    "current_management_season": "No closure",
-    "current_TAC_herring": 56669.48663862502,
-    "TAC_herring_share_sv": 0.093,
-    "even_dispersal_rate": 0.08,
-    "winter_dispersal_rate": 0.027,
-    "spawning_dispersal_rate": 0.04,
-    "winter_closure_type": 1,
-    "spawning_closure_type": 0,
-    "trawling_limit": "none",
-    "fishing_algorithm": "profit maximisation",
-    "current_year": 1,
-    "current_month": 6,
-    "year_tick": 33,
-    "herring_price_fish_meal": 2.41,
-    "sprat_price": 2.41,
-    "fuel_price": 0,
-    "fuel_consumption_SV": 0,
-    "fuel_consumption_LV": 0,
-    "stop_herring_growth": false,
-    "mean_biomass_herring": 7392.332485966248,
-    "mean_biomas_sprat": 6483.7546843309965,
-    "landing_value_herring_SV": 3515.510774428327,
-    "landing_value_herring_LV": 555786.1778847649,
-    "landing_value_sprat_SV": 2690.7200569173774,
-    "landing-value_sprat_LV": 696058.3155635783,
-    "catch_herring_SV_All": 1458.718163663206,
-    "catch_herring_LV_All": 230616.67132147925,
-    "catch_sprat_SV_All": 1116.4813514179987,
-    "catch_sprat_LV_All": 288820.877827211,
-    "VA_SV_All": 206.8743610448568,
-    "VA_LV_All": 43167.05149821874,
-    "yearly_growth_herring": 0.52,
-    "winter_closure_length": 120,
-    "TAC_share_B_herring": 0.3,
-    "B_herring_tot": 250000,
-    "K_herring_reg_inc": 1,
-    "TAC_herring_Sweden_impl": 1,
-    "herring_price_human_cons": 11.25,
-    "SV_herring_market": "fish meal",
-    "TAC_herring_est_error": 0.65,
-    "SV_fishing_radius": 5,
-    "TAC_herring_inc_SV": 1,
-    "TAC_herring_type": 0
-  },
-  "Datastream": {
-    "@iot.id": "swedish-dt-eurostat-nuts-regions-simulation",
-    "name": "Swedish DT Eurostat NUTS regions simulation output",
-    "description": "Whitespace-delimited simulation rows from the Swedish Digital Twin fisheries model.",
-    "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation",
-    "unitOfMeasurement": {
-      "name": "model output bundle",
-      "symbol": "1",
-      "definition": "https://qudt.org/vocab/unit/UNITLESS"
+  "@context": {
+    "@version": 1.1,
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dct": "http://purl.org/dc/terms/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "indo": "https://w3id.org/indicators/marine/obs/",
+    "indp": "https://w3id.org/indicators/marine/parameters/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "fileName": "dct:identifier",
+    "encoding": "dct:format",
+    "source": "dct:source",
+    "href": {
+      "@id": "dct:references",
+      "@type": "@id"
     },
-    "ObservedProperty": {
-      "@iot.id": "swedish-dt-fisheries-simulation-state",
-      "name": "Swedish DT fisheries simulation state",
-      "definition": "https://w3id.org/ogc/hosted/seadots/swedish-dt#fisheriesSimulationState"
+    "parquetSchema": {
+      "@id": "csvw:tableSchema",
+      "@container": "@list"
     },
-    "Sensor": {
-      "@iot.id": "swedish-dt-simulation-model",
-      "name": "Swedish Digital Twin fisheries simulation model",
-      "encodingType": "application/json",
-      "metadata": "Source model output represented from examples/eurostat nuts regions.qgz"
-    },
-    "Thing": {
-      "@iot.id": "swedish-dt-eurostat-nuts-region-set",
-      "name": "Eurostat NUTS region indicator set"
+    "name": "csvw:name",
+    "description": "dct:description",
+    "propertyUrl": {
+      "@id": "csvw:propertyUrl",
+      "@type": "@id"
     }
   },
-  "FeatureOfInterest": {
-    "@iot.id": "swedish-dt-nuts-region-indicators-000001",
-    "name": "Swedish DT case region - northern Baltic to Gotland",
-    "description": "Approximate Swedish case-region footprint spanning the northern Baltic/Bothnian Sea case waters southward to and including Gotland Island. The source table stores region membership as nuts_region_01 ... nuts_region_17 indicator columns; this geometry is an example footprint for the case region, not an authoritative Eurostat NUTS boundary.",
-    "encodingType": "application/geo+json",
-    "feature": {
-      "type": "Feature",
-      "id": "swedish-dt-case-region-north-to-gotland",
-      "bbox": [
-        16.4,
-        57.0,
-        22.5,
-        65.8
-      ],
+  "fileName": "eurostat-nuts-regions.parquet",
+  "encoding": "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB",
+  "source": {
+    "href": "examples/eurostat nuts regions.qgz",
+    "sourceFormat": "text/plain; delimiter=space; quote=double",
+    "rowCount": 60000,
+    "columnCount": 63,
+    "note": "The supplied source carries no row-level geometry. Columns `fu_01` .. `fu_17` are reserved-for-future-use placeholders (always 0 in the current data, see indp:reserved-for-future-use) and are not resolved NUTS-region or FU-area codes; do not join them to region geometry until the model owner confirms their intended meaning. This header includes an approximate Swedish case-region footprint spanning northern Baltic/Bothnian Sea case waters southward to Gotland Island as a placeholder single-region geometry. A concrete GeoParquet writer should replace or refine this with authoritative geometry once the real region semantics are known."
+  },
+  "parquetSchema": [
+    {
+      "name": "geometry",
+      "type": "BYTE_ARRAY/WKB",
+      "nullable": true,
+      "description": "Placeholder single-region geometry for the case-study area. Not currently derived from `fu_01` .. `fu_17`, which are reserved-for-future-use columns, not region keys.",
+      "propertyUrl": "geo:hasGeometry"
+    },
+    {
+      "name": "repetitions",
+      "type": "INT64",
+      "nullable": false,
+      "propertyUrl": "indp:repetitions"
+    },
+    {
+      "name": "ticks",
+      "type": "INT64",
+      "nullable": false,
+      "propertyUrl": "indp:ticks"
+    },
+    {
+      "name": "current_herring_season",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true,
+      "propertyUrl": "indp:current_herring_season"
+    },
+    {
+      "name": "current_management_season",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true,
+      "propertyUrl": "indp:current_management_season"
+    },
+    {
+      "name": "current_TAC_herring",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indp:current_TAC_herring"
+    },
+    {
+      "name": "TAC_herring_share_sv",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indp:TAC_herring_share_sv"
+    },
+    {
+      "name": "even_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indp:even_dispersal_rate"
+    },
+    {
+      "name": "winter_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indp:winter_dispersal_rate"
+    },
+    {
+      "name": "spawning_dispersal_rate",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indp:spawning_dispersal_rate"
+    },
+    {
+      "name": "winter_closure_type",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:winter_closure_type"
+    },
+    {
+      "name": "spawning_closure_type",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:spawning_closure_type"
+    },
+    {
+      "name": "trawling_limit",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true,
+      "propertyUrl": "indp:trawling_limit"
+    },
+    {
+      "name": "fishing_algorithm",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true,
+      "propertyUrl": "indp:fishing_algorithm"
+    },
+    {
+      "name": "current_year",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:current_year"
+    },
+    {
+      "name": "current_month",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:current_month"
+    },
+    {
+      "name": "year_tick",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:year_tick"
+    },
+    {
+      "name": "herring_price_fish_meal",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:herring_price_fish_meal"
+    },
+    {
+      "name": "sprat_price",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:sprat_price"
+    },
+    {
+      "name": "fuel_price",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:fuel_price"
+    },
+    {
+      "name": "fuel_consumption_SV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:fuel_consumption_SV"
+    },
+    {
+      "name": "fuel_consumption_LV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:fuel_consumption_LV"
+    },
+    {
+      "name": "stop_herring_growth",
+      "type": "BOOLEAN",
+      "nullable": true,
+      "propertyUrl": "indo:stop_herring_growth"
+    },
+    {
+      "name": "mean_biomass_herring",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:mean_biomass_herring"
+    },
+    {
+      "name": "mean_biomas_sprat",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:mean_biomass_sprat"
+    },
+    {
+      "name": "landing_value_herring_SV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:landing_value_herring_SV"
+    },
+    {
+      "name": "landing_value_herring_LV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:landing_value_herring_LV"
+    },
+    {
+      "name": "landing_value_sprat_SV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:landing_value_sprat_SV"
+    },
+    {
+      "name": "landing-value_sprat_LV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:landing_value_sprat_LV"
+    },
+    {
+      "name": "catch_herring_SV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:catch_herring_SV_All"
+    },
+    {
+      "name": "catch_herring_LV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:catch_herring_LV_All"
+    },
+    {
+      "name": "catch_sprat_SV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:catch_sprat_SV_All"
+    },
+    {
+      "name": "catch_sprat_LV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:catch_sprat_LV_All"
+    },
+    {
+      "name": "VA_SV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:VA_SV_All"
+    },
+    {
+      "name": "VA_LV_All",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:VA_LV_All"
+    },
+    {
+      "name": "yearly_growth_herring",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:yearly_growth_herring"
+    },
+    {
+      "name": "winter_closure_length",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indo:winter_closure_length"
+    },
+    {
+      "name": "TAC_share_B_herring",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:TAC_share_B_herring"
+    },
+    {
+      "name": "B_herring_tot",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:B_herring_tot"
+    },
+    {
+      "name": "K_herring_reg_inc",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:K_herring_reg_inc"
+    },
+    {
+      "name": "TAC_herring_Sweden_impl",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:TAC_herring_Sweden_impl"
+    },
+    {
+      "name": "herring_price_human_cons",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:herring_price_human_cons"
+    },
+    {
+      "name": "SV_herring_market",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": true,
+      "propertyUrl": "indo:SV_herring_market"
+    },
+    {
+      "name": "TAC_herring_est_error",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:TAC_herring_est_error"
+    },
+    {
+      "name": "SV_fishing_radius",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:SV_fishing_radius"
+    },
+    {
+      "name": "TAC_herring_inc_SV",
+      "type": "DOUBLE",
+      "nullable": true,
+      "propertyUrl": "indo:TAC_herring_inc_SV"
+    },
+    {
+      "name": "TAC_herring_type",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indo:TAC_herring_type"
+    },
+    {
+      "name": "fu_01",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_02",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_03",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_04",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_05",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_06",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_07",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_08",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_09",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_10",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_11",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_12",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_13",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_14",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_15",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_16",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    },
+    {
+      "name": "fu_17",
+      "type": "INT64",
+      "nullable": true,
+      "propertyUrl": "indp:reserved-for-future-use"
+    }
+  ],
+  "geo": {
+    "version": "1.1.0",
+    "primary_column": "geometry",
+    "columns": {
       "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              17.0,
-              57.0
+        "encoding": "WKB",
+        "geometry_types": [
+          "Polygon"
+        ],
+        "crs": {
+          "$schema": "https://proj.org/schemas/v0.7/projjson.schema.json",
+          "type": "GeographicCRS",
+          "name": "WGS 84 (CRS84)",
+          "datum_ensemble": {
+            "name": "World Geodetic System 1984 ensemble",
+            "members": [
+              {
+                "name": "World Geodetic System 1984 (Transit)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1166
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G730)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1152
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G873)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1153
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G1150)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1154
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G1674)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1155
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G1762)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1156
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G2139)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1309
+                }
+              },
+              {
+                "name": "World Geodetic System 1984 (G2296)",
+                "id": {
+                  "authority": "EPSG",
+                  "code": 1383
+                }
+              }
             ],
+            "ellipsoid": {
+              "name": "WGS 84",
+              "semi_major_axis": 6378137,
+              "inverse_flattening": 298.257223563
+            },
+            "accuracy": "2.0",
+            "id": {
+              "authority": "EPSG",
+              "code": 6326
+            }
+          },
+          "coordinate_system": {
+            "subtype": "ellipsoidal",
+            "axis": [
+              {
+                "name": "Geodetic longitude",
+                "abbreviation": "Lon",
+                "direction": "east",
+                "unit": "degree"
+              },
+              {
+                "name": "Geodetic latitude",
+                "abbreviation": "Lat",
+                "direction": "north",
+                "unit": "degree"
+              }
+            ]
+          },
+          "scope": "Not known.",
+          "area": "World.",
+          "bbox": {
+            "south_latitude": -90,
+            "west_longitude": -180,
+            "north_latitude": 90,
+            "east_longitude": 180
+          },
+          "id": {
+            "authority": "OGC",
+            "code": "CRS84"
+          }
+        },
+        "edges": "planar",
+        "orientation": "counterclockwise",
+        "bbox": [
+          16.4,
+          57.0,
+          22.5,
+          65.8
+        ],
+        "exampleGeometryGeoJSON": {
+          "type": "Polygon",
+          "coordinates": [
             [
-              19.2,
-              57.0
-            ],
-            [
-              20.6,
-              58.1
-            ],
-            [
-              21.6,
-              60.3
-            ],
-            [
-              22.5,
-              63.4
-            ],
-            [
-              21.8,
-              65.8
-            ],
-            [
-              19.0,
-              65.8
-            ],
-            [
-              17.6,
-              63.0
-            ],
-            [
-              16.4,
-              59.0
-            ],
-            [
-              17.0,
-              57.0
+              [
+                17.0,
+                57.0
+              ],
+              [
+                19.2,
+                57.0
+              ],
+              [
+                20.6,
+                58.1
+              ],
+              [
+                21.6,
+                60.3
+              ],
+              [
+                22.5,
+                63.4
+              ],
+              [
+                21.8,
+                65.8
+              ],
+              [
+                19.0,
+                65.8
+              ],
+              [
+                17.6,
+                63.0
+              ],
+              [
+                16.4,
+                59.0
+              ],
+              [
+                17.0,
+                57.0
+              ]
             ]
           ]
-        ]
-      },
-      "properties": {
-        "name": "Swedish DT case region - northern Baltic to Gotland",
-        "geometryStatus": "approximate case-region footprint",
-        "southAnchor": "Gotland Island",
-        "crs": "EPSG:4326"
+        }
       }
     }
   },
-  "parameters": {
-    "source": "examples/eurostat nuts regions.qgz",
-    "sourceFormat": "text/plain; delimiter=space; quote=double",
-    "sourceRow": 1,
-    "rowCount": 60000,
-    "columnCount": 63,
-    "regionIndicators": {
-      "nuts_region_01": 0,
-      "nuts_region_02": 0,
-      "nuts_region_03": 0,
-      "nuts_region_04": 0,
-      "nuts_region_05": 0,
-      "nuts_region_06": 0,
-      "nuts_region_07": 0,
-      "nuts_region_08": 0,
-      "nuts_region_09": 0,
-      "nuts_region_10": 0,
-      "nuts_region_11": 0,
-      "nuts_region_12": 0,
-      "nuts_region_13": 0,
-      "nuts_region_14": 0,
-      "nuts_region_15": 0,
-      "nuts_region_16": 0,
-      "nuts_region_17": 0
-    },
-    "conformsTo": [
-      "https://docs.ogc.org/is/18-088/18-088.html",
-      "http://www.w3.org/ns/sosa/Observation"
-    ]
-  }
+  "conversionNotes": [
+    "Preserve the original 63 simulation columns.",
+    "Use the included approximate Swedish case-region footprint as a single case geometry until the `fu_01` .. `fu_17` reserved-for-future-use columns are given real region semantics.",
+    "Keep the source artifact link in Parquet file metadata for provenance."
+  ]
 }

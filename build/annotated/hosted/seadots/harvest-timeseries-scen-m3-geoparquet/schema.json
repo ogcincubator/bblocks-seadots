@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Harvest time series scenario Scen M3 \u2014 GeoParquet representation",
+  "description": "GeoParquet representation header for the source-faithful harvest time series scenario Scen M3 point time series (see harvest-timeseries-scen-m3-source). Declares the four physical columns (id, geometry, bwmus, time) via the shared GeoParquetHeader envelope. propertyUrls are resolved against harvest-timeseries-scen-m3-source's own context.jsonld (dct:identifier, geojson:geometry, the provisional bwmus IRI, dct:temporal), not redefined here.\n",
+  "$ref": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/geoparquet-header/schema.json",
+  "x-jsonld-extra-terms": {
+    "fileName": "https://schema.org/contentUrl",
+    "encoding": "https://schema.org/encodingFormat",
+    "source": "http://purl.org/dc/terms/source",
+    "href": {
+      "x-jsonld-id": "http://purl.org/dc/terms/references",
+      "x-jsonld-type": "@id"
+    },
+    "sourceFormat": "http://purl.org/dc/terms/format",
+    "rowCount": "https://schema.org/numberOfItems",
+    "columnCount": "https://schema.org/numberOfColumns",
+    "parquetSchema": {
+      "x-jsonld-id": "https://geoparquet.org/schema",
+      "x-jsonld-container": "@list"
+    },
+    "name": "http://www.w3.org/ns/csvw#name",
+    "description": "http://purl.org/dc/terms/description",
+    "type": "http://www.w3.org/ns/csvw#datatype",
+    "nullable": "https://geoparquet.org/schema#nullable",
+    "propertyUrl": {
+      "x-jsonld-id": "http://www.w3.org/ns/csvw#propertyUrl",
+      "x-jsonld-type": "@id"
+    },
+    "geo": "https://geoparquet.org/metadata",
+    "version": "https://schema.org/version",
+    "primary_column": "https://geoparquet.org/metadata#primary_column",
+    "columns": "https://geoparquet.org/metadata#columns",
+    "geometry_types": "https://geoparquet.org/metadata#geometry_types",
+    "crs": "https://geoparquet.org/metadata#crs",
+    "bbox": "https://geoparquet.org/metadata#bbox",
+    "id": {
+      "x-jsonld-id": "http://purl.org/dc/terms/identifier",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "geometry": "https://purl.org/geojson/vocab#geometry",
+    "time": "http://purl.org/dc/terms/temporal",
+    "bwmus": {
+      "x-jsonld-id": "https://w3id.org/iliad/property/bwmus",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#double"
+    }
+  },
+  "x-jsonld-prefixes": {
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geojson": "https://purl.org/geojson/vocab#"
+  }
+}

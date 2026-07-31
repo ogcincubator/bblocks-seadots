@@ -1,0 +1,119 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant windfarm
+description: 'GeoJSON Feature profile aligned to the official EMODnet Human Activities
+  windfarms XSD. It preserves the service''s published field names and primitive types
+  for country, turbine count, power output, status, installation type, year fields,
+  distance to coast, and notes.
+
+  '
+required:
+- id
+- type
+- geometry
+- properties
+properties:
+  id:
+    type: string
+    format: uri
+    x-jsonld-id: '@id'
+  type:
+    const: Feature
+    x-jsonld-id: '@type'
+  geometry:
+    type: object
+    required:
+    - type
+    - coordinates
+    properties:
+      type:
+        enum:
+        - Point
+        - Polygon
+        - MultiPolygon
+        x-jsonld-id: '@type'
+      coordinates:
+        type: array
+        x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+        x-jsonld-container: '@list'
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  properties:
+    type: object
+    required:
+    - country
+    - n_turbines
+    - power_mw
+    - status
+    - type_inst
+    - updateyear
+    - year
+    - dist_coast
+    - notes
+    properties:
+      country:
+        type: string
+        description: "Country name of the responsible/coastal country as represented
+          in the source data (not restricted to a fixed enumeration \u2014 any country
+          name published by the EMODnet Human Activities windfarms service is valid).
+          In RDF/JSON-LD, the context binds the country names currently observed in
+          the live service to EU Publications Office Country authority table URIs
+          (http://publications.europa.eu/resource/authority/country/), e.g. \"Belgium\"
+          -> http://publications.europa.eu/resource/authority/country/BEL. Names not
+          yet covered by the context fall back to a plain string and should be added
+          to the context/ontology as the source data grows."
+        x-jsonld-id: https://schema.org/addressCountry
+        x-jsonld-type: '@vocab'
+      n_turbines:
+        type: number
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+      power_mw:
+        type: number
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+      status:
+        type: string
+        description: 'Status of the windfarm, as represented in the source data. The
+          EMODnet service uses a controlled vocabulary of five values: Planned, Production,
+          Dismantled, Approved, Construction.'
+        enum:
+        - Planned
+        - Production
+        - Dismantled
+        - Approved
+        - Construction
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
+        x-jsonld-type: '@vocab'
+      type_inst:
+        oneOf:
+        - type: string
+          enum:
+          - Grounded
+          - Floating
+        - type: 'null'
+        x-jsonld-id: https://schema.org/additionalType
+      updateyear:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+      year:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+      dist_coast:
+        type: number
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
+      notes:
+        type:
+        - string
+        - 'null'
+        x-jsonld-id: http://purl.org/dc/terms/description
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+x-jsonld-extra-terms:
+  Feature: https://purl.org/geojson/vocab#Feature
+  Point: https://purl.org/geojson/vocab#Point
+  Polygon: https://purl.org/geojson/vocab#Polygon
+  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  schema: https://schema.org/
+  seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+  dcterms: http://purl.org/dc/terms/
+  seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+  inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/

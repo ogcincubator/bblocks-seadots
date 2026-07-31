@@ -1,0 +1,136 @@
+{
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          3.0,
+          56.0
+        ],
+        [
+          9.0,
+          56.0
+        ],
+        [
+          9.0,
+          61.0
+        ],
+        [
+          3.0,
+          61.0
+        ],
+        [
+          3.0,
+          56.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    3.0,
+    56.0,
+    9.0,
+    61.0
+  ],
+  "properties": {
+    "title": "North Sea cod occurrence table (synthetic)",
+    "description": "Synthetic SeaDOTs catalog record for a GeoParquet tabular dataset of Atlantic cod (Gadus morhua) occurrence records in the North Sea. All values are synthetic documentation data; this record does not represent a real dataset.",
+    "datetime": "2026-06-11T00:00:00Z",
+    "start_datetime": "2024-01-01T00:00:00Z",
+    "end_datetime": "2024-12-31T00:00:00Z",
+    "keywords": [
+      "SeaDOTs",
+      "tabular",
+      "GeoParquet",
+      "occurrence",
+      "cod",
+      "Gadus morhua",
+      "North Sea",
+      "ICES"
+    ],
+    "license": "CC-BY-4.0",
+    "role": "data",
+    "table:columns": [
+      {
+        "name": "occurrence_id",
+        "description": "Unique identifier for the occurrence record.",
+        "type": "string"
+      },
+      {
+        "name": "species",
+        "description": "Scientific species name.",
+        "type": "string"
+      },
+      {
+        "name": "longitude",
+        "description": "Decimal longitude of the observation (WGS84).",
+        "type": "float64",
+        "unit": "degrees_east"
+      },
+      {
+        "name": "latitude",
+        "description": "Decimal latitude of the observation (WGS84).",
+        "type": "float64",
+        "unit": "degrees_north"
+      },
+      {
+        "name": "depth",
+        "description": "Observation depth below sea surface.",
+        "type": "float32",
+        "unit": "m"
+      },
+      {
+        "name": "sea_water_temperature",
+        "description": "In-situ sea water temperature at the observation depth.",
+        "type": "float32",
+        "unit": "degrees_C"
+      },
+      {
+        "name": "count",
+        "description": "Number of individuals recorded in the observation event.",
+        "type": "int32",
+        "unit": "1"
+      },
+      {
+        "name": "geometry",
+        "description": "Point geometry of the observation location (WGS84, GeoParquet encoding).",
+        "type": "geometry"
+      }
+    ],
+    "table:primary_geometry": "geometry",
+    "table:row_count": 42150
+  },
+  "assets": {
+    "geoparquet": {
+      "href": "https://example.org/seadots/north-sea-cod-occurrences.parquet",
+      "type": "application/x-parquet",
+      "title": "GeoParquet occurrence table",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-tabular",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Tabular bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-tabular",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Tabular profile"
+    }
+  ]
+}

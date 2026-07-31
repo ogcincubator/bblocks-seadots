@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GeoParquet Header",
+  "description": "Generic CSVW + GeoParquet 1.1 metadata header envelope: describes the physical columns of a GeoParquet file (name, Parquet logical type, nullability, CSVW propertyUrl annotation) and the GeoParquet `geo` metadata block for the primary geometry column. This schema defines only the reusable envelope shape; dataset-specific column lists and semantics are defined by profiles that `$ref` this schema (e.g. a source-specific building block's own GeoParquetHeader definition).\n",
+  "type": "object",
+  "required": [
+    "fileName",
+    "encoding",
+    "source",
+    "parquetSchema",
+    "geo"
+  ],
+  "properties": {
+    "fileName": {
+      "type": "string",
+      "pattern": "\\.(geo)?parquet$",
+      "x-jsonld-id": "https://schema.org/contentUrl"
+    },
+    "encoding": {
+      "type": "string",
+      "description": "Free-text encoding statement, e.g. \"GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB\".",
+      "x-jsonld-id": "https://schema.org/encodingFormat"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "href",
+        "sourceFormat",
+        "rowCount",
+        "columnCount"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Path or URL to the original source artifact this header was derived from.",
+          "x-jsonld-id": "http://purl.org/dc/terms/references",
+          "x-jsonld-type": "@id"
+        },
+        "sourceFormat": {
+          "type": "string",
+          "description": "Media type or free-text description of the source format, e.g. \"application/geo+json\".",
+          "x-jsonld-id": "http://purl.org/dc/terms/format"
+        },
+        "rowCount": {
+          "type": "integer",
+          "minimum": 1,
+          "x-jsonld-id": "https://schema.org/numberOfItems"
+        },
+        "columnCount": {
+          "type": "integer",
+          "minimum": 1,
+          "x-jsonld-id": "https://schema.org/numberOfColumns"
+        },
+        "note": {
+          "type": "string",
+          "x-jsonld-id": "https://schema.org/comment"
+        }
+      },
+      "additionalProperties": true,
+      "x-jsonld-id": "http://purl.org/dc/terms/source"
+    },
+    "parquetSchema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-jsonld-id": "http://www.w3.org/ns/csvw#name"
+          },
+          "type": {
+            "type": "string",
+            "description": "Parquet logical type, e.g. INT32, INT64, FLOAT, DOUBLE, BOOLEAN, BYTE_ARRAY/UTF8, BYTE_ARRAY/WKB.",
+            "x-jsonld-id": "http://www.w3.org/ns/csvw#datatype"
+          },
+          "nullable": {
+            "type": "boolean",
+            "x-jsonld-id": "https://geoparquet.org/schema#nullable"
+          },
+          "description": {
+            "type": "string",
+            "x-jsonld-id": "http://purl.org/dc/terms/description"
+          },
+          "propertyUrl": {
+            "type": "string",
+            "description": "CSVW-style compact IRI or full IRI naming this column's semantic mapping.",
+            "x-jsonld-id": "http://www.w3.org/ns/csvw#propertyUrl",
+            "x-jsonld-type": "@id"
+          }
+        },
+        "additionalProperties": true
+      },
+      "x-jsonld-id": "https://geoparquet.org/schema",
+      "x-jsonld-container": "@list"
+    },
+    "geo": {
+      "type": "object",
+      "required": [
+        "version",
+        "primary_column",
+        "columns"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "x-jsonld-id": "https://schema.org/version"
+        },
+        "primary_column": {
+          "type": "string",
+          "x-jsonld-id": "https://geoparquet.org/metadata#primary_column"
+        },
+        "columns": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "encoding"
+            ],
+            "properties": {
+              "encoding": {
+                "type": "string",
+                "x-jsonld-id": "https://schema.org/encodingFormat"
+              },
+              "geometry_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Point",
+                    "LineString",
+                    "Polygon",
+                    "MultiPoint",
+                    "MultiLineString",
+                    "MultiPolygon",
+                    "GeometryCollection"
+                  ]
+                },
+                "x-jsonld-id": "https://geoparquet.org/metadata#geometry_types"
+              },
+              "crs": {
+                "description": "Must be omitted/null (defaults to OGC:CRS84), a CRS identifier string (e.g. \"OGC:CRS84\"), or a full PROJJSON object. A shorthand object that merely looks like PROJJSON (has a \"type\" but none of the keys that make a CRS definition complete) is exactly the authoring mistake that breaks real GeoParquet readers (e.g. geopandas, via proj) at read time \u2014 this schema rejects that shape rather than silently accepting it.\n",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "GeographicCRS",
+                          "ProjectedCRS",
+                          "GeodeticCRS",
+                          "CompoundCRS",
+                          "VerticalCRS"
+                        ],
+                        "x-jsonld-id": "http://www.w3.org/ns/csvw#datatype"
+                      }
+                    },
+                    "anyOf": [
+                      {
+                        "required": [
+                          "datum"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "datum_ensemble"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "base_crs"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "source_crs"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "x-jsonld-id": "https://geoparquet.org/metadata#crs"
+              },
+              "edges": {
+                "type": "string",
+                "enum": [
+                  "planar",
+                  "spherical"
+                ],
+                "x-jsonld-id": "https://geoparquet.org/metadata#edges"
+              },
+              "orientation": {
+                "type": "string",
+                "x-jsonld-id": "https://geoparquet.org/metadata#orientation"
+              },
+              "bbox": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4,
+                "x-jsonld-id": "https://geoparquet.org/metadata#bbox"
+              },
+              "covering": {
+                "type": "object",
+                "x-jsonld-id": "https://geoparquet.org/metadata#covering"
+              }
+            },
+            "additionalProperties": true
+          },
+          "x-jsonld-id": "https://geoparquet.org/metadata#columns"
+        }
+      },
+      "additionalProperties": true,
+      "x-jsonld-id": "https://geoparquet.org/metadata"
+    }
+  },
+  "additionalProperties": true,
+  "x-jsonld-prefixes": {
+    "schema": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

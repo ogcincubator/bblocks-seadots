@@ -1,0 +1,199 @@
+Validation report for ogc.hosted.seadots.catalog-data-tabular - SeaDOTs Catalog Data Tabular
+Generated 2026-07-31T22:09:00.776096+00:00
+=== Files ===
+Using examples/catalog-data-tabular.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_1_1.jsonld created
+Output Turtle example_1_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+
+** Validation error **
+ValidationError: {'id': 'https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences', 'type': 'Feature', 'itemType': 'record', 'stac_version': '1.0.0', 'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json', 'https://stac-extensions.github.io/cf/v0.2.0/schema.json', 'https://stac-extensions.github.io/prov/v1.0.0/schema.json'], 'geometry': {'type': 'Polygon', 'coordinates': [[[3.0, 56.0], [9.0, 56.0], [9.0, 61.0], [3.0, 61.0], [3.0, 56.0]]]}, 'bbox': [3.0, 56.0, 9.0, 61.0], 'properties': {'title': 'North Sea cod occurrence table (synthetic)', 'description': 'Synthetic SeaDOTs catalog record for a GeoParquet tabular dataset of Atlantic cod (Gadus morhua) occurrence records in the North Sea. All values are synthetic documentation data; this record does not represent a real dataset.', 'datetime': '2026-06-11T00:00:00Z', 'start_datetime': '2024-01-01T00:00:00Z', 'end_datetime': '2024-12-31T00:00:00Z', 'keywords': ['SeaDOTs', 'tabular', 'GeoParquet', 'occurrence', 'cod', 'Gadus morhua', 'North Sea', 'ICES'], 'license': 'CC-BY-4.0', 'role': 'data', 'table:columns': [{'name': 'occurrence_id', 'description': 'Unique identifier for the occurrence record.', 'type': 'string'}, {'name': 'species', 'description': 'Scientific species name.', 'type': 'string'}, {'name': 'longitude', 'description': 'Decimal longitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_east'}, {'name': 'latitude', 'description': 'Decimal latitude of the observation (WGS84).', 'type': 'float64', 'unit': 'degrees_north'}, {'name': 'depth', 'description': 'Observation depth below sea surface.', 'type': 'float32', 'unit': 'm'}, {'name': 'sea_water_temperature', 'description': 'In-situ sea water temperature at the observation depth.', 'type': 'float32', 'unit': 'degrees_C'}, {'name': 'count', 'description': 'Number of individuals recorded in the observation event.', 'type': 'int32', 'unit': '1'}, {'name': 'geometry', 'description': 'Point geometry of the observation location (WGS84, GeoParquet encoding).', 'type': 'geometry'}], 'table:primary_geometry': 'geometry', 'table:row_count': 42150}, 'assets': {'geoparquet': {'href': 'https://example.org/seadots/north-sea-cod-occurrences.parquet', 'type': 'application/x-parquet', 'title': 'GeoParquet occurrence table', 'roles': ['data']}}, 'links': [{'rel': 'describedby', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular bblock'}, {'rel': 'profile', 'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular', 'type': 'application/schema+json', 'title': 'SeaDOTs Catalog Data Tabular profile'}]} is not valid under any of the given schemas
+
+Failed validating 'oneOf' in schema['allOf'][0]['allOf'][2]['allOf'][1]:
+    {'$id': 'https://stac-extensions.github.io/cf/v0.2.0/schema.json#',
+     '$schema': 'http://json-schema.org/draft-07/schema#',
+     'definitions': {'cf_in_assets': {'properties': {'assets': {'not': {'additionalProperties': {'not': {'allOf': [{'required': ['cf:parameter']},
+                                                                                                                   {'$ref': '#/definitions/fields'}]}}}}},
+                                      'required': ['assets']},
+                     'fields': {'additionalProperties': False,
+                                'patternProperties': {'^(?!cf:)': {'$comment': 'Above, '
+                                                                               'change '
+                                                                               '`cf` '
+                                                                               'to '
+                                                                               'the '
+                                                                               'prefix '
+                                                                               'of '
+                                                                               'this '
+                                                                               'extension'}},
+                                'properties': {'cf:parameter': {'items': {'properties': {'name': {'minLength': 1,
+                                                                                                  'type': 'string'},
+                                                                                         'unit': {'type': 'string'}},
+                                                                          'required': ['name'],
+                                                                          'type': 'object'},
+                                                                'minItems': 1,
+                                                                'type': 'array'}},
+                                'type': 'object'},
+                     'forbid_fields': {'additionalProperties': False,
+                                       'patternProperties': {'^(?!cf:)': {}}}},
+     'description': 'STAC CF Extension for STAC Items and STAC '
+                    'Collections.',
+     'oneOf': [{'$comment': 'Schema for Collections',
+                'allOf': [{'$ref': '#/definitions/fields'}],
+                'properties': {'item_assets': {'additionalProperties': {'$ref': '#/definitions/fields'},
+                                               'type': 'object'},
+                               'summaries': {'oneOf': [{'$ref': '#/definitions/fields'},
+                                                       {'$comment': 'JSON '
+                                                                    'Schema '
+                                                                    'summary',
+                                                        'additionalProperties': False,
+                                                        'patternProperties': {'^(?!cf:)': {'$comment': 'Above, '
+                                                                                                       'change '
+                                                                                                       '`cf` '
+                                                                                                       'to '
+                                                                                                       'the '
+                                                                                                       'prefix '
+                                                                                                       'of '
+                                                                                                       'this '
+                                                                                                       'extension'}},
+                                                        'properties': {'cf:parameter': {'properties': {'type': {'const': 'array'}},
+                                                                                        'type': 'object'}},
+                                                        'type': 'object'}]},
+                               'type': {'const': 'Collection'}},
+                'required': ['type'],
+                'type': 'object'},
+               {'$comment': 'Schema for Items',
+                'allOf': [{'$ref': '#/definitions/cf_in_assets'}],
+                'properties': {'properties': {'$ref': '#/definitions/fields'},
+                               'type': {'const': 'Feature'}},
+                'required': ['type'],
+                'type': 'object'}],
+     'properties': {'assets': {'additionalProperties': {'$ref': '#/definitions/fields'},
+                               'type': 'object'},
+                    'stac_extensions': {'contains': {'const': 'https://stac-extensions.github.io/cf/v0.2.0/schema.json'},
+                                        'type': 'array'}},
+     'required': ['stac_extensions'],
+     'title': 'CF Extension',
+     'type': 'object'}
+
+On instance:
+    {'assets': {'geoparquet': {'href': 'https://example.org/seadots/north-sea-cod-occurrences.parquet',
+                               'roles': ['data'],
+                               'title': 'GeoParquet occurrence table',
+                               'type': 'application/x-parquet'}},
+     'bbox': [3.0, 56.0, 9.0, 61.0],
+     'geometry': {'coordinates': [[[3.0, 56.0],
+                                   [9.0, 56.0],
+                                   [9.0, 61.0],
+                                   [3.0, 61.0],
+                                   [3.0, 56.0]]],
+                  'type': 'Polygon'},
+     'id': 'https://w3id.org/ogc/hosted/seadots/catalog/dataset/north-sea-cod-occurrences',
+     'itemType': 'record',
+     'links': [{'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular',
+                'rel': 'describedby',
+                'title': 'SeaDOTs Catalog Data Tabular bblock',
+                'type': 'application/schema+json'},
+               {'href': 'bblocks://ogc.hosted.seadots.catalog-data-tabular',
+                'rel': 'profile',
+                'title': 'SeaDOTs Catalog Data Tabular profile',
+                'type': 'application/schema+json'}],
+     'properties': {'datetime': '2026-06-11T00:00:00Z',
+                    'description': 'Synthetic SeaDOTs catalog record for a '
+                                   'GeoParquet tabular dataset of Atlantic '
+                                   'cod (Gadus morhua) occurrence records '
+                                   'in the North Sea. All values are '
+                                   'synthetic documentation data; this '
+                                   'record does not represent a real '
+                                   'dataset.',
+                    'end_datetime': '2024-12-31T00:00:00Z',
+                    'keywords': ['SeaDOTs',
+                                 'tabular',
+                                 'GeoParquet',
+                                 'occurrence',
+                                 'cod',
+                                 'Gadus morhua',
+                                 'North Sea',
+                                 'ICES'],
+                    'license': 'CC-BY-4.0',
+                    'role': 'data',
+                    'start_datetime': '2024-01-01T00:00:00Z',
+                    'table:columns': [{'description': 'Unique identifier '
+                                                      'for the occurrence '
+                                                      'record.',
+                                       'name': 'occurrence_id',
+                                       'type': 'string'},
+                                      {'description': 'Scientific species '
+                                                      'name.',
+                                       'name': 'species',
+                                       'type': 'string'},
+                                      {'description': 'Decimal longitude '
+                                                      'of the observation '
+                                                      '(WGS84).',
+                                       'name': 'longitude',
+                                       'type': 'float64',
+                                       'unit': 'degrees_east'},
+                                      {'description': 'Decimal latitude of '
+                                                      'the observation '
+                                                      '(WGS84).',
+                                       'name': 'latitude',
+                                       'type': 'float64',
+                                       'unit': 'degrees_north'},
+                                      {'description': 'Observation depth '
+                                                      'below sea surface.',
+                                       'name': 'depth',
+                                       'type': 'float32',
+                                       'unit': 'm'},
+                                      {'description': 'In-situ sea water '
+                                                      'temperature at the '
+                                                      'observation depth.',
+                                       'name': 'sea_water_temperature',
+                                       'type': 'float32',
+                                       'unit': 'degrees_C'},
+                                      {'description': 'Number of '
+                                                      'individuals '
+                                                      'recorded in the '
+                                                      'observation event.',
+                                       'name': 'count',
+                                       'type': 'int32',
+                                       'unit': '1'},
+                                      {'description': 'Point geometry of '
+                                                      'the observation '
+                                                      'location (WGS84, '
+                                                      'GeoParquet '
+                                                      'encoding).',
+                                       'name': 'geometry',
+                                       'type': 'geometry'}],
+                    'table:primary_geometry': 'geometry',
+                    'table:row_count': 42150,
+                    'title': 'North Sea cod occurrence table (synthetic)'},
+     'stac_extensions': ['https://stac-extensions.github.io/table/v1.2.0/schema.json',
+                         'https://stac-extensions.github.io/cf/v0.2.0/schema.json',
+                         'https://stac-extensions.github.io/prov/v1.0.0/schema.json'],
+     'stac_version': '1.0.0',
+     'type': 'Feature'}
+=== End JSON Schema ===
+
+=== SHACL ===
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape: *none*
+
+Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+ - Shape rec:testAllVarsInTemplate: *none*
+
+=== End SHACL ===
+

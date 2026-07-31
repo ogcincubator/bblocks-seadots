@@ -1,0 +1,128 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/harvest-timeseries-scen-m3-geoparquet/context.jsonld",
+  "fileName": "harvest-timeseries-scen-m3.geoparquet",
+  "encoding": "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB",
+  "source": {
+    "href": "../harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson",
+    "sourceFormat": "application/geo+json",
+    "rowCount": 19920,
+    "columnCount": 4
+  },
+  "parquetSchema": [
+    {
+      "name": "id",
+      "type": "INT64",
+      "nullable": false,
+      "propertyUrl": "http://purl.org/dc/terms/identifier"
+    },
+    {
+      "name": "geometry",
+      "type": "BYTE_ARRAY/WKB",
+      "nullable": true,
+      "propertyUrl": "https://purl.org/geojson/vocab#geometry"
+    },
+    {
+      "name": "bwmus",
+      "type": "DOUBLE",
+      "nullable": false,
+      "propertyUrl": "https://w3id.org/iliad/property/bwmus"
+    },
+    {
+      "name": "time",
+      "type": "BYTE_ARRAY/UTF8",
+      "nullable": false,
+      "propertyUrl": "http://purl.org/dc/terms/temporal"
+    }
+  ],
+  "geo": {
+    "version": "1.1.0",
+    "primary_column": "geometry",
+    "columns": {
+      "geometry": {
+        "encoding": "WKB",
+        "geometry_types": [
+          "Point"
+        ],
+        "crs": {
+          "$schema": "https://proj.org/schemas/v0.7/projjson.schema.json",
+          "type": "GeographicCRS",
+          "name": "WGS 84 (CRS84)",
+          "datum_ensemble": {
+            "name": "World Geodetic System 1984 ensemble",
+            "members": [
+              {
+                "name": "World Geodetic System 1984 (Transit)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G730)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G873)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G1150)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G1674)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G1762)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G2139)"
+              },
+              {
+                "name": "World Geodetic System 1984 (G2296)"
+              }
+            ],
+            "ellipsoid": {
+              "name": "WGS 84",
+              "semi_major_axis": 6378137,
+              "inverse_flattening": 298.257223563
+            },
+            "accuracy": "2.0",
+            "id": {
+              "authority": "EPSG",
+              "code": 6326
+            }
+          },
+          "coordinate_system": {
+            "subtype": "ellipsoidal",
+            "axis": [
+              {
+                "name": "Geodetic longitude",
+                "abbreviation": "Lon",
+                "direction": "east",
+                "unit": "degree"
+              },
+              {
+                "name": "Geodetic latitude",
+                "abbreviation": "Lat",
+                "direction": "north",
+                "unit": "degree"
+              }
+            ]
+          },
+          "scope": "Not known.",
+          "area": "World.",
+          "bbox": {
+            "south_latitude": -90,
+            "west_longitude": -180,
+            "north_latitude": 90,
+            "east_longitude": 180
+          },
+          "id": {
+            "authority": "OGC",
+            "code": "CRS84"
+          }
+        },
+        "bbox": [
+          7.642570856666667,
+          54.37364839,
+          7.713492693333333,
+          54.40949512
+        ]
+      }
+    }
+  }
+}

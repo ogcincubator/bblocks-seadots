@@ -1,0 +1,34 @@
+{
+  "@context": {
+    "type": "@type",
+    "features": {
+      "@context": {
+        "id": {
+          "@id": "dct:identifier",
+          "@type": "xsd:integer"
+        },
+        "geometry": {
+          "@context": {
+            "coordinates": "geojson:coordinates"
+          },
+          "@id": "geojson:geometry"
+        },
+        "properties": {
+          "@context": {
+            "bwmus": {
+              "@id": "https://w3id.org/iliad/property/bwmus",
+              "@type": "xsd:double"
+            },
+            "time": "dct:temporal"
+          },
+          "@id": "geojson:properties"
+        }
+      },
+      "@id": "geojson:features"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@version": 1.1
+  }
+}

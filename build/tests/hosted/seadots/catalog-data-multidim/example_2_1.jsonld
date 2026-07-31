@@ -1,0 +1,273 @@
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-data-multidim/context.jsonld",
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/dataset/german-case-schism-wwm-3dinterp-10",
+  "type": "Feature",
+  "itemType": "record",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
+    "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
+    "https://stac-extensions.github.io/prov/v1.0.0/schema.json"
+  ],
+  "geometry": null,
+  "properties": {
+    "title": "Dummy data file for OGC from the German Use Case",
+    "description": "Header-derived SeaDOTs catalog record for the German Use Case SCHISM NetCDF multidimensional dataset.",
+    "datetime": "2026-06-11T09:23:33Z",
+    "keywords": [
+      "SeaDOTs",
+      "multidimensional",
+      "NetCDF",
+      "CF"
+    ],
+    "license": "CC-BY-4.0",
+    "role": "data",
+    "convention": "CF-1.8",
+    "formats": [
+      {
+        "name": "NetCDF",
+        "mediaType": "application/x-netcdf"
+      }
+    ],
+    "variables": {
+      "v": {
+        "title": "Northward Surface Sea Water Velocity (V)",
+        "description": "horizontalVelY",
+        "unit": "m/s"
+      },
+      "u": {
+        "title": "Eastward Surface Sea Water Velocity (U)",
+        "description": "horizontalVelX",
+        "unit": "m/s"
+      },
+      "sst": {
+        "title": "Sea Surface Temperature (SST)",
+        "description": "temperature",
+        "unit": "degC"
+      },
+      "sss": {
+        "title": "Sea Water Salinity (SSS)",
+        "description": "salinity",
+        "unit": "0.001"
+      },
+      "oxy": {
+        "title": "oxygen concentration in the water",
+        "description": "ECO_oxy",
+        "unit": "degree"
+      },
+      "nmus": {
+        "title": "number of mussels per qubic meter",
+        "description": "ECO_nmus",
+        "unit": "m*1e-3"
+      },
+      "hanmus": {
+        "title": "biomass of harvested mussels N",
+        "description": "ECO_hanmus",
+        "unit": "mol-N/m3"
+      },
+      "hacmus": {
+        "title": "biomass of harvested mussels C",
+        "description": "ECO_hacmus",
+        "unit": "mol-C/m3"
+      },
+      "chl": {
+        "title": "chlorophyll mass concentration",
+        "description": "chlorophyll",
+        "unit": "s"
+      },
+      "SIO4": {
+        "title": "silicate in the water",
+        "description": "ECO_sil",
+        "unit": "s"
+      },
+      "PO4": {
+        "title": "phospate in the water",
+        "description": "ECO_pho",
+        "unit": "s"
+      },
+      "NO3": {
+        "title": "nitrat in the water",
+        "description": "ECO_no3",
+        "unit": "m"
+      }
+    },
+    "cf:parameter": [
+      {
+        "name": "surface_northward_sea_water_velocity",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m/s",
+        "description": "Northward Surface Sea Water Velocity (V)"
+      },
+      {
+        "name": "surface_eastward_sea_water_velocity",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m/s",
+        "description": "Eastward Surface Sea Water Velocity (U)"
+      },
+      {
+        "name": "sea_water_temperature",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "degC",
+        "description": "Sea Surface Temperature (SST)"
+      },
+      {
+        "name": "sea_water_salinity",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "0.001",
+        "description": "Sea Water Salinity (SSS)"
+      },
+      {
+        "name": "concentration of oxygen in sea_water",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "degree",
+        "description": "oxygen concentration in the water"
+      },
+      {
+        "name": "number of mussels per qubic meter",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m*1e-3",
+        "description": "number of mussels per qubic meter"
+      },
+      {
+        "name": "biomass of harvested mussels N",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "mol-N/m3",
+        "description": "biomass of harvested mussels N"
+      },
+      {
+        "name": "biomass of harvested mussels C",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "mol-C/m3",
+        "description": "biomass of harvested mussels C"
+      },
+      {
+        "name": "total mass concentration of chlorophyll in sea_water",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "s",
+        "description": "chlorophyll mass concentration"
+      },
+      {
+        "name": "concentration of sio4 in sea_water",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "s",
+        "description": "silicate in the water"
+      },
+      {
+        "name": "concentration of po4 in sea_water",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "s",
+        "description": "phospate in the water"
+      },
+      {
+        "name": "concentration of no3 in sea_water",
+        "schema": "http://vocab.nerc.ac.uk/standard_name/",
+        "unit": "m",
+        "description": "nitrat in the water"
+      }
+    ]
+  },
+  "assets": {
+    "netcdf": {
+      "href": "https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc",
+      "type": "application/x-netcdf",
+      "title": "NetCDF data cube",
+      "roles": [
+        "data"
+      ],
+      "cf:parameter": [
+        {
+          "name": "surface_northward_sea_water_velocity",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m/s",
+          "description": "Northward Surface Sea Water Velocity (V)"
+        },
+        {
+          "name": "surface_eastward_sea_water_velocity",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m/s",
+          "description": "Eastward Surface Sea Water Velocity (U)"
+        },
+        {
+          "name": "sea_water_temperature",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "degC",
+          "description": "Sea Surface Temperature (SST)"
+        },
+        {
+          "name": "sea_water_salinity",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "0.001",
+          "description": "Sea Water Salinity (SSS)"
+        },
+        {
+          "name": "concentration of oxygen in sea_water",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "degree",
+          "description": "oxygen concentration in the water"
+        },
+        {
+          "name": "number of mussels per qubic meter",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m*1e-3",
+          "description": "number of mussels per qubic meter"
+        },
+        {
+          "name": "biomass of harvested mussels N",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "mol-N/m3",
+          "description": "biomass of harvested mussels N"
+        },
+        {
+          "name": "biomass of harvested mussels C",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "mol-C/m3",
+          "description": "biomass of harvested mussels C"
+        },
+        {
+          "name": "total mass concentration of chlorophyll in sea_water",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "s",
+          "description": "chlorophyll mass concentration"
+        },
+        {
+          "name": "concentration of sio4 in sea_water",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "s",
+          "description": "silicate in the water"
+        },
+        {
+          "name": "concentration of po4 in sea_water",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "s",
+          "description": "phospate in the water"
+        },
+        {
+          "name": "concentration of no3 in sea_water",
+          "schema": "http://vocab.nerc.ac.uk/standard_name/",
+          "unit": "m",
+          "description": "nitrat in the water"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data bblock"
+    },
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.catalog-data-multidim",
+      "type": "application/schema+json",
+      "title": "SeaDOTs Catalog Data Multidimensional bblock"
+    },
+    {
+      "rel": "profile",
+      "href": "bblocks://ogc.hosted.iliad.api.features.stac_multidim_data",
+      "type": "application/schema+json",
+      "title": "ILIAD STAC/DCAT multidimensional data profile"
+    }
+  ]
+}
