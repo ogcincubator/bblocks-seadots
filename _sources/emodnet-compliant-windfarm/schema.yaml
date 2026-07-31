@@ -1,0 +1,65 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant windfarm
+description: >
+  GeoJSON Feature profile aligned to the official EMODnet Human Activities
+  windfarms XSD. It preserves the service's published field names and primitive
+  types for country, turbine count, power output, status, installation type,
+  year fields, distance to coast, and notes.
+
+required: [id, type, geometry, properties]
+properties:
+  id:
+    type: string
+    format: uri
+  type:
+    const: Feature
+  geometry:
+    type: object
+    required: [type, coordinates]
+    properties:
+      type:
+        enum: [Point, Polygon, MultiPolygon]
+      coordinates:
+        type: array
+  properties:
+    type: object
+    required: [country, n_turbines, power_mw, status, type_inst, updateyear, year, dist_coast, notes]
+    properties:
+      country:
+        type: string
+        description: >-
+          Country name of the responsible/coastal country as represented in the
+          source data (not restricted to a fixed enumeration — any country name
+          published by the EMODnet Human Activities windfarms service is valid).
+          In RDF/JSON-LD, the context binds the country names currently observed
+          in the live service to EU Publications Office Country authority table
+          URIs (http://publications.europa.eu/resource/authority/country/), e.g.
+          "Belgium" -> http://publications.europa.eu/resource/authority/country/BEL.
+          Names not yet covered by the context fall back to a plain string and
+          should be added to the context/ontology as the source data grows.
+      n_turbines:
+        type: number
+      power_mw:
+        type: number
+      status:
+        type: string
+        description: >-
+          Status of the windfarm, as represented in the source data. The EMODnet
+          service uses a controlled vocabulary of five values: Planned,
+          Production, Dismantled, Approved, Construction.
+        enum: [Planned, Production, Dismantled, Approved, Construction]
+      type_inst:
+        oneOf:
+          - type: string
+            enum: [Grounded, Floating]
+          - type: "null"
+      updateyear:
+        type: string
+      year:
+        type: string
+      dist_coast:
+        type: number
+      notes:
+        type:
+          - string
+          - "null"

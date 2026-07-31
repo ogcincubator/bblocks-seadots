@@ -1,22 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../store/useStore';
-import { toCurie } from '../rdf/terms';
-
-const CONCEPT_SCHEME = 'http://www.w3.org/2004/02/skos/core#ConceptScheme';
-
-const TYPE_LABELS: Record<string, string> = {
-  'https://w3id.org/indicators/marine/Indicator': 'Indicator',
-  'http://www.w3.org/ns/sosa/ObservableProperty': 'Observable property',
-  'http://www.w3.org/ns/ssn/Property': 'Model parameter',
-  'https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship': 'Relationship',
-  'http://www.w3.org/2004/02/skos/core#Concept': 'Concept',
-  [CONCEPT_SCHEME]: 'Concept scheme',
-};
-
-function typeName(iri: string): string {
-  return TYPE_LABELS[iri] ?? toCurie(iri);
-}
+import { toCurie, CONCEPT_SCHEME, TYPE_LABELS, typeName } from '../rdf/terms';
 
 interface Entity {
   iri: string;
@@ -111,7 +96,11 @@ export default function BrowserPage() {
           {filtered.map((e) => (
             <li key={e.iri}>
               <Link
-                to={`/concept/${encodeURIComponent(e.iri)}`}
+                to={
+                  e.kind === 'scheme'
+                    ? `/conceptScheme/${encodeURIComponent(e.iri)}`
+                    : `/concept/${encodeURIComponent(e.iri)}`
+                }
                 className={e.kind === 'scheme' ? 'concept-card scheme' : 'concept-card'}
               >
                 <div className="concept-main">

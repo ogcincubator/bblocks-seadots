@@ -1,0 +1,15 @@
+transforms:
+  - id: geojson-to-oim-observation
+    description: >
+      Converts each raw point/time/value feature to an OIM observation-shaped feature.
+      Source time becomes sosa:phenomenonTime and bwmus becomes sosa:hasResult.value;
+      source id and geometry are retained. The bwmus IRI is a provisional local IRI,
+      not a claim about the variable's scientific meaning.
+    type: jq
+    inputs:
+      mediaTypes: [application/geo+json]
+    outputs:
+      mediaTypes: [application/geo+json]
+      profiles: [bblocks://ogc.hosted.seadots.oim-variable-observation]
+    ref: transforms/geojson-to-oim-observation.jq
+    excluded: {}

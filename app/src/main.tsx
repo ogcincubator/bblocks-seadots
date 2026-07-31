@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import BrowserPage from './pages/BrowserPage';
 import EditorPage from './pages/EditorPage';
+import ConceptSchemePage from './pages/ConceptSchemePage';
 import './styles.css';
 
 const router = createBrowserRouter([
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <BrowserPage /> },
       { path: 'concept/new', element: <EditorPage /> },
       { path: 'concept/:iri', element: <EditorPage /> },
+      { path: 'conceptScheme/:iri', element: <ConceptSchemePage /> },
     ],
   },
 ]);

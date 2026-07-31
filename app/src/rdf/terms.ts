@@ -110,3 +110,55 @@ export function predicateLabel(iri: string): string {
 export function prefixHeader(): string {
   return PREFIXES.map((p) => `@prefix ${p.prefix}: <${p.iri}> .`).join('\n');
 }
+
+// Shared SKOS/RDF term constants — used by the browse list, the concept editor
+// and the concept-scheme tabular editor so "concept vs. scheme" and same-DB
+// constraints stay defined in exactly one place.
+export const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+export const SKOS = 'http://www.w3.org/2004/02/skos/core#';
+export const SKOS_CONCEPT = `${SKOS}Concept`;
+export const CONCEPT_SCHEME = `${SKOS}ConceptScheme`;
+export const SKOS_IN_SCHEME = `${SKOS}inScheme`;
+export const SKOS_TOP_CONCEPT_OF = `${SKOS}topConceptOf`;
+export const SKOS_HAS_TOP_CONCEPT = `${SKOS}hasTopConcept`;
+export const SKOS_BROADER = `${SKOS}broader`;
+export const SKOS_NARROWER = `${SKOS}narrower`;
+export const SKOS_RELATED = `${SKOS}related`;
+export const SKOS_DEFINITION = `${SKOS}definition`;
+
+export const TYPE_LABELS: Record<string, string> = {
+  'https://w3id.org/indicators/marine/Indicator': 'Indicator',
+  'http://www.w3.org/ns/sosa/ObservableProperty': 'Observable property',
+  'http://www.w3.org/ns/ssn/Property': 'Model parameter',
+  'https://w3id.org/ogc/hosted/seadots/prop-rel/PropertyRelationship': 'Relationship',
+  [SKOS_CONCEPT]: 'Concept',
+  [CONCEPT_SCHEME]: 'Concept scheme',
+};
+
+export function typeName(iri: string): string {
+  return TYPE_LABELS[iri] ?? toCurie(iri);
+}
+
+// Hierarchical/scheme predicates whose objects must come from this database
+// (the "same-DB constraints" from the requirements).
+export const SAME_DB_PREDS = new Set([
+  SKOS_BROADER,
+  SKOS_NARROWER,
+  SKOS_RELATED,
+  SKOS_IN_SCHEME,
+  SKOS_TOP_CONCEPT_OF,
+  SKOS_HAS_TOP_CONCEPT,
+]);
+
+/** Object suggestions are narrowed by rdf:type for a few well-known predicates. */
+export function typeFilterFor(predicate: string): string[] | undefined {
+  if (predicate === SKOS_IN_SCHEME || predicate === SKOS_TOP_CONCEPT_OF) return [CONCEPT_SCHEME];
+  if (predicate === SKOS_BROADER || predicate === SKOS_NARROWER || predicate === SKOS_RELATED)
+    return [SKOS_CONCEPT];
+  return undefined;
+}
+
+/** Same-DB-only predicates restrict suggestions to terms from this database. */
+export function sourceFilterFor(predicate: string): 'db' | undefined {
+  return SAME_DB_PREDS.has(predicate) ? 'db' : undefined;
+}

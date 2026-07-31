@@ -38,6 +38,18 @@ npm run dev        # http://localhost:5173
 npm run build      # type-check + production build into dist/
 ```
 
+### tmux
+
+To run both development servers in one tmux session, after `npm install` use:
+
+```bash
+npm run dev:tmux
+```
+
+This creates (or reattaches to) the `seadots-concept-editor` session with the
+API server on the left and Vite on the right. Detach with `Ctrl-b d`; stop both
+servers with `tmux kill-session -t seadots-concept-editor`.
+
 ## Configuration
 
 Defaults target the live SeaDOTs Fuseki instance. Override with Vite env vars

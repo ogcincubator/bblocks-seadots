@@ -1,0 +1,11 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Harvest time series scenario Scen M3 — GeoParquet representation
+description: >
+  GeoParquet representation header for the source-faithful harvest time
+  series scenario Scen M3 point time series (see
+  harvest-timeseries-scen-m3-source). Declares the four physical columns
+  (id, geometry, bwmus, time) via the shared GeoParquetHeader envelope.
+  propertyUrls are resolved against harvest-timeseries-scen-m3-source's own
+  context.jsonld (dct:identifier, geojson:geometry, the provisional bwmus
+  IRI, dct:temporal), not redefined here.
+$ref: bblocks://ogc.hosted.seadots.geoparquet-header

@@ -12,6 +12,8 @@ interface Props {
   typeFilter?: string[];
   /** Limit object suggestions by origin ('db' = same database only). */
   sourceFilter?: 'db' | 'imported';
+  /** Omit this IRI from suggestions (e.g. a concept can't be its own broader term). */
+  exclude?: string;
   onChange: (v: RdfValue) => void;
   autoFocus?: boolean;
 }
@@ -27,6 +29,7 @@ export default function ValueEditor({
   kind,
   typeFilter,
   sourceFilter,
+  exclude,
   onChange,
   autoFocus,
 }: Props) {
@@ -108,6 +111,7 @@ export default function ValueEditor({
           value={value.value}
           typeFilter={typeFilter}
           sourceFilter={sourceFilter}
+          exclude={exclude}
           autoFocus={autoFocus}
           onChange={(iri) => onChange({ kind: 'iri', value: iri })}
         />
@@ -144,6 +148,7 @@ export default function ValueEditor({
           value={value.kind === 'iri' ? value.value : ''}
           typeFilter={typeFilter}
           sourceFilter={sourceFilter}
+          exclude={exclude}
           autoFocus={autoFocus}
           onChange={(iri) => onChange({ kind: 'iri', value: iri })}
         />

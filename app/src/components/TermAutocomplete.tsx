@@ -12,6 +12,8 @@ interface Props {
   typeFilter?: string[];
   /** Restrict suggestions by origin: 'db' = same database only. */
   sourceFilter?: 'db' | 'imported';
+  /** Omit this IRI from suggestions (e.g. a concept can't be its own broader term). */
+  exclude?: string;
   autoFocus?: boolean;
 }
 
@@ -26,6 +28,7 @@ export default function TermAutocomplete({
   placeholder,
   typeFilter,
   sourceFilter,
+  exclude,
   autoFocus,
 }: Props) {
   const terms = useStore((s) => s.terms);
@@ -36,12 +39,13 @@ export default function TermAutocomplete({
 
   const pool = useMemo(() => {
     return terms.filter((t) => {
+      if (exclude && t.iri === exclude) return false;
       if (typeFilter && typeFilter.length && !t.types.some((ty) => typeFilter.includes(ty)))
         return false;
       if (sourceFilter && t.source !== sourceFilter) return false;
       return true;
     });
-  }, [terms, typeFilter, sourceFilter]);
+  }, [terms, typeFilter, sourceFilter, exclude]);
 
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase();

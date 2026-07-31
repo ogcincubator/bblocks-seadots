@@ -1,0 +1,23 @@
+{
+  "name": "EMODnet-compliant windfarm",
+  "abstract": "GeoJSON Feature profile aligned to the official EMODnet Human Activities windfarms XSD. It preserves the service's published field names and primitive types for country, turbine count, power output, status, installation type, year fields, distance to coast, and notes.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-24T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["EMODnet", "Human Activities", "energy", "windfarm", "WFS", "XSD", "GeoJSON"],
+  "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
+  "sources": [
+    { "title": "EMODnet Human Activities — Wind Farms service", "link": "https://www.emodnet-humanactivities.eu/" },
+    { "title": "EMODnet windfarms XSD", "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms" },
+    { "title": "EU Publications Office Country authority table", "link": "http://publications.europa.eu/resource/authority/country/" }
+  ],
+  "dependsOn": ["ogc.geo.geodcat.geodcat-records"],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "standards": ["https://datatracker.ietf.org/doc/html/rfc7946", "https://inspire.ec.europa.eu/id/document/tg/er"],
+  "maturity": "development",
+  "scope": "dev"
+}

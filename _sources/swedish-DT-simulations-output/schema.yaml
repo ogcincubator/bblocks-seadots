@@ -83,43 +83,4 @@ $defs:
     additionalProperties: true
 
   GeoParquetHeader:
-    type: object
-    required:
-      - fileName
-      - encoding
-      - parquetSchema
-      - geo
-      - source
-    properties:
-      fileName:
-        type: string
-        pattern: "\\.parquet$"
-      encoding:
-        type: string
-      source:
-        type: object
-        required: [href, sourceFormat, rowCount, columnCount]
-        properties:
-          href: { type: string }
-          sourceFormat: { type: string }
-          rowCount: { type: integer, minimum: 1 }
-          columnCount: { type: integer, minimum: 1 }
-      parquetSchema:
-        type: array
-        items:
-          type: object
-          required: [name, type]
-          properties:
-            name: { type: string }
-            type: { type: string }
-            nullable: { type: boolean }
-            description: { type: string }
-      geo:
-        type: object
-        required: [version, primary_column, columns]
-        properties:
-          version: { type: string }
-          primary_column: { type: string }
-          columns:
-            type: object
-    additionalProperties: true
+    $ref: bblocks://ogc.hosted.seadots.geoparquet-header

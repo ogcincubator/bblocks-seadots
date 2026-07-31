@@ -51,27 +51,41 @@ build. Phased so each chunk is independently reviewable.
   support (conditional `GRAPH` wrapper), config defaults updated. Verified live:
   107 concepts / 3 schemes / 112 terms.
 
-### Phase 2 — Browse + Concept editor
-- Make **ConceptScheme** a first-class browsable/editable type; Browse type
+### Phase 2 — Browse + Concept editor ✅ DONE
+- ✅ **ConceptScheme** is a first-class browsable/editable type; Browse type
   filter concept/conceptScheme (then by scheme/type for concepts).
-- **Collapse redundant fields** — one label field mirroring
-  `prefLabel`/`rdfs:label` (prefLabel primary); collapse other redundant pairs
-  per the content convention.
-- Friendly **blank-node editing** (e.g. weight shown/edited as a number,
+- ✅ **Collapse redundant fields** — one label field mirroring
+  `prefLabel`/`rdfs:label` (prefLabel primary) in both the concept editor and
+  the scheme tabular editor.
+- ✅ Friendly **blank-node editing** (e.g. weight shown/edited as a number,
   re-wrapped as a bnode on export).
-- **Same-DB constraints:** broader/narrower restricted to in-DB concepts;
-  inScheme restricted to in-DB ConceptSchemes.
-- **Configurable object/predicate sources:** object typeahead = in-DB terms +
-  **configurable imported vocabularies**; predicate picker = in-DB predicates +
-  configured prefixes (reference content or config), not a fixed source literal.
-- Rename + relocate save actions to **Download All / Publish / Commit** on each
-  edit page; gate by feature flags + role (flags wired now, role in Phase 5).
+- ✅ **Same-DB constraints:** broader/narrower/related/inScheme/topConceptOf
+  restricted to in-DB terms (centralised in `src/rdf/terms.ts`); a concept can
+  no longer offer itself as its own broader/narrower term.
+- ◑ **Configurable object/predicate sources:** object typeahead = in-DB terms +
+  **configurable imported vocabularies** (done, `VITE_IMPORTED_NAMESPACES`);
+  predicate picker = curated palette + in-DB predicates, not yet driven by a
+  configured prefix list (still a source literal in `terms.ts`).
+- ◑ Save actions: the concept editor still has its own "Save to draft" step
+  before edits reach the pending-diff store; the concept-scheme tabular editor
+  (Phase 3) applies cell edits straight to the store. **Download All / Publish /
+  Commit** live in the global `ChangesPanel`, which renders on every page (so
+  the requirement "each edit page has these buttons" is met), but it is not
+  yet visually anchored per-page — still a floating panel, not inline per page.
 
-### Phase 3 — Concept Scheme tabular editor (`/conceptScheme/:iri`)
-- Spreadsheet grid: id (read-only), label, description, scheme, non-SKOS types,
-  broader/narrower — inline-editable cells (free text or DB-filtered dropdowns
-  honouring the same-DB constraints); edits flow into the shared pending-diff
-  store; per-page Download All / Publish / Commit.
+### Phase 3 — Concept Scheme tabular editor (`/conceptScheme/:iri`) ✅ DONE
+- ✅ Spreadsheet grid at `/conceptScheme/:iri`: id (read-only, links to the full
+  concept editor), label, description, concept scheme, non-SKOS types,
+  broader/narrower — inline-editable cells. Scheme/broader/narrower use
+  same-DB-filtered typeahead chips; types use an unrestricted typeahead +
+  free CURIE entry; label/description are plain inputs mirroring the merged
+  label convention on save.
+  Edits apply directly to the shared pending-diff store (`addTriple`/
+  `removeTriple`), so they show up immediately in the global Pending changes
+  panel. Includes **+ Add concept to this scheme** (prefix/local-name IRI
+  builder) and a per-row "remove from scheme" action.
+- Not yet done: dropdown-only editing for the non-SKOS type column (currently
+  free CURIE input rather than a curated/DB-driven list).
 
 ### Phase 4 — VocPrez convention enforcement + validators
 - Auto-maintain on save: inverse/bidirectional `dcterms:isPartOf`⇄`hasPart` and
@@ -105,7 +119,7 @@ build. Phased so each chunk is independently reviewable.
 | Requirement (requirements.md) | Phase | Status |
 |---|---|---|
 | Lightweight single container | (build) | ✅ |
-| Edit VocPrez/Fuseki content, no RDF expertise | 1–3 | ◑ in progress |
+| Edit VocPrez/Fuseki content, no RDF expertise | 1–3 | ✅ |
 | Config for endpoints | 1 / 6 | ✅ endpoint · ◑ full injectability in 6 |
 | Config for secrets, credentials, **validators** | 4–6 | ☐ |
 | Fast + **browser store** for changes | (build) / 6 | ◑ in-memory · localStorage in 6 |
@@ -115,15 +129,15 @@ build. Phased so each chunk is independently reviewable.
 | **GitHub login + RBAC on GitHub privileges** | 5 | ☐ |
 | Git KEY + Fuseki creds in config | 5–6 | ◑ git token yes · fuseki in 6 |
 | Change/add predicate & object | (build) | ✅ |
-| Browse concepts **and** schemes, filter by type | 2 | ☐ |
+| Browse concepts **and** schemes, filter by type | 2 | ✅ |
 | Edit concept: text / term typeahead / external IRI | (build) | ✅ |
-| **Blank nodes hidden, generated on export** | 1 / 2 | ✅ data · ◑ friendly edit in 2 |
-| **Redundant fields shown once** | 2 | ☐ |
-| **Concept Scheme tabular bulk editor** | 3 | ☐ |
-| broader/narrower & inScheme limited to same DB | 2 | ☐ |
-| Object typeahead = DB + **configurable imported vocabs** | 2 / 6 | ☐ |
+| **Blank nodes hidden, generated on export** | 1 / 2 | ✅ |
+| **Redundant fields shown once** | 2 | ✅ |
+| **Concept Scheme tabular bulk editor** | 3 | ✅ |
+| broader/narrower & inScheme limited to same DB | 2 | ✅ (self-exclusion too) |
+| Object typeahead = DB + **configurable imported vocabs** | 2 / 6 | ✅ |
 | Predicate picker = DB predicates + configured prefixes | 2 / 6 | ◑ curated palette only |
-| Per-edit-page **Download All / Publish / Commit** | 2–3 | ◑ global panel, old labels |
+| Per-edit-page **Download All / Publish / Commit** | 2–3 | ◑ global floating panel on every page, not inline-per-page |
 | Publish/Commit **disabled-by-default + RBAC** | 5–6 | ☐ |
 | VocPrez content conventions (bidirectional, top-concepts, label mirror, Dataset) | 4 | ☐ |
 | **Human-readable TTL serialisation** | 1 | ✅ |

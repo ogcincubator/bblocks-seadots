@@ -1,0 +1,68 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: SeaDOTs Catalog Data Tabular Survey
+description: >
+  Survey-style tabular profile for saltmarsh perceptions data. It extends the
+  SeaDOTs tabular catalog record profile with questionnaire-variable metadata,
+  ELSST/CESSDA vocabulary links, and DDI-style descriptions.
+
+allOf:
+  - $ref: bblocks://ogc.hosted.seadots.catalog-data-tabular
+
+type: object
+required:
+  - type
+  - properties
+  - links
+properties:
+  type:
+    const: Feature
+  properties:
+    type: object
+    additionalProperties: true
+    properties:
+      survey:studyTitle:
+        type: string
+      survey:studyDescription:
+        type: string
+      survey:variableMetadata:
+        type: array
+        items:
+          type: object
+          required:
+            - variableName
+          properties:
+            variableName:
+              type: string
+            questionText:
+              type: string
+            label:
+              type: string
+            conceptUri:
+              type: string
+            vocabularyUri:
+              type: string
+            ddi:variableDescription:
+              type: string
+      survey:controlledVocabulary:
+        type: array
+        items:
+          type: object
+          properties:
+            scheme:
+              type: string
+            uri:
+              type: string
+            label:
+              type: string
+  links:
+    type: array
+    contains:
+      type: object
+      required:
+        - rel
+        - href
+      properties:
+        rel:
+          const: profile
+        href:
+          const: bblocks://ogc.hosted.seadots.catalog-data-tabular-survey

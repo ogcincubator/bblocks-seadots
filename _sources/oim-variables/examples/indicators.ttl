@@ -105,7 +105,8 @@ ind:parameters-scheme a skos:ConceptScheme ;
                        indp:fishing_algorithm ,
                        indp:current_year ,
                        indp:current_month ,
-                       indp:year_tick .
+                       indp:year_tick ,
+                       indp:reserved-for-future-use .
 
 # --- Indicators (ind:Indicator, sosa:ObservableProperty) — high-level KPIs ---
 
@@ -443,6 +444,21 @@ indp:fishing_algorithm a ssn:Property, skos:Concept ;
     skos:altLabel "fishing_algorithm"@en ;
     skos:notation "fishing_algorithm" ;
     skos:definition "Identifier of the decision rule used by vessel agents to allocate fishing effort across patches and target species in a given tick."@en ;
+    skos:inScheme ind:parameters-scheme .
+
+# --- Reserved-for-future-use placeholder (ind:parameters-scheme) ---
+# The source model emits a fixed block of output columns (currently `fu_01`
+# .. `fu_17`) that are reserved for future use and always void/dummy (0) in
+# the present data. No known external vocabulary defines a "reserved slot"
+# term, so a single shared placeholder concept is proposed here rather than
+# minting one concept per column; each column links to it via its own
+# propertyUrl in the consuming building block, so no per-column label is
+# declared here.
+indp:reserved-for-future-use a ssn:Property, skos:Concept ;
+    rdfs:label "Reserved for future use"@en ;
+    skos:prefLabel "Reserved for future use"@en ;
+    skos:definition "Placeholder property for a simulation output column reserved for future use. Current values are void/dummy (0) and carry no defined semantics; all reserved columns in a given output row share this single concept until a real, distinct property is defined for each."@en ;
+    skos:scopeNote "Do not treat as a region, NUTS, or FU-area indicator without confirming with the model owner: source column name prefixes such as 'fu_' are naming artifacts of the originating model, not resolved vocabulary terms."@en ;
     skos:inScheme ind:parameters-scheme .
 
 # --- Simulation-clock Properties (ind:parameters-scheme) ---

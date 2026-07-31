@@ -1,6 +1,6 @@
 {
   "name": "Swedish DT Simulations Output",
-  "abstract": "Profile for Swedish Digital Twin simulation output rows keyed by Eurostat NUTS region indicators, with examples for the raw tabular artifact, a SensorThings Observation view, and a GeoParquet representation header.",
+  "abstract": "Profile for Swedish Digital Twin herring/sprat fishery simulation output rows, with examples for the raw tabular artifact, a SensorThings Observation view, and a GeoParquet representation header. 17 of the 63 source columns are reserved-for-future-use placeholders, not region indicators.",
   "status": "under-development",
   "dateTimeAddition": "2026-05-27T00:00:00Z",
   "itemClass": "schema",
@@ -12,13 +12,12 @@
     "swedish-dt",
     "simulation-output",
     "sensorthings",
-    "geoparquet",
-    "nuts"
+    "geoparquet"
   ],
   "authors": [
     {
       "name": "SeaDOTs Marine Data Team",
-      "organization": "SINTEF Ocean (SeaDOTs)"
+      "organization": "SeaDOTs"
     }
   ],
   "sources": [
@@ -36,7 +35,8 @@
     }
   ],
   "dependsOn": [
-    "ogc.hosted.iliad.api.features.oim-obs"
+    "ogc.hosted.iliad.api.features.oim-obs",
+    "ogc.hosted.seadots.geoparquet-header"
   ],
   "ldContext": "context.jsonld",
   "shaclRules": [

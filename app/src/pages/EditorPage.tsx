@@ -10,6 +10,10 @@ import {
   MERGED_LABEL_EXPANDS_TO,
   SKOS_PREF_LABEL,
   RDFS_LABEL,
+  RDF_TYPE,
+  SKOS_CONCEPT,
+  typeFilterFor,
+  sourceFilterFor,
   expandCurie,
   predicateLabel,
   toCurie,
@@ -49,10 +53,6 @@ function collapseLabels(triples: Triple[]): Row[] {
   return rows;
 }
 
-const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
-const SKOS_CONCEPT = 'http://www.w3.org/2004/02/skos/core#Concept';
-const CONCEPT_SCHEME = 'http://www.w3.org/2004/02/skos/core#ConceptScheme';
-
 function predicateDef(iri: string): PredicateDef {
   return (
     PREDICATES.find((p) => p.iri === iri) ?? {
@@ -62,31 +62,6 @@ function predicateDef(iri: string): PredicateDef {
       valueKind: 'either',
     }
   );
-}
-
-const SKOS = 'http://www.w3.org/2004/02/skos/core#';
-// Hierarchical/scheme predicates whose objects must come from this database.
-const SAME_DB_PREDS = new Set([
-  `${SKOS}broader`,
-  `${SKOS}narrower`,
-  `${SKOS}related`,
-  `${SKOS}inScheme`,
-  `${SKOS}topConceptOf`,
-  `${SKOS}hasTopConcept`,
-]);
-
-/** Object suggestions are narrowed by rdf:type for a few well-known predicates. */
-function typeFilterFor(predicate: string): string[] | undefined {
-  if (predicate === `${SKOS}inScheme` || predicate === `${SKOS}topConceptOf`)
-    return [CONCEPT_SCHEME];
-  if (predicate === `${SKOS}broader` || predicate === `${SKOS}narrower` || predicate === `${SKOS}related`)
-    return [SKOS_CONCEPT];
-  return undefined;
-}
-
-/** Same-DB-only predicates restrict suggestions to terms from this database. */
-function sourceFilterFor(predicate: string): 'db' | undefined {
-  return SAME_DB_PREDS.has(predicate) ? 'db' : undefined;
 }
 
 let rowSeq = 0;
@@ -266,6 +241,7 @@ export default function EditorPage() {
                       kind={def.valueKind}
                       typeFilter={typeFilterFor(predicate)}
                       sourceFilter={sourceFilterFor(predicate)}
+                      exclude={sourceFilterFor(predicate) === 'db' ? computedSubject : undefined}
                       onChange={(v) => updateRow(r.id, v)}
                     />
                     <button type="button" className="icon-btn" title="Remove value" onClick={() => deleteRow(r.id)}>

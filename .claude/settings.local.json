@@ -140,7 +140,25 @@
       "Bash(REPO_DIR=/Users/piotr/repos/seadots/bblocks-seadots GIT_PUSH=false FEATURE_PUBLISH=false FEATURE_COMMIT=true IMPORTED_NAMESPACES=\"http://qudt.org/vocab/quantitykind/,http://aims.fao.org/aos/agrovoc/\" PORT=8080 nohup node server/index.mjs)",
       "Bash(curl -s -m5 http://localhost:5173/config.js)",
       "Bash(ncdump -h \"/Users/piotr/Library/CloudStorage/OneDrive-OpenGeospatialConsortium/Temp/seadots_german_case_data/schism-wwm_3Dinterp_10.nc\")",
-      "Bash(curl -s \"https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/stac_multidim_data/schema.json\")"
+      "Bash(curl -s \"https://ogcincubator.github.io/iliad-apis-features/build/annotated/hosted/iliad/api/features/stac_multidim_data/schema.json\")",
+      "Bash(find / -iname \"check-in.md\" -not -path \"*/node_modules/*\")",
+      "Bash(find / -iname \"data-usability-checkin*\" -not -path \"*/node_modules/*\")",
+      "Bash(npx tsc *)",
+      "Read(//opt/anaconda3/lib/python3.11/site-packages/**)",
+      "Read(//opt/anaconda3/bin/**)",
+      "Read(//opt/anaconda3/lib/python3.11/site-packages/iliad_checkin-0.1.0.dist-info/**)",
+      "Bash(curl -s \"https://ows.emodnet-humanactivities.eu/geoserver/emodnet/wfs?service=WFS&version=2.0.0&request=GetPropertyValue&typeNames=emodnet:windfarmspoly&valueReference=country\" --max-time 20)",
+      "Bash(curl -s \"https://ows.emodnet-humanactivities.eu/geoserver/emodnet/ows?service=WFS&version=2.0.0&request=GetPropertyValue&typeNames=emodnet:windfarms&valueReference=country\" --max-time 25 -o /private/tmp/claude-501/-Users-piotr-repos-seadots-bblocks-seadots/62b464cd-d48b-4581-9cd3-8a40211115f2/scratchpad/wf_country.xml -w \"HTTP %{http_code}, size %{size_download}\\\\n\")",
+      "Bash(curl -s \"http://publications.europa.eu/resource/authority/country/GBR.json\" --max-time 15)",
+      "Bash(curl -s -L \"http://publications.europa.eu/resource/authority/country/GBR\" -H \"Accept: text/turtle\" --max-time 15)",
+      "Bash(node -e \"require\\('jsonld'\\)\")",
+      "Bash(pip install *)",
+      "Bash(grep -n '\\\\$ref\\\\|allOf' _sources/floating-wind-infrastructure/schema.yaml)",
+      "Bash(grep -n '\\\\$ref\\\\|allOf' _sources/emodnet-compliant-windfarm/schema.yaml)",
+      "Bash(docker info *)",
+      "Bash(open -a Docker)",
+      "Bash(docker pull *)",
+      "Bash(docker search *)"
     ]
   }
 }

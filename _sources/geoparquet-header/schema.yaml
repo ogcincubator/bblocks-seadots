@@ -1,0 +1,115 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: GeoParquet Header
+description: >
+  Generic CSVW + GeoParquet 1.1 metadata header envelope: describes the
+  physical columns of a GeoParquet file (name, Parquet logical type,
+  nullability, CSVW propertyUrl annotation) and the GeoParquet `geo` metadata
+  block for the primary geometry column. This schema defines only the
+  reusable envelope shape; dataset-specific column lists and semantics are
+  defined by profiles that `$ref` this schema (e.g. a source-specific
+  building block's own GeoParquetHeader definition).
+type: object
+required: [fileName, encoding, source, parquetSchema, geo]
+properties:
+  fileName:
+    type: string
+    pattern: "\\.(geo)?parquet$"
+  encoding:
+    type: string
+    description: Free-text encoding statement, e.g. "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB".
+  source:
+    type: object
+    required: [href, sourceFormat, rowCount, columnCount]
+    properties:
+      href:
+        type: string
+        description: Path or URL to the original source artifact this header was derived from.
+      sourceFormat:
+        type: string
+        description: Media type or free-text description of the source format, e.g. "application/geo+json".
+      rowCount:
+        type: integer
+        minimum: 1
+      columnCount:
+        type: integer
+        minimum: 1
+      note:
+        type: string
+    additionalProperties: true
+  parquetSchema:
+    type: array
+    items:
+      type: object
+      required: [name, type]
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Parquet logical type, e.g. INT32, INT64, FLOAT, DOUBLE, BOOLEAN, BYTE_ARRAY/UTF8, BYTE_ARRAY/WKB.
+        nullable:
+          type: boolean
+        description:
+          type: string
+        propertyUrl:
+          type: string
+          description: CSVW-style compact IRI or full IRI naming this column's semantic mapping.
+      additionalProperties: true
+  geo:
+    type: object
+    required: [version, primary_column, columns]
+    properties:
+      version:
+        type: string
+      primary_column:
+        type: string
+      columns:
+        type: object
+        additionalProperties:
+          type: object
+          required: [encoding]
+          properties:
+            encoding:
+              type: string
+            geometry_types:
+              type: array
+              items:
+                type: string
+                enum: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, GeometryCollection]
+            crs:
+              description: >
+                Must be omitted/null (defaults to OGC:CRS84), a CRS identifier string (e.g.
+                "OGC:CRS84"), or a full PROJJSON object. A shorthand object that merely looks
+                like PROJJSON (has a "type" but none of the keys that make a CRS definition
+                complete) is exactly the authoring mistake that breaks real GeoParquet readers
+                (e.g. geopandas, via proj) at read time — this schema rejects that shape rather
+                than silently accepting it.
+              oneOf:
+                - type: "null"
+                - type: string
+                - type: object
+                  required: [type]
+                  properties:
+                    type:
+                      enum: [GeographicCRS, ProjectedCRS, GeodeticCRS, CompoundCRS, VerticalCRS]
+                  anyOf:
+                    - required: [datum]
+                    - required: [datum_ensemble]
+                    - required: [base_crs]
+                    - required: [source_crs]
+            edges:
+              type: string
+              enum: [planar, spherical]
+            orientation:
+              type: string
+            bbox:
+              type: array
+              items:
+                type: number
+              minItems: 4
+              maxItems: 4
+            covering:
+              type: object
+          additionalProperties: true
+    additionalProperties: true
+additionalProperties: true
