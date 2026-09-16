@@ -17,14 +17,14 @@
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
-            dcterms:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
+        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+            dcterms:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
     survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
             seadots:uri "https://www.cessda.eu/" ;
             thns:scheme "CESSDA" ],
@@ -58,10 +58,11 @@
     table:row_count 5046 ;
     seadots:itemType "record" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data [ dcterms:format "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;
-                    dcterms:title "Norway monadic survey workbook" ;
-                    oa:hasTarget <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ] ;
+    stac:hasAsset [ ns2:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:version "1.0.0" .
+
+<https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> dcterms:format "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;
+    dcterms:title "Norway monadic survey workbook" .
 

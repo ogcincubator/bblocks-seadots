@@ -202,17 +202,22 @@
     "stac_extensions": "https://w3id.org/ogc/stac/core/hasExtension",
     "assets": {
       "x-jsonld-context": {
+        "@vocab": "https://w3id.org/ogc/stac/assets/",
+        "href": "@id",
         "type": "http://purl.org/dc/terms/format",
         "roles": {
           "@id": "https://w3id.org/ogc/stac/core/roles",
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
           "@container": "@set"
-        },
-        "@vocab": "https://w3id.org/ogc/stac/assets/"
+        }
       },
       "x-jsonld-id": "https://w3id.org/ogc/stac/core/hasAsset",
       "x-jsonld-container": "@set"
     },
-    "stac_version": "https://w3id.org/ogc/stac/core/version",
+    "datetime": {
+      "x-jsonld-id": "http://purl.org/dc/terms/date",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
     "start_datetime": {
       "x-jsonld-id": "https://w3id.org/ogc/stac/core/start_datetime",
       "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -222,22 +227,64 @@
       "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
     },
     "providers": "https://w3id.org/ogc/stac/core/hasProvider",
+    "stac_version": "https://w3id.org/ogc/stac/core/version",
     "media_type": "http://purl.org/dc/terms/format",
     "extent": "http://purl.org/dc/terms/extent",
-    "datetime": {
-      "x-jsonld-id": "http://purl.org/dc/terms/date",
-      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
     "concepts": {
       "x-jsonld-id": "https://w3id.org/ogc/stac/themes/concepts",
       "x-jsonld-container": "@set",
       "x-jsonld-context": {
-        "name": "https://w3id.org/ogc/stac/themes/name",
         "id": "https://w3id.org/ogc/stac/themes/id",
+        "title": "https://w3id.org/ogc/stac/themes/name",
+        "description": "https://w3id.org/ogc/stac/themes/description",
         "url": "@id"
       }
     },
     "scheme": "https://w3id.org/ogc/stac/themes/scheme",
+    "osc:type": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/type",
+      "x-jsonld-type": "@vocab",
+      "x-jsonld-context": {
+        "project": "https://w3id.org/ogc/stac/osc/project-type",
+        "product": "https://w3id.org/ogc/stac/osc/product-type"
+      }
+    },
+    "osc:status": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/status",
+      "x-jsonld-type": "@vocab",
+      "x-jsonld-context": {
+        "planned": "https://w3id.org/ogc/stac/osc/planned",
+        "ongoing": "https://w3id.org/ogc/stac/osc/ongoing",
+        "completed": "https://w3id.org/ogc/stac/osc/completed"
+      }
+    },
+    "osc:project": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/project",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "osc:region": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/region",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "osc:variables": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/variables",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string",
+      "x-jsonld-container": "@set"
+    },
+    "osc:missions": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/missions",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string",
+      "x-jsonld-container": "@set"
+    },
+    "osc:experiment": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/experiment",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "osc:workflows": {
+      "x-jsonld-id": "https://w3id.org/ogc/stac/osc/workflows",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string",
+      "x-jsonld-container": "@set"
+    },
     "rights": "http://www.w3.org/ns/dcat#rights",
     "wasInfluencedBy": {
       "x-jsonld-id": "http://www.w3.org/ns/prov#wasInfluencedBy",
@@ -292,6 +339,27 @@
     },
     "wasRevisionOf": {
       "x-jsonld-id": "http://www.w3.org/ns/prov#wasRevisionOf",
+      "x-jsonld-type": "@id"
+    },
+    "generatedAtTime": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#generatedAtTime",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "invalidatedAtTime": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#invalidatedAtTime",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "value": "http://www.opengis.net/cis/1.1/value",
+    "qualifiedPrimarySource": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedPrimarySource",
+      "x-jsonld-type": "@id"
+    },
+    "qualifiedQuotation": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedQuotation",
+      "x-jsonld-type": "@id"
+    },
+    "qualifiedRevision": {
+      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedRevision",
       "x-jsonld-type": "@id"
     },
     "atLocation": {
@@ -374,19 +442,10 @@
       "x-jsonld-id": "http://www.w3.org/ns/prov#endedAtTime",
       "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
     },
-    "generatedAtTime": {
-      "x-jsonld-id": "http://www.w3.org/ns/prov#generatedAtTime",
-      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "invalidatedAtTime": {
-      "x-jsonld-id": "http://www.w3.org/ns/prov#invalidatedAtTime",
-      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
     "startedAtTime": {
       "x-jsonld-id": "http://www.w3.org/ns/prov#startedAtTime",
       "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
     },
-    "value": "http://www.opengis.net/cis/1.1/value",
     "provenanceUriTemplate": "http://www.w3.org/ns/prov#provenanceUriTemplate",
     "pairKey": {
       "x-jsonld-id": "http://www.w3.org/ns/prov#pairKey",
@@ -462,18 +521,6 @@
     },
     "qualifiedEnd": {
       "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedEnd",
-      "x-jsonld-type": "@id"
-    },
-    "qualifiedPrimarySource": {
-      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedPrimarySource",
-      "x-jsonld-type": "@id"
-    },
-    "qualifiedQuotation": {
-      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedQuotation",
-      "x-jsonld-type": "@id"
-    },
-    "qualifiedRevision": {
-      "x-jsonld-id": "http://www.w3.org/ns/prov#qualifiedRevision",
       "x-jsonld-type": "@id"
     },
     "qualifiedStart": {
@@ -561,6 +608,12 @@
       "x-jsonld-type": "@id"
     },
     "name": "https://w3id.org/ogc/stac/cf/name",
+    "unit": {
+      "x-jsonld-id": "http://qudt.org/schema/qudt/hasUnit",
+      "x-jsonld-context": {
+        "@base": "http://qudt.org/vocab/unit/"
+      }
+    },
     "role": "https://w3id.org/ogc/hosted/seadots/catalog#role",
     "convention": "https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention",
     "cf:parameter": {
@@ -1509,8 +1562,10 @@
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "stac": "https://w3id.org/ogc/stac/core/",
+    "osc": "https://w3id.org/ogc/stac/osc/",
     "oa": "http://www.w3.org/ns/oa#",
     "prov": "http://www.w3.org/ns/prov#",
+    "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "dcterms": "http://purl.org/dc/terms/",
@@ -1519,7 +1574,6 @@
     "foaf": "http://xmlns.com/foaf/0.1/",
     "w3ctime": "http://www.w3.org/2006/time#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype": "http://purl.org/dc/dcmitype/",
-    "qudt": "http://qudt.org/schema/qudt/"
+    "dctype": "http://purl.org/dc/dcmitype/"
   }
 }

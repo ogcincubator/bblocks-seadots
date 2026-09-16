@@ -9,8 +9,10 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-31",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateOfLastChange": "2026-09-16",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
   "tags": [
     "survey",
     "tabular",
@@ -60,11 +62,29 @@
   "maturity": "development",
   "scope": "dev",
   "shaclShapes": {
+    "ogc.model.cross-domain.prov": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
+    ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
+    "ogc.contrib.stac.core-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.components.assets-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
+    ],
     "ogc.api.records.v1.schemas.linkTemplate": [
       "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ],
+    "ogc.contrib.stac.extensions.themes-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.osc-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.cf-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
     ]
   },
   "schema": {
@@ -99,8 +119,8 @@
         {
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-data-tabular-survey/example_1_1.ttl",
-          "sizeBytes": 4194,
-          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ddi: <https://ddialliance.org/terms#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix ns2: <https://w3id.org/ogc/stac/assets/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n@prefix stac: <https://w3id.org/ogc/stac/core/> .\n@prefix survey: <https://example.org/seadots/survey#> .\n@prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .\n@prefix thns: <https://w3id.org/ogc/stac/themes/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<file:///github/workspace/saltmarsh-perceptions-norway> dcterms:date \"2024-03-01T00:00:00+00:00\"^^xsd:dateTime ;\n    dcterms:description \"Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.\" ;\n    dcterms:license \"CC BY-NC-SA 4.0\" ;\n    dcterms:title \"Saltmarsh perceptions survey (Norway)\" ;\n    dcterms:type \"Feature\" ;\n    rdfs:seeAlso [ rdfs:label \"Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management\" ;\n            dcterms:type \"text/html\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;\n            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],\n        [ rdfs:label \"SeaDOTs Catalog Data Tabular Survey\" ;\n            dcterms:type \"application/schema+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/profile> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;\n    survey:controlledVocabulary [ seadots:label \"CESSDA controlled vocabularies\" ;\n            seadots:uri \"https://www.cessda.eu/\" ;\n            thns:scheme \"CESSDA\" ],\n        [ seadots:label \"European Language Social Science Thesaurus\" ;\n            seadots:uri \"https://elsst.uk/\" ;\n            thns:scheme \"ELSST\" ] ;\n    survey:studyDescription \"Monadic survey on attitudes toward saltmarsh management in Norway.\" ;\n    survey:studyTitle \"Saltmarsh perceptions survey\" ;\n    survey:variableMetadata [ ddi:variableDescription \"Age group of the respondent\" ;\n            survey:conceptUri \"https://elsst.uk/terms/age\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#age\" ;\n            seadots:label \"Age group\" ;\n            seadots:questionText \"What is your age group?\" ;\n            seadots:variableName \"Q1\" ],\n        [ ddi:variableDescription \"Likert-style attitude question\" ;\n            survey:conceptUri \"https://elsst.uk/terms/environmental-concern\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#environmental-attitudes\" ;\n            seadots:label \"Environmental concern\" ;\n            seadots:questionText \"How important is the protection of the environment to you?\" ;\n            seadots:variableName \"Q5_1\" ] ;\n    table:columns ( [ dcterms:description \"Respondent identifier\" ;\n                dcterms:title \"caseid\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Country of residence\" ;\n                dcterms:title \"Country\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent age group\" ;\n                dcterms:title \"Q1\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent gender\" ;\n                dcterms:title \"Q2\" ;\n                dcterms:type \"string\" ] ) ;\n    table:primary_geometry \"none\" ;\n    table:row_count 5046 ;\n    seadots:itemType \"record\" ;\n    seadots:role \"data\" ;\n    stac:hasAsset [ ns2:data [ dcterms:format \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\" ;\n                    dcterms:title \"Norway monadic survey workbook\" ;\n                    oa:hasTarget <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ] ;\n    stac:hasExtension \"https://stac-extensions.github.io/cf/v0.2.0/schema.json\",\n        \"https://stac-extensions.github.io/table/v1.2.0/schema.json\" ;\n    stac:version \"1.0.0\" .\n\n"
+          "sizeBytes": 4247,
+          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix ddi: <https://ddialliance.org/terms#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix ns2: <https://w3id.org/ogc/stac/assets/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n@prefix stac: <https://w3id.org/ogc/stac/core/> .\n@prefix survey: <https://example.org/seadots/survey#> .\n@prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .\n@prefix thns: <https://w3id.org/ogc/stac/themes/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<file:///github/workspace/saltmarsh-perceptions-norway> dcterms:date \"2024-03-01T00:00:00+00:00\"^^xsd:dateTime ;\n    dcterms:description \"Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.\" ;\n    dcterms:license \"CC BY-NC-SA 4.0\" ;\n    dcterms:title \"Saltmarsh perceptions survey (Norway)\" ;\n    dcterms:type \"Feature\" ;\n    rdfs:seeAlso [ rdfs:label \"SeaDOTs Catalog Data Tabular Survey\" ;\n            dcterms:type \"application/schema+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/profile> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],\n        [ rdfs:label \"Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management\" ;\n            dcterms:type \"text/html\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;\n            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;\n    survey:controlledVocabulary [ seadots:label \"CESSDA controlled vocabularies\" ;\n            seadots:uri \"https://www.cessda.eu/\" ;\n            thns:scheme \"CESSDA\" ],\n        [ seadots:label \"European Language Social Science Thesaurus\" ;\n            seadots:uri \"https://elsst.uk/\" ;\n            thns:scheme \"ELSST\" ] ;\n    survey:studyDescription \"Monadic survey on attitudes toward saltmarsh management in Norway.\" ;\n    survey:studyTitle \"Saltmarsh perceptions survey\" ;\n    survey:variableMetadata [ ddi:variableDescription \"Age group of the respondent\" ;\n            survey:conceptUri \"https://elsst.uk/terms/age\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#age\" ;\n            seadots:label \"Age group\" ;\n            seadots:questionText \"What is your age group?\" ;\n            seadots:variableName \"Q1\" ],\n        [ ddi:variableDescription \"Likert-style attitude question\" ;\n            survey:conceptUri \"https://elsst.uk/terms/environmental-concern\" ;\n            survey:vocabularyUri \"https://www.cessda.eu/cessda-vocabularies#environmental-attitudes\" ;\n            seadots:label \"Environmental concern\" ;\n            seadots:questionText \"How important is the protection of the environment to you?\" ;\n            seadots:variableName \"Q5_1\" ] ;\n    table:columns ( [ dcterms:description \"Respondent identifier\" ;\n                dcterms:title \"caseid\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Country of residence\" ;\n                dcterms:title \"Country\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent age group\" ;\n                dcterms:title \"Q1\" ;\n                dcterms:type \"string\" ] [ dcterms:description \"Respondent gender\" ;\n                dcterms:title \"Q2\" ;\n                dcterms:type \"string\" ] ) ;\n    table:primary_geometry \"none\" ;\n    table:row_count 5046 ;\n    seadots:itemType \"record\" ;\n    seadots:role \"data\" ;\n    stac:hasAsset [ ns2:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;\n    stac:hasExtension \"https://stac-extensions.github.io/cf/v0.2.0/schema.json\",\n        \"https://stac-extensions.github.io/table/v1.2.0/schema.json\" ;\n    stac:version \"1.0.0\" .\n\n<https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> dcterms:format \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\" ;\n    dcterms:title \"Norway monadic survey workbook\" .\n\n"
         }
       ]
     }

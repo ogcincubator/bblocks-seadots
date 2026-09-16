@@ -249,14 +249,14 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
-            dcterms:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
+        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+            dcterms:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
     survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
             seadots:uri "https://www.cessda.eu/" ;
             thns:scheme "CESSDA" ],
@@ -290,12 +290,13 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     table:row_count 5046 ;
     seadots:itemType "record" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data [ dcterms:format "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;
-                    dcterms:title "Norway monadic survey workbook" ;
-                    oa:hasTarget <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ] ;
+    stac:hasAsset [ ns2:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:version "1.0.0" .
+
+<https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> dcterms:format "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;
+    dcterms:title "Norway monadic survey workbook" .
 
 
 ```
@@ -564,9 +565,11 @@ Links to the schema:
     "assets": {
       "@context": {
         "@vocab": "https://w3id.org/ogc/stac/assets/",
+        "href": "@id",
         "type": "dct:format",
         "roles": {
-          "@id": "stac:roles",
+          "@id": "stac:hasAssetroles",
+          "@type": "xsd:string",
           "@container": "@set"
         }
       },
@@ -598,12 +601,57 @@ Links to the schema:
       "@id": "thns:concepts",
       "@container": "@set",
       "@context": {
-        "name": "thns:name",
         "id": "thns:id",
+        "title": "thns:name",
+        "description": "thns:description",
         "url": "@id"
       }
     },
     "scheme": "thns:scheme",
+    "osc:type": {
+      "@id": "osc:type",
+      "@type": "@vocab",
+      "@context": {
+        "project": "osc:project-type",
+        "product": "osc:product-type"
+      }
+    },
+    "osc:status": {
+      "@id": "osc:status",
+      "@type": "@vocab",
+      "@context": {
+        "planned": "osc:planned",
+        "ongoing": "osc:ongoing",
+        "completed": "osc:completed"
+      }
+    },
+    "osc:project": {
+      "@id": "osc:project",
+      "@type": "xsd:string"
+    },
+    "osc:region": {
+      "@id": "osc:region",
+      "@type": "xsd:string"
+    },
+    "osc:variables": {
+      "@id": "osc:variables",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:missions": {
+      "@id": "osc:missions",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:experiment": {
+      "@id": "osc:experiment",
+      "@type": "xsd:string"
+    },
+    "osc:workflows": {
+      "@id": "osc:workflows",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
     "wasInfluencedBy": {
       "@context": {
         "name": "rdfs:label"
@@ -1130,10 +1178,11 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "stac": "https://w3id.org/ogc/stac/core/",
+    "osc": "https://w3id.org/ogc/stac/osc/",
+    "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "dcterms": "http://purl.org/dc/terms/",
-    "qudt": "http://qudt.org/schema/qudt/",
     "table": "https://stac-extensions.github.io/table/v1.2.0/schema.json#",
     "survey": "https://example.org/seadots/survey#",
     "ddi": "https://ddialliance.org/terms#",

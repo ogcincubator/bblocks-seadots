@@ -62,12 +62,6 @@ Specialised property relationship profile for declaring that a source property i
 
 Generic APKG/CWL-aligned profile for the executable package attached to a SeaDOTs application record.
 
-### `ogc.hosted.seadots.oim-variables` — OIM Variables
-
-**Type:** model
-
-Defines the OIM variable and indicator concept model for SEADOTS and ILIAD variable observations.
-
 ### `ogc.hosted.seadots.colonisation-time-factor` — Colonisation Time Factor (C_t)
 
 **Type:** schema
@@ -91,6 +85,18 @@ OGC Feature profile carrying per-taxon dimensionless reef aggregation index AF_i
 **Type:** schema
 
 OGC API Records profile for describing a single output artefact produced by the reef-effect calculation. Captures the output role, format, vocabulary term for the produced quantity, producing experiment URI, conformance classes, and inline result values with provenance.
+
+### `ogc.hosted.seadots.oim-variables` — OIM Variables
+
+**Type:** model
+
+Defines the OIM variable and indicator concept model for SEADOTS and ILIAD variable observations.
+
+### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
+
+**Type:** schema
+
+OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.
 
 ### `ogc.hosted.seadots.benthic-biomass-density-imr` — IMR Benthic Biomass Density Observation
 
@@ -122,11 +128,11 @@ OGC Feature profile describing per-unit submerged geometry (wetted hull + moorin
 
 Schema profile for OIM/SOSA observations of SEADOTS variables and indicators, including numeric values mapped to observed-property IRIs from the OIM Variables building block.
 
-### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
+### `ogc.hosted.seadots.catalog-data` — SeaDOTs Catalog Data
 
 **Type:** schema
 
-OGC API Records profile for simulation model publications using the ODD Protocol (Overview, Design concepts, Details). Provides a structured, open-ended scaffold for describing agent-based and individual-based models; domain-specific vocabularies (NERC, CF, Darwin Core, ICES) are injected at the entity and variable level by domain profiles.
+Generic Records/DCAT, STAC Item, CF, and provenance profile for SeaDOTs catalog records that describe data artefacts independent of their workflow role or data type.
 
 ### `ogc.hosted.seadots.reef-effect-process` — Reef Effect Process
 
@@ -139,18 +145,6 @@ OGC API Processes Part 1 process description for the reef-effect biomass calcula
 **Type:** schema
 
 Source-faithful GeoJSON point time-series profile for the supplied harvest_timeseries_scenario_Scen_M3 export. It preserves the source feature identifier, Point geometry, bwmus numeric measurement and time string without assigning undocumented scientific meaning or units.
-
-### `ogc.hosted.seadots.catalog-data` — SeaDOTs Catalog Data
-
-**Type:** schema
-
-Generic Records/DCAT, STAC Item, CF, and provenance profile for SeaDOTs catalog records that describe data artefacts independent of their workflow role or data type.
-
-### `ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet` — Harvest time series scenario Scen M3 — GeoParquet representation
-
-**Type:** schema
-
-GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.
 
 ### `ogc.hosted.seadots.catalog-data-multidim` — SeaDOTs Catalog Data Multidimensional
 
@@ -169,6 +163,12 @@ OGC API Records profile for catalog records that describe tabular data products 
 **Type:** schema
 
 Generic OGC API Records and PROV-O profile for a discoverable reusable workflow, model, transformer, or digital-twin application.
+
+### `ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet` — Harvest time series scenario Scen M3 — GeoParquet representation
+
+**Type:** schema
+
+GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.
 
 ### `ogc.hosted.seadots.catalog-data-tabular-survey` — SeaDOTs Catalog Data Tabular Survey
 

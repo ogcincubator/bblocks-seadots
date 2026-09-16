@@ -38,11 +38,12 @@
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns1:data [ dcterms:format "application/geo+json" ;
-                    dcterms:title "Harvest time-series sample GeoJSON" ;
-                    oa:hasTarget <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ] ;
+    stac:hasAsset [ ns1:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:version "1.0.0" .
+
+<file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> dcterms:format "application/geo+json" ;
+    dcterms:title "Harvest time-series sample GeoJSON" .
 

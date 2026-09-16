@@ -281,8 +281,8 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -302,31 +302,24 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
         "multidimensional",
         "temperature" ;
     dcterms:title "North Sea temperature forecast cube" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+    rdfs:seeAlso [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ],
+        [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
         [ rdfs:label "SeaDOTs Catalog Data Multidimensional bblock" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ],
-        [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ] ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ] ;
     geojson:bbox ( 2e+00 5.6e+01 9e+00 6.1e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 2e+00 5.6e+01 ) ( 9e+00 5.6e+01 ) ( 9e+00 6.1e+01 ) ( 2e+00 6.1e+01 ) ( 2e+00 5.6e+01 ) ) ) ] ;
     seadots:itemType "record" ;
     stac:end_datetime "2026-06-11T00:00:00+00:00"^^xsd:dateTime ;
-    stac:hasAsset [ ns2:netcdf [ dcterms:format "application/x-netcdf" ;
-                    dcterms:title "NetCDF data cube" ;
-                    oa:hasTarget <https://example.org/seadots/north-sea-temperature-forecast.nc> ;
-                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Sea water temperature forecast variable." ;
-                            qudt:unit <http://qudt.org/vocab/unit/K> ;
-                            foaf:name "sea_water_temperature"^^rdfs:Literal ] ;
-                    stac:roles "data" ] ] ;
+    stac:hasAsset [ ns1:netcdf <https://example.org/seadots/north-sea-temperature-forecast.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
@@ -339,6 +332,14 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
 <http://example.com/variables/sea_water_temperature> dcterms:description "Sea water temperature forecast variable." ;
     dcterms:title "Sea water temperature" ;
     qudt:unit <http://qudt.org/vocab/unit/K> .
+
+<https://example.org/seadots/north-sea-temperature-forecast.nc> dcterms:format "application/x-netcdf" ;
+    dcterms:title "NetCDF data cube" ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea water temperature forecast variable." ;
+            qudt:unit <http://qudt.org/vocab/unit/K> ;
+            foaf:name "sea_water_temperature"^^rdfs:Literal ] ;
+    stac:hasAssetroles "data"^^xsd:string .
 
 
 ```
@@ -905,8 +906,8 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -924,38 +925,26 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
         "SeaDOTs",
         "multidimensional" ;
     dcterms:title "Dummy data file for OGC from the German Use Case" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+    rdfs:seeAlso [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ],
+        [ rdfs:label "SeaDOTs Catalog Data bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
         [ rdfs:label "SeaDOTs Catalog Data Multidimensional bblock" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ],
-        [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
-            dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ] ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ] ;
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "biomass of harvested mussels C" ;
-            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
-            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ],
+            dcterms:description "nitrat in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/m> ;
+            foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "chlorophyll mass concentration" ;
+            dcterms:description "phospate in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "biomass of harvested mussels N" ;
-            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
-            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Sea Surface Temperature (SST)" ;
-            qudt:unit <http://qudt.org/vocab/unit/degC> ;
-            foaf:name "sea_water_temperature"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "silicate in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
+            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Eastward Surface Sea Water Velocity (U)" ;
             qudt:unit <http://qudt.org/vocab/unit/m/s> ;
@@ -965,80 +954,41 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
             qudt:unit <http://qudt.org/vocab/unit/0.001> ;
             foaf:name "sea_water_salinity"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea Surface Temperature (SST)" ;
+            qudt:unit <http://qudt.org/vocab/unit/degC> ;
+            foaf:name "sea_water_temperature"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "chlorophyll mass concentration" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "number of mussels per qubic meter" ;
             qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
             foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
-            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "oxygen concentration in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/degree> ;
             foaf:name "concentration of oxygen in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "phospate in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
+            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
+            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
+            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "nitrat in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/m> ;
-            foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ] ;
+            dcterms:description "biomass of harvested mussels C" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
+            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "silicate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "biomass of harvested mussels N" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
+            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ] ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.8" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns1:netcdf [ dcterms:format "application/x-netcdf" ;
-                    dcterms:title "NetCDF data cube" ;
-                    oa:hasTarget <https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> ;
-                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
-                            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-                            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "number of mussels per qubic meter" ;
-                            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
-                            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Eastward Surface Sea Water Velocity (U)" ;
-                            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-                            foaf:name "surface_eastward_sea_water_velocity"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "biomass of harvested mussels N" ;
-                            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
-                            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "chlorophyll mass concentration" ;
-                            qudt:unit <http://qudt.org/vocab/unit/s> ;
-                            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "biomass of harvested mussels C" ;
-                            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
-                            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "nitrat in the water" ;
-                            qudt:unit <http://qudt.org/vocab/unit/m> ;
-                            foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "silicate in the water" ;
-                            qudt:unit <http://qudt.org/vocab/unit/s> ;
-                            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "phospate in the water" ;
-                            qudt:unit <http://qudt.org/vocab/unit/s> ;
-                            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Sea Water Salinity (SSS)" ;
-                            qudt:unit <http://qudt.org/vocab/unit/0.001> ;
-                            foaf:name "sea_water_salinity"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "oxygen concentration in the water" ;
-                            qudt:unit <http://qudt.org/vocab/unit/degree> ;
-                            foaf:name "concentration of oxygen in sea_water"^^rdfs:Literal ],
-                        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Sea Surface Temperature (SST)" ;
-                            qudt:unit <http://qudt.org/vocab/unit/degC> ;
-                            foaf:name "sea_water_temperature"^^rdfs:Literal ] ;
-                    stac:roles "data" ] ] ;
+    stac:hasAsset [ ns2:netcdf <https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
@@ -1105,6 +1055,58 @@ python3 _sources/catalog-data-multidim/scripts/build_catalog_data_multidim_recor
 <http://example.com/variables/v> dcterms:description "horizontalVelY" ;
     dcterms:title "Northward Surface Sea Water Velocity (V)" ;
     qudt:unit <http://qudt.org/vocab/unit/m/s> .
+
+<https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> dcterms:format "application/x-netcdf" ;
+    dcterms:title "NetCDF data cube" ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "biomass of harvested mussels N" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
+            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "number of mussels per qubic meter" ;
+            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
+            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "nitrat in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/m> ;
+            foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "biomass of harvested mussels C" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
+            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "silicate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "chlorophyll mass concentration" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Eastward Surface Sea Water Velocity (U)" ;
+            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
+            foaf:name "surface_eastward_sea_water_velocity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "phospate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
+            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
+            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea Surface Temperature (SST)" ;
+            qudt:unit <http://qudt.org/vocab/unit/degC> ;
+            foaf:name "sea_water_temperature"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea Water Salinity (SSS)" ;
+            qudt:unit <http://qudt.org/vocab/unit/0.001> ;
+            foaf:name "sea_water_salinity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "oxygen concentration in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/degree> ;
+            foaf:name "concentration of oxygen in sea_water"^^rdfs:Literal ] ;
+    stac:hasAssetroles "data"^^xsd:string .
 
 
 ```
@@ -1272,14 +1274,18 @@ x-jsonld-extra-terms:
   stac_extensions: https://w3id.org/ogc/stac/core/hasExtension
   assets:
     x-jsonld-context:
+      '@vocab': https://w3id.org/ogc/stac/assets/
+      href: '@id'
       type: http://purl.org/dc/terms/format
       roles:
         '@id': https://w3id.org/ogc/stac/core/roles
+        '@type': http://www.w3.org/2001/XMLSchema#string
         '@container': '@set'
-      '@vocab': https://w3id.org/ogc/stac/assets/
     x-jsonld-id: https://w3id.org/ogc/stac/core/hasAsset
     x-jsonld-container: '@set'
-  stac_version: https://w3id.org/ogc/stac/core/version
+  datetime:
+    x-jsonld-id: http://purl.org/dc/terms/date
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   start_datetime:
     x-jsonld-id: https://w3id.org/ogc/stac/core/start_datetime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
@@ -1287,19 +1293,52 @@ x-jsonld-extra-terms:
     x-jsonld-id: https://w3id.org/ogc/stac/core/end_datetime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   providers: https://w3id.org/ogc/stac/core/hasProvider
+  stac_version: https://w3id.org/ogc/stac/core/version
   media_type: http://purl.org/dc/terms/format
   extent: http://purl.org/dc/terms/extent
-  datetime:
-    x-jsonld-id: http://purl.org/dc/terms/date
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   concepts:
     x-jsonld-id: https://w3id.org/ogc/stac/themes/concepts
     x-jsonld-container: '@set'
     x-jsonld-context:
-      name: https://w3id.org/ogc/stac/themes/name
       id: https://w3id.org/ogc/stac/themes/id
+      title: https://w3id.org/ogc/stac/themes/name
+      description: https://w3id.org/ogc/stac/themes/description
       url: '@id'
   scheme: https://w3id.org/ogc/stac/themes/scheme
+  osc:type:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/type
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      project: https://w3id.org/ogc/stac/osc/project-type
+      product: https://w3id.org/ogc/stac/osc/product-type
+  osc:status:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/status
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      planned: https://w3id.org/ogc/stac/osc/planned
+      ongoing: https://w3id.org/ogc/stac/osc/ongoing
+      completed: https://w3id.org/ogc/stac/osc/completed
+  osc:project:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/project
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:region:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/region
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:variables:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/variables
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
+  osc:missions:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/missions
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
+  osc:experiment:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/experiment
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:workflows:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/workflows
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
   rights: http://www.w3.org/ns/dcat#rights
   wasInfluencedBy:
     x-jsonld-id: http://www.w3.org/ns/prov#wasInfluencedBy
@@ -1342,6 +1381,22 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   wasRevisionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
+    x-jsonld-type: '@id'
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.opengis.net/cis/1.1/value
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   atLocation:
     x-jsonld-id: http://www.w3.org/ns/prov#atLocation
@@ -1416,16 +1471,9 @@ x-jsonld-extra-terms:
   endedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  generatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  invalidatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   startedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  value: http://www.opengis.net/cis/1.1/value
   provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
   pairKey:
     x-jsonld-id: http://www.w3.org/ns/prov#pairKey
@@ -1483,15 +1531,6 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   qualifiedEnd:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
-    x-jsonld-type: '@id'
-  qualifiedPrimarySource:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
-    x-jsonld-type: '@id'
-  qualifiedQuotation:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
-    x-jsonld-type: '@id'
-  qualifiedRevision:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   qualifiedStart:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
@@ -1557,6 +1596,10 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/prov#mentionOf
     x-jsonld-type: '@id'
   name: https://w3id.org/ogc/stac/cf/name
+  unit:
+    x-jsonld-id: http://qudt.org/schema/qudt/hasUnit
+    x-jsonld-context:
+      '@base': http://qudt.org/vocab/unit/
   role: https://w3id.org/ogc/hosted/seadots/catalog#role
   convention: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
   cf:parameter:
@@ -2330,8 +2373,10 @@ x-jsonld-prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   thns: https://w3id.org/ogc/stac/themes/
   stac: https://w3id.org/ogc/stac/core/
+  osc: https://w3id.org/ogc/stac/osc/
   oa: http://www.w3.org/ns/oa#
   prov: http://www.w3.org/ns/prov#
+  qudt: http://qudt.org/schema/qudt/
   cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
   seadots: https://w3id.org/ogc/hosted/seadots/catalog#
   dcterms: http://purl.org/dc/terms/
@@ -2341,7 +2386,6 @@ x-jsonld-prefixes:
   w3ctime: http://www.w3.org/2006/time#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   dctype: http://purl.org/dc/dcmitype/
-  qudt: http://qudt.org/schema/qudt/
 
 ```
 
@@ -2524,9 +2568,11 @@ Links to the schema:
     "assets": {
       "@context": {
         "@vocab": "https://w3id.org/ogc/stac/assets/",
+        "href": "@id",
         "type": "dct:format",
         "roles": {
-          "@id": "stac:roles",
+          "@id": "stac:hasAssetroles",
+          "@type": "xsd:string",
           "@container": "@set"
         }
       },
@@ -2553,12 +2599,57 @@ Links to the schema:
       "@id": "thns:concepts",
       "@container": "@set",
       "@context": {
-        "name": "thns:name",
         "id": "thns:id",
+        "title": "thns:name",
+        "description": "thns:description",
         "url": "@id"
       }
     },
     "scheme": "thns:scheme",
+    "osc:type": {
+      "@id": "osc:type",
+      "@type": "@vocab",
+      "@context": {
+        "project": "osc:project-type",
+        "product": "osc:product-type"
+      }
+    },
+    "osc:status": {
+      "@id": "osc:status",
+      "@type": "@vocab",
+      "@context": {
+        "planned": "osc:planned",
+        "ongoing": "osc:ongoing",
+        "completed": "osc:completed"
+      }
+    },
+    "osc:project": {
+      "@id": "osc:project",
+      "@type": "xsd:string"
+    },
+    "osc:region": {
+      "@id": "osc:region",
+      "@type": "xsd:string"
+    },
+    "osc:variables": {
+      "@id": "osc:variables",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:missions": {
+      "@id": "osc:missions",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:experiment": {
+      "@id": "osc:experiment",
+      "@type": "xsd:string"
+    },
+    "osc:workflows": {
+      "@id": "osc:workflows",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
     "wasInfluencedBy": {
       "@context": {
         "Agent": "prov:Agent",
@@ -4086,10 +4177,11 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "stac": "https://w3id.org/ogc/stac/core/",
+    "osc": "https://w3id.org/ogc/stac/osc/",
+    "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "dcterms": "http://purl.org/dc/terms/",
-    "qudt": "http://qudt.org/schema/qudt/",
     "@version": 1.1
   }
 }

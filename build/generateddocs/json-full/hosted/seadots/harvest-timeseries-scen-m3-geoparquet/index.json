@@ -6,14 +6,16 @@
   "abstract": "GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.",
   "status": "under-development",
   "dateTimeAddition": "2026-07-31T00:00:00Z",
-  "dateOfLastChange": "2026-07-31",
+  "dateOfLastChange": "2026-09-16",
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
   "dependsOn": [
-    "ogc.hosted.seadots.geoparquet-header",
-    "ogc.hosted.seadots.harvest-timeseries-scen-m3-source"
+    "ogc.hosted.seadots.harvest-timeseries-scen-m3-source",
+    "ogc.hosted.seadots.geoparquet-header"
   ],
   "tags": [
     "seadots",
@@ -51,17 +53,20 @@
     "ogc.hosted.seadots.oim-variables": [
       "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variables/rules.shacl"
     ],
+    "ogc.skos.concept": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
+    ],
+    "ogc.skos.common": [
+      "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
+    ],
+    "ogc.model.cross-domain.prov": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
+    ],
     "ogc.model.cross-domain.qudt": [
       "http://qudt.org/2.1/schema/shacl/qudt"
     ],
     "ogc.model.cross-domain.sosa": [
       "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl"
-    ],
-    "ogc.skos.common": [
-      "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl"
-    ],
-    "ogc.skos.concept": [
-      "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl"
     ]
   },
   "schema": {

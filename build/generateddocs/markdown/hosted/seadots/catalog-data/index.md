@@ -223,8 +223,8 @@ This block is the shared base for catalog input records, catalog output records,
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <https://w3id.org/ogc/stac/cf/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
-@prefix ns3: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns3: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -240,7 +240,7 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:title "SeaDOTs generic data item" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns3:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -252,17 +252,18 @@ This block is the shared base for catalog input records, catalog output records,
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns3:data [ dcterms:format "application/x-netcdf" ;
-                    dcterms:title "Generic data asset" ;
-                    oa:hasTarget <https://example.org/seadots/catalog-data.nc> ;
-                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Example CF-style parameter declaration." ;
-                            qudt:hasUnit "K" ;
-                            ns1:name "sea_water_temperature" ] ;
-                    stac:roles "data" ] ] ;
+    stac:hasAsset [ ns2:data <https://example.org/seadots/catalog-data.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
+
+<https://example.org/seadots/catalog-data.nc> dcterms:format "application/x-netcdf" ;
+    dcterms:title "Generic data asset" ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Example CF-style parameter declaration." ;
+            qudt:hasUnit "K" ;
+            ns1:name "sea_water_temperature" ] ;
+    stac:hasAssetroles "data"^^xsd:string .
 
 
 ```
@@ -455,9 +456,9 @@ This block is the shared base for catalog input records, catalog output records,
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
 @prefix ns2: <http://www.iana.org/assignments/> .
-@prefix ns3: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns3: <https://w3id.org/ogc/stac/cf/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -470,40 +471,41 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:date "2026-05-26T00:00:00+00:00"^^xsd:dateTime ;
     dcterms:description "Example area-of-interest input for a SeaDOTs execution." ;
     dcterms:title "Utsira area of interest" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs inputs" ;
+    rdfs:seeAlso [ rdfs:label "Utsira surroundings AOI" ;
+            dcterms:type "application/geo+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/item> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ],
+        [ rdfs:label "SeaDOTs inputs" ;
             dcterms:type "application/json" ;
             ns2:relation <http://www.iana.org/assignments/relation/collection> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs> ],
         [ dcterms:type "application/schema+json" ;
             ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
-        [ rdfs:label "Utsira surroundings AOI" ;
-            dcterms:type "application/geo+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/item> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.7e+00 5.91e+01 ) ( 5e+00 5.91e+01 ) ( 5e+00 5.94e+01 ) ( 4.7e+00 5.94e+01 ) ( 4.7e+00 5.91e+01 ) ) ) ] ;
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
             qudt:hasUnit "m2" ;
-            ns1:name "area" ] ;
+            ns3:name "area" ] ;
     seadots:collection "seadots-inputs" ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "input" ;
-    stac:hasAsset [ ns3:data [ dcterms:format "application/geo+json" ;
-                    dcterms:title "Utsira surroundings AOI" ;
-                    oa:hasTarget <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ;
-                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
-                            qudt:hasUnit "m2" ;
-                            ns1:name "area" ] ;
-                    stac:roles "data",
-                        "input" ] ] ;
+    stac:hasAsset [ ns1:data <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
+
+<file:///area-of-interest/examples/utsira_surroundings_aoi.json> dcterms:format "application/geo+json" ;
+    dcterms:title "Utsira surroundings AOI" ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
+            qudt:hasUnit "m2" ;
+            ns3:name "area" ] ;
+    stac:hasAssetroles "data"^^xsd:string,
+        "input"^^xsd:string .
 
 
 ```
@@ -718,8 +720,8 @@ This block is the shared base for catalog input records, catalog output records,
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix ns3: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -734,21 +736,21 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:date "2026-05-26T09:03:00+00:00"^^xsd:dateTime ;
     dcterms:description "Example output product generated by a SeaDOTs execution." ;
     dcterms:title "Reef biomass result" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs outputs" ;
-            dcterms:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-outputs> ],
-        [ ns1:relation <http://www.iana.org/assignments/relation/via> ;
+    rdfs:seeAlso [ ns2:relation <http://www.iana.org/assignments/relation/derived_from> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ],
+        [ ns2:relation <http://www.iana.org/assignments/relation/via> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> ],
         [ dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
         [ rdfs:label "Reef biomass structured result" ;
             dcterms:type "application/geo+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/item> ;
+            ns2:relation <http://www.iana.org/assignments/relation/item> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output/examples/reef_biomass_result.json> ],
-        [ ns1:relation <http://www.iana.org/assignments/relation/derived_from> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ] ;
+        [ rdfs:label "SeaDOTs outputs" ;
+            dcterms:type "application/json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/collection> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-outputs> ] ;
     prov:wasDerivedFrom <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -756,23 +758,24 @@ This block is the shared base for catalog input records, catalog output records,
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Optional CF-style parameter declaration for the output quantity." ;
             qudt:hasUnit "kg" ;
-            ns2:name "biomass" ] ;
+            ns1:name "biomass" ] ;
     seadots:collection "seadots-outputs" ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "output" ;
-    stac:hasAsset [ ns3:data [ dcterms:format "application/geo+json" ;
-                    dcterms:title "Reef biomass structured result" ;
-                    oa:hasTarget <file:///reef-effect-output/examples/reef_biomass_result.json> ;
-                    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-                            dcterms:description "Optional CF-style parameter declaration for the output quantity." ;
-                            qudt:hasUnit "kg" ;
-                            ns2:name "biomass" ] ;
-                    stac:roles "data",
-                        "result" ] ] ;
+    stac:hasAsset [ ns3:data <file:///reef-effect-output/examples/reef_biomass_result.json> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
+
+<file:///reef-effect-output/examples/reef_biomass_result.json> dcterms:format "application/geo+json" ;
+    dcterms:title "Reef biomass structured result" ;
+    cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Optional CF-style parameter declaration for the output quantity." ;
+            qudt:hasUnit "kg" ;
+            ns1:name "biomass" ] ;
+    stac:hasAssetroles "data"^^xsd:string,
+        "result"^^xsd:string .
 
 
 ```
@@ -908,8 +911,8 @@ This block is the shared base for catalog input records, catalog output records,
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -928,7 +931,7 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:title "Harvest time series scenario Scen M3 sample catalog record" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
     geojson:bbox ( 7.642602e+00 5.439246e+01 7.680002e+00 5.43991e+01 ) ;
     geojson:geometry [ a geojson:MultiPoint ;
@@ -936,12 +939,13 @@ This block is the shared base for catalog input records, catalog output records,
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data [ dcterms:format "application/geo+json" ;
-                    dcterms:title "Harvest time-series sample GeoJSON" ;
-                    oa:hasTarget <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ] ;
+    stac:hasAsset [ ns1:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
+
+<file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> dcterms:format "application/geo+json" ;
+    dcterms:title "Harvest time-series sample GeoJSON" .
 
 
 ```
@@ -1152,14 +1156,18 @@ x-jsonld-extra-terms:
   stac_extensions: https://w3id.org/ogc/stac/core/hasExtension
   assets:
     x-jsonld-context:
+      '@vocab': https://w3id.org/ogc/stac/assets/
+      href: '@id'
       type: http://purl.org/dc/terms/format
       roles:
-        '@id': https://w3id.org/ogc/stac/core/roles
+        '@id': https://w3id.org/ogc/stac/core/hasAssetroles
+        '@type': http://www.w3.org/2001/XMLSchema#string
         '@container': '@set'
-      '@vocab': https://w3id.org/ogc/stac/assets/
     x-jsonld-id: https://w3id.org/ogc/stac/core/hasAsset
     x-jsonld-container: '@set'
-  stac_version: https://w3id.org/ogc/stac/core/version
+  datetime:
+    x-jsonld-id: http://purl.org/dc/terms/date
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   start_datetime:
     x-jsonld-id: https://w3id.org/ogc/stac/core/start_datetime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
@@ -1167,19 +1175,52 @@ x-jsonld-extra-terms:
     x-jsonld-id: https://w3id.org/ogc/stac/core/end_datetime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   providers: https://w3id.org/ogc/stac/core/hasProvider
+  stac_version: https://w3id.org/ogc/stac/core/version
   media_type: http://purl.org/dc/terms/format
   extent: http://purl.org/dc/terms/extent
-  datetime:
-    x-jsonld-id: http://purl.org/dc/terms/date
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   concepts:
     x-jsonld-id: https://w3id.org/ogc/stac/themes/concepts
     x-jsonld-container: '@set'
     x-jsonld-context:
-      name: https://w3id.org/ogc/stac/themes/name
       id: https://w3id.org/ogc/stac/themes/id
+      title: https://w3id.org/ogc/stac/themes/name
+      description: https://w3id.org/ogc/stac/themes/description
       url: '@id'
   scheme: https://w3id.org/ogc/stac/themes/scheme
+  osc:type:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/type
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      project: https://w3id.org/ogc/stac/osc/project-type
+      product: https://w3id.org/ogc/stac/osc/product-type
+  osc:status:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/status
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      planned: https://w3id.org/ogc/stac/osc/planned
+      ongoing: https://w3id.org/ogc/stac/osc/ongoing
+      completed: https://w3id.org/ogc/stac/osc/completed
+  osc:project:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/project
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:region:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/region
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:variables:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/variables
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
+  osc:missions:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/missions
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
+  osc:experiment:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/experiment
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+  osc:workflows:
+    x-jsonld-id: https://w3id.org/ogc/stac/osc/workflows
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#string
+    x-jsonld-container: '@set'
   rights: http://www.w3.org/ns/dcat#rights
   wasInfluencedBy:
     x-jsonld-id: http://www.w3.org/ns/prov#wasInfluencedBy
@@ -1222,6 +1263,22 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   wasRevisionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#wasRevisionOf
+    x-jsonld-type: '@id'
+  generatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  invalidatedAtTime:
+    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  value: http://www.w3.org/ns/prov#value
+  qualifiedPrimarySource:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
+    x-jsonld-type: '@id'
+  qualifiedQuotation:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
+    x-jsonld-type: '@id'
+  qualifiedRevision:
+    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   atLocation:
     x-jsonld-id: http://www.w3.org/ns/prov#atLocation
@@ -1296,16 +1353,9 @@ x-jsonld-extra-terms:
   endedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#endedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  generatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  invalidatedAtTime:
-    x-jsonld-id: http://www.w3.org/ns/prov#invalidatedAtTime
-    x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
   startedAtTime:
     x-jsonld-id: http://www.w3.org/ns/prov#startedAtTime
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  value: http://www.w3.org/ns/prov#value
   provenanceUriTemplate: http://www.w3.org/ns/prov#provenanceUriTemplate
   pairKey:
     x-jsonld-id: http://www.w3.org/ns/prov#pairKey
@@ -1363,15 +1413,6 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   qualifiedEnd:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedEnd
-    x-jsonld-type: '@id'
-  qualifiedPrimarySource:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedPrimarySource
-    x-jsonld-type: '@id'
-  qualifiedQuotation:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedQuotation
-    x-jsonld-type: '@id'
-  qualifiedRevision:
-    x-jsonld-id: http://www.w3.org/ns/prov#qualifiedRevision
     x-jsonld-type: '@id'
   qualifiedStart:
     x-jsonld-id: http://www.w3.org/ns/prov#qualifiedStart
@@ -1437,6 +1478,10 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/prov#mentionOf
     x-jsonld-type: '@id'
   name: https://w3id.org/ogc/stac/cf/name
+  unit:
+    x-jsonld-id: http://qudt.org/schema/qudt/hasUnit
+    x-jsonld-context:
+      '@base': http://qudt.org/vocab/unit/
   cf:parameter:
     x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
     x-jsonld-container: '@set'
@@ -1454,8 +1499,10 @@ x-jsonld-prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   thns: https://w3id.org/ogc/stac/themes/
   stac: https://w3id.org/ogc/stac/core/
+  osc: https://w3id.org/ogc/stac/osc/
   oa: http://www.w3.org/ns/oa#
   prov: http://www.w3.org/ns/prov#
+  qudt: http://qudt.org/schema/qudt/
   cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
   seadots: https://w3id.org/ogc/hosted/seadots/catalog#
   dcterms: http://purl.org/dc/terms/
@@ -1465,7 +1512,6 @@ x-jsonld-prefixes:
   dctype: http://purl.org/dc/dcmitype/
   vcard: http://www.w3.org/2006/vcard/ns#
   foaf: http://xmlns.com/foaf/0.1/
-  qudt: http://qudt.org/schema/qudt/
 
 ```
 
@@ -1648,9 +1694,11 @@ Links to the schema:
     "assets": {
       "@context": {
         "@vocab": "https://w3id.org/ogc/stac/assets/",
+        "href": "@id",
         "type": "dct:format",
         "roles": {
-          "@id": "stac:roles",
+          "@id": "stac:hasAssetroles",
+          "@type": "xsd:string",
           "@container": "@set"
         }
       },
@@ -1677,12 +1725,57 @@ Links to the schema:
       "@id": "thns:concepts",
       "@container": "@set",
       "@context": {
-        "name": "thns:name",
         "id": "thns:id",
+        "title": "thns:name",
+        "description": "thns:description",
         "url": "@id"
       }
     },
     "scheme": "thns:scheme",
+    "osc:type": {
+      "@id": "osc:type",
+      "@type": "@vocab",
+      "@context": {
+        "project": "osc:project-type",
+        "product": "osc:product-type"
+      }
+    },
+    "osc:status": {
+      "@id": "osc:status",
+      "@type": "@vocab",
+      "@context": {
+        "planned": "osc:planned",
+        "ongoing": "osc:ongoing",
+        "completed": "osc:completed"
+      }
+    },
+    "osc:project": {
+      "@id": "osc:project",
+      "@type": "xsd:string"
+    },
+    "osc:region": {
+      "@id": "osc:region",
+      "@type": "xsd:string"
+    },
+    "osc:variables": {
+      "@id": "osc:variables",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:missions": {
+      "@id": "osc:missions",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "osc:experiment": {
+      "@id": "osc:experiment",
+      "@type": "xsd:string"
+    },
+    "osc:workflows": {
+      "@id": "osc:workflows",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
     "wasInfluencedBy": {
       "@context": {
         "name": "rdfs:label"
@@ -2200,10 +2293,11 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "stac": "https://w3id.org/ogc/stac/core/",
+    "osc": "https://w3id.org/ogc/stac/osc/",
+    "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
     "dcterms": "http://purl.org/dc/terms/",
-    "qudt": "http://qudt.org/schema/qudt/",
     "role": "seadots:role",
     "convention": "seadots:metadataConvention",
     "derivedFrom": {

@@ -9,8 +9,10 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-31",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateOfLastChange": "2026-09-16",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
   "tags": [
     "catalog",
     "ogc-records",
@@ -40,8 +42,8 @@
     }
   ],
   "dependsOn": [
-    "ogc.hosted.seadots.catalog-workflow",
     "ogc.geo.geodcat.geodcat-records-prov",
+    "ogc.hosted.seadots.catalog-workflow",
     "ogc.hosted.seadots.catalog-data"
   ],
   "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
@@ -53,11 +55,29 @@
   "maturity": "development",
   "scope": "dev",
   "shaclShapes": {
+    "ogc.model.cross-domain.prov": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
+    ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
     "ogc.api.records.v1.schemas.linkTemplate": [
       "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ],
+    "ogc.contrib.stac.core-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.components.assets-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.themes-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.osc-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.cf-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
     ]
   },
   "schema": {
@@ -93,7 +113,7 @@
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-execution/example_1_1.ttl",
           "sizeBytes": 1506,
-          "code": "@prefix dct: <http://purl.org/dc/terms/> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n\n<https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a prov:Activity,\n        geojson:Feature ;\n    dct:conformsTo <http://www.w3.org/TR/prov-o/>,\n        <https://docs.ogc.org/is/20-004/20-004.html> ;\n    rdfs:seeAlso [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],\n        [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],\n        [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ] ;\n    prov:generated <file:///catalog-data/examples/output-stac-item.json> ;\n    prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;\n    prov:used <file:///catalog-data/examples/input-stac-item.json> ;\n    seadots:itemType \"record\" .\n\n"
+          "code": "@prefix dct: <http://purl.org/dc/terms/> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n\n<https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a prov:Activity,\n        geojson:Feature ;\n    dct:conformsTo <http://www.w3.org/TR/prov-o/>,\n        <https://docs.ogc.org/is/20-004/20-004.html> ;\n    rdfs:seeAlso [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],\n        [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],\n        [ dct:type \"application/geo+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ] ;\n    prov:generated <file:///catalog-data/examples/output-stac-item.json> ;\n    prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;\n    prov:used <file:///catalog-data/examples/input-stac-item.json> ;\n    seadots:itemType \"record\" .\n\n"
         }
       ]
     }

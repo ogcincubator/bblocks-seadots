@@ -24,13 +24,13 @@
         "tabular" ;
     dcterms:title "North Sea cod occurrence table (synthetic)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
     geojson:bbox ( 3e+00 5.6e+01 9e+00 6.1e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -62,13 +62,14 @@
     seadots:itemType "record" ;
     seadots:role "data" ;
     stac:end_datetime "2024-12-31T00:00:00+00:00"^^xsd:dateTime ;
-    stac:hasAsset [ ns2:geoparquet [ dcterms:format "application/x-parquet" ;
-                    dcterms:title "GeoParquet occurrence table" ;
-                    oa:hasTarget <https://example.org/seadots/north-sea-cod-occurrences.parquet> ;
-                    stac:roles "data" ] ] ;
+    stac:hasAsset [ ns2:geoparquet <https://example.org/seadots/north-sea-cod-occurrences.parquet> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:start_datetime "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
     stac:version "1.0.0" .
+
+<https://example.org/seadots/north-sea-cod-occurrences.parquet> dcterms:format "application/x-parquet" ;
+    dcterms:title "GeoParquet occurrence table" ;
+    stac:hasAssetroles "data"^^xsd:string .
 

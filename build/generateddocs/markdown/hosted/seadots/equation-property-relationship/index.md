@@ -345,41 +345,7 @@ because the record describes the equation as a whole, not a single symbol-edge.
     prov:wasDerivedFrom indo:floating-wind-reef-biomass-effect ;
     schema:additionalType "equation" ;
     prop-rel:hasEquation "B_{reef} = \\sum_i (A_{sub} \\cdot D_{pre,i} \\cdot AF_i \\cdot C_t)" ;
-    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indp:reef-aggregation-index ;
-            prop-rel:hasBinding [ prop-rel:bindingIndexValue "Asterias rubens" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-asterias ],
-                [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
-                    prop-rel:bindingIndexValue "Buccinum undatum" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ],
-                [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
-                    prop-rel:bindingIndexValue "Mytilus edulis" ;
-                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
-                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
-                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ] ;
-            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
-            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
-            prop-rel:hasIndex "i" ;
-            prop-rel:hasIndexedBy tc:TaxonConcept ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "AF_i" ;
-            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
-            prop-rel:isIndexed true ],
-        [ prop-rel:fromProperty indp:submerged-infrastructure-area ;
-            prop-rel:hasBinding [ prov:wasDerivedFrom <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
-                    prop-rel:bindingRole <file:///github/workspace/primary> ;
-                    prop-rel:bindingValidityScope "Utsira Nord engineering design (60 × 15 MW units, wetted hull + mooring + anchor surfaces)" ;
-                    prop-rel:bindingVariable indp:submerged-infrastructure-area-utsira-design ] ;
-            prop-rel:hasDimensionKind quantitykind:Area ;
-            prop-rel:hasEquationRole <file:///github/workspace/input> ;
-            prop-rel:hasOperator <file:///github/workspace/product> ;
-            prop-rel:hasSymbol "A_{sub}" ;
-            prop-rel:hasSymbolAlias "A_s",
-                "A_sub" ;
-            prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
-            prop-rel:isIndexed false ],
-        [ prop-rel:fromProperty indp:colonisation-time-factor ;
+    prop-rel:hasEquationSymbol [ prop-rel:fromProperty indp:colonisation-time-factor ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
                     prop-rel:bindingRole <file:///github/workspace/primary> ;
                     prop-rel:bindingValidityScope "default sigmoid colonisation curve, saturating at t = 24 months" ;
@@ -392,6 +358,27 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "C_{t}" ;
             prop-rel:hasVariableKind <file:///github/workspace/timeCoefficient> ;
             prop-rel:isIndexed false ],
+        [ prop-rel:fromProperty indp:reef-aggregation-index ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.windfloat-atlantic.com/> ;
+                    prop-rel:bindingIndexValue "Buccinum undatum" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-buccinum ],
+                [ prov:wasDerivedFrom <https://doi.org/10.5670/oceanog.2020.405> ;
+                    prop-rel:bindingIndexValue "Mytilus edulis" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingValidityScope "North Sea, depth 0-30 m" ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-mytilus ],
+                [ prop-rel:bindingIndexValue "Asterias rubens" ;
+                    prop-rel:bindingRole <file:///github/workspace/expansion> ;
+                    prop-rel:bindingVariable indp:reef-aggregation-index-asterias ] ;
+            prop-rel:hasDimensionKind quantitykind:Dimensionless ;
+            prop-rel:hasEquationRole <file:///github/workspace/coefficient> ;
+            prop-rel:hasIndex "i" ;
+            prop-rel:hasIndexedBy tc:TaxonConcept ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "AF_i" ;
+            prop-rel:hasVariableKind <file:///github/workspace/adjustmentFactor> ;
+            prop-rel:isIndexed true ],
         [ prop-rel:fromProperty indo:baseline-benthic-biomass-density ;
             prop-rel:hasBinding [ prov:wasDerivedFrom <https://www.hi.no/> ;
                     prop-rel:bindingRole <file:///github/workspace/fallback> ;
@@ -411,7 +398,20 @@ because the record describes the equation as a whole, not a single symbol-edge.
                 "D_pre,i",
                 "D_pre_i" ;
             prop-rel:hasVariableKind <file:///github/workspace/intensiveQuantity> ;
-            prop-rel:isIndexed true ] ;
+            prop-rel:isIndexed true ],
+        [ prop-rel:fromProperty indp:submerged-infrastructure-area ;
+            prop-rel:hasBinding [ prov:wasDerivedFrom <https://veiledere.nve.no/havvind/strategisk-konsekvensutredning-av-vindkraft-til-havs/> ;
+                    prop-rel:bindingRole <file:///github/workspace/primary> ;
+                    prop-rel:bindingValidityScope "Utsira Nord engineering design (60 × 15 MW units, wetted hull + mooring + anchor surfaces)" ;
+                    prop-rel:bindingVariable indp:submerged-infrastructure-area-utsira-design ] ;
+            prop-rel:hasDimensionKind quantitykind:Area ;
+            prop-rel:hasEquationRole <file:///github/workspace/input> ;
+            prop-rel:hasOperator <file:///github/workspace/product> ;
+            prop-rel:hasSymbol "A_{sub}" ;
+            prop-rel:hasSymbolAlias "A_s",
+                "A_sub" ;
+            prop-rel:hasVariableKind <file:///github/workspace/featureOfInterest> ;
+            prop-rel:isIndexed false ] ;
     prop-rel:targetDefinition indo:floating-wind-reef-biomass-effect ;
     prop-rel:toProperty indo:floating-wind-reef-biomass-effect .
 
