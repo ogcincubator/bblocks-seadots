@@ -257,26 +257,26 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
             dcterms:type "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
-    survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
-            seadots:uri "https://www.cessda.eu/" ;
-            thns:scheme "CESSDA" ],
-        [ seadots:label "European Language Social Science Thesaurus" ;
+    survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
             seadots:uri "https://elsst.uk/" ;
-            thns:scheme "ELSST" ] ;
+            thns:scheme "ELSST" ],
+        [ seadots:label "CESSDA controlled vocabularies" ;
+            seadots:uri "https://www.cessda.eu/" ;
+            thns:scheme "CESSDA" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
-    survey:variableMetadata [ ddi:variableDescription "Age group of the respondent" ;
-            survey:conceptUri "https://elsst.uk/terms/age" ;
-            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
-            seadots:label "Age group" ;
-            seadots:questionText "What is your age group?" ;
-            seadots:variableName "Q1" ],
-        [ ddi:variableDescription "Likert-style attitude question" ;
+    survey:variableMetadata [ ddi:variableDescription "Likert-style attitude question" ;
             survey:conceptUri "https://elsst.uk/terms/environmental-concern" ;
             survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes" ;
             seadots:label "Environmental concern" ;
             seadots:questionText "How important is the protection of the environment to you?" ;
-            seadots:variableName "Q5_1" ] ;
+            seadots:variableName "Q5_1" ],
+        [ ddi:variableDescription "Age group of the respondent" ;
+            survey:conceptUri "https://elsst.uk/terms/age" ;
+            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
+            seadots:label "Age group" ;
+            seadots:questionText "What is your age group?" ;
+            seadots:variableName "Q1" ] ;
     table:columns ( [ dcterms:description "Respondent identifier" ;
                 dcterms:title "caseid" ;
                 dcterms:type "string" ] [ dcterms:description "Country of residence" ;

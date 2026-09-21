@@ -1,0 +1,42 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.fcm-activation-scheme",
+  "name": "FCM activation and inference scheme",
+  "abstract": "SKOS concept schemes naming the activation (transfer) functions and inference rules used to iterate a fuzzy cognitive map, so that a map can be exchanged between implementations that call the same function by different names.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-21T00:00:00Z",
+  "itemClass": "model",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-09-21",
+  "dependsOn": [],
+  "shaclRules": [],
+  "sources": [
+    {
+      "title": "FuzzyCognitiveMapTools.jl v0.1.0 -- activation_functions.jl, proc_trials.jl",
+      "link": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl"
+    },
+    {
+      "title": "FCMpy: a python module for constructing and analyzing fuzzy cognitive maps",
+      "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9575875/"
+    }
+  ],
+  "tags": [
+    "seadots",
+    "fcm",
+    "fuzzy-cognitive-map",
+    "skos",
+    "vocabulary",
+    "model"
+  ],
+  "scope": "dev",
+  "shaclShapes": {},
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-activation-scheme/ontology.ttl",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-activation-scheme/",
+  "validationPassed": true,
+  "description": "## FCM activation and inference scheme\n\nTwo SKOS concept schemes used by `ogc.hosted.seadots.fcm-ontology`:\n\n- **`fcmact:ActivationFunctionScheme`** \u2014 the transfer function applied componentwise to\n  the state vector after each propagation step: `logistic`, `gaussian`,\n  `logistic-of-square`, `offset`, `hyperbolic-tangent`, `bivalent`, `trivalent`.\n- **`fcmact:InferenceRuleScheme`** \u2014 how the state is propagated through the weight matrix\n  before activation: `kosko`, `modified-kosko`, `rescaled`.\n\n### Why a concept scheme and not a string enumeration\n\nEvery FCM implementation names these functions differently, and two tools can apply\nmaterially different mathematics under the same label. A map exchanged as\n`{\"label\": \"sigmoid\"}` carries no guarantee about what will be computed at the other end.\nEach concept here therefore carries a `schema:mathExpression` and its expected parameter\nnames, so the function is identified by what it computes rather than by what it is called.\n\nConcepts not implemented by FuzzyCognitiveMapTools.jl v0.1.0 (`hyperbolic-tangent`,\n`bivalent`, `trivalent`, and the non-Kosko inference rules) are declared anyway and marked\nwith a `skos:scopeNote`; they exist so that incoming maps from other tools can be described\nrather than silently coerced.\n\n### Two discrepancies recorded rather than normalised\n\n1. **`gaussian`.** `ProcGaussianActivationFunction` in\n   `src/fcm/activation_functions.jl` computes `a / (1 + exp(-lambda * (x - b)^2))` \u2014 a\n   logistic of the squared deviation, monotone in `|x - b|` and bounded in `[a/2, a)`. A\n   Gaussian activation is `a * exp(-lambda * (x - b)^2)`, a bell curve. The scheme declares\n   both: `fcmact:gaussian` for the canonical meaning and `fcmact:logistic-of-square` for\n   what the code does, with the upstream label `\"gaussian\"` bound to the latter. **This\n   needs confirming with the package author**; if the bell was intended, the binding moves\n   and this note goes away.\n2. **Inference rule.** `single_fcm_trial` hard-codes `f(W\u1d40x)` \u2014 classic Kosko \u2014 with no way\n   to select another rule. A map exchanged with a tool defaulting to modified Kosko will\n   not reproduce the same equilibria, which is why the rule is named explicitly in the model\n   rather than left implicit.\n\n---\n\n## Future work\n\n### B1. `skos:exactMatch` to tool-specific function names\n\n`fcmact:logistic` and FCMpy's `sigmoid` are the same function, `a/(1+e^(\u2212\u03bb(x\u2212b)))`; the\n`tanh`, `bivalent` and `trivalent` concepts likewise mirror FCMpy's four transfer\nfunctions, and the three inference rules mirror its Kosko / modified Kosko / rescaled\noptions. FCMpy exposes no IRIs, so an alignment file would have to mint IRIs on its behalf\nor map to literal tool-and-version-qualified strings. Deferred until the exchange direction\nis actually needed; the `skos:altLabel` values carry the tool names in the meantime.\n\n### B2. Parameter-name mapping\n\n`fcmact:hasParameterName` records `a`, `b`, `lambda` as FuzzyCognitiveMapTools.jl names\nthem. Other tools parameterise the same curves differently (slope-and-offset, or a single\nsteepness). A future alignment should map parameter *roles*, not names, otherwise a\nround trip silently rescales the curve.\n\n### B3. Linguistic terms\n\nFCMpy builds weights from expert ratings expressed as triangular membership functions,\n`[lower, center, upper]` per linguistic term (`'-vh': [-1, -1, -0.75]`). SeaDOTs\nparticipatory elicitation will need the same. That belongs in a separate\n`fcm-elicitation` block, not here: it describes how a weight was *derived*, not how the map\nis *iterated*.\n\n### B4. SBML `qual` transition terms\n\nSBML `qual` expresses its update logic as `FunctionTerm`s with MathML rather than as named\ntransfer functions. Mapping the two is possible only for the threshold concepts\n(`bivalent`, `trivalent`); the continuous ones have no `qual` counterpart. See section A3 of\nthe `fcm-ontology` description.\n",
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/_staging/fcm-activation-scheme"
+}

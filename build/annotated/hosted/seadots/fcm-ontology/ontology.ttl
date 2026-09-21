@@ -1,0 +1,374 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prop-rel: <https://w3id.org/ogc/hosted/seadots/prop-rel/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fcm: a owl:Ontology ;
+    dct:created "2026-09-21"^^xsd:date ;
+    dct:description "Core model for signed, weighted fuzzy cognitive maps (FCM): concept nodes, influence edges, activation specifications, equilibrium solutions, and time-indexed sequences of maps. Extracted from the data-representation structs of FuzzyCognitiveMapTools.jl v0.1.0. Alignments to external causal and influence-network vocabularies are deliberately NOT asserted here; see description.md, section 'Future work'." ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ;
+    dct:title "SeaDOTs Fuzzy Cognitive Map ontology" ;
+    owl:versionInfo "0.1" .
+
+fcm:DeterministicFuzzyCognitiveMap a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:FuzzyCognitiveMap ;
+    skos:definition "Fuzzy cognitive map whose every edge carries a single scalar weight." ;
+    skos:prefLabel "Deterministic fuzzy cognitive map" .
+
+fcm:Heterogeneous a skos:Concept,
+        fcm:ActivationMode ;
+    skos:definition "Each node carries its own activation function." ;
+    skos:prefLabel "heterogeneous" .
+
+fcm:Homogeneous a skos:Concept,
+        fcm:ActivationMode ;
+    skos:definition "One activation function applies to every node of the map." ;
+    skos:prefLabel "homogeneous" .
+
+fcm:Negative a skos:Concept,
+        fcm:Polarity ;
+    skos:definition "An increase in the source node decreases the target node (weight < 0)." ;
+    skos:prefLabel "negative" .
+
+fcm:Neutral a skos:Concept,
+        fcm:Polarity ;
+    skos:definition "Declared edge with zero weight; exerts no influence." ;
+    skos:prefLabel "neutral" .
+
+fcm:Positive a skos:Concept,
+        fcm:Polarity ;
+    skos:definition "An increase in the source node increases the target node (weight > 0)." ;
+    skos:prefLabel "positive" .
+
+fcm:StochasticFuzzyCognitiveMap a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:FuzzyCognitiveMap ;
+    skos:definition "Fuzzy cognitive map whose edge weights are random variables (a scalar plus a distribution) rather than scalars." ;
+    skos:editorialNote "Declared as a discriminator hook only. The upstream Julia type SimpleStochasticFCMEdge carries Tuple{Float64, Distribution}, which has no serialisation as of FuzzyCognitiveMapTools.jl v0.1.0; no property in this ontology yet expresses a distribution." ;
+    skos:prefLabel "Stochastic fuzzy cognitive map" .
+
+fcm:activationFunction a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:range skos:Concept ;
+    skos:definition "The activation function used, as a concept of the SeaDOTs FCM activation-function scheme. Attached to an fcm:ActivationSpec in homogeneous mode and to an fcm:ActivationAssignment in heterogeneous mode." ;
+    skos:prefLabel "activation function" .
+
+fcm:activationMode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ActivationSpec ;
+    rdfs:range fcm:ActivationMode ;
+    skos:prefLabel "activation mode" .
+
+fcm:appliesToNode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ActivationAssignment ;
+    rdfs:range fcm:ConceptNode ;
+    skos:prefLabel "applies to node" .
+
+fcm:atTime a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:SequenceStep ;
+    rdfs:range fcm:TimeSpec ;
+    skos:prefLabel "at time" .
+
+fcm:edgeKey a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:InfluenceEdge ;
+    rdfs:range xsd:string ;
+    skos:definition "Optional graph-local identifier of the edge (e.g. 'C5->C3')." ;
+    skos:prefLabel "edge key" .
+
+fcm:hasActivationAssignment a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ActivationSpec ;
+    rdfs:range fcm:ActivationAssignment ;
+    skos:prefLabel "has activation assignment" .
+
+fcm:hasActivationSpec a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:FuzzyCognitiveMap ;
+    rdfs:range fcm:ActivationSpec ;
+    skos:prefLabel "has activation specification" .
+
+fcm:hasEdge a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ConceptGraph ;
+    rdfs:range fcm:InfluenceEdge ;
+    skos:prefLabel "has edge" .
+
+fcm:hasEquilibrium a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Solution ;
+    rdfs:range fcm:Equilibrium ;
+    skos:prefLabel "has equilibrium" .
+
+fcm:hasFiniteEquilibria a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Solution ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True when the map settles on finitely many discrete stable points. When false the solution carries no usable information and must be ignored. Serialised upstream as 'b_success'." ;
+    skos:prefLabel "has finite equilibria" .
+
+fcm:hasGraph a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:FuzzyCognitiveMap ;
+    rdfs:range fcm:ConceptGraph ;
+    skos:prefLabel "has graph" .
+
+fcm:hasNode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ConceptGraph ;
+    rdfs:range fcm:ConceptNode ;
+    skos:prefLabel "has node" .
+
+fcm:hasNodeState a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Equilibrium ;
+    rdfs:range fcm:NodeState ;
+    skos:prefLabel "has node state" .
+
+fcm:hasParameter a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:range fcm:Parameter ;
+    skos:prefLabel "has parameter" .
+
+fcm:hasPolarity a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:InfluenceEdge ;
+    rdfs:range fcm:Polarity ;
+    skos:prefLabel "has polarity" .
+
+fcm:hasSolution a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:range fcm:Solution ;
+    skos:prefLabel "has solution" .
+
+fcm:hasStep a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Sequence ;
+    rdfs:range fcm:SequenceStep ;
+    skos:prefLabel "has step" .
+
+fcm:hasWeight a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:InfluenceEdge ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf prop-rel:hasWeight ;
+    skos:definition "Signed strength of the influence, carried as a qudt:QuantityValue so that the numeric value sits on qudt:numericValue. Conventionally dimensionless in [-1, 1], though FuzzyCognitiveMapTools.jl v0.1.0 enforces no range." ;
+    skos:prefLabel "has weight" .
+
+fcm:instant a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:PointTimeSpec ;
+    rdfs:range xsd:dateTime ;
+    skos:prefLabel "instant" .
+
+fcm:intervalStart a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:RangeTimeSpec ;
+    rdfs:range xsd:dateTime ;
+    skos:prefLabel "interval start" .
+
+fcm:intervalStop a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:RangeTimeSpec ;
+    rdfs:range xsd:dateTime ;
+    skos:prefLabel "interval stop" .
+
+fcm:maxDistance a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:NodeState ;
+    rdfs:range xsd:double ;
+    skos:definition "Componentwise maximum distance across the cluster of fixed points the centroid represents; a rudimentary numerical error bound. One component of an upstream 'maxdists' vector." ;
+    skos:prefLabel "max distance" .
+
+fcm:month a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:MonthOfYearTimeSpec ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "month" .
+
+fcm:nodeKey a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ConceptNode ;
+    rdfs:range xsd:string ;
+    skos:definition "Graph-local identifier of the node, unique within its concept graph (e.g. 'C1', 'Nd'). Referenced by influence edges in the serialised form." ;
+    skos:prefLabel "node key" .
+
+fcm:ofNode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:NodeState ;
+    rdfs:range fcm:ConceptNode ;
+    skos:prefLabel "of node" .
+
+fcm:parameterName a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Parameter ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of the parameter as declared by the activation-function concept (fcmact:hasParameterName)." ;
+    skos:prefLabel "parameter name" .
+
+fcm:parameterValue a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:Parameter ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "parameter value" .
+
+fcm:representsConcept a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:ConceptNode ;
+    rdfs:range skos:Concept ;
+    skos:definition "The variable, indicator or taxon concept that this node stands for, as an IRI in a controlled vocabulary. This is what makes a map linkable beyond its own file; fcm:nodeKey remains the graph-local key." ;
+    skos:prefLabel "represents concept" .
+
+fcm:sourceNode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:InfluenceEdge ;
+    rdfs:range fcm:ConceptNode ;
+    skos:definition "Node whose change drives the influence (the 'src' of the edge)." ;
+    skos:editorialNote "Intentionally NOT declared as a subproperty of prop-rel:fromProperty: that property currently declares rdfs:range prop-rel:PropertyRelationship, which would entail fcm:ConceptNode being a PropertyRelationship. See description.md, 'Future work'." ;
+    skos:prefLabel "source node" .
+
+fcm:stateValue a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:NodeState ;
+    rdfs:range xsd:double ;
+    skos:definition "Equilibrium value of the node; one component of an upstream 'centroids' vector." ;
+    skos:prefLabel "state value" .
+
+fcm:stepIndex a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:SequenceStep ;
+    rdfs:range xsd:integer ;
+    skos:definition "Zero-based position of the step in the serialised parallel arrays, preserved so that a round trip back to the upstream form is exact." ;
+    skos:prefLabel "step index" .
+
+fcm:targetNode a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:InfluenceEdge ;
+    rdfs:range fcm:ConceptNode ;
+    skos:definition "Node that is influenced (the 'dst' of the edge)." ;
+    skos:editorialNote "See the editorial note on fcm:sourceNode." ;
+    skos:prefLabel "target node" .
+
+fcm:usesMap a owl:ObjectProperty,
+        skos:Concept ;
+    rdfs:domain fcm:SequenceStep ;
+    rdfs:range fcm:FuzzyCognitiveMap ;
+    skos:prefLabel "uses map" .
+
+fcm:week a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:domain fcm:WeekOfYearTimeSpec ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "week" .
+
+fcm:year a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:range xsd:integer ;
+    skos:prefLabel "year" .
+
+fcm:MonthOfYearTimeSpec a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:TimeSpec ;
+    skos:definition "The calendar month of the given year." ;
+    skos:prefLabel "Month-of-year time specification" .
+
+fcm:PointTimeSpec a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:TimeSpec ;
+    skos:definition "A single instant." ;
+    skos:prefLabel "Point time specification" .
+
+fcm:Sequence a owl:Class,
+        skos:Concept ;
+    skos:definition "Ordered series of (time, map, solution) steps: how the modelled system's causal structure and its equilibria evolve over time." ;
+    skos:prefLabel "Sequence" .
+
+fcm:WeekOfYearTimeSpec a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:TimeSpec ;
+    skos:definition "The week-long interval beginning (week - 1) weeks after 1 January of the given year." ;
+    skos:prefLabel "Week-of-year time specification" .
+
+fcm:ActivationAssignment a owl:Class,
+        skos:Concept ;
+    skos:definition "Binding of one activation function to one concept node, used in heterogeneous mode. Replaces the positional array-index coupling of the serialised form with an explicit node reference." ;
+    skos:prefLabel "Activation assignment" .
+
+fcm:Equilibrium a owl:Class,
+        skos:Concept ;
+    skos:definition "One stable state of the map: a value per concept node. Upstream this is one element of 'centroids', the representative point of a cluster of numerically indistinguishable fixed points." ;
+    skos:prefLabel "Equilibrium" .
+
+fcm:RangeTimeSpec a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf fcm:TimeSpec ;
+    skos:definition "An explicit half-open interval [start, stop)." ;
+    skos:prefLabel "Range time specification" .
+
+fcm:ActivationMode a owl:Class,
+        skos:Concept ;
+    skos:prefLabel "Activation mode" .
+
+fcm:ActivationSpec a owl:Class,
+        skos:Concept ;
+    skos:definition "Declaration of the activation (transfer) function applied at each iteration: one function for the whole map, or one per node." ;
+    skos:prefLabel "Activation specification" .
+
+fcm:ConceptGraph a owl:Class,
+        skos:Concept ;
+    skos:definition "The signed weighted digraph of a fuzzy cognitive map: its concept nodes and influence edges." ;
+    skos:prefLabel "Concept graph" .
+
+fcm:Parameter a owl:Class,
+        skos:Concept ;
+    skos:definition "One named numeric parameter of an activation function (for example lambda, a or b)." ;
+    skos:prefLabel "Parameter" .
+
+fcm:Solution a owl:Class,
+        skos:Concept ;
+    skos:definition "Result of iterating a fuzzy cognitive map to convergence: the set of equilibria found, plus whether the search succeeded." ;
+    skos:prefLabel "Solution" .
+
+fcm:NodeState a owl:Class,
+        skos:Concept ;
+    skos:definition "Value taken by one concept node in one equilibrium, with its componentwise numerical spread. Replaces the positional coupling between the centroid vector and the node ordering." ;
+    skos:prefLabel "Node state" .
+
+fcm:Polarity a owl:Class,
+        skos:Concept ;
+    skos:definition "Sign of an influence edge. Derived from the weight by rules.shacl; never asserted independently, so that weight and sign cannot disagree." ;
+    skos:prefLabel "Polarity" .
+
+fcm:SequenceStep a owl:Class,
+        skos:Concept ;
+    skos:definition "One element of a sequence, binding a time specification, the map that held then, and the solution computed from it. Materialises the index-aligned triple of the upstream parallel arrays as a single resource." ;
+    skos:prefLabel "Sequence step" .
+
+fcm:FuzzyCognitiveMap a owl:Class,
+        skos:Concept ;
+    skos:definition "Signed, weighted directed graph of concepts together with the activation specification that governs its iterative update." ;
+    skos:prefLabel "Fuzzy cognitive map" .
+
+fcm:TimeSpec a owl:Class,
+        skos:Concept ;
+    skos:definition "When a map and its solution apply. Four disjoint forms, reflecting that participatory survey rounds are not yet committed to a single reporting period." ;
+    skos:prefLabel "Time specification" .
+
+fcm:InfluenceEdge a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf prop-rel:PropertyRelationship ;
+    skos:definition "Directed, weighted causal influence of one concept node on another. A specialisation of the SeaDOTs property relationship in which source and target are graph nodes rather than properties." ;
+    skos:prefLabel "Influence edge" .
+
+fcm:ConceptNode a owl:Class,
+        skos:Concept ;
+    skos:definition "Vertex of a concept graph: one variable, indicator or state of the modelled system." ;
+    skos:prefLabel "Concept node" .
+
