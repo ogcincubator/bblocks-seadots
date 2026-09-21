@@ -1,0 +1,121 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fcmact: a owl:Ontology ;
+    dct:created "2026-09-21"^^xsd:date ;
+    dct:description "Two SKOS concept schemes naming the activation (transfer) functions and the inference rules used to iterate a fuzzy cognitive map. Naming these as concepts rather than as string enumerations is what lets one map be exchanged between implementations that call the same function by different names. Mappings to external vocabularies and to the parameter names of other FCM tools are NOT asserted here; see description.md, section 'Future work'." ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ;
+    dct:title "SeaDOTs FCM activation and inference scheme" ;
+    owl:versionInfo "0.1" .
+
+fcmact:bivalent a skos:Concept ;
+    skos:definition "Threshold transfer function returning 1 for x > 0 and 0 otherwise." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "bivalent" ;
+    skos:scopeNote "Not implemented by FuzzyCognitiveMapTools.jl v0.1.0; declared for exchange." ;
+    schema:mathExpression "x > 0 ? 1 : 0" .
+
+fcmact:gaussian a skos:Concept ;
+    skos:definition "Bell-shaped transfer function a * exp(-lambda * (x - b)^2), peaking at x = b." ;
+    skos:editorialNote "Declared for the canonical meaning of the name. It is NOT what FuzzyCognitiveMapTools.jl v0.1.0 computes under the label 'gaussian' -- see fcmact:logistic-of-square. Confirm the intent with the package author before binding either concept to the upstream label." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "gaussian" ;
+    schema:mathExpression "a * exp(-lambda * (x - b)^2)" ;
+    fcmact:hasParameterName "a",
+        "b",
+        "lambda" .
+
+fcmact:hasParameterName a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of a numeric parameter the function expects. An fcm:Parameter carrying any other name is not interpretable for this function." ;
+    skos:prefLabel "has parameter name" .
+
+fcmact:hyperbolic-tangent a skos:Concept ;
+    skos:altLabel "tanh" ;
+    skos:definition "Transfer function tanh(lambda * x), mapping onto (-1, 1). Used where concept states are allowed to be negative." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "hyperbolic tangent" ;
+    skos:scopeNote "Not implemented by FuzzyCognitiveMapTools.jl v0.1.0; declared because it is one of the four transfer functions in common use across FCM tooling." ;
+    schema:mathExpression "tanh(lambda * x)" ;
+    fcmact:hasParameterName "lambda" .
+
+fcmact:kosko a skos:Concept ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/src/fcm/proc_trials.jl> ;
+    skos:definition "Classic rule: the new state is the activation of the weighted sum of incoming influences, discarding the node's previous value." ;
+    skos:inScheme fcmact:InferenceRuleScheme ;
+    skos:prefLabel "Kosko" ;
+    skos:scopeNote "The rule implemented by FuzzyCognitiveMapTools.jl v0.1.0. It is hard-coded in single_fcm_trial (src/fcm/proc_trials.jl) as mul!(x_next, W', x) followed by activation!, with no way to select another rule; a map exchanged with a tool that defaults to modified Kosko will not reproduce the same equilibria." ;
+    schema:mathExpression "A(t+1) = f(W' * A(t))" .
+
+fcmact:logistic a skos:Concept ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/src/fcm/activation_functions.jl> ;
+    skos:altLabel "sigmoid" ;
+    skos:definition "Bounded monotone transfer function a / (1 + exp(-lambda * (x - b))). With a = 1, b = 0 it maps onto (0, 1)." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "logistic" ;
+    schema:mathExpression "a / (1 + exp(-lambda * (x - b)))" ;
+    fcmact:hasParameterName "a",
+        "b",
+        "lambda" ;
+    fcmact:upstreamLabel "logistic" .
+
+fcmact:logistic-of-square a skos:Concept ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/src/fcm/activation_functions.jl> ;
+    skos:definition "Transfer function a / (1 + exp(-lambda * (x - b)^2)): a logistic applied to the squared deviation from b. Monotone in |x - b| and bounded in [a/2, a); not a bell curve." ;
+    skos:editorialNote "This is the function implemented by ProcGaussianActivationFunction in FuzzyCognitiveMapTools.jl v0.1.0 (src/fcm/activation_functions.jl), which carries the upstream label 'gaussian'. The name/implementation mismatch is recorded here rather than silently normalised, because a label-based exchange with another FCM tool would otherwise transfer the wrong function." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "logistic of square" ;
+    schema:mathExpression "a / (1 + exp(-lambda * (x - b)^2))" ;
+    fcmact:hasParameterName "a",
+        "b",
+        "lambda" ;
+    fcmact:upstreamLabel "gaussian" .
+
+fcmact:modified-kosko a skos:Concept ;
+    skos:definition "Kosko's rule with the node's previous value retained additively, so that a node's own state persists between iterations." ;
+    skos:inScheme fcmact:InferenceRuleScheme ;
+    skos:prefLabel "modified Kosko" ;
+    schema:mathExpression "A(t+1) = f(A(t) + W' * A(t))" .
+
+fcmact:offset a skos:Concept ;
+    dct:source <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/src/fcm/activation_functions.jl> ;
+    skos:definition "Unbounded affine transfer function x + a. Applies no squashing; present as a pass-through for testing." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "offset" ;
+    schema:mathExpression "x + a" ;
+    fcmact:hasParameterName "a" ;
+    fcmact:upstreamLabel "other" .
+
+fcmact:rescaled a skos:Concept ;
+    skos:definition "Modified-Kosko rule on rescaled states, used to avoid the drift to a single fixed point when initial concept values are all non-negative." ;
+    skos:inScheme fcmact:InferenceRuleScheme ;
+    skos:prefLabel "rescaled" ;
+    schema:mathExpression "A(t+1) = f((2*A(t) - 1) + W' * (2*A(t) - 1))" .
+
+fcmact:trivalent a skos:Concept ;
+    skos:definition "Threshold transfer function returning 1 for x > 0, -1 for x < 0, and 0 at zero." ;
+    skos:inScheme fcmact:ActivationFunctionScheme ;
+    skos:prefLabel "trivalent" ;
+    skos:scopeNote "Not implemented by FuzzyCognitiveMapTools.jl v0.1.0; declared for exchange." ;
+    schema:mathExpression "sign(x)" .
+
+fcmact:upstreamLabel a owl:DatatypeProperty,
+        skos:Concept ;
+    rdfs:range xsd:string ;
+    skos:definition "Discriminator string used for this concept in the serialised form of FuzzyCognitiveMapTools.jl (the 'label' field of an ActivationFunctionSpec)." ;
+    skos:prefLabel "upstream label" .
+
+fcmact:InferenceRuleScheme a skos:ConceptScheme ;
+    dct:description "Update rules governing how the state vector is propagated through the weight matrix before the activation function is applied." ;
+    skos:prefLabel "FCM inference rule scheme" .
+
+fcmact:ActivationFunctionScheme a skos:ConceptScheme ;
+    dct:description "Functions applied componentwise to the state vector after each propagation step." ;
+    skos:prefLabel "FCM activation function scheme" .
+

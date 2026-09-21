@@ -162,7 +162,7 @@ x-jsonld-extra-terms:
       href: '@id'
       type: http://purl.org/dc/terms/format
       roles:
-        '@id': https://w3id.org/ogc/stac/core/roles
+        '@id': https://w3id.org/ogc/stac/core/hasAssetroles
         '@type': http://www.w3.org/2001/XMLSchema#string
         '@container': '@set'
     x-jsonld-id: https://w3id.org/ogc/stac/core/hasAsset
@@ -481,9 +481,10 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   name: https://w3id.org/ogc/stac/cf/name
   unit:
-    x-jsonld-id: http://qudt.org/schema/qudt/hasUnit
+    x-jsonld-id: http://qudt.org/schema/qudt/unit
     x-jsonld-context:
       '@base': http://qudt.org/vocab/unit/
+    x-jsonld-type: '@id'
   role: https://w3id.org/ogc/hosted/seadots/catalog#role
   convention: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
   cf:parameter:

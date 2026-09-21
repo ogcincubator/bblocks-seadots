@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.reef-effect-utsira - Reef Effect Utsira Execution
-Generated 2026-09-16T22:23:43.818110+00:00
+Generated 2026-09-21T10:14:49.915751+00:00
 === Files ===
 Using examples/utsira_reef_effect_execution.json from examples
 JSON-LD context is present - uplifting
@@ -12,34 +12,74 @@ Validation passed
 === End JSON Schema ===
 
 === SHACL ===
-Error processing closure source https://raw.githubusercontent.com/ILIAD-ocean-twin/OIM/refs/heads/main/extensions/jellyfish.ttl: No plugin registered for (text/plain, <class 'rdflib.parser.Parser'>) - SHACL validation will run against an incomplete closure graph
-Error processing closure source skos.ttl: [Errno 2] No such file or directory: '/github/skos.ttl' - SHACL validation will run against an incomplete closure graph
 Error processing closure source http://purl.org/linked-data/cube#: No plugin registered for (text/plain, <class 'rdflib.parser.Parser'>) - SHACL validation will run against an incomplete closure graph
+Error processing closure source skos.ttl: [Errno 2] No such file or directory: '/github/skos.ttl' - SHACL validation will run against an incomplete closure graph
 Error processing closure source ../osc-ontology/skos.ttl: [Errno 2] No such file or directory: '/osc-ontology/skos.ttl' - SHACL validation will run against an incomplete closure graph
+Error processing closure source https://raw.githubusercontent.com/ILIAD-ocean-twin/OIM/refs/heads/main/extensions/jellyfish.ttl: No plugin registered for (text/plain, <class 'rdflib.parser.Parser'>) - SHACL validation will run against an incomplete closure graph
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
- - https://www.w3.org/ns/dcat3.ttl
- - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/components/assets-ontology/ontology.ttl
- - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl
- - /github/workspace/_sources/ontology/ontology.ttl
  - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle
  - https://www.w3.org/ns/prov-o
+ - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl
+ - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/components/assets-ontology/ontology.ttl
+ - https://www.w3.org/ns/dcat3.ttl
+ - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl
+ - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl
  - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/themes-ontology/ontology.ttl
  - https://www.w3.org/ns/sosa/sosa.ttl
- - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl
- - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl
  - https://www.w3.org/ns/dcat2.ttl
- - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl
+ - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl
+ - /github/workspace/_sources/ontology/ontology.ttl
  - http://qudt.org/2.1/schema/qudt
+Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
+ - Shape :force-linked-data-observedProperty: *none*
+
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/reef-effect-utsira/execution/utsira-reef-biomass-surroundings-v1>
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/reef-effect-utsira/execution/utsira-reef-biomass-surroundings-v1>
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
+ - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*
+
+Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
+ - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureCollectionShape: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
 
 Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
   Validation Report
@@ -53,71 +93,61 @@ Validation result for https://ogcincubator.github.io/cross-domain-model/_sources
   Conforms: True
   
 Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*
- - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*
- - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*
  - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*
- - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: <https://example.org/norwegian-ses/reef-effect-utsira/execution/utsira-reef-biomass-surroundings-v1>
- - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: <https://example.org/norwegian-ses/reef-effect-utsira/execution/utsira-reef-biomass-surroundings-v1>
+ - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*
  - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*
- - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*
- - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*
-
-Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:
- - Shape stac:ItemShape: *none*
- - Shape stac:AssetShape: *none*
- - Shape stac:LinkShape: *none*
- - Shape stac:CollectionShape: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*
+ - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*
 
 Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl:
   Validation Report
@@ -126,43 +156,160 @@ Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/compo
 Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl:
  - Shape assets:RolesShape: *none*
 
-Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl:
+Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:
   Validation Report
   Conforms: True
   
-Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl:
- - Shape thns:ThemeShape: *none*
- - Shape thns:SchemesUsageShape: *none*
- - Shape thns:ConceptShape: *none*
-
-Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:
- - Shape osc:WorkflowsShape: *none*
- - Shape osc:ExperimentShape: *none*
- - Shape osc:RegionShape: *none*
- - Shape osc:VariablesShape: *none*
- - Shape osc:ProjectShape: *none*
- - Shape osc:MissionsShape: *none*
- - Shape osc:TypeShape: *none*
- - Shape osc:StatusShape: *none*
+Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:
+ - Shape stac:AssetShape: *none*
+ - Shape stac:ItemShape: *none*
+ - Shape stac:CollectionShape: *none*
+ - Shape stac:LinkShape: *none*
 
 Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl:
- - Shape cf:ObjectShape: *none*
  - Shape cf:ParameterShape: *none*
+ - Shape cf:ObjectShape: *none*
 
-Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:
+Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:
   Validation Report
   Conforms: True
   
-Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:
- - Shape :relatedDisjointWithBroaderTransitive: *none*
+Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:
+ - Shape osc:StatusShape: *none*
+ - Shape osc:ExperimentShape: *none*
+ - Shape osc:WorkflowsShape: *none*
+ - Shape osc:ProjectShape: *none*
+ - Shape osc:MissionsShape: *none*
+ - Shape osc:RegionShape: *none*
+ - Shape osc:VariablesShape: *none*
+ - Shape osc:TypeShape: *none*
+
+Validation result for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl:
+ - Shape thns:ConceptShape: *none*
+ - Shape thns:ThemeShape: *none*
+ - Shape thns:SchemesUsageShape: *none*
+
+Validation result for _sources/ontology/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/ontology/rules.shacl:
+ - Shape :EquationByteEqualityShape: *none*
+ - Shape :PrimaryEntryShape: *none*
+ - Shape :IndexedTermShape: *none*
+ - Shape :SymbolInEquationShape: *none*
+ - Shape :ProvClosureShape: *none*
+
+Validation result for http://qudt.org/2.1/schema/shacl/qudt:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for http://qudt.org/2.1/schema/shacl/qudt:
+ - Shape qudt:PlaneAngleUnit: *none*
+ - Shape qudt:NumericTypeUnion/rdf:rest/rdf:first: *none*
+ - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:first: *none*
+ - Shape qudt:QuantityType: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db18: *none*
+ - Shape qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first: *none*
+ - Shape qudt:CurrencyUnit: *none*
+ - Shape qudt:Unit: *none*
+ - Shape qudt:Verifiable: *none*
+ - Shape qudt:Datatype: *none*
+ - Shape qudt:BaseDimensionMagnitude: *none*
+ - Shape qudt:NIST_SP811_Comment: *none*
+ - Shape qudt:QuantityKindDimensionVector_CGS-ESU: *none*
+ - Shape qudt:DecimalPrefix: *none*
+ - Shape qudt:AspectClass: *none*
+ - Shape qudt:QuantityKindDimensionVector_ISO: *none*
+ - Shape qudt:NumericTypeUnion/rdf:first: *none*
+ - Shape qudt:QuantityKindDimensionVector: *none*
+ - Shape qudt:Quantifiable-value/sh:node: *none*
+ - Shape qudt:ConstantValue: *none*
+ - Shape qudt:SystemOfUnits: *none*
+ - Shape qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first: *none*
+ - Shape qudt:DataItem: *none*
+ - Shape qudt:IntervalScale: *none*
+ - Shape qudt:Quantifiable-datatype/sh:or/rdf:first: *none*
+ - Shape qudt:LatexString: *none*
+ - Shape qudt:NominalScale: *none*
+ - Shape qudt:ScalarDatatype: *none*
+ - Shape qudt:Quantifiable: *none*
+ - Shape qudt:QuantityKindDimensionVector_CGS-LH: *none*
+ - Shape qudt:Organization: *none*
+ - Shape qudt:Symbol: *none*
+ - Shape qudt:UserQuantityKind: *none*
+ - Shape qudt:Rule: *none*
+ - Shape qudt:SystemOfQuantityKinds: *none*
+ - Shape qudt:DimensionlessUnit: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db8: *none*
+ - Shape qudt:QuantityKind: *none*
+ - Shape qudt:QuantityKindDimensionVector_CGS: *none*
+ - Shape qudt:QuantityKindDimensionVector_Imperial: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db14: *none*
+ - Shape qudt:LogarithmicUnit: *none*
+ - Shape qudt:ScaleType: *none*
+ - Shape qudt:Scale: *none*
+ - Shape qudt:SolidAngleUnit: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db15: *none*
+ - Shape qudt:Prefix: *none*
+ - Shape qudt:Discipline: *none*
+ - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape qudt:QuantityValue: *none*
+ - Shape qudt:Concept: *none*
+ - Shape qudt:Statement: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db33: *none*
+ - Shape qudt:RuleType: *none*
+ - Shape qudt:PhysicalConstant: *none*
+ - Shape qudt:AbstractQuantityKind: *none*
+ - Shape qudt:UCUMcs: *none*
+ - Shape qudt:BinaryPrefix: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db17: *none*
+ - Shape qudt:EnumeratedQuantity: *none*
+ - Shape _:nadcbd3401bf647ae9bcb8a899c757b0db16: *none*
+ - Shape qudt:CountingUnit: *none*
+ - Shape qudt:Citation: *none*
+ - Shape qudt:EnumeratedValue: *none*
+ - Shape qudt:NumericListShape: *none*
+ - Shape qudt:Quantity: *none*
+ - Shape qudt:TransformType: *none*
+ - Shape qudt:Aspect: *none*
+ - Shape rdf:nil: *none*
+ - Shape qudt:Comment: *none*
+ - Shape qudt:QuantityKindDimensionVector_CGS-EMU: *none*
+ - Shape qudt:ScalarDataItem-value/sh:or/rdf:first: *none*
+ - Shape qudt:SymmetricRelation: *none*
+ - Shape qudt:OrdinalScale: *none*
+ - Shape qudt:NumericListShape/sh:property/sh:or/rdf:first: *none*
+ - Shape qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first: *none*
+ - Shape qudt:AngleUnit: *none*
+ - Shape qudt:DerivedUnit: *none*
+ - Shape qudt:QuantityKindDimensionVector_CGS-GAUSS: *none*
+ - Shape qudt:Enumeration: *none*
+ - Shape qudt:Figure: *none*
+ - Shape qudt:ScalarDataItem: *none*
+ - Shape qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first: *none*
+ - Shape qudt:RatioScale: *none*
+ - Shape qudt:QuantityKindDimensionVector_SI: *none*
+
+Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:
+ - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testObservedProperty>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
 
 Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:
   Validation Report
@@ -171,159 +318,12 @@ Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/commo
 Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:
  - Shape :singlePrefLabel: *none*
 
-Validation result for http://qudt.org/2.1/schema/shacl/qudt:
+Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:
   Validation Report
   Conforms: True
   
-Focus nodes for http://qudt.org/2.1/schema/shacl/qudt:
- - Shape qudt:IntervalScale: *none*
- - Shape qudt:NumericTypeUnion/rdf:first: *none*
- - Shape qudt:Concept: *none*
- - Shape qudt:UserQuantityKind: *none*
- - Shape qudt:CurrencyUnit: *none*
- - Shape qudt:SystemOfQuantityKinds: *none*
- - Shape qudt:DecimalPrefix: *none*
- - Shape qudt:Figure: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b14: *none*
- - Shape qudt:Quantity: *none*
- - Shape qudt:Comment: *none*
- - Shape rdf:nil: *none*
- - Shape qudt:Symbol: *none*
- - Shape qudt:AspectClass: *none*
- - Shape qudt:QuantityKindDimensionVector: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b17: *none*
- - Shape qudt:QuantityType: *none*
- - Shape qudt:QuantityKind: *none*
- - Shape qudt:AngleUnit: *none*
- - Shape qudt:SymmetricRelation: *none*
- - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:first: *none*
- - Shape qudt:NominalScale: *none*
- - Shape qudt:PhysicalConstant: *none*
- - Shape qudt:QuantityKindDimensionVector_CGS-GAUSS: *none*
- - Shape qudt:Verifiable: *none*
- - Shape qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first: *none*
- - Shape qudt:QuantityKindDimensionVector_ISO: *none*
- - Shape qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first: *none*
- - Shape qudt:BinaryPrefix: *none*
- - Shape qudt:QuantityValue: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b8: *none*
- - Shape qudt:RuleType: *none*
- - Shape qudt:UCUMcs: *none*
- - Shape qudt:LogarithmicUnit: *none*
- - Shape qudt:Statement: *none*
- - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b33: *none*
- - Shape qudt:DerivedUnit: *none*
- - Shape qudt:ScalarDatatype: *none*
- - Shape qudt:NumericListShape: *none*
- - Shape qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first: *none*
- - Shape qudt:RatioScale: *none*
- - Shape qudt:QuantityKindDimensionVector_CGS-ESU: *none*
- - Shape qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first: *none*
- - Shape qudt:NIST_SP811_Comment: *none*
- - Shape qudt:QuantityKindDimensionVector_Imperial: *none*
- - Shape qudt:QuantityKindDimensionVector_CGS: *none*
- - Shape qudt:ScaleType: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b15: *none*
- - Shape qudt:QuantityKindDimensionVector_CGS-LH: *none*
- - Shape qudt:Citation: *none*
- - Shape qudt:Scale: *none*
- - Shape qudt:SystemOfUnits: *none*
- - Shape qudt:ScalarDataItem: *none*
- - Shape qudt:Rule: *none*
- - Shape qudt:AbstractQuantityKind: *none*
- - Shape qudt:Prefix: *none*
- - Shape qudt:Enumeration: *none*
- - Shape qudt:NumericListShape/sh:property/sh:or/rdf:first: *none*
- - Shape qudt:Unit: *none*
- - Shape qudt:PlaneAngleUnit: *none*
- - Shape qudt:ScalarDataItem-value/sh:or/rdf:first: *none*
- - Shape qudt:EnumeratedQuantity: *none*
- - Shape qudt:ConstantValue: *none*
- - Shape qudt:EnumeratedValue: *none*
- - Shape qudt:DimensionlessUnit: *none*
- - Shape qudt:NumericTypeUnion/rdf:rest/rdf:first: *none*
- - Shape qudt:QuantityKindDimensionVector_SI: *none*
- - Shape qudt:Quantifiable-value/sh:node: *none*
- - Shape qudt:TransformType: *none*
- - Shape qudt:Datatype: *none*
- - Shape qudt:Discipline: *none*
- - Shape qudt:OrdinalScale: *none*
- - Shape qudt:SolidAngleUnit: *none*
- - Shape qudt:Organization: *none*
- - Shape qudt:Quantifiable: *none*
- - Shape qudt:DataItem: *none*
- - Shape qudt:Quantifiable-datatype/sh:or/rdf:first: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b18: *none*
- - Shape _:n8eb2725ac49a4d5c85ff0246c81aa7d6b16: *none*
- - Shape qudt:Aspect: *none*
- - Shape qudt:CountingUnit: *none*
- - Shape qudt:QuantityKindDimensionVector_CGS-EMU: *none*
- - Shape qudt:BaseDimensionMagnitude: *none*
- - Shape qudt:LatexString: *none*
-
-Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testObservedProperty>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
-
-Validation result for _sources/ontology/rules.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for _sources/ontology/rules.shacl:
- - Shape :EquationByteEqualityShape: *none*
- - Shape :SymbolInEquationShape: *none*
- - Shape :IndexedTermShape: *none*
- - Shape :PrimaryEntryShape: *none*
- - Shape :ProvClosureShape: *none*
-
-Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
- - Shape :force-linked-data-observedProperty: *none*
-
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*
-
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
-
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:FeatureShape: *none*
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureCollectionShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:LinkShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:
+ - Shape :relatedDisjointWithBroaderTransitive: *none*
 
 === End SHACL ===
 

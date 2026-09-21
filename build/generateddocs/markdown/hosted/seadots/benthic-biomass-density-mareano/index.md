@@ -8656,20 +8656,20 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-checklist-proxy> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ],
-        [ rdfs:label "MAREANO programme" ;
+    rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://mareano.no/> ],
+        [ rdfs:label "OBIS" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://obis.org/> ],
         [ rdfs:label "OBIS MAREANO Checklist bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.obis-mareano-checklist> ],
-        [ rdfs:label "OBIS" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://obis.org/> ] ;
+        [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -8717,13 +8717,29 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 432 ;
                                     seadots:taxonRank "Genus" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 388 ;
-                                    dwc:scientificName "Astarte sulcata" ;
-                                    dwc:taxonID 138824 ;
-                                    indo:benthic-biomass-density-mareano "0.0926235378"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 403 ;
+                                    dwc:scientificName "Harpinia" ;
+                                    dwc:taxonID 101716 ;
+                                    indo:benthic-biomass-density-mareano "0.0962043447"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 388 ;
-                                    seadots:taxonRank "Species" ],
+                                    seadots:obisRecords 403 ;
+                                    seadots:taxonRank "Genus" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 417 ;
+                                    dwc:scientificName "Oedicerotidae" ;
+                                    dwc:taxonID 101400 ;
+                                    indo:benthic-biomass-density-mareano "0.0995464311"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 417 ;
+                                    seadots:taxonRank "Family" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 410 ;
+                                    dwc:scientificName "Cephalaspidea" ;
+                                    dwc:taxonID 154 ;
+                                    indo:benthic-biomass-density-mareano "0.0978753879"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 410 ;
+                                    seadots:taxonRank "Order" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
                                     dwc:sampleSizeValue 452 ;
                                     dwc:scientificName "Amphipoda" ;
@@ -8733,12 +8749,28 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 452 ;
                                     seadots:taxonRank "Order" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 413 ;
-                                    dwc:scientificName "Notomastus latericeus" ;
-                                    dwc:taxonID 129898 ;
-                                    indo:benthic-biomass-density-mareano "0.0985915493"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 459 ;
+                                    dwc:scientificName "Sipuncula" ;
+                                    dwc:taxonID 1268 ;
+                                    indo:benthic-biomass-density-mareano "0.1095726904"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 413 ;
+                                    seadots:obisRecords 459 ;
+                                    seadots:taxonRank "Order" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 386 ;
+                                    dwc:scientificName "Chone" ;
+                                    dwc:taxonID 129525 ;
+                                    indo:benthic-biomass-density-mareano "0.0921460969"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 386 ;
+                                    seadots:taxonRank "Genus" ],
+                                [ dwc:habitat "marine benthic checklist taxon" ;
+                                    dwc:sampleSizeValue 388 ;
+                                    dwc:scientificName "Astarte sulcata" ;
+                                    dwc:taxonID 138824 ;
+                                    indo:benthic-biomass-density-mareano "0.0926235378"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "unknown" ;
+                                    seadots:obisRecords 388 ;
                                     seadots:taxonRank "Species" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
                                     dwc:sampleSizeValue 429 ;
@@ -8749,45 +8781,13 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 429 ;
                                     seadots:taxonRank "Class" ],
                                 [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 459 ;
-                                    dwc:scientificName "Sipuncula" ;
-                                    dwc:taxonID 1268 ;
-                                    indo:benthic-biomass-density-mareano "0.1095726904"^^qudt:QuantityValue ;
+                                    dwc:sampleSizeValue 413 ;
+                                    dwc:scientificName "Notomastus latericeus" ;
+                                    dwc:taxonID 129898 ;
+                                    indo:benthic-biomass-density-mareano "0.0985915493"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 459 ;
-                                    seadots:taxonRank "Order" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 403 ;
-                                    dwc:scientificName "Harpinia" ;
-                                    dwc:taxonID 101716 ;
-                                    indo:benthic-biomass-density-mareano "0.0962043447"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 403 ;
-                                    seadots:taxonRank "Genus" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 410 ;
-                                    dwc:scientificName "Cephalaspidea" ;
-                                    dwc:taxonID 154 ;
-                                    indo:benthic-biomass-density-mareano "0.0978753879"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 410 ;
-                                    seadots:taxonRank "Order" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 417 ;
-                                    dwc:scientificName "Oedicerotidae" ;
-                                    dwc:taxonID 101400 ;
-                                    indo:benthic-biomass-density-mareano "0.0995464311"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 417 ;
-                                    seadots:taxonRank "Family" ],
-                                [ dwc:habitat "marine benthic checklist taxon" ;
-                                    dwc:sampleSizeValue 386 ;
-                                    dwc:scientificName "Chone" ;
-                                    dwc:taxonID 129525 ;
-                                    indo:benthic-biomass-density-mareano "0.0921460969"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "unknown" ;
-                                    seadots:obisRecords 386 ;
-                                    seadots:taxonRank "Genus" ] ] ;
+                                    seadots:obisRecords 413 ;
+                                    seadots:taxonRank "Species" ] ] ;
                     seadots:role "primary baseline proxy" ] ;
             seadots:description "Occurrence-weighted proxy derived from OBIS records for selected MAREANO datasets. OBIS records do not provide biomass, sampled area or station geometry; this output is a schema-compatible proxy, not a physical biomass-density measurement." ] .
 
@@ -9543,20 +9543,20 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-occurrence-proxy> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OBIS MAREANO Checklist bblock" ;
+    rdfs:seeAlso [ rdfs:label "OBIS" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://obis.org/> ],
+        [ rdfs:label "OBIS MAREANO Checklist bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.obis-mareano-checklist> ],
-        [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ],
         [ rdfs:label "MAREANO programme" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://mareano.no/> ],
-        [ rdfs:label "OBIS" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://obis.org/> ] ;
+        [ rdfs:label "MAREANO Benthic Biomass Density Observation bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-mareano> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -9607,8 +9607,8 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                 <file:///github/workspace/0009bf51-340c-4fa4-ba3d-ce3300291d9c> ;
                             seadots:perTaxon [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Actaedrilus polyonyx" ;
-                                    dwc:taxonID 1473437 ;
+                                    dwc:scientificName "Leucosolenida" ;
+                                    dwc:taxonID 131591 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ],
@@ -9621,36 +9621,8 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Echinocucumis hispida" ;
-                                    dwc:taxonID 124593 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Leucosolenida" ;
-                                    dwc:taxonID 131591 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Chone" ;
-                                    dwc:taxonID 129525 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Brissopsis lyrifera" ;
-                                    dwc:taxonID 124373 ;
-                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
-                                    seadots:depthBand_m "occurrence depth varies" ;
-                                    seadots:obisRecords 1 ],
-                                [ dwc:habitat "marine benthic occurrence taxon" ;
-                                    dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Lysianassoidea" ;
-                                    dwc:taxonID 176788 ;
+                                    dwc:scientificName "Actaedrilus polyonyx" ;
+                                    dwc:taxonID 1473437 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ],
@@ -9663,6 +9635,20 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Buccinum finmarkianum" ;
+                                    dwc:taxonID 160143 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Lysianassoidea" ;
+                                    dwc:taxonID 176788 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
                                     dwc:scientificName "Ophiuroidea" ;
                                     dwc:taxonID 123084 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
@@ -9670,8 +9656,22 @@ MAREANO does not expose a single REST endpoint that returns per-taxon biomass de
                                     seadots:obisRecords 1 ],
                                 [ dwc:habitat "marine benthic occurrence taxon" ;
                                     dwc:sampleSizeValue 1 ;
-                                    dwc:scientificName "Buccinum finmarkianum" ;
-                                    dwc:taxonID 160143 ;
+                                    dwc:scientificName "Echinocucumis hispida" ;
+                                    dwc:taxonID 124593 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Brissopsis lyrifera" ;
+                                    dwc:taxonID 124373 ;
+                                    indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
+                                    seadots:depthBand_m "occurrence depth varies" ;
+                                    seadots:obisRecords 1 ],
+                                [ dwc:habitat "marine benthic occurrence taxon" ;
+                                    dwc:sampleSizeValue 1 ;
+                                    dwc:scientificName "Chone" ;
+                                    dwc:taxonID 129525 ;
                                     indo:benthic-biomass-density-mareano "0.1"^^qudt:QuantityValue ;
                                     seadots:depthBand_m "occurrence depth varies" ;
                                     seadots:obisRecords 1 ] ] ;
