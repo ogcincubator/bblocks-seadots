@@ -1,0 +1,140 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix fcm:  <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# ── Derivation: polarity follows the sign of the weight ────────────
+# Polarity is never asserted by hand, so weight and sign cannot disagree.
+
+fcm:PolarityRuleShape a sh:NodeShape ;
+  sh:targetClass fcm:InfluenceEdge ;
+  sh:rule [
+    a sh:SPARQLRule ;
+    sh:construct """
+      PREFIX fcm:  <https://w3id.org/ogc/hosted/seadots/fcm/>
+      PREFIX qudt: <http://qudt.org/schema/qudt/>
+      CONSTRUCT { $this fcm:hasPolarity ?polarity }
+      WHERE {
+        $this fcm:hasWeight/qudt:numericValue ?w .
+        BIND( IF(?w > 0, fcm:Positive, IF(?w < 0, fcm:Negative, fcm:Neutral)) AS ?polarity )
+      } """
+  ] .
+
+# ── Constraints carried over from the upstream graph validator ─────
+# FuzzyCognitiveMapTools.jl, _check_core_fcm_graph_validity
+# (src/fcm/fcm_abstract.jl): at least two nodes, at least one edge,
+# every edge endpoint resolvable, and no node left unconnected.
+
+fcm:MinimumNodesShape a sh:NodeShape ;
+  sh:targetClass fcm:ConceptGraph ;
+  sh:property [
+    sh:path fcm:hasNode ;
+    sh:minCount 2 ;
+    sh:message "a concept graph must have at least 2 nodes." ;
+  ] ;
+  sh:property [
+    sh:path fcm:hasEdge ;
+    sh:minCount 1 ;
+    sh:message "a concept graph must have at least 1 edge." ;
+  ] .
+
+fcm:NodeKeyShape a sh:NodeShape ;
+  sh:targetClass fcm:ConceptNode ;
+  sh:property [
+    sh:path fcm:nodeKey ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string ;
+    sh:message "every concept node needs exactly one graph-local node key." ;
+  ] .
+
+fcm:EdgeEndpointsShape a sh:NodeShape ;
+  sh:targetClass fcm:ConceptGraph ;
+  sh:sparql [
+    sh:message "edge endpoint is not a node of the same concept graph." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      SELECT $this ?edge ?endpoint WHERE {
+        $this fcm:hasEdge ?edge .
+        ?edge fcm:sourceNode|fcm:targetNode ?endpoint .
+        FILTER NOT EXISTS { $this fcm:hasNode ?endpoint }
+      } """
+  ] .
+
+fcm:NoDanglingNodeShape a sh:NodeShape ;
+  sh:targetClass fcm:ConceptGraph ;
+  sh:sparql [
+    sh:message "node is dangling: it is neither source nor target of any edge." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      SELECT $this ?node WHERE {
+        $this fcm:hasNode ?node .
+        FILTER NOT EXISTS {
+          $this fcm:hasEdge ?edge .
+          ?edge fcm:sourceNode|fcm:targetNode ?node .
+        }
+      } """
+  ] .
+
+fcm:UniqueNodeKeyShape a sh:NodeShape ;
+  sh:targetClass fcm:ConceptGraph ;
+  sh:sparql [
+    sh:message "node key '{?key}' is used by more than one node of the same graph." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      SELECT $this ?key WHERE {
+        $this fcm:hasNode ?a, ?b .
+        ?a fcm:nodeKey ?key .
+        ?b fcm:nodeKey ?key .
+        FILTER( STR(?a) != STR(?b) )
+      } """
+  ] .
+
+# ── Constraints on the model's own additions ───────────────────────
+
+fcm:HeterogeneousActivationShape a sh:NodeShape ;
+  sh:targetClass fcm:ActivationSpec ;
+  sh:sparql [
+    sh:message "heterogeneous activation requires one activation assignment per node; homogeneous requires one activation function and no assignments." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      SELECT $this WHERE {
+        {
+          $this fcm:activationMode fcm:Heterogeneous .
+          FILTER NOT EXISTS { $this fcm:hasActivationAssignment ?a }
+        } UNION {
+          $this fcm:activationMode fcm:Homogeneous .
+          $this fcm:hasActivationAssignment ?a .
+        } UNION {
+          $this fcm:activationMode fcm:Homogeneous .
+          FILTER NOT EXISTS { $this fcm:activationFunction ?f }
+        }
+      } """
+  ] .
+
+fcm:SequenceStepShape a sh:NodeShape ;
+  sh:targetClass fcm:SequenceStep ;
+  sh:property [
+    sh:path fcm:atTime ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+    sh:message "a sequence step must bind exactly one time specification." ;
+  ] ;
+  sh:property [
+    sh:path fcm:usesMap ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+    sh:message "a sequence step must bind exactly one map." ;
+  ] .
+
+fcm:NodeStateShape a sh:NodeShape ;
+  sh:targetClass fcm:Equilibrium ;
+  sh:sparql [
+    sh:message "an equilibrium carries at most one node state per concept node." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      SELECT $this ?node WHERE {
+        $this fcm:hasNodeState ?s1, ?s2 .
+        ?s1 fcm:ofNode ?node .
+        ?s2 fcm:ofNode ?node .
+        FILTER( STR(?s1) != STR(?s2) )
+      } """
+  ] .
