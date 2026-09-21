@@ -1,0 +1,36 @@
+examples:
+  - title: Researcher proposal toy map (edge-list form)
+    description: >
+      The upstream worked example, copied byte-for-byte from
+      `dataspecs/example__fcm_toy_example_researcher_proposal_process__20260630.json`
+      of FuzzyCognitiveMapTools.jl. Ten concepts and fourteen signed edges over a
+      deliberately unserious subject (proposal deadlines, stress, dark chocolate),
+      with homogeneous logistic activation. Every value is the author's own; nothing
+      here was generated or altered.
+    snippets:
+      - language: json
+        ref: examples/fcm-researcher-proposal.json
+
+  - title: Researcher proposal toy map (matrix form)
+    description: >
+      The same map in the n x n adjacency form used by FCMpy, Mental Modeler and
+      FCMapper. Derived mechanically from the edge-list example above: node order
+      follows `graph.vertices`, labels are copied from each vertex's metadata, and
+      every non-zero cell is a weight taken unchanged from an edge. The round trip is
+      exact -- 14 source edges produce 14 non-zero cells in a 10 x 10 matrix -- which
+      is the property the explicit `orientation` and `nodes` fields exist to protect.
+    snippets:
+      - language: json
+        ref: examples/fcm-researcher-proposal-matrix.json
+
+  - title: Minimal heterogeneous-activation map (synthetic)
+    description: >
+      SYNTHETIC. The two concepts, their labels and the two weights (0.5, -0.25) were
+      invented for this example and carry no empirical meaning; they exist only to
+      exercise per-node activation on the smallest graph the upstream validator
+      accepts (two vertices, one edge minimum). The `activation_spec` is the one real
+      part, copied from
+      `dataspecs/example__heterogeneous_activation_spec__20260630.json`.
+    snippets:
+      - language: json
+        ref: examples/fcm-heterogeneous-minimal.json

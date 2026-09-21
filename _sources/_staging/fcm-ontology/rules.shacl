@@ -8,8 +8,26 @@
 
 fcm:PolarityRuleShape a sh:NodeShape ;
   sh:targetClass fcm:InfluenceEdge ;
+  sh:targetSubjectsOf fcm:sourceNode ;
+  # Step 0: source-faithful JSON-LD puts the numeric weight straight on the edge
+  # (the upstream field is a bare float). Lift it into the canonical
+  # fcm:hasWeight -> qudt:QuantityValue shape before polarity is derived.
   sh:rule [
     a sh:SPARQLRule ;
+    sh:order 0 ;
+    sh:construct """
+      PREFIX fcm:  <https://w3id.org/ogc/hosted/seadots/fcm/>
+      PREFIX qudt: <http://qudt.org/schema/qudt/>
+      CONSTRUCT { $this fcm:hasWeight [ a qudt:QuantityValue ; qudt:numericValue ?w ] }
+      WHERE {
+        $this qudt:numericValue ?w .
+        FILTER NOT EXISTS { $this fcm:hasWeight ?any }
+      } """
+  ] ;
+  # Step 1: polarity follows the sign of the weight.
+  sh:rule [
+    a sh:SPARQLRule ;
+    sh:order 1 ;
     sh:construct """
       PREFIX fcm:  <https://w3id.org/ogc/hosted/seadots/fcm/>
       PREFIX qudt: <http://qudt.org/schema/qudt/>
@@ -27,6 +45,7 @@ fcm:PolarityRuleShape a sh:NodeShape ;
 
 fcm:MinimumNodesShape a sh:NodeShape ;
   sh:targetClass fcm:ConceptGraph ;
+  sh:targetSubjectsOf fcm:hasNode ;
   sh:property [
     sh:path fcm:hasNode ;
     sh:minCount 2 ;
@@ -50,6 +69,7 @@ fcm:NodeKeyShape a sh:NodeShape ;
 
 fcm:EdgeEndpointsShape a sh:NodeShape ;
   sh:targetClass fcm:ConceptGraph ;
+  sh:targetSubjectsOf fcm:hasNode ;
   sh:sparql [
     sh:message "edge endpoint is not a node of the same concept graph." ;
     sh:select """
@@ -63,6 +83,7 @@ fcm:EdgeEndpointsShape a sh:NodeShape ;
 
 fcm:NoDanglingNodeShape a sh:NodeShape ;
   sh:targetClass fcm:ConceptGraph ;
+  sh:targetSubjectsOf fcm:hasNode ;
   sh:sparql [
     sh:message "node is dangling: it is neither source nor target of any edge." ;
     sh:select """
@@ -78,6 +99,7 @@ fcm:NoDanglingNodeShape a sh:NodeShape ;
 
 fcm:UniqueNodeKeyShape a sh:NodeShape ;
   sh:targetClass fcm:ConceptGraph ;
+  sh:targetSubjectsOf fcm:hasNode ;
   sh:sparql [
     sh:message "node key '{?key}' is used by more than one node of the same graph." ;
     sh:select """

@@ -1,0 +1,248 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Fuzzy Cognitive Map
+description: >
+  Source-faithful profile of a deterministic fuzzy cognitive map as serialised by
+  FuzzyCognitiveMapTools.jl: a signed weighted digraph of concepts together with the
+  activation specification that governs its iterative update. The activation
+  specification is part of the map, not of the run that consumes it, so a map is a
+  self-contained digital-twin input.
+
+  Two interchangeable representations of the same map are accepted, and exactly one
+  must be present. `graph` is the upstream edge-list form. `matrix` is the n x n
+  adjacency form used by the wider FCM tool ecosystem (FCMpy, Mental Modeler,
+  FCMapper); it is lossless against the edge list only because the node ordering is
+  declared explicitly rather than implied.
+
+type: object
+required: [activation_spec]
+oneOf:
+  - required: [graph]
+    not:
+      required: [matrix]
+  - required: [matrix]
+    not:
+      required: [graph]
+properties:
+  graph:
+    $ref: '#/$defs/ConceptGraph'
+  matrix:
+    $ref: '#/$defs/WeightMatrix'
+  activation_spec:
+    $ref: '#/$defs/ActivationSpec'
+  metadata:
+    $ref: '#/$defs/MapMetadata'
+additionalProperties: false
+
+$defs:
+
+  MapMetadata:
+    type: object
+    description: >
+      Map-level metadata. A placeholder upstream, where only `description` is defined;
+      discovery metadata belongs in the accompanying catalog record, not here.
+    properties:
+      description:
+        type: string
+    additionalProperties: true
+
+  VertexMetadata:
+    type: object
+    description: Vertex-level metadata.
+    properties:
+      description:
+        type: string
+        description: >
+          Human-readable name of the concept, conventionally prefixed with the node key
+          in square brackets, e.g. "[C2] Stress Level". Despite the field name this is a
+          label rather than a description, and is mapped to skos:prefLabel.
+    additionalProperties: true
+
+  EdgeMetadata:
+    type: object
+    description: Edge-level metadata.
+    properties:
+      description:
+        type: string
+        description: Free-text statement of the causal claim the edge encodes.
+      provenance:
+        type: string
+        description: >
+          Free-text statement of where the weight came from. Marked as temporary
+          upstream; expected to become a structured reference to the elicitation
+          record (see description.md).
+    additionalProperties: true
+
+  GraphMetadata:
+    type: object
+    description: Graph-level metadata.
+    properties:
+      description:
+        type: string
+    additionalProperties: true
+
+  Vertex:
+    type: object
+    description: One concept of the map.
+    required: [id]
+    properties:
+      id:
+        type: string
+        minLength: 1
+        description: >
+          Graph-local key of the concept, unique within the map, e.g. "C1" or "Nd".
+          Referenced by the `src` and `dst` fields of edges. Not an IRI; the concept
+          IRI, when known, belongs in the catalog record or in a future `concept`
+          field (see description.md).
+      metadata:
+        $ref: '#/$defs/VertexMetadata'
+    additionalProperties: false
+
+  Edge:
+    type: object
+    description: One directed, weighted causal influence between two concepts.
+    required: [src, dst, weight]
+    properties:
+      id:
+        type: string
+        description: Optional graph-local key of the edge, conventionally "SRC->DST".
+      src:
+        type: string
+        minLength: 1
+        description: Key of the driving concept. Must equal the `id` of a vertex of the same map.
+      dst:
+        type: string
+        minLength: 1
+        description: Key of the influenced concept. Must equal the `id` of a vertex of the same map.
+      weight:
+        type: number
+        description: >
+          Signed strength of the influence. Conventionally dimensionless in [-1, 1];
+          the convention is documented but NOT enforced upstream, and is not enforced
+          here either. See description.md.
+      metadata:
+        $ref: '#/$defs/EdgeMetadata'
+    additionalProperties: false
+
+  ConceptGraph:
+    type: object
+    description: >
+      Edge-list representation. The upstream validator additionally requires that every
+      `src`/`dst` resolves to a vertex of the same graph and that no vertex is left
+      unconnected; neither is expressible in JSON Schema across sibling arrays and both
+      are carried as SHACL constraints by ogc.hosted.seadots.fcm-ontology.
+    required: [vertices, edges]
+    properties:
+      vertices:
+        type: array
+        minItems: 2
+        items:
+          $ref: '#/$defs/Vertex'
+      edges:
+        type: array
+        minItems: 1
+        items:
+          $ref: '#/$defs/Edge'
+      metadata:
+        $ref: '#/$defs/GraphMetadata'
+    additionalProperties: false
+
+  WeightMatrix:
+    type: object
+    description: >
+      Adjacency representation. `nodes` declares the ordering that both axes of
+      `weights` follow, so the matrix is self-describing rather than depending on the
+      order of an external vertex list.
+    required: [nodes, weights, orientation]
+    properties:
+      nodes:
+        type: array
+        minItems: 2
+        description: Node keys, in the order used by both axes of `weights`.
+        items:
+          type: string
+          minLength: 1
+      nodeLabels:
+        type: object
+        description: Optional map from node key to human-readable label.
+        additionalProperties:
+          type: string
+      orientation:
+        const: source-major
+        description: >
+          Declares that weights[i][j] is the influence of nodes[i] ON nodes[j]. Stated
+          as a required constant rather than assumed, because the opposite convention
+          is equally common and silently transposes the entire model. The solver
+          applies the transpose at iteration time, computing f(W' x).
+      weights:
+        type: array
+        minItems: 2
+        description: Square matrix of signed weights; absent influences are 0.
+        items:
+          type: array
+          minItems: 2
+          items:
+            type: number
+    additionalProperties: false
+
+  ActivationFunctionSpec:
+    type: object
+    description: >
+      One activation (transfer) function together with its numeric parameters.
+      `label` is the discriminator.
+    required: [label, params]
+    properties:
+      label:
+        type: string
+        description: >
+          Function name as serialised upstream. Values are resolved to concepts of
+          ogc.hosted.seadots.fcm-activation-scheme by context.jsonld. Note that the
+          upstream label "gaussian" resolves to fcmact:logistic-of-square, which is
+          what the implementation computes; see that block's description.
+        examples: [logistic, gaussian, other]
+      params:
+        type: object
+        description: >
+          Numeric parameters keyed by name. Which names are meaningful depends on
+          `label` and is declared by fcmact:hasParameterName on the corresponding
+          concept (`a`, `b`, `lambda` for the implemented functions).
+        additionalProperties:
+          type: number
+    additionalProperties: false
+
+  ActivationSpec:
+    type: object
+    description: >
+      Whether one activation function governs the whole map or one per concept.
+      In heterogeneous mode the array is positional: element k applies to vertex k of
+      `graph.vertices`, or to `matrix.nodes[k]`.
+    required: [mode]
+    properties:
+      mode:
+        enum: [homogeneous, heterogeneous]
+      homogeneous:
+        $ref: '#/$defs/ActivationFunctionSpec'
+      heterogeneous:
+        type: array
+        minItems: 1
+        items:
+          $ref: '#/$defs/ActivationFunctionSpec'
+    additionalProperties: false
+    allOf:
+      - if:
+          properties:
+            mode:
+              const: homogeneous
+          required: [mode]
+        then:
+          required: [homogeneous]
+          not:
+            required: [heterogeneous]
+      - if:
+          properties:
+            mode:
+              const: heterogeneous
+          required: [mode]
+        then:
+          required: [heterogeneous]
+          not:
+            required: [homogeneous]
