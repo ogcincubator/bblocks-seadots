@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "graph": {
+      "@context": {
+        "vertices": {
+          "@id": "fcm:hasNode",
+          "@container": "@set"
+        },
+        "edges": {
+          "@id": "fcm:hasEdge",
+          "@container": "@set"
+        }
+      },
+      "@id": "fcm:hasGraph"
+    },
+    "activation_spec": {
+      "@context": {
+        "mode": {
+          "@id": "fcm:activationMode",
+          "@type": "@vocab"
+        },
+        "homogeneous": "fcm:homogeneousActivation",
+        "heterogeneous": {
+          "@id": "fcm:heterogeneousActivation",
+          "@container": "@list"
+        },
+        "label": {
+          "@id": "fcm:activationFunction",
+          "@type": "@vocab"
+        },
+        "logistic": "fcm:activation/logistic",
+        "gaussian": "fcm:activation/logistic-of-square",
+        "other": "fcm:activation/offset",
+        "tanh": "fcm:activation/hyperbolic-tangent",
+        "bivalent": "fcm:activation/bivalent",
+        "trivalent": "fcm:activation/trivalent"
+      },
+      "@id": "fcm:hasActivationSpec"
+    },
+    "description": "dct:description",
+    "metadata": "@nest",
+    "fcm": "https://w3id.org/ogc/hosted/seadots/fcm/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dct": "http://purl.org/dc/terms/",
+    "fcmact": "fcm:activation/",
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "@version": 1.1
+  }
+}

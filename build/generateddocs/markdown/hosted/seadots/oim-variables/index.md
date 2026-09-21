@@ -57,6 +57,7 @@ ind:Indicator a owl:Class ;
 
 # --- CATALOG ENTRY (added for VocPrez/Prez UI visibility) ---
 ind:catalog a dcat:Catalog ;
+    skos:prefLabel "SEADOTS Resource Catalog"@en ;
     rdfs:label "SEADOTS Resource Catalog"@en ;
     dcterms:title "SEADOTS Resource Catalog"@en ;
     dcterms:description "Main catalog for SEADOTS indicators and concepts."@en ;
@@ -1342,6 +1343,7 @@ indp:current_management_season        dcterms:subject ind:emodnet-human-activiti
 @prefix im: <https://w3id.org/indicators/marine/indicator-model/> .
 
 ind:catalog a dcat:Catalog ;
+    skos:prefLabel "SEADOTS Resource Catalog"@en ;
     rdfs:label "SEADOTS Resource Catalog"@en ;
     dcterms:title "SEADOTS Resource Catalog"@en ;
     dcterms:description "Main catalog for SEADOTS indicators and conceptual models."@en ;

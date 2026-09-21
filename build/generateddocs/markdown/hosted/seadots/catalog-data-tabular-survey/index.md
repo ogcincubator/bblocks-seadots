@@ -232,8 +232,8 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ddi: <https://ddialliance.org/terms#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -251,11 +251,11 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     dcterms:type "Feature" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
         [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
             dcterms:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
     survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
             seadots:uri "https://elsst.uk/" ;
@@ -290,7 +290,7 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     table:row_count 5046 ;
     seadots:itemType "record" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
+    stac:hasAsset [ ns1:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:version "1.0.0" .

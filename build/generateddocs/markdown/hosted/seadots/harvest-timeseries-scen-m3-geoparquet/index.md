@@ -334,8 +334,8 @@ for details and recommended fallbacks.
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://geoparquet.org/schema#> .
-@prefix ns2: <https://geoparquet.org/metadata#> .
+@prefix ns1: <https://geoparquet.org/metadata#> .
+@prefix ns2: <https://geoparquet.org/schema#> .
 @prefix ns3: <https://geoparquet.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
@@ -345,31 +345,31 @@ for details and recommended fallbacks.
             dct:references <file:///github/harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ;
             schema:numberOfColumns 4 ;
             schema:numberOfItems 19920 ] ;
-    ns3:metadata [ ns2:columns [ geojson:geometry [ ns2:bbox 7.642571e+00,
+    ns3:metadata [ ns1:columns [ geojson:geometry [ ns1:bbox 7.642571e+00,
                                 7.713493e+00,
                                 5.437365e+01,
                                 5.44095e+01 ;
-                            ns2:crs [ dct:identifier [ ] ;
+                            ns1:crs [ dct:identifier [ ] ;
                                     csvw:datatype "GeographicCRS" ;
                                     csvw:name "WGS 84 (CRS84)" ;
-                                    ns2:bbox [ ] ] ;
-                            ns2:geometry_types "Point" ;
+                                    ns1:bbox [ ] ] ;
+                            ns1:geometry_types "Point" ;
                             schema:encodingFormat "WKB" ] ] ;
-            ns2:primary_column "geometry" ;
+            ns1:primary_column "geometry" ;
             schema:version "1.1.0" ] ;
     ns3:schema ( [ csvw:datatype "INT64" ;
                 csvw:name "id" ;
                 csvw:propertyUrl dct:identifier ;
-                ns1:nullable false ] [ csvw:datatype "BYTE_ARRAY/WKB" ;
+                ns2:nullable false ] [ csvw:datatype "BYTE_ARRAY/WKB" ;
                 csvw:name "geometry" ;
                 csvw:propertyUrl geojson:geometry ;
-                ns1:nullable true ] [ csvw:datatype "DOUBLE" ;
+                ns2:nullable true ] [ csvw:datatype "DOUBLE" ;
                 csvw:name "bwmus" ;
                 csvw:propertyUrl <https://w3id.org/iliad/property/bwmus> ;
-                ns1:nullable false ] [ csvw:datatype "BYTE_ARRAY/UTF8" ;
+                ns2:nullable false ] [ csvw:datatype "BYTE_ARRAY/UTF8" ;
                 csvw:name "time" ;
                 csvw:propertyUrl dct:temporal ;
-                ns1:nullable false ] ) ;
+                ns2:nullable false ] ) ;
     schema:contentUrl "harvest-timeseries-scen-m3.geoparquet" ;
     schema:encodingFormat "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB" .
 

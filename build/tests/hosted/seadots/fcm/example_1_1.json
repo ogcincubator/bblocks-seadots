@@ -1,0 +1,209 @@
+{
+  "graph": {
+    "vertices": [
+      {
+        "id": "C1",
+        "metadata": {
+          "description": "[C1] Proposal Deadline Nearness"
+        }
+      },
+      {
+        "id": "C2",
+        "metadata": {
+          "description": "[C2] Stress Level"
+        }
+      },
+      {
+        "id": "C3",
+        "metadata": {
+          "description": "[C3] Dark Chocolate Consumption"
+        }
+      },
+      {
+        "id": "C4",
+        "metadata": {
+          "description": "[C4] Temporary Morale Boost"
+        }
+      },
+      {
+        "id": "C5",
+        "metadata": {
+          "description": "[C5] Proposal Progress"
+        }
+      },
+      {
+        "id": "C6",
+        "metadata": {
+          "description": "[C6] Sleep Quality"
+        }
+      },
+      {
+        "id": "C7",
+        "metadata": {
+          "description": "[C7] Overthinking / Scope Creep"
+        }
+      },
+      {
+        "id": "C8",
+        "metadata": {
+          "description": "[C8] Confidence That 'This Is a Great Idea'"
+        }
+      },
+      {
+        "id": "C9",
+        "metadata": {
+          "description": "[C9] Likelihood of Creating Yet Another Figure"
+        }
+      },
+      {
+        "id": "C10",
+        "metadata": {
+          "description": "[C10] Probability of Submitting on Time"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "C5->C3",
+        "src": "C5",
+        "dst": "C3",
+        "weight": -0.4,
+        "metadata": {
+          "description": "More progress reduces emergency dark chocolate consumption"
+        }
+      },
+      {
+        "id": "C2->C10",
+        "src": "C2",
+        "dst": "C10",
+        "weight": 0.3,
+        "metadata": {
+          "description": "Panic can, regrettably, improve on-time submission"
+        }
+      },
+      {
+        "id": "C1->C2",
+        "src": "C1",
+        "dst": "C2",
+        "weight": 0.9,
+        "metadata": {
+          "description": "Deadline nearness increases stress"
+        }
+      },
+      {
+        "id": "C3->C6",
+        "src": "C3",
+        "dst": "C6",
+        "weight": -0.5,
+        "metadata": {
+          "description": "Late chocolate reduces sleep quality"
+        }
+      },
+      {
+        "id": "C5->C10",
+        "src": "C5",
+        "dst": "C10",
+        "weight": 0.9,
+        "metadata": {
+          "description": "More progress increases the chance of submitting on time"
+        }
+      },
+      {
+        "id": "C9->C5",
+        "src": "C9",
+        "dst": "C5",
+        "weight": -0.3,
+        "metadata": {
+          "description": "Additional figure creation has a questionable net effect on progress"
+        }
+      },
+      {
+        "id": "C8->C9",
+        "src": "C8",
+        "dst": "C9",
+        "weight": 0.7,
+        "metadata": {
+          "description": "Confidence encourages creation of yet another figure"
+        }
+      },
+      {
+        "id": "C5->C8",
+        "src": "C5",
+        "dst": "C8",
+        "weight": 0.6,
+        "metadata": {
+          "description": "Progress boosts confidence"
+        }
+      },
+      {
+        "id": "C4->C5",
+        "src": "C4",
+        "dst": "C5",
+        "weight": 0.5,
+        "metadata": {
+          "description": "Higher morale improves proposal progress"
+        }
+      },
+      {
+        "id": "C6->C7",
+        "src": "C6",
+        "dst": "C7",
+        "weight": -0.7,
+        "metadata": {
+          "description": "Better sleep reduces overthinking and scope creep"
+        }
+      },
+      {
+        "id": "C2->C7",
+        "src": "C2",
+        "dst": "C7",
+        "weight": 0.3,
+        "metadata": {
+          "description": "Stress promotes overthinking and scope creep"
+        }
+      },
+      {
+        "id": "C7->C5",
+        "src": "C7",
+        "dst": "C5",
+        "weight": -0.8,
+        "metadata": {
+          "description": "Scope creep reduces genuine proposal progress"
+        }
+      },
+      {
+        "id": "C3->C4",
+        "src": "C3",
+        "dst": "C4",
+        "weight": 0.7,
+        "metadata": {
+          "description": "Dark chocolate provides a temporary morale boost"
+        }
+      },
+      {
+        "id": "C2->C3",
+        "src": "C2",
+        "dst": "C3",
+        "weight": 0.2,
+        "metadata": {
+          "description": "Stress increases dark chocolate consumption"
+        }
+      }
+    ],
+    "metadata": {
+      "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+    }
+  },
+  "metadata": {},
+  "activation_spec": {
+    "mode": "homogeneous",
+    "homogeneous": {
+      "label": "logistic",
+      "params": {
+        "b": 0,
+        "lambda": 1,
+        "a": 1
+      }
+    }
+  }
+}

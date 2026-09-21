@@ -466,30 +466,30 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-03-31" ;
     dcterms:temporal [ ] ;
     dcterms:title "The ODD Protocol for Describing Agent-Based and Other Simulation Models: A Second Update to Improve Clarity, Replication, and Structural Realism" ;
-    rdfs:seeAlso [ rdfs:label "JASSS 23(2)7 — journal article" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
-        [ rdfs:label "Supplement S2 — Summary ODD templates" ;
+    rdfs:seeAlso [ rdfs:label "Supplement S2 — Summary ODD templates" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
+        [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
         [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S3.pdf> ],
-        [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
+        [ rdfs:label "JASSS 23(2)7 — journal article" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
         [ rdfs:label "DOI" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
-        [ rdfs:label "Supplement S4 — ODD for modified/reused models" ;
+        [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ] ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -543,11 +543,11 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             rec:scheme "issn" ],
         [ rec:id "10.18564/jasss.4259" ;
             rec:scheme "doi" ] ;
-    rec:themes [ thns:concepts [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "protocol"^^xsd:string ],
-                [ thns:id "model-documentation"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "model-documentation"^^xsd:string ],
+                [ thns:id "simulation"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
                 [ thns:id "agent-based-model"^^xsd:string ],
-                [ thns:id "simulation"^^xsd:string ] ;
+                [ thns:id "protocol"^^xsd:string ] ;
             thns:scheme "https://vocabularies.jasss.org/themes" ] .
 
 
@@ -2005,11 +2005,7 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-01-01" ;
     dcterms:temporal [ ] ;
     dcterms:title "OSMOSE — Object-oriented Simulator of Marine Ecosystems: ODD Protocol Description" ;
-    rdfs:seeAlso [ rdfs:label "OSMOSE ODD Protocol description document" ;
-            dcterms:format "application/pdf" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://osmose-model.org/documentation/odd> ],
-        [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
+    rdfs:seeAlso [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
@@ -2021,6 +2017,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://github.com/osmose-model/osmose> ],
+        [ rdfs:label "OSMOSE ODD Protocol description document" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://osmose-model.org/documentation/odd> ],
         [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -2357,22 +2357,22 @@ SSR-based (Beverton-Holt):
   R_s(t) = (alpha_BH × S_s(t)) / (beta_BH + S_s(t))
   where S_s(t) = total spawning stock biomass of species s at time t-lag.""" ;
                         odd:parameterization "For the flux mode, observed recruitment indices from ICES or DEPM surveys are prescribed. For SSR, alpha_BH and beta_BH are calibrated. Recruitment time lag (egg-to-recruit duration) is set from species-specific larval duration data." ] ) ] ;
-    rec:format [ dcterms:title "Configuration files" ;
-            rec:mediaType "text/csv" ],
-        [ dcterms:title "Java executable (JAR)" ;
-            rec:mediaType "application/java-archive" ] ;
+    rec:format [ dcterms:title "Java executable (JAR)" ;
+            rec:mediaType "application/java-archive" ],
+        [ dcterms:title "Configuration files" ;
+            rec:mediaType "text/csv" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:scopedIdentifier [ rec:id "https://github.com/osmose-model/osmose" ;
-            rec:scheme "github" ],
+    rec:scopedIdentifier [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
+            rec:scheme "doi" ],
         [ rec:id "https://osmose-model.org/" ;
             rec:scheme "url" ],
-        [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
-            rec:scheme "doi" ] ;
-    rec:themes [ thns:concepts [ thns:id "fish-community"^^xsd:string ],
-                [ thns:id "end-to-end-model"^^xsd:string ],
+        [ rec:id "https://github.com/osmose-model/osmose" ;
+            rec:scheme "github" ] ;
+    rec:themes [ thns:concepts [ thns:id "end-to-end-model"^^xsd:string ],
+                [ thns:id "size-based-predation"^^xsd:string ],
                 [ thns:id "individual-based-model"^^xsd:string ],
                 [ thns:id "multispecies-model"^^xsd:string ],
-                [ thns:id "size-based-predation"^^xsd:string ],
+                [ thns:id "fish-community"^^xsd:string ],
                 [ thns:id "marine-ecosystem"^^xsd:string ] ;
             thns:scheme "https://vocabularies.osmose-model.org/" ],
         [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ],
@@ -2861,9 +2861,9 @@ SSR-based (Beverton-Holt):
                         odd:parameterization "Parameters are sourced through the linked equation-property-relationship instance: A_{sub} → indp:submerged-infrastructure-area-utsira-design (NVE strategic assessment); D_{pre,i} → indo:benthic-biomass-density-mareano (primary) or indo:benthic-biomass-density-imr-baseline (fallback); AF_i → indp:reef-aggregation-index-{mytilus,buccinum,asterias} expanded over odd:TaxonGroup; C_t → indp:colonisation-time-factor-default (sigmoid saturating at 24 months)." ] ) ] ;
     rec:format [ rec:mediaType "application/json" ] ;
     rec:language [ rec:languageCode "en" ] ;
-    rec:themes [ thns:concepts [ thns:id "reef-effect"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "benthic-biomass"^^xsd:string ],
                 [ thns:id "impact-assessment"^^xsd:string ],
-                [ thns:id "benthic-biomass"^^xsd:string ] ;
+                [ thns:id "reef-effect"^^xsd:string ] ;
             thns:scheme "https://id3.seadots.eu/themes" ] .
 
 

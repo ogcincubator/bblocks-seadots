@@ -1,0 +1,65 @@
+{
+  "graph": {
+    "vertices": [
+      {
+        "id": "A",
+        "metadata": {
+          "description": "[A] Synthetic driver concept"
+        }
+      },
+      {
+        "id": "B",
+        "metadata": {
+          "description": "[B] Synthetic responding concept"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "A->B",
+        "src": "A",
+        "dst": "B",
+        "weight": 0.5,
+        "metadata": {
+          "description": "Synthetic edge; the value carries no empirical meaning."
+        }
+      },
+      {
+        "id": "B->A",
+        "src": "B",
+        "dst": "A",
+        "weight": -0.25,
+        "metadata": {
+          "description": "Synthetic feedback edge; the value carries no empirical meaning."
+        }
+      }
+    ],
+    "metadata": {
+      "description": "Synthetic two-concept map, the smallest graph the upstream validator accepts."
+    }
+  },
+  "metadata": {
+    "description": "SYNTHETIC. Constructed to exercise heterogeneous activation; not derived from any survey or observation."
+  },
+  "activation_spec": {
+    "mode": "heterogeneous",
+    "heterogeneous": [
+      {
+        "label": "logistic",
+        "params": {
+          "b": 0,
+          "lambda": 1,
+          "a": 1
+        }
+      },
+      {
+        "label": "gaussian",
+        "params": {
+          "b": 0,
+          "lambda": 1,
+          "a": 1
+        }
+      }
+    ]
+  }
+}

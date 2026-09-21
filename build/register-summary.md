@@ -62,6 +62,12 @@ Core ontology for signed, weighted fuzzy cognitive maps: concept nodes, influenc
 
 Provides a common model for defining property relationships bound to the ontology
 
+### `ogc.hosted.seadots.fcm` — Fuzzy Cognitive Map
+
+**Type:** schema
+
+Source-faithful profile of a deterministic fuzzy cognitive map as serialised by FuzzyCognitiveMapTools.jl: a signed weighted digraph of concepts plus the activation specification that governs its update. Accepts the upstream edge-list form and the n x n adjacency form used by the wider FCM tool ecosystem.
+
 ### `ogc.hosted.seadots.equation-property-relationship` — Equation property relationship
 
 **Type:** schema
