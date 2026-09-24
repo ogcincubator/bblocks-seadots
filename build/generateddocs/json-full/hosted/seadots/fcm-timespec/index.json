@@ -1,0 +1,170 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.fcm-timespec",
+  "name": "FCM time specification",
+  "abstract": "The four interchangeable ways a fuzzy cognitive map and its solution can be placed in time -- an instant, a week of a year, a month of a year, or an explicit interval -- as serialised by FuzzyCognitiveMapTools.jl. Discriminated on the 'type' field.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-23T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-09-24",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "dependsOn": [
+    "ogc.hosted.seadots.fcm-ontology"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/context.jsonld",
+  "shaclRules": [],
+  "tags": [
+    "seadots",
+    "fcm",
+    "fuzzy-cognitive-map",
+    "time",
+    "schema"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "FuzzyCognitiveMapTools.jl v0.1.0",
+      "link": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl"
+    },
+    {
+      "title": "FCM data specifications (dataspecs/fcm_dataspecs__20260630.md)",
+      "link": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/dataspecs/fcm_dataspecs__20260630.md"
+    }
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.hosted.seadots.fcm-ontology": [
+      "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-ontology/rules.shacl"
+    ],
+    "ogc.hosted.seadots.ontology": [
+      "https://ogcincubator.github.io/bblocks-seadots/_sources/ontology/rules.shacl"
+    ]
+  },
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/fcm-timespec/",
+  "description": "# FCM time specification\n\nWhen a fuzzy cognitive map and the solution computed from it apply. This is the element\ntype of the `timespec_series` array of a sequence, factored out into its own block because\nit is the one FCM structure with reuse value outside the FCM stack.\n\nFour disjoint forms, discriminated on `type`, source-faithful to the `AbstractTimeSpec`\nsubtypes of\n[FuzzyCognitiveMapTools.jl](https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl)\nv0.1.0 (`src/fcm/timespecs.jl`):\n\n| `type` | fields | interval it denotes |\n| --- | --- | --- |\n| `pointtimespec` | `dt` | the instant itself, `[dt, dt]` |\n| `weekofyeartimespec` | `year`, `week` | `[1 Jan + (week-1) weeks, + 1 week)` |\n| `monthofyeartimespec` | `year`, `month` | the calendar month |\n| `rangetimespec` | `start`, `stop` | `[start, stop)` |\n\nFour forms rather than one exist because the SeaDOTs participatory survey rounds are not\nyet committed to a reporting period; the upstream author states this explicitly. All four\nreduce to a `(start, stop)` pair through `bounds`, so consumers that only need an interval\ncan normalise on ingest and ignore the distinction.\n\n## Two things that are not what they look like\n\n**`week` is not an ISO 8601 week.** `bounds(::WeekOfYearTimeSpec)` computes\n`Date(year, 1, 1) + Week(week - 1)`, counting from 1 January rather than from the first\nThursday of the year. Week 1 therefore does not in general coincide with ISO week 1, and\nweek 53 begins on day 365 and runs past the end of the year. Anything mapping these onto\nISO weeks, or onto `time:` intervals, must use the upstream arithmetic, not a week-number\nlibrary.\n\n**`dt`, `start` and `stop` are not `format: date-time`.** The Julia serialiser emits a\nbare `DateTime`: no UTC offset, and a trailing fractional second \u2014\n`\"2026-01-02T03:04:05.0\"`. RFC 3339 requires an offset, so JSON Schema's `date-time`\nformat rejects every datetime this tool has ever written. Declaring the format would fail\nthe upstream example files, which is not a defect this block should paper over, so the\nfields are declared as strings with a pattern that accepts the upstream form and a\nproperly zoned one alike. The block will not need revising when the defect is fixed\nupstream.\n\nThe same lexical form **is** a valid `xsd:dateTime`, where the offset is optional, so the\nRDF projection is unaffected and `fcm:instant`, `fcm:intervalStart` and `fcm:intervalStop`\nkeep their `xsd:dateTime` range. The divergence is purely between two datetime profiles of\ndiffering strictness, which is worth knowing before someone \"fixes\" the context.\n\n## Constraints this schema does not carry\n\nThat `start` precedes `stop` in a `rangetimespec` relates two sibling values and is not\nexpressible in JSON Schema. It is carried as a SHACL constraint by\n`ogc.hosted.seadots.fcm-ontology`.\n\nA stronger constraint applies to a *series* of these rather than to one: upstream\n`Base.isless` **throws** `ArgumentError(\"cannot order overlapping time intervals\")` when\ntwo specs overlap, so a sequence's `timespec_series` must be pairwise non-overlapping to\nbe sortable at all. That is a constraint of `ogc.hosted.seadots.fcm-sequence`, recorded\nthere.\n\nTwo bounds in this schema are **additions**, not upstream rules: `week` 1..53 and `month`\n1..12. Upstream both are bare `Int` with no validation. They are stated here because a\nmonth of 13 has no interpretation under `bounds`, and 53 is the last week that still\nbegins within its year.\n\n## JSON-LD projection\n\nThe `type` discriminator is mapped to `@type`, with the four upstream label strings\ndeclared as terms resolving to the corresponding ontology classes \u2014 `\"pointtimespec\"` \u2192\n`fcm:PointTimeSpec` and so on. This works precisely because the discriminator is present\nin the JSON: a JSON-LD context cannot inject an `rdf:type` that the document does not\ncarry, which is why the sibling `fcm` block has to target its SHACL shapes by property\ninstead. Here the type arrives honestly and every shape can target by class.\n\nEvery field of all four forms is mapped. There are no context gaps in this block.\n\n## Relationship to other blocks\n\n| | |\n| --- | --- |\n| `fcm-ontology` | `fcm:TimeSpec` and its four subclasses; the `start < stop` constraint |\n| `fcm-sequence` | consumes this as the element type of `timespec_series` |\n| `fcm` | the map that holds at the time this specifies |\n\n## Source-property coverage\n\nEvery field of `PointTimeSpec`, `WeekOfYearTimeSpec`, `MonthOfYearTimeSpec` and\n`RangeTimeSpec` is present. Nothing is dropped, nothing is renamed.\n\nNote that the upstream `dataspecs` markdown documents `PointTimeSpec.t`, while the code\nand every example file use `dt`. This block follows the code.\n",
+  "examples": [
+    {
+      "title": "Instant",
+      "description": "The `pointtimespec` element of `dataspecs/example__timespec_vector__20260630.json` of FuzzyCognitiveMapTools.jl, copied byte-for-byte. Note the upstream datetime serialisation -- no UTC offset, trailing `.0` -- which is why this block does not declare `format: date-time`; see description.md.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/examples/timespec-point.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_1_1.json",
+          "sizeBytes": 67,
+          "code": "{\n    \"type\": \"pointtimespec\",\n    \"dt\": \"2026-01-02T03:04:05.0\"\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_1_1.jsonld",
+          "sizeBytes": 185,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/context.jsonld\",\n  \"type\": \"pointtimespec\",\n  \"dt\": \"2026-01-02T03:04:05.0\"\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_1_1.ttl",
+          "sizeBytes": 190,
+          "code": "@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a fcm:PointTimeSpec ;\n    fcm:instant \"2026-01-02T03:04:05\"^^xsd:dateTime .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Week of year",
+      "description": "The `weekofyeartimespec` element of the same upstream example file, copied byte-for-byte. Weeks are counted from 1 January, not by ISO 8601 numbering.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/examples/timespec-week-of-year.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_2_1.json",
+          "sizeBytes": 70,
+          "code": "{\n    \"type\": \"weekofyeartimespec\",\n    \"year\": 2026,\n    \"week\": 4\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_2_1.jsonld",
+          "sizeBytes": 186,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/context.jsonld\",\n  \"type\": \"weekofyeartimespec\",\n  \"year\": 2026,\n  \"week\": 4\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_2_1.ttl",
+          "sizeBytes": 178,
+          "code": "@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a fcm:WeekOfYearTimeSpec ;\n    fcm:week 4 ;\n    fcm:year 2026 .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Month of year",
+      "description": "The `monthofyeartimespec` element of the same upstream example file, copied byte-for-byte.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/examples/timespec-month-of-year.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_3_1.json",
+          "sizeBytes": 72,
+          "code": "{\n    \"type\": \"monthofyeartimespec\",\n    \"year\": 2026,\n    \"month\": 2\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_3_1.jsonld",
+          "sizeBytes": 188,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/context.jsonld\",\n  \"type\": \"monthofyeartimespec\",\n  \"year\": 2026,\n  \"month\": 2\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_3_1.ttl",
+          "sizeBytes": 180,
+          "code": "@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a fcm:MonthOfYearTimeSpec ;\n    fcm:month 2 ;\n    fcm:year 2026 .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Explicit interval",
+      "description": "The `rangetimespec` element of the same upstream example file, copied byte-for-byte. The half-open interval [start, stop).\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/fcm-timespec/examples/timespec-range.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_4_1.json",
+          "sizeBytes": 107,
+          "code": "{\n    \"type\": \"rangetimespec\",\n    \"start\": \"2026-05-01T00:00:00.0\",\n    \"stop\": \"2026-06-02T00:00:00.0\"\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_4_1.jsonld",
+          "sizeBytes": 223,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/context.jsonld\",\n  \"type\": \"rangetimespec\",\n  \"start\": \"2026-05-01T00:00:00.0\",\n  \"stop\": \"2026-06-02T00:00:00.0\"\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_4_1.ttl",
+          "sizeBytes": 255,
+          "code": "@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a fcm:RangeTimeSpec ;\n    fcm:intervalStart \"2026-05-01T00:00:00\"^^xsd:dateTime ;\n    fcm:intervalStop \"2026-06-02T00:00:00\"^^xsd:dateTime .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: FCM time specification\ndescription: 'When a fuzzy cognitive map and its solution apply. Four disjoint forms,\n  discriminated on `type`, reflecting that participatory survey rounds are not yet\n  committed to a single reporting period: an instant, a week of a year, a month of\n  a year, or an explicit interval.\n\n  This block describes ONE time specification. The `timespec_series` array of a sequence\n  is a list of these; see ogc.hosted.seadots.fcm-sequence.\n\n  '\noneOf:\n- $ref: '#/$defs/PointTimeSpec'\n- $ref: '#/$defs/WeekOfYearTimeSpec'\n- $ref: '#/$defs/MonthOfYearTimeSpec'\n- $ref: '#/$defs/RangeTimeSpec'\n$defs:\n  LocalOrZonedDateTime:\n    type: string\n    description: 'A date and time. NOT declared with `format: date-time`: the upstream\n      Julia serialiser emits a bare `DateTime` with no UTC offset and a trailing fractional\n      second, e.g. \"2026-01-02T03:04:05.0\", which RFC 3339 -- and therefore JSON Schema\n      `date-time` -- rejects for the missing offset. The same lexical form IS a valid\n      `xsd:dateTime`, where the offset is optional, so the JSON-LD projection is unaffected.\n      The pattern below accepts the upstream form and a properly zoned one alike,\n      so that this block does not have to be revised when the defect is fixed upstream.\n      See description.md.\n\n      '\n    pattern: ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})?$\n  PointTimeSpec:\n    type: object\n    description: A single instant.\n    required:\n    - type\n    - dt\n    properties:\n      type:\n        const: pointtimespec\n        x-jsonld-id: '@type'\n      dt:\n        $ref: '#/$defs/LocalOrZonedDateTime'\n        description: The instant the map and its solution apply to.\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/instant\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n    additionalProperties: false\n  WeekOfYearTimeSpec:\n    type: object\n    description: 'The week-long interval beginning (week - 1) weeks after 1 January\n      of the given year -- `Date(year, 1, 1) + Week(week - 1)` in `bounds(::WeekOfYearTimeSpec)`.\n      This is NOT ISO 8601 week numbering: it counts from 1 January rather than from\n      the first Thursday, so week 1 of a year does not in general coincide with ISO\n      week 1, and week 53 runs past the end of the year.\n\n      The 1..53 bound is ADDED here; upstream the field is a bare `Int` with no validation.\n      53 is the last week that still begins within the year.\n\n      '\n    required:\n    - type\n    - year\n    - week\n    properties:\n      type:\n        const: weekofyeartimespec\n        x-jsonld-id: '@type'\n      year:\n        type: integer\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/year\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n      week:\n        type: integer\n        minimum: 1\n        maximum: 53\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/week\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n    additionalProperties: false\n  MonthOfYearTimeSpec:\n    type: object\n    description: The calendar month of the given year.\n    required:\n    - type\n    - year\n    - month\n    properties:\n      type:\n        const: monthofyeartimespec\n        x-jsonld-id: '@type'\n      year:\n        type: integer\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/year\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n      month:\n        type: integer\n        minimum: 1\n        maximum: 12\n        description: 'The 1..12 bound is ADDED here; upstream the field is a bare\n          `Int` with no validation.\n\n          '\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/month\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer\n    additionalProperties: false\n  RangeTimeSpec:\n    type: object\n    description: 'An explicit half-open interval [start, stop). That `start` precedes\n      `stop` relates two sibling values and is not expressible in JSON Schema; it\n      is carried as a SHACL constraint by ogc.hosted.seadots.fcm-ontology.\n\n      '\n    required:\n    - type\n    - start\n    - stop\n    properties:\n      type:\n        const: rangetimespec\n        x-jsonld-id: '@type'\n      start:\n        $ref: '#/$defs/LocalOrZonedDateTime'\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/intervalStart\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n      stop:\n        $ref: '#/$defs/LocalOrZonedDateTime'\n        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/intervalStop\n        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime\n    additionalProperties: false\nx-jsonld-extra-terms:\n  id: '@id'\n  pointtimespec: https://w3id.org/ogc/hosted/seadots/fcm/PointTimeSpec\n  weekofyeartimespec: https://w3id.org/ogc/hosted/seadots/fcm/WeekOfYearTimeSpec\n  monthofyeartimespec: https://w3id.org/ogc/hosted/seadots/fcm/MonthOfYearTimeSpec\n  rangetimespec: https://w3id.org/ogc/hosted/seadots/fcm/RangeTimeSpec\nx-jsonld-prefixes:\n  fcm: https://w3id.org/ogc/hosted/seadots/fcm/\n  xsd: http://www.w3.org/2001/XMLSchema#\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/_staging/fcm-timespec"
+}

@@ -1,6 +1,9 @@
 @prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
 @prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 [] fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
-            fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] .
+            fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+    fcm:hasMatrix [ fcm:matrixNodes ( <file:///github/workspace/C1> <file:///github/workspace/C2> <file:///github/workspace/C3> <file:///github/workspace/C4> <file:///github/workspace/C5> <file:///github/workspace/C6> <file:///github/workspace/C7> <file:///github/workspace/C8> <file:///github/workspace/C9> <file:///github/workspace/C10> ) ;
+            fcm:matrixOrientation <file:///github/workspace/source-major> ] .
 

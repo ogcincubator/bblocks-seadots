@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-21",
+  "dateOfLastChange": "2026-09-24",
   "license": {
     "name": "https://creativecommons.org/licenses/by/4.0/"
   },
@@ -40,10 +40,10 @@
     }
   ],
   "dependsOn": [
+    "ogc.geo.geodcat.geodcat-records",
     "ogc.hosted.seadots.catalog-data",
-    "ogc.ogc-utils.prov-entity",
     "ogc.hosted.seadots.area-of-interest",
-    "ogc.geo.geodcat.geodcat-records"
+    "ogc.ogc-utils.prov-entity"
   ],
   "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
   "shaclRules": [],
@@ -54,29 +54,29 @@
   "maturity": "development",
   "scope": "dev",
   "shaclShapes": {
-    "ogc.contrib.stac.core-ontology": [
-      "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
-    ],
-    "ogc.model.cross-domain.prov": [
-      "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
-    ],
-    "ogc.contrib.stac.components.assets-ontology": [
-      "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
+    "ogc.api.records.v1.schemas.linkTemplate": [
+      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
-    "ogc.api.records.v1.schemas.linkTemplate": [
-      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-    ],
-    "ogc.contrib.stac.extensions.cf-ontology": [
-      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
+    "ogc.model.cross-domain.prov": [
+      "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
     ],
     "ogc.contrib.stac.extensions.osc-ontology": [
       "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl"
     ],
+    "ogc.contrib.stac.core-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.components.assets-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
+    ],
     "ogc.contrib.stac.extensions.themes-ontology": [
       "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl"
+    ],
+    "ogc.contrib.stac.extensions.cf-ontology": [
+      "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
     ]
   },
   "schema": {
@@ -112,7 +112,7 @@
           "language": "ttl",
           "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/catalog-workflow/example_1_1.ttl",
           "sizeBytes": 3500,
-          "code": "@prefix apkg: <https://w3id.org/apkg/terms/> .\n@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,\n        geojson:Feature ;\n    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,\n        <https://docs.ogc.org/is/20-004/20-004.html> ;\n    dcterms:description \"Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure.\" ;\n    dcterms:hasVersion \"0.1.0\" ;\n    dcterms:license \"https://creativecommons.org/licenses/by/4.0/\" ;\n    dcterms:method \"Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters.\" ;\n    dcterms:title \"Utsira reef-effect biomass workflow\" ;\n    rdfs:seeAlso [ rdfs:label \"Reef-effect application package\" ;\n            dcterms:type \"application/json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ],\n        [ dcterms:type \"application/schema+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ] ;\n    dcat:keyword \"digital-twin\",\n        \"offshore-wind\",\n        \"open-science\" ;\n    prov:activity <https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation> ;\n    schema:applicationCategory \"DigitalTwinApplication\" ;\n    schema:programmingLanguage \"Python\" ;\n    schema:softwareVersion \"0.1.0\" ;\n    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;\n            dcterms:description \"Optional baseline benthic biomass-density input profile.\" ;\n            seadots:required false ;\n            seadots:role \"benthic-biomass-density\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;\n            dcterms:description \"Generic STAC catalog data item accepted by this workflow.\" ;\n            seadots:required true ;\n            seadots:role \"input\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;\n            dcterms:description \"GeoJSON Feature defining the spatial area for the calculation.\" ;\n            seadots:required true ;\n            seadots:role \"area-of-interest\" ] ;\n    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;\n            dcterms:description \"Structured reef-effect biomass output record.\" ;\n            seadots:required true ;\n            seadots:role \"reef-biomass-result\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;\n            dcterms:description \"Generic STAC catalog data item produced by this workflow.\" ;\n            seadots:required true ;\n            seadots:role \"output\" ] ;\n    seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;\n    seadots:itemType \"record\" .\n\n"
+          "code": "@prefix apkg: <https://w3id.org/apkg/terms/> .\n@prefix dcat: <http://www.w3.org/ns/dcat#> .\n@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,\n        geojson:Feature ;\n    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,\n        <https://docs.ogc.org/is/20-004/20-004.html> ;\n    dcterms:description \"Reusable catalog workflow for estimating reef-associated biomass around floating wind infrastructure.\" ;\n    dcterms:hasVersion \"0.1.0\" ;\n    dcterms:license \"https://creativecommons.org/licenses/by/4.0/\" ;\n    dcterms:method \"Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters.\" ;\n    dcterms:title \"Utsira reef-effect biomass workflow\" ;\n    rdfs:seeAlso [ rdfs:label \"Reef-effect application package\" ;\n            dcterms:type \"application/json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/related> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ],\n        [ dcterms:type \"application/schema+json\" ;\n            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;\n            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ] ;\n    dcat:keyword \"digital-twin\",\n        \"offshore-wind\",\n        \"open-science\" ;\n    prov:activity <https://w3id.org/ogc/hosted/seadots/catalog/activity/reef-effect-calculation> ;\n    schema:applicationCategory \"DigitalTwinApplication\" ;\n    schema:programmingLanguage \"Python\" ;\n    schema:softwareVersion \"0.1.0\" ;\n    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;\n            dcterms:description \"Optional baseline benthic biomass-density input profile.\" ;\n            seadots:required false ;\n            seadots:role \"benthic-biomass-density\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;\n            dcterms:description \"Generic STAC catalog data item accepted by this workflow.\" ;\n            seadots:required true ;\n            seadots:role \"input\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;\n            dcterms:description \"GeoJSON Feature defining the spatial area for the calculation.\" ;\n            seadots:required true ;\n            seadots:role \"area-of-interest\" ] ;\n    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;\n            dcterms:description \"Generic STAC catalog data item produced by this workflow.\" ;\n            seadots:required true ;\n            seadots:role \"output\" ],\n        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;\n            dcterms:description \"Structured reef-effect biomass output record.\" ;\n            seadots:required true ;\n            seadots:role \"reef-biomass-result\" ] ;\n    seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;\n    seadots:itemType \"record\" .\n\n"
         }
       ]
     }

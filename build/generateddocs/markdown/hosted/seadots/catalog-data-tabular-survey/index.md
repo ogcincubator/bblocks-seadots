@@ -249,14 +249,14 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
-            dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
-        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
             dcterms:type "text/html" ;
             ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+            dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
     survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
             seadots:uri "https://elsst.uk/" ;
             thns:scheme "ELSST" ],
@@ -265,18 +265,18 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
             thns:scheme "CESSDA" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
-    survey:variableMetadata [ ddi:variableDescription "Likert-style attitude question" ;
-            survey:conceptUri "https://elsst.uk/terms/environmental-concern" ;
-            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes" ;
-            seadots:label "Environmental concern" ;
-            seadots:questionText "How important is the protection of the environment to you?" ;
-            seadots:variableName "Q5_1" ],
-        [ ddi:variableDescription "Age group of the respondent" ;
+    survey:variableMetadata [ ddi:variableDescription "Age group of the respondent" ;
             survey:conceptUri "https://elsst.uk/terms/age" ;
             survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
             seadots:label "Age group" ;
             seadots:questionText "What is your age group?" ;
-            seadots:variableName "Q1" ] ;
+            seadots:variableName "Q1" ],
+        [ ddi:variableDescription "Likert-style attitude question" ;
+            survey:conceptUri "https://elsst.uk/terms/environmental-concern" ;
+            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes" ;
+            seadots:label "Environmental concern" ;
+            seadots:questionText "How important is the protection of the environment to you?" ;
+            seadots:variableName "Q5_1" ] ;
     table:columns ( [ dcterms:description "Respondent identifier" ;
                 dcterms:title "caseid" ;
                 dcterms:type "string" ] [ dcterms:description "Country of residence" ;

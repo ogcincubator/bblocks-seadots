@@ -65,6 +65,12 @@ Both are carried as SHACL constraints by `ogc.hosted.seadots.fcm-ontology`, toge
 node-key uniqueness and activation-mode coherence. **Schema validation alone is not
 sufficient for this block.**
 
+The matrix form has the mirror-image gap: that `weights` is square against `nodes` relates
+the lengths of two sibling values, so it is not expressible in JSON Schema, and not
+checkable in RDF either since the cells are not there. It needs a block test. What SHACL
+does check on the header is that at least two nodes are indexed and that an orientation is
+declared.
+
 The `[-1, 1]` weight convention is documented upstream but enforced nowhere — not in the
 Julia validator and not here. Adding a range shape is a one-line change once the modelling
 team confirms the convention is binding.
@@ -91,15 +97,27 @@ nodes; they have no need for stable identity.
 computes; see the `fcm-activation-scheme` block. The correction happens in the context, so
 no consumer has to know about it.
 
-**The matrix form has no RDF projection, deliberately.** Its weights live in a nested array
-that JSON-LD cannot address. Mapping only `nodes` produced a graph with nodes and no edges,
-which correctly failed the dangling-node and minimum-edge constraints — so `matrix` is left
-unmapped. A matrix-form document is schema-valid but semantically inert until converted to
-edge-list form. Treat it as an exchange serialisation, not a publication format.
+**The matrix form projects at header level, not per cell.** This is the same arrangement
+as any array or datacube description: the ILIAD `zarr_array_metadata` block maps `shape`,
+`chunks`, `dtype` and `order` to RDF while the array values never enter it. `matrix.nodes`
+maps to `fcm:matrixNodes` as an **RDF list**, because it is the coordinate list of both
+axes and its order is semantic; `matrix.orientation` maps to `fcm:matrixOrientation`,
+resolving `source-major` to `fcm:SourceMajor` — the direct analogue of Zarr's `order`.
+`matrix.weights` stays out of RDF, exactly as array cells do.
 
-### Known context gap
+The first attempt mapped `matrix.nodes` onto `fcm:hasNode` and produced a *graph* with
+nodes and no edges, which correctly failed the dangling-node and minimum-edge constraints.
+That failure was the signal that a matrix is not a graph projection but an array-header
+one, which is why `fcm:WeightMatrix` is a class of its own rather than a second way of
+writing `fcm:ConceptGraph`.
 
-`activation_spec.*.params` is **not mapped**. It is a free-keyed object (`{"a": 1, "b": 0,
+### Known context gaps
+
+Two free-keyed objects are **not mapped**, for the same reason: JSON-LD cannot address
+arbitrary keys. `matrix.nodeLabels` (`{"C1": "..."}`) is one; where labels matter, use the
+edge-list form, whose vertex metadata maps to `skos:prefLabel` properly.
+
+`activation_spec.*.params` is the other. It is **not mapped**. It is a free-keyed object (`{"a": 1, "b": 0,
 "lambda": 1}`) and JSON-LD cannot address arbitrary keys, while the ontology models
 parameters as `fcm:Parameter` nodes with `fcm:parameterName` / `fcm:parameterValue`. Faking
 a mapping would mint properties that do not exist, so the keys are left unmapped and the
@@ -113,8 +131,11 @@ serialiser.
 | --- | --- |
 | `fcm-ontology` | the semantics, and the SHACL constraints this schema cannot express |
 | `fcm-activation-scheme` | the vocabulary `label` resolves into |
-| `fcm-timespec`, `fcm-solution`, `fcm-sequence` | the other FCM artefacts (not yet written) |
+| `fcm-timespec` | when a map applies; the element type of a sequence's `timespec_series` |
+| `fcm-solution` | the equilibria computed from a map; index-aligned with *this* block's vertex order |
+| `fcm-sequence` | maps and solutions over successive elicitation rounds |
 | `catalog-data` | the record that makes a map discoverable, with `role: input` |
+| `catalog-data-multidim` | the right catalog profile for a map published in `matrix` form — array-oriented data with a declared coordinate list is exactly what that profile describes |
 | `catalog-data-tabular-survey` | the elicitation the weights came from; a map's `derivedFrom` should point at it |
 | `catalog-workflow` | declares which activation concepts the solver actually supports — `logistic`, `logistic-of-square` and `offset` only |
 
@@ -683,9 +704,12 @@ upstream as certain to change.
 ```ttl
 @prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
 @prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 [] fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
-            fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] .
+            fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+    fcm:hasMatrix [ fcm:matrixNodes ( <file:///github/workspace/C1> <file:///github/workspace/C2> <file:///github/workspace/C3> <file:///github/workspace/C4> <file:///github/workspace/C5> <file:///github/workspace/C6> <file:///github/workspace/C7> <file:///github/workspace/C8> <file:///github/workspace/C9> <file:///github/workspace/C10> ) ;
+            fcm:matrixOrientation <file:///github/workspace/source-major> ] .
 
 
 ```
@@ -799,6 +823,7 @@ properties:
     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasGraph
   matrix:
     $ref: '#/$defs/WeightMatrix'
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasMatrix
   activation_spec:
     $ref: '#/$defs/ActivationSpec'
     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasActivationSpec
@@ -969,6 +994,9 @@ $defs:
         items:
           type: string
           minLength: 1
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/matrixNodes
+        x-jsonld-type: '@id'
+        x-jsonld-container: '@list'
       nodeLabels:
         type: object
         description: Optional map from node key to human-readable label.
@@ -983,6 +1011,8 @@ $defs:
           x).
 
           '
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/matrixOrientation
+        x-jsonld-type: '@vocab'
       weights:
         type: array
         minItems: 2
@@ -1118,6 +1148,20 @@ Links to the schema:
         }
       },
       "@id": "fcm:hasGraph"
+    },
+    "matrix": {
+      "@context": {
+        "nodes": {
+          "@id": "fcm:matrixNodes",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "orientation": {
+          "@id": "fcm:matrixOrientation",
+          "@type": "@vocab"
+        }
+      },
+      "@id": "fcm:hasMatrix"
     },
     "activation_spec": {
       "@context": {

@@ -2,8 +2,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,58 +21,50 @@
         "SeaDOTs",
         "multidimensional" ;
     dcterms:title "Dummy data file for OGC from the German Use Case" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Multidimensional bblock" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
+        [ rdfs:label "SeaDOTs Catalog Data Multidimensional bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-multidim> ],
         [ rdfs:label "ILIAD STAC/DCAT multidimensional data profile" ;
             dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ],
-        [ rdfs:label "SeaDOTs Catalog Data bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
+            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.stac_multidim_data> ] ;
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Sea Water Salinity (SSS)" ;
-            qudt:unit <http://qudt.org/vocab/unit/0.001> ;
-            foaf:name "sea_water_salinity"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "phospate in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "number of mussels per qubic meter" ;
-            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
-            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "silicate in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Sea Surface Temperature (SST)" ;
-            qudt:unit <http://qudt.org/vocab/unit/degC> ;
-            foaf:name "sea_water_temperature"^^rdfs:Literal ],
+            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
+            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
+            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "oxygen concentration in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/degree> ;
             foaf:name "concentration of oxygen in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "chlorophyll mass concentration" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
-            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "biomass of harvested mussels N" ;
             qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
             foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea Water Salinity (SSS)" ;
+            qudt:unit <http://qudt.org/vocab/unit/0.001> ;
+            foaf:name "sea_water_salinity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "nitrat in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/m> ;
             foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "silicate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "number of mussels per qubic meter" ;
+            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
+            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "phospate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "biomass of harvested mussels C" ;
             qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
@@ -80,11 +72,19 @@
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Eastward Surface Sea Water Velocity (U)" ;
             qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-            foaf:name "surface_eastward_sea_water_velocity"^^rdfs:Literal ] ;
+            foaf:name "surface_eastward_sea_water_velocity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Sea Surface Temperature (SST)" ;
+            qudt:unit <http://qudt.org/vocab/unit/degC> ;
+            foaf:name "sea_water_temperature"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "chlorophyll mass concentration" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ] ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.8" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:netcdf <https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> ] ;
+    stac:hasAsset [ ns1:netcdf <https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/datacube/v2.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
@@ -155,6 +155,18 @@
 <https://example.org/seadots/german-case/schism-wwm_3Dinterp_10.nc> dcterms:format "application/x-netcdf" ;
     dcterms:title "NetCDF data cube" ;
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "chlorophyll mass concentration" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "number of mussels per qubic meter" ;
+            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
+            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "phospate in the water" ;
+            qudt:unit <http://qudt.org/vocab/unit/s> ;
+            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Sea Surface Temperature (SST)" ;
             qudt:unit <http://qudt.org/vocab/unit/degC> ;
             foaf:name "sea_water_temperature"^^rdfs:Literal ],
@@ -167,40 +179,28 @@
             qudt:unit <http://qudt.org/vocab/unit/0.001> ;
             foaf:name "sea_water_salinity"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "biomass of harvested mussels N" ;
-            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
-            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
-            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
-            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "biomass of harvested mussels C" ;
-            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
-            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "nitrat in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/m> ;
             foaf:name "concentration of no3 in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "number of mussels per qubic meter" ;
-            qudt:unit <http://qudt.org/vocab/unit/m*1e-3> ;
-            foaf:name "number of mussels per qubic meter"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "chlorophyll mass concentration" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "total mass concentration of chlorophyll in sea_water"^^rdfs:Literal ],
-        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
-            dcterms:description "phospate in the water" ;
-            qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of po4 in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "oxygen concentration in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/degree> ;
             foaf:name "concentration of oxygen in sea_water"^^rdfs:Literal ],
         [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "Northward Surface Sea Water Velocity (V)" ;
+            qudt:unit <http://qudt.org/vocab/unit/m/s> ;
+            foaf:name "surface_northward_sea_water_velocity"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "silicate in the water" ;
             qudt:unit <http://qudt.org/vocab/unit/s> ;
-            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ] ;
+            foaf:name "concentration of sio4 in sea_water"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "biomass of harvested mussels N" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-N/m3> ;
+            foaf:name "biomass of harvested mussels N"^^rdfs:Literal ],
+        [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
+            dcterms:description "biomass of harvested mussels C" ;
+            qudt:unit <http://qudt.org/vocab/unit/mol-C/m3> ;
+            foaf:name "biomass of harvested mussels C"^^rdfs:Literal ] ;
     stac:hasAssetroles "data"^^xsd:string .
 

@@ -33,6 +33,7 @@ properties:
     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasGraph
   matrix:
     $ref: '#/$defs/WeightMatrix'
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasMatrix
   activation_spec:
     $ref: '#/$defs/ActivationSpec'
     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasActivationSpec
@@ -203,6 +204,9 @@ $defs:
         items:
           type: string
           minLength: 1
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/matrixNodes
+        x-jsonld-type: '@id'
+        x-jsonld-container: '@list'
       nodeLabels:
         type: object
         description: Optional map from node key to human-readable label.
@@ -217,6 +221,8 @@ $defs:
           x).
 
           '
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/matrixOrientation
+        x-jsonld-type: '@vocab'
       weights:
         type: array
         minItems: 2

@@ -34,7 +34,8 @@
       "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/fcm/hasGraph"
     },
     "matrix": {
-      "$ref": "#/$defs/WeightMatrix"
+      "$ref": "#/$defs/WeightMatrix",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/fcm/hasMatrix"
     },
     "activation_spec": {
       "$ref": "#/$defs/ActivationSpec",
@@ -213,7 +214,10 @@
           "items": {
             "type": "string",
             "minLength": 1
-          }
+          },
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/fcm/matrixNodes",
+          "x-jsonld-type": "@id",
+          "x-jsonld-container": "@list"
         },
         "nodeLabels": {
           "type": "object",
@@ -224,7 +228,9 @@
         },
         "orientation": {
           "const": "source-major",
-          "description": "Declares that weights[i][j] is the influence of nodes[i] ON nodes[j]. Stated as a required constant rather than assumed, because the opposite convention is equally common and silently transposes the entire model. The solver applies the transpose at iteration time, computing f(W' x).\n"
+          "description": "Declares that weights[i][j] is the influence of nodes[i] ON nodes[j]. Stated as a required constant rather than assumed, because the opposite convention is equally common and silently transposes the entire model. The solver applies the transpose at iteration time, computing f(W' x).\n",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/fcm/matrixOrientation",
+          "x-jsonld-type": "@vocab"
         },
         "weights": {
           "type": "array",

@@ -1,0 +1,119 @@
+{
+  "@context": {
+    "id": "@id",
+    "type": "@type",
+    "timespec_series": {
+      "@context": {
+        "dt": {
+          "@id": "fcm:instant",
+          "@type": "xsd:dateTime"
+        },
+        "year": {
+          "@id": "fcm:year",
+          "@type": "xsd:integer"
+        },
+        "week": {
+          "@id": "fcm:week",
+          "@type": "xsd:integer"
+        },
+        "month": {
+          "@id": "fcm:month",
+          "@type": "xsd:integer"
+        },
+        "start": {
+          "@id": "fcm:intervalStart",
+          "@type": "xsd:dateTime"
+        },
+        "stop": {
+          "@id": "fcm:intervalStop",
+          "@type": "xsd:dateTime"
+        }
+      },
+      "@id": "fcm:timeSpecSeries",
+      "@container": "@list"
+    },
+    "fcm_series": {
+      "@context": {
+        "graph": {
+          "@context": {
+            "vertices": {
+              "@id": "fcm:hasNode",
+              "@container": "@set"
+            },
+            "edges": {
+              "@id": "fcm:hasEdge",
+              "@container": "@set"
+            }
+          },
+          "@id": "fcm:hasGraph"
+        },
+        "matrix": {
+          "@context": {
+            "nodes": {
+              "@id": "fcm:matrixNodes",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "orientation": {
+              "@id": "fcm:matrixOrientation",
+              "@type": "@vocab"
+            }
+          },
+          "@id": "fcm:hasMatrix"
+        },
+        "activation_spec": {
+          "@context": {
+            "mode": {
+              "@id": "fcm:activationMode",
+              "@type": "@vocab"
+            },
+            "homogeneous": "fcm:homogeneousActivation",
+            "heterogeneous": {
+              "@id": "fcm:heterogeneousActivation",
+              "@container": "@list"
+            },
+            "label": {
+              "@id": "fcm:activationFunction",
+              "@type": "@vocab"
+            },
+            "logistic": "fcm:activation/logistic",
+            "gaussian": "fcm:activation/logistic-of-square",
+            "other": "fcm:activation/offset",
+            "tanh": "fcm:activation/hyperbolic-tangent",
+            "bivalent": "fcm:activation/bivalent",
+            "trivalent": "fcm:activation/trivalent"
+          },
+          "@id": "fcm:hasActivationSpec"
+        },
+        "description": "dct:description",
+        "metadata": "@nest"
+      },
+      "@id": "fcm:mapSeries",
+      "@container": "@list"
+    },
+    "solution_series": {
+      "@context": {
+        "b_success": {
+          "@id": "fcm:hasFiniteEquilibria",
+          "@type": "xsd:boolean"
+        }
+      },
+      "@id": "fcm:solutionSeries",
+      "@container": "@list"
+    },
+    "pointtimespec": "fcm:PointTimeSpec",
+    "weekofyeartimespec": "fcm:WeekOfYearTimeSpec",
+    "monthofyeartimespec": "fcm:MonthOfYearTimeSpec",
+    "rangetimespec": "fcm:RangeTimeSpec",
+    "fcm": "https://w3id.org/ogc/hosted/seadots/fcm/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dct": "http://purl.org/dc/terms/",
+    "fcmact": "fcm:activation/",
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "@version": 1.1
+  }
+}

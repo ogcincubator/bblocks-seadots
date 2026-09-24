@@ -1,0 +1,67 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.fcm-workflow - FCM solver workflow",
+  "bblockName": "FCM solver workflow",
+  "bblockId": "ogc.hosted.seadots.fcm-workflow",
+  "generated": "2026-09-24T09:48:37.797896+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/fcm-workflow/example_1_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-workflow/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/fcm-solver-workflow.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "JSON_LD",
+          "title": "JSON-LD",
+          "entries": [
+            {
+              "op": "jsonld-uplift-error",
+              "isError": true,
+              "message": "Error found when uplifting JSON-LD: HTTPError: HTTP Error 404: Not Found"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}

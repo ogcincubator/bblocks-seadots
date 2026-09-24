@@ -316,8 +316,8 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -340,13 +340,13 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
         "tabular" ;
     dcterms:title "North Sea cod occurrence table (synthetic)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
+        [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
     geojson:bbox ( 3e+00 5.6e+01 9e+00 6.1e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -378,7 +378,7 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
     seadots:itemType "record" ;
     seadots:role "data" ;
     stac:end_datetime "2024-12-31T00:00:00+00:00"^^xsd:dateTime ;
-    stac:hasAsset [ ns1:geoparquet <https://example.org/seadots/north-sea-cod-occurrences.parquet> ] ;
+    stac:hasAsset [ ns2:geoparquet <https://example.org/seadots/north-sea-cod-occurrences.parquet> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
@@ -563,8 +563,8 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -581,7 +581,7 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
     dcterms:type "Feature" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
     geojson:bbox ( 7.642602e+00 5.439246e+01 7.680002e+00 5.43991e+01 ) ;
     geojson:geometry [ a geojson:MultiPoint ;
@@ -601,7 +601,7 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns1:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
+    stac:hasAsset [ ns2:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;

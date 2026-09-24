@@ -1,0 +1,96 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: FCM solution
+description: 'What iterating a fuzzy cognitive map to convergence produces. The solver
+  runs many trials from random starting states, clusters the endpoints that land within
+  tolerance of each other, and reports one representative point per cluster. `centroids`
+  holds those representatives -- one per distinct equilibrium -- and `maxdists` the
+  componentwise spread of the cluster each one stands for, as a rudimentary error
+  bound.
+
+  A solution is a digital-twin OUTPUT. It is index-aligned with the map that produced
+  it: element i of every centroid is the value of the i-th vertex of that map, and
+  the solution document itself carries no node identities. It is therefore not interpretable
+  on its own; see description.md.
+
+  '
+type: object
+required:
+- centroids
+- maxdists
+- b_success
+properties:
+  centroids:
+    type: array
+    description: 'One entry per distinct equilibrium found. Each entry is a state
+      vector: one value per concept node, in the vertex order of the map that was
+      solved. Typically there is exactly one entry, but a map with several basins
+      of attraction yields several.
+
+      '
+    items:
+      $ref: '#/$defs/StateVector'
+  maxdists:
+    type: array
+    description: 'Componentwise error bound for the correspondingly-indexed centroid:
+      for each component, the spread (max - min) across the cluster of trial endpoints
+      that centroid represents. Index-aligned with `centroids` element by element
+      AND component by component.
+
+      '
+    items:
+      $ref: '#/$defs/SpreadVector'
+  b_success:
+    type: boolean
+    description: 'True when the map settles on finitely many discrete stable points.
+      When false the solution carries no usable information and must be ignored.
+
+      Note that no code path in upstream v0.1.0 ever sets this to false -- both constructors
+      hardcode `true`. Treat a `true` here as "not yet contradicted" rather than as
+      a positive assertion of convergence. See description.md.
+
+      '
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasFiniteEquilibria
+    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+additionalProperties: false
+allOf:
+- if:
+    properties:
+      b_success:
+        const: true
+    required:
+    - b_success
+  then:
+    properties:
+      centroids:
+        minItems: 1
+      maxdists:
+        minItems: 1
+$defs:
+  StateVector:
+    type: array
+    description: 'One value per concept node, positionally aligned with the vertex
+      order of the map that was solved. `minItems: 2` follows from the upstream graph
+      validator, which requires a map to have at least two vertices.
+
+      '
+    minItems: 2
+    items:
+      type: number
+  SpreadVector:
+    type: array
+    description: 'Componentwise spread, positionally aligned with a state vector.
+      Values are non-negative because each is computed as `maximum(...) - minimum(...)`
+      over the cluster; the `minimum: 0` bound is derived from that construction rather
+      than declared upstream.
+
+      '
+    minItems: 2
+    items:
+      type: number
+      minimum: 0
+x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
+x-jsonld-prefixes:
+  fcm: https://w3id.org/ogc/hosted/seadots/fcm/
+  xsd: http://www.w3.org/2001/XMLSchema#

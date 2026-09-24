@@ -1,0 +1,172 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: FCM sequence
+description: 'A time-indexed series of fuzzy cognitive maps together with the solutions
+  computed from them: how the causal structure a stakeholder group describes, and
+  the equilibria that structure implies, change over successive elicitation rounds.
+
+  The serialisation is three PARALLEL ARRAYS rather than an array of steps. Whatever
+  sits at index k of each is one (time, map, solution) triple; the upstream author
+  notes this shape was chosen to make plotting easier. Position is therefore the only
+  thing binding a step together, and the three arrays must be the same length -- an
+  invariant JSON Schema cannot state. See description.md.
+
+  '
+type: object
+required:
+- timespec_series
+- fcm_series
+- solution_series
+properties:
+  timespec_series:
+    type: array
+    minItems: 1
+    description: 'When each step applies. Must be pairwise non-overlapping, or the
+      sequence cannot be ordered at all -- see description.md.
+
+      '
+    items:
+      $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-timespec/schema.yaml
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/timeSpecSeries
+    x-jsonld-container: '@list'
+    x-jsonld-extra-terms:
+      pointtimespec: https://w3id.org/ogc/hosted/seadots/fcm/PointTimeSpec
+      weekofyeartimespec: https://w3id.org/ogc/hosted/seadots/fcm/WeekOfYearTimeSpec
+      monthofyeartimespec: https://w3id.org/ogc/hosted/seadots/fcm/MonthOfYearTimeSpec
+      rangetimespec: https://w3id.org/ogc/hosted/seadots/fcm/RangeTimeSpec
+      dt:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/instant
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+      year:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/year
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      week:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/week
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      month:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/month
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      start:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/intervalStart
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+      stop:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/intervalStop
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+  fcm_series:
+    type: array
+    minItems: 1
+    description: 'The map that held at each step. Repeating a structurally identical
+      map at every step is normal; what usually changes between steps is a handful
+      of edge weights.
+
+      '
+    items:
+      $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm/schema.yaml
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/mapSeries
+    x-jsonld-container: '@list'
+    x-jsonld-extra-terms:
+      graph:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasGraph
+        x-jsonld-context:
+          '@type': https://w3id.org/ogc/hosted/seadots/fcm/ConceptGraph
+          vertices:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/hasNode
+            '@container': '@set'
+            '@context':
+              '@type': https://w3id.org/ogc/hosted/seadots/fcm/ConceptNode
+              metadata:
+                '@id': '@nest'
+                '@context':
+                  description: http://www.w3.org/2004/02/skos/core#prefLabel
+          edges:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/hasEdge
+            '@container': '@set'
+            '@context':
+              '@type': https://w3id.org/ogc/hosted/seadots/fcm/InfluenceEdge
+              src:
+                '@id': https://w3id.org/ogc/hosted/seadots/fcm/sourceNode
+                '@type': '@id'
+              dst:
+                '@id': https://w3id.org/ogc/hosted/seadots/fcm/targetNode
+                '@type': '@id'
+              weight:
+                '@id': http://qudt.org/schema/qudt/numericValue
+                '@type': http://www.w3.org/2001/XMLSchema#double
+              metadata:
+                '@id': '@nest'
+                '@context':
+                  description: http://www.w3.org/2000/01/rdf-schema#comment
+                  provenance: http://www.w3.org/ns/prov#wasDerivedFrom
+              id: https://w3id.org/ogc/hosted/seadots/fcm/edgeKey
+          metadata:
+            '@id': '@nest'
+            '@context':
+              description: http://purl.org/dc/terms/description
+      activation_spec:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasActivationSpec
+        x-jsonld-context:
+          '@type': https://w3id.org/ogc/hosted/seadots/fcm/ActivationSpec
+          mode:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/activationMode
+            '@type': '@vocab'
+            '@context':
+              homogeneous: https://w3id.org/ogc/hosted/seadots/fcm/Homogeneous
+              heterogeneous: https://w3id.org/ogc/hosted/seadots/fcm/Heterogeneous
+          homogeneous: https://w3id.org/ogc/hosted/seadots/fcm/homogeneousActivation
+          heterogeneous:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/heterogeneousActivation
+            '@container': '@list'
+          label:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/activationFunction
+            '@type': '@vocab'
+          logistic: https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic
+          gaussian: https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic-of-square
+          other: https://w3id.org/ogc/hosted/seadots/fcm/activation/offset
+          tanh: https://w3id.org/ogc/hosted/seadots/fcm/activation/hyperbolic-tangent
+          bivalent: https://w3id.org/ogc/hosted/seadots/fcm/activation/bivalent
+          trivalent: https://w3id.org/ogc/hosted/seadots/fcm/activation/trivalent
+      metadata:
+        x-jsonld-id: '@nest'
+        x-jsonld-context:
+          description: http://purl.org/dc/terms/description
+      matrix:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasMatrix
+        x-jsonld-context:
+          nodes:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/matrixNodes
+            '@type': '@id'
+            '@container': '@list'
+          orientation:
+            '@id': https://w3id.org/ogc/hosted/seadots/fcm/matrixOrientation
+            '@type': '@vocab'
+            '@context':
+              source-major: https://w3id.org/ogc/hosted/seadots/fcm/SourceMajor
+  solution_series:
+    type: array
+    minItems: 1
+    description: 'The solution computed from the map at the same index. A step''s
+      solution is index-aligned with its own map''s vertex order, not with any other
+      step''s.
+
+      '
+    items:
+      $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-solution/schema.yaml
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/solutionSeries
+    x-jsonld-container: '@list'
+    x-jsonld-extra-terms:
+      b_success:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/fcm/hasFiniteEquilibria
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+additionalProperties: false
+x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
+x-jsonld-prefixes:
+  fcm: https://w3id.org/ogc/hosted/seadots/fcm/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  qudt: http://qudt.org/schema/qudt/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  prov: http://www.w3.org/ns/prov#
+  dct: http://purl.org/dc/terms/
+  fcmact: https://w3id.org/ogc/hosted/seadots/fcm/activation/
+  prop-rel: https://w3id.org/ogc/hosted/seadots/prop-rel/

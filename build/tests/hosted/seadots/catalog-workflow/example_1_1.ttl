@@ -45,14 +45,14 @@
             dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
             seadots:required true ;
             seadots:role "area-of-interest" ] ;
-    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
-            dcterms:description "Structured reef-effect biomass output record." ;
-            seadots:required true ;
-            seadots:role "reef-biomass-result" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item produced by this workflow." ;
             seadots:required true ;
-            seadots:role "output" ] ;
+            seadots:role "output" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+            dcterms:description "Structured reef-effect biomass output record." ;
+            seadots:required true ;
+            seadots:role "reef-biomass-result" ] ;
     seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;
     seadots:itemType "record" .
 

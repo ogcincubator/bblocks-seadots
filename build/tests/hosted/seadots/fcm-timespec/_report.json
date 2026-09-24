@@ -1,0 +1,641 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.fcm-timespec - FCM time specification",
+  "bblockName": "FCM time specification",
+  "bblockId": "ogc.hosted.seadots.fcm-timespec",
+  "generated": "2026-09-24T09:46:54.531412+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/fcm-timespec/example_1_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/timespec-point.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 2,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/_staging/fcm-ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "focusNodes": {
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
+                  "nodes": []
+                },
+                "fcm:PolarityRuleShape": {
+                  "nodes": []
+                },
+                "fcm:HeterogeneousActivationShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceSeriesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateValueShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
+                "fcm:SolutionShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:EquilibriumShape": {
+                  "nodes": []
+                },
+                "fcm:NoDanglingNodeShape": {
+                  "nodes": []
+                },
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
+                  "nodes": []
+                },
+                "fcm:NodeKeyShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:SolutionShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": []
+                },
+                ":IndexedTermShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
+                  "nodes": []
+                },
+                ":ProvClosureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :SymbolInEquationShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n - Shape :ProvClosureShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/fcm-timespec/example_2_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_2_1.json",
+        "exampleIndex": 2,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/timespec-week-of-year.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_2_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_2_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_2_1.ttl",
+              "size": 3,
+              "isError": false,
+              "message": "Output Turtle example_2_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/_staging/fcm-ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "focusNodes": {
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
+                  "nodes": []
+                },
+                "fcm:PolarityRuleShape": {
+                  "nodes": []
+                },
+                "fcm:HeterogeneousActivationShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceSeriesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateValueShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
+                "fcm:SolutionShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:EquilibriumShape": {
+                  "nodes": []
+                },
+                "fcm:NoDanglingNodeShape": {
+                  "nodes": []
+                },
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
+                  "nodes": []
+                },
+                "fcm:NodeKeyShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:SolutionShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": []
+                },
+                ":IndexedTermShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
+                  "nodes": []
+                },
+                ":ProvClosureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :SymbolInEquationShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n - Shape :ProvClosureShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/fcm-timespec/example_3_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_3_1.json",
+        "exampleIndex": 3,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/timespec-month-of-year.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_3_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_3_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_3_1.ttl",
+              "size": 3,
+              "isError": false,
+              "message": "Output Turtle example_3_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/_staging/fcm-ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "focusNodes": {
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
+                  "nodes": []
+                },
+                "fcm:PolarityRuleShape": {
+                  "nodes": []
+                },
+                "fcm:HeterogeneousActivationShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceSeriesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateValueShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
+                "fcm:SolutionShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:EquilibriumShape": {
+                  "nodes": []
+                },
+                "fcm:NoDanglingNodeShape": {
+                  "nodes": []
+                },
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
+                  "nodes": []
+                },
+                "fcm:NodeKeyShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:SolutionShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": []
+                },
+                ":IndexedTermShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
+                  "nodes": []
+                },
+                ":ProvClosureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :SymbolInEquationShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n - Shape :ProvClosureShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/fcm-timespec/example_4_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/fcm-timespec/example_4_1.json",
+        "exampleIndex": 4,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/timespec-range.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_4_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_4_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_4_1.ttl",
+              "size": 3,
+              "isError": false,
+              "message": "Output Turtle example_4_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/_staging/fcm-ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
+              "focusNodes": {
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
+                  "nodes": []
+                },
+                "fcm:PolarityRuleShape": {
+                  "nodes": []
+                },
+                "fcm:HeterogeneousActivationShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceSeriesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": [
+                    "_:Nb6f1358854514b4abcbb761c64cff001"
+                  ]
+                },
+                "fcm:NodeStateValueShape": {
+                  "nodes": []
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
+                "fcm:SolutionShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:EquilibriumShape": {
+                  "nodes": []
+                },
+                "fcm:NoDanglingNodeShape": {
+                  "nodes": []
+                },
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
+                  "nodes": []
+                },
+                "fcm:NodeKeyShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:RangeTimeSpecShape: _:Nb6f1358854514b4abcbb761c64cff001\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:SolutionShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/rules.shacl",
+              "focusNodes": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":PrimaryEntryShape": {
+                  "nodes": []
+                },
+                ":IndexedTermShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
+                  "nodes": []
+                },
+                ":ProvClosureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :SymbolInEquationShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n - Shape :ProvClosureShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}
