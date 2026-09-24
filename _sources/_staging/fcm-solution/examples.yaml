@@ -1,0 +1,26 @@
+examples:
+  - title: Single equilibrium of the researcher proposal map
+    description: >
+      Copied byte-for-byte from
+      `dataspecs/example__solution_one_element__20260630.json` of
+      FuzzyCognitiveMapTools.jl. One equilibrium of ten components, which is the
+      solution of the ten-concept researcher-proposal map carried as the worked example
+      of `ogc.hosted.seadots.fcm` -- the component count is how the two documents are
+      known to belong together, since the solution carries no node identities of its
+      own. Every value is the upstream author's; nothing here was generated or altered.
+      The `maxdists` of order 1e-11 against equilibrium values of order 0.5 show the
+      trial cluster is numerically tight.
+    snippets:
+      - language: json
+        ref: examples/solution-researcher-proposal.json
+
+  - title: Two equilibria (synthetic)
+    description: >
+      SYNTHETIC. The two state vectors and their spreads were invented for this example
+      and carry no empirical meaning. They exist only to exercise the multiple-equilibria
+      case -- an outer array of length greater than one -- which no upstream example
+      file covers, on the smallest map the upstream validator accepts. A map with two
+      basins of attraction produces exactly this shape.
+    snippets:
+      - language: json
+        ref: examples/solution-two-equilibria-synthetic.json

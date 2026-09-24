@@ -1,0 +1,35 @@
+examples:
+  - title: Instant
+    description: >
+      The `pointtimespec` element of
+      `dataspecs/example__timespec_vector__20260630.json` of
+      FuzzyCognitiveMapTools.jl, copied byte-for-byte. Note the upstream datetime
+      serialisation -- no UTC offset, trailing `.0` -- which is why this block does not
+      declare `format: date-time`; see description.md.
+    snippets:
+      - language: json
+        ref: examples/timespec-point.json
+
+  - title: Week of year
+    description: >
+      The `weekofyeartimespec` element of the same upstream example file, copied
+      byte-for-byte. Weeks are counted from 1 January, not by ISO 8601 numbering.
+    snippets:
+      - language: json
+        ref: examples/timespec-week-of-year.json
+
+  - title: Month of year
+    description: >
+      The `monthofyeartimespec` element of the same upstream example file, copied
+      byte-for-byte.
+    snippets:
+      - language: json
+        ref: examples/timespec-month-of-year.json
+
+  - title: Explicit interval
+    description: >
+      The `rangetimespec` element of the same upstream example file, copied
+      byte-for-byte. The half-open interval [start, stop).
+    snippets:
+      - language: json
+        ref: examples/timespec-range.json

@@ -1,0 +1,45 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: FCM sequence
+description: >
+  A time-indexed series of fuzzy cognitive maps together with the solutions computed
+  from them: how the causal structure a stakeholder group describes, and the equilibria
+  that structure implies, change over successive elicitation rounds.
+
+  The serialisation is three PARALLEL ARRAYS rather than an array of steps. Whatever
+  sits at index k of each is one (time, map, solution) triple; the upstream author notes
+  this shape was chosen to make plotting easier. Position is therefore the only thing
+  binding a step together, and the three arrays must be the same length -- an invariant
+  JSON Schema cannot state. See description.md.
+
+type: object
+required: [timespec_series, fcm_series, solution_series]
+properties:
+
+  timespec_series:
+    type: array
+    minItems: 1
+    description: >
+      When each step applies. Must be pairwise non-overlapping, or the sequence cannot
+      be ordered at all -- see description.md.
+    items:
+      $ref: bblocks://ogc.hosted.seadots.fcm-timespec
+
+  fcm_series:
+    type: array
+    minItems: 1
+    description: >
+      The map that held at each step. Repeating a structurally identical map at every
+      step is normal; what usually changes between steps is a handful of edge weights.
+    items:
+      $ref: bblocks://ogc.hosted.seadots.fcm
+
+  solution_series:
+    type: array
+    minItems: 1
+    description: >
+      The solution computed from the map at the same index. A step's solution is
+      index-aligned with its own map's vertex order, not with any other step's.
+    items:
+      $ref: bblocks://ogc.hosted.seadots.fcm-solution
+
+additionalProperties: false

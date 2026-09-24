@@ -1,0 +1,50 @@
+{
+  "name": "FCM solver workflow",
+  "abstract": "SeaDOTs Catalog Workflow profile for the fuzzy-cognitive-map solver: the workflow record that consumes a map and produces solutions or sequences. Declares the activation functions the solver actually implements, the fixed inference rule, and the execution parameters that exist only as code arguments and are therefore absent from every serialised artefact.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-23T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-09-23",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dependsOn": [
+    "ogc.hosted.seadots.catalog-workflow",
+    "ogc.hosted.seadots.fcm",
+    "ogc.hosted.seadots.fcm-solution",
+    "ogc.hosted.seadots.fcm-sequence",
+    "ogc.hosted.seadots.fcm-activation-scheme"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "tags": [
+    "seadots",
+    "fcm",
+    "fuzzy-cognitive-map",
+    "workflow",
+    "open-science",
+    "schema"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "FuzzyCognitiveMapTools.jl v0.1.0",
+      "link": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl"
+    },
+    {
+      "title": "FCM data specifications (dataspecs/fcm_dataspecs__20260630.md)",
+      "link": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl/-/blob/main/dataspecs/fcm_dataspecs__20260630.md"
+    }
+  ],
+  "standards": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "maturity": "development",
+  "scope": "dev"
+}

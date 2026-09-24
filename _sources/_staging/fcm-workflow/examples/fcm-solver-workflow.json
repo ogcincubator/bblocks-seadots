@@ -1,0 +1,90 @@
+{
+  "@context": [
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-workflow/context.jsonld"
+  ],
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/fcm-solver",
+  "type": "Feature",
+  "itemType": "record",
+  "conformsTo": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "geometry": null,
+  "properties": {
+    "title": "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)",
+    "description": "Iterates a fuzzy cognitive map from many random initial states until each trial converges, clusters the endpoints that agree within tolerance, and reports one representative equilibrium per cluster with its componentwise spread. Applied stepwise over a time-indexed series of maps it produces a sequence.",
+    "type": "Workflow",
+    "applicationCategory": "Model",
+    "version": "0.1.0",
+    "method": "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread.",
+    "softwareVersion": "0.1.0",
+    "programmingLanguage": "Julia",
+    "solver": {
+      "inferenceRule": "kosko",
+      "supportedActivation": [
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic",
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic-of-square",
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/offset"
+      ],
+      "executionParameters": {
+        "numTrials": 1000,
+        "x0Range": [0.0, 1.0],
+        "x0ClampRange": [0.1, 0.9],
+        "maxIterations": 100,
+        "convergenceTolerance": 1.0e-10,
+        "clusteringTolerance": 1.0e-6
+      },
+      "refinement": {
+        "enabled": true,
+        "maxIterations": 3000,
+        "convergenceTolerance": 1.0e-13,
+        "x0ClampRange": [0.0, 1.0],
+        "checkTolerance": 1.0e-6
+      },
+      "stochasticMapsSupported": false
+    },
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.fcm",
+        "required": true,
+        "role": "map",
+        "description": "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.fcm-solution",
+        "required": true,
+        "role": "equilibria",
+        "description": "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.fcm-sequence",
+        "required": false,
+        "role": "sequence",
+        "description": "Produced only when the solver is applied stepwise over a time-indexed series of maps."
+      }
+    ],
+    "keywords": [
+      "fuzzy-cognitive-map",
+      "participatory-modelling",
+      "digital-twin",
+      "open-science"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.fcm-workflow",
+      "type": "application/schema+json"
+    },
+    {
+      "rel": "related",
+      "href": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl",
+      "type": "text/html",
+      "title": "FuzzyCognitiveMapTools.jl source repository"
+    }
+  ]
+}

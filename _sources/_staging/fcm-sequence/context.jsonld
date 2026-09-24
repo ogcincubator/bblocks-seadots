@@ -1,0 +1,169 @@
+{
+  "@context": {
+    "fcm": "https://w3id.org/ogc/hosted/seadots/fcm/",
+    "fcmact": "https://w3id.org/ogc/hosted/seadots/fcm/activation/",
+    "prop-rel": "https://w3id.org/ogc/hosted/seadots/prop-rel/",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "timespec_series": {
+      "@id": "fcm:timeSpecSeries",
+      "@container": "@list",
+      "@context": {
+        "pointtimespec": "fcm:PointTimeSpec",
+        "weekofyeartimespec": "fcm:WeekOfYearTimeSpec",
+        "monthofyeartimespec": "fcm:MonthOfYearTimeSpec",
+        "rangetimespec": "fcm:RangeTimeSpec",
+        "dt": {
+          "@id": "fcm:instant",
+          "@type": "xsd:dateTime"
+        },
+        "year": {
+          "@id": "fcm:year",
+          "@type": "xsd:integer"
+        },
+        "week": {
+          "@id": "fcm:week",
+          "@type": "xsd:integer"
+        },
+        "month": {
+          "@id": "fcm:month",
+          "@type": "xsd:integer"
+        },
+        "start": {
+          "@id": "fcm:intervalStart",
+          "@type": "xsd:dateTime"
+        },
+        "stop": {
+          "@id": "fcm:intervalStop",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+    "fcm_series": {
+      "@id": "fcm:mapSeries",
+      "@container": "@list",
+      "@context": {
+        "graph": {
+          "@id": "fcm:hasGraph",
+          "@context": {
+            "@type": "fcm:ConceptGraph",
+            "vertices": {
+              "@id": "fcm:hasNode",
+              "@container": "@set",
+              "@context": {
+                "@type": "fcm:ConceptNode",
+                "metadata": {
+                  "@id": "@nest",
+                  "@context": {
+                    "description": "skos:prefLabel"
+                  }
+                }
+              }
+            },
+            "edges": {
+              "@id": "fcm:hasEdge",
+              "@container": "@set",
+              "@context": {
+                "@type": "fcm:InfluenceEdge",
+                "src": {
+                  "@id": "fcm:sourceNode",
+                  "@type": "@id"
+                },
+                "dst": {
+                  "@id": "fcm:targetNode",
+                  "@type": "@id"
+                },
+                "weight": {
+                  "@id": "qudt:numericValue",
+                  "@type": "xsd:double"
+                },
+                "metadata": {
+                  "@id": "@nest",
+                  "@context": {
+                    "description": "rdfs:comment",
+                    "provenance": "prov:wasDerivedFrom"
+                  }
+                },
+                "id": "fcm:edgeKey"
+              }
+            },
+            "metadata": {
+              "@id": "@nest",
+              "@context": {
+                "description": "dct:description"
+              }
+            }
+          }
+        },
+        "activation_spec": {
+          "@id": "fcm:hasActivationSpec",
+          "@context": {
+            "@type": "fcm:ActivationSpec",
+            "mode": {
+              "@id": "fcm:activationMode",
+              "@type": "@vocab",
+              "@context": {
+                "homogeneous": "fcm:Homogeneous",
+                "heterogeneous": "fcm:Heterogeneous"
+              }
+            },
+            "homogeneous": "fcm:homogeneousActivation",
+            "heterogeneous": {
+              "@id": "fcm:heterogeneousActivation",
+              "@container": "@list"
+            },
+            "label": {
+              "@id": "fcm:activationFunction",
+              "@type": "@vocab"
+            },
+            "logistic": "fcmact:logistic",
+            "gaussian": "fcmact:logistic-of-square",
+            "other": "fcmact:offset",
+            "tanh": "fcmact:hyperbolic-tangent",
+            "bivalent": "fcmact:bivalent",
+            "trivalent": "fcmact:trivalent"
+          }
+        },
+        "metadata": {
+          "@id": "@nest",
+          "@context": {
+            "description": "dct:description"
+          }
+        },
+        "matrix": {
+          "@id": "fcm:hasMatrix",
+          "@context": {
+            "nodes": {
+              "@id": "fcm:matrixNodes",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "orientation": {
+              "@id": "fcm:matrixOrientation",
+              "@type": "@vocab",
+              "@context": {
+                "source-major": "fcm:SourceMajor"
+              }
+            }
+          }
+        }
+      }
+    },
+    "solution_series": {
+      "@id": "fcm:solutionSeries",
+      "@container": "@list",
+      "@context": {
+        "b_success": {
+          "@id": "fcm:hasFiniteEquilibria",
+          "@type": "xsd:boolean"
+        }
+      }
+    }
+  }
+}

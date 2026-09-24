@@ -1,0 +1,154 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: FCM solver workflow
+description: >
+  SeaDOTs Catalog Workflow profile for the fuzzy-cognitive-map solver of
+  FuzzyCognitiveMapTools.jl: the record that makes the solver discoverable as the step
+  between a map (input) and its solutions or sequences (output).
+
+  The profile exists for one reason. A map is self-contained -- it carries its own
+  activation specification -- so the ONLY thing that distinguishes one run from another
+  is a set of parameters that live exclusively as Julia keyword arguments and are
+  serialised nowhere. Without them a solution is not reproducible. The `solver` object
+  declares them, together with the two things a consumer cannot discover from the data
+  model: which activation functions are actually implemented, and which inference rule is
+  applied.
+
+allOf:
+  - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/schema.json
+
+properties:
+  properties:
+    type: object
+    required: [solver]
+    properties:
+      type:
+        const: Workflow
+      solver:
+        type: object
+        description: >
+          What this solver does and how it may be parameterised. Values reflect
+          FuzzyCognitiveMapTools.jl v0.1.0 and should be re-checked against the release
+          the record describes.
+        required: [inferenceRule, supportedActivation]
+        properties:
+
+          inferenceRule:
+            type: string
+            enum: [kosko]
+            description: >
+              The update applied at each iteration. Only `kosko` -- classic
+              f(transpose(W) x) -- exists: it is hard-coded in `single_fcm_trial` with no
+              parameter to select another. Declared as an enum rather than a constant so
+              that a record describing a later release can say something different
+              without a schema change.
+
+          supportedActivation:
+            type: array
+            minItems: 1
+            uniqueItems: true
+            description: >
+              Concepts of ogc.hosted.seadots.fcm-activation-scheme this solver can
+              actually execute. A map whose `activation_spec.label` resolves outside this
+              list will be rejected at load time -- `to_proc` raises
+              "Unknown activation function".
+
+              The three listed below are the whole of v0.1.0. Note that the upstream
+              label "gaussian" appears here as `logistic-of-square`, because that is what
+              the implementation computes; see the activation scheme block.
+            items:
+              type: string
+              enum:
+                - https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic
+                - https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic-of-square
+                - https://w3id.org/ogc/hosted/seadots/fcm/activation/offset
+
+          executionParameters:
+            type: object
+            description: >
+              The parameters that are NOT in any serialised artefact. Each carries the
+              default compiled into v0.1.0; a record for a specific run should state the
+              value actually used. See description.md on why several of these cannot
+              currently be set at all through the public entry point.
+            properties:
+              numTrials:
+                type: integer
+                minimum: 1
+                default: 1000
+                description: Number of randomly-started trials clustered into equilibria (`run_trials`).
+              x0Range:
+                $ref: '#/$defs/Interval'
+                default: [0.0, 1.0]
+                description: Range the random initial state is drawn from.
+              x0ClampRange:
+                $ref: '#/$defs/Interval'
+                default: [0.1, 0.9]
+                description: >
+                  Range the initial state is clamped to after sampling. Note this is
+                  NARROWER than `x0Range`, so the extremes of the sampling range are
+                  never actually explored.
+              maxIterations:
+                type: integer
+                minimum: 1
+                default: 100
+                description: >
+                  Iteration cap per trial. A trial that hits it is NOT discarded; see
+                  description.md.
+              convergenceTolerance:
+                type: number
+                exclusiveMinimum: 0
+                default: 1.0e-10
+                description: Residual below which a trial is declared converged.
+              clusteringTolerance:
+                type: number
+                exclusiveMinimum: 0
+                default: 1.0e-6
+                description: >
+                  Distance within which two trial endpoints are treated as the same
+                  equilibrium. Must be larger than the supremum of the terminal residual,
+                  per the upstream docstring.
+            additionalProperties: false
+
+          refinement:
+            type: object
+            description: >
+              Optional second pass that re-solves from each cluster mean to sharpen the
+              centroid (`refine_centroid_fcm`). It runs with its own hard-coded settings,
+              which differ from the trial settings above.
+            properties:
+              enabled:
+                type: boolean
+                default: false
+              maxIterations:
+                type: integer
+                default: 3000
+              convergenceTolerance:
+                type: number
+                default: 1.0e-13
+              x0ClampRange:
+                $ref: '#/$defs/Interval'
+                default: [0.0, 1.0]
+              checkTolerance:
+                type: number
+                default: 1.0e-6
+                description: >
+                  A refined centroid further than this from the cluster mean is an error,
+                  not a warning: the run aborts.
+            additionalProperties: false
+
+          stochasticMapsSupported:
+            type: boolean
+            default: false
+            description: >
+              Whether the solver accepts maps with distribution-valued edge weights. False
+              for v0.1.0, which has no serialisation for them at all.
+
+        additionalProperties: true
+
+$defs:
+  Interval:
+    type: array
+    description: A closed interval [lower, upper], serialised as a two-element array.
+    minItems: 2
+    maxItems: 2
+    items:
+      type: number

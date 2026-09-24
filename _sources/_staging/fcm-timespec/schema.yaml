@@ -1,0 +1,100 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: FCM time specification
+description: >
+  When a fuzzy cognitive map and its solution apply. Four disjoint forms, discriminated
+  on `type`, reflecting that participatory survey rounds are not yet committed to a
+  single reporting period: an instant, a week of a year, a month of a year, or an
+  explicit interval.
+
+  This block describes ONE time specification. The `timespec_series` array of a sequence
+  is a list of these; see ogc.hosted.seadots.fcm-sequence.
+
+oneOf:
+  - $ref: '#/$defs/PointTimeSpec'
+  - $ref: '#/$defs/WeekOfYearTimeSpec'
+  - $ref: '#/$defs/MonthOfYearTimeSpec'
+  - $ref: '#/$defs/RangeTimeSpec'
+
+$defs:
+
+  LocalOrZonedDateTime:
+    type: string
+    description: >
+      A date and time. NOT declared with `format: date-time`: the upstream Julia
+      serialiser emits a bare `DateTime` with no UTC offset and a trailing fractional
+      second, e.g. "2026-01-02T03:04:05.0", which RFC 3339 -- and therefore JSON Schema
+      `date-time` -- rejects for the missing offset. The same lexical form IS a valid
+      `xsd:dateTime`, where the offset is optional, so the JSON-LD projection is
+      unaffected. The pattern below accepts the upstream form and a properly zoned one
+      alike, so that this block does not have to be revised when the defect is fixed
+      upstream. See description.md.
+    pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$'
+
+  PointTimeSpec:
+    type: object
+    description: A single instant.
+    required: [type, dt]
+    properties:
+      type:
+        const: pointtimespec
+      dt:
+        $ref: '#/$defs/LocalOrZonedDateTime'
+        description: The instant the map and its solution apply to.
+    additionalProperties: false
+
+  WeekOfYearTimeSpec:
+    type: object
+    description: >
+      The week-long interval beginning (week - 1) weeks after 1 January of the given
+      year -- `Date(year, 1, 1) + Week(week - 1)` in `bounds(::WeekOfYearTimeSpec)`.
+      This is NOT ISO 8601 week numbering: it counts from 1 January rather than from
+      the first Thursday, so week 1 of a year does not in general coincide with ISO
+      week 1, and week 53 runs past the end of the year.
+
+      The 1..53 bound is ADDED here; upstream the field is a bare `Int` with no
+      validation. 53 is the last week that still begins within the year.
+    required: [type, year, week]
+    properties:
+      type:
+        const: weekofyeartimespec
+      year:
+        type: integer
+      week:
+        type: integer
+        minimum: 1
+        maximum: 53
+    additionalProperties: false
+
+  MonthOfYearTimeSpec:
+    type: object
+    description: The calendar month of the given year.
+    required: [type, year, month]
+    properties:
+      type:
+        const: monthofyeartimespec
+      year:
+        type: integer
+      month:
+        type: integer
+        minimum: 1
+        maximum: 12
+        description: >
+          The 1..12 bound is ADDED here; upstream the field is a bare `Int` with no
+          validation.
+    additionalProperties: false
+
+  RangeTimeSpec:
+    type: object
+    description: >
+      An explicit half-open interval [start, stop). That `start` precedes `stop`
+      relates two sibling values and is not expressible in JSON Schema; it is carried
+      as a SHACL constraint by ogc.hosted.seadots.fcm-ontology.
+    required: [type, start, stop]
+    properties:
+      type:
+        const: rangetimespec
+      start:
+        $ref: '#/$defs/LocalOrZonedDateTime'
+      stop:
+        $ref: '#/$defs/LocalOrZonedDateTime'
+    additionalProperties: false

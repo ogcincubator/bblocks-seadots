@@ -20,26 +20,45 @@ v0.1.0 and its `dataspecs/fcm_dataspecs__20260630.md`.
 | `SimpleDeterministicFCMEdge` | `fcm:InfluenceEdge` (+ `fcm:sourceNode`, `fcm:targetNode`, `fcm:hasWeight`) |
 | `ActivationSpec`, `ActivationFunctionSpec` | `fcm:ActivationSpec`, `fcm:ActivationAssignment`, `fcm:Parameter` |
 | `DeterministicFCMSolution` | `fcm:Solution`, `fcm:Equilibrium`, `fcm:NodeState` |
-| `DeterministicFCMSequence` | `fcm:Sequence`, `fcm:SequenceStep` |
+| `DeterministicFCMSequence` | `fcm:Sequence`, `fcm:SequenceStep`; serialisation form `fcm:timeSpecSeries`, `fcm:mapSeries`, `fcm:solutionSeries` |
 | `PointTimeSpec` … `RangeTimeSpec` | `fcm:TimeSpec` and its four subclasses |
+| (n×n adjacency form, no upstream struct) | `fcm:WeightMatrix`, `fcm:matrixNodes`, `fcm:matrixOrientation` |
+| (solver capability, no upstream struct) | `fcm:SolverCapability`, `fcm:supportsActivation`, `fcm:inferenceRule`, `fcm:supportsStochasticMaps` |
 
 `fcm:InfluenceEdge` is a subclass of `prop-rel:PropertyRelationship` from
 `ogc.hosted.seadots.ontology`, and `fcm:hasWeight` a subproperty of `prop-rel:hasWeight`,
 so an FCM edge is a SeaDOTs property relationship and inherits its weight-as-quantity-value
 treatment.
 
-### Three places the RDF form deliberately differs from the wire form
+### Four places the RDF form deliberately differs from the wire form
 
 1. **Node identity.** Upstream, a vertex is an opaque graph-local string (`"C1"`, `"Nd"`).
    That is kept as `fcm:nodeKey`, but `fcm:representsConcept` carries the IRI of the
    variable, indicator or taxon the node stands for. Without it a map cannot be joined to
    anything else in the SeaDOTs catalog.
-2. **No parallel arrays.** `DeterministicFCMSequence` stores three index-aligned vectors;
-   `fcm:SequenceStep` materialises each triple as one resource, with `fcm:stepIndex`
-   preserving the original position so the round trip stays exact. The same applies to
-   heterogeneous activation (`fcm:ActivationAssignment` names its node) and to equilibrium
-   vectors (`fcm:NodeState` names its node).
-3. **Polarity is derived, not stored.** `fcm:hasPolarity` is produced from the sign of the
+2. **Parallel arrays become either lists or resources, never bare positions.**
+   `DeterministicFCMSequence` stores three index-aligned vectors. The ontology carries
+   both readings of them. `fcm:SequenceStep` is the materialised one: each triple becomes
+   a resource, with `fcm:stepIndex` preserving the original position so the round trip
+   stays exact. `fcm:timeSpecSeries` / `fcm:mapSeries` / `fcm:solutionSeries` are the
+   serialisation-faithful one: three RDF lists, which is what a source-faithful JSON-LD
+   lift can actually produce. Keeping both is what makes the equal-length invariant
+   checkable — lists can be counted, so `fcm:SequenceSeriesShape` enforces in SHACL what
+   JSON Schema cannot express at all. Going from lists to steps is an index join, not an
+   entailment.
+
+   The same "never a bare position" principle applies to heterogeneous activation
+   (`fcm:ActivationAssignment` names its node) and to equilibrium vectors
+   (`fcm:NodeState` names its node).
+3. **A matrix is an array header, not a second kind of graph.** `fcm:WeightMatrix`
+   describes the adjacency form the FCM tool ecosystem exchanges, and it describes only
+   what an array header describes: the coordinate list indexing both axes
+   (`fcm:matrixNodes`, an RDF list because the order is semantic) and the storage
+   orientation (`fcm:matrixOrientation`). The cells stay outside RDF, exactly as they do
+   for a Zarr or datacube description. Modelling it as an `fcm:ConceptGraph` instead
+   produces a graph with nodes and no edges, which fails the map invariants — correctly,
+   since a header is not a graph.
+4. **Polarity is derived, not stored.** `fcm:hasPolarity` is produced from the sign of the
    weight by a SHACL rule in `rules.shacl`. Nothing asserts it by hand, so the sign and the
    weight cannot drift apart.
 
@@ -90,7 +109,27 @@ SIO's `edge`/`node`, however, are diagram/geometry-flavoured ("an edge is a line
 two graph vertices"), and SIO has no signed or weighted edge, so it cannot carry the FCM
 model on its own.
 
-### A3. Export to qualitative-network standards — SBML `qual` and XMILE
+### A3. Array/datacube vocabularies for the matrix header
+
+`fcm:WeightMatrix` currently mints its own header terms, consistent with how the ILIAD
+`zarr_array_metadata` block mints `w3id.org/iliad/zarr/*` for `shape`, `order` and
+`dtype`. Three alignments are open once that pattern is revisited:
+
+- **ILIAD Zarr blocks** (`zarr_array_metadata`, `zarr_attrs_metadata`) —
+  `fcm:matrixOrientation` is the direct analogue of Zarr `order`, and `fcm:matrixNodes`
+  plays the role of a dimension's coordinate variable.
+- **STAC datacube extension** — `cube:dimensions` with two dimensions of type
+  `identifier`, both taking the same coordinate list, and one `cube:variables` entry for
+  the weight.
+- **RDF Data Cube (QB)** — the strictest fit conceptually (two dimension properties, one
+  measure), and the heaviest; only worth it if weights are ever to be queried cell-wise in
+  SPARQL, which the current design deliberately avoids.
+
+Deferred rather than rejected: the matrix form is expected to change as the upstream
+serialiser stabilises, and picking a host vocabulary before then would lock in the wrong
+one.
+
+### A4. Export to qualitative-network standards — SBML `qual` and XMILE
 
 - [SBML Level 3 `qual`](https://sbml.org/specifications/sbml-level-3/version-1/qual/sbml-qual-version-1-release-1.pdf):
   `QualitativeSpecies` ↔ `fcm:ConceptNode`, `Transition` with Input `sign` ∈ {positive,
@@ -105,7 +144,7 @@ model on its own.
 Both are worth having as one-way export profiles once the schema blocks exist. Neither is
 a candidate for the canonical model.
 
-### A4. Round trip with the FCM tool ecosystem
+### A5. Round trip with the FCM tool ecosystem
 
 The formats stakeholders actually exchange are matrix-shaped: an n×n weight matrix with
 named rows and columns, as used by
@@ -117,13 +156,13 @@ validate both shapes and declare the ordering explicitly.
 *Unresolved:* Mental Modeler is web-based and publishes no format specification. Pinning
 down its field names needs an actual export file from the Utsira workshops.
 
-### A5. Time specifications — OWL-Time
+### A6. Time specifications — OWL-Time
 
 `fcm:PointTimeSpec` ↔ `time:Instant`; the three interval forms ↔ `time:ProperInterval`
 with `time:hasBeginning`/`time:hasEnd`. Mechanical, and the obvious first alignment to
 land. Blocked only on the serialisation defect below.
 
-### A6. Node concepts — controlled vocabularies
+### A7. Node concepts — controlled vocabularies
 
 `fcm:representsConcept` should resolve into the SeaDOTs indicator vocabulary
 (`https://w3id.org/indicators/marine/`) and `oim-variables`; for the Utsira draft map also
@@ -131,14 +170,14 @@ WoRMS (e.g. *Nephrops norvegicus*,
 `urn:lsid:marinespecies.org:taxname:107254`), ENVO for habitat concepts, and CICES for the
 ecosystem-service and socio-economic nodes (jobs, tourism, community facilities).
 
-### A7. Quantity values — QUDT lift
+### A8. Quantity values — QUDT lift
 
 `fcm:stateValue` and `fcm:maxDistance` are plain `xsd:double` datatype properties. They
 could be lifted to `qudt:QuantityValue` nodes for consistency with `fcm:hasWeight`. Deferred
 because it triples the node count of an equilibrium for no gain until a unit other than
 "dimensionless" appears.
 
-### A8. Fix needed in `prop-rel` before two alignments can land
+### A9. Fix needed in `prop-rel` before two alignments can land
 
 `prop-rel:fromProperty` and `prop-rel:toProperty` in `ogc.hosted.seadots.ontology` both
 declare `rdfs:range prop-rel:PropertyRelationship`, which looks like a copy-paste error —
@@ -147,7 +186,7 @@ corrected, `fcm:sourceNode`/`fcm:targetNode` cannot be declared subproperties of
 without entailing that every `fcm:ConceptNode` is a `PropertyRelationship`. They are
 therefore standalone, with an editorial note in `ontology.ttl`.
 
-### A9. Not pursued
+### A10. Not pursued
 
 - **Fuzzy OWL 2** (Bobillo & Straccia) encodes fuzzy degrees as OWL 2 annotation
   properties. It addresses fuzzy *membership*, not causal-map structure; edge weights here
@@ -156,7 +195,7 @@ therefore standalone, with an editorial note in `ontology.ttl`.
   Ontology Agents, 2007) and research-stage frameworks with no resolvable namespace. There
   is nothing to import, which is why this block mints its own terms.
 
-### A10. Stochastic maps
+### A11. Stochastic maps
 
 `fcm:StochasticFuzzyCognitiveMap` exists as a discriminator hook and nothing more. The
 upstream `SimpleStochasticFCMEdge` carries `Tuple{Float64, Distribution}`, which has no

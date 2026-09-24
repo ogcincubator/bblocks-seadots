@@ -317,3 +317,100 @@ fcm:intervalStop a owl:DatatypeProperty, skos:Concept ;
   rdfs:domain fcm:RangeTimeSpec ;
   rdfs:range xsd:dateTime ;
   skos:prefLabel "interval stop" .
+
+# ── Matrix (array) representation ──────────────────────────────────
+# Header-level description of the adjacency array, following the same principle
+# as a Zarr or datacube header: the axes, their coordinate list and the storage
+# orientation are described; the cell values themselves stay outside RDF.
+
+fcm:WeightMatrix a owl:Class, skos:Concept ;
+  skos:prefLabel "Weight matrix" ;
+  skos:definition "Adjacency-array representation of a concept graph: a square array of signed weights whose two axes are indexed by the same declared node ordering. This class describes the array header, not its cells." .
+
+fcm:hasMatrix a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:FuzzyCognitiveMap ;
+  rdfs:range fcm:WeightMatrix ;
+  skos:prefLabel "has matrix" ;
+  skos:definition "Array representation of the same map an fcm:ConceptGraph describes as an edge list. A map carries one or the other, never both." .
+
+fcm:matrixNodes a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:WeightMatrix ;
+  rdfs:range fcm:ConceptNode ;
+  skos:prefLabel "matrix nodes" ;
+  skos:definition "Ordered coordinate list indexing both axes of the array. The order is semantic, not incidental: it is what makes the array addressable, exactly as a dimension's coordinate variable is in a datacube. Serialised as an RDF list." .
+
+fcm:MatrixOrientation a owl:Class, skos:Concept ;
+  skos:prefLabel "Matrix orientation" ;
+  skos:definition "Which axis of the array is the influencing one. Declared rather than assumed, because the two conventions are equally common and transpose the model silently. Analogous to the storage-order declaration of an array header." .
+
+fcm:SourceMajor a fcm:MatrixOrientation, skos:Concept ;
+  skos:prefLabel "source-major" ;
+  skos:definition "weights[i][j] is the influence of nodes[i] on nodes[j]: rows are sources, columns are targets." .
+
+fcm:matrixOrientation a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:WeightMatrix ;
+  rdfs:range fcm:MatrixOrientation ;
+  skos:prefLabel "matrix orientation" .
+
+# ── Sequence serialisation form ────────────────────────────────────
+# The upstream serialisation is three index-aligned parallel arrays, not a list
+# of steps. These three properties carry that form faithfully, as RDF lists so
+# that position — the only thing binding the three together — survives. A
+# fcm:SequenceStep is the materialised form of one index across all three;
+# going from one to the other is an index join, not an entailment.
+
+fcm:timeSpecSeries a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:Sequence ;
+  rdfs:range fcm:TimeSpec ;
+  skos:prefLabel "time spec series" ;
+  skos:definition "Ordered list of the time specifications of a sequence, one per step. Serialised upstream as 'timespec_series'." .
+
+fcm:mapSeries a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:Sequence ;
+  rdfs:range fcm:FuzzyCognitiveMap ;
+  skos:prefLabel "map series" ;
+  skos:definition "Ordered list of the maps of a sequence, one per step. Serialised upstream as 'fcm_series'." .
+
+fcm:solutionSeries a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:Sequence ;
+  rdfs:range fcm:Solution ;
+  skos:prefLabel "solution series" ;
+  skos:definition "Ordered list of the solutions of a sequence, one per step, each computed from the map at the same position. Serialised upstream as 'solution_series'." .
+
+fcm:hasSolutionAtStep a owl:ObjectProperty, skos:Concept ;
+  rdfs:subPropertyOf fcm:hasSolution ;
+  rdfs:domain fcm:SequenceStep ;
+  rdfs:range fcm:Solution ;
+  skos:prefLabel "has solution at step" ;
+  skos:definition "The solution bound into a materialised sequence step, computed from the map that step binds." .
+
+# ── Solver capability ──────────────────────────────────────────────
+# What an implementation can actually execute, as opposed to what the data
+# model can express. The gap between the two is real: the schemes name more
+# activation functions than any one solver implements, and a map naming an
+# unimplemented one is well-formed but unrunnable.
+
+fcm:SolverCapability a owl:Class, skos:Concept ;
+  skos:prefLabel "Solver capability" ;
+  skos:definition "Declaration of what a particular fuzzy-cognitive-map solver implements: which activation functions it can execute, which inference rule it applies, and how it may be parameterised. Attached to a workflow record, not to a map." .
+
+fcm:solverCapability a owl:ObjectProperty, skos:Concept ;
+  rdfs:range fcm:SolverCapability ;
+  skos:prefLabel "solver capability" ;
+  skos:definition "Relates a workflow record to the capability declaration of the solver it describes." .
+
+fcm:supportsActivation a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:SolverCapability ;
+  skos:prefLabel "supports activation" ;
+  skos:definition "An activation-function concept the solver can execute. A map whose activation function lies outside this set is well-formed but cannot be run by this solver." .
+
+fcm:inferenceRule a owl:ObjectProperty, skos:Concept ;
+  rdfs:domain fcm:SolverCapability ;
+  skos:prefLabel "inference rule" ;
+  skos:definition "The inference-rule concept the solver applies at each iteration. A property of the solver rather than of the map, because no serialised map says which rule was used." .
+
+fcm:supportsStochasticMaps a owl:DatatypeProperty, skos:Concept ;
+  rdfs:domain fcm:SolverCapability ;
+  rdfs:range xsd:boolean ;
+  skos:prefLabel "supports stochastic maps" ;
+  skos:definition "Whether the solver accepts maps whose edge weights are distributions rather than scalars." .

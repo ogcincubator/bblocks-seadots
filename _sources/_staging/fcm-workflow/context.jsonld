@@ -1,0 +1,33 @@
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-workflow/context.jsonld",
+    {
+      "@version": 1.1,
+      "fcm": "https://w3id.org/ogc/hosted/seadots/fcm/",
+      "fcmact": "https://w3id.org/ogc/hosted/seadots/fcm/activation/",
+      "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "solver": {
+        "@id": "fcm:solverCapability",
+        "@context": {
+          "inferenceRule": {
+            "@id": "fcm:inferenceRule",
+            "@type": "@vocab",
+            "@context": {
+              "kosko": "fcmact:kosko"
+            }
+          },
+          "supportedActivation": {
+            "@id": "fcm:supportsActivation",
+            "@type": "@id",
+            "@container": "@set"
+          },
+          "stochasticMapsSupported": {
+            "@id": "fcm:supportsStochasticMaps",
+            "@type": "xsd:boolean"
+          }
+        }
+      }
+    }
+  ]
+}

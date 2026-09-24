@@ -160,3 +160,170 @@ fcm:NodeStateShape a sh:NodeShape ;
         FILTER( STR(?s1) != STR(?s2) )
       } """
   ] .
+
+# ── Matrix header ──────────────────────────────────────────────────
+# The cells are not in RDF, so only the header can be checked here: the
+# coordinate list must be long enough to be a map, and the orientation must be
+# stated. That weights is square against that list is checkable only where the
+# array itself is (JSON Schema / a block test).
+
+fcm:WeightMatrixShape a sh:NodeShape ;
+  sh:targetClass fcm:WeightMatrix ;
+  sh:targetSubjectsOf fcm:matrixOrientation ;
+  sh:property [
+    sh:path fcm:matrixOrientation ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "a weight matrix must declare exactly one orientation; assuming one silently transposes the model." ;
+  ] ;
+  sh:sparql [
+    sh:message "a weight matrix must index at least 2 nodes." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      SELECT $this WHERE {
+        { SELECT $this (COUNT(?n) AS ?c) WHERE {
+            $this fcm:matrixNodes/rdf:rest*/rdf:first ?n .
+          } GROUP BY $this }
+        FILTER( ?c < 2 )
+      } """
+  ] .
+
+# ── Time specifications ────────────────────────────────────────────
+# The one cross-field rule of a time spec: an interval runs forwards.
+# Not expressible in JSON Schema, which cannot compare two siblings.
+
+fcm:RangeTimeSpecShape a sh:NodeShape ;
+  sh:targetClass fcm:RangeTimeSpec ;
+  sh:targetSubjectsOf fcm:intervalStart ;
+  sh:property [
+    sh:path fcm:intervalStart ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:dateTime ;
+    sh:lessThan fcm:intervalStop ;
+    sh:message "a range time specification must start strictly before it stops." ;
+  ] ;
+  sh:property [
+    sh:path fcm:intervalStop ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:dateTime ;
+  ] .
+
+# ── Solutions ──────────────────────────────────────────────────────
+# The source-faithful JSON projects only fcm:hasFiniteEquilibria; the
+# equilibrium structure below exists in RDF only after the join with the map
+# that supplies node identities (see the fcm-solution block). These shapes
+# therefore check directly-authored or joined RDF, not the raw projection.
+
+fcm:SolutionShape a sh:NodeShape ;
+  sh:targetClass fcm:Solution ;
+  sh:targetSubjectsOf fcm:hasFiniteEquilibria ;
+  sh:property [
+    sh:path fcm:hasFiniteEquilibria ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:boolean ;
+    sh:message "a solution must state exactly once whether the equilibrium search succeeded." ;
+  ] .
+
+fcm:EquilibriumShape a sh:NodeShape ;
+  sh:targetClass fcm:Equilibrium ;
+  sh:property [
+    sh:path fcm:hasNodeState ;
+    sh:minCount 2 ;
+    sh:message "an equilibrium must give a state for at least 2 nodes, since a map has at least 2 nodes." ;
+  ] .
+
+fcm:NodeStateValueShape a sh:NodeShape ;
+  sh:targetClass fcm:NodeState ;
+  sh:targetSubjectsOf fcm:stateValue ;
+  sh:property [
+    sh:path fcm:ofNode ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "a node state must name exactly one concept node; the positional coupling it replaces is what makes a bare solution vector uninterpretable." ;
+  ] ;
+  sh:property [
+    sh:path fcm:stateValue ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:double ;
+  ] ;
+  sh:property [
+    sh:path fcm:maxDistance ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:double ;
+    sh:minInclusive 0 ;
+    sh:message "a max distance is a componentwise spread (max - min) and cannot be negative." ;
+  ] .
+
+# ── Sequence series alignment ──────────────────────────────────────
+# The upstream invariant that JSON Schema cannot express: the three parallel
+# arrays must be the same length, because position is the only thing binding a
+# time, a map and a solution into one step. In RDF the three are lists, so the
+# lengths can be counted and compared — this is the one place the index
+# alignment is actually checkable.
+
+fcm:SequenceSeriesShape a sh:NodeShape ;
+  sh:targetClass fcm:Sequence ;
+  sh:targetSubjectsOf fcm:timeSpecSeries ;
+  sh:property [
+    sh:path fcm:timeSpecSeries ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "a sequence must carry exactly one time spec series." ;
+  ] ;
+  sh:property [
+    sh:path fcm:mapSeries ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "a sequence must carry exactly one map series." ;
+  ] ;
+  sh:property [
+    sh:path fcm:solutionSeries ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:message "a sequence must carry exactly one solution series." ;
+  ] ;
+  sh:sparql [
+    sh:message "the three series of a sequence must be the same length; position is the only thing binding a time, a map and a solution into one step." ;
+    sh:select """
+      PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      SELECT $this WHERE {
+        { SELECT $this (COUNT(?t) AS ?nt) WHERE {
+            $this fcm:timeSpecSeries/rdf:rest*/rdf:first ?t .
+          } GROUP BY $this }
+        { SELECT $this (COUNT(?m) AS ?nm) WHERE {
+            $this fcm:mapSeries/rdf:rest*/rdf:first ?m .
+          } GROUP BY $this }
+        { SELECT $this (COUNT(?s) AS ?ns) WHERE {
+            $this fcm:solutionSeries/rdf:rest*/rdf:first ?s .
+          } GROUP BY $this }
+        FILTER( ?nt != ?nm || ?nt != ?ns )
+      } """
+  ] .
+
+# ── Solver capability ──────────────────────────────────────────────
+# A capability declaration that names no activation function tells a consumer
+# nothing, and is the one failure mode worth catching: it would let a map be
+# routed to a solver that cannot run it.
+
+fcm:SolverCapabilityShape a sh:NodeShape ;
+  sh:targetClass fcm:SolverCapability ;
+  sh:targetSubjectsOf fcm:supportsActivation ;
+  sh:property [
+    sh:path fcm:supportsActivation ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "a solver capability must name at least one activation function it can execute, as an IRI of the activation scheme." ;
+  ] ;
+  sh:property [
+    sh:path fcm:inferenceRule ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "a solver capability must name exactly one inference rule; no serialised map records which rule produced its solution." ;
+  ] .
