@@ -1,0 +1,54 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-country: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/> .
+@prefix pa-iucn: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/> .
+@prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
+@prefix inspire-iucn: <http://inspire.ec.europa.eu/codelist/IUCNCategoriesValue/> .
+
+# Shared vocabulary bindings for the EMODnet-compliant protected-area profiles.
+# Code values are the literal strings EMODnet publishes (queried from the
+# EMODnet Human Activities WFS with GetPropertyValue, 30 Sep 2026); each is bound
+# to an external authority so that the flat EMODnet strings can be lifted to IRIs.
+
+pa:schemeIUCN a skos:ConceptScheme ;
+    skos:prefLabel "IUCN management categories as encoded in EMODnet iucncatego"@en .
+
+pa-iucn:Ia a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "Ia" ;
+    skos:prefLabel "Strict Nature Reserve"@en ; skos:exactMatch inspire-iucn:strictNatureReserve .
+pa-iucn:Ib a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "Ib" ;
+    skos:prefLabel "Wilderness Area"@en ; skos:exactMatch inspire-iucn:wildernessArea .
+pa-iucn:II a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "II" ;
+    skos:prefLabel "National Park"@en ; skos:exactMatch inspire-iucn:nationalPark .
+pa-iucn:III a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "III" ;
+    skos:prefLabel "Natural Monument or Feature"@en ; skos:exactMatch inspire-iucn:naturalMonument .
+pa-iucn:IV a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "IV" ;
+    skos:prefLabel "Habitat/Species Management Area"@en ; skos:exactMatch inspire-iucn:habitatSpeciesManagementArea .
+pa-iucn:V a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "V" ;
+    skos:prefLabel "Protected Landscape/ Seascape"@en ; skos:exactMatch inspire-iucn:protectedLandscapeOrSeascape .
+pa-iucn:VI a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "VI" ;
+    skos:prefLabel "Protected area with sustainable use of natural resources"@en ; skos:exactMatch inspire-iucn:managedResourceProtectedArea .
+pa-iucn:notReported a skos:Concept ; skos:inScheme pa:schemeIUCN ; skos:notation "notReported" ;
+    skos:prefLabel "Not reported"@en .
+
+pa:schemeCountry a skos:ConceptScheme ;
+    skos:prefLabel "Countries as encoded in EMODnet protected-area layers (alpha-2 code and English name)"@en .
+
+pa-country:NO a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "NO" ; skos:prefLabel "Norway"@en ; skos:exactMatch eu-country:NOR .
+pa-country:DK a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "DK" ; skos:prefLabel "Denmark"@en ; skos:exactMatch eu-country:DNK .
+pa-country:EE a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "EE" ; skos:prefLabel "Estonia"@en ; skos:exactMatch eu-country:EST .
+pa-country:FI a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "FI" ; skos:prefLabel "Finland"@en ; skos:exactMatch eu-country:FIN .
+pa-country:DE a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "DE" ; skos:prefLabel "Germany"@en ; skos:exactMatch eu-country:DEU .
+pa-country:LV a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "LV" ; skos:prefLabel "Latvia"@en ; skos:exactMatch eu-country:LVA .
+pa-country:LT a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "LT" ; skos:prefLabel "Lithuania"@en ; skos:exactMatch eu-country:LTU .
+pa-country:PL a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "PL" ; skos:prefLabel "Poland"@en ; skos:exactMatch eu-country:POL .
+pa-country:RU a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "RU" ; skos:prefLabel "Russia"@en ; skos:exactMatch eu-country:RUS .
+pa-country:SE a skos:Concept ; skos:inScheme pa:schemeCountry ; skos:notation "SE" ; skos:prefLabel "Sweden"@en ; skos:exactMatch eu-country:SWE .
+
+pa:schemeEcosystem a skos:ConceptScheme ;
+    skos:prefLabel "Major ecosystem type as encoded in EMODnet majorecosy"@en .
+
+pa:ecosystem-marine a skos:Concept ; skos:inScheme pa:schemeEcosystem ; skos:prefLabel "Marine"@en ; skos:notation "Marine" .
+pa:ecosystem-marine-and-terrestrial a skos:Concept ; skos:inScheme pa:schemeEcosystem ; skos:prefLabel "Marine and terrestrial"@en ; skos:notation "Marine and terrestrial" .
+pa:ecosystem-terrestrial a skos:Concept ; skos:inScheme pa:schemeEcosystem ; skos:prefLabel "Terrestrial"@en ; skos:notation "Terrestrial" .

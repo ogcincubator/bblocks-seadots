@@ -1,0 +1,20 @@
+examples:
+  - title: Report of the Norwegian transform (to-emodnet-nationally-designated-area)
+    content: >
+      Produced by running `to-emodnet-nationally-designated-area` on the example of
+      `protected-area.source-norway-naturvernomrade` (Tauterryggen and Møysalen, retrieved 30 Sep 2026)
+      with the EMODnet records of `emodnet-protected-area.nationally-designated-area` as reference.
+      It records the Møysalen error in the EEA reporting chain: natdaid, designatio and iucncatego are
+      swapped with the neighbouring site in EMODnet.
+    snippets:
+      - language: json
+        ref: examples/report-norway-nda.json
+  - title: Report of the HELCOM transform on layer 190 (to-emodnet-rsc-mpa)
+    content: >
+      Produced by running `to-emodnet-rsc-mpa` on the layer-190 example of
+      `protected-area.source-helcom-mpa`, joined with its layer-54 example. The Natura 2000 code
+      (Kuršių marios) and the EEA/WDPA id (Fehmarnbelt) are routed to the EMODnet layers that already
+      publish them, instead of being duplicated.
+    snippets:
+      - language: json
+        ref: examples/report-helcom-layer190.json

@@ -1,0 +1,51 @@
+{
+  "name": "Naturvernområder source profile with EMODnet transform",
+  "abstract": "Source-faithful profile of Norwegian protected sites (Miljødirektoratet Naturvernområder, vern layer 0) as served by the Seadots OGC API - Features collections, with the crosswalks (verneform to EEA designation type, IUCN, ecosystem) and the Python transform that produces the EMODnet-compliant nationally designated area view.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-30T00:00:00Z",
+  "dateOfLastChange": "2026-09-30",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "Norway",
+    "Miljødirektoratet",
+    "Naturvernområder",
+    "Geonorge",
+    "protected sites",
+    "source",
+    "transform",
+    "EMODnet"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Geonorge: Naturvernområder (5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4)",
+      "link": "https://kartkatalog.geonorge.no/metadata/5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4"
+    },
+    {
+      "title": "Miljødirektoratet ArcGIS REST vern layer 0",
+      "link": "https://kart.miljodirektoratet.no/arcgis/rest/services/vern/mapserver/0"
+    },
+    {
+      "title": "Eionet designation type codes",
+      "link": "https://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.features.feature",
+    "ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area",
+    "ogc.hosted.seadots.protected-area.transform-report"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "maturity": "development",
+  "scope": "dev",
+  "ontology": "crosswalk/crosswalk.ttl"
+}

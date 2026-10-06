@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "natdaid": {
+      "@id": "pa:eeaSiteId"
+    },
+    "countrycod": {
+      "@id": "schema:addressCountry",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/"
+      }
+    },
+    "country": "pa:countryName",
+    "regioncode": "pa:regionCode",
+    "sitename": "pa:siteName",
+    "legalfound": {
+      "@id": "pa:legalFoundationYear",
+      "@type": "xsd:gYear"
+    },
+    "localid": "dcterms:identifier",
+    "namespace": "pa:identifierNamespace",
+    "versionid": "pa:versionId",
+    "metadata_v": "pa:reportingDataset",
+    "metadata_b": "pa:reportingDate",
+    "metadata_s": "pa:reportingStatus",
+    "metadata_f": "pa:reportingFlag",
+    "metadata_1": "pa:reportingNote",
+    "geomtype": "pa:geometryType",
+    "coast_mar": "pa:coastalOrMarine",
+    "nationalid": "pa:nationalSiteId",
+    "designated": "pa:designationStatus",
+    "designatio": {
+      "@id": "pa:designationType",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/"
+      }
+    },
+    "iucncatego": {
+      "@id": "pa:iucnCategory",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/"
+      }
+    },
+    "iucndesc": "pa:iucnCategoryLabel",
+    "iucnlink": {
+      "@id": "pa:iucnCategoryReference",
+      "@type": "@id"
+    },
+    "sitearea": {
+      "@id": "pa:siteAreaHectares",
+      "@type": "xsd:double"
+    },
+    "majorecosy": "pa:majorEcosystemType",
+    "marinearea": {
+      "@id": "pa:marineAreaPercent",
+      "@type": "xsd:double"
+    },
+    "spatialdat": "pa:spatialDataAccess",
+    "spatialres": "pa:spatialResolution",
+    "pslocalid": "pa:protectedSiteLocalId",
+    "psnamespac": "pa:protectedSiteNamespace",
+    "psversioni": "pa:protectedSiteVersionId",
+    "remark": "rdfs:comment",
+    "shape_leng": {
+      "@id": "pa:shapeLengthDegrees",
+      "@type": "xsd:double"
+    },
+    "shape_area": {
+      "@id": "pa:shapeAreaSquareDegrees",
+      "@type": "xsd:double"
+    },
+    "properties": {
+      "@id": "https://purl.org/geojson/vocab#properties",
+      "@context": {
+        "id": {
+          "@id": "pa:eeaRowId"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: HELCOM MPA source feature (HELCOM MADS layers 54 and 190)
+description: >
+  Source-faithful GeoJSON profile of HELCOM marine protected areas as served by the Seadots
+  pygeoapi collections `helcom-live-mpas` (ESRI provider over HELCOM MADS Biodiversity layer 54,
+  "HELCOM MPAs", one row per MPA) and `helcom-live-mpa-network-2026` (layer 190, "Baltic Sea MPA
+  network 2026", one row per polygon, heterogeneous national types and codes). Field names are
+  HELCOM's own.
+$defs:
+  Feature:
+    allOf:
+      - $ref: bblocks://ogc.geo.features.feature
+      - type: object
+        required: [geometry, properties]
+        properties:
+          geometry:
+            type: object
+            properties:
+              type: { enum: [Polygon, MultiPolygon] }
+          properties:
+            oneOf:
+              - title: Layer 54 - HELCOM MPAs
+                type: object
+                required: [Name, MPA_ID, Country, MPA_status]
+                properties:
+                  OBJECTID: { type: integer }
+                  Name: { type: string }
+                  MPA_ID: { type: integer, description: HELCOM MPA database id. }
+                  Country: { type: string }
+                  Site_link: { type: [string, "null"], format: uri }
+                  MPA_status: { type: string, enum: [Designated and managed, Designated and partly managed, Designated] }
+                  Date_est: { type: [string, "null"], pattern: '^\d{2}\.\d{2}\.\d{4}$', description: Date of establishment, DD.MM.YYYY. }
+                  Year_est: { type: [integer, "null"] }
+                  Shape_Leng: { type: [number, "null"] }
+              - title: Layer 190 - Baltic Sea MPA network 2026
+                type: object
+                required: [Name, Type, Code, Country]
+                properties:
+                  OBJECTID: { type: integer }
+                  Name: { type: string }
+                  Type: { type: string, description: National or international designation type, in the reporting country's language or English. }
+                  TypeSpecification: { type: [string, "null"] }
+                  Code:
+                    type: string
+                    description: >
+                      Site code. Mixes HELCOM MPA ids (e.g. 239), EEA/WDPA site ids (e.g. 555638668),
+                      Natura 2000 site codes (e.g. LTSIU0012) and national codes.
+                  Country: { type: string }
+                  HasCoastalArea: { type: [string, "null"], enum: ["Yes", "No", null] }
+                  polygon_affiliation: { type: [string, "null"] }
+                  site_polygon_id: { type: [string, "null"] }
+                  Shape_Length: { type: [number, "null"] }
+                  Shape_Area: { type: [number, "null"] }
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+      - $ref: bblocks://ogc.geo.features.featureCollection
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/$defs/Feature'
+oneOf:
+  - $ref: '#/$defs/Feature'
+  - $ref: '#/$defs/FeatureCollection'

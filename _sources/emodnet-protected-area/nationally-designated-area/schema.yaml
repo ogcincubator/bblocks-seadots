@@ -1,0 +1,139 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant nationally designated area
+description: >
+  GeoJSON Feature profile that reproduces the attribute set of the EMODnet Human
+  Activities layer `emodnet:nationallydesignatedareas` (EEA Nationally Designated
+  Areas, formerly CDDA) with the service's published field names and primitive types.
+  All 36 attributes are present on every feature (null where the value is not known),
+  so a client written against the EMODnet WFS reads this API's features unchanged.
+$defs:
+  Feature:
+    allOf:
+      - $ref: bblocks://ogc.hosted.seadots.emodnet-protected-area#/$defs/Feature
+      - type: object
+        properties:
+          id:
+            description: >
+              Feature id. Equals `properties.natdaid` when the site has an EEA id; for sites not yet
+              reported to the EEA (natdaid null) it is `<countrycod>-<nationalid>`, e.g. `NO-VV00003931`.
+            type: [integer, string]
+          properties:
+            type: object
+            additionalProperties: false
+            required: [natdaid, countrycod, country, regioncode, sitename, legalfound, localid, namespace,
+                       versionid, metadata_v, metadata_b, metadata_s, metadata_f, metadata_1, geomtype, id,
+                       coast_mar, nationalid, designated, designatio, iucncatego, iucndesc, iucnlink,
+                       sitearea, majorecosy, marinearea, spatialdat, spatialres, pslocalid, psnamespac,
+                       psversioni, remark, shape_leng, shape_area]
+            properties:
+              natdaid:
+                description: EEA site identifier (Norwegian source field cddaId). Null for sites not yet reported to the EEA.
+                type: [integer, "null"]
+              countrycod:
+                description: ISO 3166-1 alpha-2 country code.
+                type: string
+                pattern: '^[A-Z]{2}$'
+              country:
+                description: Country name in English, as published by EMODnet.
+                type: string
+              regioncode:
+                description: Reporting region code; for Norway equal to the country code.
+                type: string
+              sitename:
+                type: string
+                minLength: 1
+              legalfound:
+                description: Year of the legal act that designated the site.
+                type: [integer, "null"]
+              localid:
+                description: INSPIRE local identifier of the site (the national site id).
+                type: string
+              namespace:
+                description: INSPIRE namespace of the local identifier.
+                type: string
+              versionid: { type: [string, "null"] }
+              metadata_v:
+                description: EEA reporting-chain field (URL of the reported dataset snapshot). See the description for how the Seadots view fills it.
+                type: [string, "null"]
+              metadata_b:
+                description: EEA reporting-chain field (date, ISO 8601, optionally suffixed with Z).
+                type: [string, "null"]
+                pattern: '^\d{4}-\d{2}-\d{2}Z?$'
+              metadata_s: { type: [string, "null"] }
+              metadata_f: { type: [string, "null"] }
+              metadata_1: { type: [string, "null"] }
+              geomtype:
+                type: string
+                enum: [polygon, point]
+              id:
+                description: EEA database row id. Not derivable from national sources; null in the Seadots view.
+                type: [integer, "null"]
+              coast_mar:
+                description: 1 when the site is coastal or marine. EMODnet keeps only such sites.
+                type: integer
+                enum: [0, 1]
+              nationalid:
+                description: National site identifier (Norway naturvernId, e.g. VV00003080).
+                type: [string, "null"]
+              designated:
+                type: string
+                enum: [Designated site, Designated Site, Proposed site]
+              designatio:
+                description: EEA designation type code, bound to http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/{code}.
+                type: string
+                pattern: '^[A-Z]{2}[0-9A-Z]{2,3}$'
+              iucncatego:
+                type: string
+                enum: [Ia, Ib, II, III, IV, V, VI, notReported]
+              iucndesc:
+                type: string
+                enum:
+                  - Strict Nature Reserve
+                  - Wilderness Area
+                  - National Park
+                  - Natural Monument or Feature
+                  - Habitat/Species Management Area
+                  - Protected Landscape/ Seascape
+                  - Protected area with sustainable use of natural resources
+                  - Not reported
+              iucnlink: { type: [string, "null"] }
+              sitearea:
+                description: Site area in hectares.
+                type: [number, "null"]
+                minimum: 0
+              majorecosy:
+                type: string
+                enum: [Marine, Marine and terrestrial, Terrestrial]
+              marinearea:
+                description: Marine share of the site area, in per cent.
+                type: [number, "null"]
+                minimum: 0
+                maximum: 100
+              spatialdat:
+                type: string
+                enum: [public, restricted]
+              spatialres:
+                type: string
+              pslocalid: { type: [string, "null"] }
+              psnamespac: { type: [string, "null"] }
+              psversioni: { type: [string, "null"] }
+              remark: { type: [string, "null"] }
+              shape_leng:
+                description: Perimeter in degrees, computed planar on the CRS84 geometry (as EMODnet does).
+                type: number
+              shape_area:
+                description: Area in square degrees, computed planar on the CRS84 geometry (as EMODnet does).
+                type: number
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+      - $ref: bblocks://ogc.geo.features.featureCollection
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/$defs/Feature'
+oneOf:
+  - $ref: '#/$defs/Feature'
+  - $ref: '#/$defs/FeatureCollection'

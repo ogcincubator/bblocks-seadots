@@ -1,0 +1,21 @@
+transforms:
+  - id: to-emodnet-nationally-designated-area
+    description: >
+      Maps Naturvernområder features to the EMODnet nationallydesignatedareas attribute set:
+      field renames, verneform -> EEA designation type (crosswalk/verneform-designation.csv),
+      IUCN and ecosystem recoding, sitearea from SHAPE.STArea() (m² -> ha), legalfound from
+      vernedato, planar shape_leng/shape_area on CRS84, one MultiPolygon per site, fixed
+      INSPIRE namespace. Excludes terrestrial sites and forms without an EEA designation
+      type. Writes a report of excluded sites, sites not yet reported to the EEA, inferred
+      designations, sites needing a marine-area overlay and, when an EMODnet reference is
+      given, field-level differences from EMODnet.
+    type: python
+    metadata:
+      retrieved: '2026-09-30'
+      emodnetReference: ../../emodnet-protected-area/nationally-designated-area/examples/emodnet-reference-no.geojson
+    ref: transforms/to_emodnet_nda.py
+    inputs:
+      mediaTypes: [application/geo+json]
+    outputs:
+      mediaTypes: [application/geo+json]
+      profiles: [bblocks://ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area]

@@ -1,0 +1,49 @@
+{
+  "name": "HELCOM MPA source profile with EMODnet transform",
+  "abstract": "Source-faithful profile of HELCOM marine protected areas (HELCOM MADS layer 54 'HELCOM MPAs' and layer 190 'Baltic Sea MPA network 2026') as served by the Seadots OGC API - Features collections, with the Python transform that produces the EMODnet-compliant Regional Sea Convention MPA view and routes non-HELCOM codes to the EMODnet layers that already publish them.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-30T00:00:00Z",
+  "dateOfLastChange": "2026-09-30",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": [
+    "HELCOM",
+    "Baltic Sea",
+    "MPA",
+    "MADS",
+    "source",
+    "transform",
+    "EMODnet"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "HELCOM MADS Biodiversity layer 54: HELCOM MPAs",
+      "link": "https://maps.helcom.fi/arcgis/rest/services/MADS/Biodiversity/MapServer/54"
+    },
+    {
+      "title": "HELCOM MADS Biodiversity layer 190: Baltic Sea MPA network 2026",
+      "link": "https://maps.helcom.fi/arcgis/rest/services/MADS/Biodiversity/MapServer/190"
+    },
+    {
+      "title": "HELCOM MPA database",
+      "link": "http://mpas.helcom.fi/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.features.feature",
+    "ogc.hosted.seadots.emodnet-protected-area.rsc-mpa",
+    "ogc.hosted.seadots.protected-area.transform-report"
+  ],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "maturity": "development",
+  "scope": "dev"
+}

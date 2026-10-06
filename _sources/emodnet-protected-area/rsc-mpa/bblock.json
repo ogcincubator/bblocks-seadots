@@ -1,0 +1,49 @@
+{
+  "name": "EMODnet-compliant Regional Sea Convention MPA",
+  "abstract": "GeoJSON Feature profile reproducing the attribute schema of the EMODnet Human Activities layer emodnet:marineprotectedareas (MPAs reported to the Regional Sea Conventions, rsc = HELCOM or OSPAR) with unchanged field names and types. Target profile for publishing HELCOM MPAs through OGC API - Features in EMODnet form.",
+  "itemClass": "schema",
+  "tags": [
+    "EMODnet",
+    "Human Activities",
+    "MPA",
+    "HELCOM",
+    "OSPAR",
+    "Regional Sea Convention",
+    "Baltic Sea",
+    "GeoJSON"
+  ],
+  "sources": [
+    {
+      "title": "EMODnet marineprotectedareas feature type (DescribeFeatureType)",
+      "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:marineprotectedareas"
+    },
+    {
+      "title": "HELCOM MPA database",
+      "link": "http://mpas.helcom.fi/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.hosted.seadots.emodnet-protected-area"
+  ],
+  "shaclRules": [
+    "rules.shacl"
+  ],
+  "standards": [
+    "https://datatracker.ietf.org/doc/html/rfc7946"
+  ],
+  "status": "under-development",
+  "dateTimeAddition": "2026-09-30T00:00:00Z",
+  "dateOfLastChange": "2026-09-30",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "ldContext": "context.jsonld"
+}

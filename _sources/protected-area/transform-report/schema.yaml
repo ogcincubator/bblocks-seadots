@@ -1,0 +1,99 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Protected-area transform report
+description: >
+  The `seadotsTransformReport` member of a protected-area transform output. Each transform fills the
+  members that apply to it and leaves the others out. Site references use the source's own identifier
+  (`nationalid` for Norwegian sites, `code` for HELCOM rows).
+type: object
+additionalProperties: false
+$defs:
+  siteRef:
+    type: object
+    required: [code]
+    properties:
+      code: { type: string, description: Site code as found in the source. }
+      name: { type: string }
+      country: { type: string }
+      type: { type: string, description: Designation type label as found in the source. }
+properties:
+  excluded:
+    description: Source features left out of the output, with the selection rule that excluded them.
+    type: array
+    items:
+      type: object
+      required: [nationalid, reason]
+      properties:
+        nationalid: { type: string }
+        reason: { type: string }
+  notYetReportedToEEA:
+    description: National site ids published without an EEA id (feature id `<country>-<nationalid>`).
+    type: array
+    items: { type: string }
+  needsMarineAreaOverlay:
+    description: National site ids whose marine share was not computed from a coastline overlay.
+    type: array
+    items: { type: string }
+  inferredDesignation:
+    description: Sites whose EEA designation type comes from an *inferred* crosswalk row.
+    type: array
+    items:
+      type: object
+      required: [nationalid, verneform, designatio]
+      properties:
+        nationalid: { type: string }
+        verneform: { type: string }
+        designatio: { type: string }
+  differsFromEMODnet:
+    description: >
+      Field-level differences between the transformed feature (source values, which are kept) and the
+      EMODnet record for the same site.
+    type: array
+    items:
+      type: object
+      required: [nationalid, fields]
+      properties:
+        nationalid: { type: string }
+        fields:
+          type: object
+          additionalProperties:
+            type: object
+            required: [source, emodnet]
+            properties:
+              source: {}
+              emodnet: {}
+  routedToNatura2000:
+    description: Rows whose code is a Natura 2000 site code; published by emodnet:natura2000areas, not duplicated.
+    type: array
+    items:
+      allOf:
+        - $ref: '#/$defs/siteRef'
+        - required: [target]
+          properties:
+            target: { type: string, pattern: '^emodnet:natura2000areas\?sitecode=' }
+  routedToNationallyDesignatedAreas:
+    description: Rows whose code is an EEA/WDPA site id; published by emodnet:nationallydesignatedareas, not duplicated.
+    type: array
+    items:
+      allOf:
+        - $ref: '#/$defs/siteRef'
+        - required: [target]
+          properties:
+            target: { type: string, pattern: '^emodnet:nationallydesignatedareas\?natdaid=' }
+  unresolvedCode:
+    description: Rows whose code matches no known scheme (national codes).
+    type: array
+    items: { $ref: '#/$defs/siteRef' }
+  noStatusInRegister:
+    description: HELCOM ids with no match in the HELCOM MPA register (layer 54), so no status; reported, not published.
+    type: array
+    items:
+      type: object
+      required: [code]
+      properties:
+        code: { type: integer }
+        name: { type: string }
+        country: { type: string }
+  mergedParts:
+    description: Number of source polygons merged into one MultiPolygon, by site code.
+    type: object
+    additionalProperties: { type: integer, minimum: 2 }

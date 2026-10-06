@@ -1,0 +1,61 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Naturvernområder source feature (Miljødirektoratet vern layer 0)
+description: >
+  Source-faithful GeoJSON profile of a Norwegian protected site as served by the Seadots
+  pygeoapi collections `no-live-naturvern-omrade` (ESRI provider over
+  kart.miljodirektoratet.no/arcgis/rest/services/vern/mapserver/0) and
+  `no-snapshot-naturvern-omrade-marine` (GeoPackage snapshot). Field names are the
+  source's own. The live service gives dates as epoch milliseconds and area as
+  `SHAPE.STArea()`; the snapshot gives ISO dates and `SHAPE_STArea`. Both are accepted.
+$defs:
+  Feature:
+    allOf:
+      - $ref: bblocks://ogc.geo.features.feature
+      - type: object
+        required: [geometry, properties]
+        properties:
+          geometry:
+            type: object
+            properties:
+              type: { enum: [Polygon, MultiPolygon] }
+          properties:
+            type: object
+            required: [naturvernId, navn, verneform, majorEcosystemType, iucn]
+            properties:
+              naturvernId: { type: string, pattern: '^VV\d{8}$', description: National site id (INSPIRE localId). }
+              cddaId: { type: [string, "null"], pattern: '^\d+$', description: EEA site id; null until the site is reported to the EEA. }
+              navn: { type: string }
+              offisieltNavn: { type: [string, "null"] }
+              faktaark: { type: [string, "null"], format: uri }
+              verneform:
+                type: string
+                enum: [Biotopvern, BiotopvernSvalbard, BiotopvernVilt, Dyrefredningsomrade, Dyrelivsfredning, GeotopvernSvalbard,
+                       Landskapsvernomraade, LandskapsvernomraadeDyrelivsfredning, LandskapsvernomraadePlanteOgDyrelivsfredning,
+                       LandskapsvernomraadePlantelivsfredning, MarintVerneomraadeAnnet, MarintVerneomraade, MidlertidigVernaOmraade,
+                       Nasjonalpark, NasjonalparkSvalbard, Naturminne, Naturreservat, NaturreservatSvalbard,
+                       PlanteOgDyrefredningsomraade, PlanteOgDyrelivsfredning, Plantefredningsomraade, Plantelivsfredning,
+                       LandskapsvernomraadeBiotopvern, NaturreservatJanMayen]
+              verneforskrift: { type: [string, "null"] }
+              vernedato: { type: [integer, string, "null"], description: Date of designation (epoch ms or ISO 8601). }
+              foerstegangVernet: { type: [integer, string, "null"] }
+              verneplan: { type: [string, "null"] }
+              kommune: { type: [string, "null"] }
+              forvaltningsmyndighet: { type: [string, "null"] }
+              forvaltningsmyndighetType: { type: [string, "null"] }
+              iucn: { type: string, enum: [IUCN_IA, IUCN_IB, IUCN_II, IUCN_III, IUCN_IV, IUCN_V, IUCN_VI, IkkeVurdert] }
+              majorEcosystemType: { type: string, enum: [Marin, MarinOgTerrestrisk, Terrestrisk] }
+              "SHAPE.STArea()": { type: number, description: Area in m² (EPSG:25833). }
+              SHAPE_STArea: { type: number, description: Same as SHAPE.STArea() in the GeoPackage snapshot. }
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+      - $ref: bblocks://ogc.geo.features.featureCollection
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/$defs/Feature'
+oneOf:
+  - $ref: '#/$defs/Feature'
+  - $ref: '#/$defs/FeatureCollection'

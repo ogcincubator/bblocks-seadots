@@ -1,0 +1,13 @@
+examples:
+  - title: Two Norwegian marine protected sites as served by the source service
+    content: >
+      Tauterryggen (marine protected area) and Møysalen (national park, marine and terrestrial),
+      attributes verbatim from Miljødirektoratet's ArcGIS layer (retrieved 30 Sep 2026); geometry
+      is each site's WGS 84 bounding box. Transforming it with `to-emodnet-nationally-designated-area`
+      reproduces the EMODnet Tauterryggen record (reference records in
+      `emodnet-protected-area.nationally-designated-area`) on every mapped field, and reports for Møysalen
+      the three fields where EMODnet itself is wrong (natdaid, designatio, iucncatego are swapped
+      with the neighbouring landscape protection area in the EEA reporting chain).
+    snippets:
+      - language: geojson
+        ref: examples/naturvern-omrade-source.geojson

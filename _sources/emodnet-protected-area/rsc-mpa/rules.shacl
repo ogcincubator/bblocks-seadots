@@ -1,0 +1,22 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+
+pa:RSCMPAShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf pa:regionalSeaConvention ;
+    sh:property [
+        sh:path pa:regionalSeaConvention ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/rsc/HELCOM>
+                <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/rsc/OSPAR> ) ;
+    ] , [
+        sh:path pa:conventionSiteCode ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:message "code must be the numeric site id of the convention database (EMODnet types it xsd:long)." ;
+    ] , [
+        sh:path pa:siteName ;
+        sh:minCount 1 ;
+        sh:message "name must be filled; EMODnet's HELCOM rows keep the name here while orig_name is empty." ;
+    ] .

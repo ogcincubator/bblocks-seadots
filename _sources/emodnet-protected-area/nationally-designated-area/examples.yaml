@@ -1,0 +1,19 @@
+examples:
+  - title: Tauterryggen marine protected area as published by EMODnet
+    content: >
+      A real record from the EMODnet Human Activities WFS (`nationalid = VV00003080`,
+      retrieved 30 Sep 2026), used as the golden target for the Norwegian transform.
+      All attribute values are verbatim. The geometry is the site's WGS 84 bounding box
+      (from the Miljødirektoratet service), not the true boundary, so `shape_leng` and
+      `shape_area` (which EMODnet computed on the true boundary) do not match it.
+    snippets:
+      - language: json
+        ref: examples/emodnet-tauterryggen.json
+  - title: EMODnet reference records for Tauterryggen and Møysalen
+    content: >
+      The EMODnet nationallydesignatedareas records for VV00003080 and VV00002196 (retrieved 30 Sep 2026),
+      used as the reconciliation reference of the Norwegian transform (`emodnetReference`). The Møysalen
+      record carries the EEA reporting-chain error described in `protected-area.source-norway-naturvernomrade`.
+    snippets:
+      - language: json
+        ref: examples/emodnet-reference-no.geojson

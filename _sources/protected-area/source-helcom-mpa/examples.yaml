@@ -1,0 +1,20 @@
+examples:
+  - title: HELCOM MPAs (layer 54)
+    content: >
+      Hatter Barn (DK) and Jasmund National Park (DE), attributes verbatim from HELCOM MADS
+      layer 54 (retrieved 30 Sep 2026); geometry is each site's WGS 84 bounding box.
+      Transformed with `to-emodnet-rsc-mpa`, both equal the EMODnet reference records of
+      `emodnet-protected-area.rsc-mpa` on every attribute except the geometry-derived
+      shape_leng / shape_area.
+    snippets:
+      - language: geojson
+        ref: examples/helcom-mpas-layer54.geojson
+  - title: Baltic Sea MPA network 2026 (layer 190) - three code schemes
+    content: >
+      Three real layer-190 rows: Kuršių marios (Natura 2000 code LTSIU0012 -> routed to
+      emodnet:natura2000areas, where it exists), Fehmarnbelt (EEA/WDPA id 555638668 -> routed to
+      emodnet:nationallydesignatedareas, where it exists as DE02AWZ_4) and Jasmund National Park
+      (HELCOM MPA id 239 -> published in this profile, status joined from layer 54).
+    snippets:
+      - language: geojson
+        ref: examples/helcom-mpa-network-2026-layer190.geojson

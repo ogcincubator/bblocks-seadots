@@ -1,0 +1,59 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Shapes shared by the EMODnet-compliant protected-area profiles. They check the
+# lifted (JSON-LD) form, i.e. that coded EMODnet strings resolve to the bound
+# authority IRIs rather than to arbitrary text.
+
+pa:DesignationTypeShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf pa:designationType ;
+    sh:property [
+        sh:path pa:designationType ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:pattern "^http://dd\\.eionet\\.europa\\.eu/vocabulary/cdda/designationTypeCodeValue/[A-Z]{2}[0-9A-Z]{2,3}$" ;
+        sh:message "designatio must be an EEA designation type code (e.g. NO05) resolving to the Eionet designationTypeCodeValue vocabulary." ;
+    ] .
+
+pa:IUCNShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf pa:iucnCategory ;
+    sh:property [
+        sh:path pa:iucnCategory ;
+        sh:maxCount 1 ;
+        sh:in (
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/Ia>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/Ib>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/II>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/III>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/IV>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/V>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/VI>
+            <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/notReported>
+        ) ;
+        sh:message "iucncatego must be one of Ia, Ib, II, III, IV, V, VI or notReported, as encoded by EMODnet." ;
+    ] .
+
+pa:EcosystemShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf pa:majorEcosystemType ;
+    sh:property [
+        sh:path pa:majorEcosystemType ;
+        sh:maxCount 1 ;
+        sh:in ( "Marine" "Marine and terrestrial" "Terrestrial" ) ;
+        sh:message "majorecosy must use EMODnet's English values: Marine, Marine and terrestrial, Terrestrial (not the Norwegian Marin / MarinOgTerrestrisk / Terrestrisk)." ;
+    ] .
+
+pa:SiteNameShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf pa:siteName ;
+    sh:property [
+        sh:path pa:siteName ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "Every protected area must carry a non-empty site name." ;
+    ] .

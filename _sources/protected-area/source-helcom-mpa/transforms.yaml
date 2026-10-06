@@ -1,0 +1,19 @@
+transforms:
+  - id: to-emodnet-rsc-mpa
+    description: >
+      Maps HELCOM MPA features to EMODnet marineprotectedareas with rsc = HELCOM:
+      MPA_ID/Code -> code, Name -> name, Country -> country, MPA_status -> status,
+      Year_est -> status_yr, Site_link -> link; all other EMODnet fields null; parts
+      sharing an id merged into one MultiPolygon; planar shape_leng/shape_area on CRS84.
+      Layer-190 codes are classified by pattern: only HELCOM MPA ids enter this profile
+      (with status joined from layer 54); Natura 2000 codes and EEA site ids are routed
+      to the EMODnet layer that already publishes them, and national codes are reported.
+    type: python
+    metadata:
+      mpaRegister: examples/helcom-mpas-layer54.geojson
+    ref: transforms/to_emodnet_rsc_mpa.py
+    inputs:
+      mediaTypes: [application/geo+json]
+    outputs:
+      mediaTypes: [application/geo+json]
+      profiles: [bblocks://ogc.hosted.seadots.emodnet-protected-area.rsc-mpa]

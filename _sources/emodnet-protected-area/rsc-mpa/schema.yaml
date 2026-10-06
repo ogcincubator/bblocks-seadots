@@ -1,0 +1,85 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant Regional Sea Convention MPA
+description: >
+  GeoJSON Feature profile reproducing the EMODnet Human Activities layer
+  `emodnet:marineprotectedareas` (MPAs as reported to HELCOM and OSPAR) with the
+  service's field names and primitive types. All attributes are present on every
+  feature; attributes that EMODnet leaves empty for a convention are null.
+$defs:
+  Feature:
+    allOf:
+      - $ref: bblocks://ogc.hosted.seadots.emodnet-protected-area#/$defs/Feature
+      - type: object
+        properties:
+          id:
+            description: Feature id; equals `properties.code`.
+            type: integer
+          properties:
+            type: object
+            additionalProperties: false
+            required: [rsc, code, name, orig_name, country, designatio, iucn_cat, rep_m_area, gis_m_area,
+                       rep_area, gis_area, status, status_yr, mang_auth, link, shape_leng, shape_area]
+            properties:
+              rsc:
+                description: Regional Sea Convention that reported the MPA.
+                type: string
+                enum: [HELCOM, OSPAR]
+              code:
+                description: >
+                  MPA identifier in the convention's database (HELCOM MPA database id / OSPAR code).
+                  EMODnet types it xsd:long, so non-numeric codes are not admissible here.
+                type: integer
+              name:
+                type: string
+                minLength: 1
+              orig_name: { type: [string, "null"] }
+              country:
+                description: Country name in English (Denmark, Estonia, Finland, Germany, Latvia, Lithuania, Poland, Russia, Sweden; Norway etc. for OSPAR).
+                type: string
+              designatio: { type: [string, "null"] }
+              iucn_cat: { type: [string, "null"] }
+              rep_m_area: { type: [number, "null"] }
+              gis_m_area: { type: [number, "null"] }
+              rep_area: { type: [number, "null"] }
+              gis_area: { type: [number, "null"] }
+              status:
+                description: For rsc = HELCOM, the HELCOM management status.
+                type: string
+              status_yr:
+                description: Year of establishment.
+                type: [integer, "null"]
+              mang_auth: { type: [string, "null"] }
+              link:
+                description: Link to the site page in the convention's MPA database.
+                type: [string, "null"]
+                format: uri
+              shape_leng:
+                description: Perimeter in degrees, computed planar on the CRS84 geometry.
+                type: number
+              shape_area:
+                description: Area in square degrees, computed planar on the CRS84 geometry.
+                type: number
+        if:
+          properties:
+            properties:
+              properties:
+                rsc: { const: HELCOM }
+        then:
+          properties:
+            properties:
+              properties:
+                status:
+                  enum: [Designated and managed, Designated and partly managed, Designated]
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+      - $ref: bblocks://ogc.geo.features.featureCollection
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/$defs/Feature'
+oneOf:
+  - $ref: '#/$defs/Feature'
+  - $ref: '#/$defs/FeatureCollection'

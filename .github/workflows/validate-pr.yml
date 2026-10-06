@@ -1,0 +1,58 @@
+name: Validate Building Blocks (pull request)
+# Acceptance gate for changes to the register: the same bblocks-postprocess run as on master, but
+# without committing build output, deploying Pages or pushing to the triplestore, plus the
+# protected-area checks (transforms run on the examples, contract tests, SHACL).
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-pr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  postprocess:
+    name: bblocks-postprocess (validation only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: OGC BB postprocess
+        uses: opengeospatial/bblocks-postprocess/full@v1
+        with:
+          fail_on_error: 'true'
+          enable_sparql: 'false'
+          deploy_viewer: 'false'
+          github_base_url: https://github.com/${{ github.repository }}/blob/${{ github.head_ref || github.ref_name }}/
+      - name: Fail if a touched building block does not validate
+        # postprocess only fails on processing errors; validation results are in the report.
+        run: python3 tools/check_changed_bblocks.py build/tests/report.json "origin/${{ github.base_ref || 'master' }}"
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bblocks-build
+          path: |
+            build/tests
+            build/register.json
+          if-no-files-found: ignore
+
+  protected-areas:
+    name: Protected-area blocks (transforms, contract tests, SHACL)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install jsonschema referencing pyld rdflib pyshacl pyyaml requests
+      - name: Validate
+        run: python tools/validate_protected_areas.py
