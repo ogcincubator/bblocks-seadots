@@ -7,7 +7,8 @@ Does for the blocks under the given roots what the bblocks-postprocess CI does, 
      `bblocks://<id>` references resolve to this repository's _sources for local blocks and to the
      annotated schemas of the imported registers (bblocks-config.yaml `imports`, followed
      transitively) for everything else. Remote documents are cached under ~/.cache/bblocks-validate.
-  2. JSON-LD uplift of every example with the contexts of the block and of everything it depends on.
+  2. JSON-LD uplift of every example with the contexts of the block and of everything it depends on,
+     after the jq pre-steps of its semantic-uplift.yaml; every Feature id must survive as the node IRI.
   3. SHACL validation of the uplifted graphs with the rules.shacl of all blocks under the roots;
      every declared ontology (bblock.json `ontology`) must parse as Turtle.
   4. Every transform in transforms.yaml is run the way postprocess runs it (the script is exec'd
@@ -110,11 +111,11 @@ class Register:
         url = self.remote.get(bid, {}).get("ldContext")
         return url
 
-    def dependencies(self, bid, seen=None):
-        """bid's dependsOn closure, dependencies first."""
+    def dependencies(self, bid, seen=None, schema_only=False):
+        """bid's dependsOn closure (or, with schema_only, its schema-ref closure), dependencies first."""
         seen = set() if seen is None else seen
         out = []
-        deps = list(self.meta(bid).get("dependsOn", []))
+        deps = [] if schema_only and bid in self.local else list(self.meta(bid).get("dependsOn", []))
         if bid in self.local:                      # postprocess also follows the schema's bblocks:// refs
             deps += re.findall(r"bblocks://([\w.\-]+)", Path(self.schema_location(bid)).read_text(encoding="utf-8"))
         for dep in dict.fromkeys(deps):
@@ -123,7 +124,7 @@ class Register:
                 continue
             if dep not in seen and (dep in self.local or dep in self.remote):
                 seen.add(dep)
-                out += self.dependencies(dep, seen) + [dep]
+                out += self.dependencies(dep, seen, schema_only) + [dep]
         return out
 
 
@@ -151,7 +152,9 @@ def main(roots):
     jsonld.set_document_loader(loader)
 
     def context_chain(bid):
-        return [c for d in reg.dependencies(bid) + [bid] if (c := reg.context(d))]
+        # postprocess composes a block's context from the blocks its schema refers to, not from
+        # every dependsOn entry (e.g. a source block depending on the transform-report block).
+        return [c for d in reg.dependencies(bid, schema_only=True) + [bid] if (c := reg.context(d))]
 
     def shape_sources(bid):
         """SHACL files of bid and of everything it depends on, as postprocess applies them."""
@@ -181,6 +184,17 @@ def main(roots):
             g = rdflib.Graph().parse(d / onto, format="turtle")
             print(f"ontology {bid}: {onto} parses, {len(g)} triples")
 
+    def pre_uplift(bid, doc):
+        """Apply the jq steps of the block's semantic-uplift.yaml, as postprocess does before the uplift."""
+        if bid not in reg.local or not (f := reg.local[bid] / "semantic-uplift.yaml").exists():
+            return doc
+        for step in yaml.safe_load(f.read_text(encoding="utf-8")).get("additionalSteps", []):
+            if step["type"] == "jq":
+                code = step.get("code") or (reg.local[bid] / step["ref"]).read_text(encoding="utf-8")
+                doc = json.loads(subprocess.run(["jq", "-c", code], input=json.dumps(doc), capture_output=True,
+                                                text=True, check=True).stdout)
+        return doc
+
     def check(bid, doc, label):
         nonlocal failures
         errs = sorted(validator(bid).iter_errors(doc), key=lambda e: list(e.path))
@@ -196,12 +210,19 @@ def main(roots):
         if not chain or doc.get("type") not in ("Feature", "FeatureCollection"):
             print(f"  ok   {label} (schema)")
             return
+        doc = pre_uplift(bid, doc)
         docs = doc["features"] if doc.get("type") == "FeatureCollection" else [doc]
         ld = {"@context": chain, "@graph": copy.deepcopy(docs)}
         for f in ld["@graph"]:
             if f.get("id") is not None and ":" not in str(f["id"]):
                 f["id"] = f"https://example.org/feature/{f['id']}"
         g = rdflib.Graph().parse(data=jsonld.to_rdf(ld, {"format": "application/n-quads"}), format="nquads")
+        lost = [f["id"] for f in ld["@graph"] if f.get("id") is not None
+                and (rdflib.URIRef(f["id"]), rdflib.RDF.type, rdflib.URIRef("https://purl.org/geojson/vocab#Feature")) not in g]
+        if lost:
+            failures += 1
+            print(f"  JSON-LD FAIL {label}: Feature id(s) not kept as node IRI after uplift: {lost[:3]}")
+            return
         conforms, _, text = shacl_validate(g, shacl_graph=shapes_for(bid), inference="none")
         if not conforms:
             failures += 1

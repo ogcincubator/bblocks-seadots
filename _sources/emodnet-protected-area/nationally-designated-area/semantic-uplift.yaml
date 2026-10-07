@@ -1,0 +1,12 @@
+# EMODnet's nationallydesignatedareas has an attribute named `id` (the EEA database row id). The
+# GeoJSON context nests `properties` into the Feature node (`@nest`), where `id` is the Feature's own
+# `@id`, so the attribute cannot be told apart from the Feature id in JSON-LD. Before the uplift it is
+# moved to `_emodnetRowId` (mapped in context.jsonld); the JSON itself keeps EMODnet's field name.
+additionalSteps:
+  - type: jq
+    code: |
+      def lift_row_id:
+        if (.properties | type) == "object" and (.properties | has("id"))
+        then .properties |= (with_entries(if .key == "id" then .key = "_emodnetRowId" else . end))
+        else . end;
+      if .type == "FeatureCollection" then .features |= map(lift_row_id) else lift_row_id end

@@ -66,7 +66,10 @@ $defs:
                 type: string
                 enum: [polygon, point]
               id:
-                description: EEA database row id. Not derivable from national sources; null in the Seadots view.
+                description: >
+                  EEA database row id. Not derivable from national sources; null in the Seadots view.
+                  In the JSON-LD uplift it is renamed to `_emodnetRowId` first (semantic-uplift.yaml),
+                  because under the GeoJSON `@nest` context `id` would be the Feature's own `@id`.
                 type: [integer, "null"]
               coast_mar:
                 description: 1 when the site is coastal or marine. EMODnet keeps only such sites.
