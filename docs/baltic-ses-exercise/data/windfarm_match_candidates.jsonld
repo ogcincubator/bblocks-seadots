@@ -1,0 +1,171 @@
+{
+  "@context": {
+    "geojson": "https://purl.org/geojson/vocab#",
+    "ses": "urn:baltic-ses:vocab:",
+    "schema": "https://schema.org/",
+    "type": "@type",
+    "id": "@id",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "Feature": "geojson:Feature",
+    "features": {
+      "@id": "geojson:features",
+      "@container": "@set"
+    },
+    "geometry": "geojson:geometry",
+    "properties": "geojson:properties",
+    "name": "schema:name",
+    "farm": "schema:name",
+    "source_dataset": "ses:sourceDataset",
+    "developer": "ses:developer",
+    "capacity_mw": "ses:capacityMW",
+    "power_mw": "ses:capacityMW",
+    "status": "ses:reportedStatus",
+    "status_aug2026": "ses:reportedStatus",
+    "year": "ses:reportedYear",
+    "first_power_or_completion_year": "ses:firstPowerYear",
+    "source": "schema:citation",
+    "source_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "n_turbines": "ses:turbineCount",
+    "dist_coast_m": "ses:distanceToCoastM",
+    "updateyear": "ses:sourceUpdateYear",
+    "lon": "ses:longitude",
+    "lat": "ses:latitude",
+    "source_record": {
+      "@id": "ses:sourceRecord",
+      "@type": "@id"
+    },
+    "target_record": {
+      "@id": "ses:targetRecord",
+      "@type": "@id"
+    },
+    "match_method": "ses:matchMethod",
+    "name_score": "ses:nameSimilarity",
+    "distance_km": "ses:distanceKm",
+    "capacity_delta_mw": "ses:capacityDifferenceMW"
+  },
+  "@graph": [
+    {
+      "@id": "urn:baltic-ses:match-candidate:1",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:1:mfw-baltic-power",
+      "target_record": "urn:baltic-ses:emodnet:1:baltic-power",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 60.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:2",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:2:baltica-2",
+      "target_record": "urn:baltic-ses:emodnet:5:baltica-2",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 2.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:3",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:2:baltica-2",
+      "target_record": "urn:baltic-ses:emodnet:13:baltica-2",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 1290.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:4",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:5:baltica-3",
+      "target_record": "urn:baltic-ses:emodnet:6:baltica-3",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": -45.5
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:5",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:6:mfw-baltyk-1",
+      "target_record": "urn:baltic-ses:emodnet:2:baltyk-i-phase-1",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 420.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:6",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:6:mfw-baltyk-1",
+      "target_record": "urn:baltic-ses:emodnet:3:baltyk-i-phase-2",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 1140.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:7",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:7:baltica-9",
+      "target_record": "urn:baltic-ses:emodnet:25:baltica-9",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": 325.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:8",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:8:baltic-east",
+      "target_record": "urn:baltic-ses:emodnet:26:baltic-east",
+      "match_method": "name similarity",
+      "name_score": 1.0,
+      "distance_km": null,
+      "capacity_delta_mw": -66.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:9",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:3:baltyk-2-baltyk-3",
+      "target_record": "urn:baltic-ses:emodnet:7:baltyk-ii",
+      "match_method": "name similarity",
+      "name_score": 0.889,
+      "distance_km": null,
+      "capacity_delta_mw": 720.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:10",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:3:baltyk-2-baltyk-3",
+      "target_record": "urn:baltic-ses:emodnet:8:baltyk-iii",
+      "match_method": "name similarity",
+      "name_score": 0.889,
+      "distance_km": null,
+      "capacity_delta_mw": 720.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:11",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:4:bc-wind",
+      "target_record": "urn:baltic-ses:emodnet:11:bc-wind-offshore-wind-farm-c",
+      "match_method": "name similarity",
+      "name_score": 0.667,
+      "distance_km": null,
+      "capacity_delta_mw": 140.0
+    },
+    {
+      "@id": "urn:baltic-ses:match-candidate:12",
+      "@type": "ses:MatchCandidate",
+      "source_record": "urn:baltic-ses:national:4:bc-wind",
+      "target_record": "urn:baltic-ses:emodnet:12:bc-wind-offshore-wind-farm-b",
+      "match_method": "name similarity",
+      "name_score": 0.667,
+      "distance_km": null,
+      "capacity_delta_mw": 140.0
+    }
+  ]
+}
