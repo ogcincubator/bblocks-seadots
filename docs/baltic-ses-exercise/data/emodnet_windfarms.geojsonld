@@ -1,8 +1,11 @@
 {
   "@context": {
+    "@version": 1.1,
     "geojson": "https://purl.org/geojson/vocab#",
-    "ses": "urn:baltic-ses:vocab:",
+    "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "ses": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#",
     "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
     "type": "@type",
     "id": "@id",
     "FeatureCollection": "geojson:FeatureCollection",
@@ -13,38 +16,35 @@
     },
     "geometry": "geojson:geometry",
     "properties": "geojson:properties",
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "@vocab"
+    },
+    "Poland": "http://publications.europa.eu/resource/authority/country/POL",
+    "n_turbines": "em:nTurbines",
+    "power_mw": "em:powerMW",
+    "status": {
+      "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+      "@type": "@vocab"
+    },
+    "type_inst": "schema:additionalType",
+    "updateyear": "em:updateYear",
+    "year": "em:year",
+    "dist_coast": "em:distanceToCoast",
+    "notes": "dcterms:description",
     "name": "schema:name",
-    "farm": "schema:name",
+    "developer": "schema:creator",
+    "status_detail": "ses:statusDetail",
+    "status_as_of": "ses:statusAsOf",
+    "year_semantics": "ses:yearSemantics",
+    "year_is_assumed": "ses:yearIsAssumed",
     "source_dataset": "ses:sourceDataset",
-    "developer": "ses:developer",
-    "capacity_mw": "ses:capacityMW",
-    "power_mw": "ses:capacityMW",
-    "status": "ses:reportedStatus",
-    "status_aug2026": "ses:reportedStatus",
-    "year": "ses:reportedYear",
-    "first_power_or_completion_year": "ses:firstPowerYear",
-    "source": "schema:citation",
-    "source_url": {
-      "@id": "schema:url",
+    "source_reference": {
+      "@id": "ses:sourceReference",
       "@type": "@id"
     },
-    "n_turbines": "ses:turbineCount",
-    "dist_coast_m": "ses:distanceToCoastM",
-    "updateyear": "ses:sourceUpdateYear",
-    "lon": "ses:longitude",
-    "lat": "ses:latitude",
-    "source_record": {
-      "@id": "ses:sourceRecord",
-      "@type": "@id"
-    },
-    "target_record": {
-      "@id": "ses:targetRecord",
-      "@type": "@id"
-    },
-    "match_method": "ses:matchMethod",
-    "name_score": "ses:nameSimilarity",
-    "distance_km": "ses:distanceKm",
-    "capacity_delta_mw": "ses:capacityDifferenceMW"
+    "source_record_id": "ses:sourceRecordId",
+    "source_snapshot_date": "ses:sourceSnapshotDate"
   },
   "type": "FeatureCollection",
   "id": "urn:baltic-ses:dataset:emodnet",
@@ -60,14 +60,25 @@
         ]
       },
       "properties": {
-        "name": "Baltic Power",
-        "status": "Construction",
+        "country": "Poland",
+        "n_turbines": 76.0,
         "power_mw": 1140.0,
+        "status": "Construction",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2026",
-        "lon": 17.65,
-        "lat": 55.05,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltic Power",
+        "developer": null,
+        "status_detail": "Construction",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-1"
       }
     },
     {
@@ -81,14 +92,25 @@
         ]
       },
       "properties": {
-        "name": "Baltyk I Phase 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": 190.0,
         "power_mw": 1140.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 17.26,
-        "lat": 55.52,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltyk I Phase 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-2"
       }
     },
     {
@@ -102,14 +124,25 @@
         ]
       },
       "properties": {
-        "name": "Baltyk I Phase 2",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": 70.0,
         "power_mw": 420.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 17.38,
-        "lat": 55.51,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltyk I Phase 2",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-3"
       }
     },
     {
@@ -123,14 +156,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 900.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2030",
-        "lon": 17.53,
-        "lat": 55.56,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-4"
       }
     },
     {
@@ -144,14 +188,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica 2",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1498.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2027",
-        "lon": 17.1,
-        "lat": 55.07,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica 2",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-5"
       }
     },
     {
@@ -165,14 +220,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica 3",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1045.5,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2030",
-        "lon": 17.45,
-        "lat": 55.06,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica 3",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-6"
       }
     },
     {
@@ -186,14 +252,25 @@
         ]
       },
       "properties": {
-        "name": "Baltyk II",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 720.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 16.88,
-        "lat": 55.08,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltyk II",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-7"
       }
     },
     {
@@ -207,14 +284,25 @@
         ]
       },
       "properties": {
-        "name": "Baltyk III",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 720.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 17.36,
-        "lat": 54.99,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltyk III",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-8"
       }
     },
     {
@@ -228,14 +316,25 @@
         ]
       },
       "properties": {
-        "name": "FEW Baltic II",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 350.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2025",
         "year": "2030",
-        "lon": 16.64,
-        "lat": 55.09,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "FEW Baltic II",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-9"
       }
     },
     {
@@ -249,14 +348,25 @@
         ]
       },
       "properties": {
-        "name": "Sharco Duo Offshore wind farm",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1800.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 16.4314,
-        "lat": 55.0365,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "Sharco Duo Offshore wind farm",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-10"
       }
     },
     {
@@ -270,14 +380,25 @@
         ]
       },
       "properties": {
-        "name": "BC Wind Offshore wind farm C",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 250.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 18.0144,
-        "lat": 54.9946,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "BC Wind Offshore wind farm C",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-11"
       }
     },
     {
@@ -291,14 +412,25 @@
         ]
       },
       "properties": {
-        "name": "BC Wind Offshore wind farm B",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 250.0,
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
         "year": "2028",
-        "lon": 18.1298,
-        "lat": 54.9826,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "dist_coast": null,
+        "notes": null,
+        "name": "BC Wind Offshore wind farm B",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-12"
       }
     },
     {
@@ -312,14 +444,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica 2+",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 210.0,
-        "year": null,
-        "lon": 17.13,
-        "lat": 55.04,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2024",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica 2+",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-13"
       }
     },
     {
@@ -333,14 +476,25 @@
         ]
       },
       "properties": {
-        "name": "B-Wind",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 200.0,
-        "year": null,
-        "lon": 18.08,
-        "lat": 55.06,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2024",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "B-Wind",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-14"
       }
     },
     {
@@ -354,14 +508,25 @@
         ]
       },
       "properties": {
-        "name": "C-Wind",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 200.0,
-        "year": null,
-        "lon": 17.95,
-        "lat": 55.08,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2024",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "C-Wind",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-15"
       }
     },
     {
@@ -375,14 +540,25 @@
         ]
       },
       "properties": {
-        "name": "Licence Application No. 76",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 14.0,
-        "year": null,
-        "lon": 15.16,
-        "lat": 54.37,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2024",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Licence Application No. 76",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-16"
       }
     },
     {
@@ -396,14 +572,25 @@
         ]
       },
       "properties": {
-        "name": "Orlen Neptun VIII Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1000.0,
-        "year": null,
-        "lon": 17.6674,
-        "lat": 55.0302,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Orlen Neptun VIII Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-17"
       }
     },
     {
@@ -417,14 +604,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica IV Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 990.0,
-        "year": null,
-        "lon": 16.0744,
-        "lat": 54.8693,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica IV Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-18"
       }
     },
     {
@@ -438,14 +636,25 @@
         ]
       },
       "properties": {
-        "name": "Energa MFW 2 Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 800.0,
-        "year": null,
-        "lon": 15.2916,
-        "lat": 54.4292,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Energa MFW 2 Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-19"
       }
     },
     {
@@ -459,14 +668,25 @@
         ]
       },
       "properties": {
-        "name": "Orlen Neptun III Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1200.0,
-        "year": null,
-        "lon": 15.4372,
-        "lat": 54.4962,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Orlen Neptun III Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-20"
       }
     },
     {
@@ -480,14 +700,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica V Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 555.0,
-        "year": null,
-        "lon": 17.5795,
-        "lat": 55.5059,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica V Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-21"
       }
     },
     {
@@ -501,14 +732,25 @@
         ]
       },
       "properties": {
-        "name": "Orlen Neptun IV Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1200.0,
-        "year": null,
-        "lon": 15.5937,
-        "lat": 54.4371,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Orlen Neptun IV Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-22"
       }
     },
     {
@@ -522,14 +764,25 @@
         ]
       },
       "properties": {
-        "name": "Freeboard I Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 1500.0,
-        "year": null,
-        "lon": 17.1346,
-        "lat": 55.3469,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Freeboard I Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-23"
       }
     },
     {
@@ -543,14 +796,25 @@
         ]
       },
       "properties": {
-        "name": "Energa MFW 1 Offshore wind farm 1",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 900.0,
-        "year": null,
-        "lon": 15.4921,
-        "lat": 54.3636,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Energa MFW 1 Offshore wind farm 1",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-24"
       }
     },
     {
@@ -564,14 +828,25 @@
         ]
       },
       "properties": {
-        "name": "Baltica 9",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 975.0,
-        "year": null,
-        "lon": 16.49,
-        "lat": 55.05,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltica 9",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-25"
       }
     },
     {
@@ -585,14 +860,25 @@
         ]
       },
       "properties": {
-        "name": "Baltic East",
-        "status": "Planned",
+        "country": "Poland",
+        "n_turbines": null,
         "power_mw": 966.0,
-        "year": null,
-        "lon": 17.84,
-        "lat": 55.05,
-        "source_dataset": "EMODnet Human Activities windfarms (snapshot 26 Oct 2026)",
-        "source_url": "https://ows.emodnet-humanactivities.eu/wfs"
+        "status": "Planned",
+        "type_inst": null,
+        "updateyear": "2026",
+        "year": "nan",
+        "dist_coast": null,
+        "notes": null,
+        "name": "Baltic East",
+        "developer": null,
+        "status_detail": "Planned",
+        "status_as_of": null,
+        "year_semantics": "year reported by EMODnet",
+        "year_is_assumed": false,
+        "source_dataset": "EMODnet Human Activities windfarms",
+        "source_reference": "https://ows.emodnet-humanactivities.eu/wfs",
+        "source_snapshot_date": "2026-10-26",
+        "source_record_id": "emodnet-26"
       }
     }
   ]

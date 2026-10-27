@@ -1,0 +1,246 @@
+server:
+  bind:
+    host: 127.0.0.1
+    port: 5000
+  url: http://localhost:5000
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  language: en-US
+  limit: 100
+  max_limit: 10000
+  map:
+    url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    attribution: © OpenStreetMap contributors
+  templates:
+    path: templates
+    static: static
+logging:
+  level: ERROR
+metadata:
+  identification:
+    title: Baltic windfarm source comparison
+    description: Exercise API for comparing raw national and EMODnet data with a harmonized
+      linked-data view.
+    keywords:
+    - Baltic
+    - windfarms
+    - linked data
+    keywords_type: theme
+    terms_of_service: https://creativecommons.org/licenses/by/4.0/
+    url: https://github.com/opengeospatial/bblocks-seadots
+  license:
+    name: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  provider:
+    name: SeaDOTs
+    url: https://www.sintef.no/projectweb/seadots/
+  contact:
+    name: SeaDOTs
+    email: info@example.org
+    url: https://www.sintef.no/projectweb/seadots/
+    role: pointOfContact
+resources:
+  national-source:
+    type: collection
+    title: National source (raw)
+    description: Raw national project records; source geometry is absent.
+    keywords:
+    - windfarm
+    - Baltic
+    - harmonisation
+    links: []
+    extents:
+      spatial:
+        bbox:
+        - 13.0
+        - 53.0
+        - 21.0
+        - 58.0
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    itemType: feature
+    crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/national-source.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/national-windfarm-source#
+        geojson: https://purl.org/geojson/vocab#
+        type: '@type'
+        id: '@id'
+        Feature: geojson:Feature
+        geometry: geojson:geometry
+        properties: geojson:properties
+        farm: projectName
+        developer: https://schema.org/creator
+        capacity_mw: reportedCapacityMW
+        status_aug2026: reportedStatusAugust2026
+        first_power_or_completion_year: reportedFirstPowerOrCompletionYear
+        source: https://purl.org/dc/terms/source
+  emodnet-source:
+    type: collection
+    title: EMODnet source (raw)
+    description: Raw EMODnet windfarm features for Poland.
+    keywords:
+    - windfarm
+    - Baltic
+    - harmonisation
+    links: []
+    extents:
+      spatial:
+        bbox:
+        - 13.0
+        - 53.0
+        - 21.0
+        - 58.0
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    itemType: feature
+    crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/emodnet-source.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-source#
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        type: '@type'
+        id: '@id'
+        Feature: geojson:Feature
+        Point: geojson:Point
+        geometry: geojson:geometry
+        coordinates:
+          '@id': geojson:coordinates
+          '@container': '@list'
+        properties: geojson:properties
+        name: schema:name
+        status: https://w3id.org/ogc/hosted/seadots/emodnet/
+        power_mw: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+        n_turbines: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+        year: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+        dist_coast_m: distanceToCoastMetres
+        updateyear: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+        lon: longitude
+        lat: latitude
+  harmonized-windfarms:
+    type: collection
+    title: Harmonized windfarms
+    description: Canonical target records with explicit provenance and location matching.
+    keywords:
+    - windfarm
+    - Baltic
+    - harmonisation
+    links: []
+    extents:
+      spatial:
+        bbox:
+        - 13.0
+        - 53.0
+        - 21.0
+        - 58.0
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    itemType: feature
+    crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/harmonized-windfarms.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        dcterms: http://purl.org/dc/terms/
+        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        FeatureCollection: geojson:FeatureCollection
+        geometry: geojson:geometry
+        properties: geojson:properties
+        features:
+          '@id': geojson:features
+          '@container': '@set'
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        Poland: http://publications.europa.eu/resource/authority/country/POL
+        n_turbines: em:nTurbines
+        power_mw: em:powerMW
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+        type_inst: schema:additionalType
+        updateyear: em:updateYear
+        year: em:year
+        dist_coast: em:distanceToCoast
+        notes: dcterms:description
+        name: schema:name
+        developer: schema:creator
+        status_detail: ses:statusDetail
+        status_as_of:
+          '@id': ses:statusAsOf
+          '@type': http://www.w3.org/2001/XMLSchema#date
+        year_semantics: ses:yearSemantics
+        year_is_assumed:
+          '@id': ses:yearIsAssumed
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        source_dataset: ses:sourceDataset
+        source_reference:
+          '@id': ses:sourceReference
+          '@type': '@id'
+        source_snapshot_date:
+          '@id': ses:sourceSnapshotDate
+          '@type': http://www.w3.org/2001/XMLSchema#date
+        source_record_id: ses:sourceRecordId
+        MatchCandidate: ses:MatchCandidate
+        source_record:
+          '@id': ses:sourceRecord
+          '@type': '@id'
+        target_record:
+          '@id': ses:targetRecord
+          '@type': '@id'
+        match_method: ses:matchMethod
+        name_score:
+          '@id': ses:nameSimilarity
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        property_score:
+          '@id': ses:propertyAgreement
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        candidate_rank_score:
+          '@id': ses:candidateRankScore
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        capacity_similarity:
+          '@id': ses:capacitySimilarity
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        capacity_delta_mw:
+          '@id': ses:capacityDifferenceMW
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        status_match:
+          '@id': ses:statusMatch
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        year_match:
+          '@id': ses:yearMatch
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        distance_km:
+          '@id': ses:distanceKm
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        source_type: ses:sourceType
+        location_status: ses:locationStatus
+        location_method: ses:locationMethod
+        location_reference:
+          '@id': ses:locationReference
+          '@type': '@id'
+        location_emodnet_ids:
+          '@id': ses:locationEmodnetIds
+          '@container': '@set'

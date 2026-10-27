@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1300" viewBox="0 0 1500 1300">
+<rect width="100%" height="100%" fill="white"/><style>text{font-family:Arial,sans-serif;fill:#0f172a}.title{font-size:25px;font-weight:bold}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px}.arrow{stroke:#64748b;stroke-width:2;fill:none;marker-end:url(#ah)}</style>
+<defs><marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#64748b"/></marker></defs>
+<text x="35" y="42" class="title">Baltic SES exercise: input files → model variables</text>
+<text x="35" y="78" class="small">Main notebook (top) and spatial extension (bottom). DATA = measured/reported; FIT = estimated; ASSUMPTION = chosen value.</text>
+<text x="35" y="125" class="head">1 · Main notebook: source columns and transformations</text>
+<rect x="35" y="150" width="325" height="125" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="177" class="head">ICES 2025 summary CSV</text>
+<text x="49" y="203" class="body">SSB (tonnes) → x = SSB / 1e6 (Mt)</text>
+<text x="49" y="224" class="body">Catches (tonnes) → q = Catches / 1e6</text>
+<text x="49" y="245" class="body">latest SSB → initial stock x₀</text>
+<rect x="35" y="300" width="325" height="120" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="327" class="head">ICES reference-points CSV</text>
+<text x="49" y="353" class="body">MSYBtrigger / 1e6 → harvest rule</text>
+<text x="49" y="374" class="body">Bpa / 1e6 → reference line in plots</text>
+<text x="49" y="395" class="body">FMSY, Fpa, F: diagnostic context</text>
+<rect x="35" y="445" width="325" height="145" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="472" class="head">economic_inputs.csv</text>
+<text x="49" y="498" class="body">sprat price → p (EUR/Mt)</text>
+<text x="49" y="519" class="body">wind auction price + capacity_factor → pₑ</text>
+<text x="49" y="540" class="body">cost share → c₁; wind O&amp;M → cₑ₁</text>
+<text x="49" y="561" class="body">capex/capacity → pI; lifetime → δ; rate → r</text>
+<rect x="35" y="615" width="325" height="120" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="642" class="head">National wind-pipeline CSV</text>
+<text x="49" y="668" class="body">capacity_mw / 1000 grouped by</text>
+<text x="49" y="689" class="body">first_power_or_completion_year → Iw(t)</text>
+<text x="49" y="710" class="body">status selects contracted/full scenarios</text>
+<rect x="35" y="745" width="325" height="125" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="772" class="head">EMODnet windfarm CSV</text>
+<text x="49" y="798" class="body">name, power_mw, status, year,</text>
+<text x="49" y="819" class="body">dist_coast_m, lon, lat → map &amp; comparisons</text>
+<text x="49" y="840" class="body">not the source of main Iw(t)</text>
+<rect x="445" y="165" width="335" height="105" rx="12" fill="#fef3c7" stroke="#475569" stroke-width="1.5"/>
+<text x="459" y="192" class="head">ICES surplus-production fit</text>
+<text x="459" y="218" class="body">Sₜ = xₜ₊₁ − xₜ + qₜ</text>
+<text x="459" y="239" class="body">fit Sₜ = αxₜ − βxₜ² → α, β</text>
+<rect x="445" y="315" width="335" height="125" rx="12" fill="#fef3c7" stroke="#475569" stroke-width="1.5"/>
+<text x="459" y="342" class="head">Economic parameter set P</text>
+<text x="459" y="368" class="body">c₂, cₑ₂, u₁…u₃, ε₁, ε₂ are assumptions</text>
+<text x="459" y="389" class="body">Fitted α, β + converted data complete P</text>
+<rect x="445" y="500" width="335" height="110" rx="12" fill="#fef3c7" stroke="#475569" stroke-width="1.5"/>
+<text x="459" y="527" class="head">Wind investment series</text>
+<text x="459" y="553" class="body">annual additions in GW</text>
+<text x="459" y="574" class="body">contracted 9.3 GW / full 13.4 GW</text>
+<rect x="870" y="250" width="300" height="245" rx="12" fill="#dcfce7" stroke="#475569" stroke-width="1.5"/>
+<text x="884" y="277" class="head">Excel Main-sheet model</text>
+<text x="884" y="303" class="body">Fish: G=(α−ε₁w)x−βx²</text>
+<text x="884" y="324" class="body">x′=x+G−q</text>
+<text x="884" y="345" class="body">Wind: w′=w+Iw−δw</text>
+<text x="884" y="366" class="body">Benefits: fishery bf, wind bw, public bp</text>
+<text x="884" y="387" class="body">PV discounted by r</text>
+<rect x="1240" y="300" width="225" height="145" rx="12" fill="#fee2e2" stroke="#475569" stroke-width="1.5"/>
+<text x="1254" y="327" class="head">Scenario outputs</text>
+<text x="1254" y="353" class="body">stock paths</text>
+<text x="1254" y="374" class="body">sector benefits</text>
+<text x="1254" y="395" class="body">present values</text>
+<rect x="870" y="535" width="300" height="105" rx="12" fill="#dcfce7" stroke="#475569" stroke-width="1.5"/>
+<text x="884" y="562" class="head">Harvest rule</text>
+<text x="884" y="588" class="body">α, ε₁ + MSYBtrigger</text>
+<text x="884" y="609" class="body">determines q(t,x)</text>
+<rect x="1240" y="535" width="225" height="105" rx="12" fill="#fee2e2" stroke="#475569" stroke-width="1.5"/>
+<text x="1254" y="562" class="head">Plots / diagnostics</text>
+<text x="1254" y="588" class="body">Bpa, Btrigger, F refs</text>
+<path d="M360,205 L445,205" class="arrow"/>
+<path d="M360,225 L445,210" class="arrow"/>
+<text x="402" y="209" class="small" text-anchor="middle">x, q</text>
+<path d="M360,365 L870,570" class="arrow"/>
+<text x="615" y="459" class="small" text-anchor="middle">Btrigger</text>
+<path d="M360,500 L445,365" class="arrow"/>
+<path d="M360,665 L445,555" class="arrow"/>
+<path d="M780,220 L870,290" class="arrow"/>
+<text x="825" y="247" class="small" text-anchor="middle">α, β</text>
+<path d="M780,375 L870,350" class="arrow"/>
+<text x="825" y="354" class="small" text-anchor="middle">P</text>
+<path d="M780,555 L870,420" class="arrow"/>
+<text x="825" y="479" class="small" text-anchor="middle">Iw</text>
+<path d="M1170,360 L1240,360" class="arrow"/>
+<path d="M1170,585 L1240,585" class="arrow"/>
+<path d="M780,210 L870,560" class="arrow"/>
+<text x="825" y="377" class="small" text-anchor="middle">α</text>
+<path d="M780,370 L870,565" class="arrow"/>
+<text x="825" y="459" class="small" text-anchor="middle">ε₁</text>
+<line x1="35" y1="690" x2="1465" y2="690" stroke="#cbd5e1" stroke-width="2"/><text x="35" y="925" class="head">2 · Spatial extension: measured site conditions replace selected assumptions in the same model</text>
+<rect x="35" y="950" width="325" height="120" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="977" class="head">EMODnet windfarm sites</text>
+<text x="49" y="1003" class="body">name, power_mw, lon/lat, dist_coast_m</text>
+<text x="49" y="1024" class="body">joins site records and provides capacity</text>
+<text x="49" y="1045" class="body">coordinates locate ERA5 / biodiversity data</text>
+<rect x="445" y="950" width="335" height="120" rx="12" fill="#f3e8ff" stroke="#475569" stroke-width="1.5"/>
+<text x="459" y="977" class="head">ERA5 wind-speed CSV</text>
+<text x="459" y="1003" class="body">hourly speed histogram → turbine power curve</text>
+<text x="459" y="1024" class="body">plus losses → site capacity factor</text>
+<rect x="35" y="1100" width="325" height="105" rx="12" fill="#dbeafe" stroke="#475569" stroke-width="1.5"/>
+<text x="49" y="1127" class="head">Natura 2000 GeoJSON + OBIS CSV</text>
+<text x="49" y="1153" class="body">protected-area distance + records nearby</text>
+<rect x="445" y="1100" width="335" height="105" rx="12" fill="#f3e8ff" stroke="#475569" stroke-width="1.5"/>
+<text x="459" y="1127" class="head">Site sensitivity score S</text>
+<text x="459" y="1153" class="body">Natura 2000 distance + OBIS counts</text>
+<rect x="870" y="950" width="300" height="150" rx="12" fill="#f3e8ff" stroke="#475569" stroke-width="1.5"/>
+<text x="884" y="977" class="head">Portfolio aggregation</text>
+<text x="884" y="1003" class="body">weighted capacity factor → pₑ</text>
+<text x="884" y="1024" class="body">coast distance → capex factor → pI</text>
+<text x="884" y="1045" class="body">weighted sensitivity → public-use u₃</text>
+<rect x="1240" y="980" width="225" height="105" rx="12" fill="#dcfce7" stroke="#475569" stroke-width="1.5"/>
+<text x="1254" y="1007" class="head">Same SES model</text>
+<text x="1254" y="1033" class="body">simulate scenarios</text>
+<text x="1254" y="1054" class="body">recompute sector PV</text>
+<path d="M360,1000 L445,1000" class="arrow"/>
+<path d="M360,1025 L445,1150" class="arrow"/>
+<text x="402" y="1079" class="small" text-anchor="middle">site location</text>
+<path d="M360,1150 L445,1150" class="arrow"/>
+<path d="M780,1000 L870,990" class="arrow"/>
+<path d="M780,1150 L870,1040" class="arrow"/>
+<path d="M1170,1025 L1240,1025" class="arrow"/>
+<text x="35" y="1260" class="small">Windfarm harmonization side branch: national + EMODnet records → EMODnet property names (power_mw, status, year, updateyear, dist_coast) + generic extension/provenance; candidate matches are reviewed, not treated as confirmed identities.</text>
+</svg>

@@ -1,0 +1,67 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet windfarm harmonized project extension
+description: >-
+  A harmonized GeoJSON Feature using the EMODnet windfarm property vocabulary,
+  augmented with generic project, reporting-time, year-semantics, and provenance
+  fields. It accepts complete base-block features and sparse national pipeline
+  records with null geometry. It is an aligned extension, not a strict profile
+  of the base block because national records may not provide the base attributes.
+anyOf:
+  - $ref: bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm
+  - $ref: '#/$defs/sparseFeature'
+$defs:
+  sparseFeature:
+    type: object
+    required: [id, type, geometry, properties]
+    properties:
+      id:
+        type: string
+        format: uri
+      type:
+        const: Feature
+      geometry:
+        oneOf:
+          - type: 'null'
+          - type: object
+            required: [type, coordinates]
+            properties:
+              type:
+                enum: [Point, Polygon, MultiPolygon]
+              coordinates: {}
+            additionalProperties: true
+      properties:
+        type: object
+        required: [name, country, power_mw, status, source_type, source_dataset, source_reference, source_snapshot_date, location_status]
+        properties:
+          name: {type: string}
+          country: {type: string}
+          n_turbines: {type: [number, 'null']}
+          power_mw: {type: [number, 'null'], minimum: 0}
+          status:
+            oneOf:
+              - type: string
+                enum: [Planned, Production, Dismantled, Approved, Construction]
+              - type: 'null'
+          type_inst: {type: [string, 'null']}
+          updateyear: {type: [string, 'null']}
+          year: {type: [string, 'null']}
+          dist_coast: {type: [number, 'null'], minimum: 0, description: Distance to coast in metres, as in the EMODnet source field.}
+          notes: {type: [string, 'null']}
+          developer: {type: [string, 'null']}
+          status_detail: {type: [string, 'null'], description: Source-reported status text before normalization.}
+          status_as_of: {type: [string, 'null'], format: date}
+          year_semantics: {type: [string, 'null'], description: Meaning of the year value, such as reported year or planned first-power/completion year.}
+          year_is_assumed: {type: [boolean, 'null']}
+          source_type: {type: string, enum: [national, emodnet]}
+          source_dataset: {type: string}
+          source_reference: {type: string, format: uri}
+          source_snapshot_date: {type: string, format: date}
+          source_record_id: {type: [string, 'null']}
+          location_status: {type: string, enum: [source-provided, mapped, anticipated, unmatched]}
+          location_method: {type: [string, 'null']}
+          location_reference: {type: [string, 'null'], format: uri}
+          location_emodnet_ids:
+            type: array
+            items: {type: string}
+        additionalProperties: false
+    additionalProperties: false

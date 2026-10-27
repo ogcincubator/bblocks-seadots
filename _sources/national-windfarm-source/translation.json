@@ -1,0 +1,20 @@
+{
+  "target": "ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension",
+  "field_map": {
+    "name": "farm",
+    "developer": "developer",
+    "power_mw": "capacity_mw",
+    "status_detail": "status_aug2026",
+    "year": "first_power_or_completion_year",
+    "notes": "source"
+  },
+  "rules": {
+    "status": "strip text after the first parenthesis, trim, then title-case to the EMODnet status vocabulary",
+    "status_as_of": "2026-08-26",
+    "updateyear": "2026",
+    "year_semantics": "planned first-power or completion year",
+    "year_is_assumed": "true when source text contains 'assumed'",
+    "power_mw": "preserve megawatts",
+    "geometry": "apply configured EMODnet location mapping; centroid when multiple site records are mapped; keep null when unmapped"
+  }
+}

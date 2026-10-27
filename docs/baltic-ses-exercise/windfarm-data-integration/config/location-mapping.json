@@ -1,0 +1,25 @@
+{
+  "description": "Explicit national project to EMODnet site crosswalk plus separately marked public-source anticipations. National records have no source-provided coordinates. Mapped geometries are centroids of listed EMODnet points; anticipated points are approximate display locations, not official boundaries or surveyed centroids.",
+  "mappings": {
+    "MFW Baltic Power": ["Baltic Power"],
+    "Baltica 2": ["Baltica 2"],
+    "Baltyk 2 + Baltyk 3": ["Baltyk II", "Baltyk III"],
+    "BC-Wind": ["BC Wind Offshore wind farm B", "BC Wind Offshore wind farm C"],
+    "Baltica 3": ["Baltica 3"],
+    "MFW Baltyk 1": ["Baltyk I Phase 1", "Baltyk I Phase 2"],
+    "Baltica 9+": ["Baltica 9", "FEW Baltic II"],
+    "Baltic East": ["Baltic East"],
+    "Baltic West": []
+  },
+  "anticipated_locations": {
+    "Baltic West": {
+      "geometry": {"type": "Point", "coordinates": [15.45, 54.40]},
+      "method": "Approximate representative point inferred from ORLEN Neptun's description of four Baltic West areas (14.E.1-14.E.4) on the Odra Bank, about 26.5 km offshore, and its Kołobrzeg service-base reference. This is a map marker, not an official area boundary or published project centroid.",
+      "confidence": "low",
+      "reference": "https://neptun.orlen.pl/en/for-suppliers/Baltic-West"
+    }
+  },
+  "unmatched_reasons": {
+    "Baltic West": "No defensible EMODnet site match in the supplied snapshot; use only the separately documented approximate public-source location."
+  }
+}

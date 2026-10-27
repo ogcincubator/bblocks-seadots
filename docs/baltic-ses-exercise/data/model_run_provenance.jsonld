@@ -1,0 +1,316 @@
+{
+  "@context": {
+    "ses": "urn:baltic-ses:vocab:",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "unit": {
+      "@id": "qudt:unit",
+      "@type": "@id"
+    },
+    "iop": "https://w3id.org/iadopt/ont/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "freq": "http://purl.org/cld/freq/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "worms": "urn:lsid:marinespecies.org:taxname:",
+    "label": "skos:prefLabel",
+    "note": "skos:note",
+    "title": "dct:title",
+    "publisher": "dct:publisher",
+    "issued": "dct:issued",
+    "version": "dcat:version",
+    "periodicity": {
+      "@id": "dct:accrualPeriodicity",
+      "@type": "@id"
+    },
+    "accessURL": {
+      "@id": "dcat:accessURL",
+      "@type": "@id"
+    },
+    "inSeries": {
+      "@id": "dcat:inSeries",
+      "@type": "@id"
+    },
+    "localFile": "ses:localFile",
+    "retrieved": {
+      "@id": "ses:retrievedDate",
+      "@type": "xsd:date"
+    },
+    "spatialScope": "ses:spatialScope",
+    "aboutTaxon": {
+      "@id": "ses:aboutTaxon",
+      "@type": "@id"
+    },
+    "asfisCode": "ses:asfisCode",
+    "commercialName": "ses:commercialSpeciesName",
+    "stockKeyLabel": "ses:stockKeyLabel",
+    "liveCheck": "ses:liveCheckURL",
+    "hasProperty": "iop:hasProperty",
+    "hasObjectOfInterest": {
+      "@id": "iop:hasObjectOfInterest",
+      "@type": "@id"
+    },
+    "hasContextObject": "iop:hasContextObject",
+    "column": "ses:sourceColumn",
+    "inDataset": {
+      "@id": "ses:inDataset",
+      "@type": "@id"
+    },
+    "multiplier": {
+      "@id": "qudt:conversionMultiplier",
+      "@type": "xsd:double"
+    },
+    "dimension": "ses:baseDimension",
+    "factors": {
+      "@id": "ses:unitFactors",
+      "@container": "@list"
+    },
+    "of": {
+      "@id": "ses:factorUnit",
+      "@type": "@id"
+    },
+    "exp": {
+      "@id": "ses:exponent",
+      "@type": "xsd:integer"
+    },
+    "symbol": "ses:symbol",
+    "key": "ses:parameterKey",
+    "status": {
+      "@id": "ses:evidenceStatus",
+      "@type": "@id"
+    },
+    "modelUnit": {
+      "@id": "ses:modelUnit",
+      "@type": "@id"
+    },
+    "measures": {
+      "@id": "ses:measures",
+      "@type": "@id"
+    },
+    "derivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "generatedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
+    },
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "method": "ses:method",
+    "sourceQuantity": "ses:sourceQuantity",
+    "op": "ses:operation",
+    "terms": {
+      "@id": "ses:term",
+      "@container": "@list"
+    },
+    "exactMatch": {
+      "@id": "skos:exactMatch",
+      "@type": "@id"
+    },
+    "closeMatch": {
+      "@id": "skos:closeMatch",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z",
+      "@type": "prov:Activity",
+      "label": "baltic_ses_exercise.ipynb run",
+      "used": [
+        "urn:baltic-ses:dataset:baltica2-investment",
+        "urn:baltic-ses:dataset:eumofa-sprat-price",
+        "urn:baltic-ses:dataset:ices-sag-20915",
+        "urn:baltic-ses:dataset:national",
+        "urn:baltic-ses:dataset:windeurope-pl-auction-2025"
+      ],
+      "note": "LIVE=True, FIT_FROM=1974"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:alpha",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:alpha"
+      ],
+      "label": "alpha = 0.483422",
+      "status": "ses:FIT"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:beta",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:beta"
+      ],
+      "label": "beta = 0.210988",
+      "status": "ses:FIT"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:x0",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:x0"
+      ],
+      "label": "x0 = 0.572087",
+      "status": "ses:DATA"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:p",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:p"
+      ],
+      "label": "p = 400",
+      "status": "ses:DATA"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:cof1",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:cof1"
+      ],
+      "label": "cof1 = 234.273",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:cof2",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:cof2"
+      ],
+      "label": "cof2 = 1.1",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:pe",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:pe"
+      ],
+      "label": "pe = 453.33",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:cofe1",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:cofe1"
+      ],
+      "label": "cofe1 = 60",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:cofe2",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:cofe2"
+      ],
+      "label": "cofe2 = 1",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:Iwp",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:Iwp"
+      ],
+      "label": "Iwp = 4740",
+      "status": "ses:DATA"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:dl",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:dl"
+      ],
+      "label": "dl = 0.0333333",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:roi",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:roi"
+      ],
+      "label": "roi = 0.05",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:pu1",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:pu1"
+      ],
+      "label": "pu1 = 50.3042",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:pu2",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:pu2"
+      ],
+      "label": "pu2 = 0.9",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:pu3",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:pu3"
+      ],
+      "label": "pu3 = -0.05",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:eps1",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:eps1"
+      ],
+      "label": "eps1 = 0",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:eps2",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:eps2"
+      ],
+      "label": "eps2 = 2.34273",
+      "status": "ses:ASSUMPTION"
+    },
+    {
+      "@id": "urn:baltic-ses:run:20261027T215117Z:w0",
+      "@type": "prov:Entity",
+      "generatedBy": "urn:baltic-ses:run:20261027T215117Z",
+      "derivedFrom": [
+        "urn:baltic-ses:parameter:w0"
+      ],
+      "label": "w0 = 0",
+      "status": "ses:DATA"
+    }
+  ]
+}

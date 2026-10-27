@@ -1,0 +1,24 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Polish national offshore windfarm source feature
+description: >-
+  GeoJSON Feature wrapper for the national source row. Source property names and
+  values are retained. The source has no coordinates; geometry is null until an
+  explicit location crosswalk is applied in the harmonized target view.
+type: object
+required: [id, type, geometry, properties]
+properties:
+  id: {type: string}
+  type: {const: Feature}
+  geometry: {type: 'null'}
+  properties:
+    type: object
+    required: [farm, developer, capacity_mw, status_aug2026, first_power_or_completion_year, source]
+    properties:
+      farm: {type: string}
+      developer: {type: string}
+      capacity_mw: {type: string}
+      status_aug2026: {type: string}
+      first_power_or_completion_year: {type: string}
+      source: {type: string}
+    additionalProperties: false
+additionalProperties: false
