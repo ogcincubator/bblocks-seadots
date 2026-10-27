@@ -1,0 +1,36 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/239> a geojson:Feature ;
+    foaf:page <http://mpas.helcom.fi/apex/f?p=103:12:::NO::P12_ID:239> ;
+    geojson:geometry [ a geojson:MultiPolygon ;
+            geojson:coordinates ( ( ( ( 1.356585e+01 5.451826e+01 ) ( 1.369207e+01 5.451826e+01 ) ( 1.369207e+01 5.459196e+01 ) ( 1.356585e+01 5.459196e+01 ) ( 1.356585e+01 5.451826e+01 ) ) ) ) ] ;
+    pa:conventionSiteCode 239 ;
+    pa:countryName "Germany" ;
+    pa:establishmentYear "1996"^^xsd:gYear ;
+    pa:managementStatus "Designated and managed" ;
+    pa:regionalSeaConvention <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/rsc/HELCOM> ;
+    pa:shapeAreaSquareDegrees 4.31054e-03 ;
+    pa:shapeLengthDegrees 6.060058e-01 ;
+    pa:siteName "Jasmund National Park" .
+
+<file:///github/workspace/252> a geojson:Feature ;
+    foaf:page <http://mpas.helcom.fi/apex/f?p=103:12:::NO::P12_ID:252> ;
+    geojson:geometry [ a geojson:MultiPolygon ;
+            geojson:coordinates ( ( ( ( 1.08267e+01 5.58667e+01 ) ( 1.08767e+01 5.58667e+01 ) ( 1.08767e+01 5.58955e+01 ) ( 1.08267e+01 5.58955e+01 ) ( 1.08267e+01 5.58667e+01 ) ) ) ) ] ;
+    pa:conventionSiteCode 252 ;
+    pa:countryName "Denmark" ;
+    pa:establishmentYear "2009"^^xsd:gYear ;
+    pa:managementStatus "Designated and managed" ;
+    pa:regionalSeaConvention <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/rsc/HELCOM> ;
+    pa:shapeAreaSquareDegrees 9.127e-04 ;
+    pa:shapeLengthDegrees 1.248636e-01 ;
+    pa:siteName "Hatter Barn" .
+
+[] a geojson:FeatureCollection ;
+    geojson:features <file:///github/workspace/239>,
+        <file:///github/workspace/252> .
+

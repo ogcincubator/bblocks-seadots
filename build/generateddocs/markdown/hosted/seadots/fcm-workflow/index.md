@@ -229,6 +229,184 @@ a service.
 
 ```
 
+#### jsonld
+```jsonld
+{
+  "@context": [
+    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-workflow/context.jsonld",
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld"
+  ],
+  "id": "https://w3id.org/ogc/hosted/seadots/catalog/workflow/fcm-solver",
+  "type": "Feature",
+  "itemType": "record",
+  "conformsTo": [
+    "https://docs.ogc.org/is/20-004/20-004.html",
+    "http://www.w3.org/TR/prov-o/"
+  ],
+  "geometry": null,
+  "properties": {
+    "title": "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)",
+    "description": "Iterates a fuzzy cognitive map from many random initial states until each trial converges, clusters the endpoints that agree within tolerance, and reports one representative equilibrium per cluster with its componentwise spread. Applied stepwise over a time-indexed series of maps it produces a sequence.",
+    "type": "Workflow",
+    "applicationCategory": "Model",
+    "version": "0.1.0",
+    "method": "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread.",
+    "softwareVersion": "0.1.0",
+    "programmingLanguage": "Julia",
+    "solver": {
+      "inferenceRule": "kosko",
+      "supportedActivation": [
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic",
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/logistic-of-square",
+        "https://w3id.org/ogc/hosted/seadots/fcm/activation/offset"
+      ],
+      "executionParameters": {
+        "numTrials": 1000,
+        "x0Range": [
+          0.0,
+          1.0
+        ],
+        "x0ClampRange": [
+          0.1,
+          0.9
+        ],
+        "maxIterations": 100,
+        "convergenceTolerance": 1e-10,
+        "clusteringTolerance": 1e-06
+      },
+      "refinement": {
+        "enabled": true,
+        "maxIterations": 3000,
+        "convergenceTolerance": 1e-13,
+        "x0ClampRange": [
+          0.0,
+          1.0
+        ],
+        "checkTolerance": 1e-06
+      },
+      "stochasticMapsSupported": false
+    },
+    "inputs": [
+      {
+        "profileId": "ogc.hosted.seadots.fcm",
+        "required": true,
+        "role": "map",
+        "description": "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification."
+      }
+    ],
+    "outputs": [
+      {
+        "profileId": "ogc.hosted.seadots.fcm-solution",
+        "required": true,
+        "role": "equilibria",
+        "description": "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it."
+      },
+      {
+        "profileId": "ogc.hosted.seadots.fcm-sequence",
+        "required": false,
+        "role": "sequence",
+        "description": "Produced only when the solver is applied stepwise over a time-indexed series of maps."
+      }
+    ],
+    "keywords": [
+      "fuzzy-cognitive-map",
+      "participatory-modelling",
+      "digital-twin",
+      "open-science"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.fcm-workflow",
+      "type": "application/schema+json"
+    },
+    {
+      "rel": "related",
+      "href": "https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl",
+      "type": "text/html",
+      "title": "FuzzyCognitiveMapTools.jl source repository"
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix apkg: <https://w3id.org/apkg/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/catalog/workflow/fcm-solver> a prov:Plan,
+        geojson:Feature ;
+    dcterms:conformsTo <http://www.w3.org/TR/prov-o/>,
+        <https://docs.ogc.org/is/20-004/20-004.html> ;
+    dcterms:description "Iterates a fuzzy cognitive map from many random initial states until each trial converges, clusters the endpoints that agree within tolerance, and reports one representative equilibrium per cluster with its componentwise spread. Applied stepwise over a time-indexed series of maps it produces a sequence." ;
+    dcterms:hasVersion "0.1.0" ;
+    dcterms:method "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread." ;
+    dcterms:title "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)" ;
+    rdfs:seeAlso [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ],
+        [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ] ;
+    dcat:keyword "digital-twin",
+        "fuzzy-cognitive-map",
+        "open-science",
+        "participatory-modelling" ;
+    dcat:license "https://creativecommons.org/licenses/by/4.0/" ;
+    schema:applicationCategory "Model" ;
+    schema:programmingLanguage "Julia" ;
+    schema:softwareVersion "0.1.0" ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm> ;
+            dcterms:description "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification." ;
+            seadots:required true ;
+            seadots:role "map" ] ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
+            dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
+            seadots:required true ;
+            seadots:role "equilibria" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
+            dcterms:description "Produced only when the solver is applied stepwise over a time-indexed series of maps." ;
+            seadots:required false ;
+            seadots:role "sequence" ] ;
+    seadots:itemType "record" ;
+    fcm:solverCapability [ seadots:executionParameters [ seadots:clusteringTolerance 1e-06 ;
+                    seadots:convergenceTolerance 1e-10 ;
+                    seadots:maxIterations 100 ;
+                    seadots:numTrials 1000 ;
+                    seadots:x0ClampRange 1e-01,
+                        9e-01 ;
+                    seadots:x0Range 0e+00,
+                        1e+00 ] ;
+            seadots:refinement [ seadots:checkTolerance 1e-06 ;
+                    seadots:convergenceTolerance 1e-13 ;
+                    seadots:enabled true ;
+                    seadots:maxIterations 3000 ;
+                    seadots:x0ClampRange 0e+00,
+                        1e+00 ] ;
+            fcm:inferenceRule seadots:kosko ;
+            fcm:supportsActivation fcmact:logistic,
+                fcmact:logistic-of-square,
+                fcmact:offset ;
+            fcm:supportsStochasticMaps false ] .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -850,6 +1028,11 @@ x-jsonld-prefixes:
   foaf: http://xmlns.com/foaf/0.1/
   thns: https://w3id.org/ogc/stac/themes/
   dcterms: http://purl.org/dc/terms/
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.fcm-workflow
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 

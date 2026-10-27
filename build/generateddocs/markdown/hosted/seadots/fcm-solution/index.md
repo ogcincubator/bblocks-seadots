@@ -369,6 +369,11 @@ x-jsonld-extra-terms:
 x-jsonld-prefixes:
   fcm: https://w3id.org/ogc/hosted/seadots/fcm/
   xsd: http://www.w3.org/2001/XMLSchema#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.fcm-solution
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EMODnet-compliant protected area (common envelope)",
+  "description": "Common GeoJSON Feature envelope shared by all EMODnet-compliant protected-area profiles. Geometry is a (Multi)Polygon in CRS84 (longitude, latitude, WGS 84), one feature per site (multi-part sites are dissolved into a single MultiPolygon, as in the EMODnet layers). The attribute set is fixed by the child profiles, which keep EMODnet's published WFS field names and primitive types unchanged.\n",
+  "$defs": {
+    "Feature": {
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json"
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "id",
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "id": {
+              "description": "Stable feature identifier. Child profiles fix which EMODnet attribute supplies it (natdaid for nationally designated areas, code for RSC MPAs).\n",
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "geometry": {
+              "type": "object",
+              "required": [
+                "type",
+                "coordinates"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon",
+                    "MultiPolygon"
+                  ]
+                },
+                "coordinates": {
+                  "type": "array",
+                  "minItems": 1
+                }
+              }
+            },
+            "properties": {
+              "type": "object"
+            }
+          }
+        }
+      ]
+    },
+    "FeatureCollection": {
+      "description": "A FeatureCollection whose every member is a Feature of this profile.",
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "features": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Feature"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Feature"
+    },
+    {
+      "$ref": "#/$defs/FeatureCollection"
+    }
+  ],
+  "x-jsonld-prefixes": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "pa-country": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/",
+    "pa-iucn": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/",
+    "eea-desig": "http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/",
+    "eu-country": "http://publications.europa.eu/resource/authority/country/",
+    "inspire-iucn": "http://inspire.ec.europa.eu/codelist/IUCNCategoriesValue/"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.emodnet-protected-area",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-10-27"
+  }
+}

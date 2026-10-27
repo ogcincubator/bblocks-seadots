@@ -1,0 +1,33 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-helcom: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/109> a geojson:Feature ;
+    foaf:page <http://mpas.helcom.fi/apex/f?p=103:12:::NO::P12_ID:239> ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 1.356585e+01 5.451826e+01 ) ( 1.369207e+01 5.451826e+01 ) ( 1.369207e+01 5.459196e+01 ) ( 1.356585e+01 5.459196e+01 ) ( 1.356585e+01 5.451826e+01 ) ) ) ] ;
+    pa:conventionSiteCode 239 ;
+    pa:countryName "Germany" ;
+    pa:establishmentYear "1996"^^xsd:gYear ;
+    pa-helcom:establishmentDate "04.09.1996" ;
+    pa:managementStatus "Designated and managed" ;
+    pa:siteName "Jasmund National Park" .
+
+<file:///github/workspace/17> a geojson:Feature ;
+    foaf:page <http://mpas.helcom.fi/apex/f?p=103:12:::NO::P12_ID:252> ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 1.08267e+01 5.58667e+01 ) ( 1.08767e+01 5.58667e+01 ) ( 1.08767e+01 5.58955e+01 ) ( 1.08267e+01 5.58955e+01 ) ( 1.08267e+01 5.58667e+01 ) ) ) ] ;
+    pa:conventionSiteCode 252 ;
+    pa:countryName "Denmark" ;
+    pa:establishmentYear "2009"^^xsd:gYear ;
+    pa-helcom:establishmentDate "10.09.2009" ;
+    pa:managementStatus "Designated and managed" ;
+    pa:siteName "Hatter Barn" .
+
+[] a geojson:FeatureCollection ;
+    geojson:features <file:///github/workspace/109>,
+        <file:///github/workspace/17> .
+

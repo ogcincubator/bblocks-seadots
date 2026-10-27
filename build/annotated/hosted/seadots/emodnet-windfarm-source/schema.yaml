@@ -1,0 +1,91 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet windfarm source feature snapshot
+description: Raw Poland-filtered EMODnet source fields used in the exercise snapshot.
+type: object
+required:
+- id
+- type
+- geometry
+- properties
+properties:
+  id:
+    type: string
+    x-jsonld-id: '@id'
+  type:
+    const: Feature
+    x-jsonld-id: '@type'
+  geometry:
+    type: object
+    required:
+    - type
+    - coordinates
+    properties:
+      type:
+        const: Point
+        x-jsonld-id: '@type'
+      coordinates:
+        type: array
+        prefixItems:
+        - type: number
+        - type: number
+        minItems: 2
+        maxItems: 2
+        x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+        x-jsonld-container: '@list'
+    additionalProperties: false
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  properties:
+    type: object
+    required:
+    - name
+    - status
+    - power_mw
+    - n_turbines
+    - year
+    - dist_coast_m
+    - updateyear
+    - lon
+    - lat
+    properties:
+      name:
+        type: string
+        x-jsonld-id: https://schema.org/name
+      status:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
+      power_mw:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+      n_turbines:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+      year:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+      dist_coast_m:
+        type: string
+        x-jsonld-id: distanceToCoastMetres
+      updateyear:
+        type: string
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+      lon:
+        type: string
+        x-jsonld-id: longitude
+      lat:
+        type: string
+        x-jsonld-id: latitude
+    additionalProperties: false
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+additionalProperties: false
+x-jsonld-extra-terms:
+  Feature: https://purl.org/geojson/vocab#Feature
+  Point: https://purl.org/geojson/vocab#Point
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-source#
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  schema: https://schema.org/
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.emodnet-windfarm-source
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

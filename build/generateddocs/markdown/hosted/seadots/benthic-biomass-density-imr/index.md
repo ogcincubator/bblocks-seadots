@@ -19493,6 +19493,11 @@ x-jsonld-prefixes:
   dwc: http://rs.tdwg.org/dwc/terms/
   indo: https://w3id.org/indicators/marine/obs/
   prov: http://www.w3.org/ns/prov#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.benthic-biomass-density-imr
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 
@@ -20010,10 +20015,35 @@ Links to the schema:
       "@id": "ssn-system:qualityOfObservation",
       "@type": "@id"
     },
-    "resultTime": "sosa:resultTime",
+    "resultTime": {
+      "@id": "sosa:resultTime",
+      "@type": "xsd:dateTime"
+    },
     "phenomenonTime": {
+      "@context": {
+        "inXSDDateTime": {
+          "@id": "owlTime:inXSDDateTime",
+          "@type": "xsd:dateTime"
+        },
+        "ProperInterval": "owlTime:ProperInterval",
+        "hasDuration": "owlTime:hasDuration",
+        "hasXSDDuration": {
+          "@id": "owlTime:hasXSDDuration",
+          "@type": "xsd:duration"
+        },
+        "inTimePosition": "owlTime:inTimePosition",
+        "inXSDgYear": {
+          "@id": "owlTime:inXSDgYear",
+          "@type": "xsd:gYear"
+        },
+        "inXSDgYearMonth": {
+          "@id": "owlTime:inXSDgYearMonth",
+          "@type": "xsd:gYearMonth"
+        },
+        "time": "http://www.w3.org/2006/time#"
+      },
       "@id": "sosa:phenomenonTime",
-      "@type": "@id"
+      "@type": "xsd:dateTime"
     },
     "hasFeatureOfInterest": {
       "@id": "sosa:hasFeatureOfInterest",
@@ -20027,16 +20057,19 @@ Links to the schema:
       "@id": "sosa:usedProcedure",
       "@type": "@id"
     },
-    "startTime": "sosa:startTime",
-    "endTime": "sosa:endTime",
+    "startTime": {
+      "@id": "sosa:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "sosa:endTime",
+      "@type": "xsd:dateTime"
+    },
     "hasResult": {
       "@id": "sosa:hasResult",
       "@type": "@id"
     },
-    "hasSimpleResult": {
-      "@id": "sosa:hasSimpleResult",
-      "@type": "@id"
-    },
+    "hasSimpleResult": "sosa:hasSimpleResult",
     "hasInputValue": {
       "@id": "sosa:hasInputValue",
       "@type": "@id"

@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Protected-area transform report",
+  "description": "The `seadotsTransformReport` member of a protected-area transform output. Each transform fills the members that apply to it and leaves the others out. Site references use the source's own identifier (`nationalid` for Norwegian sites, `code` for HELCOM rows).\n",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "siteRef": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Site code as found in the source.",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteCode"
+        },
+        "name": {
+          "type": "string",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName"
+        },
+        "country": {
+          "type": "string",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName"
+        },
+        "type": {
+          "type": "string",
+          "description": "Designation type label as found in the source.",
+          "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/sourceDesignationTypeLabel"
+        }
+      }
+    }
+  },
+  "properties": {
+    "excluded": {
+      "description": "Source features left out of the output, with the selection rule that excluded them.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "nationalid",
+          "reason"
+        ],
+        "properties": {
+          "nationalid": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalSiteId"
+          },
+          "reason": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/exclusionReason"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/excludedSite",
+      "x-jsonld-container": "@set"
+    },
+    "notYetReportedToEEA": {
+      "description": "National site ids published without an EEA id (feature id `<country>-<nationalid>`).",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/notYetReportedToEEA",
+      "x-jsonld-container": "@set"
+    },
+    "needsMarineAreaOverlay": {
+      "description": "National site ids whose marine share was not computed from a coastline overlay.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/needsMarineAreaOverlay",
+      "x-jsonld-container": "@set"
+    },
+    "inferredDesignation": {
+      "description": "Sites whose EEA designation type comes from an *inferred* crosswalk row.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "nationalid",
+          "verneform",
+          "designatio"
+        ],
+        "properties": {
+          "nationalid": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalSiteId"
+          },
+          "verneform": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalDesignationType"
+          },
+          "designatio": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/designationType"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/inferredDesignation",
+      "x-jsonld-container": "@set"
+    },
+    "differsFromEMODnet": {
+      "description": "Field-level differences between the transformed feature (source values, which are kept) and the EMODnet record for the same site.\n",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "nationalid",
+          "fields"
+        ],
+        "properties": {
+          "nationalid": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalSiteId"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "source",
+                "emodnet"
+              ],
+              "properties": {
+                "source": {},
+                "emodnet": {}
+              }
+            },
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/fieldDifferences",
+            "x-jsonld-type": "@json"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/differsFromEMODnet",
+      "x-jsonld-container": "@set"
+    },
+    "routedToNatura2000": {
+      "description": "Rows whose code is a Natura 2000 site code; published by emodnet:natura2000areas, not duplicated.",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/siteRef"
+          },
+          {
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "pattern": "^emodnet:natura2000areas\\?sitecode=",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routingTarget"
+              }
+            }
+          }
+        ]
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routedToNatura2000",
+      "x-jsonld-container": "@set"
+    },
+    "routedToNationallyDesignatedAreas": {
+      "description": "Rows whose code is an EEA/WDPA site id; published by emodnet:nationallydesignatedareas, not duplicated.",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/siteRef"
+          },
+          {
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "pattern": "^emodnet:nationallydesignatedareas\\?natdaid=",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routingTarget"
+              }
+            }
+          }
+        ]
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routedToNationallyDesignatedAreas",
+      "x-jsonld-container": "@set"
+    },
+    "unresolvedCode": {
+      "description": "Rows whose code matches no known scheme (national codes).",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/siteRef"
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/unresolvedCode",
+      "x-jsonld-container": "@set",
+      "x-jsonld-extra-terms": {
+        "target": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routingTarget"
+      }
+    },
+    "noStatusInRegister": {
+      "description": "HELCOM ids with no match in the HELCOM MPA register (layer 54), so no status; reported, not published.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteCode"
+          },
+          "name": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName"
+          },
+          "country": {
+            "type": "string",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName"
+          }
+        }
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/noStatusInRegister",
+      "x-jsonld-container": "@set",
+      "x-jsonld-extra-terms": {
+        "type": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/sourceDesignationTypeLabel",
+        "target": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/routingTarget"
+      }
+    },
+    "mergedParts": {
+      "description": "Number of source polygons merged into one MultiPolygon, by site code.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 2
+      },
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/mergedParts",
+      "x-jsonld-type": "@json"
+    }
+  },
+  "x-jsonld-extra-terms": {
+    "seadotsTransformReport": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/transformReport"
+  },
+  "x-jsonld-prefixes": {
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.protected-area.transform-report",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-10-27"
+  }
+}

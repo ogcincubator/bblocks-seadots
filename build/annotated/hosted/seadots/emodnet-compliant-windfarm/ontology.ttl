@@ -1,8 +1,42 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
 @prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm> a owl:Ontology ;
+    dcterms:description "Properties and status concepts used by the SeaDOTs EMODnet windfarm Building Block."@en ;
+    dcterms:title "EMODnet-compliant windfarm vocabulary"@en .
+
+em:distanceToCoast a rdf:Property ;
+    rdfs:label "distance to coast"@en ;
+    rdfs:comment "Distance from the windfarm location to the coast, expressed in metres."@en ;
+    rdfs:range xsd:decimal .
+
+em:nTurbines a rdf:Property ;
+    rdfs:label "number of turbines"@en ;
+    rdfs:comment "Number of wind turbines associated with the windfarm project, as reported by the source."@en ;
+    rdfs:range xsd:integer .
+
+em:powerMW a rdf:Property ;
+    rdfs:label "installed capacity in megawatts"@en ;
+    rdfs:comment "Installed or planned nameplate electrical capacity of the windfarm, expressed in megawatts (MW)."@en ;
+    rdfs:range xsd:decimal .
+
+em:updateYear a rdf:Property ;
+    rdfs:label "source update year"@en ;
+    rdfs:comment "Year in which the source record was last updated. This describes the record update, not the project's construction or operation year."@en ;
+    rdfs:range xsd:string .
+
+em:year a rdf:Property ;
+    rdfs:label "reported project year"@en ;
+    rdfs:comment "Year associated with the windfarm project in the source record. Its precise meaning depends on the source and should be stated separately when known."@en ;
+    rdfs:range xsd:string .
 
 seadots-emodnet:Approved a skos:Concept ;
     rdfs:label "Approved"@en,

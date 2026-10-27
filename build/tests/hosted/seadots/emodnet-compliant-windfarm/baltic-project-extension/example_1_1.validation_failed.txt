@@ -1,0 +1,261 @@
+Validation report for ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension - EMODnet windfarm harmonized project extension
+Generated 2026-10-27T23:03:19.632874+00:00
+=== Files ===
+Using examples/polish-pipeline-feature.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_1_1.jsonld created
+Output Turtle example_1_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+
+** Validation error **
+ValidationError: {'id': 'urn:baltic-ses:national:1:example-project', 'type': 'Feature', 'geometry': None, 'properties': {'name': 'Example Baltic Wind', 'country': 'Poland', 'n_turbines': None, 'power_mw': 1200, 'status': 'Planned', 'type_inst': None, 'updateyear': '2026', 'year': '2028', 'dist_coast': None, 'notes': 'Year reported as assumed in the source.', 'developer': 'Example Energy', 'status_detail': 'In planning (auction pathway)', 'status_as_of': '2026-08-26', 'year_semantics': 'planned first-power or completion year', 'year_is_assumed': True, 'source_dataset': 'Polish national offshore wind project pipeline', 'source_reference': 'https://www.gramwzielone.pl/?p=20373718', 'source_snapshot_date': '2026-08-26', 'source_record_id': 'national-1'}} is not valid under any of the given schemas
+
+Failed validating 'anyOf' in schema:
+    {'$defs': {'sparseFeature': {'additionalProperties': False,
+                                 'properties': {'geometry': {'oneOf': [{'type': 'null'},
+                                                                       {'additionalProperties': True,
+                                                                        'properties': {'coordinates': {},
+                                                                                       'type': {'enum': ['Point',
+                                                                                                         'Polygon',
+                                                                                                         'MultiPolygon'],
+                                                                                                'x-jsonld-id': '@type'}},
+                                                                        'required': ['type',
+                                                                                     'coordinates'],
+                                                                        'type': 'object'}],
+                                                             'x-jsonld-id': 'https://purl.org/geojson/vocab#geometry'},
+                                                'id': {'format': 'uri',
+                                                       'type': 'string',
+                                                       'x-jsonld-id': '@id'},
+                                                'properties': {'additionalProperties': False,
+                                                               'properties': {'country': {'type': 'string',
+                                                                                          'x-jsonld-id': 'https://schema.org/addressCountry',
+                                                                                          'x-jsonld-type': '@vocab'},
+                                                                              'developer': {'type': ['string',
+                                                                                                     'null'],
+                                                                                            'x-jsonld-id': 'https://schema.org/creator'},
+                                                                              'dist_coast': {'as in the EMODnet source field.': None,
+                                                                                             'description': 'Distance '
+                                                                                                            'to '
+                                                                                                            'coast '
+                                                                                                            'in '
+                                                                                                            'metres',
+                                                                                             'minimum': 0,
+                                                                                             'type': ['number',
+                                                                                                      'null'],
+                                                                                             'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast'},
+                                                                              'location_emodnet_ids': {'items': {'type': 'string'},
+                                                                                                       'type': 'array',
+                                                                                                       'x-jsonld-container': '@set',
+                                                                                                       'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationEmodnetIds'},
+                                                                              'location_method': {'type': ['string',
+                                                                                                           'null'],
+                                                                                                  'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationMethod'},
+                                                                              'location_reference': {'format': 'uri',
+                                                                                                     'type': ['string',
+                                                                                                              'null'],
+                                                                                                     'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationReference',
+                                                                                                     'x-jsonld-type': '@id'},
+                                                                              'location_status': {'enum': ['source-provided',
+                                                                                                           'mapped',
+                                                                                                           'anticipated',
+                                                                                                           'unmatched'],
+                                                                                                  'type': 'string',
+                                                                                                  'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationStatus'},
+                                                                              'n_turbines': {'type': ['number',
+                                                                                                      'null'],
+                                                                                             'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines'},
+                                                                              'name': {'type': 'string',
+                                                                                       'x-jsonld-id': 'https://schema.org/name'},
+                                                                              'notes': {'type': ['string',
+                                                                                                 'null'],
+                                                                                        'x-jsonld-id': 'http://purl.org/dc/terms/description'},
+                                                                              'power_mw': {'minimum': 0,
+                                                                                           'type': ['number',
+                                                                                                    'null'],
+                                                                                           'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW'},
+                                                                              'source_dataset': {'type': 'string',
+                                                                                                 'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceDataset'},
+                                                                              'source_record_id': {'type': ['string',
+                                                                                                            'null'],
+                                                                                                   'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceRecordId'},
+                                                                              'source_reference': {'format': 'uri',
+                                                                                                   'type': 'string',
+                                                                                                   'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceReference',
+                                                                                                   'x-jsonld-type': '@id'},
+                                                                              'source_snapshot_date': {'format': 'date',
+                                                                                                       'type': 'string',
+                                                                                                       'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceSnapshotDate',
+                                                                                                       'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#date'},
+                                                                              'source_type': {'enum': ['national',
+                                                                                                       'emodnet'],
+                                                                                              'type': 'string',
+                                                                                              'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceType'},
+                                                                              'status': {'oneOf': [{'enum': ['Planned',
+                                                                                                             'Production',
+                                                                                                             'Dismantled',
+                                                                                                             'Approved',
+                                                                                                             'Construction'],
+                                                                                                    'type': 'string'},
+                                                                                                   {'type': 'null'}],
+                                                                                         'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet/',
+                                                                                         'x-jsonld-type': '@vocab'},
+                                                                              'status_as_of': {'format': 'date',
+                                                                                               'type': ['string',
+                                                                                                        'null'],
+                                                                                               'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusAsOf',
+                                                                                               'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#date'},
+                                                                              'status_detail': {'description': 'Source-reported '
+                                                                                                               'status '
+                                                                                                               'text '
+                                                                                                               'before '
+                                                                                                               'normalization.',
+                                                                                                'type': ['string',
+                                                                                                         'null'],
+                                                                                                'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusDetail'},
+                                                                              'type_inst': {'type': ['string',
+                                                                                                     'null'],
+                                                                                            'x-jsonld-id': 'https://schema.org/additionalType'},
+                                                                              'updateyear': {'type': ['string',
+                                                                                                      'null'],
+                                                                                             'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear'},
+                                                                              'year': {'type': ['string',
+                                                                                                'null'],
+                                                                                       'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year'},
+                                                                              'year_is_assumed': {'type': ['boolean',
+                                                                                                           'null'],
+                                                                                                  'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearIsAssumed',
+                                                                                                  'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#boolean'},
+                                                                              'year_semantics': {'description': 'Meaning '
+                                                                                                                'of '
+                                                                                                                'the '
+                                                                                                                'year '
+                                                                                                                'value',
+                                                                                                 'such as reported year or planned first-power/completion year.': None,
+                                                                                                 'type': ['string',
+                                                                                                          'null'],
+                                                                                                 'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearSemantics'}},
+                                                               'required': ['name',
+                                                                            'country',
+                                                                            'power_mw',
+                                                                            'status',
+                                                                            'source_type',
+                                                                            'source_dataset',
+                                                                            'source_reference',
+                                                                            'source_snapshot_date',
+                                                                            'location_status'],
+                                                               'type': 'object',
+                                                               'x-jsonld-id': 'https://purl.org/geojson/vocab#properties'},
+                                                'type': {'const': 'Feature',
+                                                         'x-jsonld-id': '@type'}},
+                                 'required': ['id',
+                                              'type',
+                                              'geometry',
+                                              'properties'],
+                                 'type': 'object'}},
+     '$schema': 'https://json-schema.org/draft/2020-12/schema',
+     'anyOf': [{'$ref': 'https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml'},
+               {'$ref': '#/$defs/sparseFeature'}],
+     'description': 'A harmonized GeoJSON Feature using the EMODnet '
+                    'windfarm property vocabulary, augmented with generic '
+                    'project, reporting-time, year-semantics, and '
+                    'provenance fields. It accepts complete base-block '
+                    'features and sparse national pipeline records with '
+                    'null geometry. It is an aligned extension, not a '
+                    'strict profile of the base block because national '
+                    'records may not provide the base attributes.',
+     'title': 'EMODnet windfarm harmonized project extension',
+     'x-bblocks-metadata': {'dateOfLastChange': '2026-10-27',
+                            'itemIdentifier': 'ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension',
+                            'register': 'https://ogcincubator.github.io/bblocks-seadots/build/register.json',
+                            'version': '0.1'},
+     'x-jsonld-extra-terms': {'Feature': 'https://purl.org/geojson/vocab#Feature',
+                              'FeatureCollection': 'https://purl.org/geojson/vocab#FeatureCollection',
+                              'MatchCandidate': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#MatchCandidate',
+                              'Poland': 'http://publications.europa.eu/resource/authority/country/POL',
+                              'candidate_rank_score': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#candidateRankScore',
+                                                       'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'capacity_delta_mw': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#capacityDifferenceMW',
+                                                    'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'capacity_similarity': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#capacitySimilarity',
+                                                      'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'distance_km': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#distanceKm',
+                                              'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'features': {'x-jsonld-container': '@set',
+                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#features'},
+                              'match_method': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#matchMethod',
+                              'name_score': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#nameSimilarity',
+                                             'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'property_score': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#propertyAgreement',
+                                                 'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'source_record': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceRecord',
+                                                'x-jsonld-type': '@id'},
+                              'status_match': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusMatch',
+                                               'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#boolean'},
+                              'target_record': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#targetRecord',
+                                                'x-jsonld-type': '@id'},
+                              'year_match': {'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearMatch',
+                                             'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#boolean'}},
+     'x-jsonld-prefixes': {'dcterms': 'http://purl.org/dc/terms/',
+                           'em': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#',
+                           'geojson': 'https://purl.org/geojson/vocab#',
+                           'schema': 'https://schema.org/',
+                           'seadots-emodnet': 'https://w3id.org/ogc/hosted/seadots/emodnet/',
+                           'ses': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#'},
+     'x-jsonld-vocab': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#'}
+
+On instance:
+    {'geometry': None,
+     'id': 'urn:baltic-ses:national:1:example-project',
+     'properties': {'country': 'Poland',
+                    'developer': 'Example Energy',
+                    'dist_coast': None,
+                    'n_turbines': None,
+                    'name': 'Example Baltic Wind',
+                    'notes': 'Year reported as assumed in the source.',
+                    'power_mw': 1200,
+                    'source_dataset': 'Polish national offshore wind '
+                                      'project pipeline',
+                    'source_record_id': 'national-1',
+                    'source_reference': 'https://www.gramwzielone.pl/?p=20373718',
+                    'source_snapshot_date': '2026-08-26',
+                    'status': 'Planned',
+                    'status_as_of': '2026-08-26',
+                    'status_detail': 'In planning (auction pathway)',
+                    'type_inst': None,
+                    'updateyear': '2026',
+                    'year': '2028',
+                    'year_is_assumed': True,
+                    'year_semantics': 'planned first-power or completion '
+                                      'year'},
+     'type': 'Feature'}
+=== End JSON Schema ===
+
+=== SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/emodnet-compliant-windfarm/ontology.ttl
+ - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl
+ - /github/workspace/_sources/emodnet-compliant-windfarm/baltic-project-extension/ontology.ttl
+ - https://www.w3.org/ns/dcat3.ttl
+ - https://www.w3.org/ns/dcat2.ttl
+Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+ - Shape rec:testAllVarsInTemplate: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: <urn:baltic-ses:national:1:example-project>
+ - Shape geojson:LinkShape: *none*
+
+=== End SHACL ===
+

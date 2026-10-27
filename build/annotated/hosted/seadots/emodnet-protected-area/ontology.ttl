@@ -1,0 +1,138 @@
+@prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
+@prefix inspire-iucn: <http://inspire.ec.europa.eu/codelist/IUCNCategoriesValue/> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-country: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/> .
+@prefix pa-iucn: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+pa-country:DE a skos:Concept ;
+    skos:exactMatch eu-country:DEU ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "DE" ;
+    skos:prefLabel "Germany"@en .
+
+pa-country:DK a skos:Concept ;
+    skos:exactMatch eu-country:DNK ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "DK" ;
+    skos:prefLabel "Denmark"@en .
+
+pa-country:EE a skos:Concept ;
+    skos:exactMatch eu-country:EST ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "EE" ;
+    skos:prefLabel "Estonia"@en .
+
+pa-country:FI a skos:Concept ;
+    skos:exactMatch eu-country:FIN ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "FI" ;
+    skos:prefLabel "Finland"@en .
+
+pa-country:LT a skos:Concept ;
+    skos:exactMatch eu-country:LTU ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "LT" ;
+    skos:prefLabel "Lithuania"@en .
+
+pa-country:LV a skos:Concept ;
+    skos:exactMatch eu-country:LVA ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "LV" ;
+    skos:prefLabel "Latvia"@en .
+
+pa-country:NO a skos:Concept ;
+    skos:exactMatch eu-country:NOR ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "NO" ;
+    skos:prefLabel "Norway"@en .
+
+pa-country:PL a skos:Concept ;
+    skos:exactMatch eu-country:POL ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "PL" ;
+    skos:prefLabel "Poland"@en .
+
+pa-country:RU a skos:Concept ;
+    skos:exactMatch eu-country:RUS ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "RU" ;
+    skos:prefLabel "Russia"@en .
+
+pa-country:SE a skos:Concept ;
+    skos:exactMatch eu-country:SWE ;
+    skos:inScheme pa:schemeCountry ;
+    skos:notation "SE" ;
+    skos:prefLabel "Sweden"@en .
+
+pa:ecosystem-marine a skos:Concept ;
+    skos:inScheme pa:schemeEcosystem ;
+    skos:notation "Marine" ;
+    skos:prefLabel "Marine"@en .
+
+pa:ecosystem-marine-and-terrestrial a skos:Concept ;
+    skos:inScheme pa:schemeEcosystem ;
+    skos:notation "Marine and terrestrial" ;
+    skos:prefLabel "Marine and terrestrial"@en .
+
+pa:ecosystem-terrestrial a skos:Concept ;
+    skos:inScheme pa:schemeEcosystem ;
+    skos:notation "Terrestrial" ;
+    skos:prefLabel "Terrestrial"@en .
+
+pa-iucn:II a skos:Concept ;
+    skos:exactMatch inspire-iucn:nationalPark ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "II" ;
+    skos:prefLabel "National Park"@en .
+
+pa-iucn:III a skos:Concept ;
+    skos:exactMatch inspire-iucn:naturalMonument ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "III" ;
+    skos:prefLabel "Natural Monument or Feature"@en .
+
+pa-iucn:IV a skos:Concept ;
+    skos:exactMatch inspire-iucn:habitatSpeciesManagementArea ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "IV" ;
+    skos:prefLabel "Habitat/Species Management Area"@en .
+
+pa-iucn:Ia a skos:Concept ;
+    skos:exactMatch inspire-iucn:strictNatureReserve ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "Ia" ;
+    skos:prefLabel "Strict Nature Reserve"@en .
+
+pa-iucn:Ib a skos:Concept ;
+    skos:exactMatch inspire-iucn:wildernessArea ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "Ib" ;
+    skos:prefLabel "Wilderness Area"@en .
+
+pa-iucn:V a skos:Concept ;
+    skos:exactMatch inspire-iucn:protectedLandscapeOrSeascape ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "V" ;
+    skos:prefLabel "Protected Landscape/ Seascape"@en .
+
+pa-iucn:VI a skos:Concept ;
+    skos:exactMatch inspire-iucn:managedResourceProtectedArea ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "VI" ;
+    skos:prefLabel "Protected area with sustainable use of natural resources"@en .
+
+pa-iucn:notReported a skos:Concept ;
+    skos:inScheme pa:schemeIUCN ;
+    skos:notation "notReported" ;
+    skos:prefLabel "Not reported"@en .
+
+pa:schemeEcosystem a skos:ConceptScheme ;
+    skos:prefLabel "Major ecosystem type as encoded in EMODnet majorecosy"@en .
+
+pa:schemeIUCN a skos:ConceptScheme ;
+    skos:prefLabel "IUCN management categories as encoded in EMODnet iucncatego"@en .
+
+pa:schemeCountry a skos:ConceptScheme ;
+    skos:prefLabel "Countries as encoded in EMODnet protected-area layers (alpha-2 code and English name)"@en .
+

@@ -1,0 +1,91 @@
+{
+  "@context": {
+    "seadotsTransformReport": "pa:transformReport",
+    "excluded": {
+      "@context": {
+        "nationalid": "pa:nationalSiteId",
+        "reason": "pa:exclusionReason"
+      },
+      "@id": "pa:excludedSite",
+      "@container": "@set"
+    },
+    "notYetReportedToEEA": {
+      "@id": "pa:notYetReportedToEEA",
+      "@container": "@set"
+    },
+    "needsMarineAreaOverlay": {
+      "@id": "pa:needsMarineAreaOverlay",
+      "@container": "@set"
+    },
+    "inferredDesignation": {
+      "@context": {
+        "nationalid": "pa:nationalSiteId",
+        "verneform": "pa:nationalDesignationType",
+        "designatio": "pa:designationType"
+      },
+      "@id": "pa:inferredDesignation",
+      "@container": "@set"
+    },
+    "differsFromEMODnet": {
+      "@context": {
+        "nationalid": "pa:nationalSiteId",
+        "fields": {
+          "@id": "pa:fieldDifferences",
+          "@type": "@json"
+        }
+      },
+      "@id": "pa:differsFromEMODnet",
+      "@container": "@set"
+    },
+    "routedToNatura2000": {
+      "@context": {
+        "code": "pa:siteCode",
+        "name": "pa:siteName",
+        "country": "pa:countryName",
+        "type": "pa:sourceDesignationTypeLabel",
+        "target": "pa:routingTarget"
+      },
+      "@id": "pa:routedToNatura2000",
+      "@container": "@set"
+    },
+    "routedToNationallyDesignatedAreas": {
+      "@context": {
+        "code": "pa:siteCode",
+        "name": "pa:siteName",
+        "country": "pa:countryName",
+        "type": "pa:sourceDesignationTypeLabel",
+        "target": "pa:routingTarget"
+      },
+      "@id": "pa:routedToNationallyDesignatedAreas",
+      "@container": "@set"
+    },
+    "unresolvedCode": {
+      "@context": {
+        "code": "pa:siteCode",
+        "name": "pa:siteName",
+        "country": "pa:countryName",
+        "type": "pa:sourceDesignationTypeLabel",
+        "target": "pa:routingTarget"
+      },
+      "@id": "pa:unresolvedCode",
+      "@container": "@set"
+    },
+    "noStatusInRegister": {
+      "@context": {
+        "code": "pa:siteCode",
+        "name": "pa:siteName",
+        "country": "pa:countryName",
+        "type": "pa:sourceDesignationTypeLabel",
+        "target": "pa:routingTarget"
+      },
+      "@id": "pa:noStatusInRegister",
+      "@container": "@set"
+    },
+    "mergedParts": {
+      "@id": "pa:mergedParts",
+      "@type": "@json"
+    },
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "@version": 1.1
+  }
+}

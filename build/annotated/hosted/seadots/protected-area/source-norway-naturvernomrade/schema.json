@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Naturvernomr\u00e5der source feature (Milj\u00f8direktoratet vern layer 0)",
+  "description": "Source-faithful GeoJSON profile of a Norwegian protected site as served by the Seadots pygeoapi collections `no-live-naturvern-omrade` (ESRI provider over kart.miljodirektoratet.no/arcgis/rest/services/vern/mapserver/0) and `no-snapshot-naturvern-omrade-marine` (GeoPackage snapshot). Field names are the source's own. The live service gives dates as epoch milliseconds and area as `SHAPE.STArea()`; the snapshot gives ISO dates and `SHAPE_STArea`. Both are accepted.\n",
+  "$defs": {
+    "Feature": {
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json"
+        },
+        {
+          "type": "object",
+          "required": [
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "geometry": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon",
+                    "MultiPolygon"
+                  ]
+                }
+              }
+            },
+            "properties": {
+              "type": "object",
+              "required": [
+                "naturvernId",
+                "navn",
+                "verneform",
+                "majorEcosystemType",
+                "iucn"
+              ],
+              "properties": {
+                "naturvernId": {
+                  "type": "string",
+                  "pattern": "^VV\\d{8}$",
+                  "description": "National site id (INSPIRE localId).",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalSiteId"
+                },
+                "cddaId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^\\d+$",
+                  "description": "EEA site id; null until the site is reported to the EEA.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/eeaSiteId"
+                },
+                "navn": {
+                  "type": "string",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName"
+                },
+                "offisieltNavn": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/officialSiteName"
+                },
+                "faktaark": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri",
+                  "x-jsonld-id": "http://xmlns.com/foaf/0.1/page",
+                  "x-jsonld-type": "@id"
+                },
+                "verneform": {
+                  "type": "string",
+                  "enum": [
+                    "Biotopvern",
+                    "BiotopvernSvalbard",
+                    "BiotopvernVilt",
+                    "Dyrefredningsomrade",
+                    "Dyrelivsfredning",
+                    "GeotopvernSvalbard",
+                    "Landskapsvernomraade",
+                    "LandskapsvernomraadeDyrelivsfredning",
+                    "LandskapsvernomraadePlanteOgDyrelivsfredning",
+                    "LandskapsvernomraadePlantelivsfredning",
+                    "MarintVerneomraadeAnnet",
+                    "MarintVerneomraade",
+                    "MidlertidigVernaOmraade",
+                    "Nasjonalpark",
+                    "NasjonalparkSvalbard",
+                    "Naturminne",
+                    "Naturreservat",
+                    "NaturreservatSvalbard",
+                    "PlanteOgDyrefredningsomraade",
+                    "PlanteOgDyrelivsfredning",
+                    "Plantefredningsomraade",
+                    "Plantelivsfredning",
+                    "LandskapsvernomraadeBiotopvern",
+                    "NaturreservatJanMayen"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/verneform",
+                  "x-jsonld-type": "@vocab",
+                  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/verneform/"
+                },
+                "verneforskrift": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/legalAct",
+                  "x-jsonld-type": "@id"
+                },
+                "vernedato": {
+                  "type": [
+                    "integer",
+                    "string",
+                    "null"
+                  ],
+                  "description": "Date of designation (epoch ms or ISO 8601).",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/designationDate"
+                },
+                "foerstegangVernet": {
+                  "type": [
+                    "integer",
+                    "string",
+                    "null"
+                  ]
+                },
+                "verneplan": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "kommune": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/municipality"
+                },
+                "forvaltningsmyndighet": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/managementAuthority"
+                },
+                "forvaltningsmyndighetType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "iucn": {
+                  "type": "string",
+                  "enum": [
+                    "IUCN_IA",
+                    "IUCN_IB",
+                    "IUCN_II",
+                    "IUCN_III",
+                    "IUCN_IV",
+                    "IUCN_V",
+                    "IUCN_VI",
+                    "IkkeVurdert"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/iucn",
+                  "x-jsonld-type": "@vocab",
+                  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/iucn/"
+                },
+                "majorEcosystemType": {
+                  "type": "string",
+                  "enum": [
+                    "Marin",
+                    "MarinOgTerrestrisk",
+                    "Terrestrisk"
+                  ],
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/majorEcosystemType",
+                  "x-jsonld-type": "@vocab",
+                  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/ecosystem/"
+                },
+                "SHAPE.STArea()": {
+                  "type": "number",
+                  "description": "Area in m\u00b2 (EPSG:25833)."
+                },
+                "SHAPE_STArea": {
+                  "type": "number",
+                  "description": "Same as SHAPE.STArea() in the GeoPackage snapshot."
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FeatureCollection": {
+      "description": "A FeatureCollection whose every member is a Feature of this profile.",
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "features": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Feature"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Feature"
+    },
+    {
+      "$ref": "#/$defs/FeatureCollection"
+    }
+  ],
+  "x-jsonld-prefixes": {
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "pa-no": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.protected-area.source-norway-naturvernomrade",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-10-27"
+  }
+}

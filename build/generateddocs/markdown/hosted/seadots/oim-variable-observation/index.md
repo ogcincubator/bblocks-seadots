@@ -387,6 +387,7 @@ x-jsonld-extra-terms:
   deprecated: http://www.w3.org/2002/07/owl#deprecated
   Radiance: http://purl.oclc.org/NET/ssnx/qu/dim#Radiance
   Duration: http://www.w3.org/2006/time#Duration
+  TemporalPosition: http://www.w3.org/2006/time#TemporalPosition
   TIN: http://www.opengis.net/ont/sf#TIN
   SurfaceDensity: http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity
   isDefinedBy: http://www.w3.org/2000/01/rdf-schema#isDefinedBy
@@ -537,6 +538,11 @@ x-jsonld-prefixes:
   schema: https://schema.org/
   indo: https://w3id.org/indicators/marine/obs/
   indp: https://w3id.org/indicators/marine/parameters/
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.oim-variable-observation
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 
@@ -804,6 +810,7 @@ Links to the schema:
     "deprecated": "http://www.w3.org/2002/07/owl#deprecated",
     "Radiance": "http://purl.oclc.org/NET/ssnx/qu/dim#Radiance",
     "Duration": "http://www.w3.org/2006/time#Duration",
+    "TemporalPosition": "http://www.w3.org/2006/time#TemporalPosition",
     "TIN": "http://www.opengis.net/ont/sf#TIN",
     "SurfaceDensity": "http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity",
     "isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",

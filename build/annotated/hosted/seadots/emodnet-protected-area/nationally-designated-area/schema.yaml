@@ -1,0 +1,308 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant nationally designated area
+description: 'GeoJSON Feature profile that reproduces the attribute set of the EMODnet
+  Human Activities layer `emodnet:nationallydesignatedareas` (EEA Nationally Designated
+  Areas, formerly CDDA) with the service''s published field names and primitive types.
+  All 36 attributes are present on every feature (null where the value is not known),
+  so a client written against the EMODnet WFS reads this API''s features unchanged.
+
+  '
+$defs:
+  Feature:
+    allOf:
+    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-protected-area/schema.yaml#/$defs/Feature
+    - type: object
+      properties:
+        id:
+          description: 'Feature id. Equals `properties.natdaid` when the site has
+            an EEA id; for sites not yet reported to the EEA (natdaid null) it is
+            `<countrycod>-<nationalid>`, e.g. `NO-VV00003931`.
+
+            '
+          type:
+          - integer
+          - string
+        properties:
+          type: object
+          additionalProperties: false
+          required:
+          - natdaid
+          - countrycod
+          - country
+          - regioncode
+          - sitename
+          - legalfound
+          - localid
+          - namespace
+          - versionid
+          - metadata_v
+          - metadata_b
+          - metadata_s
+          - metadata_f
+          - metadata_1
+          - geomtype
+          - id
+          - coast_mar
+          - nationalid
+          - designated
+          - designatio
+          - iucncatego
+          - iucndesc
+          - iucnlink
+          - sitearea
+          - majorecosy
+          - marinearea
+          - spatialdat
+          - spatialres
+          - pslocalid
+          - psnamespac
+          - psversioni
+          - remark
+          - shape_leng
+          - shape_area
+          properties:
+            natdaid:
+              description: EEA site identifier (Norwegian source field cddaId). Null
+                for sites not yet reported to the EEA.
+              type:
+              - integer
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/eeaSiteId
+            countrycod:
+              description: ISO 3166-1 alpha-2 country code.
+              type: string
+              pattern: ^[A-Z]{2}$
+              x-jsonld-id: https://schema.org/addressCountry
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/
+            country:
+              description: Country name in English, as published by EMODnet.
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName
+            regioncode:
+              description: Reporting region code; for Norway equal to the country
+                code.
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/regionCode
+            sitename:
+              type: string
+              minLength: 1
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName
+            legalfound:
+              description: Year of the legal act that designated the site.
+              type:
+              - integer
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/legalFoundationYear
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#gYear
+            localid:
+              description: INSPIRE local identifier of the site (the national site
+                id).
+              type: string
+              x-jsonld-id: http://purl.org/dc/terms/identifier
+            namespace:
+              description: INSPIRE namespace of the local identifier.
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/identifierNamespace
+            versionid:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/versionId
+            metadata_v:
+              description: EEA reporting-chain field (URL of the reported dataset
+                snapshot). See the description for how the Seadots view fills it.
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportingDataset
+            metadata_b:
+              description: EEA reporting-chain field (date, ISO 8601, optionally suffixed
+                with Z).
+              type:
+              - string
+              - 'null'
+              pattern: ^\d{4}-\d{2}-\d{2}Z?$
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportingDate
+            metadata_s:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportingStatus
+            metadata_f:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportingFlag
+            metadata_1:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportingNote
+            geomtype:
+              type: string
+              enum:
+              - polygon
+              - point
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/geometryType
+            id:
+              description: 'EEA database row id. Not derivable from national sources;
+                null in the Seadots view. In the JSON-LD uplift it is renamed to `_emodnetRowId`
+                first (semantic-uplift.yaml), because under the GeoJSON `@nest` context
+                `id` would be the Feature''s own `@id`.
+
+                '
+              type:
+              - integer
+              - 'null'
+            coast_mar:
+              description: 1 when the site is coastal or marine. EMODnet keeps only
+                such sites.
+              type: integer
+              enum:
+              - 0
+              - 1
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/coastalOrMarine
+            nationalid:
+              description: National site identifier (Norway naturvernId, e.g. VV00003080).
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/nationalSiteId
+            designated:
+              type: string
+              enum:
+              - Designated site
+              - Designated Site
+              - Proposed site
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/designationStatus
+            designatio:
+              description: EEA designation type code, bound to http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/{code}.
+              type: string
+              pattern: ^[A-Z]{2}[0-9A-Z]{2,3}$
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/designationType
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/
+            iucncatego:
+              type: string
+              enum:
+              - Ia
+              - Ib
+              - II
+              - III
+              - IV
+              - V
+              - VI
+              - notReported
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucnCategory
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/
+            iucndesc:
+              type: string
+              enum:
+              - Strict Nature Reserve
+              - Wilderness Area
+              - National Park
+              - Natural Monument or Feature
+              - Habitat/Species Management Area
+              - Protected Landscape/ Seascape
+              - Protected area with sustainable use of natural resources
+              - Not reported
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucnCategoryLabel
+            iucnlink:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucnCategoryReference
+              x-jsonld-type: '@id'
+            sitearea:
+              description: Site area in hectares.
+              type:
+              - number
+              - 'null'
+              minimum: 0
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteAreaHectares
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            majorecosy:
+              type: string
+              enum:
+              - Marine
+              - Marine and terrestrial
+              - Terrestrial
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/majorEcosystemType
+            marinearea:
+              description: Marine share of the site area, in per cent.
+              type:
+              - number
+              - 'null'
+              minimum: 0
+              maximum: 100
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/marineAreaPercent
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            spatialdat:
+              type: string
+              enum:
+              - public
+              - restricted
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/spatialDataAccess
+            spatialres:
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/spatialResolution
+            pslocalid:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/protectedSiteLocalId
+            psnamespac:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/protectedSiteNamespace
+            psversioni:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/protectedSiteVersionId
+            remark:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: http://www.w3.org/2000/01/rdf-schema#comment
+            shape_leng:
+              description: Perimeter in degrees, computed planar on the CRS84 geometry
+                (as EMODnet does).
+              type: number
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/shapeLengthDegrees
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            shape_area:
+              description: Area in square degrees, computed planar on the CRS84 geometry
+                (as EMODnet does).
+              type: number
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/shapeAreaSquareDegrees
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml
+    - type: object
+      properties:
+        features:
+          type: array
+          items:
+            $ref: '#/$defs/Feature'
+oneOf:
+- $ref: '#/$defs/Feature'
+- $ref: '#/$defs/FeatureCollection'
+x-jsonld-extra-terms:
+  _emodnetRowId: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/eeaRowId
+x-jsonld-prefixes:
+  pa: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/
+  schema: https://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

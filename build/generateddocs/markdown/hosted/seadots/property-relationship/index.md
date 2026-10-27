@@ -337,6 +337,11 @@ x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   dct: http://purl.org/dc/terms/
   xsd: http://www.w3.org/2001/XMLSchema#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.property-relationship
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '1.0'
+  dateOfLastChange: '2026-10-27'
 
 ```
 

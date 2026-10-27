@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HELCOM MPA source feature (HELCOM MADS layers 54 and 190)",
+  "description": "Source-faithful GeoJSON profile of HELCOM marine protected areas as served by the Seadots pygeoapi collections `helcom-live-mpas` (ESRI provider over HELCOM MADS Biodiversity layer 54, \"HELCOM MPAs\", one row per MPA) and `helcom-live-mpa-network-2026` (layer 190, \"Baltic Sea MPA network 2026\", one row per polygon, heterogeneous national types and codes). Field names are HELCOM's own.\n",
+  "$defs": {
+    "Feature": {
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json"
+        },
+        {
+          "type": "object",
+          "required": [
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "geometry": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Polygon",
+                    "MultiPolygon"
+                  ]
+                }
+              }
+            },
+            "properties": {
+              "oneOf": [
+                {
+                  "title": "Layer 54 - HELCOM MPAs",
+                  "type": "object",
+                  "required": [
+                    "Name",
+                    "MPA_ID",
+                    "Country",
+                    "MPA_status"
+                  ],
+                  "properties": {
+                    "OBJECTID": {
+                      "type": "integer"
+                    },
+                    "Name": {
+                      "type": "string",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName"
+                    },
+                    "MPA_ID": {
+                      "type": "integer",
+                      "description": "HELCOM MPA database id.",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/conventionSiteCode"
+                    },
+                    "Country": {
+                      "type": "string",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName"
+                    },
+                    "Site_link": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "uri",
+                      "x-jsonld-id": "http://xmlns.com/foaf/0.1/page",
+                      "x-jsonld-type": "@id"
+                    },
+                    "MPA_status": {
+                      "type": "string",
+                      "enum": [
+                        "Designated and managed",
+                        "Designated and partly managed",
+                        "Designated"
+                      ],
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/managementStatus"
+                    },
+                    "Date_est": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "pattern": "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+                      "description": "Date of establishment",
+                      "DD.MM.YYYY.": null,
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/establishmentDate"
+                    },
+                    "Year_est": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/establishmentYear",
+                      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#gYear"
+                    },
+                    "Shape_Leng": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "title": "Layer 190 - Baltic Sea MPA network 2026",
+                  "type": "object",
+                  "required": [
+                    "Name",
+                    "Type",
+                    "Code",
+                    "Country"
+                  ],
+                  "properties": {
+                    "OBJECTID": {
+                      "type": "integer"
+                    },
+                    "Name": {
+                      "type": "string",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName"
+                    },
+                    "Type": {
+                      "type": "string",
+                      "description": "National or international designation type",
+                      "in the reporting country's language or English.": null,
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/designationType"
+                    },
+                    "TypeSpecification": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/designationTypeSpecification"
+                    },
+                    "Code": {
+                      "type": "string",
+                      "description": "Site code. Mixes HELCOM MPA ids (e.g. 239), EEA/WDPA site ids (e.g. 555638668), Natura 2000 site codes (e.g. LTSIU0012) and national codes.\n",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/siteCode"
+                    },
+                    "Country": {
+                      "type": "string",
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName"
+                    },
+                    "HasCoastalArea": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "Yes",
+                        "No",
+                        null
+                      ],
+                      "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/hasCoastalArea"
+                    },
+                    "polygon_affiliation": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "site_polygon_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "Shape_Length": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "Shape_Area": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "FeatureCollection": {
+      "description": "A FeatureCollection whose every member is a Feature of this profile.",
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "features": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Feature"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Feature"
+    },
+    {
+      "$ref": "#/$defs/FeatureCollection"
+    }
+  ],
+  "x-jsonld-prefixes": {
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "pa-helcom": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.protected-area.source-helcom-mpa",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-10-27"
+  }
+}

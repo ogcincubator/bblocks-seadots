@@ -1,0 +1,104 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension",
+  "name": "EMODnet windfarm harmonized project extension",
+  "abstract": "Canonical GeoJSON-LD windfarm feature combining all EMODnet windfarm fields with generic project, national reporting, provenance, and explicit location-crosswalk information. It supports raw EMODnet points and national-source records, including unmapped records with null geometry.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-10-27T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "EMODnet",
+    "windfarm",
+    "GeoJSON-LD",
+    "Baltic",
+    "harmonization",
+    "provenance"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "EMODnet-compliant windfarm Building Block",
+      "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
+    },
+    {
+      "title": "Polish offshore wind pipeline article",
+      "link": "https://www.gramwzielone.pl/?p=20373718"
+    },
+    {
+      "title": "EMODnet Human Activities WFS",
+      "link": "https://ows.emodnet-humanactivities.eu/wfs"
+    }
+  ],
+  "dependsOn": [
+    "ogc.hosted.seadots.emodnet-compliant-windfarm"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://datatracker.ietf.org/doc/html/rfc7946"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.api.records.v1.schemas.linkTemplate": [
+      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ]
+  },
+  "dateOfLastChange": "2026-10-27",
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/ontology.ttl",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/baltic-project-extension/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/baltic-project-extension/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/baltic-project-extension/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/",
+  "description": "# EMODnet windfarm harmonized project extension\n\nThis Building Block translates Baltic national windfarm pipeline records and EMODnet windfarm records into the EMODnet-compliant windfarm property vocabulary. The shared fields retain the base block names (`power_mw`, `status`, `year`, `updateyear`, `n_turbines`, `type_inst`, `dist_coast`, and `notes`). The extension adds generic fields for project name and developer, the reporting date and meaning of a year, and dataset and record provenance.\n\nInput-specific column labels are not carried into the harmonized output. Their values are translated. For example, a national `capacity_mw` value becomes `power_mw`; a source status such as `In planning (auction...)` becomes the normalized controlled status `Planned`, while its full wording is retained in `status_detail`; and `status_aug2026` is represented by generic `status`, `status_detail`, `status_as_of`, and `updateyear` properties.\n\nThe schema accepts complete EMODnet base features or sparse harmonized features. This is intentionally not declared as a strict profile of the base block: national pipeline sources do not provide every required EMODnet attribute. `dist_coast` is expressed in metres, matching the EMODnet input field. Location status and reference terms distinguish source-provided geometry, EMODnet-mapped locations, approximate public-source locations, and unmatched records.\n\n\nThe target also carries `source_type`, `location_status`, `location_method`, and `location_emodnet_ids`. A national location derived from one or more EMODnet sites is represented by that site or their centroid, with the crosswalk IDs and method retained. A national project without an identifiable EMODnet location remains `geometry: null` and `location_status: unmatched`.\n",
+  "examples": [
+    {
+      "title": "Harmonized national pipeline record",
+      "content": "National source values translated to EMODnet property names and generic extension fields. Geometry is null because the source has no coordinates.",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/baltic-project-extension/examples/polish-pipeline-feature.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/example_1_1.json",
+          "sizeBytes": 834,
+          "code": "{\n  \"id\": \"urn:baltic-ses:national:1:example-project\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"properties\": {\n    \"name\": \"Example Baltic Wind\",\n    \"country\": \"Poland\",\n    \"n_turbines\": null,\n    \"power_mw\": 1200,\n    \"status\": \"Planned\",\n    \"type_inst\": null,\n    \"updateyear\": \"2026\",\n    \"year\": \"2028\",\n    \"dist_coast\": null,\n    \"notes\": \"Year reported as assumed in the source.\",\n    \"developer\": \"Example Energy\",\n    \"status_detail\": \"In planning (auction pathway)\",\n    \"status_as_of\": \"2026-08-26\",\n    \"year_semantics\": \"planned first-power or completion year\",\n    \"year_is_assumed\": true,\n    \"source_dataset\": \"Polish national offshore wind project pipeline\",\n    \"source_reference\": \"https://www.gramwzielone.pl/?p=20373718\",\n    \"source_snapshot_date\": \"2026-08-26\",\n    \"source_record_id\": \"national-1\"\n  }\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/example_1_1.jsonld",
+          "sizeBytes": 995,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/context.jsonld\",\n  \"id\": \"urn:baltic-ses:national:1:example-project\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"properties\": {\n    \"name\": \"Example Baltic Wind\",\n    \"country\": \"Poland\",\n    \"n_turbines\": null,\n    \"power_mw\": 1200,\n    \"status\": \"Planned\",\n    \"type_inst\": null,\n    \"updateyear\": \"2026\",\n    \"year\": \"2028\",\n    \"dist_coast\": null,\n    \"notes\": \"Year reported as assumed in the source.\",\n    \"developer\": \"Example Energy\",\n    \"status_detail\": \"In planning (auction pathway)\",\n    \"status_as_of\": \"2026-08-26\",\n    \"year_semantics\": \"planned first-power or completion year\",\n    \"year_is_assumed\": true,\n    \"source_dataset\": \"Polish national offshore wind project pipeline\",\n    \"source_reference\": \"https://www.gramwzielone.pl/?p=20373718\",\n    \"source_snapshot_date\": \"2026-08-26\",\n    \"source_record_id\": \"national-1\"\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension/example_1_1.ttl",
+          "sizeBytes": 1438,
+          "code": "@prefix dcterms: <http://purl.org/dc/terms/> .\n@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .\n@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<urn:baltic-ses:national:1:example-project> a geojson:Feature ;\n    geojson:properties [ dcterms:description \"Year reported as assumed in the source.\" ;\n            schema:addressCountry <http://publications.europa.eu/resource/authority/country/POL> ;\n            schema:creator \"Example Energy\" ;\n            schema:name \"Example Baltic Wind\" ;\n            em:powerMW 1200 ;\n            em:updateYear \"2026\" ;\n            em:year \"2028\" ;\n            ses:sourceDataset \"Polish national offshore wind project pipeline\" ;\n            ses:sourceRecordId \"national-1\" ;\n            ses:sourceReference <https://www.gramwzielone.pl/?p=20373718> ;\n            ses:sourceSnapshotDate \"2026-08-26\"^^xsd:date ;\n            ses:statusAsOf \"2026-08-26\"^^xsd:date ;\n            ses:statusDetail \"In planning (auction pathway)\" ;\n            ses:yearIsAssumed true ;\n            ses:yearSemantics \"planned first-power or completion year\" ;\n            seadots-emodnet: seadots-emodnet:Planned ] .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: EMODnet windfarm harmonized project extension\ndescription: A harmonized GeoJSON Feature using the EMODnet windfarm property vocabulary,\n  augmented with generic project, reporting-time, year-semantics, and provenance fields.\n  It accepts complete base-block features and sparse national pipeline records with\n  null geometry. It is an aligned extension, not a strict profile of the base block\n  because national records may not provide the base attributes.\nanyOf:\n- $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml\n- $ref: '#/$defs/sparseFeature'\n$defs:\n  sparseFeature:\n    type: object\n    required:\n    - id\n    - type\n    - geometry\n    - properties\n    properties:\n      id:\n        type: string\n        format: uri\n        x-jsonld-id: '@id'\n      type:\n        const: Feature\n        x-jsonld-id: '@type'\n      geometry:\n        oneOf:\n        - type: 'null'\n        - type: object\n          required:\n          - type\n          - coordinates\n          properties:\n            type:\n              enum:\n              - Point\n              - Polygon\n              - MultiPolygon\n              x-jsonld-id: '@type'\n            coordinates: {}\n          additionalProperties: true\n        x-jsonld-id: https://purl.org/geojson/vocab#geometry\n      properties:\n        type: object\n        required:\n        - name\n        - country\n        - power_mw\n        - status\n        - source_type\n        - source_dataset\n        - source_reference\n        - source_snapshot_date\n        - location_status\n        properties:\n          name:\n            type: string\n            x-jsonld-id: https://schema.org/name\n          country:\n            type: string\n            x-jsonld-id: https://schema.org/addressCountry\n            x-jsonld-type: '@vocab'\n          n_turbines:\n            type:\n            - number\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines\n          power_mw:\n            type:\n            - number\n            - 'null'\n            minimum: 0\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW\n          status:\n            oneOf:\n            - type: string\n              enum:\n              - Planned\n              - Production\n              - Dismantled\n              - Approved\n              - Construction\n            - type: 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/\n            x-jsonld-type: '@vocab'\n          type_inst:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://schema.org/additionalType\n          updateyear:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear\n          year:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year\n          dist_coast:\n            type:\n            - number\n            - 'null'\n            minimum: 0\n            description: Distance to coast in metres\n            as in the EMODnet source field.: null\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast\n          notes:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: http://purl.org/dc/terms/description\n          developer:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://schema.org/creator\n          status_detail:\n            type:\n            - string\n            - 'null'\n            description: Source-reported status text before normalization.\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusDetail\n          status_as_of:\n            type:\n            - string\n            - 'null'\n            format: date\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusAsOf\n            x-jsonld-type: http://www.w3.org/2001/XMLSchema#date\n          year_semantics:\n            type:\n            - string\n            - 'null'\n            description: Meaning of the year value\n            such as reported year or planned first-power/completion year.: null\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearSemantics\n          year_is_assumed:\n            type:\n            - boolean\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearIsAssumed\n            x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean\n          source_type:\n            type: string\n            enum:\n            - national\n            - emodnet\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceType\n          source_dataset:\n            type: string\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceDataset\n          source_reference:\n            type: string\n            format: uri\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceReference\n            x-jsonld-type: '@id'\n          source_snapshot_date:\n            type: string\n            format: date\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceSnapshotDate\n            x-jsonld-type: http://www.w3.org/2001/XMLSchema#date\n          source_record_id:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceRecordId\n          location_status:\n            type: string\n            enum:\n            - source-provided\n            - mapped\n            - anticipated\n            - unmatched\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationStatus\n          location_method:\n            type:\n            - string\n            - 'null'\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationMethod\n          location_reference:\n            type:\n            - string\n            - 'null'\n            format: uri\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationReference\n            x-jsonld-type: '@id'\n          location_emodnet_ids:\n            type: array\n            items:\n              type: string\n            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#locationEmodnetIds\n            x-jsonld-container: '@set'\n        additionalProperties: false\n        x-jsonld-id: https://purl.org/geojson/vocab#properties\n    additionalProperties: false\nx-jsonld-extra-terms:\n  Feature: https://purl.org/geojson/vocab#Feature\n  FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection\n  features:\n    x-jsonld-id: https://purl.org/geojson/vocab#features\n    x-jsonld-container: '@set'\n  Poland: http://publications.europa.eu/resource/authority/country/POL\n  MatchCandidate: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#MatchCandidate\n  source_record:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#sourceRecord\n    x-jsonld-type: '@id'\n  target_record:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#targetRecord\n    x-jsonld-type: '@id'\n  match_method: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#matchMethod\n  name_score:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#nameSimilarity\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\n  property_score:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#propertyAgreement\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\n  candidate_rank_score:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#candidateRankScore\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\n  capacity_similarity:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#capacitySimilarity\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\n  capacity_delta_mw:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#capacityDifferenceMW\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\n  status_match:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#statusMatch\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean\n  year_match:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#yearMatch\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean\n  distance_km:\n    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#distanceKm\n    x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  schema: https://schema.org/\n  em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#\n  dcterms: http://purl.org/dc/terms/\n  ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#\n  seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/\nx-bblocks-metadata:\n  itemIdentifier: ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension\n  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-10-27'\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/emodnet-compliant-windfarm/baltic-project-extension"
+}
