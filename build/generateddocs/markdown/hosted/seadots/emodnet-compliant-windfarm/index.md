@@ -1,50 +1,42 @@
 
-# EMODnet-compliant windfarm (Schema)
+# EMODnet windfarm (Schema)
 
 `ogc.hosted.seadots.emodnet-compliant-windfarm` *v0.1*
 
-GeoJSON Feature profile aligned to the official EMODnet Human Activities windfarms XSD. It preserves the service's published field names and primitive types for country, turbine count, power output, status, installation type, year fields, distance to coast, and notes.
+GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 
 ## Description
 
-# EMODnet-compliant windfarm
+# EMODnet windfarm
 
-This block is a GeoJSON Feature profile aligned with the official EMODnet Human
-Activities windfarms XSD. It uses the same published attribute names as the
-service schema and maps the official `the_geom` concept to the GeoJSON
-`geometry` object.
+This is the single EMODnet windfarm representation in this register. It is a
+GeoJSON representation aligned with the official EMODnet Human Activities
+windfarms XSD. It uses the service's published attribute names and primitive
+types and maps the official `the_geom` concept to GeoJSON `geometry`.
 
-The profile is intentionally flat and service-aligned with the following
-properties. The `country` value is represented as the source country name,
-not as an ISO code, and is not restricted to a fixed enumeration — the
-underlying EMODnet field is a free-text `xsd:string` (see
-`examples/emodnet-windfarms.xsd`) and can hold any country name the service
-publishes. `context.jsonld` and `ontology.ttl` bind the country names
-currently observed in the live service (queried via WFS
-`GetPropertyValue`: Belgium, Denmark, Estonia, Finland, France, Germany,
-Greece, Ireland, Italy, Latvia, Lithuania, Malta, Netherlands, Norway,
-Poland, Portugal, Romania, Spain, Sweden, United Kingdom) to the
-[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/)
-(e.g. Belgium -> `http://publications.europa.eu/resource/authority/country/BEL`),
-whose ISO 3166-1 alpha-3 codes cover all countries, not just EU/EEA member
-states. Any new country name appearing in the source data should be added
-to both files following the same pattern.
+The XSD fields are optional and nillable, and the schema reflects that. The
+`country` value is represented as the source country name, not as an ISO code;
+the underlying field is a nullable `xsd:string`. `context.jsonld` and
+`ontology.ttl` bind country names currently observed in the live service to the
+[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/).
 
-- `country`
-- `n_turbines`
-- `power_mw`
-- `status`
-- `type_inst`
-- `updateyear`
-- `year`
-- `dist_coast`
-- `notes`
+The properties are `country`, `n_turbines`, `power_mw`, `status`, `type_inst`,
+`updateyear`, `year`, `dist_coast`, and `notes`.
 
-It is intended for direct publication as a GeoJSON Feature or WFS feature and
-can be used as a minimal interchange layer before any downstream semantic
-enrichment.
+Source-specific extracts, such as the Baltic exercise CSV, are translated into
+this representation before being served. Their column mapping is exercise
+configuration, not a second EMODnet data model.
+
+The independent [`emodnet-compliant-windfarm-pl`](../emodnet-compliant-windfarm-pl/)
+block uses this representation for Polish national-source integration, adding
+project names, reporting details, provenance, and location matching. The
+independent [`emodnet-compliant-windfarm-no`](../emodnet-compliant-windfarm-no/)
+block demonstrates the same base model with Norwegian NVE source details.
+
+This block is intended for publication as a GeoJSON Feature or WFS feature and
+as an interchange layer before downstream semantic enrichment.
 
 ## Examples
 
@@ -130,13 +122,13 @@ A point-based example that mirrors the official EMODnet windfarms XSD field name
 
 ```yaml
 $schema: https://json-schema.org/draft/2020-12/schema
-title: EMODnet-compliant windfarm
-description: 'GeoJSON Feature profile aligned to the official EMODnet Human Activities
-  windfarms XSD. It preserves the service''s published field names and primitive types
-  for country, turbine count, power output, status, installation type, year fields,
-  distance to coast, and notes.
+title: EMODnet windfarm feature
+description: 'GeoJSON representation of the EMODnet Human Activities windfarms feature
+  type. Property names, optionality, nullability, and value types follow the service''s
+  published windfarms XSD.
 
   '
+type: object
 required:
 - id
 - type
@@ -145,89 +137,82 @@ required:
 properties:
   id:
     type: string
-    format: uri
     x-jsonld-id: '@id'
   type:
     const: Feature
     x-jsonld-id: '@type'
   geometry:
-    type: object
-    required:
-    - type
-    - coordinates
-    properties:
-      type:
-        enum:
-        - Point
-        - Polygon
-        - MultiPolygon
-        x-jsonld-id: '@type'
-      coordinates:
-        type: array
-        x-jsonld-id: https://purl.org/geojson/vocab#coordinates
-        x-jsonld-container: '@list'
+    description: EMODnet the_geom represented as GeoJSON geometry; the XSD allows
+      it to be nil.
+    oneOf:
+    - type: 'null'
+    - type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          enum:
+          - Point
+          - MultiPoint
+          - LineString
+          - MultiLineString
+          - Polygon
+          - MultiPolygon
+          - GeometryCollection
+          x-jsonld-id: '@type'
+        coordinates:
+          x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+          x-jsonld-container: '@list'
+      additionalProperties: true
     x-jsonld-id: https://purl.org/geojson/vocab#geometry
   properties:
     type: object
-    required:
-    - country
-    - n_turbines
-    - power_mw
-    - status
-    - type_inst
-    - updateyear
-    - year
-    - dist_coast
-    - notes
     properties:
       country:
-        type: string
-        description: "Country name of the responsible/coastal country as represented
-          in the source data (not restricted to a fixed enumeration \u2014 any country
-          name published by the EMODnet Human Activities windfarms service is valid).
-          In RDF/JSON-LD, the context binds the country names currently observed in
-          the live service to EU Publications Office Country authority table URIs
-          (http://publications.europa.eu/resource/authority/country/), e.g. \"Belgium\"
-          -> http://publications.europa.eu/resource/authority/country/BEL. Names not
-          yet covered by the context fall back to a plain string and should be added
-          to the context/ontology as the source data grows."
+        type:
+        - string
+        - 'null'
+        description: Country name as published by EMODnet; the XSD type is nullable
+          xsd:string.
         x-jsonld-id: https://schema.org/addressCountry
         x-jsonld-type: '@vocab'
       n_turbines:
-        type: number
+        type:
+        - number
+        - 'null'
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
       power_mw:
-        type: number
+        type:
+        - number
+        - 'null'
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
       status:
-        type: string
-        description: 'Status of the windfarm, as represented in the source data. The
-          EMODnet service uses a controlled vocabulary of five values: Planned, Production,
-          Dismantled, Approved, Construction.'
-        enum:
-        - Planned
-        - Production
-        - Dismantled
-        - Approved
-        - Construction
+        type:
+        - string
+        - 'null'
+        description: Status text as published by EMODnet (nullable xsd:string).
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
         x-jsonld-type: '@vocab'
       type_inst:
-        oneOf:
-        - type: string
-          enum:
-          - Grounded
-          - Floating
-        - type: 'null'
+        type:
+        - string
+        - 'null'
         x-jsonld-id: https://schema.org/additionalType
       updateyear:
-        type: string
+        type:
+        - string
+        - 'null'
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
       year:
-        type: string
+        type:
+        - string
+        - 'null'
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
       dist_coast:
-        type: number
+        type:
+        - number
+        - 'null'
         x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
       notes:
         type:
@@ -235,6 +220,8 @@ properties:
         - 'null'
         x-jsonld-id: http://purl.org/dc/terms/description
     x-jsonld-id: https://purl.org/geojson/vocab#properties
+  additionalProperties:
+    not: true
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
   Point: https://purl.org/geojson/vocab#Point

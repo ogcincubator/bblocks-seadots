@@ -356,13 +356,13 @@ a service.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread." ;
     dcterms:title "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)" ;
-    rdfs:seeAlso [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
+    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ],
+        [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ],
-        [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ] ;
+            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ] ;
     dcat:keyword "digital-twin",
         "fuzzy-cognitive-map",
         "open-science",
@@ -1032,7 +1032,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm-workflow
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-27'
+  dateOfLastChange: '2026-10-28'
 
 ```
 

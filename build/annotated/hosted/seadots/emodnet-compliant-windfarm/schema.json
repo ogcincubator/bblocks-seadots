@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EMODnet-compliant windfarm",
-  "description": "GeoJSON Feature profile aligned to the official EMODnet Human Activities windfarms XSD. It preserves the service's published field names and primitive types for country, turbine count, power output, status, installation type, year fields, distance to coast, and notes.\n",
+  "title": "EMODnet windfarm feature",
+  "description": "GeoJSON representation of the EMODnet Human Activities windfarms feature type. Property names, optionality, nullability, and value types follow the service's published windfarms XSD.\n",
+  "type": "object",
   "required": [
     "id",
     "type",
@@ -11,7 +12,6 @@
   "properties": {
     "id": {
       "type": "string",
-      "format": "uri",
       "x-jsonld-id": "@id"
     },
     "type": {
@@ -19,94 +19,101 @@
       "x-jsonld-id": "@type"
     },
     "geometry": {
-      "type": "object",
-      "required": [
-        "type",
-        "coordinates"
-      ],
-      "properties": {
-        "type": {
-          "enum": [
-            "Point",
-            "Polygon",
-            "MultiPolygon"
-          ],
-          "x-jsonld-id": "@type"
+      "description": "EMODnet the_geom represented as GeoJSON geometry; the XSD allows it to be nil.",
+      "oneOf": [
+        {
+          "type": "null"
         },
-        "coordinates": {
-          "type": "array",
-          "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
-          "x-jsonld-container": "@list"
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "Point",
+                "MultiPoint",
+                "LineString",
+                "MultiLineString",
+                "Polygon",
+                "MultiPolygon",
+                "GeometryCollection"
+              ],
+              "x-jsonld-id": "@type"
+            },
+            "coordinates": {
+              "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
+              "x-jsonld-container": "@list"
+            }
+          },
+          "additionalProperties": true
         }
-      },
+      ],
       "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
     },
     "properties": {
       "type": "object",
-      "required": [
-        "country",
-        "n_turbines",
-        "power_mw",
-        "status",
-        "type_inst",
-        "updateyear",
-        "year",
-        "dist_coast",
-        "notes"
-      ],
       "properties": {
         "country": {
-          "type": "string",
-          "description": "Country name of the responsible/coastal country as represented in the source data (not restricted to a fixed enumeration \u2014 any country name published by the EMODnet Human Activities windfarms service is valid). In RDF/JSON-LD, the context binds the country names currently observed in the live service to EU Publications Office Country authority table URIs (http://publications.europa.eu/resource/authority/country/), e.g. \"Belgium\" -> http://publications.europa.eu/resource/authority/country/BEL. Names not yet covered by the context fall back to a plain string and should be added to the context/ontology as the source data grows.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Country name as published by EMODnet; the XSD type is nullable xsd:string.",
           "x-jsonld-id": "https://schema.org/addressCountry",
           "x-jsonld-type": "@vocab"
         },
         "n_turbines": {
-          "type": "number",
+          "type": [
+            "number",
+            "null"
+          ],
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines"
         },
         "power_mw": {
-          "type": "number",
+          "type": [
+            "number",
+            "null"
+          ],
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW"
         },
         "status": {
-          "type": "string",
-          "description": "Status of the windfarm, as represented in the source data. The EMODnet service uses a controlled vocabulary of five values: Planned, Production, Dismantled, Approved, Construction.",
-          "enum": [
-            "Planned",
-            "Production",
-            "Dismantled",
-            "Approved",
-            "Construction"
+          "type": [
+            "string",
+            "null"
           ],
+          "description": "Status text as published by EMODnet (nullable xsd:string).",
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
           "x-jsonld-type": "@vocab"
         },
         "type_inst": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "Grounded",
-                "Floating"
-              ]
-            },
-            {
-              "type": "null"
-            }
+          "type": [
+            "string",
+            "null"
           ],
           "x-jsonld-id": "https://schema.org/additionalType"
         },
         "updateyear": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear"
         },
         "year": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year"
         },
         "dist_coast": {
-          "type": "number",
+          "type": [
+            "number",
+            "null"
+          ],
           "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast"
         },
         "notes": {
@@ -118,6 +125,9 @@
         }
       },
       "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+    },
+    "additionalProperties": {
+      "not": true
     }
   },
   "x-jsonld-extra-terms": {

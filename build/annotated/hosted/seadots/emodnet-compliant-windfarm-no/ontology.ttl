@@ -1,0 +1,58 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix nve: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no> a owl:Ontology ;
+    dcterms:description "NVE source properties retained alongside EMODnet windfarm properties in the Norwegian example profile."@en ;
+    dcterms:title "Norwegian NVE windfarm extension vocabulary"@en .
+
+nve:commissioningYear a rdf:Property ;
+    rdfs:label "turbine commissioning year"@en ;
+    rdfs:range xsd:gYear .
+
+nve:county a rdf:Property ;
+    rdfs:label "county"@en ;
+    rdfs:comment "Norwegian county or counties associated with the facility."@en ;
+    rdfs:range xsd:string .
+
+nve:electricityPriceArea a rdf:Property ;
+    rdfs:label "electricity price area"@en ;
+    rdfs:comment "Norwegian electricity price area associated with the facility."@en ;
+    rdfs:range xsd:string .
+
+nve:licenceStatus a rdf:Property ;
+    rdfs:label "NVE licence status"@en ;
+    rdfs:comment "Original Norwegian licensing status for the wind power facility, independent of its operational status."@en ;
+    rdfs:range xsd:string .
+
+nve:licensingCase a rdf:Property ;
+    rdfs:label "NVE licensing case"@en ;
+    rdfs:comment "URI of the NVE licensing case associated with the wind power facility."@en ;
+    rdfs:range rdfs:Resource .
+
+nve:meanAnnualProductionGWh a rdf:Property ;
+    rdfs:label "mean annual production in GWh"@en ;
+    rdfs:comment "Mean annual electrical production reported by NVE, expressed in gigawatt-hours."@en ;
+    rdfs:range xsd:decimal .
+
+nve:municipality a rdf:Property ;
+    rdfs:label "municipality"@en ;
+    rdfs:comment "Norwegian municipality or municipalities associated with the facility."@en ;
+    rdfs:range xsd:string .
+
+nve:operationalDate a rdf:Property ;
+    rdfs:label "operational date"@en ;
+    rdfs:comment "Date the facility entered operation, as reported by NVE."@en ;
+    rdfs:range xsd:date .
+
+nve:turbineCount a rdf:Property ;
+    rdfs:label "turbine count"@en ;
+    rdfs:range xsd:integer .
+
+nve:turbineDetails a rdf:Property ;
+    rdfs:label "turbine details"@en ;
+    rdfs:comment "Turbine manufacturer, model, count, and commissioning year as reported by NVE."@en .
+

@@ -562,7 +562,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.protected-area.source-norway-naturvernomrade
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-27'
+  dateOfLastChange: '2026-10-28'
 
 ```
 
