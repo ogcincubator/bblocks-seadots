@@ -1,0 +1,74 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eea-desig: <http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-country: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/country/> .
+@prefix pa-iucn: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/183154> a geojson:Feature ;
+    dcterms:identifier "VV00002196" ;
+    geojson:geometry [ a geojson:MultiPolygon ;
+            geojson:coordinates ( ( ( ( 1.540356e+01 6.847524e+01 ) ( 1.567074e+01 6.847524e+01 ) ( 1.567074e+01 6.854737e+01 ) ( 1.540356e+01 6.854737e+01 ) ( 1.540356e+01 6.847524e+01 ) ) ) ) ] ;
+    schema:addressCountry pa-country:NO ;
+    pa:coastalOrMarine 1 ;
+    pa:countryName "Norway" ;
+    pa:designationStatus "Designated site" ;
+    pa:designationType eea-desig:NO01 ;
+    pa:eeaSiteId 183154 ;
+    pa:geometryType "polygon" ;
+    pa:identifierNamespace "http://www.miljodirektoratet.no/naturbase" ;
+    pa:iucnCategory pa-iucn:II ;
+    pa:iucnCategoryLabel "National Park" ;
+    pa:legalFoundationYear "2003"^^xsd:gYear ;
+    pa:majorEcosystemType "Marine and terrestrial" ;
+    pa:marineAreaPercent 8.69e+00 ;
+    pa:nationalSiteId "VV00002196" ;
+    pa:protectedSiteLocalId "VV00002196" ;
+    pa:protectedSiteNamespace "http://www.miljodirektoratet.no/naturbase" ;
+    pa:regionCode "NO" ;
+    pa:reportingDataset "https://kartkatalog.geonorge.no/metadata/5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4" ;
+    pa:reportingDate "2026-09-30" ;
+    pa:shapeAreaSquareDegrees 1.927243e-02 ;
+    pa:shapeLengthDegrees 6.786329e-01 ;
+    pa:siteAreaHectares 5.1327e+03 ;
+    pa:siteName "Møysalen" ;
+    pa:spatialDataAccess "public" ;
+    pa:spatialResolution "Scale larger 100K" .
+
+<file:///github/workspace/555560034> a geojson:Feature ;
+    dcterms:identifier "VV00003080" ;
+    geojson:geometry [ a geojson:MultiPolygon ;
+            geojson:coordinates ( ( ( ( 1.045751e+01 6.35445e+01 ) ( 1.070522e+01 6.35445e+01 ) ( 1.070522e+01 6.361017e+01 ) ( 1.045751e+01 6.361017e+01 ) ( 1.045751e+01 6.35445e+01 ) ) ) ) ] ;
+    schema:addressCountry pa-country:NO ;
+    pa:coastalOrMarine 1 ;
+    pa:countryName "Norway" ;
+    pa:designationStatus "Designated site" ;
+    pa:designationType eea-desig:NO05 ;
+    pa:eeaSiteId 555560034 ;
+    pa:geometryType "polygon" ;
+    pa:identifierNamespace "http://www.miljodirektoratet.no/naturbase" ;
+    pa:iucnCategory pa-iucn:notReported ;
+    pa:iucnCategoryLabel "Not reported" ;
+    pa:legalFoundationYear "2013"^^xsd:gYear ;
+    pa:majorEcosystemType "Marine" ;
+    pa:marineAreaPercent 1e+02 ;
+    pa:nationalSiteId "VV00003080" ;
+    pa:protectedSiteLocalId "VV00003080" ;
+    pa:protectedSiteNamespace "http://www.miljodirektoratet.no/naturbase" ;
+    pa:regionCode "NO" ;
+    pa:reportingDataset "https://kartkatalog.geonorge.no/metadata/5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4" ;
+    pa:reportingDate "2026-09-30" ;
+    pa:shapeAreaSquareDegrees 1.626687e-02 ;
+    pa:shapeLengthDegrees 6.267503e-01 ;
+    pa:siteAreaHectares 4.37756e+03 ;
+    pa:siteName "Tauterryggen" ;
+    pa:spatialDataAccess "public" ;
+    pa:spatialResolution "Scale larger 100K" .
+
+[] a geojson:FeatureCollection ;
+    geojson:features <file:///github/workspace/183154>,
+        <file:///github/workspace/555560034> .
+

@@ -188,6 +188,11 @@ x-jsonld-prefixes:
   cwl: https://w3id.org/cwl/cwl#
   schema: https://schema.org/
   seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.catalog-application-package
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 

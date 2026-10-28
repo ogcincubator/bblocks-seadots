@@ -1,0 +1,85 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.national-windfarm-source",
+  "name": "Polish national offshore windfarm source record",
+  "abstract": "Raw project records compiled from Polish national reporting. Retains the published input fields and has no source-provided geometry; a separate, explicit crosswalk can associate projects with EMODnet locations for the harmonized view.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-10-27T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "windfarm",
+    "Poland",
+    "national source",
+    "CSV",
+    "Baltic"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Polish offshore wind project compilation",
+      "link": "https://www.gramwzielone.pl/?p=20373718"
+    }
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://datatracker.ietf.org/doc/html/rfc7946"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {},
+  "dateOfLastChange": "2026-10-27",
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/ontology.ttl",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/national-windfarm-source/",
+  "description": "# Polish national offshore windfarm source\n\nThis block describes the source-stage record exactly as delivered in the exercise CSV: `farm`, `developer`, `capacity_mw`, `status_aug2026`, `first_power_or_completion_year`, and `source`. Its source rows do **not** contain coordinates. Their geometry therefore remains null in the national-source collection.\n\nThe exercise applies the separate `location-mapping.json` crosswalk when it builds the harmonized service. Crosswalked locations are explicitly marked as derived from the listed EMODnet records; a project without a defensible EMODnet match remains unlocated.\n",
+  "examples": [
+    {
+      "title": "National source record without coordinates",
+      "content": "One row as reported by the national compilation; no geometry is invented at this stage.",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/examples/national-source-feature.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/national-windfarm-source/example_1_1.json",
+          "sizeBytes": 287,
+          "code": "{\"id\":\"national-001\",\"type\":\"Feature\",\"geometry\":null,\"properties\":{\"farm\":\"MFW Baltic Power\",\"developer\":\"Orlen; Northland Power\",\"capacity_mw\":1200,\"status_aug2026\":\"construction (first power 10 Jul 2026)\",\"first_power_or_completion_year\":2026,\"source\":\"gramwzielone.pl 26 Aug 2026\"}}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/national-windfarm-source/example_1_1.jsonld",
+          "sizeBytes": 477,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/context.jsonld\",\n  \"id\": \"national-001\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"properties\": {\n    \"farm\": \"MFW Baltic Power\",\n    \"developer\": \"Orlen; Northland Power\",\n    \"capacity_mw\": 1200,\n    \"status_aug2026\": \"construction (first power 10 Jul 2026)\",\n    \"first_power_or_completion_year\": 2026,\n    \"source\": \"gramwzielone.pl 26 Aug 2026\"\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/national-windfarm-source/example_1_1.ttl",
+          "sizeBytes": 671,
+          "code": "@prefix : <https://w3id.org/ogc/hosted/seadots/national-windfarm-source#> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix ns1: <https://purl.org/dc/terms/> .\n@prefix schema: <https://schema.org/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<file:///github/workspace/national-001> a geojson:Feature ;\n    geojson:properties [ ns1:source \"gramwzielone.pl 26 Aug 2026\" ;\n            schema:creator \"Orlen; Northland Power\" ;\n            :projectName \"MFW Baltic Power\" ;\n            :reportedCapacityMW 1200 ;\n            :reportedFirstPowerOrCompletionYear 2026 ;\n            :reportedStatusAugust2026 \"construction (first power 10 Jul 2026)\" ] .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: Polish national offshore windfarm source feature\ndescription: GeoJSON Feature wrapper for the national source row. Source property\n  names and values are retained. The source has no coordinates; geometry is null until\n  an explicit location crosswalk is applied in the harmonized target view.\ntype: object\nrequired:\n- id\n- type\n- geometry\n- properties\nproperties:\n  id:\n    type: string\n    x-jsonld-id: '@id'\n  type:\n    const: Feature\n    x-jsonld-id: '@type'\n  geometry:\n    type: 'null'\n    x-jsonld-id: https://purl.org/geojson/vocab#geometry\n  properties:\n    type: object\n    required:\n    - farm\n    - developer\n    - capacity_mw\n    - status_aug2026\n    - first_power_or_completion_year\n    - source\n    properties:\n      farm:\n        type: string\n        x-jsonld-id: projectName\n      developer:\n        type: string\n        x-jsonld-id: https://schema.org/creator\n      capacity_mw:\n        type: string\n        x-jsonld-id: reportedCapacityMW\n      status_aug2026:\n        type: string\n        x-jsonld-id: reportedStatusAugust2026\n      first_power_or_completion_year:\n        type: string\n        x-jsonld-id: reportedFirstPowerOrCompletionYear\n      source:\n        type: string\n        x-jsonld-id: https://purl.org/dc/terms/source\n    additionalProperties: false\n    x-jsonld-id: https://purl.org/geojson/vocab#properties\nadditionalProperties: false\nx-jsonld-extra-terms:\n  Feature: https://purl.org/geojson/vocab#Feature\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/national-windfarm-source#\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\nx-bblocks-metadata:\n  itemIdentifier: ogc.hosted.seadots.national-windfarm-source\n  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-10-27'\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/national-windfarm-source"
+}

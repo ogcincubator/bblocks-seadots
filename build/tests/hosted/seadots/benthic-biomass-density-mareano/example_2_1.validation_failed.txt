@@ -1,10 +1,8 @@
 Validation report for ogc.hosted.seadots.benthic-biomass-density-mareano - MAREANO Benthic Biomass Density Observation
-Generated 2026-09-24T09:47:16.836735+00:00
+Generated 2026-10-27T23:03:34.428074+00:00
 === Files ===
 Using examples/mareano_obis_checklist_proxy.json from examples
 JSON-LD context is present - uplifting
-Output JSON-LD example_2_1.jsonld created
-Output Turtle example_2_1.ttl created
 === End Files ===
 
 === JSON Schema ===
@@ -578,57 +576,25 @@ On instance:
      'type': 'Feature'}
 === End JSON Schema ===
 
-=== SHACL ===
-Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
- - Shape :force-linked-data-observedProperty: <https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-checklist-proxy>/geojson:properties/seadots:benthicBiomassDensity
+=== JSON-LD ===
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/benthic-biomass-density-mareano/obis-checklist-proxy>
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:LinkShape: *none*
+** Validation error **
+Error found when uplifting JSON-LD: Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#dateTime, Converter=<function parse_datetime at 0x7f9e54025580>
+Traceback (most recent call last):
+  File "/venv/lib/python3.12/site-packages/isodate/isodatetime.py", line 51, in parse_datetime
+    datestring, timestring = datetimestring.split('T')
+    ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
 
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*
+During handling of the above exception, another exception occurred:
 
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
+Traceback (most recent call last):
+  File "/venv/lib/python3.12/site-packages/rdflib/term.py", line 2084, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^
+  File "/venv/lib/python3.12/site-packages/isodate/isodatetime.py", line 53, in parse_datetime
+    raise ISO8601Error("ISO 8601 time designator 'T' missing. Unable to"
+isodate.isoerror.ISO8601Error: ISO 8601 time designator 'T' missing. Unable to parse datetime string 'unknown'
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape geojson:FeatureCollectionShape: *none*
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:FeatureShape: *none*
- - Shape geojson:LinkShape: *none*
-
-=== End SHACL ===
+=== End JSON-LD ===
 

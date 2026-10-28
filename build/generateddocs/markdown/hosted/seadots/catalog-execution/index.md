@@ -83,8 +83,7 @@ dataset. No source properties are intentionally dropped.
 {
   "@context": [
     "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld",
-    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld",
-    "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/catalog-execution/context.jsonld"
+    "https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/context.jsonld"
   ],
   "id": "https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001",
   "type": "Feature",
@@ -138,15 +137,15 @@ dataset. No source properties are intentionally dropped.
         geojson:Feature ;
     dct:conformsTo <http://www.w3.org/TR/prov-o/>,
         <https://docs.ogc.org/is/20-004/20-004.html> ;
-    rdfs:seeAlso [ dct:type "application/geo+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
-        [ dct:type "application/geo+json" ;
+    rdfs:seeAlso [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],
-        [ dct:type "application/geo+json" ;
+        [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],
+        [ dct:format "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ] ;
     prov:generated <file:///catalog-data/examples/output-stac-item.json> ;
     prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
     prov:used <file:///catalog-data/examples/input-stac-item.json> ;
@@ -646,6 +645,11 @@ x-jsonld-prefixes:
   dctype: http://purl.org/dc/dcmitype/
   vcard: http://www.w3.org/2006/vcard/ns#
   foaf: http://xmlns.com/foaf/0.1/
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.catalog-execution
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'
 
 ```
 

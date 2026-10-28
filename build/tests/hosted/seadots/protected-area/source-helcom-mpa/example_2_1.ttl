@@ -1,0 +1,40 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-helcom: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/helcom/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 2.098414e+01 5.524558e+01 ) ( 2.129792e+01 5.524558e+01 ) ( 2.129792e+01 5.563379e+01 ) ( 2.098414e+01 5.563379e+01 ) ( 2.098414e+01 5.524558e+01 ) ) ) ] ;
+    pa:countryName "Lithuania" ;
+    pa-helcom:designationType "Unclear" ;
+    pa-helcom:designationTypeSpecification "SAC/SPA" ;
+    pa-helcom:hasCoastalArea "Yes" ;
+    pa-helcom:siteCode "LTSIU0012" ;
+    pa:siteName "Kuršių marios" .
+
+<file:///github/workspace/2740> a geojson:Feature ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 1.073186e+01 5.446979e+01 ) ( 1.140978e+01 5.446979e+01 ) ( 1.140978e+01 5.464055e+01 ) ( 1.073186e+01 5.464055e+01 ) ( 1.073186e+01 5.446979e+01 ) ) ) ] ;
+    pa:countryName "Germany" ;
+    pa-helcom:designationType "HELCOM MPA" ;
+    pa-helcom:hasCoastalArea "Yes" ;
+    pa-helcom:siteCode "555638668" ;
+    pa:siteName "Fehmarnbelt" .
+
+<file:///github/workspace/2857> a geojson:Feature ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 1.356585e+01 5.451826e+01 ) ( 1.369207e+01 5.451826e+01 ) ( 1.369207e+01 5.459196e+01 ) ( 1.356585e+01 5.459196e+01 ) ( 1.356585e+01 5.451826e+01 ) ) ) ] ;
+    pa:countryName "Germany" ;
+    pa-helcom:designationType "HELCOM MPA" ;
+    pa-helcom:designationTypeSpecification "Old MPA Data" ;
+    pa-helcom:hasCoastalArea "Yes" ;
+    pa-helcom:siteCode "239" ;
+    pa:siteName "Jasmund National Park" .
+
+[] a geojson:FeatureCollection ;
+    geojson:features <file:///github/workspace/1>,
+        <file:///github/workspace/2740>,
+        <file:///github/workspace/2857> .
+

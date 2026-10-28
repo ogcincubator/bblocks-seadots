@@ -1,0 +1,104 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-view collection description
+description: 'Profile of an OGC API - Features collection description (/collections/{collectionId})
+  for a collection that serves an EMODnet-compliant view of a national or regional
+  source. Besides the standard members it must declare, through links, which EMODnet
+  profile the items follow, which source collection they were derived from, which
+  EMODnet layer they correspond to, the licence and attribution of the source, and
+  where the transform report can be read.
+
+  '
+allOf:
+- $ref: https://ogcincubator.github.io/bblocks-ogcapi-features/build/annotated/api/features/v1/schemas/collection/schema.yaml
+- type: object
+  required:
+  - id
+  - title
+  - links
+  - extent
+  - itemType
+  - crs
+  properties:
+    id:
+      type: string
+      pattern: ^emodnet-view-[a-z0-9-]+$
+    itemType:
+      const: feature
+    crs:
+      type: array
+      contains:
+        const: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    links:
+      type: array
+      allOf:
+      - contains:
+          description: The EMODnet-compliant profile the items conform to (RFC 6906
+            profile link to the building block).
+          type: object
+          required:
+          - rel
+          - href
+          properties:
+            rel:
+              const: profile
+            href:
+              enum:
+              - https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area
+              - https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-protected-area.rsc-mpa
+      - contains:
+          description: JSON Schema of the items (OGC API - Features Part 5 style).
+          type: object
+          required:
+          - rel
+          - href
+          - type
+          properties:
+            rel:
+              const: describedby
+            type:
+              const: application/schema+json
+      - contains:
+          description: Queryables using the EMODnet attribute names.
+          type: object
+          required:
+          - rel
+          - href
+          properties:
+            rel:
+              const: http://www.opengis.net/def/rel/ogc/1.0/queryables
+      - contains:
+          description: The source collection on the same API that the view is derived
+            from.
+          type: object
+          required:
+          - rel
+          - href
+          properties:
+            rel:
+              const: derived-from
+      - contains:
+          description: The EMODnet Human Activities layer this view corresponds to.
+          type: object
+          required:
+          - rel
+          - href
+          properties:
+            rel:
+              const: related
+            href:
+              type: string
+              pattern: ^https://ows\.emodnet-humanactivities\.eu/
+      - contains:
+          description: Licence of the source data.
+          type: object
+          required:
+          - rel
+          - href
+          properties:
+            rel:
+              const: license
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.emodnet-protected-area.api-collection
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

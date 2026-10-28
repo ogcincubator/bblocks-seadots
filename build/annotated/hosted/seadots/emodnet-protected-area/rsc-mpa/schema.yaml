@@ -1,0 +1,179 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet-compliant Regional Sea Convention MPA
+description: 'GeoJSON Feature profile reproducing the EMODnet Human Activities layer
+  `emodnet:marineprotectedareas` (MPAs as reported to HELCOM and OSPAR) with the service''s
+  field names and primitive types. All attributes are present on every feature; attributes
+  that EMODnet leaves empty for a convention are null.
+
+  '
+$defs:
+  Feature:
+    allOf:
+    - $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-protected-area/schema.yaml#/$defs/Feature
+    - type: object
+      properties:
+        id:
+          description: Feature id; equals `properties.code`.
+          type: integer
+        properties:
+          type: object
+          additionalProperties: false
+          required:
+          - rsc
+          - code
+          - name
+          - orig_name
+          - country
+          - designatio
+          - iucn_cat
+          - rep_m_area
+          - gis_m_area
+          - rep_area
+          - gis_area
+          - status
+          - status_yr
+          - mang_auth
+          - link
+          - shape_leng
+          - shape_area
+          properties:
+            rsc:
+              description: Regional Sea Convention that reported the MPA.
+              type: string
+              enum:
+              - HELCOM
+              - OSPAR
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/regionalSeaConvention
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/rsc/
+            code:
+              description: 'MPA identifier in the convention''s database (HELCOM MPA
+                database id / OSPAR code). EMODnet types it xsd:long, so non-numeric
+                codes are not admissible here.
+
+                '
+              type: integer
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/conventionSiteCode
+            name:
+              type: string
+              minLength: 1
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/siteName
+            orig_name:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/originalSiteName
+            country:
+              description: Country name in English (Denmark, Estonia, Finland, Germany,
+                Latvia, Lithuania, Poland, Russia, Sweden; Norway etc. for OSPAR).
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/countryName
+            designatio:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/designationLabel
+            iucn_cat:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucnCategory
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/
+            rep_m_area:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportedMarineArea
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            gis_m_area:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/gisMarineArea
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            rep_area:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/reportedArea
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            gis_area:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/gisArea
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            status:
+              description: For rsc = HELCOM, the HELCOM management status.
+              type: string
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/managementStatus
+            status_yr:
+              description: Year of establishment.
+              type:
+              - integer
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/establishmentYear
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#gYear
+            mang_auth:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/managementAuthority
+            link:
+              description: Link to the site page in the convention's MPA database.
+              type:
+              - string
+              - 'null'
+              format: uri
+              x-jsonld-id: http://xmlns.com/foaf/0.1/page
+              x-jsonld-type: '@id'
+            shape_leng:
+              description: Perimeter in degrees, computed planar on the CRS84 geometry.
+              type: number
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/shapeLengthDegrees
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+            shape_area:
+              description: Area in square degrees, computed planar on the CRS84 geometry.
+              type: number
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/shapeAreaSquareDegrees
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#double
+      if:
+        properties:
+          properties:
+            properties:
+              rsc:
+                const: HELCOM
+      then:
+        properties:
+          properties:
+            properties:
+              status:
+                enum:
+                - Designated and managed
+                - Designated and partly managed
+                - Designated
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/managementStatus
+  FeatureCollection:
+    description: A FeatureCollection whose every member is a Feature of this profile.
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml
+    - type: object
+      properties:
+        features:
+          type: array
+          items:
+            $ref: '#/$defs/Feature'
+oneOf:
+- $ref: '#/$defs/Feature'
+- $ref: '#/$defs/FeatureCollection'
+x-jsonld-prefixes:
+  pa: https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  foaf: http://xmlns.com/foaf/0.1/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.emodnet-protected-area.rsc-mpa
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

@@ -1,0 +1,62 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Polish national offshore windfarm source feature
+description: GeoJSON Feature wrapper for the national source row. Source property
+  names and values are retained. The source has no coordinates; geometry is null until
+  an explicit location crosswalk is applied in the harmonized target view.
+type: object
+required:
+- id
+- type
+- geometry
+- properties
+properties:
+  id:
+    type: string
+    x-jsonld-id: '@id'
+  type:
+    const: Feature
+    x-jsonld-id: '@type'
+  geometry:
+    type: 'null'
+    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+  properties:
+    type: object
+    required:
+    - farm
+    - developer
+    - capacity_mw
+    - status_aug2026
+    - first_power_or_completion_year
+    - source
+    properties:
+      farm:
+        type: string
+        x-jsonld-id: projectName
+      developer:
+        type: string
+        x-jsonld-id: https://schema.org/creator
+      capacity_mw:
+        type: string
+        x-jsonld-id: reportedCapacityMW
+      status_aug2026:
+        type: string
+        x-jsonld-id: reportedStatusAugust2026
+      first_power_or_completion_year:
+        type: string
+        x-jsonld-id: reportedFirstPowerOrCompletionYear
+      source:
+        type: string
+        x-jsonld-id: https://purl.org/dc/terms/source
+    additionalProperties: false
+    x-jsonld-id: https://purl.org/geojson/vocab#properties
+additionalProperties: false
+x-jsonld-extra-terms:
+  Feature: https://purl.org/geojson/vocab#Feature
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/national-windfarm-source#
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.national-windfarm-source
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

@@ -1,0 +1,72 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.national-windfarm-source - Polish national offshore windfarm source record",
+  "bblockName": "Polish national offshore windfarm source record",
+  "bblockId": "ogc.hosted.seadots.national-windfarm-source",
+  "generated": "2026-10-27T23:02:55.405013+00:00",
+  "result": false,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/national-windfarm-source/example_1_1.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/national-windfarm-source/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": false,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/national-source-feature.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 8,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": false,
+              "exception": "ValidationError",
+              "errorMessage": "1200 is not of type 'string'",
+              "isError": true,
+              "message": "ValidationError: 1200 is not of type 'string'\n\nFailed validating 'type' in schema['properties']['properties']['properties']['capacity_mw']:\n    {'type': 'string', 'x-jsonld-id': 'reportedCapacityMW'}\n\nOn instance['properties']['capacity_mw']:\n    1200"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  }
+}

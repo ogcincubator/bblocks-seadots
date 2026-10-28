@@ -1,7 +1,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ddi: <https://ddialliance.org/terms#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -17,34 +17,34 @@
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
-            dcterms:type "text/html" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
-    survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
-            seadots:uri "https://elsst.uk/" ;
-            thns:scheme "ELSST" ],
-        [ seadots:label "CESSDA controlled vocabularies" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
+        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+            dcterms:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
+    survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
             seadots:uri "https://www.cessda.eu/" ;
-            thns:scheme "CESSDA" ] ;
+            thns:scheme "CESSDA" ],
+        [ seadots:label "European Language Social Science Thesaurus" ;
+            seadots:uri "https://elsst.uk/" ;
+            thns:scheme "ELSST" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
-    survey:variableMetadata [ ddi:variableDescription "Age group of the respondent" ;
-            survey:conceptUri "https://elsst.uk/terms/age" ;
-            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
-            seadots:label "Age group" ;
-            seadots:questionText "What is your age group?" ;
-            seadots:variableName "Q1" ],
-        [ ddi:variableDescription "Likert-style attitude question" ;
+    survey:variableMetadata [ ddi:variableDescription "Likert-style attitude question" ;
             survey:conceptUri "https://elsst.uk/terms/environmental-concern" ;
             survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes" ;
             seadots:label "Environmental concern" ;
             seadots:questionText "How important is the protection of the environment to you?" ;
-            seadots:variableName "Q5_1" ] ;
+            seadots:variableName "Q5_1" ],
+        [ ddi:variableDescription "Age group of the respondent" ;
+            survey:conceptUri "https://elsst.uk/terms/age" ;
+            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
+            seadots:label "Age group" ;
+            seadots:questionText "What is your age group?" ;
+            seadots:variableName "Q1" ] ;
     table:columns ( [ dcterms:description "Respondent identifier" ;
                 dcterms:title "caseid" ;
                 dcterms:type "string" ] [ dcterms:description "Country of residence" ;
@@ -58,7 +58,7 @@
     table:row_count 5046 ;
     seadots:itemType "record" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns1:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
+    stac:hasAsset [ ns2:data <https://gitlab.sintef.no/Lara.Veylit/saltmarsh_perceptions/-/tree/master/data/processed?ref_type=heads> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/table/v1.2.0/schema.json" ;
     stac:version "1.0.0" .

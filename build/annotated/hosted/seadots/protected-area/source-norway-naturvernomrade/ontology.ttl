@@ -1,0 +1,213 @@
+@prefix eea-desig: <http://dd.eionet.europa.eu/vocabulary/cdda/designationTypeCodeValue/> .
+@prefix noeco: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/ecosystem/> .
+@prefix noiucn: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/iucn/> .
+@prefix pa: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/> .
+@prefix pa-iucn: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/iucn/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vf: <https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/verneform/> .
+
+noeco:Marin a skos:Concept ;
+    skos:exactMatch pa:ecosystem-marine ;
+    skos:inScheme pa:schemeNoEcosystem ;
+    skos:notation "Marin" .
+
+noeco:MarinOgTerrestrisk a skos:Concept ;
+    skos:exactMatch pa:ecosystem-marine-and-terrestrial ;
+    skos:inScheme pa:schemeNoEcosystem ;
+    skos:notation "MarinOgTerrestrisk" .
+
+noeco:Terrestrisk a skos:Concept ;
+    skos:exactMatch pa:ecosystem-terrestrial ;
+    skos:inScheme pa:schemeNoEcosystem ;
+    skos:notation "Terrestrisk" .
+
+noiucn:IUCN_IA a skos:Concept ;
+    skos:exactMatch pa-iucn:Ia ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_IA" .
+
+noiucn:IUCN_IB a skos:Concept ;
+    skos:exactMatch pa-iucn:Ib ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_IB" .
+
+noiucn:IUCN_II a skos:Concept ;
+    skos:exactMatch pa-iucn:II ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_II" .
+
+noiucn:IUCN_III a skos:Concept ;
+    skos:exactMatch pa-iucn:III ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_III" .
+
+noiucn:IUCN_IV a skos:Concept ;
+    skos:exactMatch pa-iucn:IV ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_IV" .
+
+noiucn:IUCN_V a skos:Concept ;
+    skos:exactMatch pa-iucn:V ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_V" .
+
+noiucn:IUCN_VI a skos:Concept ;
+    skos:exactMatch pa-iucn:VI ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IUCN_VI" .
+
+noiucn:IkkeVurdert a skos:Concept ;
+    skos:exactMatch pa-iucn:notReported ;
+    skos:inScheme pa:schemeNoIucn ;
+    skos:notation "IkkeVurdert" .
+
+vf:Biotopvern a skos:Concept ;
+    skos:closeMatch eea-desig:NO04 ;
+    skos:editorialNote "inferred: Eionet NO04 'Habitat management area'"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Biotopvern" .
+
+vf:BiotopvernSvalbard a skos:Concept ;
+    skos:editorialNote "label: Eionet NO39 'Protected Biotope (Svalbard)'"@en ;
+    skos:exactMatch eea-desig:NO39 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "BiotopvernSvalbard" .
+
+vf:BiotopvernVilt a skos:Concept ;
+    skos:closeMatch eea-desig:NO23 ;
+    skos:editorialNote "inferred: Eionet NO23 'Wildlife Conservation Area' (biotope protection under the Wildlife Act)"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "BiotopvernVilt" .
+
+vf:Dyrefredningsomrade a skos:Concept ;
+    skos:closeMatch eea-desig:NO17 ;
+    skos:editorialNote "inferred: Eionet NO17 'Wildlife Conservation Area'; NO23 carries the same English label"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Dyrefredningsomrade" .
+
+vf:Dyrelivsfredning a skos:Concept ;
+    skos:editorialNote "label: Eionet NO15 'Zoological Protection of Species' = dyrelivsfredning"@en ;
+    skos:exactMatch eea-desig:NO15 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Dyrelivsfredning" .
+
+vf:GeotopvernSvalbard a skos:Concept ;
+    skos:editorialNote "label: Eionet NO34 'Protected Geotope (Svalbard)'"@en ;
+    skos:exactMatch eea-desig:NO34 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "GeotopvernSvalbard" .
+
+vf:Landskapsvernomraade a skos:Concept ;
+    skos:editorialNote "label: Eionet NO02 'Protected Landscape' = landskapsvernområde"@en ;
+    skos:exactMatch eea-desig:NO02 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Landskapsvernomraade" .
+
+vf:LandskapsvernomraadeBiotopvern a skos:Concept ;
+    skos:closeMatch eea-desig:NO02 ;
+    skos:editorialNote "inferred: Landscape protection area with added biotope protection"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "LandskapsvernomraadeBiotopvern" .
+
+vf:LandskapsvernomraadeDyrelivsfredning a skos:Concept ;
+    skos:closeMatch eea-desig:NO02 ;
+    skos:editorialNote "inferred: Landscape protection area with added wildlife protection; main form is landskapsvernområde"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "LandskapsvernomraadeDyrelivsfredning" .
+
+vf:LandskapsvernomraadePlanteOgDyrelivsfredning a skos:Concept ;
+    skos:closeMatch eea-desig:NO02 ;
+    skos:editorialNote "inferred: Landscape protection area with added plant and wildlife protection"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "LandskapsvernomraadePlanteOgDyrelivsfredning" .
+
+vf:LandskapsvernomraadePlantelivsfredning a skos:Concept ;
+    skos:closeMatch eea-desig:NO02 ;
+    skos:editorialNote "inferred: Landscape protection area with added plant protection"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "LandskapsvernomraadePlantelivsfredning" .
+
+vf:MarintVerneomraade a skos:Concept ;
+    skos:editorialNote "observed: EMODnet Tauterryggen (VV00003080) has designatio NO05"@en ;
+    skos:exactMatch eea-desig:NO05 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "MarintVerneomraade" .
+
+vf:MarintVerneomraadeAnnet a skos:Concept ;
+    skos:closeMatch eea-desig:NO05 ;
+    skos:editorialNote "inferred: Marine protected area under other legislation; to be confirmed by the join in step 3"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "MarintVerneomraadeAnnet" .
+
+vf:MidlertidigVernaOmraade a skos:Concept ;
+    skos:editorialNote "none: Temporary protection; no EEA designation type. Excluded from the EMODnet view"@en ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "MidlertidigVernaOmraade" .
+
+vf:Nasjonalpark a skos:Concept ;
+    skos:editorialNote "label: Eionet NO01 'National Park' = nasjonalpark (naturmangfoldloven)"@en ;
+    skos:exactMatch eea-desig:NO01 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Nasjonalpark" .
+
+vf:NasjonalparkSvalbard a skos:Concept ;
+    skos:editorialNote "label: Eionet NO31 'National Park (Svalbard)'"@en ;
+    skos:exactMatch eea-desig:NO31 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "NasjonalparkSvalbard" .
+
+vf:Naturminne a skos:Concept ;
+    skos:editorialNote "label: Eionet NO11 'Natural Monument' = naturminne"@en ;
+    skos:exactMatch eea-desig:NO11 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Naturminne" .
+
+vf:Naturreservat a skos:Concept ;
+    skos:editorialNote "label: Eionet NO03 'Nature Reserve' = naturreservat"@en ;
+    skos:exactMatch eea-desig:NO03 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Naturreservat" .
+
+vf:NaturreservatJanMayen a skos:Concept ;
+    skos:editorialNote "label: Eionet NO53 'Naturreservat (Jan Mayen)'"@en ;
+    skos:exactMatch eea-desig:NO53 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "NaturreservatJanMayen" .
+
+vf:NaturreservatSvalbard a skos:Concept ;
+    skos:editorialNote "label: Eionet NO33 'Nature Reserve (Svalbard)'"@en ;
+    skos:exactMatch eea-desig:NO33 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "NaturreservatSvalbard" .
+
+vf:PlanteOgDyrefredningsomraade a skos:Concept ;
+    skos:editorialNote "label: Eionet NO21 'Wildlife/Botanical Conservation Area'"@en ;
+    skos:exactMatch eea-desig:NO21 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "PlanteOgDyrefredningsomraade" .
+
+vf:PlanteOgDyrelivsfredning a skos:Concept ;
+    skos:editorialNote "label: Eionet NO16 'Botanical/Zoological Protection of Species'"@en ;
+    skos:exactMatch eea-desig:NO16 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "PlanteOgDyrelivsfredning" .
+
+vf:Plantefredningsomraade a skos:Concept ;
+    skos:editorialNote "label: Eionet NO19 'Botanical Conservation Area' = plantefredningsområde"@en ;
+    skos:exactMatch eea-desig:NO19 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Plantefredningsomraade" .
+
+vf:Plantelivsfredning a skos:Concept ;
+    skos:editorialNote "label: Eionet NO13 'Botanical Protection of Species' = plantelivsfredning"@en ;
+    skos:exactMatch eea-desig:NO13 ;
+    skos:inScheme pa:schemeNoVerneform ;
+    skos:notation "Plantelivsfredning" .
+
+pa:schemeNoEcosystem a skos:ConceptScheme .
+
+pa:schemeNoIucn a skos:ConceptScheme .
+
+pa:schemeNoVerneform a skos:ConceptScheme ;
+    skos:prefLabel "Norwegian protection forms (verneform), Miljødirektoratet"@en .
+

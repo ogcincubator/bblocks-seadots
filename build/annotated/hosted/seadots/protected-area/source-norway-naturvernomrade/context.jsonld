@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
+    },
+    "type": "@type",
+    "id": "@id",
+    "properties": "@nest",
+    "geometry": {
+      "@context": {
+        "coordinates": {
+          "@container": "@list",
+          "@id": "geojson:coordinates"
+        }
+      },
+      "@id": "geojson:geometry"
+    },
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
+    "pa": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "pa-no": "pa:no/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "naturvernId": "pa:nationalSiteId",
+    "cddaId": "pa:eeaSiteId",
+    "navn": "pa:siteName",
+    "offisieltNavn": "pa:officialSiteName",
+    "faktaark": {
+      "@id": "foaf:page",
+      "@type": "@id"
+    },
+    "verneform": {
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/verneform/"
+      },
+      "@id": "pa:no/verneform",
+      "@type": "@vocab"
+    },
+    "verneforskrift": {
+      "@id": "pa:legalAct",
+      "@type": "@id"
+    },
+    "vernedato": "pa:designationDate",
+    "kommune": "pa:no/municipality",
+    "forvaltningsmyndighet": "pa:managementAuthority",
+    "iucn": {
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/iucn/"
+      },
+      "@id": "pa:no/iucn",
+      "@type": "@vocab"
+    },
+    "majorEcosystemType": {
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-protected-area/no/ecosystem/"
+      },
+      "@id": "pa:no/majorEcosystemType",
+      "@type": "@vocab"
+    },
+    "@version": 1.1
+  }
+}
