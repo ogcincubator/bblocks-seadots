@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "nve": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#",
+    "name": "schema:name",
+    "nve_facility_id": "dcterms:identifier",
+    "nve_licence_status": "nve:licenceStatus",
+    "nve_operational_date": {
+      "@id": "nve:operationalDate",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "nve_owner": "schema:owner",
+    "nve_counties": {"@id": "nve:county", "@container": "@set"},
+    "nve_municipalities": {"@id": "nve:municipality", "@container": "@set"},
+    "nve_mean_annual_production_gwh": "nve:meanAnnualProductionGWh",
+    "nve_price_area": "nve:electricityPriceArea",
+    "nve_turbine_details": {"@id": "nve:turbineDetails", "@container": "@set"},
+    "manufacturer": "schema:manufacturer",
+    "model": "schema:model",
+    "count": "nve:turbineCount",
+    "commissioning_year": "nve:commissioningYear",
+    "nve_source_record": {"@id": "prov:wasDerivedFrom", "@type": "@id"},
+    "nve_licensing_case": {"@id": "nve:licensingCase", "@type": "@id"}
+  }
+}

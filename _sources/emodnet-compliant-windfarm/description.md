@@ -1,36 +1,28 @@
-# EMODnet-compliant windfarm
+# EMODnet windfarm
 
-This block is a GeoJSON Feature profile aligned with the official EMODnet Human
-Activities windfarms XSD. It uses the same published attribute names as the
-service schema and maps the official `the_geom` concept to the GeoJSON
-`geometry` object.
+This is the single EMODnet windfarm representation in this register. It is a
+GeoJSON representation aligned with the official EMODnet Human Activities
+windfarms XSD. It uses the service's published attribute names and primitive
+types and maps the official `the_geom` concept to GeoJSON `geometry`.
 
-The profile is intentionally flat and service-aligned with the following
-properties. The `country` value is represented as the source country name,
-not as an ISO code, and is not restricted to a fixed enumeration — the
-underlying EMODnet field is a free-text `xsd:string` (see
-`examples/emodnet-windfarms.xsd`) and can hold any country name the service
-publishes. `context.jsonld` and `ontology.ttl` bind the country names
-currently observed in the live service (queried via WFS
-`GetPropertyValue`: Belgium, Denmark, Estonia, Finland, France, Germany,
-Greece, Ireland, Italy, Latvia, Lithuania, Malta, Netherlands, Norway,
-Poland, Portugal, Romania, Spain, Sweden, United Kingdom) to the
-[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/)
-(e.g. Belgium -> `http://publications.europa.eu/resource/authority/country/BEL`),
-whose ISO 3166-1 alpha-3 codes cover all countries, not just EU/EEA member
-states. Any new country name appearing in the source data should be added
-to both files following the same pattern.
+The XSD fields are optional and nillable, and the schema reflects that. The
+`country` value is represented as the source country name, not as an ISO code;
+the underlying field is a nullable `xsd:string`. `context.jsonld` and
+`ontology.ttl` bind country names currently observed in the live service to the
+[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/).
 
-- `country`
-- `n_turbines`
-- `power_mw`
-- `status`
-- `type_inst`
-- `updateyear`
-- `year`
-- `dist_coast`
-- `notes`
+The properties are `country`, `n_turbines`, `power_mw`, `status`, `type_inst`,
+`updateyear`, `year`, `dist_coast`, and `notes`.
 
-It is intended for direct publication as a GeoJSON Feature or WFS feature and
-can be used as a minimal interchange layer before any downstream semantic
-enrichment.
+Source-specific extracts, such as the Baltic exercise CSV, are translated into
+this representation before being served. Their column mapping is exercise
+configuration, not a second EMODnet data model.
+
+The independent [`emodnet-compliant-windfarm-pl`](../emodnet-compliant-windfarm-pl/)
+block uses this representation for Polish national-source integration, adding
+project names, reporting details, provenance, and location matching. The
+independent [`emodnet-compliant-windfarm-no`](../emodnet-compliant-windfarm-no/)
+block demonstrates the same base model with Norwegian NVE source details.
+
+This block is intended for publication as a GeoJSON Feature or WFS feature and
+as an interchange layer before downstream semantic enrichment.

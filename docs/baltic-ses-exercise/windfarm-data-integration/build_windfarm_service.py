@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+from urllib.parse import quote
 import yaml
 
 ROOT = Path(__file__).resolve().parent
@@ -15,12 +16,12 @@ NATIONAL = DATA / "polish_offshore_wind_pipeline.csv"
 EMODNET = DATA / "emodnet_windfarms_poland_2026-10-26.csv"
 MAPPING = ROOT / "config/location-mapping.json"
 REPO = Path(__file__).resolve().parents[3]
-TARGET_CONTEXT = REPO / "_sources/emodnet-compliant-windfarm/baltic-project-extension/context.jsonld"
+TARGET_CONTEXT = REPO / "_sources/emodnet-compliant-windfarm-pl/context.jsonld"
 NATIONAL_CONTEXT = REPO / "_sources/national-windfarm-source/context.jsonld"
-EMODNET_CONTEXT = REPO / "_sources/emodnet-windfarm-source/context.jsonld"
-TARGET_SCHEMA = REPO / "_sources/emodnet-compliant-windfarm/baltic-project-extension/schema.yaml"
+EMODNET_CONTEXT = REPO / "_sources/emodnet-compliant-windfarm/context.jsonld"
+TARGET_SCHEMA = REPO / "_sources/emodnet-compliant-windfarm-pl/schema.yaml"
 NATIONAL_TRANSLATION = REPO / "_sources/national-windfarm-source/translation.json"
-EMODNET_TRANSLATION = REPO / "_sources/emodnet-windfarm-source/translation.json"
+EMODNET_TRANSLATION = ROOT / "config/emodnet-source-translation.json"
 NATIONAL_REFERENCE = "https://www.gramwzielone.pl/?p=20373718"
 EMODNET_REFERENCE = "https://ows.emodnet-humanactivities.eu/wfs"
 SNAPSHOT = "2026-10-26"
@@ -57,27 +58,36 @@ def main():
     emodnet = read_csv(EMODNET)
     mapping = json.loads(MAPPING.read_text(encoding="utf-8"))
     national_map = json.loads(NATIONAL_TRANSLATION.read_text(encoding="utf-8"))["field_map"]
-    emodnet_map = json.loads(EMODNET_TRANSLATION.read_text(encoding="utf-8"))["field_map"]
+    emodnet_translation = json.loads(EMODNET_TRANSLATION.read_text(encoding="utf-8"))
+    emodnet_map = emodnet_translation["field_map"]
     target_schema = yaml.safe_load(TARGET_SCHEMA.read_text(encoding="utf-8"))
     target_properties = target_schema["$defs"]["sparseFeature"]["properties"]["properties"]["properties"]
     sites = {row["name"]: row for row in emodnet}
-    site_ids = {row["name"]: f"emodnet-{i}" for i, row in enumerate(emodnet, 1)}
+    site_ids = {row["name"]: quote(row["name"], safe="") for row in emodnet}
 
-    # Raw collections deliberately retain source field names and values.
+    # The national collection preserves raw input; EMODnet is translated to its XSD-aligned feature model below.
     raw_national = [feature(f"national-{i+1}", None, row) for i, row in enumerate(national)]
-    raw_emodnet = []
+    emodnet_features = []
     for i, row in enumerate(emodnet, 1):
         geom = None if not row.get("lon") or not row.get("lat") else {
             "type": "Point", "coordinates": [float(row["lon"]), float(row["lat"])]
         }
-        raw_emodnet.append(feature(f"emodnet-{i}", geom, row))
+        emodnet_features.append(feature(
+            f"http://localhost:5000/collections/emodnet-source/items/{site_ids[row[emodnet_map['id']]]}", geom,
+            {"country": "Poland", "n_turbines": integer(row[emodnet_map["n_turbines"]]),
+             "power_mw": number(row[emodnet_map["power_mw"]]),
+             "status": row[emodnet_map["status"]] or None, "type_inst": None,
+             "updateyear": row[emodnet_map["updateyear"]] or None,
+             "year": row[emodnet_map["year"]] or None,
+             "dist_coast": number(row[emodnet_map["dist_coast"]]), "notes": None}
+        ))
 
     canonical = []
     for i, row in enumerate(emodnet, 1):
         canonical.append(feature(
             f"http://localhost:5000/collections/harmonized-windfarms/items/emodnet-{i}",
-            raw_emodnet[i-1]["geometry"],
-            {**{key: None for key in target_properties}, "name": row[emodnet_map["name"]], "country": "Poland",
+            emodnet_features[i-1]["geometry"],
+            {**{key: None for key in target_properties}, "name": row[emodnet_map["id"]], "country": "Poland",
              "n_turbines": integer(row[emodnet_map["n_turbines"]]),
              "power_mw": number(row[emodnet_map["power_mw"]]), "status": row[emodnet_map["status"]] or None,
              "updateyear": row[emodnet_map["updateyear"]] or None, "year": row[emodnet_map["year"]] or None,
@@ -86,7 +96,7 @@ def main():
              "year_semantics": "year reported by EMODnet", "year_is_assumed": False,
              "source_type": "emodnet", "source_dataset": "EMODnet Human Activities windfarms, Poland snapshot",
              "source_reference": EMODNET_REFERENCE, "source_snapshot_date": SNAPSHOT,
-             "source_record_id": row["name"], "location_status": "source-provided",
+             "source_record_id": row[emodnet_map["id"]], "location_status": "source-provided",
              "location_method": "EMODnet source point", "location_reference": EMODNET_REFERENCE,
              "location_emodnet_ids": []}
         ))
@@ -130,14 +140,14 @@ def main():
         ))
 
     write_json(OUT / "data/national-source.geojson", collection(raw_national))
-    write_json(OUT / "data/emodnet-source.geojson", collection(raw_emodnet))
+    write_json(OUT / "data/emodnet-source.geojson", collection(emodnet_features))
     write_json(OUT / "data/harmonized-windfarms.geojson", collection(canonical))
 
     contexts = [json.loads(p.read_text(encoding="utf-8"))["@context"] for p in (NATIONAL_CONTEXT, EMODNET_CONTEXT, TARGET_CONTEXT)]
     resources = {}
     for name, title, desc, datafile, context in [
         ("national-source", "National source (raw)", "Raw national project records; source geometry is absent.", "national-source.geojson", contexts[0]),
-        ("emodnet-source", "EMODnet source (raw)", "Raw EMODnet windfarm features for Poland.", "emodnet-source.geojson", contexts[1]),
+        ("emodnet-source", "EMODnet source (schema compliant)", "EMODnet windfarm fields for Poland, translated from the bundled CSV extract to the published windfarms feature schema.", "emodnet-source.geojson", contexts[1]),
         ("harmonized-windfarms", "Harmonized windfarms", "Canonical target records with explicit provenance and location matching.", "harmonized-windfarms.geojson", contexts[2]),
     ]:
         resources[name] = {"type": "collection", "title": title, "description": desc,
@@ -163,7 +173,7 @@ def main():
               "resources": resources}
     (OUT / "pygeoapi-config.yml").write_text(__import__("yaml").safe_dump(config, sort_keys=False, allow_unicode=True), encoding="utf-8")
     (OUT / "run.sh").write_text('#!/bin/sh\nset -eu\nHERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)\nEXERCISE=$(CDPATH= cd -- "$HERE/.." && pwd)\nPYGEOAPI="$EXERCISE/.venv/bin/pygeoapi"\nif [ ! -x "$PYGEOAPI" ]; then\n  echo "Missing exercise environment. Run $EXERCISE/setup_pygeoapi.sh first." >&2\n  exit 1\nfi\ncd "$HERE"\nexport PYGEOAPI_CONFIG="$HERE/pygeoapi-config.yml"\nexport PYGEOAPI_OPENAPI="$HERE/openapi.yml"\n"$PYGEOAPI" openapi generate "$PYGEOAPI_CONFIG" --output-file "$PYGEOAPI_OPENAPI"\nexec "$PYGEOAPI" serve\n', encoding="utf-8")
-    print(f"Built {len(raw_national)} national, {len(raw_emodnet)} EMODnet and {len(canonical)} harmonized features in {OUT}")
+    print(f"Built {len(raw_national)} national, {len(emodnet_features)} EMODnet and {len(canonical)} harmonized features in {OUT}")
 
 
 if __name__ == "__main__":

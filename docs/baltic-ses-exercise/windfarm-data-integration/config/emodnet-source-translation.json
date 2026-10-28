@@ -1,0 +1,24 @@
+{
+  "target": "ogc.hosted.seadots.emodnet-compliant-windfarm",
+  "field_map": {
+    "id": "name",
+    "country": "constant:Poland",
+    "n_turbines": "n_turbines",
+    "power_mw": "power_mw",
+    "status": "status",
+    "type_inst": "constant:null",
+    "updateyear": "updateyear",
+    "year": "year",
+    "dist_coast": "dist_coast_m",
+    "notes": "constant:null",
+    "geometry.coordinates.longitude": "lon",
+    "geometry.coordinates.latitude": "lat"
+  },
+  "rules": {
+    "id": "Create a URI feature identifier for each record in this dated CSV snapshot.",
+    "numeric_fields": ["n_turbines", "power_mw", "dist_coast"],
+    "dist_coast": "The source snapshot column dist_coast_m is in metres; the EMODnet model property dist_coast uses the same metre unit.",
+    "geometry": "Construct a GeoJSON Point from the source lon and lat columns; they are not EMODnet windfarms properties.",
+    "snapshot_date": "2026-10-26"
+  }
+}

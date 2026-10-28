@@ -1,65 +1,48 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: EMODnet-compliant windfarm
+title: EMODnet windfarm feature
 description: >
-  GeoJSON Feature profile aligned to the official EMODnet Human Activities
-  windfarms XSD. It preserves the service's published field names and primitive
-  types for country, turbine count, power output, status, installation type,
-  year fields, distance to coast, and notes.
-
+  GeoJSON representation of the EMODnet Human Activities windfarms feature
+  type. Property names, optionality, nullability, and value types follow the
+  service's published windfarms XSD.
+type: object
 required: [id, type, geometry, properties]
 properties:
   id:
     type: string
-    format: uri
   type:
     const: Feature
   geometry:
-    type: object
-    required: [type, coordinates]
-    properties:
-      type:
-        enum: [Point, Polygon, MultiPolygon]
-      coordinates:
-        type: array
+    description: EMODnet the_geom represented as GeoJSON geometry; the XSD allows it to be nil.
+    oneOf:
+      - type: 'null'
+      - type: object
+        required: [type, coordinates]
+        properties:
+          type:
+            enum: [Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, GeometryCollection]
+          coordinates: {}
+        additionalProperties: true
   properties:
     type: object
-    required: [country, n_turbines, power_mw, status, type_inst, updateyear, year, dist_coast, notes]
     properties:
       country:
-        type: string
-        description: >-
-          Country name of the responsible/coastal country as represented in the
-          source data (not restricted to a fixed enumeration — any country name
-          published by the EMODnet Human Activities windfarms service is valid).
-          In RDF/JSON-LD, the context binds the country names currently observed
-          in the live service to EU Publications Office Country authority table
-          URIs (http://publications.europa.eu/resource/authority/country/), e.g.
-          "Belgium" -> http://publications.europa.eu/resource/authority/country/BEL.
-          Names not yet covered by the context fall back to a plain string and
-          should be added to the context/ontology as the source data grows.
+        type: [string, 'null']
+        description: Country name as published by EMODnet; the XSD type is nullable xsd:string.
       n_turbines:
-        type: number
+        type: [number, 'null']
       power_mw:
-        type: number
+        type: [number, 'null']
       status:
-        type: string
-        description: >-
-          Status of the windfarm, as represented in the source data. The EMODnet
-          service uses a controlled vocabulary of five values: Planned,
-          Production, Dismantled, Approved, Construction.
-        enum: [Planned, Production, Dismantled, Approved, Construction]
+        type: [string, 'null']
+        description: Status text as published by EMODnet (nullable xsd:string).
       type_inst:
-        oneOf:
-          - type: string
-            enum: [Grounded, Floating]
-          - type: "null"
+        type: [string, 'null']
       updateyear:
-        type: string
+        type: [string, 'null']
       year:
-        type: string
+        type: [string, 'null']
       dist_coast:
-        type: number
+        type: [number, 'null']
       notes:
-        type:
-          - string
-          - "null"
+        type: [string, 'null']
+  additionalProperties: false

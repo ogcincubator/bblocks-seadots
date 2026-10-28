@@ -1,0 +1,72 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Norwegian NVE windfarm extension for EMODnet
+description: >-
+  EMODnet windfarm feature extended with fields from the Norwegian NVE wind
+  power plant dataset. NVE licensing status and facility details remain
+  available alongside the mapped EMODnet attributes.
+allOf:
+  - $ref: bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm
+  - type: object
+    required: [properties]
+    properties:
+      properties:
+        type: object
+        required:
+          - name
+          - nve_facility_id
+          - nve_licence_status
+          - nve_operational_date
+          - nve_owner
+          - nve_mean_annual_production_gwh
+          - nve_price_area
+          - nve_turbine_details
+          - nve_source_record
+        properties:
+          name:
+            type: string
+            description: Facility name as published by NVE.
+          nve_facility_id:
+            type: string
+            description: Identifier in the NVE wind power plant facility pages.
+          nve_licence_status:
+            type: string
+            description: Original Norwegian licensing status, preserved without mapping to an operating status.
+          nve_operational_date:
+            type: [string, 'null']
+            format: date
+            description: Facility operation date reported by NVE, when available.
+          nve_owner:
+            type: string
+            description: Facility owner reported by NVE.
+          nve_counties:
+            type: array
+            items: {type: string}
+          nve_municipalities:
+            type: array
+            items: {type: string}
+          nve_mean_annual_production_gwh:
+            type: [number, 'null']
+            minimum: 0
+            description: Mean annual electrical production reported by NVE, in GWh.
+          nve_price_area:
+            type: string
+            description: Norwegian electricity price area as reported by NVE.
+          nve_turbine_details:
+            type: array
+            items:
+              type: object
+              required: [manufacturer, model, count, commissioning_year]
+              properties:
+                manufacturer: {type: string}
+                model: {type: string}
+                count: {type: integer, minimum: 1}
+                commissioning_year: {type: integer}
+              additionalProperties: false
+          nve_source_record:
+            type: string
+            format: uri
+            description: URI of the NVE facility record used for this feature.
+          nve_licensing_case:
+            type: [string, 'null']
+            format: uri
+            description: URI of the NVE licensing case for this facility.

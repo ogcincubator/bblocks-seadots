@@ -82,8 +82,9 @@ resources:
         source: https://purl.org/dc/terms/source
   emodnet-source:
     type: collection
-    title: EMODnet source (raw)
-    description: Raw EMODnet windfarm features for Poland.
+    title: EMODnet source (schema compliant)
+    description: EMODnet windfarm fields for Poland, translated from the bundled CSV
+      extract to the published windfarms feature schema.
     keywords:
     - windfarm
     - Baltic
@@ -107,27 +108,37 @@ resources:
     linked-data:
       context:
       - '@version': 1.1
-        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-source#
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+        dcterms: http://purl.org/dc/terms/
         geojson: https://purl.org/geojson/vocab#
         schema: https://schema.org/
-        type: '@type'
+        seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
         id: '@id'
+        type: '@type'
         Feature: geojson:Feature
         Point: geojson:Point
+        Polygon: geojson:Polygon
+        MultiPolygon: geojson:MultiPolygon
         geometry: geojson:geometry
         coordinates:
           '@id': geojson:coordinates
           '@container': '@list'
         properties: geojson:properties
-        name: schema:name
-        status: https://w3id.org/ogc/hosted/seadots/emodnet/
-        power_mw: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
-        n_turbines: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
-        year: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
-        dist_coast_m: distanceToCoastMetres
-        updateyear: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
-        lon: longitude
-        lat: latitude
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        n_turbines: seadots:nTurbines
+        power_mw: seadots:powerMW
+        type_inst: schema:additionalType
+        updateyear: seadots:updateYear
+        year: seadots:year
+        dist_coast: seadots:distanceToCoast
+        notes: dcterms:description
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
   harmonized-windfarms:
     type: collection
     title: Harmonized windfarms
@@ -155,13 +166,13 @@ resources:
     linked-data:
       context:
       - '@version': 1.1
-        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
         geojson: https://purl.org/geojson/vocab#
         schema: https://schema.org/
         dcterms: http://purl.org/dc/terms/
         em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
         seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
-        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/baltic-project-extension#
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
         id: '@id'
         type: '@type'
         Feature: geojson:Feature

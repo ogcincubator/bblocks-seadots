@@ -7,12 +7,14 @@ This is a standalone companion exercise to the Baltic SES notebooks. It lets you
 | Collection | What it shows | Geometry |
 |---|---|---|
 | `national-source` | Original national CSV fields, unchanged | Null: the national input has no coordinates |
-| `emodnet-source` | Original EMODnet CSV fields, unchanged | Source point geometry |
+| `emodnet-source` | EMODnet fields translated to the published windfarms feature schema | Source point geometry |
 | `harmonized-windfarms` | Target Building Block fields, provenance and mapped locations | EMODnet points for EMODnet records; crosswalk centroid for matched national records; Baltic West has a separately labelled approximate point; null for other unmatched projects |
 
-The target is `ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension`. Translation rules live beside their source Building Blocks in `translation.json`. The exercise builder reads those blocks' JSON-LD contexts and builds a pygeoapi config from the three contexts. pygeoapi's built-in GeoJSON feature provider serves the generated collections; its linked-data response decorator uses the configured contexts for `f=jsonld`. No custom provider plugin is needed because source translation and location association happen explicitly during the build.
+The EMODnet model is `ogc.hosted.seadots.emodnet-compliant-windfarm`; the harmonized Polish target is the independent block `ogc.hosted.seadots.emodnet-compliant-windfarm-pl`. National-source translation lives with its source block. The EMODnet CSV-to-feature mapping is exercise configuration in `config/emodnet-source-translation.json`, because the bundled CSV is an extract rather than a second EMODnet data model. The exercise builder reads the EMODnet and Polish-target JSON-LD contexts and builds a pygeoapi config from them. pygeoapi's built-in GeoJSON feature provider serves the generated collections; its linked-data response decorator uses the configured contexts for `f=jsonld`.
 
-The canonical properties include `name`, `country`, `power_mw`, `status`, `n_turbines`, `year`, `dist_coast`, `developer` and `notes`, plus reporting-time, source provenance and location-match fields. National translations are: `farm` → `name`, `capacity_mw` → `power_mw`, `status_aug2026` → normalized `status` plus preserved `status_detail`, and `first_power_or_completion_year` → `year` with its meaning and assumed status recorded. EMODnet keeps `name`, `power_mw`, `status`, `n_turbines`, `year`, and `updateyear`; `dist_coast_m` maps to `dist_coast` in metres. Fields not available from a source remain null.
+The base EMODnet feature has the XSD fields `country`, `n_turbines`, `power_mw`, `status`, `type_inst`, `updateyear`, `year`, `dist_coast`, and `notes`; the XSD makes these optional and nullable. The source CSV `name` is retained as the feature identifier, and `lon`/`lat` construct GeoJSON geometry. `dist_coast_m` maps to `dist_coast` in metres. National translations are: `farm` → `name`, `capacity_mw` → `power_mw`, `status_aug2026` → normalized `status` plus preserved `status_detail`, and `first_power_or_completion_year` → `year` with its meaning and assumed status recorded. Fields absent from a source remain null in the harmonized extension.
+
+`data/emodnet-source-input-example.json` shows the CSV-derived input shape before that translation; the published `emodnet-source` collection uses the XSD-aligned EMODnet representation.
 
 ## Build and run
 

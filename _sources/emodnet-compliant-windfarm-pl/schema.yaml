@@ -1,11 +1,11 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: EMODnet windfarm harmonized project extension
+title: Polish windfarm extension for EMODnet
 description: >-
-  A harmonized GeoJSON Feature using the EMODnet windfarm property vocabulary,
+  A Polish harmonized GeoJSON Feature using the EMODnet windfarm property vocabulary,
   augmented with generic project, reporting-time, year-semantics, and provenance
   fields. It accepts complete base-block features and sparse national pipeline
-  records with null geometry. It is an aligned extension, not a strict profile
-  of the base block because national records may not provide the base attributes.
+  records with null geometry. It depends on the base block rather than being a
+  strict profile because national records may not provide the base attributes.
 anyOf:
   - $ref: bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm
   - $ref: '#/$defs/sparseFeature'
