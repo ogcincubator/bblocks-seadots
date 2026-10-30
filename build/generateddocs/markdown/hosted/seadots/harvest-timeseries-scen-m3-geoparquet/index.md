@@ -435,7 +435,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.harvest-timeseries-scen-m3-geoparquet
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-28'
+  dateOfLastChange: '2026-10-30'
 
 ```
 

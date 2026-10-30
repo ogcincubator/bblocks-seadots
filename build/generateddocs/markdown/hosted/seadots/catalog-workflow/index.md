@@ -224,13 +224,13 @@ dataset. No source properties are intentionally dropped.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters." ;
     dcterms:title "Utsira reef-effect biomass workflow" ;
-    rdfs:seeAlso [ rdfs:label "Reef-effect application package" ;
+    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ],
+        [ rdfs:label "Reef-effect application package" ;
             dcterms:format "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ],
-        [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ] ;
     dcat:keyword "digital-twin",
         "offshore-wind",
         "open-science" ;
@@ -251,14 +251,14 @@ dataset. No source properties are intentionally dropped.
             dcterms:description "Optional baseline benthic biomass-density input profile." ;
             seadots:required false ;
             seadots:role "benthic-biomass-density" ] ;
-    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
-            dcterms:description "Generic STAC catalog data item produced by this workflow." ;
-            seadots:required true ;
-            seadots:role "output" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
             dcterms:description "Structured reef-effect biomass output record." ;
             seadots:required true ;
-            seadots:role "reef-biomass-result" ] ;
+            seadots:role "reef-biomass-result" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item produced by this workflow." ;
+            seadots:required true ;
+            seadots:role "output" ] ;
     seadots:applicationPackage <file:///catalog-application-package/examples/application-package.json> ;
     seadots:itemType "record" .
 
@@ -819,7 +819,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-workflow
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-28'
+  dateOfLastChange: '2026-10-30'
 
 ```
 

@@ -375,14 +375,14 @@ a service.
             dcterms:description "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification." ;
             seadots:required true ;
             seadots:role "map" ] ;
-    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
-            dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
-            seadots:required true ;
-            seadots:role "equilibria" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
             dcterms:description "Produced only when the solver is applied stepwise over a time-indexed series of maps." ;
             seadots:required false ;
-            seadots:role "sequence" ] ;
+            seadots:role "sequence" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
+            dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
+            seadots:required true ;
+            seadots:role "equilibria" ] ;
     seadots:itemType "record" ;
     fcm:solverCapability [ seadots:executionParameters [ seadots:clusteringTolerance 1e-06 ;
                     seadots:convergenceTolerance 1e-10 ;
@@ -1032,7 +1032,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm-workflow
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-28'
+  dateOfLastChange: '2026-10-30'
 
 ```
 

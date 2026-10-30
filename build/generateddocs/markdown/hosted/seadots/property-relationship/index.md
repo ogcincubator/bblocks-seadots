@@ -341,7 +341,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.property-relationship
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '1.0'
-  dateOfLastChange: '2026-10-28'
+  dateOfLastChange: '2026-10-30'
 
 ```
 

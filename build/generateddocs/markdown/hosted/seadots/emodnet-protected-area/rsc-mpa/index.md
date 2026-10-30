@@ -634,7 +634,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.emodnet-protected-area.rsc-mpa
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-28'
+  dateOfLastChange: '2026-10-30'
 
 ```
 
