@@ -40,8 +40,8 @@ resources:
     type: collection
     title: RAW · National project list (gramwzielone.pl, 26 Aug 2026)
     description: 'Source records exactly as fetched on 2026-08-26 (press report; facts
-      compiled by the exercise). f=jsonld applies the source''s own context: the uplift
-      step of the pipeline.'
+      compiled by the exercise). f=jsonld applies the source''s own building-block
+      context: the uplift step.'
     keywords:
     - raw
     - national
@@ -84,7 +84,7 @@ resources:
     type: collection
     title: RAW · EMODnet Human Activities WFS emodnet:windfarms, Poland
     description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
-      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+      f=jsonld applies the source''s own building-block context: the uplift step.'
     keywords:
     - raw
     - emodnet-wfs
@@ -134,18 +134,11 @@ resources:
         status:
           '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
           '@type': '@vocab'
-      - '@version': 1.1
-        geo: http://www.opengis.net/ont/geosparql#
-        geometry:
-          '@id': geo:hasGeometry
-        wkt:
-          '@id': geo:asWKT
-          '@type': geo:wktLiteral
   raw-emodnet-zones:
     type: collection
     title: RAW · EMODnet Human Activities WFS emodnet:windfarmspoly, Poland
     description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
-      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+      f=jsonld applies the source''s own building-block context: the uplift step.'
     keywords:
     - raw
     - emodnet-wfs-zones
@@ -195,19 +188,12 @@ resources:
         status:
           '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
           '@type': '@vocab'
-      - '@version': 1.1
-        geo: http://www.opengis.net/ont/geosparql#
-        geometry:
-          '@id': geo:hasGeometry
-        wkt:
-          '@id': geo:asWKT
-          '@type': geo:wktLiteral
   raw-odp-points:
     type: collection
     title: 'RAW · HubOcean Ocean Data Platform: EMODnet wind farms (points), vector
       tiles'
     description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
-      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+      f=jsonld applies the source''s own building-block context: the uplift step.'
     keywords:
     - raw
     - odp-points
@@ -257,19 +243,12 @@ resources:
         status:
           '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
           '@type': '@vocab'
-      - '@version': 1.1
-        geo: http://www.opengis.net/ont/geosparql#
-        geometry:
-          '@id': geo:hasGeometry
-        wkt:
-          '@id': geo:asWKT
-          '@type': geo:wktLiteral
   raw-odp-zones:
     type: collection
     title: 'RAW · HubOcean Ocean Data Platform: EMODnet wind farms (polygons), vector
       tiles'
     description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
-      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+      f=jsonld applies the source''s own building-block context: the uplift step.'
     keywords:
     - raw
     - odp-zones
@@ -319,19 +298,12 @@ resources:
         status:
           '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
           '@type': '@vocab'
-      - '@version': 1.1
-        geo: http://www.opengis.net/ont/geosparql#
-        geometry:
-          '@id': geo:hasGeometry
-        wkt:
-          '@id': geo:asWKT
-          '@type': geo:wktLiteral
   raw-osm:
     type: collection
     title: RAW · OpenStreetMap, offshore Polish Baltic (API 0.6 map call)
     description: 'Source records exactly as fetched on 2026-10-27 (ODbL 1.0, © OpenStreetMap
-      contributors). f=jsonld applies the source''s own context: the uplift step of
-      the pipeline.'
+      contributors). f=jsonld applies the source''s own building-block context: the
+      uplift step.'
     keywords:
     - raw
     - osm
@@ -380,13 +352,6 @@ resources:
         seamark:production_area:product: osmk:seamark:production_area:product
         seamark:platform:category: osmk:seamark:platform:category
         seamark:landmark:production_area: osmk:seamark:landmark:production_area
-      - '@version': 1.1
-        geo: http://www.opengis.net/ont/geosparql#
-        geometry:
-          '@id': geo:hasGeometry
-        wkt:
-          '@id': geo:asWKT
-          '@type': geo:wktLiteral
   farms-pl:
     type: collection
     title: Wind farms, harmonised (emodnet-compliant-windfarm-pl)
@@ -495,6 +460,13 @@ resources:
         location_emodnet_ids:
           '@id': ses:locationEmodnetIds
           '@container': '@set'
+      - '@version': 1.1
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        Planned: seadots-emodnet:Planned
+        Approved: seadots-emodnet:Approved
+        Construction: seadots-emodnet:Construction
+        Production: seadots-emodnet:Production
+        Dismantled: seadots-emodnet:Dismantled
   farms-common:
     type: collection
     title: Wind farms, common model with all source records
@@ -513,7 +485,8 @@ resources:
       id_field: id
     linked-data:
       context:
-      - '@version': 1.1
+      - &id002
+        '@version': 1.1
         owc: urn:baltic-ses:owc#
         em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
         ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
@@ -533,21 +506,12 @@ resources:
         properties: geojson:properties
         geometry: geojson:geometry
         name: schema:name
-        kind:
-          '@id': '@type'
-          '@type': '@vocab'
         WindFarm: owc:WindFarm
         WindTurbine: owc:WindTurbine
         PlanningZone: owc:PlanningZone
-        power_mw:
-          '@id': em:powerMW
-          '@type': xsd:decimal
-        n_turbines:
-          '@id': em:nTurbines
-          '@type': xsd:integer
-        n_turbines_mapped:
-          '@id': owc:nTurbinesMapped
-          '@type': xsd:integer
+        power_mw: em:powerMW
+        n_turbines: em:nTurbines
+        n_turbines_mapped: owc:nTurbinesMapped
         status:
           '@id': owc:status
           '@type': '@vocab'
@@ -557,9 +521,7 @@ resources:
         Production: sem:Production
         year: em:year
         updateyear: em:updateYear
-        area_km2:
-          '@id': owc:areaKm2
-          '@type': xsd:decimal
+        area_km2: owc:areaKm2
         zones:
           '@id': owc:withinZone
           '@type': '@id'
@@ -568,30 +530,20 @@ resources:
           '@id': owc:partOfFarm
           '@type': '@id'
         farms:
-          '@id': ^owc:withinZone
+          '@id': owc:containsFarm
           '@type': '@id'
           '@container': '@set'
         ref: owc:turbineRef
         model: owc:turbineModel
         manufacturer: owc:manufacturer
         operator: owc:operatorName
-        rated_power_mw:
-          '@id': owc:ratedPowerMW
-          '@type': xsd:decimal
-        rotor_diameter_m:
-          '@id': owc:rotorDiameterM
-          '@type': xsd:decimal
-        hub_height_m:
-          '@id': owc:hubHeightM
-          '@type': xsd:decimal
+        rated_power_mw: owc:ratedPowerMW
+        rotor_diameter_m: owc:rotorDiameterM
+        hub_height_m: owc:hubHeightM
         status_text: owc:sourceStatusText
-        value_sources:
-          '@id': owc:valueSources
-          '@type': '@json'
         records:
-          '@id': ^owc:describes
+          '@id': owc:hasRecord
           '@container': '@set'
-        record: '@id'
         source:
           '@id': dcterms:source
           '@type': '@id'
@@ -599,10 +551,23 @@ resources:
         derived_from:
           '@id': prov:wasDerivedFrom
           '@type': '@id'
-        source_snapshot_date:
-          '@id': ses:sourceSnapshotDate
-          '@type': xsd:date
+        source_snapshot_date: ses:sourceSnapshotDate
         location_kind: owc:locationKind
+        value_source:
+          '@id': owc:valueSource
+          '@container': '@set'
+        geo: http://www.opengis.net/ont/geosparql#
+        describes:
+          '@id': owc:describes
+          '@type': '@id'
+        record_kind:
+          '@id': owc:recordKind
+          '@type': '@vocab'
+        SourceRecord: owc:SourceRecord
+        source_status_text: owc:sourceStatusText
+        dist_coast: em:distanceToCoast
+        type_inst: schema:additionalType
+        developer: schema:creator
   turbines:
     type: collection
     title: Wind turbines (common model)
@@ -621,96 +586,7 @@ resources:
       id_field: id
     linked-data:
       context:
-      - '@version': 1.1
-        owc: urn:baltic-ses:owc#
-        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
-        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
-        sem: https://w3id.org/ogc/hosted/seadots/emodnet/
-        geojson: https://purl.org/geojson/vocab#
-        schema: https://schema.org/
-        prov: http://www.w3.org/ns/prov#
-        dcterms: http://purl.org/dc/terms/
-        xsd: http://www.w3.org/2001/XMLSchema#
-        id: '@id'
-        type: '@type'
-        Feature: geojson:Feature
-        FeatureCollection: geojson:FeatureCollection
-        features:
-          '@id': geojson:features
-          '@container': '@set'
-        properties: geojson:properties
-        geometry: geojson:geometry
-        name: schema:name
-        kind:
-          '@id': '@type'
-          '@type': '@vocab'
-        WindFarm: owc:WindFarm
-        WindTurbine: owc:WindTurbine
-        PlanningZone: owc:PlanningZone
-        power_mw:
-          '@id': em:powerMW
-          '@type': xsd:decimal
-        n_turbines:
-          '@id': em:nTurbines
-          '@type': xsd:integer
-        n_turbines_mapped:
-          '@id': owc:nTurbinesMapped
-          '@type': xsd:integer
-        status:
-          '@id': owc:status
-          '@type': '@vocab'
-        Planned: sem:Planned
-        Approved: sem:Approved
-        Construction: sem:Construction
-        Production: sem:Production
-        year: em:year
-        updateyear: em:updateYear
-        area_km2:
-          '@id': owc:areaKm2
-          '@type': xsd:decimal
-        zones:
-          '@id': owc:withinZone
-          '@type': '@id'
-          '@container': '@set'
-        farm:
-          '@id': owc:partOfFarm
-          '@type': '@id'
-        farms:
-          '@id': ^owc:withinZone
-          '@type': '@id'
-          '@container': '@set'
-        ref: owc:turbineRef
-        model: owc:turbineModel
-        manufacturer: owc:manufacturer
-        operator: owc:operatorName
-        rated_power_mw:
-          '@id': owc:ratedPowerMW
-          '@type': xsd:decimal
-        rotor_diameter_m:
-          '@id': owc:rotorDiameterM
-          '@type': xsd:decimal
-        hub_height_m:
-          '@id': owc:hubHeightM
-          '@type': xsd:decimal
-        status_text: owc:sourceStatusText
-        value_sources:
-          '@id': owc:valueSources
-          '@type': '@json'
-        records:
-          '@id': ^owc:describes
-          '@container': '@set'
-        record: '@id'
-        source:
-          '@id': dcterms:source
-          '@type': '@id'
-        source_key: owc:sourceKey
-        derived_from:
-          '@id': prov:wasDerivedFrom
-          '@type': '@id'
-        source_snapshot_date:
-          '@id': ses:sourceSnapshotDate
-          '@type': xsd:date
-        location_kind: owc:locationKind
+      - *id002
   zones:
     type: collection
     title: Planning zones (common model)
@@ -729,93 +605,4 @@ resources:
       id_field: id
     linked-data:
       context:
-      - '@version': 1.1
-        owc: urn:baltic-ses:owc#
-        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
-        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
-        sem: https://w3id.org/ogc/hosted/seadots/emodnet/
-        geojson: https://purl.org/geojson/vocab#
-        schema: https://schema.org/
-        prov: http://www.w3.org/ns/prov#
-        dcterms: http://purl.org/dc/terms/
-        xsd: http://www.w3.org/2001/XMLSchema#
-        id: '@id'
-        type: '@type'
-        Feature: geojson:Feature
-        FeatureCollection: geojson:FeatureCollection
-        features:
-          '@id': geojson:features
-          '@container': '@set'
-        properties: geojson:properties
-        geometry: geojson:geometry
-        name: schema:name
-        kind:
-          '@id': '@type'
-          '@type': '@vocab'
-        WindFarm: owc:WindFarm
-        WindTurbine: owc:WindTurbine
-        PlanningZone: owc:PlanningZone
-        power_mw:
-          '@id': em:powerMW
-          '@type': xsd:decimal
-        n_turbines:
-          '@id': em:nTurbines
-          '@type': xsd:integer
-        n_turbines_mapped:
-          '@id': owc:nTurbinesMapped
-          '@type': xsd:integer
-        status:
-          '@id': owc:status
-          '@type': '@vocab'
-        Planned: sem:Planned
-        Approved: sem:Approved
-        Construction: sem:Construction
-        Production: sem:Production
-        year: em:year
-        updateyear: em:updateYear
-        area_km2:
-          '@id': owc:areaKm2
-          '@type': xsd:decimal
-        zones:
-          '@id': owc:withinZone
-          '@type': '@id'
-          '@container': '@set'
-        farm:
-          '@id': owc:partOfFarm
-          '@type': '@id'
-        farms:
-          '@id': ^owc:withinZone
-          '@type': '@id'
-          '@container': '@set'
-        ref: owc:turbineRef
-        model: owc:turbineModel
-        manufacturer: owc:manufacturer
-        operator: owc:operatorName
-        rated_power_mw:
-          '@id': owc:ratedPowerMW
-          '@type': xsd:decimal
-        rotor_diameter_m:
-          '@id': owc:rotorDiameterM
-          '@type': xsd:decimal
-        hub_height_m:
-          '@id': owc:hubHeightM
-          '@type': xsd:decimal
-        status_text: owc:sourceStatusText
-        value_sources:
-          '@id': owc:valueSources
-          '@type': '@json'
-        records:
-          '@id': ^owc:describes
-          '@container': '@set'
-        record: '@id'
-        source:
-          '@id': dcterms:source
-          '@type': '@id'
-        source_key: owc:sourceKey
-        derived_from:
-          '@id': prov:wasDerivedFrom
-          '@type': '@id'
-        source_snapshot_date:
-          '@id': ses:sourceSnapshotDate
-          '@type': xsd:date
-        location_kind: owc:locationKind
+      - *id002

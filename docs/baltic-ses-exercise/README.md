@@ -5,7 +5,7 @@ It runs the fisheries + windmills + public model from *Case-example II.xlsx* on 
 Baltic sprat (ICES spr.27.22-32, 2025 assessment) and the Polish offshore wind pipeline.
 
 ## Run
-    pip install numpy pandas matplotlib requests jupyterlab
+    pip install -r requirements.txt
     jupyter lab baltic_ses_exercise.ipynb
 
 The notebook first tries the live ICES SAG API and the EMODnet Human Activities WFS.
@@ -26,7 +26,7 @@ OpenStreetMap; wind at 80–180 m from ICON-EU (2023–2025), DMI HARMONIE-AROME
 power curves for the V236-15.0 MW, SG 14-222 DD and SG 14-236 DD bracketed between a datasheet-anchored and a
 rotor-physics reconstruction (no manufacturer curves are public; the IEA 15 MW reference curve gives the shape);
 Jensen wake losses on the real layouts, alone and as a cluster; the resulting net capacity factor goes into the SES model.
-Calculations are in `ses_production.py`. Bundled data are histograms, so it runs offline (`LIVE = False`).
+Every calculation step is a function in `ses_production.py`; maps and charts come from `viz.py`. Bundled data are histograms, so it runs offline (`LIVE = False`).
 
 ## Separate data integration exercise: `windfarm-data-integration/`
 Compare the national and EMODnet windfarm source collections with a harmonized pygeoapi/JSON-LD service. The exercise includes source and target Building Blocks, explicit field translations, and a location crosswalk for national records that have no coordinates. See [the exercise guide](windfarm-data-integration/README.md).
@@ -38,7 +38,9 @@ A second notebook there, `windfarm_sources_to_ogcapi.ipynb`, compares OpenStreet
 - `baltic_ses_spatial_extension.ipynb` - the spatial extension (executed)
 - `ses_model.py` - shared SES equations, calibration transformations, scenario rules, and present-value calculations; it does not load calibration datasets
 - `baltic_ses_production_extension.ipynb` - extension 2: turbines, hub-height wind and wakes (executed)
-- `ses_production.py` - power-curve reconstructions, capacity factors and the Jensen wake model
+- `ses_production.py` - power-curve reconstructions, capacity factors, the Jensen wake model, and one function per analysis step of extension 2
+- `viz.py` - standard map and chart functions (geopandas/folium `explore`, static `plot_layers`, heat maps, profiles, wind roses) taking GeoDataFrames, GeoJSON, GeoParquet or DataFrames
+- `requirements.txt` - Python packages for all notebooks
 - `data/osm_polish_offshore_wind_2026-10-27.geojson` - raw OpenStreetMap response: 283 turbines, 4 substations, farm areas (ODbL 1.0)
 - `data/wind_speed_hist_by_height_2023-2025.csv` - hours per 1 m/s bin at 10–180 m for 10 project sites (ICON-EU, DMI HARMONIE-AROME 2025, ERA5)
 - `data/wind_rose_hubheight_icon_eu_2023-2025.csv` - hours per 30° sector and 1 m/s bin at hub height (ICON-EU)

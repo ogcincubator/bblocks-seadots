@@ -1,0 +1,30 @@
+# Resolved farms (common TBox) -> the RDF shape of the emodnet-compliant-windfarm-pl building block:
+# a geojson:Feature with a geojson:properties node, using the block's property IRIs.
+# Most properties are copied as they are, because the common TBox reuses the block's terms;
+# the mapping only adds structure (Feature/properties) and the country constant.
+CONSTRUCT {
+  ?farm a geojson:Feature ; geojson:properties ?props ; geo:hasGeometry ?geom .
+  ?geom geo:asWKT ?wkt .
+  ?props schema:name ?name ; schema:addressCountry <http://publications.europa.eu/resource/authority/country/POL> ;
+         em:powerMW ?mw ; em:nTurbines ?n ; sem: ?status ; schema:additionalType ?inst ;
+         em:updateYear ?updateyear ; em:year ?year ; em:distanceToCoast ?dist ; dcterms:description ?notes ;
+         schema:creator ?developer ; ses:statusDetail ?detail ; ses:statusAsOf ?asOf ;
+         ses:yearSemantics ?yearSemantics ; ses:yearIsAssumed ?yearAssumed ;
+         ses:sourceType ?sourceType ; ses:sourceDataset ?dataset ; ses:sourceReference ?reference ;
+         ses:sourceSnapshotDate ?snapshot ; ses:sourceRecordId ?recordId ;
+         ses:locationStatus ?locStatus ; ses:locationMethod ?locMethod ; ses:locationReference ?locRef ;
+         ses:locationEmodnetIds ?emodnetId .
+}
+WHERE {
+  ?farm a owc:WindFarm ; schema:name ?name ; ses:sourceType ?sourceType ; ses:sourceDataset ?dataset ;
+        ses:sourceReference ?reference ; ses:sourceSnapshotDate ?snapshot ; ses:locationStatus ?locStatus .
+  BIND(IRI(CONCAT(STR(?farm), "#properties")) AS ?props)
+  OPTIONAL { ?farm geo:hasGeometry ?geom . ?geom geo:asWKT ?wkt }
+  OPTIONAL { ?farm em:powerMW ?mw } OPTIONAL { ?farm em:nTurbines ?n } OPTIONAL { ?farm owc:status ?status }
+  OPTIONAL { ?farm schema:additionalType ?inst } OPTIONAL { ?farm em:updateYear ?updateyear }
+  OPTIONAL { ?farm em:year ?year } OPTIONAL { ?farm em:distanceToCoast ?dist } OPTIONAL { ?farm dcterms:description ?notes }
+  OPTIONAL { ?farm schema:creator ?developer } OPTIONAL { ?farm ses:statusDetail ?detail } OPTIONAL { ?farm ses:statusAsOf ?asOf }
+  OPTIONAL { ?farm ses:yearSemantics ?yearSemantics } OPTIONAL { ?farm ses:yearIsAssumed ?yearAssumed }
+  OPTIONAL { ?farm ses:sourceRecordId ?recordId } OPTIONAL { ?farm ses:locationMethod ?locMethod }
+  OPTIONAL { ?farm ses:locationReference ?locRef } OPTIONAL { ?farm ses:locationEmodnetIds ?emodnetId }
+}

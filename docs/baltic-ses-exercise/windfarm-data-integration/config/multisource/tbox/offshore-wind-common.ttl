@@ -50,6 +50,9 @@ owc:describes a owl:ObjectProperty ; rdfs:domain owc:SourceRecord ;
     rdfs:label "describes"@en ;
     rdfs:comment "Links a source record to the canonical wind farm or zone it is about. Asserted by the crosswalk, never inferred from names alone."@en .
 
+owc:hasRecord a owl:ObjectProperty ; owl:inverseOf owc:describes ;
+    rdfs:label "has source record"@en .
+
 owc:recordKind a owl:ObjectProperty ; rdfs:domain owc:SourceRecord ; rdfs:range owl:Class ;
     rdfs:label "kind of thing described"@en .
 
@@ -71,6 +74,15 @@ owc:areaKm2 a owl:DatatypeProperty ; rdfs:range xsd:decimal ; qudt:unit unit:Kil
 
 owc:withinZone a owl:ObjectProperty ; rdfs:domain owc:WindFarm ; rdfs:range owc:PlanningZone ;
     rdfs:label "within planning zone"@en .
+
+owc:containsFarm a owl:ObjectProperty ; owl:inverseOf owc:withinZone ;
+    rdfs:label "contains farm"@en .
+
+owc:valueSource a owl:DatatypeProperty ;
+    rdfs:label "source of a chosen value"@en ; rdfs:comment "'<property>: <source key>', written by the projection policy for every chosen value."@en .
+
+owc:nTurbinesMapped a owl:DatatypeProperty ; rdfs:range xsd:integer ;
+    rdfs:label "number of turbines with a mapped position"@en .
 
 # ---------------------------------------------------------------- turbine level
 owc:partOfFarm a owl:ObjectProperty ; rdfs:subPropertyOf schema:isPartOf ; rdfs:range owc:WindFarm ;

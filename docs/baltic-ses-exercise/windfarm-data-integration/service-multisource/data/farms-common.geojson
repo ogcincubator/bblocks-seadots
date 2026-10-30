@@ -12,125 +12,55 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "B-Wind",
     "power_mw": 200.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2024",
     "zones": [
      "urn:baltic-ses:zone:pzp-46"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:B-Wind",
-      "source_key": "emodnet-wfs|B-Wind",
-      "power_mw": 200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.277",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:B-Wind",
-      "source_key": "odp-points|B-Wind",
-      "power_mw": 200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#b-wind",
+      "id": "urn:baltic-ses:record:odp-points:B-Wind",
+      "type": "SourceRecord",
       "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
-     }
-    ]
-   }
-  },
-  {
-   "type": "Feature",
-   "id": "urn:baltic-ses:farm:bc-wind",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     18.0721,
-     54.9886
-    ]
-   },
-   "properties": {
-    "kind": "WindFarm",
-    "name": "BC-Wind",
-    "power_mw": 390.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
-    "status": "Construction",
-    "year": "2028",
-    "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "emodnet-wfs (centroid of 2 points)"
-    },
-    "records": [
-     {
-      "record": "urn:baltic-ses:record:emodnet-wfs:BC%20Wind%20Offshore%20wind%20farm%20B",
-      "source_key": "emodnet-wfs|BC Wind Offshore wind farm B",
-      "power_mw": 250.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#b-wind",
+      "name": "B-Wind",
+      "dist_coast": 25173.2746432,
+      "power_mw": 200.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:b-wind",
       "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.556",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|B-Wind",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:BC%20Wind%20Offshore%20wind%20farm%20C",
-      "source_key": "emodnet-wfs|BC Wind Offshore wind farm C",
-      "power_mw": 250.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.477",
+      "id": "urn:baltic-ses:record:emodnet-wfs:B-Wind",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:BC-Wind",
-      "source_key": "national|BC-Wind",
-      "power_mw": 390.0,
-      "n_turbines": null,
-      "status": "Construction",
-      "status_text": "construction",
-      "year": "2028",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:bc-wind",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.277",
+      "name": "B-Wind",
+      "dist_coast": 25173.2745986,
+      "power_mw": 200.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:b-wind",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|B-Wind",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -142,57 +72,64 @@
     "type": "Point",
     "coordinates": [
      17.84,
-     55.05
+     55.04999999999999
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltic East",
     "power_mw": 900.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2032",
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-46"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "developer: national",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltic%20East",
-      "source_key": "emodnet-wfs|Baltic East",
-      "power_mw": 966.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.613",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "id": "urn:baltic-ses:record:national:Baltic%20East",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:baltic-east",
+      "developer": "Orlen Neptun",
+      "name": "Baltic East",
+      "power_mw": 900.0,
+      "year": "2032",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltic-east",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltic East",
+      "status_text": "planned (Dec 2025 auction)",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:national:Baltic%20East",
-      "source_key": "national|Baltic East",
-      "power_mw": 900.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "planned (Dec 2025 auction)",
-      "year": "2032",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltic-east",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltic%20East",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.613",
+      "name": "Baltic East",
+      "dist_coast": 25390.2169917,
+      "power_mw": 966.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltic-east",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltic East",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -208,36 +145,37 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltic West",
     "power_mw": 4100.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2035",
-    "updateyear": null,
-    "zones": [],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "status": "national",
-     "year": "national",
-     "developer": "national",
-     "geometry": "anticipated (location-mapping.json)"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "status: national",
+     "year: national",
+     "developer: national",
+     "geometry: anticipated (location-mapping.json)"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:national:Baltic%20West",
-      "source_key": "national|Baltic West",
-      "power_mw": 4100.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "planned (surveys)",
-      "year": "2035",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltic-west",
+      "id": "urn:baltic-ses:record:national:Baltic%20West",
+      "type": "SourceRecord",
       "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
+      "derived_from": "urn:baltic-ses:national:baltic-west",
+      "developer": "Orlen Neptun",
+      "name": "Baltic West",
+      "power_mw": 4100.0,
+      "year": "2035",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": true,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltic-west",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltic West",
+      "status_text": "planned (surveys)",
+      "status": "Planned"
      }
     ]
    }
@@ -249,57 +187,64 @@
     "type": "Point",
     "coordinates": [
      17.53,
-     55.56
+     55.559999999999995
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica 1",
     "power_mw": 900.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2030",
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-60"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "year": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "year: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%201",
-      "source_key": "emodnet-wfs|Baltica 1",
-      "power_mw": 900.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2030",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.269",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.269",
+      "type_inst": "Grounded",
+      "name": "Baltica 1",
+      "dist_coast": 68610.9138187,
+      "power_mw": 900.0,
+      "updateyear": "2026",
+      "year": "2030",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica 1",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:odp-points:Baltica%201",
-      "source_key": "odp-points|Baltica 1",
-      "power_mw": 900.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-1",
+      "id": "urn:baltic-ses:record:odp-points:Baltica%201",
+      "type": "SourceRecord",
       "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-1",
+      "name": "Baltica 1",
+      "dist_coast": 68610.9138281,
+      "power_mw": 900.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltica 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -310,12 +255,11 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     17.10254,
-     55.07035
+     17.102522313210244,
+     55.07038115556945
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica 2",
     "power_mw": 1500.0,
     "n_turbines": 107,
@@ -326,70 +270,87 @@
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "n_turbines": "osm-count",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "osm-turbine-centroid"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "n_turbines: osm-count",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: osm-turbine-centroid"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%202",
-      "source_key": "emodnet-wfs|Baltica 2",
-      "power_mw": 1498.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2027",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.270",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:Baltica%202",
-      "source_key": "national|Baltica 2",
-      "power_mw": 1500.0,
-      "n_turbines": null,
-      "status": "Construction",
-      "status_text": "construction",
-      "year": "2027",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltica-2",
+      "id": "urn:baltic-ses:record:national:Baltica%202",
+      "type": "SourceRecord",
       "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
+      "derived_from": "urn:baltic-ses:national:baltica-2",
+      "developer": "PGE; Orsted",
+      "name": "Baltica 2",
+      "power_mw": 1500.0,
+      "year": "2027",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltica-2",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltica 2",
+      "status_text": "construction",
+      "status": "Construction"
      },
      {
-      "record": "urn:baltic-ses:record:odp-points:Baltica%202",
-      "source_key": "odp-points|Baltica 2",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%202",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.270",
+      "type_inst": "Grounded",
+      "name": "Baltica 2",
+      "dist_coast": 38842.0660973,
       "power_mw": 1498.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2026",
+      "year": "2027",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-2",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-2",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica 2",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:osm:way%2F1560193205",
-      "source_key": "osm|way/1560193205",
-      "power_mw": null,
-      "n_turbines": null,
-      "status": "Construction",
-      "status_text": null,
-      "year": null,
-      "location_kind": "area",
-      "derived_from": "https://www.openstreetmap.org/way/1560193205",
+      "id": "urn:baltic-ses:record:odp-points:Baltica%202",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-2",
+      "name": "Baltica 2",
+      "dist_coast": 38842.0660666,
+      "power_mw": 1498.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-2",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltica 2",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:osm:way%2F1560193205",
+      "type": "SourceRecord",
       "source": "https://www.openstreetmap.org",
-      "source_snapshot_date": "2026-10-27"
+      "derived_from": "https://www.openstreetmap.org/way/1560193205",
+      "name": "Baltica 2 OWF",
+      "source_snapshot_date": "2026-10-27",
+      "describes": "urn:baltic-ses:farm:baltica-2",
+      "location_kind": "area",
+      "operator": "PGE / Ørsted",
+      "record_kind": "WindFarm",
+      "source_key": "osm|way/1560193205",
+      "status": "Construction"
      }
     ]
    }
@@ -405,51 +366,55 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica 2+",
     "power_mw": 210.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2024",
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%202%2B",
-      "source_key": "emodnet-wfs|Baltica 2+",
+      "id": "urn:baltic-ses:record:odp-points:Baltica%202%2B",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-2-plus",
+      "name": "Baltica 2+",
+      "dist_coast": 35115.6064423,
       "power_mw": 210.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-2-plus",
       "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.271",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltica 2+",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:odp-points:Baltica%202%2B",
-      "source_key": "odp-points|Baltica 2+",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%202%2B",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.271",
+      "name": "Baltica 2+",
+      "dist_coast": 35115.6064355,
       "power_mw": 210.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-2-plus",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-2-plus",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica 2+",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -465,80 +430,93 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica 3",
     "power_mw": 1000.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2030",
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%203",
-      "source_key": "emodnet-wfs|Baltica 3",
-      "power_mw": 1045.5,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2030",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.272",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%203",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:Baltica%203",
-      "source_key": "national|Baltica 3",
-      "power_mw": 1000.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "planned",
-      "year": "2030",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltica-3",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltica%203",
-      "source_key": "odp-points|Baltica 3",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.272",
+      "type_inst": "Grounded",
+      "name": "Baltica 3",
+      "dist_coast": 33058.5337673,
       "power_mw": 1045.5,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2026",
+      "year": "2030",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-3",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-3",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica 3",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:osm:way%2F1560193204",
-      "source_key": "osm|way/1560193204",
-      "power_mw": null,
-      "n_turbines": null,
-      "status": null,
-      "status_text": null,
-      "year": null,
-      "location_kind": "area",
-      "derived_from": "https://www.openstreetmap.org/way/1560193204",
+      "id": "urn:baltic-ses:record:odp-points:Baltica%203",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltica-3",
+      "name": "Baltica 3",
+      "dist_coast": 33058.5338147,
+      "power_mw": 1045.5,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-3",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltica 3",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:osm:way%2F1560193204",
+      "type": "SourceRecord",
       "source": "https://www.openstreetmap.org",
-      "source_snapshot_date": "2026-10-27"
+      "derived_from": "https://www.openstreetmap.org/way/1560193204",
+      "name": "Baltica 3 OWF",
+      "source_snapshot_date": "2026-10-27",
+      "describes": "urn:baltic-ses:farm:baltica-3",
+      "location_kind": "area",
+      "operator": "PGE / Ørsted",
+      "record_kind": "WindFarm",
+      "source_key": "osm|way/1560193204"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:Baltica%203",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:baltica-3",
+      "developer": "PGE; Orsted",
+      "name": "Baltica 3",
+      "power_mw": 1000.0,
+      "year": "2030",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltica-3",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltica 3",
+      "status_text": "planned",
+      "status": "Planned"
      }
     ]
    }
@@ -549,85 +527,102 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     16.565,
-     55.07
+     16.564962037013824,
+     55.070022772360495
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica 9+",
     "power_mw": 1300.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2032",
     "updateyear": "2025",
     "zones": [
      "urn:baltic-ses:zone:pzp-44"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "emodnet-wfs (centroid of 2 points)"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: emodnet-wfs (centroid of 2 points)"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%209",
-      "source_key": "emodnet-wfs|Baltica 9",
-      "power_mw": 975.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.610",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:emodnet-wfs:FEW%20Baltic%20II",
-      "source_key": "emodnet-wfs|FEW Baltic II",
-      "power_mw": 350.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2030",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.279",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:Baltica%209%2B",
-      "source_key": "national|Baltica 9+",
-      "power_mw": 1300.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "planned (Dec 2025 auction)",
-      "year": "2032",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltica-9-plus",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:FEW%20Baltic%20II",
-      "source_key": "odp-points|FEW Baltic II",
-      "power_mw": 350.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#few-baltic-ii",
+      "id": "urn:baltic-ses:record:odp-points:FEW%20Baltic%20II",
+      "type": "SourceRecord",
       "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#few-baltic-ii",
+      "name": "FEW Baltic II",
+      "dist_coast": 30662.3392235,
+      "power_mw": 350.0,
+      "updateyear": "2025",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-9-plus",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|FEW Baltic II",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:FEW%20Baltic%20II",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.279",
+      "type_inst": "Grounded",
+      "name": "FEW Baltic II",
+      "dist_coast": 30662.3392396,
+      "power_mw": 350.0,
+      "updateyear": "2025",
+      "year": "2030",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-9-plus",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|FEW Baltic II",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%209",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.610",
+      "name": "Baltica 9",
+      "dist_coast": 33842.6488621,
+      "power_mw": 975.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-9-plus",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica 9",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:Baltica%209%2B",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:baltica-9-plus",
+      "developer": "PGE; Orsted",
+      "name": "Baltica 9+",
+      "power_mw": 1300.0,
+      "year": "2032",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltica-9-plus",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltica 9+",
+      "status_text": "planned (Dec 2025 auction)",
+      "status": "Planned"
      }
     ]
    }
@@ -638,42 +633,42 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     16.0744,
-     54.8693
+     16.074400000000004,
+     54.869299999999996
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica IV Offshore wind farm 1",
     "power_mw": 990.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%20IV%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Baltica IV Offshore wind farm 1",
-      "power_mw": 990.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.472",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%20IV%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.472",
+      "type_inst": "Grounded",
+      "name": "Baltica IV Offshore wind farm 1",
+      "dist_coast": 46956.9491979,
+      "power_mw": 990.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-iv-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica IV Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -685,43 +680,44 @@
     "type": "Point",
     "coordinates": [
      17.5795,
-     55.5059
+     55.505900000000004
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltica V Offshore wind farm 1",
     "power_mw": 555.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-60"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltica%20V%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Baltica V Offshore wind farm 1",
-      "power_mw": 555.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.476",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltica%20V%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.476",
+      "type_inst": "Grounded",
+      "name": "Baltica V Offshore wind farm 1",
+      "dist_coast": 69938.8140374,
+      "power_mw": 555.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltica-v-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltica V Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -732,12 +728,11 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     17.12433,
-     55.04102
+     17.12461849890226,
+     55.04127348305935
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Baltyk 2 + Baltyk 3",
     "power_mw": 1440.0,
     "n_turbines": 100,
@@ -748,96 +743,215 @@
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "n_turbines": "osm-count",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "osm-turbine-centroid"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "n_turbines: osm-count",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: osm-turbine-centroid"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20II",
-      "source_key": "emodnet-wfs|Baltyk II",
-      "power_mw": 720.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
-      "location_kind": "point",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20II",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
       "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.275",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20III",
-      "source_key": "emodnet-wfs|Baltyk III",
+      "type_inst": "Grounded",
+      "name": "Baltyk II",
+      "dist_coast": 38794.6271149,
       "power_mw": 720.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
+      "updateyear": "2026",
       "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
       "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.276",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltyk II",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:national:Baltyk%202%20%2B%20Baltyk%203",
-      "source_key": "national|Baltyk 2 + Baltyk 3",
-      "power_mw": 1440.0,
-      "n_turbines": null,
-      "status": "Construction",
-      "status_text": "construction",
-      "year": "2028",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:baltyk-2-plus-baltyk-3",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltyk%20II",
-      "source_key": "odp-points|Baltyk II",
-      "power_mw": 720.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
+      "id": "urn:baltic-ses:record:odp-points:Baltyk%20II",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
       "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-ii",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltyk%20III",
-      "source_key": "odp-points|Baltyk III",
+      "name": "Baltyk II",
+      "dist_coast": 38794.6271237,
       "power_mw": 720.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-iii",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltyk II",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:osm:way%2F1560132096",
-      "source_key": "osm|way/1560132096",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20III",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.276",
+      "type_inst": "Grounded",
+      "name": "Baltyk III",
+      "dist_coast": 26496.0077637,
       "power_mw": 720.0,
-      "n_turbines": 50,
-      "status": "Construction",
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltyk III",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:Baltyk%202%20%2B%20Baltyk%203",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:baltyk-2-plus-baltyk-3",
+      "developer": "Equinor; Polenergia",
+      "name": "Baltyk 2 + Baltyk 3",
+      "power_mw": 1440.0,
+      "year": "2028",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|Baltyk 2 + Baltyk 3",
       "status_text": "construction",
-      "year": "2027",
-      "location_kind": "area",
-      "derived_from": "https://www.openstreetmap.org/way/1560132096",
+      "status": "Construction"
+     },
+     {
+      "id": "urn:baltic-ses:record:odp-points:Baltyk%20III",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-iii",
+      "name": "Baltyk III",
+      "dist_coast": 26496.0077552,
+      "power_mw": 720.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltyk III",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:osm:way%2F1560132096",
+      "type": "SourceRecord",
       "source": "https://www.openstreetmap.org",
-      "source_snapshot_date": "2026-10-27"
+      "derived_from": "https://www.openstreetmap.org/way/1560132096",
+      "name": "MFW Bałtyk II Offshore Wind Farm",
+      "n_turbines": 50,
+      "power_mw": 720.0,
+      "year": "2027",
+      "source_snapshot_date": "2026-10-27",
+      "describes": "urn:baltic-ses:farm:baltyk-2-plus-baltyk-3",
+      "location_kind": "area",
+      "operator": "Equinor;Polenergia",
+      "record_kind": "WindFarm",
+      "source_key": "osm|way/1560132096",
+      "status_text": "construction",
+      "status": "Construction"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "urn:baltic-ses:farm:bc-wind",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.072108457209126,
+     54.98861371937022
+    ]
+   },
+   "properties": {
+    "name": "BC-Wind",
+    "power_mw": 390.0,
+    "status": "Construction",
+    "year": "2028",
+    "updateyear": "2026",
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: emodnet-wfs (centroid of 2 points)"
+    ],
+    "records": [
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:BC%20Wind%20Offshore%20wind%20farm%20C",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.477",
+      "type_inst": "Grounded",
+      "name": "BC Wind Offshore wind farm C",
+      "dist_coast": 18074.6278958,
+      "power_mw": 250.0,
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:bc-wind",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|BC Wind Offshore wind farm C",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:BC%20Wind%20Offshore%20wind%20farm%20B",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.556",
+      "type_inst": "Grounded",
+      "name": "BC Wind Offshore wind farm B",
+      "dist_coast": 16665.5397766,
+      "power_mw": 250.0,
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:bc-wind",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|BC Wind Offshore wind farm B",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:BC-Wind",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:bc-wind",
+      "developer": "Ocean Winds",
+      "name": "BC-Wind",
+      "power_mw": 390.0,
+      "year": "2028",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": true,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:bc-wind",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|BC-Wind",
+      "status_text": "construction",
+      "status": "Construction"
      }
     ]
    }
@@ -849,55 +963,59 @@
     "type": "Point",
     "coordinates": [
      17.95,
-     55.08
+     55.079999999999984
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "C-Wind",
     "power_mw": 200.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2024",
     "zones": [
      "urn:baltic-ses:zone:pzp-46"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:C-Wind",
-      "source_key": "emodnet-wfs|C-Wind",
+      "id": "urn:baltic-ses:record:odp-points:C-Wind",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#c-wind",
+      "name": "C-Wind",
+      "dist_coast": 27729.0622658,
       "power_mw": 200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:c-wind",
       "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.278",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|C-Wind",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:odp-points:C-Wind",
-      "source_key": "odp-points|C-Wind",
+      "id": "urn:baltic-ses:record:emodnet-wfs:C-Wind",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.278",
+      "name": "C-Wind",
+      "dist_coast": 27729.0622761,
       "power_mw": 200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:c-wind",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#c-wind",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|C-Wind",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -908,42 +1026,42 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     15.4921,
+     15.492100000000002,
      54.3636
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Energa MFW 1 Offshore wind farm 1",
     "power_mw": 900.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Energa%20MFW%201%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Energa MFW 1 Offshore wind farm 1",
-      "power_mw": 900.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.557",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Energa%20MFW%201%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.557",
+      "type_inst": "Grounded",
+      "name": "Energa MFW 1 Offshore wind farm 1",
+      "dist_coast": 20067.2199269,
+      "power_mw": 900.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:energa-mfw-1-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Energa MFW 1 Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -959,39 +1077,40 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Energa MFW 2 Offshore wind farm 1",
     "power_mw": 800.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-14"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Energa%20MFW%202%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Energa MFW 2 Offshore wind farm 1",
-      "power_mw": 800.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.473",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Energa%20MFW%202%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.473",
+      "type_inst": "Grounded",
+      "name": "Energa MFW 2 Offshore wind farm 1",
+      "dist_coast": 30670.8561575,
+      "power_mw": 800.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:energa-mfw-2-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Energa MFW 2 Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1003,41 +1122,41 @@
     "type": "Point",
     "coordinates": [
      17.1346,
-     55.3469
+     55.346900000000005
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Freeboard I Offshore wind farm 1",
     "power_mw": 1500.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Freeboard%20I%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Freeboard I Offshore wind farm 1",
-      "power_mw": 1500.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.555",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Freeboard%20I%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.555",
+      "type_inst": "Grounded",
+      "name": "Freeboard I Offshore wind farm 1",
+      "dist_coast": 39859.1146331,
+      "power_mw": 1500.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:freeboard-i-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Freeboard I Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1048,54 +1167,57 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     15.16,
-     54.37
+     15.160000000000002,
+     54.36999999999999
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Licence Application No. 76",
     "power_mw": 14.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2024",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Licence%20Application%20No.%2076",
-      "source_key": "emodnet-wfs|Licence Application No. 76",
+      "id": "urn:baltic-ses:record:odp-points:Licence%20Application%20No.%2076",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#licence-application-no-76",
+      "name": "Licence Application No. 76",
+      "dist_coast": 26149.8015743,
       "power_mw": 14.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:licence-application-no-76",
       "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.280",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Licence Application No. 76",
+      "status_text": "Planned",
+      "status": "Planned"
      },
      {
-      "record": "urn:baltic-ses:record:odp-points:Licence%20Application%20No.%2076",
-      "source_key": "odp-points|Licence Application No. 76",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Licence%20Application%20No.%2076",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.280",
+      "name": "Licence Application No. 76",
+      "dist_coast": 26149.8015596,
       "power_mw": 14.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:licence-application-no-76",
       "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#licence-application-no-76",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Licence Application No. 76",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1106,12 +1228,11 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     17.65367,
-     55.05178
+     17.653644342086395,
+     55.05179176388039
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "MFW Baltic Power",
     "power_mw": 1200.0,
     "n_turbines": 76,
@@ -1122,83 +1243,101 @@
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "n_turbines": "osm-count",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "osm-turbine-centroid"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "n_turbines: osm-count",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: osm-turbine-centroid"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltic%20Power",
-      "source_key": "emodnet-wfs|Baltic Power",
-      "power_mw": 1140.0,
-      "n_turbines": 76,
-      "status": "Construction",
-      "status_text": "Construction",
-      "year": "2026",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:MFW%20Baltic%20Power",
-      "source_key": "national|MFW Baltic Power",
-      "power_mw": 1200.0,
-      "n_turbines": null,
-      "status": "Construction",
-      "status_text": "construction (first power 10 Jul 2026)",
-      "year": "2026",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:mfw-baltic-power",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltic%20Power",
-      "source_key": "odp-points|Baltic Power",
-      "power_mw": 1140.0,
-      "n_turbines": 76,
-      "status": "Construction",
-      "status_text": "Construction",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltic-power",
-      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:osm:relation%2F21402440",
-      "source_key": "osm|relation/21402440",
-      "power_mw": 1200.0,
-      "n_turbines": null,
-      "status": null,
-      "status_text": null,
-      "year": null,
-      "location_kind": "none",
-      "derived_from": "https://www.openstreetmap.org/relation/21402440",
+      "id": "urn:baltic-ses:record:osm:way%2F1532855580",
+      "type": "SourceRecord",
       "source": "https://www.openstreetmap.org",
-      "source_snapshot_date": "2026-10-27"
-     },
-     {
-      "record": "urn:baltic-ses:record:osm:way%2F1532855580",
-      "source_key": "osm|way/1532855580",
-      "power_mw": null,
-      "n_turbines": null,
-      "status": null,
-      "status_text": null,
-      "year": null,
-      "location_kind": "area",
       "derived_from": "https://www.openstreetmap.org/way/1532855580",
+      "name": "Baltic Power",
+      "source_snapshot_date": "2026-10-27",
+      "describes": "urn:baltic-ses:farm:mfw-baltic-power",
+      "location_kind": "area",
+      "record_kind": "WindFarm",
+      "source_key": "osm|way/1532855580"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:MFW%20Baltic%20Power",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:mfw-baltic-power",
+      "developer": "Orlen; Northland Power",
+      "name": "MFW Baltic Power",
+      "power_mw": 1200.0,
+      "year": "2026",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:mfw-baltic-power",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|MFW Baltic Power",
+      "status_text": "construction (first power 10 Jul 2026)",
+      "status": "Construction"
+     },
+     {
+      "id": "urn:baltic-ses:record:odp-points:Baltic%20Power",
+      "type": "SourceRecord",
+      "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltic-power",
+      "name": "Baltic Power",
+      "dist_coast": 28426.9069848,
+      "n_turbines": 76,
+      "power_mw": 1140.0,
+      "updateyear": "2025",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltic-power",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltic Power",
+      "status_text": "Construction",
+      "status": "Construction"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltic%20Power",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268",
+      "type_inst": "Grounded",
+      "name": "Baltic Power",
+      "dist_coast": 28426.9069649,
+      "n_turbines": 76,
+      "power_mw": 1140.0,
+      "updateyear": "2026",
+      "year": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltic-power",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltic Power",
+      "status_text": "Construction",
+      "status": "Construction"
+     },
+     {
+      "id": "urn:baltic-ses:record:osm:relation%2F21402440",
+      "type": "SourceRecord",
       "source": "https://www.openstreetmap.org",
-      "source_snapshot_date": "2026-10-27"
+      "derived_from": "https://www.openstreetmap.org/relation/21402440",
+      "name": "Baltic Power",
+      "power_mw": 1200.0,
+      "source_snapshot_date": "2026-10-27",
+      "describes": "urn:baltic-ses:farm:mfw-baltic-power",
+      "location_kind": "none",
+      "operator": "Baltic Power",
+      "record_kind": "WindFarm",
+      "source_key": "osm|relation/21402440"
      }
     ]
    }
@@ -1209,99 +1348,127 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     17.32,
-     55.515
+     17.320007318898632,
+     55.515014748724845
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "MFW Baltyk 1",
     "power_mw": 1560.0,
     "n_turbines": 260,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2032",
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-60"
     ],
-    "value_sources": {
-     "name": "national",
-     "power_mw": "national",
-     "n_turbines": "emodnet-wfs",
-     "status": "national",
-     "year": "national",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "developer": "national",
-     "geometry": "emodnet-wfs (centroid of 2 points)"
-    },
+    "value_source": [
+     "name: national",
+     "power_mw: national",
+     "n_turbines: emodnet-wfs",
+     "status: national",
+     "year: national",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "developer: national",
+     "geometry: emodnet-wfs (centroid of 2 points)"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20I%20Phase%201",
-      "source_key": "emodnet-wfs|Baltyk I Phase 1",
-      "power_mw": 1140.0,
-      "n_turbines": 190,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.273",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20I%20Phase%202",
-      "source_key": "emodnet-wfs|Baltyk I Phase 2",
-      "power_mw": 420.0,
-      "n_turbines": 70,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.274",
-      "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:national:MFW%20Baltyk%201",
-      "source_key": "national|MFW Baltyk 1",
-      "power_mw": 1560.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "planned (Dec 2025 auction)",
-      "year": "2032",
-      "location_kind": "none",
-      "derived_from": "urn:baltic-ses:national:mfw-baltyk-1",
-      "source": "https://www.gramwzielone.pl/?p=20373718",
-      "source_snapshot_date": "2026-08-26"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltyk%20I%20Phase%201",
-      "source_key": "odp-points|Baltyk I Phase 1",
-      "power_mw": 1140.0,
-      "n_turbines": 190,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-i-phase-1",
+      "id": "urn:baltic-ses:record:odp-points:Baltyk%20I%20Phase%202",
+      "type": "SourceRecord",
       "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
-     },
-     {
-      "record": "urn:baltic-ses:record:odp-points:Baltyk%20I%20Phase%202",
-      "source_key": "odp-points|Baltyk I Phase 2",
-      "power_mw": 420.0,
-      "n_turbines": 70,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
       "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-i-phase-2",
+      "name": "Baltyk I Phase 2",
+      "dist_coast": 57895.8273363,
+      "n_turbines": 70,
+      "power_mw": 420.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltyk-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltyk I Phase 2",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:odp-points:Baltyk%20I%20Phase%201",
+      "type": "SourceRecord",
       "source": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab#baltyk-i-phase-1",
+      "name": "Baltyk I Phase 1",
+      "dist_coast": 51081.3317156,
+      "n_turbines": 190,
+      "power_mw": 1140.0,
+      "updateyear": "2024",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltyk-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "odp-points|Baltyk I Phase 1",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20I%20Phase%201",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.273",
+      "type_inst": "Grounded",
+      "name": "Baltyk I Phase 1",
+      "dist_coast": 51081.3317038,
+      "n_turbines": 190,
+      "power_mw": 1140.0,
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltyk-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltyk I Phase 1",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:emodnet-wfs:Baltyk%20I%20Phase%202",
+      "type": "SourceRecord",
+      "source": "https://ows.emodnet-humanactivities.eu/wfs",
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.274",
+      "type_inst": "Grounded",
+      "name": "Baltyk I Phase 2",
+      "dist_coast": 57895.8273173,
+      "n_turbines": 70,
+      "power_mw": 420.0,
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:mfw-baltyk-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Baltyk I Phase 2",
+      "status_text": "Planned",
+      "status": "Planned"
+     },
+     {
+      "id": "urn:baltic-ses:record:national:MFW%20Baltyk%201",
+      "type": "SourceRecord",
+      "source": "https://www.gramwzielone.pl/?p=20373718",
+      "derived_from": "urn:baltic-ses:national:mfw-baltyk-1",
+      "developer": "Polenergia; Equinor",
+      "name": "MFW Baltyk 1",
+      "power_mw": 1560.0,
+      "year": "2032",
+      "source_snapshot_date": "2026-08-26",
+      "ses:yearIsAssumed": false,
+      "ses:yearSemantics": "planned first-power or completion year",
+      "describes": "urn:baltic-ses:farm:mfw-baltyk-1",
+      "location_kind": "none",
+      "record_kind": "WindFarm",
+      "source_key": "national|MFW Baltyk 1",
+      "status_text": "planned (Dec 2025 auction)",
+      "status": "Planned"
      }
     ]
    }
@@ -1312,42 +1479,42 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     15.4372,
-     54.4962
+     15.437200000000004,
+     54.496199999999995
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Orlen Neptun III Offshore wind farm 1",
     "power_mw": 1200.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20III%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Orlen Neptun III Offshore wind farm 1",
-      "power_mw": 1200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.474",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20III%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.474",
+      "type_inst": "Grounded",
+      "name": "Orlen Neptun III Offshore wind farm 1",
+      "dist_coast": 35253.0279782,
+      "power_mw": 1200.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:orlen-neptun-iii-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Orlen Neptun III Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1363,37 +1530,37 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Orlen Neptun IV Offshore wind farm 1",
     "power_mw": 1200.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
-    "zones": [],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20IV%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Orlen Neptun IV Offshore wind farm 1",
-      "power_mw": 1200.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.554",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20IV%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.554",
+      "type_inst": "Grounded",
+      "name": "Orlen Neptun IV Offshore wind farm 1",
+      "dist_coast": 26609.3797447,
+      "power_mw": 1200.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:orlen-neptun-iv-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Orlen Neptun IV Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1409,39 +1576,40 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Orlen Neptun VIII Offshore wind farm 1",
     "power_mw": 1000.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
-    "year": null,
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-45"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20VIII%20Offshore%20wind%20farm%201",
-      "source_key": "emodnet-wfs|Orlen Neptun VIII Offshore wind farm 1",
-      "power_mw": 1000.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": null,
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.470",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Orlen%20Neptun%20VIII%20Offshore%20wind%20farm%201",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.470",
+      "type_inst": "Grounded",
+      "name": "Orlen Neptun VIII Offshore wind farm 1",
+      "dist_coast": 26014.1664163,
+      "power_mw": 1000.0,
+      "updateyear": "2026",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:orlen-neptun-viii-offshore-wind-farm-1",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Orlen Neptun VIII Offshore wind farm 1",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }
@@ -1457,40 +1625,43 @@
     ]
    },
    "properties": {
-    "kind": "WindFarm",
     "name": "Sharco Duo Offshore wind farm",
     "power_mw": 1800.0,
-    "n_turbines": null,
-    "n_turbines_mapped": null,
     "status": "Planned",
     "year": "2028",
     "updateyear": "2026",
     "zones": [
      "urn:baltic-ses:zone:pzp-44"
     ],
-    "value_sources": {
-     "name": "emodnet-wfs",
-     "power_mw": "emodnet-wfs",
-     "status": "emodnet-wfs",
-     "year": "emodnet-wfs",
-     "updateyear": "emodnet-wfs",
-     "dist_coast": "emodnet-wfs",
-     "type_inst": "emodnet-wfs",
-     "geometry": "emodnet-wfs"
-    },
+    "value_source": [
+     "name: emodnet-wfs",
+     "power_mw: emodnet-wfs",
+     "status: emodnet-wfs",
+     "year: emodnet-wfs",
+     "updateyear: emodnet-wfs",
+     "dist_coast: emodnet-wfs",
+     "type_inst: emodnet-wfs",
+     "geometry: emodnet-wfs"
+    ],
     "records": [
      {
-      "record": "urn:baltic-ses:record:emodnet-wfs:Sharco%20Duo%20Offshore%20wind%20farm",
-      "source_key": "emodnet-wfs|Sharco Duo Offshore wind farm",
-      "power_mw": 1800.0,
-      "n_turbines": null,
-      "status": "Planned",
-      "status_text": "Planned",
-      "year": "2028",
-      "location_kind": "point",
-      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.471",
+      "id": "urn:baltic-ses:record:emodnet-wfs:Sharco%20Duo%20Offshore%20wind%20farm",
+      "type": "SourceRecord",
       "source": "https://ows.emodnet-humanactivities.eu/wfs",
-      "source_snapshot_date": "2026-10-30"
+      "derived_from": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.471",
+      "type_inst": "Grounded",
+      "name": "Sharco Duo Offshore wind farm",
+      "dist_coast": 35621.4151225,
+      "power_mw": 1800.0,
+      "updateyear": "2026",
+      "year": "2028",
+      "source_snapshot_date": "2026-10-30",
+      "describes": "urn:baltic-ses:farm:sharco-duo-offshore-wind-farm",
+      "location_kind": "point",
+      "record_kind": "WindFarm",
+      "source_key": "emodnet-wfs|Sharco Duo Offshore wind farm",
+      "status_text": "Planned",
+      "status": "Planned"
      }
     ]
    }

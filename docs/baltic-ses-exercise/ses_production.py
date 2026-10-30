@@ -229,3 +229,231 @@ def wake_energy(xy, turbine_type, curves, rotor_d, rose, k=0.04, sub_directions=
 def net_capacity_factor(gross_cf, wake_efficiency, availability=0.95, electrical=0.98):
     """Net capacity factor = gross x wake efficiency x availability x electrical efficiency."""
     return gross_cf * wake_efficiency * availability * electrical
+
+
+# =============================================================== analysis steps used by the notebook
+# Each function is one logical step; the notebook only chooses inputs and assumptions.
+
+def turbines_from_osm(data, rules):
+    """OpenStreetMap wind-turbine nodes -> GeoDataFrame with the wind site each turbine belongs to.
+
+    ``rules`` = {site: {"model": ..., "ref_prefix": ..., "relation": "relation/<id>"}}; the first matching
+    rule wins. ``data`` is the raw OSM GeoJSON (dict or path).
+    """
+    import json as _json
+    import geopandas as gpd
+    from shapely.geometry import shape
+    fc = _json.loads(open(data, encoding="utf-8").read()) if not isinstance(data, dict) else data
+    members = {}
+    for f in fc["features"]:
+        if f["properties"].get("osm_type") == "relation":
+            members[f["id"]] = {m.split(":")[0] for m in f["properties"].get("members", [])}
+    def site_of(f):
+        tags = f["properties"]["tags"]
+        for site, rule in rules.items():
+            if "ref_prefix" in rule and tags.get("ref", "").startswith(rule["ref_prefix"]):
+                return site
+            if "relation" in rule and f["id"] in members.get(rule["relation"], ()):
+                return site
+            if "model" in rule and tags.get("model") == rule["model"] and "ref_prefix" not in rule:
+                return site
+        return None
+    rows = [{"osm_id": f["id"], "wind_site": site_of(f), "model": f["properties"]["tags"].get("model"),
+             "rotor_d": float(f["properties"]["tags"]["rotor:diameter"]),
+             "hub_m_osm": f["properties"]["tags"].get("height:hub"), "ref": f["properties"]["tags"].get("ref"),
+             "geometry": shape(f["geometry"])}
+            for f in fc["features"] if f["properties"]["tags"].get("power") == "generator"]
+    return gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
+
+
+def layout_summary(turbines, assignment, national):
+    """Turbines per wind site with model, rotor, OSM hub height and installed MW vs national MW."""
+    summary = turbines.groupby("wind_site").agg(turbines=("osm_id", "size"), model=("model", "first"),
+                                                rotor_m=("rotor_d", "first"), hub_m_osm=("hub_m_osm", "first"))
+    a = assignment.set_index("wind_site")
+    summary = summary.join(a[["project", "unit_mw", "hub_m", "share_of_project"]])
+    summary["MW_from_turbines"] = summary.turbines * summary.unit_mw
+    summary["MW_national"] = summary.project.map(national.set_index("farm").capacity_mw) * summary.share_of_project
+    return summary.drop(columns="share_of_project")
+
+
+def load_wind_histograms(path):
+    """Wind-speed histograms by site, source and height; ``counts`` holds the 31-bin arrays."""
+    hist = pd.read_csv(path)
+    hist["counts"] = list(parse_counts(hist.counts_0_to_30ms))
+    return hist.drop(columns="counts_0_to_30ms")
+
+
+def load_wind_roses(path):
+    """Hub-height wind roses -> {site: (sectors x 31) array}, sectors ordered by direction."""
+    rose = pd.read_csv(path)
+    return {site: parse_counts(g.sort_values("sector_deg").counts_0_to_30ms) for site, g in rose.groupby("site")}
+
+
+def counts_at(hist, site, source, height):
+    return hist[(hist.site == site) & (hist.source == source) & (hist.height_m == height)].counts.iloc[0]
+
+
+def mean_profiles(hist):
+    """Mean wind speed: rows (site, source), columns height in m."""
+    return hist.pivot_table(index=["site", "source"], columns="height_m", values="mean_ms")
+
+
+def shear_table(profile):
+    """Power-law shear exponents of the mean profile per site: ICON-EU 100->180 m and ERA5 10->100 m."""
+    icon, era = profile.xs("icon_eu", level="source"), profile.xs("era5", level="source")
+    return pd.DataFrame({"ICON 100→180 m": shear_exponent(icon[100], icon[180], 100, 180),
+                         "ERA5 10→100 m": shear_exponent(era[10], era[100], 10, 100)})
+
+
+def build_power_curves(specs, reference):
+    """Power and thrust curves per turbine model -> {"low"|"mid"|"high": {model: (power_fn, thrust_fn)}}.
+
+    Published reference curves are used as they are; for commercial turbines without a public curve,
+    low = datasheet-anchored, high = rotor physics, mid = their average. A generic 15 MW cubic curve
+    (extension 1) is added under ``generic (extension 1)``.
+    """
+    sets = {"low": {}, "mid": {}, "high": {}}
+    for model, s in specs.iterrows():
+        if str(s.power_curve).startswith("published"):
+            curve = reference_curve(reference)
+            for k in sets:
+                sets[k][model] = curve
+            continue
+        low = spec_anchored_curve(reference, s.rated_kw, s.cut_in_ms, s.rated_speed_ms, s.cut_out_ms)
+        high = rotor_physics_curve(reference, s.rated_kw, s.swept_area_m2, s.cut_in_ms, s.cut_out_ms)
+        sets["low"][model], sets["high"][model], sets["mid"][model] = low, high, blend_curves(low, high)
+    for k in sets:
+        sets[k]["generic (extension 1)"] = generic_curve(15000, 3.0, 10.6, 25.0)
+    return sets
+
+
+def rated_speeds(specs, curves):
+    """Datasheet rated speed next to the speed at which the rotor-physics curve reaches rated power."""
+    out = specs[["rated_kw", "rotor_d_m", "cut_in_ms", "rated_speed_ms", "cut_out_ms"]].rename(
+        columns={"rated_speed_ms": "rated speed: datasheet"})
+    out["rated speed: rotor physics"] = [getattr(curves["high"][m][0], "rated_speed", np.nan) for m in out.index]
+    return out
+
+
+def gross_cf_table(assignment, hist, curves, specs):
+    """Gross capacity factor of a free-standing turbine per wind site under alternative data and curves."""
+    rows = []
+    for _, a in assignment.iterrows():
+        rated = specs.loc[a.turbine_model, "rated_kw"]
+        cf = lambda source, height, curve_set="mid", model=a.turbine_model, kw=rated: gross_capacity_factor(
+            counts_at(hist, a.wind_site, source, height), curves[curve_set][model][0], kw)
+        rows.append({"wind_site": a.wind_site, "project": a.project, "turbine": a.turbine_model, "hub_m": a.hub_m,
+                     "band at hub (ICON)": f"{cf('icon_eu', a.hub_m, 'low'):.3f}–{cf('icon_eu', a.hub_m, 'high'):.3f}",
+                     "generic curve, ERA5 100 m": cf("era5", 100, "mid", "generic (extension 1)", 15000),
+                     "turbine curve, ERA5 100 m": cf("era5", 100),
+                     "turbine curve, ICON 100 m": cf("icon_eu", 100),
+                     "turbine curve, ICON hub": cf("icon_eu", a.hub_m),
+                     "turbine curve, DMI hub (2025)": cf("dmi_harmonie", a.hub_m)})
+    return pd.DataFrame(rows).set_index("wind_site")
+
+
+def wake_efficiencies(turbines, roses, curves, k=0.04):
+    """Jensen wake efficiency per site, each farm alone and all farms as one cluster.
+
+    Returns (DataFrame per site, turbines with an ``efficiency`` column, cluster energy by sector).
+    The cluster uses the mean of the sites' wind roses.
+    """
+    isolated = {}
+    for site, g in turbines.groupby("wind_site"):
+        w, wo, _ = wake_energy(local_xy(g.geometry.x, g.geometry.y), g.model.values,
+                               {m: curves[m] for m in g.model.unique()}, g.rotor_d.values, roses[site], k=k)
+        isolated[site] = w.sum() / wo.sum()
+    sites = list(isolated)
+    cluster_rose = sum(roses[s] for s in sites) / len(sites)
+    w, wo, by_sector = wake_energy(local_xy(turbines.geometry.x, turbines.geometry.y), turbines.model.values,
+                                   {m: curves[m] for m in turbines.model.unique()}, turbines.rotor_d.values,
+                                   cluster_rose, k=k)
+    out = turbines.assign(efficiency=w / wo, energy=w, energy_free=wo)
+    in_cluster = out.groupby("wind_site").energy.sum() / out.groupby("wind_site").energy_free.sum()
+    table = pd.DataFrame({"isolated": pd.Series(isolated), "in the cluster": in_cluster})
+    table["wake loss, isolated (%)"] = 100 * (1 - table.isolated)
+    table["wake loss, cluster (%)"] = 100 * (1 - table["in the cluster"])
+    shares = pd.DataFrame({"share of hours": cluster_rose.sum(1) / cluster_rose.sum(),
+                           "share of energy": by_sector / by_sector.sum()},
+                          index=np.arange(len(by_sector)) * 360 / len(by_sector))
+    return table, out.drop(columns=["energy", "energy_free"]), shares
+
+
+def net_cf_by_project(gross, wakes, assignment, national, availability=0.95, electrical=0.98,
+                      gross_column="turbine curve, ICON hub"):
+    """Net capacity factor per national project; sites without a layout get the mean modelled wake efficiency."""
+    mw = assignment.set_index("wind_site").project.map(national.set_index("farm").capacity_mw) * \
+         assignment.set_index("wind_site").share_of_project
+    modelled = wakes["in the cluster"]
+    default = np.average(modelled, weights=mw.loc[modelled.index])
+    net = gross[["project", "turbine", "hub_m", gross_column]].rename(columns={gross_column: "gross_cf"})
+    net["wake_eff"] = [modelled.get(s, default) for s in net.index]
+    net["wake"] = ["OSM layout" if s in modelled.index else "assumed (mean of modelled farms)" for s in net.index]
+    net["net_cf"] = net_capacity_factor(net.gross_cf, net.wake_eff, availability, electrical)
+    net["MW"] = mw
+    by_project = net.groupby("project", sort=False).apply(lambda g: pd.Series({
+        "MW": g.MW.sum(), "turbine": g.turbine.iloc[0], "gross_cf": np.average(g.gross_cf, weights=g.MW),
+        "wake_eff": np.average(g.wake_eff, weights=g.MW), "net_cf": np.average(g.net_cf, weights=g.MW),
+        "wake": g.wake.iloc[0]}), include_groups=False)
+    by_project["first power"] = by_project.index.map(national.set_index("farm").first_power_or_completion_year)
+    return by_project, default
+
+
+def capacity_weighted(projects, column="net_cf", exclude=("Baltic West",)):
+    sel = projects.drop(index=[p for p in exclude if p in projects.index])
+    return float(np.average(sel[column].astype(float), weights=sel.MW.astype(float)))
+
+
+def contracted_cf_grid(assignment, hist, curves, specs, wakes, national, default_wake,
+                       availability=0.95, electrical=0.98, exclude=("Baltic West",)):
+    """Net CF of the contracted pipeline for every combination of wind dataset and power-curve choice."""
+    choices = {"turbine: datasheet": "low", "turbine: midpoint": "mid", "turbine: rotor physics": "high",
+               "IEA 15 MW": "IEA-15-240-RWT", "generic": "generic (extension 1)"}
+    sel = assignment[~assignment.project.isin(exclude)]
+    weights = [national.set_index("farm").capacity_mw[a.project] * a.share_of_project for _, a in sel.iterrows()]
+    grid = {}
+    for label, choice in choices.items():
+        col = {}
+        for source in ["icon_eu", "dmi_harmonie", "era5"]:
+            cfs = []
+            for _, a in sel.iterrows():
+                if choice in ("low", "mid", "high"):
+                    model, curve_set = a.turbine_model, choice
+                else:
+                    model, curve_set = choice, "mid"
+                rated = specs.rated_kw.get(model, 15000)
+                height = a.hub_m if source != "era5" else 100
+                g = gross_capacity_factor(counts_at(hist, a.wind_site, source, height), curves[curve_set][model][0], rated)
+                cfs.append(net_capacity_factor(g, wakes["in the cluster"].get(a.wind_site, default_wake), availability, electrical))
+            col[f"{source} {'hub' if source != 'era5' else '100 m'}"] = np.average(cfs, weights=weights)
+        grid[label] = col
+    return pd.DataFrame(grid)
+
+
+def ses_wind_value(P, cf, price, harvest_rule, investment, start_year=2025):
+    """Run the SES model with wind revenue from capacity factor ``cf``; returns (p_e, present values)."""
+    from ses_model import simulate, present_values
+    Pc = {**P, "pe": price * 8760 * cf * 1000 / 1e6}
+    return Pc["pe"], present_values(simulate(Pc, harvest_rule, investment, start_year=start_year), Pc, terminal=True)
+
+
+def plot_power_curves(curves, specs, speeds=None):
+    """Three panels: power curves with their bands, implied power coefficient, thrust coefficient."""
+    import matplotlib.pyplot as plt
+    from viz import curve_bands
+    v = np.linspace(0, 34, 341) if speeds is None else speeds
+    fig, ax = plt.subplots(1, 3, figsize=(14, 3.8))
+    curve_bands(v, {m: (curves["low"][m][0](v) / 1000, curves["mid"][m][0](v) / 1000, curves["high"][m][0](v) / 1000)
+                    for m in specs.index} | {"generic (extension 1)": (None, curves["mid"]["generic (extension 1)"][0](v) / 1000, None)},
+                ax=ax[0], title="Power curves (band: datasheet → rotor physics)", xlabel="wind speed (m/s)", ylabel="power (MW)")
+    w = v[(v >= 3) & (v <= 15)]
+    for m in specs.index:
+        line, = ax[1].plot(w, implied_cp(curves["high"][m][0], specs.loc[m, "swept_area_m2"], w), label=m)
+        ax[1].plot(w, implied_cp(curves["low"][m][0], specs.loc[m, "swept_area_m2"], w), ls="--", color=line.get_color())
+        ax[2].plot(v, curves["mid"][m][1](v), color=line.get_color())
+    ax[1].axhline(16 / 27, color="k", ls="--", lw=.8); ax[1].text(4, .6, "Betz limit 0.593", fontsize=8)
+    ax[1].set(xlabel="wind speed (m/s)", ylabel="Cp", title="Implied Cp: dashed datasheet, solid rotor", ylim=(0, .65))
+    ax[2].set(xlabel="wind speed (m/s)", ylabel="Ct", title="Thrust coefficient (drives the wakes)")
+    fig.tight_layout()
+    return fig
