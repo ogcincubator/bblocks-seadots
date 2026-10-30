@@ -4,8 +4,8 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
-@prefix ns1: <https://w3id.org/ogc/hosted/seadots/swedish-dt#$> .
-@prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/swedish-dt#$> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -24,17 +24,17 @@
                                 6.58e+01 ;
                             :crs [ a :GeographicCRS ;
                                     csvw:name "WGS 84 (CRS84)" ;
-                                    ns1:schema "https://proj.org/schemas/v0.7/projjson.schema.json" ;
+                                    ns2:schema "https://proj.org/schemas/v0.7/projjson.schema.json" ;
                                     :area "World." ;
                                     :bbox [ :east_longitude 180 ;
                                             :north_latitude 90 ;
                                             :south_latitude -90 ;
                                             :west_longitude -180 ] ;
-                                    :coordinate_system [ :axis [ ns2:unit <file:///github/workspace/degree> ;
+                                    :coordinate_system [ :axis [ ns1:unit <file:///github/workspace/degree> ;
                                                     csvw:name "Geodetic latitude" ;
                                                     :abbreviation "Lat" ;
                                                     :direction "north" ],
-                                                [ ns2:unit <file:///github/workspace/degree> ;
+                                                [ ns1:unit <file:///github/workspace/degree> ;
                                                     csvw:name "Geodetic longitude" ;
                                                     :abbreviation "Lon" ;
                                                     :direction "east" ] ;
@@ -44,14 +44,14 @@
                                             :ellipsoid [ csvw:name "WGS 84" ;
                                                     :inverse_flattening 2.982572e+02 ;
                                                     :semi_major_axis 6378137 ] ;
-                                            :members [ csvw:name "World Geodetic System 1984 (G2296)" ],
+                                            :members [ csvw:name "World Geodetic System 1984 (Transit)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G2139)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G730)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1150)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G1762)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G1674)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G873)" ],
-                                                [ csvw:name "World Geodetic System 1984 (Transit)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1150)" ] ] ;
+                                                [ csvw:name "World Geodetic System 1984 (G730)" ] ] ;
                                     :scope "Not known." ] ;
                             :edges "planar" ;
                             :exampleGeometryGeoJSON [ a <http://www.opengis.net/ont/sf#Polygon> ;
