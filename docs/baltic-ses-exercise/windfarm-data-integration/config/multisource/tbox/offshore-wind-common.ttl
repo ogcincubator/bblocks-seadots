@@ -1,0 +1,105 @@
+@prefix owc: <urn:baltic-ses:owc#> .
+@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
+@prefix sem: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Common TBox for the multi-source wind-farm exercise.
+# It reuses the published SeaDOTs building-block vocabularies wherever a term exists
+# (em: EMODnet wind farm properties, sem: EMODnet status concepts, ses: Polish profile
+# provenance terms) and adds only what no block defines yet: turbine-level properties,
+# planning zones and the link between a source record and the real-world thing it describes.
+# The owc: namespace is local to this exercise (a candidate for a new building block).
+
+<urn:baltic-ses:owc> a owl:Ontology ;
+    dcterms:title "Offshore wind common model (exercise TBox)"@en ;
+    owl:imports <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm> ;
+    rdfs:comment "Classes and properties into which every wind-farm source is translated before projection to a target profile."@en .
+
+# ---------------------------------------------------------------- things in the sea
+owc:WindFarm a owl:Class ; rdfs:subClassOf geo:Feature ;
+    rdfs:label "offshore wind farm"@en ;
+    skos:definition "A wind-farm project as a real-world thing, independent of any one source that describes it."@en .
+
+owc:WindTurbine a owl:Class ; rdfs:subClassOf geo:Feature ;
+    rdfs:label "wind turbine"@en ;
+    skos:definition "One turbine position with its installed (or planned) machine."@en .
+
+owc:OffshoreSubstation a owl:Class ; rdfs:subClassOf geo:Feature ;
+    rdfs:label "offshore substation"@en .
+
+owc:PlanningZone a owl:Class ; rdfs:subClassOf geo:Feature ;
+    rdfs:label "maritime spatial planning zone for offshore wind"@en ;
+    skos:definition "An area designated for offshore wind in a maritime spatial plan (in Poland a PZP basin). It can contain several farms and is not itself a farm."@en .
+
+# ---------------------------------------------------------------- what sources say
+owc:SourceRecord a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "source record"@en ;
+    skos:definition "What one dataset states about one wind farm or zone, expressed in common terms. Records from different sources about the same farm are kept side by side; a projection chooses among them."@en .
+
+owc:describes a owl:ObjectProperty ; rdfs:domain owc:SourceRecord ;
+    rdfs:label "describes"@en ;
+    rdfs:comment "Links a source record to the canonical wind farm or zone it is about. Asserted by the crosswalk, never inferred from names alone."@en .
+
+owc:recordKind a owl:ObjectProperty ; rdfs:domain owc:SourceRecord ; rdfs:range owl:Class ;
+    rdfs:label "kind of thing described"@en .
+
+owc:sourceKey a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "source key"@en ; rdfs:comment "source identifier | record name, used to match crosswalk entries"@en .
+
+owc:hasSourceKey a owl:DatatypeProperty ; rdfs:domain owc:WindFarm ;
+    rdfs:label "has source key"@en ; rdfs:comment "Crosswalk assertion: records with this key describe this farm."@en .
+
+owc:locationKind a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "location kind"@en ; rdfs:comment "point | area | turbine positions | none"@en .
+
+owc:status a owl:ObjectProperty ; rdfs:range skos:Concept ;
+    rdfs:label "project status"@en ;
+    rdfs:comment "One of the SeaDOTs EMODnet status concepts (sem:Planned, sem:Approved, sem:Construction, sem:Production, sem:Dismantled, sem:TestSuite)."@en .
+
+owc:areaKm2 a owl:DatatypeProperty ; rdfs:range xsd:decimal ; qudt:unit unit:KiloM2 ;
+    rdfs:label "area in square kilometres"@en .
+
+owc:withinZone a owl:ObjectProperty ; rdfs:domain owc:WindFarm ; rdfs:range owc:PlanningZone ;
+    rdfs:label "within planning zone"@en .
+
+# ---------------------------------------------------------------- turbine level
+owc:partOfFarm a owl:ObjectProperty ; rdfs:subPropertyOf schema:isPartOf ; rdfs:range owc:WindFarm ;
+    rdfs:label "part of wind farm"@en .
+
+owc:turbineModel a owl:DatatypeProperty ; rdfs:domain owc:WindTurbine ; rdfs:range xsd:string ;
+    rdfs:label "turbine model"@en .
+
+owc:manufacturer a owl:DatatypeProperty ; rdfs:domain owc:WindTurbine ; rdfs:range xsd:string ;
+    rdfs:label "manufacturer"@en .
+
+owc:ratedPowerMW a owl:DatatypeProperty ; rdfs:domain owc:WindTurbine ; rdfs:range xsd:decimal ; qudt:unit unit:MegaW ;
+    rdfs:label "rated power of one turbine (MW)"@en .
+
+owc:rotorDiameterM a owl:DatatypeProperty ; rdfs:domain owc:WindTurbine ; rdfs:range xsd:decimal ; qudt:unit unit:M ;
+    rdfs:label "rotor diameter (m)"@en .
+
+owc:hubHeightM a owl:DatatypeProperty ; rdfs:domain owc:WindTurbine ; rdfs:range xsd:decimal ; qudt:unit unit:M ;
+    rdfs:label "hub height above sea level (m)"@en .
+
+owc:turbineRef a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "turbine position reference"@en ; rdfs:comment "Position label used by the operator, such as 'BK2 A01' or '71'."@en .
+
+owc:operatorName a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "operator as stated by the source"@en .
+
+owc:sourceStatusText a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:label "status text as stated by the source"@en ; rdfs:subPropertyOf ses:statusDetail .
+
+# ---------------------------------------------------------------- reused, documented here for readers
+em:powerMW qudt:unit unit:MegaW .
+em:distanceToCoast qudt:unit unit:M .

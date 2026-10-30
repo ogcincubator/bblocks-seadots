@@ -1,0 +1,23 @@
+# National project list (national-windfarm-source block) -> common records.
+# Bound by the pipeline: ?sourceKey ?dataset ?snapshot
+CONSTRUCT {
+  ?rec a owc:SourceRecord ; owc:recordKind owc:WindFarm ; owc:sourceKey ?key ;
+       schema:name ?name ; em:powerMW ?mw ; owc:status ?status ; owc:sourceStatusText ?detail ;
+       em:year ?year ; ses:yearSemantics "planned first-power or completion year" ;
+       ses:yearIsAssumed ?assumed ; schema:creator ?developer ; owc:locationKind "none" ;
+       dcterms:source ?dataset ; ses:sourceSnapshotDate ?snapshot ; prov:wasDerivedFrom ?f .
+}
+WHERE {
+  ?f geojson:properties ?p .
+  ?p nws:projectName ?name ; nws:reportedCapacityMW ?capacity ; nws:reportedStatusAugust2026 ?detail .
+  OPTIONAL { ?p nws:reportedFirstPowerOrCompletionYear ?year }
+  OPTIONAL { ?p schema:creator ?developer }
+  # the national block context maps the 'source' column to the https form of dcterms:source
+  OPTIONAL { ?p <https://purl.org/dc/terms/source> ?note . BIND(CONTAINS(LCASE(STR(?note)), "assumed") AS ?assumed) }
+  OPTIONAL { VALUES (?prefix ?status) { ("construction" sem:Construction) ("planned" sem:Planned)
+                                        ("production" sem:Production) ("approved" sem:Approved) }
+             FILTER(STRSTARTS(LCASE(STR(?detail)), ?prefix)) }
+  BIND(xsd:decimal(?capacity) AS ?mw)
+  BIND(CONCAT(?sourceKey, "|", STR(?name)) AS ?key)
+  BIND(IRI(CONCAT("urn:baltic-ses:record:", ?sourceKey, ":", ENCODE_FOR_URI(STR(?name)))) AS ?rec)
+}

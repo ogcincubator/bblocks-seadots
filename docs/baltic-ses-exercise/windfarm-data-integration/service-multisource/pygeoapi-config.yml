@@ -1,0 +1,821 @@
+server:
+  bind:
+    host: 127.0.0.1
+    port: 5001
+  url: http://localhost:5001
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  language: en-US
+  limit: 100
+  max_limit: 10000
+  map:
+    url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    attribution: © OpenStreetMap contributors
+logging:
+  level: ERROR
+metadata:
+  identification:
+    title: 'Polish offshore wind: four sources, one model'
+    description: Raw OSM, EMODnet, HubOcean ODP and national records next to their
+      harmonised projection.
+    keywords:
+    - Baltic
+    - offshore wind
+    - linked data
+    keywords_type: theme
+    terms_of_service: https://creativecommons.org/licenses/by/4.0/
+    url: https://github.com/ogcincubator/bblocks-seadots
+  license:
+    name: 'Mixed: see each collection (ODbL for OpenStreetMap-derived data)'
+    url: https://www.openstreetmap.org/copyright
+  provider:
+    name: SeaDOTs
+    url: https://www.sintef.no/projectweb/seadots/
+  contact:
+    name: SeaDOTs
+    url: https://www.sintef.no/projectweb/seadots/
+    role: pointOfContact
+resources:
+  raw-national:
+    type: collection
+    title: RAW · National project list (gramwzielone.pl, 26 Aug 2026)
+    description: 'Source records exactly as fetched on 2026-08-26 (press report; facts
+      compiled by the exercise). f=jsonld applies the source''s own context: the uplift
+      step of the pipeline.'
+    keywords:
+    - raw
+    - national
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://www.gramwzielone.pl/?p=20373718
+    extents: &id001
+      spatial:
+        bbox:
+        - 14.0
+        - 54.0
+        - 19.0
+        - 56.0
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-national.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/national-windfarm-source#
+        geojson: https://purl.org/geojson/vocab#
+        type: '@type'
+        id: '@id'
+        Feature: geojson:Feature
+        geometry: geojson:geometry
+        properties: geojson:properties
+        farm: projectName
+        developer: https://schema.org/creator
+        capacity_mw: reportedCapacityMW
+        status_aug2026: reportedStatusAugust2026
+        first_power_or_completion_year: reportedFirstPowerOrCompletionYear
+        source: https://purl.org/dc/terms/source
+  raw-emodnet-points:
+    type: collection
+    title: RAW · EMODnet Human Activities WFS emodnet:windfarms, Poland
+    description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
+      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+    keywords:
+    - raw
+    - emodnet-wfs
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://ows.emodnet-humanactivities.eu/wfs
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-emodnet-points.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+        dcterms: http://purl.org/dc/terms/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        Point: geojson:Point
+        Polygon: geojson:Polygon
+        MultiPolygon: geojson:MultiPolygon
+        geometry: geojson:geometry
+        coordinates:
+          '@id': geojson:coordinates
+          '@container': '@list'
+        properties: geojson:properties
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        n_turbines: seadots:nTurbines
+        power_mw: seadots:powerMW
+        type_inst: schema:additionalType
+        updateyear: seadots:updateYear
+        year: seadots:year
+        dist_coast: seadots:distanceToCoast
+        notes: dcterms:description
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+      - '@version': 1.1
+        geo: http://www.opengis.net/ont/geosparql#
+        geometry:
+          '@id': geo:hasGeometry
+        wkt:
+          '@id': geo:asWKT
+          '@type': geo:wktLiteral
+  raw-emodnet-zones:
+    type: collection
+    title: RAW · EMODnet Human Activities WFS emodnet:windfarmspoly, Poland
+    description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
+      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+    keywords:
+    - raw
+    - emodnet-wfs-zones
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://ows.emodnet-humanactivities.eu/wfs
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-emodnet-zones.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+        dcterms: http://purl.org/dc/terms/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        Point: geojson:Point
+        Polygon: geojson:Polygon
+        MultiPolygon: geojson:MultiPolygon
+        geometry: geojson:geometry
+        coordinates:
+          '@id': geojson:coordinates
+          '@container': '@list'
+        properties: geojson:properties
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        n_turbines: seadots:nTurbines
+        power_mw: seadots:powerMW
+        type_inst: schema:additionalType
+        updateyear: seadots:updateYear
+        year: seadots:year
+        dist_coast: seadots:distanceToCoast
+        notes: dcterms:description
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+      - '@version': 1.1
+        geo: http://www.opengis.net/ont/geosparql#
+        geometry:
+          '@id': geo:hasGeometry
+        wkt:
+          '@id': geo:asWKT
+          '@type': geo:wktLiteral
+  raw-odp-points:
+    type: collection
+    title: 'RAW · HubOcean Ocean Data Platform: EMODnet wind farms (points), vector
+      tiles'
+    description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
+      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+    keywords:
+    - raw
+    - odp-points
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://app.hubocean.earth/catalog/dataset/421294d9-696e-47a8-9f23-0473d726abab
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-odp-points.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+        dcterms: http://purl.org/dc/terms/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        Point: geojson:Point
+        Polygon: geojson:Polygon
+        MultiPolygon: geojson:MultiPolygon
+        geometry: geojson:geometry
+        coordinates:
+          '@id': geojson:coordinates
+          '@container': '@list'
+        properties: geojson:properties
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        n_turbines: seadots:nTurbines
+        power_mw: seadots:powerMW
+        type_inst: schema:additionalType
+        updateyear: seadots:updateYear
+        year: seadots:year
+        dist_coast: seadots:distanceToCoast
+        notes: dcterms:description
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+      - '@version': 1.1
+        geo: http://www.opengis.net/ont/geosparql#
+        geometry:
+          '@id': geo:hasGeometry
+        wkt:
+          '@id': geo:asWKT
+          '@type': geo:wktLiteral
+  raw-odp-zones:
+    type: collection
+    title: 'RAW · HubOcean Ocean Data Platform: EMODnet wind farms (polygons), vector
+      tiles'
+    description: 'Source records exactly as fetched on 2026-10-30 (EMODnet Open (attribution)).
+      f=jsonld applies the source''s own context: the uplift step of the pipeline.'
+    keywords:
+    - raw
+    - odp-zones
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://app.hubocean.earth/catalog/dataset/8dbcac0b-bdce-4714-ab02-f2aee6c28e85
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-odp-zones.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+        dcterms: http://purl.org/dc/terms/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        Point: geojson:Point
+        Polygon: geojson:Polygon
+        MultiPolygon: geojson:MultiPolygon
+        geometry: geojson:geometry
+        coordinates:
+          '@id': geojson:coordinates
+          '@container': '@list'
+        properties: geojson:properties
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        n_turbines: seadots:nTurbines
+        power_mw: seadots:powerMW
+        type_inst: schema:additionalType
+        updateyear: seadots:updateYear
+        year: seadots:year
+        dist_coast: seadots:distanceToCoast
+        notes: dcterms:description
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+      - '@version': 1.1
+        geo: http://www.opengis.net/ont/geosparql#
+        geometry:
+          '@id': geo:hasGeometry
+        wkt:
+          '@id': geo:asWKT
+          '@type': geo:wktLiteral
+  raw-osm:
+    type: collection
+    title: RAW · OpenStreetMap, offshore Polish Baltic (API 0.6 map call)
+    description: 'Source records exactly as fetched on 2026-10-27 (ODbL 1.0, © OpenStreetMap
+      contributors). f=jsonld applies the source''s own context: the uplift step of
+      the pipeline.'
+    keywords:
+    - raw
+    - osm
+    links:
+    - type: text/html
+      rel: canonical
+      title: source
+      href: https://www.openstreetmap.org
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: GeoJSON
+      data: data/raw-osm.geojson
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': 'https://wiki.openstreetmap.org/wiki/Key:'
+        osmk: 'https://wiki.openstreetmap.org/wiki/Key:'
+        osmr: urn:baltic-ses:osm-raw#
+        geojson: https://purl.org/geojson/vocab#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        properties: geojson:properties
+        tags: '@nest'
+        osm_type: osmr:elementType
+        osm_id: osmr:elementId
+        members:
+          '@id': osmr:member
+          '@container': '@set'
+        generator:method: osmk:generator:method
+        generator:source: osmk:generator:source
+        generator:type: osmk:generator:type
+        generator:output:electricity: osmk:generator:output:electricity
+        rotor:diameter: osmk:rotor:diameter
+        height:hub: osmk:height:hub
+        plant:output:electricity: osmk:plant:output:electricity
+        plant:source: osmk:plant:source
+        plant:type: osmk:plant:type
+        plant:method: osmk:plant:method
+        construction:power: osmk:construction:power
+        seamark:name: osmk:seamark:name
+        seamark:type: osmk:seamark:type
+        seamark:production_area:product: osmk:seamark:production_area:product
+        seamark:platform:category: osmk:seamark:platform:category
+        seamark:landmark:production_area: osmk:seamark:landmark:production_area
+      - '@version': 1.1
+        geo: http://www.opengis.net/ont/geosparql#
+        geometry:
+          '@id': geo:hasGeometry
+        wkt:
+          '@id': geo:asWKT
+          '@type': geo:wktLiteral
+  farms-pl:
+    type: collection
+    title: Wind farms, harmonised (emodnet-compliant-windfarm-pl)
+    description: One record per real-world farm in the published Polish target profile;
+      values chosen by the projection policy.
+    keywords:
+    - harmonised
+    - windfarm
+    links: []
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: windfarm_harmonise.HarmonisedProvider
+      data: farms-pl
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        dcterms: http://purl.org/dc/terms/
+        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        FeatureCollection: geojson:FeatureCollection
+        geometry: geojson:geometry
+        properties: geojson:properties
+        features:
+          '@id': geojson:features
+          '@container': '@set'
+        country:
+          '@id': schema:addressCountry
+          '@type': '@vocab'
+        Poland: http://publications.europa.eu/resource/authority/country/POL
+        n_turbines: em:nTurbines
+        power_mw: em:powerMW
+        status:
+          '@id': https://w3id.org/ogc/hosted/seadots/emodnet/
+          '@type': '@vocab'
+        type_inst: schema:additionalType
+        updateyear: em:updateYear
+        year: em:year
+        dist_coast: em:distanceToCoast
+        notes: dcterms:description
+        name: schema:name
+        developer: schema:creator
+        status_detail: ses:statusDetail
+        status_as_of:
+          '@id': ses:statusAsOf
+          '@type': http://www.w3.org/2001/XMLSchema#date
+        year_semantics: ses:yearSemantics
+        year_is_assumed:
+          '@id': ses:yearIsAssumed
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        source_dataset: ses:sourceDataset
+        source_reference:
+          '@id': ses:sourceReference
+          '@type': '@id'
+        source_snapshot_date:
+          '@id': ses:sourceSnapshotDate
+          '@type': http://www.w3.org/2001/XMLSchema#date
+        source_record_id: ses:sourceRecordId
+        MatchCandidate: ses:MatchCandidate
+        source_record:
+          '@id': ses:sourceRecord
+          '@type': '@id'
+        target_record:
+          '@id': ses:targetRecord
+          '@type': '@id'
+        match_method: ses:matchMethod
+        name_score:
+          '@id': ses:nameSimilarity
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        property_score:
+          '@id': ses:propertyAgreement
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        candidate_rank_score:
+          '@id': ses:candidateRankScore
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        capacity_similarity:
+          '@id': ses:capacitySimilarity
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        capacity_delta_mw:
+          '@id': ses:capacityDifferenceMW
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        status_match:
+          '@id': ses:statusMatch
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        year_match:
+          '@id': ses:yearMatch
+          '@type': http://www.w3.org/2001/XMLSchema#boolean
+        distance_km:
+          '@id': ses:distanceKm
+          '@type': http://www.w3.org/2001/XMLSchema#decimal
+        source_type: ses:sourceType
+        location_status: ses:locationStatus
+        location_method: ses:locationMethod
+        location_reference:
+          '@id': ses:locationReference
+          '@type': '@id'
+        location_emodnet_ids:
+          '@id': ses:locationEmodnetIds
+          '@container': '@set'
+  farms-common:
+    type: collection
+    title: Wind farms, common model with all source records
+    description: Every farm with the records of each source side by side and the source
+      of each chosen value.
+    keywords:
+    - harmonised
+    - windfarm
+    links: []
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: windfarm_harmonise.HarmonisedProvider
+      data: farms-common
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        owc: urn:baltic-ses:owc#
+        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+        sem: https://w3id.org/ogc/hosted/seadots/emodnet/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        prov: http://www.w3.org/ns/prov#
+        dcterms: http://purl.org/dc/terms/
+        xsd: http://www.w3.org/2001/XMLSchema#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        FeatureCollection: geojson:FeatureCollection
+        features:
+          '@id': geojson:features
+          '@container': '@set'
+        properties: geojson:properties
+        geometry: geojson:geometry
+        name: schema:name
+        kind:
+          '@id': '@type'
+          '@type': '@vocab'
+        WindFarm: owc:WindFarm
+        WindTurbine: owc:WindTurbine
+        PlanningZone: owc:PlanningZone
+        power_mw:
+          '@id': em:powerMW
+          '@type': xsd:decimal
+        n_turbines:
+          '@id': em:nTurbines
+          '@type': xsd:integer
+        n_turbines_mapped:
+          '@id': owc:nTurbinesMapped
+          '@type': xsd:integer
+        status:
+          '@id': owc:status
+          '@type': '@vocab'
+        Planned: sem:Planned
+        Approved: sem:Approved
+        Construction: sem:Construction
+        Production: sem:Production
+        year: em:year
+        updateyear: em:updateYear
+        area_km2:
+          '@id': owc:areaKm2
+          '@type': xsd:decimal
+        zones:
+          '@id': owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        farm:
+          '@id': owc:partOfFarm
+          '@type': '@id'
+        farms:
+          '@id': ^owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        ref: owc:turbineRef
+        model: owc:turbineModel
+        manufacturer: owc:manufacturer
+        operator: owc:operatorName
+        rated_power_mw:
+          '@id': owc:ratedPowerMW
+          '@type': xsd:decimal
+        rotor_diameter_m:
+          '@id': owc:rotorDiameterM
+          '@type': xsd:decimal
+        hub_height_m:
+          '@id': owc:hubHeightM
+          '@type': xsd:decimal
+        status_text: owc:sourceStatusText
+        value_sources:
+          '@id': owc:valueSources
+          '@type': '@json'
+        records:
+          '@id': ^owc:describes
+          '@container': '@set'
+        record: '@id'
+        source:
+          '@id': dcterms:source
+          '@type': '@id'
+        source_key: owc:sourceKey
+        derived_from:
+          '@id': prov:wasDerivedFrom
+          '@type': '@id'
+        source_snapshot_date:
+          '@id': ses:sourceSnapshotDate
+          '@type': xsd:date
+        location_kind: owc:locationKind
+  turbines:
+    type: collection
+    title: Wind turbines (common model)
+    description: Turbine positions with model, rotor and hub height, linked to their
+      farm.
+    keywords:
+    - harmonised
+    - windfarm
+    links: []
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: windfarm_harmonise.HarmonisedProvider
+      data: turbines
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        owc: urn:baltic-ses:owc#
+        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+        sem: https://w3id.org/ogc/hosted/seadots/emodnet/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        prov: http://www.w3.org/ns/prov#
+        dcterms: http://purl.org/dc/terms/
+        xsd: http://www.w3.org/2001/XMLSchema#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        FeatureCollection: geojson:FeatureCollection
+        features:
+          '@id': geojson:features
+          '@container': '@set'
+        properties: geojson:properties
+        geometry: geojson:geometry
+        name: schema:name
+        kind:
+          '@id': '@type'
+          '@type': '@vocab'
+        WindFarm: owc:WindFarm
+        WindTurbine: owc:WindTurbine
+        PlanningZone: owc:PlanningZone
+        power_mw:
+          '@id': em:powerMW
+          '@type': xsd:decimal
+        n_turbines:
+          '@id': em:nTurbines
+          '@type': xsd:integer
+        n_turbines_mapped:
+          '@id': owc:nTurbinesMapped
+          '@type': xsd:integer
+        status:
+          '@id': owc:status
+          '@type': '@vocab'
+        Planned: sem:Planned
+        Approved: sem:Approved
+        Construction: sem:Construction
+        Production: sem:Production
+        year: em:year
+        updateyear: em:updateYear
+        area_km2:
+          '@id': owc:areaKm2
+          '@type': xsd:decimal
+        zones:
+          '@id': owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        farm:
+          '@id': owc:partOfFarm
+          '@type': '@id'
+        farms:
+          '@id': ^owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        ref: owc:turbineRef
+        model: owc:turbineModel
+        manufacturer: owc:manufacturer
+        operator: owc:operatorName
+        rated_power_mw:
+          '@id': owc:ratedPowerMW
+          '@type': xsd:decimal
+        rotor_diameter_m:
+          '@id': owc:rotorDiameterM
+          '@type': xsd:decimal
+        hub_height_m:
+          '@id': owc:hubHeightM
+          '@type': xsd:decimal
+        status_text: owc:sourceStatusText
+        value_sources:
+          '@id': owc:valueSources
+          '@type': '@json'
+        records:
+          '@id': ^owc:describes
+          '@container': '@set'
+        record: '@id'
+        source:
+          '@id': dcterms:source
+          '@type': '@id'
+        source_key: owc:sourceKey
+        derived_from:
+          '@id': prov:wasDerivedFrom
+          '@type': '@id'
+        source_snapshot_date:
+          '@id': ses:sourceSnapshotDate
+          '@type': xsd:date
+        location_kind: owc:locationKind
+  zones:
+    type: collection
+    title: Planning zones (common model)
+    description: Maritime spatial planning zones for offshore wind, with the farms
+      they contain.
+    keywords:
+    - harmonised
+    - windfarm
+    links: []
+    extents: *id001
+    itemType: feature
+    providers:
+    - type: feature
+      name: windfarm_harmonise.HarmonisedProvider
+      data: zones
+      id_field: id
+    linked-data:
+      context:
+      - '@version': 1.1
+        owc: urn:baltic-ses:owc#
+        em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+        ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+        sem: https://w3id.org/ogc/hosted/seadots/emodnet/
+        geojson: https://purl.org/geojson/vocab#
+        schema: https://schema.org/
+        prov: http://www.w3.org/ns/prov#
+        dcterms: http://purl.org/dc/terms/
+        xsd: http://www.w3.org/2001/XMLSchema#
+        id: '@id'
+        type: '@type'
+        Feature: geojson:Feature
+        FeatureCollection: geojson:FeatureCollection
+        features:
+          '@id': geojson:features
+          '@container': '@set'
+        properties: geojson:properties
+        geometry: geojson:geometry
+        name: schema:name
+        kind:
+          '@id': '@type'
+          '@type': '@vocab'
+        WindFarm: owc:WindFarm
+        WindTurbine: owc:WindTurbine
+        PlanningZone: owc:PlanningZone
+        power_mw:
+          '@id': em:powerMW
+          '@type': xsd:decimal
+        n_turbines:
+          '@id': em:nTurbines
+          '@type': xsd:integer
+        n_turbines_mapped:
+          '@id': owc:nTurbinesMapped
+          '@type': xsd:integer
+        status:
+          '@id': owc:status
+          '@type': '@vocab'
+        Planned: sem:Planned
+        Approved: sem:Approved
+        Construction: sem:Construction
+        Production: sem:Production
+        year: em:year
+        updateyear: em:updateYear
+        area_km2:
+          '@id': owc:areaKm2
+          '@type': xsd:decimal
+        zones:
+          '@id': owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        farm:
+          '@id': owc:partOfFarm
+          '@type': '@id'
+        farms:
+          '@id': ^owc:withinZone
+          '@type': '@id'
+          '@container': '@set'
+        ref: owc:turbineRef
+        model: owc:turbineModel
+        manufacturer: owc:manufacturer
+        operator: owc:operatorName
+        rated_power_mw:
+          '@id': owc:ratedPowerMW
+          '@type': xsd:decimal
+        rotor_diameter_m:
+          '@id': owc:rotorDiameterM
+          '@type': xsd:decimal
+        hub_height_m:
+          '@id': owc:hubHeightM
+          '@type': xsd:decimal
+        status_text: owc:sourceStatusText
+        value_sources:
+          '@id': owc:valueSources
+          '@type': '@json'
+        records:
+          '@id': ^owc:describes
+          '@container': '@set'
+        record: '@id'
+        source:
+          '@id': dcterms:source
+          '@type': '@id'
+        source_key: owc:sourceKey
+        derived_from:
+          '@id': prov:wasDerivedFrom
+          '@type': '@id'
+        source_snapshot_date:
+          '@id': ses:sourceSnapshotDate
+          '@type': xsd:date
+        location_kind: owc:locationKind

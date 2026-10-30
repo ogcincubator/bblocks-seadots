@@ -1,0 +1,21 @@
+# EMODnet wind-farm points (emodnet-compliant-windfarm block) -> common records.
+# Used unchanged for the EMODnet WFS and for the HubOcean ODP copy: both carry the EMODnet schema.
+CONSTRUCT {
+  ?rec a owc:SourceRecord ; owc:recordKind owc:WindFarm ; owc:sourceKey ?key ;
+       schema:name ?name ; em:powerMW ?mw ; em:nTurbines ?n ; owc:status ?status ; owc:sourceStatusText ?statusText ;
+       em:year ?year ; em:updateYear ?updateyear ; em:distanceToCoast ?dist ; schema:additionalType ?inst ;
+       owc:locationKind "point" ; geo:hasGeometry ?geom ;
+       dcterms:source ?dataset ; ses:sourceSnapshotDate ?snapshot ; prov:wasDerivedFrom ?f .
+  ?geom geo:asWKT ?wkt .
+}
+WHERE {
+  ?f geojson:properties ?p ; geo:hasGeometry ?geom . ?geom geo:asWKT ?wkt .
+  ?p sem:name ?name .
+  OPTIONAL { ?p em:powerMW ?mw0 } OPTIONAL { ?p em:nTurbines ?n0 }
+  OPTIONAL { ?p sem: ?status . BIND(STRAFTER(STR(?status), STR(sem:)) AS ?statusText) }
+  OPTIONAL { ?p em:year ?year } OPTIONAL { ?p em:updateYear ?updateyear }
+  OPTIONAL { ?p em:distanceToCoast ?dist0 } OPTIONAL { ?p schema:additionalType ?inst }
+  BIND(xsd:decimal(?mw0) AS ?mw) BIND(xsd:integer(?n0) AS ?n) BIND(xsd:decimal(?dist0) AS ?dist)
+  BIND(CONCAT(?sourceKey, "|", STR(?name)) AS ?key)
+  BIND(IRI(CONCAT("urn:baltic-ses:record:", ?sourceKey, ":", ENCODE_FOR_URI(STR(?name)))) AS ?rec)
+}

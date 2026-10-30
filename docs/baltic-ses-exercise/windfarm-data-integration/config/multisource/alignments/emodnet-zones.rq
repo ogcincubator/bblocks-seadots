@@ -1,0 +1,17 @@
+# EMODnet wind-farm polygons -> planning-zone records (in Poland these polygons are PZP zones, not farms).
+CONSTRUCT {
+  ?rec a owc:SourceRecord ; owc:recordKind owc:PlanningZone ; owc:sourceKey ?key ;
+       schema:name ?name ; em:powerMW ?mw ; owc:status ?status ; em:updateYear ?updateyear ; owc:areaKm2 ?area ;
+       em:distanceToCoast ?dist ; owc:locationKind "area" ; geo:hasGeometry ?geom ;
+       dcterms:source ?dataset ; ses:sourceSnapshotDate ?snapshot ; prov:wasDerivedFrom ?f .
+  ?geom geo:asWKT ?wkt .
+}
+WHERE {
+  ?f geojson:properties ?p ; geo:hasGeometry ?geom . ?geom geo:asWKT ?wkt .
+  ?p sem:name ?name .
+  OPTIONAL { ?p em:powerMW ?mw0 } OPTIONAL { ?p sem: ?status } OPTIONAL { ?p em:updateYear ?updateyear }
+  OPTIONAL { ?p sem:area_sqkm ?area0 } OPTIONAL { ?p em:distanceToCoast ?dist0 }
+  BIND(xsd:decimal(?mw0) AS ?mw) BIND(xsd:decimal(?area0) AS ?area) BIND(xsd:decimal(?dist0) AS ?dist)
+  BIND(CONCAT(?sourceKey, "|", STR(?name)) AS ?key)
+  BIND(IRI(CONCAT("urn:baltic-ses:record:", ?sourceKey, ":", ENCODE_FOR_URI(STR(?name)))) AS ?rec)
+}

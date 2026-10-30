@@ -1,0 +1,14 @@
+# Crosswalk linking: run over raw + common + crosswalk graphs.
+# Records are linked through explicit source keys; OSM turbines through the farm's declared OSM rules.
+CONSTRUCT { ?record owc:describes ?farm . ?turbine owc:partOfFarm ?tfarm . }
+WHERE {
+  { ?record owc:sourceKey ?k . ?farm owc:hasSourceKey ?k }
+  UNION
+  { ?turbine a owc:WindTurbine ; owc:turbineModel ?m . ?tfarm owc:osmTurbineModel ?m }
+  UNION
+  { ?turbine a owc:WindTurbine ; owc:turbineRef ?r . ?tfarm owc:osmRefPrefix ?pre . FILTER(STRSTARTS(?r, ?pre)) }
+  UNION
+  { ?turbine a owc:WindTurbine ; prov:wasDerivedFrom ?node .
+    ?tfarm owc:osmRelation ?rel . ?rel geojson:properties/osmr:member ?member .
+    FILTER(?member = CONCAT(STRAFTER(STR(?node), "openstreetmap.org/"), ":generator")) }
+}

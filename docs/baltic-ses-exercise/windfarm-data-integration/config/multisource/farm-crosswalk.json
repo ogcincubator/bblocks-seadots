@@ -1,0 +1,11 @@
+{
+  "description": "Which records describe which real-world farm. National-to-EMODnet links are read from ../location-mapping.json (the existing exercise crosswalk). ODP carries the EMODnet records, so an ODP record is linked by its identical EMODnet name. Every EMODnet site not linked to a national project becomes a farm of its own. OSM links are declared here: elements by id, turbines by a rule.",
+  "national_to_emodnet": "../location-mapping.json",
+  "same_name_sources": {"odp-points": "emodnet-wfs", "odp-zones": "emodnet-wfs-zones"},
+  "osm": {
+    "MFW Baltic Power": {"elements": ["way/1532855580", "relation/21402440"], "turbines": {"relation": "relation/21402440"}},
+    "Baltica 2": {"elements": ["way/1560193205"], "turbines": {"model": "SG 14-222 DD"}},
+    "Baltyk 2 + Baltyk 3": {"elements": ["way/1560132096"], "turbines": {"ref_prefix": ["BK2 ", "BK3 "]}},
+    "Baltica 3": {"elements": ["way/1560193204"]}
+  }
+}

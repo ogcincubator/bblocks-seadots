@@ -1,0 +1,19 @@
+# OpenStreetMap wind-turbine nodes -> common turbines (one source, so the entity is built directly).
+CONSTRUCT {
+  ?t a owc:WindTurbine ; owc:turbineModel ?model ; owc:manufacturer ?manufacturer ;
+     owc:rotorDiameterM ?rotor ; owc:hubHeightM ?hub ; owc:ratedPowerMW ?rated ; owc:turbineRef ?ref ;
+     owc:operatorName ?operator ; owc:sourceStatusText ?status ; geo:hasGeometry ?geom ;
+     dcterms:source ?dataset ; ses:sourceSnapshotDate ?snapshot ; prov:wasDerivedFrom ?f .
+  ?geom geo:asWKT ?wkt .
+}
+WHERE {
+  ?f geojson:properties ?p ; geo:hasGeometry ?geom . ?geom geo:asWKT ?wkt .
+  ?p osmk:power "generator" ; osmk:generator:method "wind_turbine" .
+  OPTIONAL { ?p osmk:model ?model } OPTIONAL { ?p osmk:manufacturer ?manufacturer }
+  OPTIONAL { ?p osmk:rotor:diameter ?r0 } OPTIONAL { ?p osmk:height:hub ?h0 }
+  OPTIONAL { ?p osmk:generator:output:electricity ?out . FILTER(STRENDS(?out, " MW")) }
+  OPTIONAL { ?p osmk:ref ?ref } OPTIONAL { ?p osmk:operator ?operator } OPTIONAL { ?p osmk:status ?status }
+  BIND(xsd:decimal(?r0) AS ?rotor) BIND(xsd:decimal(?h0) AS ?hub)
+  BIND(xsd:decimal(STRBEFORE(?out, " MW")) AS ?rated)
+  BIND(IRI(CONCAT("urn:baltic-ses:turbine:osm-", STRAFTER(STR(?f), "node/"))) AS ?t)
+}

@@ -1,0 +1,24 @@
+# OpenStreetMap wind-farm areas (ways) and plant relations -> common farm records.
+CONSTRUCT {
+  ?rec a owc:SourceRecord ; owc:recordKind owc:WindFarm ; owc:sourceKey ?key ;
+       schema:name ?name ; em:powerMW ?mw ; em:nTurbines ?n ; owc:sourceStatusText ?statusText ; owc:status ?status ;
+       owc:operatorName ?operator ; em:year ?start ; owc:locationKind ?kind ; geo:hasGeometry ?geom ;
+       dcterms:source ?dataset ; ses:sourceSnapshotDate ?snapshot ; prov:wasDerivedFrom ?f .
+  ?geom geo:asWKT ?wkt .
+}
+WHERE {
+  ?f geojson:properties ?p .
+  { ?p osmk:industrial "windfarm" } UNION { ?p osmk:construction:power "plant" } UNION { ?p osmk:plant:source "wind" }
+  OPTIONAL { ?f geo:hasGeometry ?geom . ?geom geo:asWKT ?wkt }
+  OPTIONAL { ?p osmk:name ?n1 } OPTIONAL { ?p osmk:seamark:name ?n2 }
+  OPTIONAL { ?p osmk:plant:output:electricity ?out . FILTER(STRENDS(?out, " MW")) }
+  OPTIONAL { ?p osmk:turbines ?n0 } OPTIONAL { ?p osmk:operator ?operator } OPTIONAL { ?p osmk:start_date ?start }
+  OPTIONAL { ?p osmk:status ?statusText }
+  OPTIONAL { ?p osmk:construction:power "plant" . BIND(sem:Construction AS ?status) }
+  BIND(COALESCE(?n1, ?n2) AS ?name)
+  BIND(xsd:decimal(STRBEFORE(?out, " MW")) AS ?mw) BIND(xsd:integer(?n0) AS ?n)
+  BIND(IF(BOUND(?wkt), "area", "none") AS ?kind)
+  BIND(STRAFTER(STR(?f), "openstreetmap.org/") AS ?element)
+  BIND(CONCAT(?sourceKey, "|", ?element) AS ?key)
+  BIND(IRI(CONCAT("urn:baltic-ses:record:", ?sourceKey, ":", ENCODE_FOR_URI(?element))) AS ?rec)
+}

@@ -1,0 +1,82 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owc: <urn:baltic-ses:owc#> .
+@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix sem: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Rules every translated record must satisfy, whichever source it came from.
+
+owc:RecordShape a sh:NodeShape ;
+    sh:targetClass owc:SourceRecord ;
+    sh:property [ sh:path owc:describes ; sh:minCount 1 ; sh:severity sh:Warning ;
+                  sh:message "Record is not linked to any farm or zone: extend the crosswalk." ] ;
+    sh:property [ sh:path prov:wasDerivedFrom ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+                  sh:message "Every record must point back to the raw source feature." ] ;
+    sh:property [ sh:path dcterms:source ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path ses:sourceSnapshotDate ; sh:minCount 1 ] ;
+    sh:property [ sh:path em:powerMW ; sh:maxCount 1 ; sh:datatype xsd:decimal ;
+                  sh:minExclusive 0 ; sh:maxInclusive 6000 ;
+                  sh:message "Capacity must be a positive number of MW below 6 GW (catches unit errors such as kW written as MW)." ] ;
+    sh:property [ sh:path owc:status ; sh:maxCount 1 ;
+                  sh:in ( sem:Planned sem:Approved sem:Construction sem:Production sem:Dismantled sem:TestSuite ) ] .
+
+owc:FarmRecordStatusShape a sh:NodeShape ;
+    sh:targetClass owc:SourceRecord ;
+    sh:property [ sh:path owc:status ; sh:minCount 1 ; sh:severity sh:Info ;
+                  sh:message "No status that maps to the EMODnet vocabulary." ] .
+
+owc:TurbineShape a sh:NodeShape ;
+    sh:targetClass owc:WindTurbine ;
+    sh:property [ sh:path owc:partOfFarm ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Each turbine must belong to exactly one farm." ] ;
+    sh:property [ sh:path geo:hasGeometry ; sh:minCount 1 ] ;
+    sh:property [ sh:path owc:rotorDiameterM ; sh:datatype xsd:decimal ; sh:minInclusive 80 ; sh:maxInclusive 320 ] ;
+    sh:property [ sh:path owc:ratedPowerMW ; sh:minCount 1 ; sh:severity sh:Info ;
+                  sh:message "Turbine has no rated power in the source; it must come from the turbine model's datasheet." ] ;
+    sh:property [ sh:path owc:ratedPowerMW ; sh:datatype xsd:decimal ; sh:minInclusive 2 ; sh:maxInclusive 26 ] ;
+    sh:property [ sh:path owc:hubHeightM ; sh:minCount 1 ; sh:severity sh:Info ;
+                  sh:message "Turbine has no hub height in the source." ] .
+
+# Cross-source consistency: a warning, not an error. Sources may legitimately differ,
+# but a reader of the projected value must be able to see that they do.
+owc:CapacityAgreementShape a sh:NodeShape ;
+    sh:targetClass owc:WindFarm ; sh:severity sh:Warning ;
+    sh:sparql [
+        a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "Sources disagree on capacity by more than 5 %: {?low} MW ({?lowSource}) vs {?high} MW ({?highSource})." ;
+        sh:prefixes [ sh:declare
+            [ sh:prefix "owc" ; sh:namespace "urn:baltic-ses:owc#"^^xsd:anyURI ] ,
+            [ sh:prefix "em" ; sh:namespace "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#"^^xsd:anyURI ] ,
+            [ sh:prefix "dcterms" ; sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ] ] ;
+        sh:select """
+            SELECT $this ?low ?high ?lowSource ?highSource WHERE {
+              { SELECT $this (SUM(?mw) AS ?low) ?lowSource WHERE {
+                  ?r owc:describes $this ; em:powerMW ?mw ; owc:sourceKey ?k . BIND(STRBEFORE(?k, "|") AS ?lowSource) }
+                GROUP BY $this ?lowSource }
+              { SELECT $this (SUM(?mw2) AS ?high) ?highSource WHERE {
+                  ?r2 owc:describes $this ; em:powerMW ?mw2 ; owc:sourceKey ?k2 . BIND(STRBEFORE(?k2, "|") AS ?highSource) }
+                GROUP BY $this ?highSource }
+              FILTER(?high > ?low * 1.05)
+            }""" ] .
+
+owc:TurbineCountShape a sh:NodeShape ;
+    sh:targetClass owc:WindFarm ; sh:severity sh:Warning ;
+    sh:sparql [
+        a sh:SPARQLConstraint ; sh:severity sh:Warning ;
+        sh:message "Reported number of turbines ({?reported}, {?source}) differs from turbines mapped in OSM ({?mapped})." ;
+        sh:prefixes [ sh:declare
+            [ sh:prefix "owc" ; sh:namespace "urn:baltic-ses:owc#"^^xsd:anyURI ] ,
+            [ sh:prefix "em" ; sh:namespace "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#"^^xsd:anyURI ] ] ;
+        sh:select """
+            SELECT $this ?reported ?mapped ?source WHERE {
+              { SELECT $this (COUNT(?t) AS ?mapped) WHERE { ?t owc:partOfFarm $this } GROUP BY $this }
+              { SELECT $this (SUM(?n) AS ?reported) ?source WHERE {
+                  ?r owc:describes $this ; em:nTurbines ?n ; owc:sourceKey ?k . BIND(STRBEFORE(?k, "|") AS ?source) }
+                GROUP BY $this ?source }
+              FILTER(?mapped > 0 && ?reported != ?mapped)
+            }""" ] .

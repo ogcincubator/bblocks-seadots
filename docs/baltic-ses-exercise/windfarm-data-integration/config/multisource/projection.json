@@ -1,0 +1,16 @@
+{
+  "description": "How the common graph is projected to the published target profile emodnet-compliant-windfarm-pl. For every property the first source in the list that has a value wins; the choice is reported per value in the farms-common collection.",
+  "farms": {
+    "name": ["national", "emodnet-wfs", "osm"],
+    "power_mw": ["national", "emodnet-wfs", "odp-points", "osm"],
+    "n_turbines": ["osm-count", "emodnet-wfs", "odp-points", "osm"],
+    "status": ["national", "emodnet-wfs", "odp-points", "osm"],
+    "year": ["national", "emodnet-wfs"],
+    "updateyear": ["emodnet-wfs", "odp-points"],
+    "dist_coast": ["emodnet-wfs", "odp-points"],
+    "type_inst": ["emodnet-wfs"],
+    "developer": ["national"],
+    "geometry": ["osm-turbine-centroid", "emodnet-wfs", "odp-points"]
+  },
+  "zones": {"geometry": ["emodnet-wfs-zones", "odp-zones"], "attributes": ["emodnet-wfs-zones", "odp-zones"]}
+}
