@@ -32,12 +32,6 @@ Simple GeoJSON Feature profile for a polygon delimiting a marine area of interes
 
 GeoJSON FeatureCollection profile for raw IMR / MAREANO Marbunn benthic biomass observation point features across species and cruises. This block preserves individual sample records, while benthic-biomass-density-imr provides the aggregate per-taxon observation derived from those raw features.
 
-### `ogc.hosted.seadots.emodnet-windfarm-source` — EMODnet Human Activities windfarm source snapshot
-
-**Type:** schema
-
-The raw Poland-filtered EMODnet windfarm snapshot used by the Baltic data-integration exercise. Its source properties remain unchanged in the raw collection; a separate translation maps them to the canonical windfarm target block.
-
 ### `ogc.hosted.seadots.geoparquet-header` — GeoParquet Header
 
 **Type:** schema
@@ -158,11 +152,11 @@ Defines the OIM variable and indicator concept model for SEADOTS and ILIAD varia
 
 OGC Feature + OIM Variable profile for the dimensionless time factor C_t in the reef-biomass equation. Encodes the colonisation curve as a closed-form expression (typically a logistic sigmoid) with its parameters plus an evaluated lookup table at discrete time points. Mandatory provenance flags whether the curve parameters are calibrated or illustrative.
 
-### `ogc.hosted.seadots.emodnet-compliant-windfarm` — EMODnet-compliant windfarm
+### `ogc.hosted.seadots.emodnet-compliant-windfarm` — EMODnet windfarm
 
 **Type:** schema
 
-GeoJSON Feature profile aligned to the official EMODnet Human Activities windfarms XSD. It preserves the service's published field names and primitive types for country, turbine count, power output, status, installation type, year fields, distance to coast, and notes.
+GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.
 
 ### `ogc.hosted.seadots.reef-aggregation-index` — Reef Aggregation Index (AF_i)
 
@@ -188,11 +182,17 @@ OGC Feature profile describing per-unit submerged geometry (wetted hull + moorin
 
 Schema profile for OIM/SOSA observations of SEADOTS variables and indicators, including numeric values mapped to observed-property IRIs from the OIM Variables building block.
 
-### `ogc.hosted.seadots.emodnet-compliant-windfarm.baltic-project-extension` — EMODnet windfarm harmonized project extension
+### `ogc.hosted.seadots.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
 
 **Type:** schema
 
-Canonical GeoJSON-LD windfarm feature combining all EMODnet windfarm fields with generic project, national reporting, provenance, and explicit location-crosswalk information. It supports raw EMODnet points and national-source records, including unmapped records with null geometry.
+Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
+
+### `ogc.hosted.seadots.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
+
+**Type:** schema
+
+Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
 
 ### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
 

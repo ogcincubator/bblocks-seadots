@@ -340,13 +340,13 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
         "tabular" ;
     dcterms:title "North Sea cod occurrence table (synthetic)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
     geojson:bbox ( 3e+00 5.6e+01 9e+00 6.1e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -1188,7 +1188,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-data-tabular
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-10-27'
+  dateOfLastChange: '2026-10-28'
 
 ```
 

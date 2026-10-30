@@ -1,0 +1,170 @@
+Validation report for ogc.hosted.seadots.emodnet-compliant-windfarm-no - Norwegian NVE windfarm extension for EMODnet
+Generated 2026-10-28T08:40:23.727386+00:00
+=== Files ===
+Using examples/operational-offshore-wind-farm.json from examples
+JSON-LD context is present - uplifting
+Output JSON-LD example_1_1.jsonld created
+Output Turtle example_1_1.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+
+** Validation error **
+ValidationError: 'name' is a required property
+
+Failed validating 'required' in schema['allOf'][1]['properties']['properties']:
+    {'properties': {'name': {'description': 'Facility name as published by '
+                                            'NVE.',
+                             'type': 'string',
+                             'x-jsonld-id': 'https://schema.org/name'},
+                    'nve_counties': {'items': {'type': 'string'},
+                                     'type': 'array',
+                                     'x-jsonld-container': '@set',
+                                     'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#county'},
+                    'nve_facility_id': {'description': 'Identifier in the '
+                                                       'NVE wind power '
+                                                       'plant facility '
+                                                       'pages.',
+                                        'type': 'string',
+                                        'x-jsonld-id': 'http://purl.org/dc/terms/identifier'},
+                    'nve_licence_status': {'description': 'Original '
+                                                          'Norwegian '
+                                                          'licensing '
+                                                          'status, '
+                                                          'preserved '
+                                                          'without mapping '
+                                                          'to an operating '
+                                                          'status.',
+                                           'type': 'string',
+                                           'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licenceStatus'},
+                    'nve_licensing_case': {'description': 'URI of the NVE '
+                                                          'licensing case '
+                                                          'for this '
+                                                          'facility.',
+                                           'format': 'uri',
+                                           'type': ['string', 'null'],
+                                           'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licensingCase',
+                                           'x-jsonld-type': '@id'},
+                    'nve_mean_annual_production_gwh': {'description': 'Mean '
+                                                                      'annual '
+                                                                      'electrical '
+                                                                      'production '
+                                                                      'reported '
+                                                                      'by '
+                                                                      'NVE, '
+                                                                      'in '
+                                                                      'GWh.',
+                                                       'minimum': 0,
+                                                       'type': ['number',
+                                                                'null'],
+                                                       'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#meanAnnualProductionGWh'},
+                    'nve_municipalities': {'items': {'type': 'string'},
+                                           'type': 'array',
+                                           'x-jsonld-container': '@set',
+                                           'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#municipality'},
+                    'nve_operational_date': {'description': 'Facility '
+                                                            'operation '
+                                                            'date reported '
+                                                            'by NVE, when '
+                                                            'available.',
+                                             'format': 'date',
+                                             'type': ['string', 'null'],
+                                             'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#operationalDate',
+                                             'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#date'},
+                    'nve_owner': {'description': 'Facility owner reported '
+                                                 'by NVE.',
+                                  'type': 'string',
+                                  'x-jsonld-id': 'https://schema.org/owner'},
+                    'nve_price_area': {'description': 'Norwegian '
+                                                      'electricity price '
+                                                      'area as reported by '
+                                                      'NVE.',
+                                       'type': 'string',
+                                       'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#electricityPriceArea'},
+                    'nve_source_record': {'description': 'URI of the NVE '
+                                                         'facility record '
+                                                         'used for this '
+                                                         'feature.',
+                                          'format': 'uri',
+                                          'type': 'string',
+                                          'x-jsonld-id': 'http://www.w3.org/ns/prov#wasDerivedFrom',
+                                          'x-jsonld-type': '@id'},
+                    'nve_turbine_details': {'items': {'additionalProperties': False,
+                                                      'properties': {'commissioning_year': {'type': 'integer',
+                                                                                            'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#commissioningYear'},
+                                                                     'count': {'minimum': 1,
+                                                                               'type': 'integer',
+                                                                               'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#turbineCount'},
+                                                                     'manufacturer': {'type': 'string',
+                                                                                      'x-jsonld-id': 'https://schema.org/manufacturer'},
+                                                                     'model': {'type': 'string',
+                                                                               'x-jsonld-id': 'https://schema.org/model'}},
+                                                      'required': ['manufacturer',
+                                                                   'model',
+                                                                   'count',
+                                                                   'commissioning_year'],
+                                                      'type': 'object'},
+                                            'type': 'array',
+                                            'x-jsonld-container': '@set',
+                                            'x-jsonld-id': 'https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#turbineDetails'}},
+     'required': ['name',
+                  'nve_facility_id',
+                  'nve_licence_status',
+                  'nve_operational_date',
+                  'nve_owner',
+                  'nve_mean_annual_production_gwh',
+                  'nve_price_area',
+                  'nve_turbine_details',
+                  'nve_source_record'],
+     'type': 'object'}
+
+On instance['properties']:
+    {'description': 'Illustrative EMODnet Human Activities contribution '
+                    'record for an operational offshore wind-farm field.',
+     'title': 'North Sea Demonstrator Offshore Wind Farm',
+     'windFarm': {'commissioningDate': '2025-01-01',
+                  'country': 'NL',
+                  'identifier': 'NS-DEMO-01',
+                  'installedCapacityMW': 288,
+                  'lifecycleStatus': 'operational',
+                  'metadataRecord': 'https://example.org/metadata/north-sea-demo-wind-farm',
+                  'name': 'North Sea Demonstrator Offshore Wind Farm',
+                  'operator': 'Example Offshore Energy B.V.',
+                  'positionalAccuracyM': 10,
+                  'remarks': 'Illustrative record; replace all example '
+                             'URLs and values with the authoritative '
+                             'provider data and metadata record before '
+                             'publication.',
+                  'sourceDataset': 'https://example.org/datasets/north-sea-demo-wind-farm.geojson',
+                  'turbineCount': 24,
+                  'updateDate': '2026-07-01',
+                  'validFrom': '2025-01-01'}}
+=== End JSON Schema ===
+
+=== SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - https://www.w3.org/ns/dcat3.ttl
+ - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl
+ - /github/workspace/_sources/emodnet-compliant-windfarm/ontology.ttl
+ - /github/workspace/_sources/emodnet-compliant-windfarm-no/ontology.ttl
+ - https://www.w3.org/ns/dcat2.ttl
+Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
+ - Shape rec:testAllVarsInTemplate: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:FeatureShape: <https://example.org/wind-farms/north-sea-demo-01>
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
+
+=== End SHACL ===
+

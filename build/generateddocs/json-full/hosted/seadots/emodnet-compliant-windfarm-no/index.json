@@ -1,0 +1,111 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm-no",
+  "name": "Norwegian NVE windfarm extension for EMODnet",
+  "abstract": "Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-10-28T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": {
+    "name": "https://data.norge.no/nlod/no/2.0"
+  },
+  "tags": [
+    "EMODnet",
+    "windfarm",
+    "Norway",
+    "NVE",
+    "extension",
+    "GeoJSON"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "NVE wind power plants dataset",
+      "link": "https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk"
+    },
+    {
+      "title": "NVE Sm\u00f8la wind farm record",
+      "link": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591"
+    },
+    {
+      "title": "NVE Sm\u00f8la licensing case",
+      "link": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A"
+    },
+    {
+      "title": "Base EMODnet windfarm block",
+      "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
+    }
+  ],
+  "isProfileOf": [
+    "ogc.hosted.seadots.emodnet-compliant-windfarm"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://datatracker.ietf.org/doc/html/rfc7946"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.api.records.v1.schemas.linkTemplate": [
+      "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ]
+  },
+  "dependsOn": [
+    "ogc.hosted.seadots.emodnet-compliant-windfarm"
+  ],
+  "dateOfLastChange": "2026-10-28",
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/ontology.ttl",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/",
+  "validationPassed": false,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm-no/",
+  "description": "# Norwegian NVE windfarm extension for EMODnet\n\nThis block profiles the [EMODnet windfarm model](../emodnet-compliant-windfarm/)\nfor an example record from the Norwegian Water Resources and Energy Directorate\n(NVE) wind power plant dataset. It demonstrates mapping national fields into the\nshared EMODnet properties while keeping useful Norwegian source details.\n\nThe NVE dataset covers licensed wind power plants and facilities that have been\nor are being processed by NVE. It is a **land-based wind power dataset**. This\nexample therefore shows reuse of the EMODnet windfarm vocabulary for Norwegian\nnational data; it does not claim that the Sm\u00f8la facility is an offshore\nEMODnet record.\n\n## Mapping in the example\n\nThe example uses NVE's Sm\u00f8la facility detail page and its associated licensing\ncase. NVE reports 66 operative turbines, maximum power of 145.8 MW, mean annual\nproduction of 316.9 GWh, the owner, administrative areas, price area, and\nturbine models. These map to EMODnet `n_turbines`, `power_mw`, `status`,\n`country`, and `year` where the source has a comparable value. NVE's original\nlicensing status (`Konsesjon gitt`) is retained separately from the mapped\noperating status (`Production`), since a licence decision and a facility's\noperating state describe different things.\n\nThe NVE facility page provides details but not a GeoJSON geometry. Accordingly,\nthe worked example has `geometry: null`; the NVE windfarm GIS distribution must\nprovide the geometry for a mapped feature. `dist_coast` and `type_inst` are also\nnull because this onshore source does not provide equivalent EMODnet offshore\nvalues.\n\nThe extension fields retain NVE's facility identifier, licence status,\noperational date, owner, counties, municipalities, price area, mean annual\nproduction, turbine details, and links to the facility and licensing records.\n\n## Sources\n\n- [NVE Windkraftverk dataset](https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk)\n- [NVE Sm\u00f8la windfarm details](https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591)\n- [NVE Sm\u00f8la licensing case](https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A)\n",
+  "examples": [
+    {
+      "title": "NVE Sm\u00f8la windfarm mapped to EMODnet with Norwegian source extension",
+      "content": "Worked Norway example. EMODnet properties carry the mapped country, operating status, turbine count, capacity, and year. The extension retains NVE's licensing status, owner, production, administrative areas, and turbine details. The NVE facility has GIS geometry, but it is omitted from this page-derived example and must be taken from the NVE spatial download before using the record as a mapped feature.",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/examples/operational-offshore-wind-farm.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm-no/example_1_1.json",
+          "sizeBytes": 1241,
+          "code": "{\n  \"id\": \"https://example.org/wind-farms/north-sea-demo-01\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [[\n      [4.9000, 54.2000],\n      [4.9800, 54.2000],\n      [4.9800, 54.2600],\n      [4.9000, 54.2600],\n      [4.9000, 54.2000]\n    ]]\n  },\n\n  \"properties\": {\n    \"title\": \"North Sea Demonstrator Offshore Wind Farm\",\n    \"description\": \"Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field.\",\n    \"windFarm\": {\n      \"identifier\": \"NS-DEMO-01\",\n      \"name\": \"North Sea Demonstrator Offshore Wind Farm\",\n      \"country\": \"NL\",\n      \"lifecycleStatus\": \"operational\",\n      \"turbineCount\": 24,\n      \"installedCapacityMW\": 288,\n      \"validFrom\": \"2025-01-01\",\n      \"commissioningDate\": \"2025-01-01\",\n      \"operator\": \"Example Offshore Energy B.V.\",\n      \"sourceDataset\": \"https://example.org/datasets/north-sea-demo-wind-farm.geojson\",\n      \"metadataRecord\": \"https://example.org/metadata/north-sea-demo-wind-farm\",\n      \"updateDate\": \"2026-07-01\",\n      \"positionalAccuracyM\": 10,\n      \"remarks\": \"Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication.\"\n    }\n  }\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm-no/example_1_1.jsonld",
+          "sizeBytes": 1527,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/context.jsonld\",\n  \"id\": \"https://example.org/wind-farms/north-sea-demo-01\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          4.9,\n          54.2\n        ],\n        [\n          4.98,\n          54.2\n        ],\n        [\n          4.98,\n          54.26\n        ],\n        [\n          4.9,\n          54.26\n        ],\n        [\n          4.9,\n          54.2\n        ]\n      ]\n    ]\n  },\n  \"properties\": {\n    \"title\": \"North Sea Demonstrator Offshore Wind Farm\",\n    \"description\": \"Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field.\",\n    \"windFarm\": {\n      \"identifier\": \"NS-DEMO-01\",\n      \"name\": \"North Sea Demonstrator Offshore Wind Farm\",\n      \"country\": \"NL\",\n      \"lifecycleStatus\": \"operational\",\n      \"turbineCount\": 24,\n      \"installedCapacityMW\": 288,\n      \"validFrom\": \"2025-01-01\",\n      \"commissioningDate\": \"2025-01-01\",\n      \"operator\": \"Example Offshore Energy B.V.\",\n      \"sourceDataset\": \"https://example.org/datasets/north-sea-demo-wind-farm.geojson\",\n      \"metadataRecord\": \"https://example.org/metadata/north-sea-demo-wind-farm\",\n      \"updateDate\": \"2026-07-01\",\n      \"positionalAccuracyM\": 10,\n      \"remarks\": \"Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication.\"\n    }\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/emodnet-compliant-windfarm-no/example_1_1.ttl",
+          "sizeBytes": 1936,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;\n    geojson:geometry [ a geojson:Polygon ;\n            geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;\n    geojson:properties [ seadots-emodnet:description \"Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field.\" ;\n            seadots-emodnet:title \"North Sea Demonstrator Offshore Wind Farm\" ;\n            seadots-emodnet:windFarm [ schema:addressCountry seadots-emodnet:NL ;\n                    schema:name \"North Sea Demonstrator Offshore Wind Farm\" ;\n                    seadots-emodnet:commissioningDate \"2025-01-01\" ;\n                    seadots-emodnet:identifier \"NS-DEMO-01\" ;\n                    seadots-emodnet:installedCapacityMW 288 ;\n                    seadots-emodnet:lifecycleStatus \"operational\" ;\n                    seadots-emodnet:metadataRecord \"https://example.org/metadata/north-sea-demo-wind-farm\" ;\n                    seadots-emodnet:operator \"Example Offshore Energy B.V.\" ;\n                    seadots-emodnet:positionalAccuracyM 10 ;\n                    seadots-emodnet:remarks \"Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication.\" ;\n                    seadots-emodnet:sourceDataset \"https://example.org/datasets/north-sea-demo-wind-farm.geojson\" ;\n                    seadots-emodnet:turbineCount 24 ;\n                    seadots-emodnet:updateDate \"2026-07-01\" ;\n                    seadots-emodnet:validFrom \"2025-01-01\" ] ] .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: Norwegian NVE windfarm extension for EMODnet\ndescription: EMODnet windfarm feature extended with fields from the Norwegian NVE\n  wind power plant dataset. NVE licensing status and facility details remain available\n  alongside the mapped EMODnet attributes.\nallOf:\n- $ref: https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml\n- type: object\n  required:\n  - properties\n  properties:\n    properties:\n      type: object\n      required:\n      - name\n      - nve_facility_id\n      - nve_licence_status\n      - nve_operational_date\n      - nve_owner\n      - nve_mean_annual_production_gwh\n      - nve_price_area\n      - nve_turbine_details\n      - nve_source_record\n      properties:\n        name:\n          type: string\n          description: Facility name as published by NVE.\n          x-jsonld-id: https://schema.org/name\n        nve_facility_id:\n          type: string\n          description: Identifier in the NVE wind power plant facility pages.\n          x-jsonld-id: http://purl.org/dc/terms/identifier\n        nve_licence_status:\n          type: string\n          description: Original Norwegian licensing status, preserved without mapping\n            to an operating status.\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licenceStatus\n        nve_operational_date:\n          type:\n          - string\n          - 'null'\n          format: date\n          description: Facility operation date reported by NVE, when available.\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#operationalDate\n          x-jsonld-type: http://www.w3.org/2001/XMLSchema#date\n        nve_owner:\n          type: string\n          description: Facility owner reported by NVE.\n          x-jsonld-id: https://schema.org/owner\n        nve_counties:\n          type: array\n          items:\n            type: string\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#county\n          x-jsonld-container: '@set'\n        nve_municipalities:\n          type: array\n          items:\n            type: string\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#municipality\n          x-jsonld-container: '@set'\n        nve_mean_annual_production_gwh:\n          type:\n          - number\n          - 'null'\n          minimum: 0\n          description: Mean annual electrical production reported by NVE, in GWh.\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#meanAnnualProductionGWh\n        nve_price_area:\n          type: string\n          description: Norwegian electricity price area as reported by NVE.\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#electricityPriceArea\n        nve_turbine_details:\n          type: array\n          items:\n            type: object\n            required:\n            - manufacturer\n            - model\n            - count\n            - commissioning_year\n            properties:\n              manufacturer:\n                type: string\n                x-jsonld-id: https://schema.org/manufacturer\n              model:\n                type: string\n                x-jsonld-id: https://schema.org/model\n              count:\n                type: integer\n                minimum: 1\n                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#turbineCount\n              commissioning_year:\n                type: integer\n                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#commissioningYear\n            additionalProperties: false\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#turbineDetails\n          x-jsonld-container: '@set'\n        nve_source_record:\n          type: string\n          format: uri\n          description: URI of the NVE facility record used for this feature.\n          x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom\n          x-jsonld-type: '@id'\n        nve_licensing_case:\n          type:\n          - string\n          - 'null'\n          format: uri\n          description: URI of the NVE licensing case for this facility.\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licensingCase\n          x-jsonld-type: '@id'\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#\nx-jsonld-prefixes:\n  schema: https://schema.org/\n  dcterms: http://purl.org/dc/terms/\n  nve: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#\n  prov: http://www.w3.org/ns/prov#\n  em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#\nx-bblocks-metadata:\n  itemIdentifier: ogc.hosted.seadots.emodnet-compliant-windfarm-no\n  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-10-28'\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/emodnet-compliant-windfarm-no"
+}

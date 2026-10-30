@@ -24,10 +24,18 @@
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
             oa:hasTarget <https://osmose-model.org/> ],
+        [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
         [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
+        [ rdfs:label "OSMOSE source code (GitHub)" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://github.com/osmose-model/osmose> ],
         [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
@@ -35,15 +43,7 @@
         [ rdfs:label "OSMOSE ODD Protocol description document" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://osmose-model.org/documentation/odd> ],
-        [ rdfs:label "OSMOSE source code (GitHub)" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://github.com/osmose-model/osmose> ],
-        [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ] ;
+            oa:hasTarget <https://osmose-model.org/documentation/odd> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -383,14 +383,14 @@ SSR-based (Beverton-Holt):
             rec:scheme "url" ],
         [ rec:id "https://github.com/osmose-model/osmose" ;
             rec:scheme "github" ] ;
-    rec:themes [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ],
-                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ] ;
-            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ],
-        [ thns:concepts [ thns:id "fish-community"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "fish-community"^^xsd:string ],
                 [ thns:id "size-based-predation"^^xsd:string ],
-                [ thns:id "individual-based-model"^^xsd:string ],
                 [ thns:id "end-to-end-model"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
                 [ thns:id "multispecies-model"^^xsd:string ],
                 [ thns:id "marine-ecosystem"^^xsd:string ] ;
-            thns:scheme "https://vocabularies.osmose-model.org/" ] .
+            thns:scheme "https://vocabularies.osmose-model.org/" ],
+        [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ],
+                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ] ;
+            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ] .
 
