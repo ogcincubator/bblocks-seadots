@@ -224,13 +224,13 @@ dataset. No source properties are intentionally dropped.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Evaluate a deterministic biomass equation over the AOI and taxon-specific parameters." ;
     dcterms:title "Utsira reef-effect biomass workflow" ;
-    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ],
-        [ rdfs:label "Reef-effect application package" ;
+    rdfs:seeAlso [ rdfs:label "Reef-effect application package" ;
             dcterms:format "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-application-package/examples/application-package.json> ],
+        [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow> ] ;
     dcat:keyword "digital-twin",
         "offshore-wind",
         "open-science" ;
@@ -239,18 +239,18 @@ dataset. No source properties are intentionally dropped.
     schema:applicationCategory "DigitalTwinApplication" ;
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.1.0" ;
-    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+            dcterms:description "Optional baseline benthic biomass-density input profile." ;
+            seadots:required false ;
+            seadots:role "benthic-biomass-density" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
             dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
             seadots:required true ;
             seadots:role "area-of-interest" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
             seadots:required true ;
-            seadots:role "input" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
-            dcterms:description "Optional baseline benthic biomass-density input profile." ;
-            seadots:required false ;
-            seadots:role "benthic-biomass-density" ] ;
+            seadots:role "input" ] ;
     apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
             dcterms:description "Structured reef-effect biomass output record." ;
             seadots:required true ;
