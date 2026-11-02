@@ -529,12 +529,28 @@ The `provenance` output is a PROV-O record linking the run to the six per-class 
         <https://ogcincubator.github.io/bblocks-openscience/bblock/ogc.osc.api-profiles.processes.ospd> ;
     dct:title "Utsira reef-biomass calculator" ;
     ogcapi-proc:id "utsira-reef-biomass" ;
-    ogcapi-proc:input [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure/schema.json> ;
+    ogcapi-proc:input [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/schema.json> ;
+                    seadots:contentMediaType "application/json" ] ;
+            dct:description "Fallback baseline used where the primary baseline has no coverage; also supplies sigma_kg_m2 for uncertainty propagation." ;
+            dct:title "Fallback benthic biomass density (IMR)" ;
+            ogcapi-proc:additionalParameters [ seadots:parameters [ seadots:name "equationBinding" ;
+                            seadots:value "D_{pre,i}" ] ] ;
+            proc:maxOccurs 1 ;
+            proc:minOccurs 0 ],
+        [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/floating-wind-infrastructure/schema.json> ;
                     seadots:contentMediaType "application/json" ] ;
             dct:description "Submerged-area description bound to the equation symbol A_sub." ;
             dct:title "Floating wind infrastructure" ;
             ogcapi-proc:additionalParameters [ seadots:parameters [ seadots:name "equationBinding" ;
                             seadots:value "A_{sub}" ] ] ;
+            proc:maxOccurs 1 ;
+            proc:minOccurs 1 ],
+        [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/schema.json> ;
+                    seadots:contentMediaType "application/json" ] ;
+            dct:description "Per-taxon pre-existing density bound to the equation symbol D_pre,i." ;
+            dct:title "Primary benthic biomass density (MAREANO)" ;
+            ogcapi-proc:additionalParameters [ seadots:parameters [ seadots:name "equationBinding" ;
+                            seadots:value "D_{pre,i}" ] ] ;
             proc:maxOccurs 1 ;
             proc:minOccurs 1 ],
         [ dct:conformsTo [ dct:format "integer" ;
@@ -560,38 +576,22 @@ The `provenance` output is a PROV-O record linking the run to the six per-class 
                             seadots:value "AF_i" ] ] ;
             proc:maxOccurs 1 ;
             proc:minOccurs 1 ],
-        [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/schema.json> ;
-                    seadots:contentMediaType "application/json" ] ;
-            dct:description "Per-taxon pre-existing density bound to the equation symbol D_pre,i." ;
-            dct:title "Primary benthic biomass density (MAREANO)" ;
-            ogcapi-proc:additionalParameters [ seadots:parameters [ seadots:name "equationBinding" ;
-                            seadots:value "D_{pre,i}" ] ] ;
-            proc:maxOccurs 1 ;
-            proc:minOccurs 1 ],
         [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/area-of-interest/schema.json> ;
                     seadots:contentMediaType "application/json" ] ;
             dct:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
             dct:title "Area of interest" ;
             proc:maxOccurs 1 ;
-            proc:minOccurs 1 ],
-        [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/schema.json> ;
-                    seadots:contentMediaType "application/json" ] ;
-            dct:description "Fallback baseline used where the primary baseline has no coverage; also supplies sigma_kg_m2 for uncertainty propagation." ;
-            dct:title "Fallback benthic biomass density (IMR)" ;
-            ogcapi-proc:additionalParameters [ seadots:parameters [ seadots:name "equationBinding" ;
-                            seadots:value "D_{pre,i}" ] ] ;
-            proc:maxOccurs 1 ;
-            proc:minOccurs 0 ] ;
+            proc:minOccurs 1 ] ;
     ogcapi-proc:jobControlOptions "async-execute",
         "sync-execute" ;
-    ogcapi-proc:output [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/reef-effect-output/schema.json> ;
-                    seadots:contentMediaType "application/json" ] ;
-            dct:description "Reef-effect-output record carrying headline B_reef(t), per-taxon contributions, time series, and uncertainty propagation." ;
-            dct:title "Reef-associated biomass — structured result" ],
-        [ dct:conformsTo [ dct:format "object" ;
+    ogcapi-proc:output [ dct:conformsTo [ dct:format "object" ;
                     seadots:contentMediaType "application/ld+json" ] ;
             dct:description "PROV-O record linking the run to its six input records, the equation record, and the ODD record." ;
-            dct:title "PROV-O provenance (JSON-LD)" ] ;
+            dct:title "PROV-O provenance (JSON-LD)" ],
+        [ dct:conformsTo [ proc:ref <https://w3id.org/ogc/hosted/seadots/reef-effect-output/schema.json> ;
+                    seadots:contentMediaType "application/json" ] ;
+            dct:description "Reef-effect-output record carrying headline B_reef(t), per-taxon contributions, time series, and uncertainty propagation." ;
+            dct:title "Reef-associated biomass — structured result" ] ;
     ogcapi-proc:outputTransmission "reference",
         "value" ;
     dcat:keyword "SeaDOTs",

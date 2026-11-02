@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.reef-aggregation-index - Reef Aggregation Index (AF_i)",
   "bblockName": "Reef Aggregation Index (AF_i)",
   "bblockId": "ogc.hosted.seadots.reef-aggregation-index",
-  "generated": "2026-10-30T11:06:22.712973+00:00",
+  "generated": "2026-10-30T11:43:15.414345+00:00",
   "result": true,
   "items": [
     {
@@ -64,7 +64,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat2.ttl\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/dcat2.ttl"
             },
             {
               "op": "shacl-report",
@@ -93,12 +93,7 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:FeatureShape": {
-                  "nodes": [
-                    "<https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings>"
-                  ]
-                },
-                "geojson:LinkShape": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
@@ -107,12 +102,17 @@
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings>"
+                  ]
+                },
+                "geojson:LinkShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings>\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings>\n - Shape geojson:LinkShape: *none*\n"
             }
           ]
         }
