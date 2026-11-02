@@ -45,7 +45,31 @@ em:distanceToCoast
     rdfs:comment "Distance from the windfarm location to the coast, expressed in metres."@en ;
     rdfs:range xsd:decimal .
 
-### 1. Definicja Konceptów Lokalnego Słownika EMODnet
+em:shapeLength
+    a rdf:Property ;
+    rdfs:label "shape length"@en ;
+    rdfs:comment "The length of the windfarm's shape, expressed in metres."@en ;
+    rdfs:range xsd:decimal .
+
+em:shapeArea
+    a rdf:Property ;
+    rdfs:label "shape area"@en ;
+    rdfs:comment "The area of the windfarm's shape, expressed in square metres."@en ;
+    rdfs:range xsd:decimal .
+
+em:areaSqKm
+    a rdf:Property ;
+    rdfs:label "area in square kilometres"@en ;
+    rdfs:comment "The area of the windfarm's shape, expressed in square kilometres."@en ;
+    rdfs:range xsd:decimal .
+
+em:windfarmName
+    a rdf:Property ;
+    rdfs:label "windfarm name"@en ;
+    rdfs:comment "The name of the windfarm, as reported by the source."@en ;
+    rdfs:range xsd:string .
+
+### 1. Definiiton of concepts in local EMODNet vocabulary
 seadots-emodnet:Planned
     a skos:Concept ;
     rdfs:label "Planned"@en, "Planowana"@pl ;

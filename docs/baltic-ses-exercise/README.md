@@ -27,6 +27,7 @@ power curves for the V236-15.0 MW, SG 14-222 DD and SG 14-236 DD bracketed betwe
 rotor-physics reconstruction (no manufacturer curves are public; the IEA 15 MW reference curve gives the shape);
 Jensen wake losses on the real layouts, alone and as a cluster; the resulting net capacity factor goes into the SES model.
 Every calculation step is a function in `ses_production.py`; maps and charts come from `viz.py`. Bundled data are histograms, so it runs offline (`LIVE = False`).
+The final notebook cell writes `outputs/production/baltic-production.gpkg` (turbine locations and farm-level model results), scenario/sensitivity CSVs, and one STAC result Item. That Item embeds the full ODD Protocol description and links to every input dataset, code source, and output. The GeoPackage is the portable GIS product; CDB is unnecessary for this exercise's small, inspectable output.
 
 ## Separate data integration exercise: `windfarm-data-integration/`
 Compare the national and EMODnet windfarm source collections with a harmonized pygeoapi/JSON-LD service. The exercise includes source and target Building Blocks, explicit field translations, and a location crosswalk for national records that have no coordinates. See [the exercise guide](windfarm-data-integration/README.md).
@@ -39,6 +40,7 @@ A second notebook there, `windfarm_sources_to_ogcapi.ipynb`, compares OpenStreet
 - `ses_model.py` - shared SES equations, calibration transformations, scenario rules, and present-value calculations; it does not load calibration datasets
 - `baltic_ses_production_extension.ipynb` - extension 2: turbines, hub-height wind and wakes (executed)
 - `ses_production.py` - power-curve reconstructions, capacity factors, the Jensen wake model, and one function per analysis step of extension 2
+- `ses_product.py` - packages the production-extension results as GeoPackage and CSV assets with one ODD-described STAC result Item
 - `viz.py` - standard map and chart functions (geopandas/folium `explore`, static `plot_layers`, heat maps, profiles, wind roses) taking GeoDataFrames, GeoJSON, GeoParquet or DataFrames
 - `requirements.txt` - Python packages for all notebooks
 - `data/osm_polish_offshore_wind_2026-10-27.geojson` - raw OpenStreetMap response: 283 turbines, 4 substations, farm areas (ODbL 1.0)

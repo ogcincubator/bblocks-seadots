@@ -1,0 +1,281 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "stac_extensions": [],
+  "id": "baltic-ses-production-20261101T105329Z",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          17.311847,
+          54.953732
+        ],
+        [
+          17.292501,
+          54.957068
+        ],
+        [
+          16.936386,
+          55.037346
+        ],
+        [
+          16.84783,
+          55.066841
+        ],
+        [
+          16.825374,
+          55.076584
+        ],
+        [
+          16.803137,
+          55.086865
+        ],
+        [
+          16.7776,
+          55.108004
+        ],
+        [
+          16.816035,
+          55.121208
+        ],
+        [
+          16.855997,
+          55.12346
+        ],
+        [
+          16.937141,
+          55.127815
+        ],
+        [
+          17.724589,
+          55.109811
+        ],
+        [
+          17.769843,
+          55.108576
+        ],
+        [
+          17.771604,
+          55.098788
+        ],
+        [
+          17.76571,
+          55.088551
+        ],
+        [
+          17.708956,
+          55.005267
+        ],
+        [
+          17.58752,
+          54.982886
+        ],
+        [
+          17.565519,
+          54.980271
+        ],
+        [
+          17.311847,
+          54.953732
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    16.7776,
+    54.953732,
+    17.771604,
+    55.127815
+  ],
+  "properties": {
+    "title": "Baltic SES offshore-wind production model output",
+    "description": "ODD Protocol model description — Overview, Design concepts and Details.\n\nPURPOSE: Estimate turbine- and farm-level offshore wind energy production for the Polish Baltic project pipeline, account for wake losses, and pass the capacity-weighted capacity factor into the coupled fishery–wind–public model to compare present values.\n\nPATTERNS: ICES sprat stock history: ICES SSB, catches and recruitment time series used to fit the logistic surplus-production curve. Reference: https://www.ices.dk/data/data-portals/Pages/Stock-Assessment-Graphs.aspx Mapped wind turbine layouts: OSM locations and turbine tags for mapped projects; layout geometry determines directional Jensen wake losses. Reference: https://www.openstreetmap.org/copyright\n\nENTITIES: Offshore wind turbine (agent): location [WGS 84]: OpenStreetMap turbine foundation location.; ratedPower [MW]: Turbine rated electrical power.; grossCapacityFactor [1]: Energy yield before wakes, availability and electrical losses.; wakeEfficiency [1]: Energy remaining after modeled wake losses.; netCapacityFactor [1]: Capacity factor after wake, availability and electrical losses. Scales: individual turbine points and farm clusters in the Polish Baltic Sea; annual model inputs and 2025–2050 SES horizon. Sprat stock and fishery (resource): SSB [Mt]: Spawning-stock biomass, converted from ICES tonnes.; catch [Mt yr-1]: Annual catch, converted from ICES tonnes. Scales: ICES spr.27.22-32 stock area; annual; calibrated on 1974 onward data.\n\nPROCESS OVERVIEW: Deterministic annual SES simulation; wind-resource and wake calculations are deterministic aggregations over supplied histograms and turbine layouts. Reconstruct turbine layouts: Select generator nodes from OSM and assign them to wind sites with explicit reference/relation/model rules. Estimate wind production: Apply reconstructed power curves to wind-speed histograms at turbine hub height to estimate gross capacity factors. Estimate wakes and net output: Use directional wind roses and Jensen/Park wake geometry, then multiply by availability and electrical efficiency. Run coupled SES model: Feed contracted-pipeline capacity-weighted capacity factor and investment path into the fishery, wind-benefit and passive-use model; calculate discounted present values.\n\nDESIGN CONCEPTS: basicPrinciples: Logistic surplus production for fish stock; wind power curves applied to hourly-frequency histograms; Jensen/Park engineering wake model; capacity-factor weighted energy and discounted SES benefits. emergence: Farm output and cluster losses emerge from turbine locations, turbine specifications, wind distributions and directional interactions. adaptation: None. Turbines, fisheries rule and investment pathway do not adapt during a run. objectives: Compare discounted wind, fishery and passive-use benefits under the contracted wind pipeline and harvest rule. learning: None. prediction: No forecasting by agents; supplied wind histograms represent 2020–2025 weather-model periods and are used as production climatologies. sensing: No agents sense the environment. interaction: Turbines interact through directional wakes; wind investment affects fish growth and fishing costs in the coupled SES equations. stochasticity: None within a run. Uncertainty is explored through alternative wind datasets and power-curve reconstructions. collectives: Turbines are grouped by wind site and national project; mapped sites form a cluster for wake analysis. observation: GeoPackage turbine and farm layers; layout, gross/net capacity-factor tables; scenario present values; capacity-factor and present-value sensitivity tables.\n\nINITIALIZATION: The fish stock starts from the 2025 ICES assessment state; investment follows the contracted Polish offshore pipeline, excluding Baltic West. Turbine positions and specifications come from the bundled OSM snapshot, assignment table and turbine-specification table.\n\nINPUT DATA: ICES sprat assessment summary, 2025 (../../data/ices_sprat_spr.27.22-32_2025_summary.csv): Columns Year, SSB, Catches, Recruitment and assessment ranges; Year selects the annual sequence, SSB and Catches are divided by 1,000,000 to Mt for the stock equation and growth fit. ICES sprat reference points, 2025 (../../data/ices_sprat_spr.27.22-32_2025_refpoints.csv): Columns StockKeyLabel, AssessmentKey, AssessmentYear, Blim, Bpa, MSYBtrigger, FMSY and Fpa; biomass reference points are converted from tonnes to Mt and feed the ICES harvest rule. Economic inputs (../../data/economic_inputs.csv): Columns parameter, value, unit, status, source; parameter/value supply fish price and costs, wind auction price, discount rate, and SES benefit parameters. Status distinguishes DATA from ASSUMPTION; source records provenance. Polish offshore wind pipeline (../../data/polish_offshore_wind_pipeline.csv): Columns farm, developer, capacity_mw, status_aug2026, first_power_or_completion_year, source; capacity and timing define the contracted investment path and capacity weights. Baltic West is excluded from that path. Farm and turbine assignment (../../data/farm_turbine_assignment.csv): Columns project, wind_site, share_of_project, turbine_model, unit_mw, hub_m, layout, status, note; assigns sites to projects and sets turbine/hub-height inputs. Turbine specifications (../../data/turbine_specs.csv): Columns model, manufacturer, rated_kw, rotor_d_m, swept_area_m2, cut_in_ms, rated_speed_ms, cut_out_ms, power_curve, status, source; defines turbine power/thrust curve bounds and rotor geometry. OpenStreetMap offshore wind features (../../data/osm_polish_offshore_wind_2026-10-27.geojson): Feature properties osm_type, osm_id, tags, members and geometry; selects power=generator nodes, using model, rotor:diameter, height:hub, ref and relation membership to assign turbines and calculate wakes. ODbL 1.0. Wind-speed histograms by height (../../data/wind_speed_hist_by_height_2023-2025.csv): Columns site, lon, lat, source, height_m, n_hours, mean_ms, counts_0_to_30ms; each count is hours in a 1 m/s speed bin, by source (ICON-EU, DMI HARMONIE-AROME, ERA5), height and site. Drives gross production. ICON-EU hub-height wind roses (../../data/wind_rose_hubheight_icon_eu_2023-2025.csv): Columns site, source, height_m, sector_deg, counts_0_to_30ms; binned hours by wind direction and speed at hub height, used for directional Jensen wake losses. IEA 15 MW reference power curve (../../data/iea15mw_reference_power_curve.csv): Columns wind_speed_ms, power_kw, cp, thrust_kn, ct; supplies reference curve shape for commercial turbine curve reconstructions.\n\nOUTPUT DATA: Baltic production GeoPackage (baltic-production.gpkg): Turbine point layer with modeled wake and capacity-factor attributes, and farm MultiPoint layer with model output. Scenario and sensitivity tables (scenario_present_values.csv): Present-value comparisons, gross capacity factors, and capacity-factor/PV sensitivity grids.\n\nSUBMODELS: Wind production and wakes. Equation: CF_gross = sum_bin(hours_bin × power(speed_bin)) / (sum_bin(hours_bin) × rated_power); wake deficit follows Jensen/Park geometry; CF_net = CF_gross × wake_efficiency × availability × electrical_efficiency. Parameterization: Power curves are bounded reconstructions anchored to the IEA 15 MW reference curve and commercial turbine specifications. Jensen wake decay k=0.04; availability=0.95; electrical efficiency=0.98. Wind distributions are bundled ICON-EU/DMI HARMONIE-AROME/ERA5 histograms and ICON-EU direction roses. Baltic West receives a proxy average modeled wake efficiency because no turbine layout is assigned. This run's capacity-weighted CF for the contracted pipeline is 0.4645. References: ../../ses_production.py Coupled fishery–wind–public SES. Equation: G(x,w)=(alpha-epsilon_1*w)*x-beta*x^2; x_(t+1)=x_t+G(x_t,w_t)-q_t; w_(t+1)=w_t+I_(w,t)-delta*w_t; PV=sum_t (b_f+b_w+b_p)_t/(1+r)^(t+1). Parameterization: Fish growth is fitted to ICES 2025 sprat SSB and catch data. Harvest follows ICES reference points. Investment follows the national contracted pipeline excluding Baltic West. Economic values and their status/source are in economic_inputs.csv. The extension capacity factor is capacity weighted over the contracted projects; compare the notebook scenario table for present values. References: ../../ses_model.py\n\nPROVENANCE AND LICENSING: Source licenses vary by dataset; OpenStreetMap-derived geometry is ODbL 1.0. The linked assets contain every input snapshot, spatial model output, scenario result and sensitivity table for this run.",
+    "datetime": "2026-11-01T10:53:29+00:00",
+    "start_datetime": "2020-01-01T00:00:00Z",
+    "end_datetime": "2050-12-31T23:59:59Z",
+    "license": "various"
+  },
+  "assets": {
+    "data": {
+      "href": "baltic-production.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Spatial turbine and farm model outputs",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "scenario_results": {
+      "href": "scenario_present_values.csv",
+      "type": "text/csv",
+      "title": "Scenario present-value comparison",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "capacity_factor_sensitivity": {
+      "href": "capacity_factor_sensitivity.csv",
+      "type": "text/csv",
+      "title": "Capacity-factor sensitivity grid",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "wind_pv_sensitivity": {
+      "href": "wind_present_value_sensitivity.csv",
+      "type": "text/csv",
+      "title": "Wind present-value sensitivity grid",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "gross_capacity_factors": {
+      "href": "gross_capacity_factors.csv",
+      "type": "text/csv",
+      "title": "Gross capacity factors by site and curve/wind dataset",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "layout_summary": {
+      "href": "layout_summary.csv",
+      "type": "text/csv",
+      "title": "Turbine layout and reported capacity comparison",
+      "roles": [
+        "data",
+        "result"
+      ]
+    },
+    "input_ices_sprat_spr_27_22_32_2025_summary": {
+      "href": "../../data/ices_sprat_spr.27.22-32_2025_summary.csv",
+      "type": "text/csv",
+      "title": "ices_sprat_spr.27.22-32_2025_summary.csv",
+      "description": "Columns Year, SSB, Catches, Recruitment and assessment ranges; Year selects the annual sequence, SSB and Catches are divided by 1,000,000 to Mt for the stock equation and growth fit.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_ices_sprat_spr_27_22_32_2025_refpoints": {
+      "href": "../../data/ices_sprat_spr.27.22-32_2025_refpoints.csv",
+      "type": "text/csv",
+      "title": "ices_sprat_spr.27.22-32_2025_refpoints.csv",
+      "description": "Columns StockKeyLabel, AssessmentKey, AssessmentYear, Blim, Bpa, MSYBtrigger, FMSY and Fpa; biomass reference points are converted from tonnes to Mt and feed the ICES harvest rule.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_economic_inputs": {
+      "href": "../../data/economic_inputs.csv",
+      "type": "text/csv",
+      "title": "economic_inputs.csv",
+      "description": "Columns parameter, value, unit, status, source; parameter/value supply fish price and costs, wind auction price, discount rate, and SES benefit parameters. Status distinguishes DATA from ASSUMPTION; source records provenance.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_polish_offshore_wind_pipeline": {
+      "href": "../../data/polish_offshore_wind_pipeline.csv",
+      "type": "text/csv",
+      "title": "polish_offshore_wind_pipeline.csv",
+      "description": "Columns farm, developer, capacity_mw, status_aug2026, first_power_or_completion_year, source; capacity and timing define the contracted investment path and capacity weights. Baltic West is excluded from that path.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_farm_turbine_assignment": {
+      "href": "../../data/farm_turbine_assignment.csv",
+      "type": "text/csv",
+      "title": "farm_turbine_assignment.csv",
+      "description": "Columns project, wind_site, share_of_project, turbine_model, unit_mw, hub_m, layout, status, note; assigns sites to projects and sets turbine/hub-height inputs.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_turbine_specs": {
+      "href": "../../data/turbine_specs.csv",
+      "type": "text/csv",
+      "title": "turbine_specs.csv",
+      "description": "Columns model, manufacturer, rated_kw, rotor_d_m, swept_area_m2, cut_in_ms, rated_speed_ms, cut_out_ms, power_curve, status, source; defines turbine power/thrust curve bounds and rotor geometry.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_osm_polish_offshore_wind_2026_10_27": {
+      "href": "../../data/osm_polish_offshore_wind_2026-10-27.geojson",
+      "type": "application/geo+json",
+      "title": "osm_polish_offshore_wind_2026-10-27.geojson",
+      "description": "Feature properties osm_type, osm_id, tags, members and geometry; selects power=generator nodes, using model, rotor:diameter, height:hub, ref and relation membership to assign turbines and calculate wakes. ODbL 1.0.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_wind_speed_hist_by_height_2023_2025": {
+      "href": "../../data/wind_speed_hist_by_height_2023-2025.csv",
+      "type": "text/csv",
+      "title": "wind_speed_hist_by_height_2023-2025.csv",
+      "description": "Columns site, lon, lat, source, height_m, n_hours, mean_ms, counts_0_to_30ms; each count is hours in a 1 m/s speed bin, by source (ICON-EU, DMI HARMONIE-AROME, ERA5), height and site. Drives gross production.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_wind_rose_hubheight_icon_eu_2023_2025": {
+      "href": "../../data/wind_rose_hubheight_icon_eu_2023-2025.csv",
+      "type": "text/csv",
+      "title": "wind_rose_hubheight_icon_eu_2023-2025.csv",
+      "description": "Columns site, source, height_m, sector_deg, counts_0_to_30ms; binned hours by wind direction and speed at hub height, used for directional Jensen wake losses.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    },
+    "input_iea15mw_reference_power_curve": {
+      "href": "../../data/iea15mw_reference_power_curve.csv",
+      "type": "text/csv",
+      "title": "iea15mw_reference_power_curve.csv",
+      "description": "Columns wind_speed_ms, power_kw, cp, thrust_kn, ct; supplies reference curve shape for commercial turbine curve reconstructions.",
+      "roles": [
+        "input",
+        "metadata"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "via",
+      "href": "../../baltic_ses_production_extension.ipynb",
+      "type": "application/x-ipynb+json",
+      "title": "Notebook execution"
+    },
+    {
+      "rel": "related",
+      "href": "../../ses_production.py",
+      "type": "text/x-python",
+      "title": "Wind production and wake model source"
+    },
+    {
+      "rel": "related",
+      "href": "../../ses_model.py",
+      "type": "text/x-python",
+      "title": "Coupled SES model source"
+    },
+    {
+      "rel": "describedby",
+      "href": "bblocks://ogc.hosted.seadots.odd-protocol",
+      "type": "application/schema+json",
+      "title": "ODD Protocol record profile; description is embedded in this STAC Item"
+    }
+  ]
+}
