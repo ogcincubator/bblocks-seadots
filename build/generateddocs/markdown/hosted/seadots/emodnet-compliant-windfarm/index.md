@@ -61,7 +61,11 @@ A point-based example that mirrors the official EMODnet windfarms XSD field name
     "updateyear": "2024",
     "year": "2013",
     "dist_coast": 43900.7770495,
-    "notes": null
+    "notes": null,
+    "name": "Some name of the wind farm",
+    "area_sqkm": 0.5,
+    "shape_leng": 0.0196987539439,
+    "shape_area": 0.0000275744276405
   }
 }
 
@@ -89,7 +93,11 @@ A point-based example that mirrors the official EMODnet windfarms XSD field name
     "updateyear": "2024",
     "year": "2013",
     "dist_coast": 43900.7770495,
-    "notes": null
+    "notes": null,
+    "name": "Some name of the wind farm",
+    "area_sqkm": 0.5,
+    "shape_leng": 0.0196987539439,
+    "shape_area": 2.75744276405e-05
   }
 }
 ```
@@ -113,7 +121,11 @@ A point-based example that mirrors the official EMODnet windfarms XSD field name
             seadots:powerMW 6 ;
             seadots:updateYear "2024" ;
             seadots:year "2013" ;
-            seadots-emodnet: seadots-emodnet:Production ] .
+            seadots-emodnet: seadots-emodnet:Production ;
+            seadots-emodnet:area_sqkm 5e-01 ;
+            seadots-emodnet:name "Some name of the wind farm" ;
+            seadots-emodnet:shape_area 2.757443e-05 ;
+            seadots-emodnet:shape_leng 1.969875e-02 ] .
 
 
 ```
@@ -136,7 +148,8 @@ required:
 - properties
 properties:
   id:
-    type: string
+    description: Feature identifier as supplied by the source; its JSON value type
+      is not constrained.
     x-jsonld-id: '@id'
   type:
     const: Feature
@@ -219,9 +232,24 @@ properties:
         - string
         - 'null'
         x-jsonld-id: http://purl.org/dc/terms/description
+      shape_leng:
+        type:
+        - number
+        - 'null'
+      shape_area:
+        type:
+        - number
+        - 'null'
+      name:
+        type:
+        - string
+        - 'null'
+      area_sqkm:
+        type:
+        - number
+        - 'null'
     x-jsonld-id: https://purl.org/geojson/vocab#properties
-  additionalProperties:
-    not: true
+  additionalProperties: {}
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
   Point: https://purl.org/geojson/vocab#Point
@@ -307,7 +335,7 @@ You can find the full JSON-LD context here:
 ## Sources
 
 * [EMODnet Human Activities — Wind Farms service](https://www.emodnet-humanactivities.eu/)
-* [EMODnet windfarms XSD](https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms)
+* [EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ](https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms)
 * [EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/)
 
 # For developers

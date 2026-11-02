@@ -74,6 +74,12 @@ Core ontology for signed, weighted fuzzy cognitive maps: concept nodes, influenc
 
 Provides a common model for defining property relationships bound to the ontology
 
+### `ogc.hosted.seadots.emodnet-compliant-windfarm` — EMODnet windfarm
+
+**Type:** schema
+
+GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.
+
 ### `ogc.hosted.seadots.fcm` — Fuzzy Cognitive Map
 
 **Type:** schema
@@ -103,6 +109,18 @@ Profile of the OGC API - Features collection description for collections that se
 **Type:** schema
 
 Common GeoJSON Feature envelope and shared vocabulary bindings (country, IUCN category, major ecosystem type, EEA designation type) for protected-area features published through OGC API - Features in a form that is field-for-field compatible with the EMODnet Human Activities protected-area layers. Parent of the EMODnet target profiles (nationally designated areas, Regional Sea Convention MPAs), the Norwegian and HELCOM source profiles with their transforms, and the API collection profile.
+
+### `ogc.hosted.seadots.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
+
+**Type:** schema
+
+Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
+
+### `ogc.hosted.seadots.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
+
+**Type:** schema
+
+Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
 
 ### `ogc.hosted.seadots.fcm-solution` — FCM solution
 
@@ -152,12 +170,6 @@ Defines the OIM variable and indicator concept model for SEADOTS and ILIAD varia
 
 OGC Feature + OIM Variable profile for the dimensionless time factor C_t in the reef-biomass equation. Encodes the colonisation curve as a closed-form expression (typically a logistic sigmoid) with its parameters plus an evaluated lookup table at discrete time points. Mandatory provenance flags whether the curve parameters are calibrated or illustrative.
 
-### `ogc.hosted.seadots.emodnet-compliant-windfarm` — EMODnet windfarm
-
-**Type:** schema
-
-GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.
-
 ### `ogc.hosted.seadots.reef-aggregation-index` — Reef Aggregation Index (AF_i)
 
 **Type:** schema
@@ -181,18 +193,6 @@ OGC Feature profile describing per-unit submerged geometry (wetted hull + moorin
 **Type:** schema
 
 Schema profile for OIM/SOSA observations of SEADOTS variables and indicators, including numeric values mapped to observed-property IRIs from the OIM Variables building block.
-
-### `ogc.hosted.seadots.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
-
-**Type:** schema
-
-Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
-
-### `ogc.hosted.seadots.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
-
-**Type:** schema
-
-Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
 
 ### `ogc.hosted.seadots.odd-protocol` — ODD Protocol Description Record
 
