@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.emodnet-compliant-windfarm-pl - Polish windfarm extension for EMODnet",
   "bblockName": "Polish windfarm extension for EMODnet",
   "bblockId": "ogc.hosted.seadots.emodnet-compliant-windfarm-pl",
-  "generated": "2026-11-02T13:19:05.964792+00:00",
+  "generated": "2026-11-03T13:13:16.693425+00:00",
   "result": true,
   "items": [
     {
@@ -64,7 +64,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/emodnet-compliant-windfarm-pl/ontology.ttl\n - /github/workspace/_sources/emodnet-compliant-windfarm/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/emodnet-compliant-windfarm/ontology.ttl\n - /github/workspace/_sources/emodnet-compliant-windfarm-pl/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -76,26 +76,26 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
                   "nodes": [
                     "<urn:baltic-ses:national:1:example-project>"
                   ]
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <urn:baltic-ses:national:1:example-project>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <urn:baltic-ses:national:1:example-project>\n"
             }
           ]
         }

@@ -1,0 +1,80 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: Record describing a dataset of marine protections
+allOf:
+- $ref: https://ogcincubator.github.io/geodcat-ogcapi-records/build/annotated/geo/geodcat/geodcat-records/schema.yaml
+- type: object
+  required:
+  - time
+  properties:
+    properties:
+      type: object
+      required:
+      - type
+      - title
+      - description
+      - keywords
+      - contacts
+      - license
+      - created
+      - updated
+      properties:
+        type:
+          const: dataset
+        keywords:
+          minItems: 1
+        contacts:
+          description: At least one contact must identify the creator of the dataset.
+          contains:
+            type: object
+            required:
+            - roles
+            properties:
+              roles:
+                contains:
+                  const: creator
+        isAccessibleForFree:
+          type: boolean
+          description: A flag to signal that the dataset is accessible for free.
+          x-jsonld-id: http://schema.org/isAccessibleForFree
+          x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
+        citation:
+          type: array
+          description: The recommended citations for the dataset.
+          items:
+            type: string
+          x-jsonld-id: http://schema.org/citation
+          x-jsonld-container: '@set'
+    links:
+      description: At least one link must give access to the features of the dataset.
+      contains:
+        type: object
+        required:
+        - rel
+        - type
+        properties:
+          rel:
+            const: items
+          type:
+            const: application/geo+json
+x-jsonld-extra-terms:
+  dataset: http://www.w3.org/ns/dcat#Dataset
+  interval:
+    x-jsonld-id: http://www.w3.org/2006/time#hasTime
+    x-jsonld-container: '@list'
+  organization: http://www.w3.org/2006/vcard/ns#organization-name
+  roles:
+    x-jsonld-id: http://www.w3.org/2006/vcard/ns#role
+    x-jsonld-container: '@set'
+  emails:
+    x-jsonld-id: http://www.w3.org/2006/vcard/ns#hasEmail
+    x-jsonld-container: '@set'
+    x-jsonld-context:
+      value: '@value'
+x-jsonld-prefixes:
+  vcard: http://www.w3.org/2006/vcard/ns#
+  schema: http://schema.org/
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.linkeddata.marineProtectionRecord
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-03'

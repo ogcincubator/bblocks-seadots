@@ -41,7 +41,7 @@ as an interchange layer before downstream semantic enrichment.
 ## Examples
 
 ### EMODnet sample windfarm feature
-A point-based example that mirrors the official EMODnet windfarms XSD field names and uses the same geometry-to-attribute mapping as the service.
+An example does not mirrors the official EMODnet windfarms XSD field names and uses the same geometry-to-attribute mapping as the service.
 
 #### json
 ```json
@@ -130,6 +130,85 @@ A point-based example that mirrors the official EMODnet windfarms XSD field name
 
 ```
 
+
+### Ocean Data Platform sample windfarm feature taken from EMODnet
+this is real data from the 
+
+#### json
+```json
+{
+"type": "Feature",
+"geometry": {
+"type": "MultiPolygon",
+"coordinates": []
+},
+"properties": {
+"country": "United Kingdom",
+"name": "Dogger Bank East Met Mast",
+"n_turbines": 1,
+"power_mw": null,
+"status": "Dismantled",
+"updateyear": null,
+"year": null,
+"dist_coast": 210099.226384,
+"area_sqkm": 0.19595891411,
+"notes": null,
+"shape_leng": 0.0196987539439,
+"shape_area": 0.0000275744276405
+},
+"id": 0
+}
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/context.jsonld",
+  "type": "Feature",
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": []
+  },
+  "properties": {
+    "country": "United Kingdom",
+    "name": "Dogger Bank East Met Mast",
+    "n_turbines": 1,
+    "power_mw": null,
+    "status": "Dismantled",
+    "updateyear": null,
+    "year": null,
+    "dist_coast": 210099.226384,
+    "area_sqkm": 0.19595891411,
+    "notes": null,
+    "shape_leng": 0.0196987539439,
+    "shape_area": 2.75744276405e-05
+  },
+  "id": 0
+}
+```
+
+#### ttl
+```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/0> a geojson:Feature ;
+    geojson:geometry [ a geojson:MultiPolygon ;
+            geojson:coordinates () ] ;
+    geojson:properties [ seadots:distanceToCoast 2.100992e+05 ;
+            seadots:nTurbines 1 ;
+            seadots-emodnet: seadots-emodnet:Dismantled ;
+            seadots-emodnet:area_sqkm 1.959589e-01 ;
+            seadots-emodnet:name "Dogger Bank East Met Mast" ;
+            seadots-emodnet:shape_area 2.757443e-05 ;
+            seadots-emodnet:shape_leng 1.969875e-02 ] .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -140,121 +219,94 @@ description: 'GeoJSON representation of the EMODnet Human Activities windfarms f
   published windfarms XSD.
 
   '
-type: object
-required:
-- id
-- type
-- geometry
-- properties
-properties:
-  id:
-    description: Feature identifier as supplied by the source; its JSON value type
-      is not constrained.
-    x-jsonld-id: '@id'
-  type:
-    const: Feature
-    x-jsonld-id: '@type'
-  geometry:
-    description: EMODnet the_geom represented as GeoJSON geometry; the XSD allows
-      it to be nil.
-    oneOf:
-    - type: 'null'
-    - type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          enum:
-          - Point
-          - MultiPoint
-          - LineString
-          - MultiLineString
-          - Polygon
-          - MultiPolygon
-          - GeometryCollection
-          x-jsonld-id: '@type'
-        coordinates:
-          x-jsonld-id: https://purl.org/geojson/vocab#coordinates
-          x-jsonld-container: '@list'
-      additionalProperties: true
-    x-jsonld-id: https://purl.org/geojson/vocab#geometry
+allOf:
+- $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml
+- type: object
+  required:
+  - properties
   properties:
-    type: object
     properties:
-      country:
-        type:
-        - string
-        - 'null'
-        description: Country name as published by EMODnet; the XSD type is nullable
-          xsd:string.
-        x-jsonld-id: https://schema.org/addressCountry
-        x-jsonld-type: '@vocab'
-      n_turbines:
-        type:
-        - number
-        - 'null'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
-      power_mw:
-        type:
-        - number
-        - 'null'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
-      status:
-        type:
-        - string
-        - 'null'
-        description: Status text as published by EMODnet (nullable xsd:string).
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
-        x-jsonld-type: '@vocab'
-      type_inst:
-        type:
-        - string
-        - 'null'
-        x-jsonld-id: https://schema.org/additionalType
-      updateyear:
-        type:
-        - string
-        - 'null'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
-      year:
-        type:
-        - string
-        - 'null'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
-      dist_coast:
-        type:
-        - number
-        - 'null'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
-      notes:
-        type:
-        - string
-        - 'null'
-        x-jsonld-id: http://purl.org/dc/terms/description
-      shape_leng:
-        type:
-        - number
-        - 'null'
-      shape_area:
-        type:
-        - number
-        - 'null'
-      name:
-        type:
-        - string
-        - 'null'
-      area_sqkm:
-        type:
-        - number
-        - 'null'
-    x-jsonld-id: https://purl.org/geojson/vocab#properties
-  additionalProperties: {}
+      type: object
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+          description: Country name as published by EMODnet; the XSD type is nullable
+            xsd:string.
+          x-jsonld-id: https://schema.org/addressCountry
+          x-jsonld-type: '@vocab'
+        n_turbines:
+          type:
+          - number
+          - 'null'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+        power_mw:
+          type:
+          - number
+          - 'null'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status text as published by EMODnet (nullable xsd:string).
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
+          x-jsonld-type: '@vocab'
+        type_inst:
+          type:
+          - string
+          - 'null'
+          x-jsonld-id: https://schema.org/additionalType
+        updateyear:
+          type:
+          - string
+          - 'null'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+        year:
+          type:
+          - string
+          - 'null'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+        dist_coast:
+          type:
+          - number
+          - 'null'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
+        notes:
+          type:
+          - string
+          - 'null'
+          x-jsonld-id: http://purl.org/dc/terms/description
+        shape_leng:
+          type:
+          - number
+          - 'null'
+        shape_area:
+          type:
+          - number
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        area_sqkm:
+          type:
+          - number
+          - 'null'
+      x-jsonld-id: https://purl.org/geojson/vocab#properties
+    additionalProperties: {}
 x-jsonld-extra-terms:
+  id: '@id'
+  type: '@type'
   Feature: https://purl.org/geojson/vocab#Feature
   Point: https://purl.org/geojson/vocab#Point
   Polygon: https://purl.org/geojson/vocab#Polygon
   MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon
+  geometry: https://purl.org/geojson/vocab#geometry
+  coordinates:
+    x-jsonld-id: https://purl.org/geojson/vocab#coordinates
+    x-jsonld-container: '@list'
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
@@ -284,20 +336,20 @@ Links to the schema:
   "@context": {
     "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
     "Point": "geojson:Point",
     "Polygon": "geojson:Polygon",
-    "MultiPolygon": "geojson:MultiPolygon",
-    "id": "@id",
-    "type": "@type",
-    "geometry": {
-      "@context": {
-        "coordinates": {
-          "@id": "geojson:coordinates",
-          "@container": "@list"
-        }
-      },
-      "@id": "geojson:geometry"
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
     },
+    "type": "@type",
+    "id": "@id",
     "properties": {
       "@context": {
         "country": {
@@ -314,11 +366,43 @@ Links to the schema:
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
-        "notes": "dcterms:description"
+        "notes": "dct:description"
       },
       "@id": "geojson:properties"
     },
+    "geometry": "geojson:geometry",
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "coordinates": {
+      "@id": "geojson:coordinates",
+      "@container": "@list"
+    },
     "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
     "schema": "https://schema.org/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",

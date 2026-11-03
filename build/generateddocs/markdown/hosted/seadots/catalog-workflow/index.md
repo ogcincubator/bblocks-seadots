@@ -239,14 +239,14 @@ dataset. No source properties are intentionally dropped.
     schema:applicationCategory "DigitalTwinApplication" ;
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.1.0" ;
-    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
-            dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
-            seadots:required true ;
-            seadots:role "input" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
             dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
             seadots:required true ;
             seadots:role "area-of-interest" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+            dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
+            seadots:required true ;
+            seadots:role "input" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
             dcterms:description "Optional baseline benthic biomass-density input profile." ;
             seadots:required false ;
@@ -819,7 +819,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-workflow
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-02'
+  dateOfLastChange: '2026-11-03'
 
 ```
 

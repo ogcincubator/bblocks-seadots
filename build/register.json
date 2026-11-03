@@ -3,7 +3,7 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-11-02T13:17:53.680447",
+  "modified": "2026-11-03T13:11:50.938844",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"862052921203373f8136e6f464e0dfdd693e79f5",
@@ -31,6 +31,85 @@
   ],
   "bblocks": [
     {
+      "itemIdentifier": "ogc.hosted.seadots.osm-offshore-wind-source",
+      "name": "OpenStreetMap offshore wind source feature collection",
+      "abstract": "Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
+      },
+      "tags": [
+        "OpenStreetMap",
+        "OSM",
+        "wind energy",
+        "GeoJSON",
+        "source data",
+        "Poland"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenStreetMap copyright and ODbL attribution",
+          "link": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "title": "OpenStreetMap API map endpoint",
+          "link": "https://api.openstreetmap.org/api/0.6/map"
+        },
+        {
+          "title": "OpenStreetMap elements: nodes, ways, and relations",
+          "link": "https://wiki.openstreetmap.org/wiki/Elements"
+        },
+        {
+          "title": "IHO S-100 Registry: Category of Offshore Production Area",
+          "link": "https://registry.iho.int/fdd/view3.do?idx=42&type=3"
+        }
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {},
+      "dateOfLastChange": "2026-11-03",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/osm-offshore-wind-source/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/osm-offshore-wind-source/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/osm-offshore-wind-source/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.osm-offshore-wind-source"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.fcm-activation-scheme",
       "name": "FCM activation and inference scheme",
       "abstract": "SKOS concept schemes naming the activation (transfer) functions and inference rules used to iterate a fuzzy cognitive map, so that a map can be exchanged between implementations that call the same function by different names.",
@@ -39,7 +118,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [],
       "shaclRules": [],
       "sources": [
@@ -89,7 +168,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -128,7 +207,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -191,7 +270,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -305,7 +384,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -408,7 +487,7 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {},
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.yaml",
@@ -444,7 +523,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -546,7 +625,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -578,7 +657,7 @@
       "abstract": "Report member (`seadotsTransformReport`) that every protected-area transform adds to its output FeatureCollection: which source features were excluded and why, which were routed to another EMODnet layer instead of being duplicated, which are not yet reported to the EEA, which carry an inferred crosswalk value or need a geometric overlay, and where the transformed values differ from the EMODnet record for the same site.",
       "status": "under-development",
       "dateTimeAddition": "2026-10-06T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -631,6 +710,84 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.linkeddata.marine-protection-ontology",
+      "name": "Marine Protections Ontology",
+      "abstract": "Example ontology for the regulation of marine managed areas, minting only the terms that have no exact equivalent in the ontologies of the OGC Cross Domain Model. Definitions are taken from the ProtectedSeas Navigator data dictionary.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-11-03T00:00:00Z",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-11-03",
+      "itemClass": "model",
+      "shaclShapes": {
+        "ogc.hosted.seadots.linkeddata.marine-protection-ontology": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/shapes.shacl"
+        ]
+      },
+      "dependsOn": [
+        "bblocks://ogc.model.cross-domain.dcterms",
+        "bblocks://ogc.model.cross-domain.geosparql",
+        "bblocks://ogc.model.cross-domain.pav",
+        "bblocks://ogc.model.cross-domain.schema-org"
+      ],
+      "sources": [
+        {
+          "title": "ProtectedSeas Navigator Data Dictionary",
+          "link": "https://navigatormap.org/data-dictionary/"
+        },
+        {
+          "title": "ProtectedSeas Navigator Methodology",
+          "link": "https://navigatormap.org/methodology/"
+        },
+        {
+          "title": "ProtectedSeas Navigator: What Areas do we Include?",
+          "link": "https://navigatormap.org/what-do-we-include/"
+        },
+        {
+          "title": "DCMI Metadata Terms",
+          "link": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl"
+        },
+        {
+          "title": "Schema.org vocabulary",
+          "link": "https://schema.org/version/latest/schemaorg-current-https.ttl"
+        },
+        {
+          "title": "Provenance, Authoring and Versioning (PAV) ontology",
+          "link": "https://pav-ontology.github.io/pav/pav.rdf"
+        },
+        {
+          "title": "OGC Cross Domain Model",
+          "link": "https://github.com/ogcincubator/cross-domain-model"
+        }
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "tags": [
+        "ontology",
+        "marine",
+        "marine-protected-areas"
+      ],
+      "group": "Semantic & Linked Data",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marine-protection-ontology/ontology.ttl",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/linkeddata/marine-protection-ontology/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/linkeddata/marine-protection-ontology/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/linkeddata/marine-protection-ontology/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.linkeddata.marine-protection-ontology"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.fcm-ontology",
       "name": "Fuzzy Cognitive Map ontology",
       "abstract": "Core ontology for signed, weighted fuzzy cognitive maps: concept nodes, influence edges, activation specifications, equilibrium solutions and time-indexed map sequences. Extracted from the data-representation structs of FuzzyCognitiveMapTools.jl.",
@@ -639,7 +796,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.fcm-activation-scheme",
         "bblocks://ogc.hosted.seadots.ontology"
@@ -697,7 +854,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.ontology",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -795,7 +952,7 @@
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
         ]
       },
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml",
@@ -805,7 +962,7 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/",
-      "validationPassed": true,
+      "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm/",
       "documentation": {
         "markdown": {
@@ -823,6 +980,68 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.linkeddata.marineProtectionProperties",
+      "name": "Marine Protection Properties",
+      "abstract": "Attributes of a marine managed area in the ProtectedSeas Navigator dataset, including its designation, regulations, fishing protection level and the regulation status of fishing gears and marine activities, bound to the Marine Protections Ontology and the OGC Cross Domain Model.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-11-03T00:00:00Z",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-11-03",
+      "itemClass": "schema",
+      "sources": [
+        {
+          "title": "ProtectedSeas Navigator Data Dictionary",
+          "link": "https://navigatormap.org/data-dictionary/"
+        },
+        {
+          "title": "Sample items from the Ocean Data Platform features API",
+          "link": "https://api.hubocean.earth/api/features/collections/a608f54b-75c7-4df9-a3a8-cedbfa391873/items?limit=1"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.linkeddata.marine-protection-ontology"
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "tags": [
+        "marine",
+        "marine-protected-areas",
+        "schema"
+      ],
+      "group": "Semantic & Linked Data",
+      "shaclShapes": {
+        "ogc.hosted.seadots.linkeddata.marine-protection-ontology": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/shapes.shacl"
+        ]
+      },
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionProperties/context.jsonld",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionProperties/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionProperties/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionProperties/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionProperties/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionProperties/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionProperties/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/linkeddata/marineProtectionProperties/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/linkeddata/marineProtectionProperties/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/linkeddata/marineProtectionProperties/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.linkeddata.marineProtectionProperties"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.fcm",
       "name": "Fuzzy Cognitive Map",
       "abstract": "Source-faithful profile of a deterministic fuzzy cognitive map as serialised by FuzzyCognitiveMapTools.jl: a signed weighted digraph of concepts plus the activation specification that governs its update. Accepts the upstream edge-list form and the n x n adjacency form used by the wider FCM tool ecosystem.",
@@ -831,7 +1050,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -909,7 +1128,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -985,7 +1204,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.property-relationship",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -1035,7 +1254,7 @@
       "abstract": "Profile of the OGC API - Features collection description for collections that serve an EMODnet-compliant view of a national or regional source. Requires links to the EMODnet profile (rel=profile), the item schema (describedby), queryables, the source collection it is derived from, the corresponding EMODnet Human Activities layer and the source licence.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1108,7 +1327,7 @@
       "abstract": "Common GeoJSON Feature envelope and shared vocabulary bindings (country, IUCN category, major ecosystem type, EEA designation type) for protected-area features published through OGC API - Features in a form that is field-for-field compatible with the EMODnet Human Activities protected-area layers. Parent of the EMODnet target profiles (nationally designated areas, Regional Sea Convention MPAs), the Norwegian and HELCOM source profiles with their transforms, and the API collection profile.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1199,6 +1418,133 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.emodnet-windfarm-osm",
+      "name": "EMODnet windfarm OSM extension",
+      "abstract": "A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "tags": [
+        "EMODnet",
+        "OpenStreetMap",
+        "windfarm",
+        "GeoJSON-LD",
+        "harmonization",
+        "Poland"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet-compliant windfarm Building Block",
+          "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
+        },
+        {
+          "title": "OpenStreetMap copyright and ODbL attribution",
+          "link": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "title": "OpenStreetMap API map endpoint used for the source snapshot",
+          "link": "https://api.openstreetmap.org/api/0.6/map"
+        },
+        {
+          "title": "IHO S-100 Registry: Category of Offshore Production Area",
+          "link": "https://registry.iho.int/fdd/view3.do?idx=42&type=3"
+        },
+        {
+          "title": "IHO S-101 Electronic Navigational Chart Product Specification",
+          "link": "https://metanorma.github.io/iho-s-101/documents/2.0.0/annex-a/document.html"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm",
+        "bblocks://ogc.hosted.seadots.osm-offshore-wind-source"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "dateOfLastChange": "2026-11-03",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/ontology.ttl",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-windfarm-osm/",
+      "transforms": [
+        {
+          "id": "harmonize-osm-windfarm",
+          "description": "Add EMODnet-compatible properties for explicitly supported OSM tags while preserving source identity, tag dictionaries, geometry, relation members, source attribution, and all unmapped values.",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/transforms/to_emodnet_windfarm.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              },
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.emodnet-windfarm-osm"
+            ]
+          },
+          "code": "\"\"\"Add defensible EMODnet properties while preserving the complete OSM source.\"\"\"\nimport json\nimport re\n\n\ndef as_mw(value):\n    \"\"\"Return numeric MW only when the tag explicitly supplies the MW unit.\"\"\"\n    if not isinstance(value, str):\n        return None\n    match = re.fullmatch(r\"\\s*([0-9]+(?:\\.[0-9]+)?)\\s*MW\\s*\", value, re.IGNORECASE)\n    return float(match.group(1)) if match else None\n\n\ndef as_count(value):\n    \"\"\"Return an integer for an explicit whole-number count, otherwise None.\"\"\"\n    if not isinstance(value, str) or not re.fullmatch(r\"\\s*[0-9]+\\s*\", value):\n        return None\n    return int(value)\n\n\ndef transform(collection):\n    if collection.get(\"type\") != \"FeatureCollection\" or not isinstance(collection.get(\"features\"), list):\n        raise ValueError(\"Expected a GeoJSON FeatureCollection with a features array\")\n    result = dict(collection)\n    features = []\n    for source_feature in collection[\"features\"]:\n        feature = dict(source_feature)\n        source_properties = source_feature.get(\"properties\") or {}\n        properties = dict(source_properties)\n        tags = source_properties.get(\"tags\") or {}\n\n        # Preserve source fields and raw tags, then add only supported harmonized properties.\n        name = tags.get(\"name\") or tags.get(\"seamark:name\")\n        if name is not None:\n            properties[\"name\"] = name\n        for tag_key in (\"plant:output:electricity\", \"generator:output:electricity\"):\n            capacity = as_mw(tags.get(tag_key))\n            if capacity is not None:\n                properties[\"power_mw\"] = capacity\n                break\n        for source_key, target_key in (\n            (\"status\", \"status\"),\n            (\"plant:type\", \"type_inst\"),\n            (\"start_date\", \"year\"),\n        ):\n            if tags.get(source_key) is not None:\n                properties[target_key] = tags[source_key]\n        turbine_count = as_count(tags.get(\"turbines\"))\n        if turbine_count is not None:\n            properties[\"n_turbines\"] = turbine_count\n\n        geometry = source_feature.get(\"geometry\")\n        geometry_type = geometry.get(\"type\") if isinstance(geometry, dict) else None\n        is_area_geometry = (\n            geometry_type in {\"Polygon\", \"MultiPolygon\"}\n            or (source_properties.get(\"osm_type\") == \"relation\" and tags.get(\"type\") == \"multipolygon\")\n        )\n        has_windfarm_evidence = (\n            tags.get(\"industrial\") == \"windfarm\"\n            or tags.get(\"seamark:landmark:production_area\") == \"wind_farm\"\n            or (tags.get(\"plant:source\") == \"wind\" and tags.get(\"plant:type\") == \"offshore\")\n        )\n        is_windfarm_area = is_area_geometry and has_windfarm_evidence\n        if is_windfarm_area:\n            properties[\"category_of_offshore_production_area\"] = 1\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#OffshoreProductionArea\"\n            )\n        elif (\n            source_properties.get(\"osm_type\") == \"node\"\n            and geometry_type == \"Point\"\n            and tags.get(\"generator:method\") == \"wind_turbine\"\n        ):\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#WindTurbine\"\n            )\n\n        feature[\"properties\"] = properties\n        features.append(feature)\n    result[\"features\"] = features\n    return result\n\n\n# The bblocks Python transform runner provides input_data and reads output_data.\nif \"input_data\" in globals():\n    output_data = json.dumps(transform(json.loads(input_data)), ensure_ascii=False, indent=2) + \"\\n\"\n"
+        }
+      ],
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-windfarm-osm/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-windfarm-osm/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-windfarm-osm"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm-no",
       "name": "Norwegian NVE windfarm extension for EMODnet",
       "abstract": "Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.",
@@ -1260,7 +1606,7 @@
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm"
       ],
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/schema.yaml",
@@ -1342,7 +1688,7 @@
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
         ]
       },
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/schema.yaml",
@@ -1370,6 +1716,89 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.linkeddata.marineProtectionFeature",
+      "name": "Marine Protection Feature",
+      "abstract": "GeoJSON Feature type for a marine managed area in the ProtectedSeas Navigator dataset, as served by the Ocean Data Platform features API, semantically described using the Marine Protections Ontology and the OGC Cross Domain Model.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-11-03T00:00:00Z",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-11-03",
+      "itemClass": "schema",
+      "shaclShapes": {
+        "ogc.hosted.seadots.linkeddata.marineProtectionFeature": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/shapes.shacl"
+        ],
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.hosted.seadots.linkeddata.marine-protection-ontology": [
+          "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/shapes.shacl"
+        ]
+      },
+      "sources": [
+        {
+          "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+          "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+        },
+        {
+          "title": "Sample items from the Ocean Data Platform features API",
+          "link": "https://api.hubocean.earth/api/features/collections/a608f54b-75c7-4df9-a3a8-cedbfa391873/items?limit=1"
+        }
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "dependsOn": [
+        "bblocks://ogc.geo.features.feature",
+        "bblocks://ogc.hosted.seadots.linkeddata.marineProtectionProperties"
+      ],
+      "tags": [
+        "marine",
+        "marine-protected-areas",
+        "feature"
+      ],
+      "group": "Semantic & Linked Data",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionFeature/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionFeature/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionFeature/schema.yaml",
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionFeature/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionFeature/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionFeature/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/linkeddata/marineProtectionFeature/",
+      "semanticUplift": {
+        "additionalSteps": [
+          {
+            "type": "jq",
+            "code": ".id = .properties.site_id | .properties |= with_entries(select(.value != \"\" and .value != \"null\"))",
+            "stage": "pre"
+          },
+          {
+            "type": "sparql-update",
+            "ref": "uplift/add-type.sparql",
+            "stage": "post",
+            "code": "PREFIX dct: <http://purl.org/dc/terms/>\nPREFIX geojson: <https://purl.org/geojson/vocab#>\nPREFIX mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/>\n\nINSERT { ?feature a mpr:MarineManagedArea }\nWHERE { ?feature a geojson:Feature ; dct:identifier ?id }\n"
+          }
+        ]
+      },
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/linkeddata/marineProtectionFeature/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/linkeddata/marineProtectionFeature/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.linkeddata.marineProtectionFeature"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.fcm-solution",
       "name": "FCM solution",
       "abstract": "Result of iterating a fuzzy cognitive map to convergence: the equilibrium states found, their componentwise numerical spread, and whether the search succeeded. Source-faithful to the DeterministicFCMSolution struct of FuzzyCognitiveMapTools.jl.",
@@ -1378,7 +1807,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -1488,7 +1917,7 @@
       ],
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "license": {
@@ -1582,7 +2011,7 @@
       ],
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "license": {
@@ -1645,7 +2074,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -1722,7 +2151,7 @@
       "abstract": "Source-faithful profile of Norwegian protected sites (Milj\u00f8direktoratet Naturvernomr\u00e5der, vern layer 0) as served by the Seadots OGC API - Features collections, with the crosswalks (verneform to EEA designation type, IUCN, ecosystem) and the Python transform that produces the EMODnet-compliant nationally designated area view.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1846,7 +2275,7 @@
       "abstract": "Source-faithful profile of HELCOM marine protected areas (HELCOM MADS layer 54 'HELCOM MPAs' and layer 190 'Baltic Sea MPA network 2026') as served by the Seadots OGC API - Features collections, with the Python transform that produces the EMODnet-compliant Regional Sea Convention MPA view and routes non-HELCOM codes to the EMODnet layers that already publish them.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1973,7 +2402,7 @@
       "itemClass": "model",
       "register": "ogc-incubator",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.model.cross-domain.all"
       ],
@@ -2042,7 +2471,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2108,6 +2537,79 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.linkeddata.marineProtectionRecord",
+      "name": "Marine Protection Dataset Record",
+      "abstract": "Profile of the GeoDCAT binding of OGC API Records for describing a dataset of marine protections and how to access it, requiring its descriptive metadata, temporal extent, creator and a link to its features.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-11-03T00:00:00Z",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-11-03",
+      "itemClass": "schema",
+      "isProfileOf": [
+        "bblocks://ogc.geo.geodcat.geodcat-records"
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.geodcat.geodcat-records",
+        "bblocks://ogc.model.cross-domain.schema-org"
+      ],
+      "seeAlso": [
+        "bblocks://ogc.hosted.seadots.linkeddata.marineProtectionFeature"
+      ],
+      "sources": [
+        {
+          "title": "OGC API - Records",
+          "link": "https://github.com/opengeospatial/ogcapi-records"
+        },
+        {
+          "title": "Ocean Data Platform catalog entry (schema.org JSON-LD)",
+          "link": "https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873"
+        }
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "tags": [
+        "marine",
+        "marine-protected-areas",
+        "Records",
+        "DCAT"
+      ],
+      "group": "Semantic & Linked Data",
+      "shaclShapes": {
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionRecord/context.jsonld",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionRecord/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionRecord/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionRecord/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionRecord/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marineProtectionRecord/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionRecord/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/linkeddata/marineProtectionRecord/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/linkeddata/marineProtectionRecord/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/linkeddata/marineProtectionRecord/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.linkeddata.marineProtectionRecord"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.reef-aggregation-index",
       "name": "Reef Aggregation Index (AF_i)",
       "abstract": "OGC Feature profile carrying per-taxon dimensionless reef aggregation index AF_i used by the reef-biomass equation. Treated as an OIM variable / indicator binding \u2014 one record per evidence basis (e.g. Degraer 2020 prior). Per-taxon rows carry scientificName, AphiaID, AF_i value, validityScope, and evidence URI.",
@@ -2116,7 +2618,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2191,7 +2693,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2267,7 +2769,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2358,7 +2860,7 @@
       "itemClass": "schema",
       "register": "iliad-apis",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.oim-variables"
       ],
@@ -2411,7 +2913,8 @@
       "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variable-observation/context.jsonld",
       "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/resolvedProperties.json",
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/oim-variable-observation/",
-      "validationPassed": true,
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/oim-variable-observation/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
@@ -2436,7 +2939,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2542,7 +3045,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2631,7 +3134,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2718,7 +3221,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2811,7 +3314,7 @@
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "dateTimeAddition": "2026-07-28T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.oim-variable-observation"
       ],
@@ -2910,7 +3413,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3029,7 +3532,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3151,7 +3654,7 @@
       "abstract": "GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.",
       "status": "under-development",
       "dateTimeAddition": "2026-07-31T00:00:00Z",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -3248,7 +3751,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3354,7 +3857,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3465,7 +3968,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3561,6 +4064,111 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.osm-offshore-wind-catalog",
+      "name": "OSM Polish Offshore Wind Catalog Record",
+      "abstract": "Representative catalog record for the 2026-10-27 OpenStreetMap GeoJSON snapshot of offshore wind infrastructure in the Polish Baltic. Profiles the SeaDOTs catalog-data-tabular record envelope while describing the source asset as GeoJSON and linking its source and wind-farm interpretation profiles.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "dateOfLastChange": "2026-11-03",
+      "license": {
+        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
+      },
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.catalog-data-tabular",
+        "bblocks://ogc.hosted.seadots.emodnet-windfarm-osm",
+        "bblocks://ogc.hosted.seadots.osm-offshore-wind-source"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/context.jsonld",
+      "shaclRules": [],
+      "tags": [
+        "catalog",
+        "geojson",
+        "openstreetmap",
+        "offshore-wind",
+        "baltic-sea",
+        "odbl"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenStreetMap contributors",
+          "link": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "title": "OpenStreetMap API map endpoint",
+          "link": "https://api.openstreetmap.org/api/0.6/map"
+        },
+        {
+          "title": "Open Data Commons Open Database License (ODbL) 1.0",
+          "link": "https://opendatacommons.org/licenses/odbl/1-0/"
+        }
+      ],
+      "standards": [
+        "https://www.rfc-editor.org/rfc/rfc7946",
+        "https://docs.ogc.org/is/20-004/20-004.html"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.contrib.stac.components.assets-ontology": [
+          "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
+        ],
+        "ogc.contrib.stac.core-ontology": [
+          "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
+        ],
+        "ogc.model.cross-domain.prov": [
+          "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
+        ],
+        "ogc.contrib.stac.extensions.cf-ontology": [
+          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
+        ],
+        "ogc.api.records.v1.schemas.linkTemplate": [
+          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
+        ],
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.contrib.stac.extensions.osc-ontology": [
+          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl"
+        ],
+        "ogc.contrib.stac.extensions.themes-ontology": [
+          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/osm-offshore-wind-catalog/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/osm-offshore-wind-catalog/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/osm-offshore-wind-catalog/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.osm-offshore-wind-catalog"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.catalog-data-tabular-survey",
       "name": "SeaDOTs Catalog Data Tabular Survey",
       "abstract": "Tabular survey-data profile for the saltmarsh perceptions questionnaire, designed to carry ELSST thesaurus mappings, CESSDA controlled-vocabulary references, and DDI-style descriptive metadata for questionnaire variables and response categories.",
@@ -3569,7 +4177,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3681,7 +4289,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3790,7 +4398,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3895,7 +4503,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4032,7 +4640,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4167,7 +4775,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-02",
+      "dateOfLastChange": "2026-11-03",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },

@@ -1,0 +1,284 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.linkeddata.marineProtectionFeature - Marine Protection Feature",
+  "bblockName": "Marine Protection Feature",
+  "bblockId": "ogc.hosted.seadots.linkeddata.marineProtectionFeature",
+  "generated": "2026-11-03T13:13:18.781160+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "TEST_RESOURCE",
+        "requireFail": true,
+        "filename": "_sources/linkeddata/marineProtectionFeature/tests/invalid-fishing-protection-fail.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marineProtectionFeature/tests/invalid-fishing-protection-fail.json",
+        "language": "json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "GENERAL",
+          "title": "General",
+          "entries": [
+            {
+              "op": "require-fail",
+              "isError": false,
+              "message": "Test was expected to fail and it did."
+            }
+          ]
+        },
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using invalid-fishing-protection-fail.json from test resources"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "invalid-fishing-protection-fail.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD invalid-fishing-protection-fail.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "invalid-fishing-protection-fail.ttl",
+              "size": 105,
+              "isError": false,
+              "message": "Output Turtle invalid-fishing-protection-fail.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": false,
+              "exception": "ValidationError",
+              "errorMessage": "9 is not one of [0, 1, 2, 3, 4, 5]",
+              "isError": true,
+              "message": "ValidationError: 9 is not one of [0, 1, 2, 3, 4, 5]\n\nFailed validating 'enum' in schema['allOf'][1]['properties']['properties']['properties']['level_fishing_protection']:\n    {'description': 'An indicator of the strength of fishing regulations, '\n                    'coded on a 1-5 scale, with higher scores indicating '\n                    'more restrictions and more protection.',\n     'enum': [0, 1, 2, 3, 4, 5],\n     'type': 'integer',\n     'x-jsonld-id': 'https://w3id.org/ogc/hosted/demo/marine-protections/levelOfFishingProtection'}\n\nOn instance['properties']['level_fishing_protection']:\n    9"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl\n - http://pav-ontology.github.io/pav/pav.rdf"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "graph": "@prefix mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <file:///github/workspace/AICOL29> ;\n            sh:resultMessage \"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\" ;\n            sh:resultPath mpr:levelOfFishingProtection ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:InConstraintComponent ;\n            sh:sourceShape [ sh:in ( 0 1 2 3 4 5 ) ;\n                    sh:maxCount 1 ;\n                    sh:message \"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\" ;\n                    sh:minCount 1 ;\n                    sh:path mpr:levelOfFishingProtection ] ;\n            sh:value 9 ] .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:in ( Literal(\"0\", datatype=xsd:integer) Literal(\"1\", datatype=xsd:integer) Literal(\"2\", datatype=xsd:integer) Literal(\"3\", datatype=xsd:integer) Literal(\"4\", datatype=xsd:integer) Literal(\"5\", datatype=xsd:integer) ) ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:message Literal(\"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\") ; sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:path mpr:levelOfFishingProtection ]\n  \tFocus Node: <file:///github/workspace/AICOL29>\n  \tValue Node: Literal(\"9\", datatype=xsd:integer)\n  \tResult Path: mpr:levelOfFishingProtection\n  \tMessage: mpr:levelOfFishingProtection must be a single integer from 0 to 5.\n  "
+            },
+            {
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "focusNodes": {
+                "mpr:MarineManagedAreaShape": {
+                  "nodes": [
+                    "<file:///github/workspace/AICOL29>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n - Shape mpr:MarineManagedAreaShape: <file:///github/workspace/AICOL29>\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<file:///github/workspace/AICOL29>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/AICOL29>\n"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running pre-uplift jq transform step from inline code"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift sparql-update transform step from uplift/add-type.sparql"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/linkeddata/marineProtectionFeature/navigator-feature.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/linkeddata/marineProtectionFeature/navigator-feature.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/navigator-items.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "navigator-feature.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD navigator-feature.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "navigator-feature.ttl",
+              "size": 2847,
+              "isError": false,
+              "message": "Output Turtle navigator-feature.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl\n - http://pav-ontology.github.io/pav/pav.rdf"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "focusNodes": {
+                "mpr:MarineManagedAreaShape": {
+                  "nodes": [
+                    "<https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n - Shape mpr:MarineManagedAreaShape: <https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: <https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>\n"
+            }
+          ]
+        },
+        {
+          "name": "SEMANTIC_UPLIFT",
+          "title": "Semantic Uplift",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Running pre-uplift jq transform step from inline code"
+            },
+            {
+              "isError": false,
+              "message": "Running post-uplift sparql-update transform step from uplift/add-type.sparql"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenStreetMap offshore wind snapshot",
+  "description": "Source-aligned GeoJSON FeatureCollection. Feature fields and OSM properties retain the supplied source representation; geometry is nullable and may be Point or Polygon in this snapshot. Tag keys and values remain uninterpreted.",
+  "type": "object",
+  "required": [
+    "type",
+    "source",
+    "features"
+  ],
+  "properties": {
+    "type": {
+      "const": "FeatureCollection",
+      "x-jsonld-id": "@type"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source attribution, API endpoint, retrieval date, and geographic filter recorded with the snapshot.",
+      "x-jsonld-id": "http://purl.org/dc/terms/source"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "geometry",
+          "properties"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Original OSM element reference in type/id form, such as node/123.",
+            "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#sourceElementReference",
+            "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#string"
+          },
+          "type": {
+            "const": "Feature",
+            "x-jsonld-id": "@type"
+          },
+          "geometry": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "coordinates"
+                ],
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "Point",
+                      "Polygon"
+                    ],
+                    "x-jsonld-id": "@type"
+                  },
+                  "coordinates": {
+                    "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
+                    "x-jsonld-container": "@list"
+                  }
+                },
+                "additionalProperties": true
+              }
+            ],
+            "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
+          },
+          "properties": {
+            "type": "object",
+            "required": [
+              "osm_type",
+              "osm_id",
+              "tags"
+            ],
+            "properties": {
+              "osm_type": {
+                "type": "string",
+                "enum": [
+                  "node",
+                  "way",
+                  "relation"
+                ],
+                "description": "OSM element kind.",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#elementType"
+              },
+              "osm_id": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Numeric identifier scoped by osm_type.",
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#elementIdentifier",
+                "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#integer"
+              },
+              "tags": {
+                "type": "object",
+                "description": "Unmodified key-value tags from the source; keys and values are source-defined strings.",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#tagSet",
+                "x-jsonld-type": "@json"
+              },
+              "members": {
+                "type": "array",
+                "description": "Source member references with roles for OSM relations, preserved in source order.",
+                "items": {
+                  "type": "string"
+                },
+                "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#relationMemberReference",
+                "x-jsonld-container": "@list"
+              }
+            },
+            "additionalProperties": true,
+            "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-jsonld-id": "https://purl.org/geojson/vocab#features",
+      "x-jsonld-container": "@set"
+    }
+  },
+  "additionalProperties": false,
+  "x-jsonld-extra-terms": {
+    "FeatureCollection": "https://purl.org/geojson/vocab#FeatureCollection",
+    "Feature": "https://purl.org/geojson/vocab#Feature",
+    "Point": "https://purl.org/geojson/vocab#Point",
+    "Polygon": "https://purl.org/geojson/vocab#Polygon",
+    "MultiPoint": "https://purl.org/geojson/vocab#MultiPoint",
+    "LineString": "https://purl.org/geojson/vocab#LineString",
+    "MultiLineString": "https://purl.org/geojson/vocab#MultiLineString",
+    "MultiPolygon": "https://purl.org/geojson/vocab#MultiPolygon",
+    "GeometryCollection": "https://purl.org/geojson/vocab#GeometryCollection"
+  },
+  "x-jsonld-prefixes": {
+    "geojson": "https://purl.org/geojson/vocab#",
+    "osmdata": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.osm-offshore-wind-source",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-10-27"
+  }
+}
