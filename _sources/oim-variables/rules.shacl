@@ -6,8 +6,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ses: <http://seadots.eu/ses#> .
 @prefix ind: <https://w3id.org/indicators/marine/> .
+@prefix ov: <https://w3id.org/indicators/marine/shapes#> .
 
-:ObservedPropertyShape
+ov:ObservedPropertyShape
     a sh:NodeShape ;
     sh:targetClass sosa:observedProperty ;
     sh:message "Observed properties must have a prefLabel and belong to a concept scheme." ;
@@ -19,7 +20,7 @@
         sh:minCount 1 ;
     ] .
 
-:EdgeShape
+ov:EdgeShape
     a sh:NodeShape ;
     sh:targetClass ses:Edge ;
     sh:message "Edges must connect two observed properties and include a numeric weight." ;
