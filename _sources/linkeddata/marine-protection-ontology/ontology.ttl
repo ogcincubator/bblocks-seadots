@@ -1,0 +1,1085 @@
+@prefix mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ogc/hosted/demo/marine-protections/> a owl:Ontology ;
+  dct:title "Marine Protections Ontology"@en ;
+  dct:description "Terms describing the regulation of marine managed areas, for attributes of the ProtectedSeas Navigator dataset that have no exact equivalent in the ontologies of the OGC Cross Domain Model. Example namespace: not published or endorsed by ProtectedSeas."@en ;
+  owl:versionInfo "0.1" ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:MarineManagedArea a owl:Class ;
+  rdfs:label "marine managed area"@en ;
+  skos:definition "An area dedicated to the protection of marine life and the conservation of habitats in saltwater and coastal zones, with verified regulations and clearly defined boundaries. Includes marine protected areas and other area based management tools."@en ;
+  rdfs:subClassOf geo:Feature, schema:Place ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/what-do-we-include/> ;
+.
+
+mpr:regulationStatus a owl:DatatypeProperty ;
+  rdfs:label "regulation status"@en ;
+  skos:definition "The legal classification of an activity within a site, coded from the regulationStatuses scheme: Allowed (0); Prohibited (1); Restricted (2); N/A or Unknown (3). An absent value means not yet coded."@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:fishingRegulation a owl:DatatypeProperty ;
+  rdfs:subPropertyOf mpr:regulationStatus ;
+  rdfs:label "fishing regulation"@en ;
+  skos:definition "The regulation status of a fishing sector, gear type or method within a site."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:marineActivityRegulation a owl:DatatypeProperty ;
+  rdfs:subPropertyOf mpr:regulationStatus ;
+  rdfs:label "marine activity regulation"@en ;
+  skos:definition "The regulation status of a non-fishing marine activity within a site."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:category a owl:DatatypeProperty ;
+  rdfs:label "category"@en ;
+  skos:definition "Site category. The value is the category name from the Navigator Site Categories table."@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:designation a owl:DatatypeProperty ;
+  rdfs:label "designation"@en ;
+  skos:definition "Specific site type (e.g. National Marine Sanctuary)"@en ;
+  skos:closeMatch dct:type ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:managingAuthority a owl:DatatypeProperty ;
+  rdfs:label "managing authority"@en ;
+  skos:definition "Agency(s) with presiding jurisdiction over this site"@en ;
+  skos:closeMatch schema:maintainer ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:wdpaId a owl:DatatypeProperty ;
+  rdfs:label "WDPA ID"@en ;
+  skos:definition "WDPA-assigned unique identifier for site. NULL = Area not included in WDPA"@en ;
+  rdfs:subPropertyOf dct:identifier ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:iucnCategory a owl:DatatypeProperty ;
+  rdfs:label "IUCN category"@en ;
+  skos:definition "IUCN Protected Area Category. 'Unassigned' if no value found, not reported, or not applicable"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  skos:editorialNote "Observed values may be a semicolon-separated list, one value per component designation."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:purpose a owl:DatatypeProperty ;
+  rdfs:label "purpose"@en ;
+  skos:definition "Short summary explaining what is special about this marine area; number of habitats and endangered species"@en ;
+  rdfs:subPropertyOf dct:description ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:restrictions a owl:DatatypeProperty ;
+  rdfs:label "restrictions"@en ;
+  skos:definition "Lists prohibited or entirely banned marine-related activities (fishing, dumping, pollution, anchoring, boating) and outlines restricted commercial and/or recreational fishing activities"@en ;
+  rdfs:subPropertyOf dct:description ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:allowedActivities a owl:DatatypeProperty ;
+  rdfs:label "allowed activities"@en ;
+  skos:definition "Lists allowed marine-related activities, including associated licenses/permits if applicable"@en ;
+  rdfs:subPropertyOf dct:description ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:regulatoryDefinitions a owl:DatatypeProperty ;
+  rdfs:label "regulatory definitions"@en ;
+  skos:definition "Definitions, where necessary and possible, of terms contained in 'Restrictions' or 'Allowed', e.g. fishing gear, enumerated species, or geographical locations"@en ;
+  rdfs:subPropertyOf dct:description ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:regulationName a owl:DatatypeProperty ;
+  rdfs:label "regulation name"@en ;
+  skos:definition "List of names of the relevant regulations that established the site. Semicolon-separated."@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:regulationUrl a owl:DatatypeProperty ;
+  rdfs:label "regulation URL"@en ;
+  skos:definition "List of URLs of relevant regulations. Semicolon-separated."@en ;
+  skos:closeMatch dct:references ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  skos:editorialNote "Observed entries may take the form label|URL, so the value is a literal rather than an IRI."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:website a owl:DatatypeProperty ;
+  rdfs:label "website"@en ;
+  skos:definition "URL link to the most relevant webpage about the site"@en ;
+  skos:closeMatch schema:url ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  skos:editorialNote "Observed values may hold several semicolon-separated URLs, so the value is a literal rather than an IRI."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:season a owl:DatatypeProperty ;
+  rdfs:label "season"@en ;
+  skos:definition "Temporal applicability of the listed restrictions; either Year-round (permanent) or Seasonal (only effective between Effective From and Effective To dates each year)"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:effectiveFrom a owl:DatatypeProperty ;
+  rdfs:label "effective from"@en ;
+  skos:definition "Date restrictions begin, if seasonal"@en ;
+  skos:closeMatch schema:validFrom ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:date ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:effectiveTo a owl:DatatypeProperty ;
+  rdfs:label "effective to"@en ;
+  skos:definition "Date restrictions end, if seasonal"@en ;
+  skos:closeMatch schema:validThrough ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:date ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:protectionFocus a owl:DatatypeProperty ;
+  rdfs:label "protection focus"@en ;
+  skos:definition "The focus of the protection afforded by the site."@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:speciesOfConcern a owl:DatatypeProperty ;
+  rdfs:label "species of concern"@en ;
+  skos:definition "General categories of species that are of interest or concern"@en ;
+  skos:closeMatch schema:about ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:governmentLevel a owl:DatatypeProperty ;
+  rdfs:label "level of government"@en ;
+  skos:definition "Agency(s) level of government. NULL = Not Yet Coded"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:yearEstablished a owl:DatatypeProperty ;
+  rdfs:label "year established"@en ;
+  skos:definition "Year the site was first established"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:otherLinks a owl:DatatypeProperty ;
+  rdfs:label "other helpful links"@en ;
+  skos:definition "Other helpful URL links related to site"@en ;
+  skos:closeMatch dct:references ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:levelOfFishingProtection a owl:DatatypeProperty ;
+  rdfs:label "level of fishing protection"@en ;
+  skos:definition "An indicator of the strength of fishing regulations, coded on a 1-5 scale, with higher scores indicating more restrictions and more protection."@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "The published scale is 1-5, but the value 0 occurs in the data; its meaning is not documented."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/methodology/> ;
+.
+
+mpr:recreationalFishing a owl:DatatypeProperty ;
+  rdfs:label "recreational fishing"@en ;
+  skos:definition "Fishing for recreational purposes - not sold"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:commercialFishing a owl:DatatypeProperty ;
+  rdfs:label "commercial/industrial fishing"@en ;
+  skos:definition "Professional large-scale fisheries that use large, often impactful, gear"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:artisanalFishing a owl:DatatypeProperty ;
+  rdfs:label "artisanal fishing"@en ;
+  skos:definition "Artisanal fisheries are those that use a relatively low level of technology: small canoes or boats instead of larger, more powerful vessels; no engines or very simple low-power engines; and traditional fishing gear such as spears or hand reels, some nets"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:subsistenceFishing a owl:DatatypeProperty ;
+  rdfs:label "subsistence fishing"@en ;
+  skos:definition "Fishing in order to feed the fisher's family - not sold"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:bottomTrawling a owl:DatatypeProperty ;
+  rdfs:label "bottom trawling"@en ;
+  skos:definition "A fishing practice that herds and captures the target species, like ground fish or crabs, by towing a net along the ocean floor"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:pelagicTrawling a owl:DatatypeProperty ;
+  rdfs:label "pelagic trawling"@en ;
+  skos:definition "Pelagic or midwater trawling involves towing a large net through the water column. Trawls are designed to capture and trap the target species inside the codend as the net is hauled through the water"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:hookAndLine a owl:DatatypeProperty ;
+  rdfs:label "hook and line"@en ;
+  skos:definition "A fishing method that catches fish by means of a series of baited hooks, which are suspended on lines into the ocean. Excludes trolling and longline, which are separate categories"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:trolling a owl:DatatypeProperty ;
+  rdfs:label "trolling"@en ;
+  skos:definition "To trail artificial or natural baits behind a moving boat. The bait can be made to skip along the surface or trailed below at any depth to just above the bottom. A bait or lure trailed behind an angler walking along a pier, bridge, or breakwater is also called trolling"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:purseSeineSurroundingNets a owl:DatatypeProperty ;
+  rdfs:label "purse seine/roundhaul/surrounding nets"@en ;
+  skos:definition "A net that encircles schools of fish"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:gillnetsEntanglingNets a owl:DatatypeProperty ;
+  rdfs:label "gillnets and entangling nets"@en ;
+  skos:definition "Gillnets and entangling nets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:trammelNets a owl:DatatypeProperty ;
+  rdfs:label "trammel nets"@en ;
+  skos:definition "An entangling net that hangs down in several curtains"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:dipScoopNets a owl:DatatypeProperty ;
+  rdfs:label "dip/scoop nets"@en ;
+  skos:definition "A bag net with a handle that is used to scoop fish from the water"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:castNets a owl:DatatypeProperty ;
+  rdfs:label "cast nets"@en ;
+  skos:definition "A net constructed from a series of tailored netting sections joined together to produce a cone-shaped net with weights and a drawstring attached to the perimeter and cast by a fisher to catch fish"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:driftNets a owl:DatatypeProperty ;
+  rdfs:label "drift nets"@en ;
+  skos:definition "A fishing net that drifts with the tide or current and is buoyed or attached to a boat"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:otherNets a owl:DatatypeProperty ;
+  rdfs:label "other nets"@en ;
+  skos:definition "Any fishing net types not accounted for"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:dredges a owl:DatatypeProperty ;
+  rdfs:label "dredges"@en ;
+  skos:definition "Dredges are dragged along the seafloor to catch shellfish. Dredges are made from an openmouthed frame that scoops shellfish from the seafloor. Attached to the back of the frame is a collection area made from metal rings or mesh"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:trapsAndPots a owl:DatatypeProperty ;
+  rdfs:label "traps and pots"@en ;
+  skos:definition "Traps and pots are submerged three-dimensional wire or wood devices that permit organisms to enter the enclosure but make escape extremely difficult or impossible"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:spearFishing a owl:DatatypeProperty ;
+  rdfs:label "spear fishing"@en ;
+  skos:definition "Fishing with a shaft with one or more sharpened points at one end"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:underwaterExtractionDiving a owl:DatatypeProperty ;
+  rdfs:label "underwater extraction (diving)"@en ;
+  skos:definition "Fishing or collecting marine life underwater by hand, spear, or harpoon gun with or without the use of an underwater breathing device gear"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:handCapture a owl:DatatypeProperty ;
+  rdfs:label "hand capture"@en ;
+  skos:definition "Fishing or collecting by hand without the use of gear"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:fishAggregatingDevices a owl:DatatypeProperty ;
+  rdfs:label "fish aggregating devices"@en ;
+  skos:definition "Floating objects that are designed and strategically placed to attract pelagic fish. Includes both static and free-floating"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:longlining a owl:DatatypeProperty ;
+  rdfs:label "longlining"@en ;
+  skos:definition "A line that is deployed horizontally to which gangions and hooks are attached. A longline may be a bottom longline, i.e., designed for use on the bottom, or a pelagic longline, i.e., designed for use off the bottom. The longline hauler may be manually, electrically, or hydraulically operated"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:gillnetting a owl:DatatypeProperty ;
+  rdfs:label "gillnetting"@en ;
+  skos:definition "Gillnets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:nets a owl:DatatypeProperty ;
+  rdfs:label "nets"@en ;
+  skos:definition "Any fishing net types not accounted for"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:miscellaneousGear a owl:DatatypeProperty ;
+  rdfs:label "miscellaneous gear"@en ;
+  skos:definition "Any fishing gear not included elsewhere"@en ;
+  rdfs:subPropertyOf mpr:fishingRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:tribalExemptions a owl:DatatypeProperty ;
+  rdfs:label "tribal exemptions"@en ;
+  skos:definition "Are there tribal exemptions to fishing restrictions? Yes (0); No (1); Not Yet Coded (null)"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:discharge a owl:DatatypeProperty ;
+  rdfs:label "discharge"@en ;
+  skos:definition "The deliberate disposal at sea of wastes or other matter from vessels"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:vesselSpeed a owl:DatatypeProperty ;
+  rdfs:label "vessel speed"@en ;
+  skos:definition "Speed of vessel. Prohibited (i.e. no transit) (1); Restricted (2); N/A or Unknown (3); Not Yet Coded (null)"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:vesselEntry a owl:DatatypeProperty ;
+  rdfs:label "vessel entry"@en ;
+  skos:definition "Permittance of vessel types to enter or transit the area"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:diving a owl:DatatypeProperty ;
+  rdfs:label "diving"@en ;
+  skos:definition "Recreational, non-extractive, SCUBA diving or freediving"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:historicArtifactRemoval a owl:DatatypeProperty ;
+  rdfs:label "removal of historic artifacts"@en ;
+  skos:definition "Removal of fossils or artifacts"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:vesselStopping a owl:DatatypeProperty ;
+  rdfs:label "vessel stopping"@en ;
+  skos:definition "Permittance of vessels to stop in area (opposed to continuous transit required)"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:anchoring a owl:DatatypeProperty ;
+  rdfs:label "anchoring"@en ;
+  skos:definition "Holding a vessel in place by mooring it to the seafloor with an anchor"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:mooring a owl:DatatypeProperty ;
+  rdfs:label "mooring"@en ;
+  skos:definition "Securing a vessel to a fixed object, such as a mooring buoy"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:landing a owl:DatatypeProperty ;
+  rdfs:label "landing"@en ;
+  skos:definition "Stopping a vessel to load and unload things or people to/from land"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:dredgingDumping a owl:DatatypeProperty ;
+  rdfs:label "dredging and dumping"@en ;
+  skos:definition "Removal of silt and other material from the bottom of bodies of water and/or dumping of dredged material"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:industrialExploration a owl:DatatypeProperty ;
+  rdfs:label "industrial or mineral exploration"@en ;
+  skos:definition "Exploration methods for finding minerals, oil, and gas, for example seismic exploration"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:industrialExtraction a owl:DatatypeProperty ;
+  rdfs:label "non-fishing industrial extraction"@en ;
+  skos:definition "Extraction of oil, gas, or minerals"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:aquaculture a owl:DatatypeProperty ;
+  rdfs:label "aquaculture"@en ;
+  skos:definition "Any type of marine farmed fishing"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:construction a owl:DatatypeProperty ;
+  rdfs:label "construction"@en ;
+  skos:definition "Development or construction of new infrastructure"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:overflightDrones a owl:DatatypeProperty ;
+  rdfs:label "overflight or drones"@en ;
+  skos:definition "Overflight with manned or unmanned aircraft"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:anchorDragging a owl:DatatypeProperty ;
+  rdfs:label "anchor dragging"@en ;
+  skos:definition "Dragging an anchor along the seafloor"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:dredging a owl:DatatypeProperty ;
+  rdfs:label "dredging"@en ;
+  skos:definition "Removal of silt and other material from the bottom of bodies of water"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:drilling a owl:DatatypeProperty ;
+  rdfs:label "drilling"@en ;
+  skos:definition "Drilling for the purpose of oil or gas extraction"@en ;
+  rdfs:subPropertyOf mpr:marineActivityRegulation ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:subzone a owl:DatatypeProperty ;
+  rdfs:label "subzone"@en ;
+  skos:definition "1 = Subzone, 0 = not a subzone"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:primarySiteId a owl:DatatypeProperty ;
+  rdfs:label "primary site ID"@en ;
+  skos:definition "Site ID of the primary site of a subzone. NULL = not a subzone"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:coastlineMatch a owl:DatatypeProperty ;
+  rdfs:label "coastline match"@en ;
+  skos:definition "Site boundary does not follow coastline (0); At least part of site boundary follows coastline (1)"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:locationType a owl:DatatypeProperty ;
+  rdfs:label "location type"@en ;
+  skos:definition "Marine (site is either completely or partially offshore) (0); Inland Water (main component) (1), Island (2); Inland Terrestrial (main component) (3)"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Matched to the data dictionary field \"Location Type\" by its coded values; the API name differs."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:boundarySource a owl:DatatypeProperty ;
+  rdfs:label "boundary source"@en ;
+  skos:definition "Source of site boundary data"@en ;
+  rdfs:subPropertyOf dct:source ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:s57Category a owl:DatatypeProperty ;
+  rdfs:label "S-57 category"@en ;
+  skos:definition "S-57 Category"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  skos:editorialNote "Navigator V1 attribute, flagged as legacy in the API field name. Matched to the data dictionary by its description."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:siteMajorVersion a owl:DatatypeProperty ;
+  rdfs:label "site major version"@en ;
+  skos:definition "Data major version of site attributes and boundary"@en ;
+  rdfs:subPropertyOf pav:version ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:siteMinorVersion a owl:DatatypeProperty ;
+  rdfs:label "site minor version"@en ;
+  skos:definition "Data minor version of site attributes and boundary"@en ;
+  rdfs:subPropertyOf pav:version ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:integer ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:versionStartDate a owl:DatatypeProperty ;
+  rdfs:label "version start date"@en ;
+  skos:definition "Date this version became effective"@en ;
+  skos:closeMatch dct:issued ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:date ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:changeTypeRegulations a owl:DatatypeProperty ;
+  rdfs:label "change type - regulations"@en ;
+  skos:definition "Site regulations change between versions"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:changeTypeBoundary a owl:DatatypeProperty ;
+  rdfs:label "change type - boundary"@en ;
+  skos:definition "Site boundary change between versions"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:latestUpdates a owl:DatatypeProperty ;
+  rdfs:label "latest updates"@en ;
+  skos:definition "Email, phone number, and/or mailing lists to receive the latest updates on regulations regarding removal of marine life"@en ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:string ;
+  skos:editorialNote "Matched to the data dictionary field \"Latest Updates\" by content; the API name differs. Values may contain HTML markup."@en ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:lastReviewed a owl:DatatypeProperty ;
+  rdfs:label "last reviewed"@en ;
+  skos:definition "Date of most recent ProtectedSeas review"@en ;
+  skos:closeMatch schema:lastReviewed ;
+  rdfs:domain mpr:MarineManagedArea ;
+  rdfs:range xsd:date ;
+  rdfs:isDefinedBy <https://w3id.org/ogc/hosted/demo/marine-protections/> ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:regulationStatuses a skos:ConceptScheme ;
+  skos:prefLabel "regulation statuses"@en ;
+  skos:definition "Codes for the legal classification of an activity within a site."@en ;
+  skos:hasTopConcept mpr:status-allowed, mpr:status-prohibited, mpr:status-restricted, mpr:status-unknown ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:status-allowed a skos:Concept ;
+  skos:prefLabel "Allowed"@en ;
+  skos:notation 0 ;
+  skos:definition "The activity is classified as allowed. As coded by ProtectedSeas legal review of the regulations for the site. The data dictionary gives this label only."@en ;
+  skos:inScheme mpr:regulationStatuses ;
+  skos:topConceptOf mpr:regulationStatuses ;
+.
+
+mpr:status-prohibited a skos:Concept ;
+  skos:prefLabel "Prohibited"@en ;
+  skos:notation 1 ;
+  skos:definition "The activity is classified as prohibited. As coded by ProtectedSeas legal review of the regulations for the site. The data dictionary gives this label only."@en ;
+  skos:inScheme mpr:regulationStatuses ;
+  skos:topConceptOf mpr:regulationStatuses ;
+.
+
+mpr:status-restricted a skos:Concept ;
+  skos:prefLabel "Restricted"@en ;
+  skos:notation 2 ;
+  skos:definition "The activity is classified as restricted. As coded by ProtectedSeas legal review of the regulations for the site. The data dictionary gives this label only."@en ;
+  skos:inScheme mpr:regulationStatuses ;
+  skos:topConceptOf mpr:regulationStatuses ;
+.
+
+mpr:status-unknown a skos:Concept ;
+  skos:prefLabel "N/A or Unknown"@en ;
+  skos:notation 3 ;
+  skos:definition "The classification of the activity is not applicable or unknown. As coded by ProtectedSeas legal review of the regulations for the site. The data dictionary gives this label only."@en ;
+  skos:inScheme mpr:regulationStatuses ;
+  skos:topConceptOf mpr:regulationStatuses ;
+.
+
+mpr:siteCategories a skos:ConceptScheme ;
+  skos:prefLabel "site categories"@en ;
+  skos:definition "The Navigator Site Categories table. Values of mpr:category match skos:prefLabel."@en ;
+  skos:hasTopConcept mpr:category-1, mpr:category-2, mpr:category-3, mpr:category-4, mpr:category-5, mpr:category-6, mpr:category-7, mpr:category-8, mpr:category-9, mpr:category-10, mpr:category-11, mpr:category-12, mpr:category-13 ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:category-1 a skos:Concept ;
+  skos:prefLabel "Marine Protected Area"@en ;
+  skos:notation 1 ;
+  skos:definition "Marine Protected Areas (MPA) as defined by each country or as classified by the WDPA"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-2 a skos:Concept ;
+  skos:prefLabel "Other Effective Area-Based Conservation Area"@en ;
+  skos:notation 2 ;
+  skos:definition "Other Effective Area-Based Conservation (OECM) Areas as defined by each country or as classified by the WDPA"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-3 a skos:Concept ;
+  skos:prefLabel "Fisheries Management Area"@en ;
+  skos:notation 3 ;
+  skos:definition "Areas that protect fishery resources so sustainable exploitation is possible"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-4 a skos:Concept ;
+  skos:prefLabel "Water Quality/Human Health Area"@en ;
+  skos:notation 4 ;
+  skos:definition "Areas that focus on protecting existing good water quality in an area"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-5 a skos:Concept ;
+  skos:prefLabel "Recreational Area"@en ;
+  skos:notation 5 ;
+  skos:definition "Areas that focus on recreational activities. Includes shipwrecks, swimming areas, state & local parks"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-6 a skos:Concept ;
+  skos:prefLabel "Vessel Restricted Area"@en ;
+  skos:notation 6 ;
+  skos:definition "Areas that restrict boating speeds, entry (either restricts or prohibits operation of a power-driven vessel or a vessel driven by electrical propulsion), or both"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-7 a skos:Concept ;
+  skos:prefLabel "Vessel Reporting Area"@en ;
+  skos:notation 7 ;
+  skos:definition "Areas that require vessels to report when they enter them"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-8 a skos:Concept ;
+  skos:prefLabel "Voluntary Conservation Measure Area"@en ;
+  skos:notation 8 ;
+  skos:definition "Includes Vessel Recommended Routes, some Vessel Speed Restricted Areas (Whales), Areas to be avoided"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-9 a skos:Concept ;
+  skos:prefLabel "Jurisdictional Authority Area"@en ;
+  skos:notation 9 ;
+  skos:definition "EEZs, territorial seas, & other state/provincial waters"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-10 a skos:Concept ;
+  skos:prefLabel "Other"@en ;
+  skos:notation 10 ;
+  skos:definition "Overflight Protection Zones, Ecological Preserves, etc..."@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-11 a skos:Concept ;
+  skos:prefLabel "To Be Determined"@en ;
+  skos:notation 11 ;
+  skos:definition "Unsure how to categorize"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-12 a skos:Concept ;
+  skos:prefLabel "Local Marine Managed Area"@en ;
+  skos:notation 12 ;
+  skos:definition "Coastal waters designated, implemented, and managed directly by the communities adjacent to those waters, often through traditional practices"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:category-13 a skos:Concept ;
+  skos:prefLabel "Marine Spatial Planning Area"@en ;
+  skos:notation 13 ;
+  skos:definition "Areas that are part of a comprehensive framework where human activities are mapped and balanced with ecological protection"@en ;
+  skos:inScheme mpr:siteCategories ;
+  skos:topConceptOf mpr:siteCategories ;
+.
+
+mpr:protectionFocuses a skos:ConceptScheme ;
+  skos:prefLabel "protection focuses"@en ;
+  skos:definition "Values of the Protection Focus attribute. Values of mpr:protectionFocus match skos:prefLabel."@en ;
+  skos:hasTopConcept mpr:focus-ecosystem, mpr:focus-focal-species, mpr:focus-human-health, mpr:focus-cultural-heritage, mpr:focus-human-safety, mpr:focus-water-quality, mpr:focus-marine-spatial-planning, mpr:focus-unknown ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:focus-ecosystem a skos:Concept ;
+  skos:prefLabel "Ecosystem"@en ;
+  skos:notation "Ecosystem" ;
+  skos:definition "Protection focus \"Ecosystem\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-focal-species a skos:Concept ;
+  skos:prefLabel "Focal Species"@en ;
+  skos:notation "Focal Species" ;
+  skos:definition "Protection focus \"Focal Species\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-human-health a skos:Concept ;
+  skos:prefLabel "Human Health"@en ;
+  skos:notation "Human Health" ;
+  skos:definition "Protection focus \"Human Health\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-cultural-heritage a skos:Concept ;
+  skos:prefLabel "Cultural Heritage"@en ;
+  skos:notation "Cultural Heritage" ;
+  skos:definition "Protection focus \"Cultural Heritage\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-human-safety a skos:Concept ;
+  skos:prefLabel "Human Safety"@en ;
+  skos:notation "Human Safety" ;
+  skos:definition "Protection focus \"Human Safety\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-water-quality a skos:Concept ;
+  skos:prefLabel "Water Quality"@en ;
+  skos:notation "Water Quality" ;
+  skos:definition "Protection focus \"Water Quality\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-marine-spatial-planning a skos:Concept ;
+  skos:prefLabel "Marine Spatial Planning"@en ;
+  skos:notation "Marine Spatial Planning" ;
+  skos:definition "Protection focus \"Marine Spatial Planning\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:focus-unknown a skos:Concept ;
+  skos:prefLabel "Unknown"@en ;
+  skos:notation "Unknown" ;
+  skos:definition "Protection focus \"Unknown\". The data dictionary lists this value without further definition."@en ;
+  skos:inScheme mpr:protectionFocuses ;
+  skos:topConceptOf mpr:protectionFocuses ;
+.
+
+mpr:locationTypes a skos:ConceptScheme ;
+  skos:prefLabel "location types"@en ;
+  skos:definition "Codes for the Location Type attribute."@en ;
+  skos:hasTopConcept mpr:location-marine, mpr:location-inland-water, mpr:location-island, mpr:location-inland-terrestrial ;
+  dct:source <https://navigatormap.org/data-dictionary/> ;
+.
+
+mpr:location-marine a skos:Concept ;
+  skos:prefLabel "Marine"@en ;
+  skos:notation 0 ;
+  skos:definition "Site is either completely or partially offshore"@en ;
+  skos:inScheme mpr:locationTypes ;
+  skos:topConceptOf mpr:locationTypes ;
+.
+
+mpr:location-inland-water a skos:Concept ;
+  skos:prefLabel "Inland Water"@en ;
+  skos:notation 1 ;
+  skos:definition "Inland water is the main component of the site"@en ;
+  skos:inScheme mpr:locationTypes ;
+  skos:topConceptOf mpr:locationTypes ;
+.
+
+mpr:location-island a skos:Concept ;
+  skos:prefLabel "Island"@en ;
+  skos:notation 2 ;
+  skos:definition "Island"@en ;
+  skos:inScheme mpr:locationTypes ;
+  skos:topConceptOf mpr:locationTypes ;
+.
+
+mpr:location-inland-terrestrial a skos:Concept ;
+  skos:prefLabel "Inland Terrestrial"@en ;
+  skos:notation 3 ;
+  skos:definition "Inland terrestrial land is the main component of the site"@en ;
+  skos:inScheme mpr:locationTypes ;
+  skos:topConceptOf mpr:locationTypes ;
+.

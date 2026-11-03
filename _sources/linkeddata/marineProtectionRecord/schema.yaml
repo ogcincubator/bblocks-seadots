@@ -1,0 +1,54 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: Record describing a dataset of marine protections
+allOf:
+  - $ref: bblocks://ogc.geo.geodcat.geodcat-records
+  - type: object
+    required:
+      - time
+    properties:
+      properties:
+        type: object
+        required:
+          - type
+          - title
+          - description
+          - keywords
+          - contacts
+          - license
+          - created
+          - updated
+        properties:
+          type:
+            const: dataset
+          keywords:
+            minItems: 1
+          contacts:
+            description: At least one contact must identify the creator of the dataset.
+            contains:
+              type: object
+              required:
+                - roles
+              properties:
+                roles:
+                  contains:
+                    const: creator
+          isAccessibleForFree:
+            type: boolean
+            description: A flag to signal that the dataset is accessible for free.
+          citation:
+            type: array
+            description: The recommended citations for the dataset.
+            items:
+              type: string
+      links:
+        description: At least one link must give access to the features of the dataset.
+        contains:
+          type: object
+          required:
+            - rel
+            - type
+          properties:
+            rel:
+              const: items
+            type:
+              const: application/geo+json

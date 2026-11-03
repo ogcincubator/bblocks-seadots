@@ -1,0 +1,12 @@
+@prefix mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+
+# Fails: the level of fishing protection is out of range, and 7 is not a regulation status code
+<https://w3id.org/ogc/hosted/demo/marine-protections/site/test> a mpr:MarineManagedArea ;
+  dct:identifier "test" ;
+  schema:name "Test site" ;
+  schema:addressCountry "Colombia" ;
+  mpr:category "Marine Protected Area" ;
+  mpr:levelOfFishingProtection 9 ;
+  mpr:bottomTrawling 7 .
