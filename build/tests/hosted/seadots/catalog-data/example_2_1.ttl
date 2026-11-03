@@ -1,8 +1,8 @@
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix ns3: <https://w3id.org/ogc/stac/cf/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -18,14 +18,14 @@
     dcterms:title "Utsira area of interest" ;
     rdfs:seeAlso [ rdfs:label "Utsira surroundings AOI" ;
             dcterms:type "application/geo+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/item> ;
+            ns1:relation <http://www.iana.org/assignments/relation/item> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ],
         [ rdfs:label "SeaDOTs inputs" ;
             dcterms:type "application/json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/collection> ;
+            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs> ],
         [ dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -38,7 +38,7 @@
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "input" ;
-    stac:hasAsset [ ns1:data <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
+    stac:hasAsset [ ns2:data <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .

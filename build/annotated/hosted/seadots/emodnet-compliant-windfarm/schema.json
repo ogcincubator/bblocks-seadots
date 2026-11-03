@@ -11,7 +11,7 @@
   ],
   "properties": {
     "id": {
-      "type": "string",
+      "description": "Feature identifier as supplied by the source; its JSON value type is not constrained.",
       "x-jsonld-id": "@id"
     },
     "type": {
@@ -122,13 +122,35 @@
             "null"
           ],
           "x-jsonld-id": "http://purl.org/dc/terms/description"
+        },
+        "shape_leng": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "shape_area": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "area_sqkm": {
+          "type": [
+            "number",
+            "null"
+          ]
         }
       },
       "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
     },
-    "additionalProperties": {
-      "not": true
-    }
+    "additionalProperties": {}
   },
   "x-jsonld-extra-terms": {
     "Feature": "https://purl.org/geojson/vocab#Feature",
