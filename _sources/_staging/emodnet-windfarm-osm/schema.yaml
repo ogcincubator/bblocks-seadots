@@ -1,0 +1,100 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: EMODnet windfarm feature with preserved OSM source properties
+description: >-
+  An extension of the EMODnet windfarm model. It keeps the source OSM properties
+  and adds EMODnet vocabulary properties only where explicit tags permit a
+  defensible mapping. Missing EMODnet properties remain absent; no country or
+  geometry is inferred.
+oneOf:
+  - allOf:
+      - $ref: bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm
+      - $ref: '#/$defs/osmExtensionFeature'
+  - type: object
+    required: [type, features]
+    properties:
+      type:
+        const: FeatureCollection
+      source:
+        type: string
+      features:
+        type: array
+        items:
+          allOf:
+            - $ref: bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm
+            - $ref: '#/$defs/osmExtensionFeature'
+    additionalProperties: true
+$defs:
+  osmExtensionFeature:
+    type: object
+    required: [id, type, geometry, properties]
+    properties:
+      id:
+        type: string
+        description: Original OSM type/id feature identifier, retained as a source reference.
+      type:
+        const: Feature
+      geometry:
+        oneOf:
+          - type: 'null'
+          - type: object
+            required: [type, coordinates]
+            properties:
+              type:
+                enum: [Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon]
+              coordinates: {}
+            additionalProperties: true
+      properties:
+        type: object
+        required: [osm_type, osm_id, tags]
+        properties:
+          country:
+            type: [string, 'null']
+          n_turbines:
+            type: [number, 'null']
+            minimum: 0
+          power_mw:
+            type: [number, 'null']
+            minimum: 0
+            description: Numeric installed capacity parsed from an explicit OSM electricity-output tag whose unit is MW.
+          status:
+            type: [string, 'null']
+            description: Source status text, copied without normalization.
+          type_inst:
+            type: [string, 'null']
+            description: Installation type copied from an explicit plant:type tag.
+          year:
+            type: [string, 'null']
+            description: Source year copied from an explicit start_date tag; its source meaning is retained in tags.
+          updateyear: {type: [string, 'null']}
+          dist_coast: {type: [number, 'null']}
+          notes: {type: [string, 'null']}
+          name:
+            type: [string, 'null']
+            description: Name copied from the OSM name tag, falling back to seamark:name.
+          area_sqkm: {type: [number, 'null']}
+          osm_type:
+            type: string
+            enum: [node, way, relation]
+          osm_id:
+            type: integer
+            minimum: 0
+          tags:
+            type: object
+            description: Unmodified source OSM tag dictionary, kept in addition to normalized EMODnet properties.
+            additionalProperties: {type: string}
+          members:
+            type: array
+            description: Original relation member references and roles, preserved in source order.
+            items: {type: string}
+          category_of_offshore_production_area:
+            const: 1
+            description: IHO enumerated code 1 (Wind Farm), populated only where OSM explicitly tags a wind-farm production area.
+          iho_feature_role:
+            type: string
+            format: uri
+            enum:
+              - https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#WindTurbine
+              - https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#OffshoreProductionArea
+            description: Local concept aligned to the cited IHO feature label; raw OSM tags remain the source evidence.
+        additionalProperties: true
+    additionalProperties: true

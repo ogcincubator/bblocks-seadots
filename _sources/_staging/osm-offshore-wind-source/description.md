@@ -1,0 +1,13 @@
+# OpenStreetMap offshore wind source feature collection
+
+This block describes the source representation of the Polish Baltic OSM snapshot retrieved on 2026-10-27. It preserves the supplied FeatureCollection `type`, attribution string, feature `id`, GeoJSON `geometry` (including null), and the original `osm_type`, numeric `osm_id`, `tags`, and optional relation `members`. The tag dictionary is preserved as JSON data because OSM tag keys are open-ended and several keys contain colons; the model does not silently reinterpret them.
+
+The snapshot contains 292 features: 287 nodes with Point geometry, four ways with Polygon geometry, and one relation with null geometry. The source record has 32 distinct observed tag keys. Nodes, ways, and relations are distinct OSM element kinds, and element identifiers are scoped by element kind. The source `id` is therefore kept as a literal reference (`node/…`, `way/…`, or `relation/…`) rather than treated as an absolute URI.
+
+The attribution string records OpenStreetMap contributors, ODbL 1.0, the OSM API endpoint, retrieval date, and geographic note. The original metadata does not include the exact request URL, bounding box, query, or unconverted response body, so an identical upstream response cannot be reconstructed. This block describes the supplied GeoJSON artifact exactly as received; it does not fetch, filter, parse, or rebuild OSM elements. Any conversion from a future raw OSM response belongs in an explicitly separate downstream transformation, with both the raw response and derived output retained. The snapshot is not a stable or authoritative national inventory. See [OpenStreetMap copyright](https://www.openstreetmap.org/copyright) and the [OSM element model](https://wiki.openstreetmap.org/wiki/Elements).
+
+## IHO semantics
+
+IHO S-100 Data Dictionary item 42 is “Category of Offshore Production Area”, defined as the classification of an area at sea within which production facilities exist. Its listed value “Wind Farm” is applicable to wind-farm area features when source tags explicitly identify that category. The transform in the companion harmonized block only asserts this IHO value when the OSM tags identify a wind farm (`industrial=windfarm` or `seamark:landmark:production_area=wind_farm`); it does not assign the area category to individual turbine nodes or to ambiguous features. The IHO attribute is documented at the [IHO Geospatial Information Registry](https://registry.iho.int/fdd/view3.do?idx=42&type=3).
+
+The full snapshot is included as an example and test resource. OSM data is licensed under the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/); retain the source attribution when redistributing it.

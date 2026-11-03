@@ -1,0 +1,14 @@
+transforms:
+  - id: harmonize-osm-windfarm
+    description: >-
+      Add EMODnet-compatible properties for explicitly supported OSM tags while
+      preserving source identity, tag dictionaries, geometry, relation members,
+      source attribution, and all unmapped values.
+    type: python
+    ref: transforms/to_emodnet_windfarm.py
+    inputs:
+      mediaTypes: [application/json, application/geo+json]
+    outputs:
+      mediaTypes: [application/geo+json]
+      profiles:
+        - bblocks://ogc.hosted.seadots.emodnet-windfarm-osm
