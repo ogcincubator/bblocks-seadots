@@ -1,23 +1,28 @@
 {
-  "name": "EMODnet windfarm",
-  "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
+  "name": "Wind turbine",
+  "abstract": "GeoJSON representation of a single wind turbine (Feature with Point geometry) or a FeatureCollection of turbines, with harmonised properties: manufacturer, model, rated power, hub height, rotor diameter, rotor axis, operator, condition, and the wind farm it belongs to.",
   "status": "under-development",
   "dateTimeAddition": "2026-07-24T00:00:00Z",
+  "dateOfLastChange": "2026-11-04",
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
-  "version": "0.1",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["EMODnet", "Human Activities", "energy", "windfarm", "WFS", "XSD", "GeoJSON"],
+  "version": "0.2",
+  "license": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "tags": ["wind turbine", "Offshore Windfarm", "energy", "GeoJSON", "OpenStreetMap", "IHO"],
   "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
   "sources": [
-    { "title": "EMODnet Human Activities — Wind Farms service", "link": "https://www.emodnet-humanactivities.eu/" },
-    { "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ", "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms" },
-    { "title": "EU Publications Office Country authority table", "link": "http://publications.europa.eu/resource/authority/country/" }
+    { "title": "IHO wind turbine definition in S-100", "link": "https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0" },
+    { "title": "OpenStreetMap wind turbine tagging (generator:source=wind)", "link": "https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind" },
+    { "title": "INSPIRE ConditionOfFacilityValue code list", "link": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue" }
   ],
-  "dependsOn": ["ogc.geo.features.feature"],
+  "dependsOn": [
+    "ogc.geo.features.feature",
+    "ogc.geo.features.featureCollection",
+    "ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+  ],
   "ldContext": "context.jsonld",
   "shaclRules": [],
-  "standards": ["https://datatracker.ietf.org/doc/html/rfc7946", "https://inspire.ec.europa.eu/id/document/tg/er"],
+  "standards": ["https://datatracker.ietf.org/doc/html/rfc7946"],
   "maturity": "development",
   "scope": "dev"
 }

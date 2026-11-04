@@ -9,6 +9,9 @@
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 
 <https://w3id.org/ogc/hosted/seadots/offshore-windfarm>
     a owl:Ontology ;
@@ -232,3 +235,113 @@ inspire-cofv:functional
 inspire-cofv:disused
     a skos:Concept ;
     rdfs:label "disused"@en .
+
+inspire-cofv:decommissioned
+    a skos:Concept ;
+    rdfs:label "decommissioned"@en .
+
+
+### 3. Wind turbine
+# Terms used by the common-windfarm-turbine building block.
+
+owf:WindTurbine
+    a owl:Class ;
+    rdfs:label "wind turbine"@en ;
+    rdfs:comment "A single machine converting wind energy into electricity, located at a point."@en ;
+    rdfs:seeAlso <https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0> , <https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind> .
+
+owf:turbineReference
+    a owl:DatatypeProperty ;
+    rdfs:label "turbine reference"@en ;
+    rdfs:comment "Reference label of the turbine within its wind farm, as assigned by the source (OSM tag ref)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:string .
+
+owf:partOfWindfarm
+    a owl:ObjectProperty ;
+    rdfs:label "part of windfarm"@en ;
+    rdfs:comment "Wind farm the turbine belongs to."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:subPropertyOf dcterms:isPartOf .
+
+owf:manufacturerName
+    a owl:DatatypeProperty ;
+    rdfs:label "manufacturer name"@en ;
+    rdfs:comment "Name of the turbine manufacturer (OSM tag manufacturer)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:string .
+
+owf:ratedPowerMW
+    a owl:DatatypeProperty ;
+    rdfs:label "rated power in megawatts"@en ;
+    rdfs:comment "Rated (nameplate) electrical output of a single turbine in megawatts (OSM tag generator:output:electricity)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:decimal ;
+    qudt:hasQuantityKind quantitykind:Power ;
+    qudt:unit unit:MegaW .
+
+owf:hubHeight
+    a owl:DatatypeProperty ;
+    rdfs:label "hub height"@en ;
+    rdfs:comment "Height of the rotor hub in metres (OSM tag height:hub)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:decimal ;
+    qudt:hasQuantityKind quantitykind:Height ;
+    qudt:unit unit:M .
+
+owf:rotorDiameter
+    a owl:DatatypeProperty ;
+    rdfs:label "rotor diameter"@en ;
+    rdfs:comment "Diameter of the rotor in metres (OSM tag rotor:diameter)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:decimal ;
+    qudt:hasQuantityKind quantitykind:Diameter ;
+    qudt:unit unit:M .
+
+owf:rotorAxis
+    a owl:ObjectProperty ;
+    rdfs:label "rotor axis"@en ;
+    rdfs:comment "Orientation of the rotor axis (OSM tag generator:type)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range skos:Concept .
+
+owf:RotorAxis
+    a skos:ConceptScheme ;
+    rdfs:label "rotor axis orientations"@en ;
+    skos:hasTopConcept owf:HorizontalAxis , owf:VerticalAxis .
+
+owf:HorizontalAxis
+    a skos:Concept ;
+    rdfs:label "horizontal axis"@en ;
+    skos:prefLabel "horizontal axis"@en ;
+    skos:definition "Rotor rotates around an axis parallel to the ground."@en ;
+    skos:inScheme owf:RotorAxis ;
+    skos:topConceptOf owf:RotorAxis .
+
+owf:VerticalAxis
+    a skos:Concept ;
+    rdfs:label "vertical axis"@en ;
+    skos:prefLabel "vertical axis"@en ;
+    skos:definition "Rotor rotates around an axis perpendicular to the ground."@en ;
+    skos:inScheme owf:RotorAxis ;
+    skos:topConceptOf owf:RotorAxis .
+
+owf:offshore
+    a owl:DatatypeProperty ;
+    rdfs:label "offshore"@en ;
+    rdfs:comment "Whether the turbine stands offshore (OSM tag offshore)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:range xsd:boolean .
+
+owf:operatorName
+    a owl:DatatypeProperty ;
+    rdfs:label "operator name"@en ;
+    rdfs:comment "Name of an organisation operating the turbine; repeated for joint operators (OSM tag operator, split on ';')."@en ;
+    rdfs:range xsd:string .
+
+owf:conditionOfFacility
+    a owl:ObjectProperty ;
+    rdfs:label "condition of facility"@en ;
+    rdfs:comment "Condition of the facility as an INSPIRE ConditionOfFacilityValue concept."@en ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> .
