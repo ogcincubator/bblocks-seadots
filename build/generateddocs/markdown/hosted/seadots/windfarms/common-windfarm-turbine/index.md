@@ -20749,6 +20749,7 @@ x-jsonld-extra-terms:
   coordinates:
     x-jsonld-id: https://purl.org/geojson/vocab#coordinates
     x-jsonld-container: '@list'
+  WindTurbine: https://w3id.org/ogc/hosted/seadots/windfarm#WindTurbine
   horizontal_axis: https://w3id.org/ogc/hosted/seadots/windfarm#HorizontalAxis
   vertical_axis: https://w3id.org/ogc/hosted/seadots/windfarm#VerticalAxis
   projected: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/projected
@@ -20867,6 +20868,7 @@ Links to the schema:
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
+    "WindTurbine": "owf:WindTurbine",
     "horizontal_axis": "owf:HorizontalAxis",
     "vertical_axis": "owf:VerticalAxis",
     "projected": "inspire-cofv:projected",

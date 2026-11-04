@@ -2,14 +2,14 @@
 
 {
   "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-ontology",
-  "name": "Offshore Windfarm (OWF) and Wind Turbine (WT) ontology with properties available in IHO, EmodNet, OpenStreetMaps, national sources",
-  "abstract": "Ontology defined terms for Offshore Windfarm (OWF) and Wind Turbine (WT) with properties available in IHO, EmodNet, OpenStreetMaps, national sources.",
+  "name": "Windfarm ontology (designated areas and wind turbines)",
+  "abstract": "Shared ontology for wind farms as designated areas and for individual wind turbines, used by the common-windfarm-designated-area and common-windfarm-turbine building blocks. It aligns EMODnet Human Activities, OpenStreetMap, IHO S-100 and national (NVE, Polish) source properties, with SKOS concept schemes for status, country, rotor axis, source type and location status.",
   "status": "under-development",
   "dateTimeAddition": "2026-07-24T00:00:00Z",
-  "dateOfLastChange": "2026-11-05",
+  "dateOfLastChange": "2026-11-04",
   "itemClass": "model",
   "register": "ogc-marine-dt-seadots",
-  "version": "0.1",
+  "version": "0.2",
   "tags": [
     "OWF",
     "Offshore Windfarm",
@@ -46,58 +46,25 @@
     {
       "title": "IHO wind turbine definition in S-100",
       "link": "https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0"
-    }
-  ],
-  "dependsOn": [
-    "ogc.geo.features.feature"
-  ],
-  "shaclRules": [],
-  "maturity": "development",
-  "shaclShapes": {
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ]
-  },
-  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/context.jsonld",
-  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/ontology.ttl",
-  "schema": {
-    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.yaml",
-    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.json"
-  },
-  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/schema.yaml",
-  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/context.jsonld",
-  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/resolvedProperties.json",
-  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/",
-  "validationPassed": false,
-  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-ontology/",
-  "description": "# EMODnet windfarm\n\nThis is the single EMODnet windfarm representation in this register. It is a\nGeoJSON representation aligned with the official EMODnet Human Activities\nwindfarms XSD. It uses the service's published attribute names and primitive\ntypes and maps the official `the_geom` concept to GeoJSON `geometry`.\n\nThe XSD fields are optional and nillable, and the schema reflects that. The\n`country` value is represented as the source country name, not as an ISO code;\nthe underlying field is a nullable `xsd:string`. `context.jsonld` and\n`ontology.ttl` bind country names currently observed in the live service to the\n[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/).\n\nThe properties are `country`, `n_turbines`, `power_mw`, `status`, `type_inst`,\n`updateyear`, `year`, `dist_coast`, and `notes`.\n\nSource-specific extracts, such as the Baltic exercise CSV, are translated into\nthis representation before being served. Their column mapping is exercise\nconfiguration, not a second EMODnet data model.\n\nThe independent [`emodnet-compliant-windfarm-pl`](../emodnet-compliant-windfarm-pl/)\nblock uses this representation for Polish national-source integration, adding\nproject names, reporting details, provenance, and location matching. The\nindependent [`emodnet-compliant-windfarm-no`](../emodnet-compliant-windfarm-no/)\nblock demonstrates the same base model with Norwegian NVE source details.\n\nThis block is intended for publication as a GeoJSON Feature or WFS feature and\nas an interchange layer before downstream semantic enrichment.\n",
-  "examples": [
-    {
-      "title": "EMODnet sample windfarm feature",
-      "content": "An example does not mirrors the official EMODnet windfarms XSD field names and uses the same geometry-to-attribute mapping as the service.\n",
-      "snippets": [
-        {
-          "language": "json",
-          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/examples/operational-offshore-wind-farm.json",
-          "error": "[Errno 2] No such file or directory: '/github/workspace/_sources/windfarms/common-windfarm-ontology/examples/operational-offshore-wind-farm.json'",
-          "code": null
-        }
-      ]
     },
     {
-      "title": "Ocean Data Platform sample windfarm feature taken from EMODnet",
-      "content": "this is real data from the \n",
-      "snippets": [
-        {
-          "language": "json",
-          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/examples/ocean_data_hub-windfarms.json",
-          "error": "[Errno 2] No such file or directory: '/github/workspace/_sources/windfarms/common-windfarm-ontology/examples/ocean_data_hub-windfarms.json'",
-          "code": null
-        }
-      ]
+      "title": "INSPIRE ConditionOfFacilityValue code list",
+      "link": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue"
+    },
+    {
+      "title": "QUDT units and quantity kinds",
+      "link": "https://qudt.org/"
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: EMODnet windfarm feature\ndescription: 'GeoJSON representation of the EMODnet Human Activities windfarms feature\n  type. Property names, optionality, nullability, and value types follow the service''s\n  published windfarms XSD.\n\n  '\nallOf:\n- $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml\n- type: object\n  required:\n  - properties\n  properties:\n    properties:\n      type: object\n      properties:\n        country:\n          type:\n          - string\n          - 'null'\n          description: Country name as published by EMODnet; the XSD type is nullable\n            xsd:string.\n          x-jsonld-id: https://schema.org/addressCountry\n          x-jsonld-type: '@vocab'\n        n_turbines:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines\n        power_mw:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW\n        status:\n          type:\n          - string\n          - 'null'\n          description: Status text as published by EMODnet (nullable xsd:string).\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/\n          x-jsonld-type: '@vocab'\n        type_inst:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://schema.org/additionalType\n        updateyear:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear\n        year:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year\n        dist_coast:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast\n        notes:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: http://purl.org/dc/terms/description\n        shape_leng:\n          type:\n          - number\n          - 'null'\n        shape_area:\n          type:\n          - number\n          - 'null'\n        name:\n          type:\n          - string\n          - 'null'\n        area_sqkm:\n          type:\n          - number\n          - 'null'\n      x-jsonld-id: https://purl.org/geojson/vocab#properties\n    additionalProperties: {}\nx-jsonld-extra-terms:\n  id: '@id'\n  type: '@type'\n  Feature: https://purl.org/geojson/vocab#Feature\n  Point: https://purl.org/geojson/vocab#Point\n  Polygon: https://purl.org/geojson/vocab#Polygon\n  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon\n  geometry: https://purl.org/geojson/vocab#geometry\n  coordinates:\n    x-jsonld-id: https://purl.org/geojson/vocab#coordinates\n    x-jsonld-container: '@list'\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  schema: https://schema.org/\n  seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#\n  dcterms: http://purl.org/dc/terms/\n  seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/\n  inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/\nx-bblocks-metadata:\n  itemIdentifier: ogc.hosted.seadots.windfarms.common-windfarm-ontology\n  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-05'\n",
+  "dependsOn": [],
+  "shaclRules": [],
+  "maturity": "development",
+  "shaclShapes": {},
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/ontology.ttl",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/",
+  "validationPassed": true,
+  "description": "# Windfarm ontology\n\nThis is the shared ontology `https://w3id.org/ogc/hosted/seadots/windfarm` (prefix `owf:`) behind two schema blocks:\n\n- [common-windfarm-designated-area](../common-windfarm-designated-area/): a wind farm as a designated area or project, without its devices;\n- [common-windfarm-turbine](../common-windfarm-turbine/): a single wind turbine, linked to its wind farm.\n\nEach of those blocks has a `context.jsonld` that maps every schema property and every coded value to a term defined here, or to a standard vocabulary (`schema:name`, `schema:model`, `schema:addressCountry`, `schema:sameAs`, `dcterms:source`, `dcterms:identifier`, `dcterms:description`, `dcterms:modified`). The ontology IRI is the `owf:` namespace without `#`, so a w3id lookup of any `owf:` term resolves to this ontology. Its earlier IRI `https://w3id.org/ogc/hosted/seadots/offshore-windfarm` is kept as `owl:priorVersion`.\n\n## Classes\n\n| Class | Meaning | Alignment |\n|---|---|---|\n| `owf:WindfarmArea` | Wind farm as a designated area or project | [IHO S-100 windfarm](https://registry.iho.int/fdd/view1.do?idx=798&type=1) |\n| `owf:WindTurbine` | Single wind turbine at a point | [IHO S-100 wind turbine](https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0) |\n\n## Properties\n\n- **Wind farm** (`rdfs:domain owf:WindfarmArea`):\n  - EMODnet attributes: `nTurbines`, `powerMW`, `year`, `updateYear`, `distanceToCoast`, `areaSqKm`, `installationType`, and `shapeLength`/`shapeArea` for the EMODnet service;\n  - status and time: `statusDetail`, `statusAsOf`, `yearSemantics`, `yearIsAssumed`, `operationalDate`;\n  - organisations: `ownerName`, `developerName`;\n  - licensing and administration: `licenceStatus`, `licensingCase`, `administrativeUnit`, `electricityPriceArea`, `meanAnnualProductionGWh`;\n  - provenance: `sourceType`, `sourceDataset`, `sourceSnapshotDate`, `locationStatus`, `locationMethod`, `locationReference`.\n- **Turbine** (`rdfs:domain owf:WindTurbine`): `turbineReference`, `partOfWindfarm`, `manufacturerName`, `ratedPowerMW`, `hubHeight`, `rotorDiameter`, `rotorAxis`.\n- **Shared**: `windfarmName`, `operatorName`, `offshore`, `conditionOfFacility`.\n\nQuantities carry `qudt:unit` and `qudt:hasQuantityKind`: MW, m, km\u00b2, GWh. Where the Norwegian ([emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/), `nve:`) or Polish ([emodnet-compliant-windfarm-pl](../emodnet-compliant-windfarm-pl/), `ses:`) blocks define the same property, it is declared `owl:equivalentProperty`. `sourceType` and `locationStatus` take concepts rather than strings, so they only refer to the Polish terms with `rdfs:seeAlso`.\n\n## Concept schemes\n\n| Scheme | Concepts | Used by |\n|---|---|---|\n| `seadots-emodnet:WindfarmStatus` | Planned, Approved, Construction, Production, TestSuite, Dismantled, each matched to INSPIRE ConditionOfFacilityValue | `status` (designated area) |\n| `seadots-emodnet:Country` | Country names returned by the EMODnet windfarms WFS, matched to the EU country authority table | `country` (designated area) |\n| INSPIRE ConditionOfFacilityValue | projected, underConstruction, functional, disused, decommissioned | `status` (turbine) |\n| `owf:RotorAxis` | HorizontalAxis, VerticalAxis | `rotor_axis` (turbine) |\n| `owf:SourceType` | OpenStreetMapSource, EmodnetSource, NationalSource (`osm`, `emodnet`, `national`) | `source_type` (designated area) |\n| `owf:LocationStatus` | LocationSourceProvided, LocationMapped, LocationAnticipated, LocationUnmatched | `location_status` (designated area) |\n",
+  "annotatedSchema": null,
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
   "gitPath": "_sources/windfarms/common-windfarm-ontology"
 }
