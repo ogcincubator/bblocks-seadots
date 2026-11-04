@@ -1,0 +1,57 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/> .
+
+mpr:MarineManagedAreaShape a sh:NodeShape ;
+  sh:targetClass mpr:MarineManagedArea ;
+  sh:property [ sh:path dct:identifier ; sh:minCount 1 ; sh:message "A marine managed area requires a dct:identifier (Site ID)." ] ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A marine managed area requires a schema:name (Site Name)." ] ;
+  sh:property [ sh:path schema:addressCountry ; sh:minCount 1 ; sh:message "A marine managed area requires a schema:addressCountry (Country)." ] ;
+  sh:property [ sh:path mpr:category ; sh:minCount 1 ; sh:maxCount 1 ; sh:message "A marine managed area requires exactly one mpr:category." ] ;
+  sh:property [ sh:path mpr:levelOfFishingProtection ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( 0 1 2 3 4 5 ) ; sh:message "mpr:levelOfFishingProtection must be a single integer from 0 to 5." ] ;
+  sh:property [ sh:path mpr:recreationalFishing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:recreationalFishing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:commercialFishing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:commercialFishing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:artisanalFishing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:artisanalFishing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:subsistenceFishing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:subsistenceFishing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:bottomTrawling ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:bottomTrawling must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:pelagicTrawling ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:pelagicTrawling must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:hookAndLine ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:hookAndLine must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:trolling ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:trolling must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:purseSeineSurroundingNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:purseSeineSurroundingNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:gillnetsEntanglingNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:gillnetsEntanglingNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:trammelNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:trammelNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:dipScoopNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:dipScoopNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:castNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:castNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:driftNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:driftNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:otherNets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:otherNets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:dredges ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:dredges must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:trapsAndPots ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:trapsAndPots must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:spearFishing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:spearFishing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:underwaterExtractionDiving ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:underwaterExtractionDiving must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:handCapture ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:handCapture must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:fishAggregatingDevices ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:fishAggregatingDevices must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:longlining ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:longlining must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:gillnetting ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:gillnetting must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:nets ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:nets must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:miscellaneousGear ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:miscellaneousGear must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:discharge ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:discharge must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:vesselSpeed ; sh:maxCount 1 ; sh:in ( 1 2 3 ) ; sh:message "mpr:vesselSpeed must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:vesselEntry ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:vesselEntry must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:diving ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:diving must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:historicArtifactRemoval ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:historicArtifactRemoval must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:vesselStopping ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:vesselStopping must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:anchoring ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:anchoring must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:mooring ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:mooring must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:landing ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:landing must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:dredgingDumping ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:dredgingDumping must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:industrialExploration ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:industrialExploration must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:industrialExtraction ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:industrialExtraction must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:aquaculture ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:aquaculture must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:construction ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:construction must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:overflightDrones ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:overflightDrones must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:anchorDragging ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:anchorDragging must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:dredging ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:dredging must be a single regulation status code." ] ;
+  sh:property [ sh:path mpr:drilling ; sh:maxCount 1 ; sh:in ( 0 1 2 3 ) ; sh:message "mpr:drilling must be a single regulation status code." ] ;
+.

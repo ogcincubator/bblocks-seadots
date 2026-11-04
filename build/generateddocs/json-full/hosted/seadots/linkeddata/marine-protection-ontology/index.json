@@ -1,0 +1,97 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.linkeddata.marine-protection-ontology",
+  "name": "Marine Protections Ontology",
+  "abstract": "Example ontology for the regulation of marine managed areas, minting only the terms that have no exact equivalent in the ontologies of the OGC Cross Domain Model. Definitions are taken from the ProtectedSeas Navigator data dictionary.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-11-03T00:00:00Z",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "dateOfLastChange": "2026-11-03",
+  "itemClass": "model",
+  "shaclShapes": {
+    "ogc.hosted.seadots.linkeddata.marine-protection-ontology": [
+      "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/shapes.shacl"
+    ]
+  },
+  "dependsOn": [
+    "ogc.model.cross-domain.dcterms",
+    "ogc.model.cross-domain.geosparql",
+    "ogc.model.cross-domain.pav",
+    "ogc.model.cross-domain.schema-org"
+  ],
+  "sources": [
+    {
+      "title": "ProtectedSeas Navigator Data Dictionary",
+      "link": "https://navigatormap.org/data-dictionary/"
+    },
+    {
+      "title": "ProtectedSeas Navigator Methodology",
+      "link": "https://navigatormap.org/methodology/"
+    },
+    {
+      "title": "ProtectedSeas Navigator: What Areas do we Include?",
+      "link": "https://navigatormap.org/what-do-we-include/"
+    },
+    {
+      "title": "DCMI Metadata Terms",
+      "link": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl"
+    },
+    {
+      "title": "Schema.org vocabulary",
+      "link": "https://schema.org/version/latest/schemaorg-current-https.ttl"
+    },
+    {
+      "title": "Provenance, Authoring and Versioning (PAV) ontology",
+      "link": "https://pav-ontology.github.io/pav/pav.rdf"
+    },
+    {
+      "title": "OGC Cross Domain Model",
+      "link": "https://github.com/ogcincubator/cross-domain-model"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "tags": [
+    "ontology",
+    "marine",
+    "marine-protected-areas"
+  ],
+  "group": "Semantic & Linked Data",
+  "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/linkeddata/marine-protection-ontology/ontology.ttl",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/linkeddata/marine-protection-ontology/",
+  "description": "## Marine Protections Ontology\n\nDefines the concepts needed to describe how marine managed areas are regulated, based on the\nattributes coded for each site in the [ProtectedSeas Navigator](https://navigatormap.org/data-dictionary/) dataset.\n\n> Note these URIs may be mapped to properties in **any** JSON schema.\n\n### Reuse of the OGC Cross Domain Model\n\nTerms are reused from the ontologies of the [Cross Domain Model](https://github.com/ogcincubator/cross-domain-model)\nwherever one means the same thing, and are therefore not declared here:\n\n| Concept | Term | Cross Domain Model block |\n|---------|------|--------------------------|\n| Site ID | `dct:identifier` | `ogc.model.cross-domain.dcterms` |\n| Date of last update | `dct:modified` | `ogc.model.cross-domain.dcterms` |\n| Site name | `schema:name` | `ogc.model.cross-domain.schema-org` |\n| Country | `schema:addressCountry` | `ogc.model.cross-domain.schema-org` |\n| Subnational unit | `schema:addressRegion` | `ogc.model.cross-domain.schema-org` |\n\nWhere a term is close but not exact, a local term is minted and aligned to it:\n\n- `rdfs:subPropertyOf` where every value is also a value of the broader term, e.g. `mpr:purpose` to\n  `dct:description`, `mpr:wdpaId` to `dct:identifier`, `mpr:siteMajorVersion` to `pav:version`.\n- `skos:closeMatch` where the upstream term has a different scope, e.g. `mpr:effectiveFrom` to `schema:validFrom`,\n  because seasonal dates recur each year. Likewise `mpr:website` to `schema:url`, because source values may hold\n  several URLs.\n\n`mpr:MarineManagedArea` specialises `geo:Feature` (`ogc.model.cross-domain.geosparql`) and `schema:Place`.\n\n### Coded values\n\nRegulation attributes hold integer codes rather than concept IRIs, so that the source data maps directly.\nThe `mpr:regulationStatuses` scheme documents the codes, with `skos:notation` holding the integer. All such\nproperties are sub-properties of `mpr:fishingRegulation` or `mpr:marineActivityRegulation`.\n\n### Status of this namespace\n\n`https://w3id.org/ogc/hosted/demo/marine-protections/` is an example namespace. It is not published or endorsed by\nProtectedSeas, and terms do not currently resolve. Labels are in English only, since this is the only language of\nthe source definitions.\n",
+  "examples": [
+    {
+      "title": "A marine managed area",
+      "base-output-filename": "marine-managed-area",
+      "content": "Uses a subset of the values of the Yurupari - Malpelo site in the\n[ProtectedSeas Navigator](https://navigatormap.org/) dataset (CC BY 4.0).",
+      "snippets": [
+        {
+          "language": "turtle",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/linkeddata/marine-protection-ontology/marine-managed-area.ttl",
+          "sizeBytes": 494,
+          "code": "<https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29> a mpr:MarineManagedArea ;\n  dct:identifier \"AICOL29\" ;\n  schema:name \"Yurupari - Malpelo\" ;\n  schema:addressCountry \"Colombia\" ;\n  mpr:category \"Marine Protected Area\" ;\n  mpr:designation \"Integrated Management District\" ;\n  mpr:wdpaId \"555636046\" ;\n  mpr:iucnCategory \"VI\" ;\n  mpr:levelOfFishingProtection 1 ;\n  mpr:bottomTrawling 3 ;\n  mpr:vesselEntry 3 ;\n  mpr:yearEstablished 2017 ;\n  dct:modified \"2025-09-03\"^^xsd:date .\n"
+        }
+      ],
+      "prefixes": {
+        "mpr": "https://w3id.org/ogc/hosted/demo/marine-protections/",
+        "dct": "http://purl.org/dc/terms/",
+        "schema": "http://schema.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+      }
+    }
+  ],
+  "examplePrefixes": {
+    "mpr": "https://w3id.org/ogc/hosted/demo/marine-protections/",
+    "dct": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/linkeddata/marine-protection-ontology"
+}

@@ -323,20 +323,20 @@ Links to the schema:
   "@context": {
     "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
     "Point": "geojson:Point",
     "Polygon": "geojson:Polygon",
-    "MultiPolygon": "geojson:MultiPolygon",
-    "id": "@id",
-    "type": "@type",
-    "geometry": {
-      "@context": {
-        "coordinates": {
-          "@id": "geojson:coordinates",
-          "@container": "@list"
-        }
-      },
-      "@id": "geojson:geometry"
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
     },
+    "type": "@type",
+    "id": "@id",
     "properties": {
       "@context": {
         "country": {
@@ -353,9 +353,9 @@ Links to the schema:
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
-        "notes": "dcterms:description",
+        "notes": "dct:description",
         "name": "schema:name",
-        "nve_facility_id": "dcterms:identifier",
+        "nve_facility_id": "dct:identifier",
         "nve_licence_status": "nve:licenceStatus",
         "nve_operational_date": {
           "@id": "nve:operationalDate",
@@ -393,7 +393,39 @@ Links to the schema:
       },
       "@id": "geojson:properties"
     },
+    "geometry": "geojson:geometry",
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "coordinates": {
+      "@id": "geojson:coordinates",
+      "@container": "@list"
+    },
     "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
     "schema": "https://schema.org/",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",

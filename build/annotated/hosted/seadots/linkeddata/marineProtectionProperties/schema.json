@@ -1,0 +1,1061 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Attributes of a marine managed area in the ProtectedSeas Navigator dataset, as served by the Ocean Data Platform features API.",
+  "type": "object",
+  "properties": {
+    "ogc_fid": {
+      "description": "Row identifier of the serving database. Not listed in the Navigator data dictionary; a technical field with no semantic mapping.",
+      "type": "integer"
+    },
+    "site_id": {
+      "description": "ProtectedSeas-assigned unique identifier",
+      "type": "string",
+      "x-jsonld-id": "http://purl.org/dc/terms/identifier"
+    },
+    "site_name": {
+      "description": "Site name",
+      "type": "string",
+      "x-jsonld-id": "http://schema.org/name"
+    },
+    "country": {
+      "description": "Country name",
+      "type": "string",
+      "x-jsonld-id": "http://schema.org/addressCountry"
+    },
+    "category_name": {
+      "description": "Site category. The value is the category name from the Navigator Site Categories table.",
+      "type": "string",
+      "enum": [
+        "Marine Protected Area",
+        "Other Effective Area-Based Conservation Area",
+        "Fisheries Management Area",
+        "Water Quality/Human Health Area",
+        "Recreational Area",
+        "Vessel Restricted Area",
+        "Vessel Reporting Area",
+        "Voluntary Conservation Measure Area",
+        "Jurisdictional Authority Area",
+        "Other",
+        "To Be Determined",
+        "Local Marine Managed Area",
+        "Marine Spatial Planning Area"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/category"
+    },
+    "designation": {
+      "description": "Specific site type (e.g. National Marine Sanctuary)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/designation"
+    },
+    "managing_authority": {
+      "description": "Agency(s) with presiding jurisdiction over this site",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/managingAuthority"
+    },
+    "state": {
+      "description": "Subnational unit name, if applicable (e.g. State, Province)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "http://schema.org/addressRegion"
+    },
+    "wdpa_id": {
+      "description": "WDPA-assigned unique identifier for site. NULL = Area not included in WDPA",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/wdpaId"
+    },
+    "iucn_category": {
+      "description": "IUCN Protected Area Category. 'Unassigned' if no value found, not reported, or not applicable",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/iucnCategory"
+    },
+    "purpose": {
+      "description": "Short summary explaining what is special about this marine area; number of habitats and endangered species",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/purpose"
+    },
+    "restrictions": {
+      "description": "Lists prohibited or entirely banned marine-related activities (fishing, dumping, pollution, anchoring, boating) and outlines restricted commercial and/or recreational fishing activities",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/restrictions"
+    },
+    "allowed": {
+      "description": "Lists allowed marine-related activities, including associated licenses/permits if applicable",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/allowedActivities"
+    },
+    "definitions": {
+      "description": "Definitions, where necessary and possible, of terms contained in 'Restrictions' or 'Allowed', e.g. fishing gear, enumerated species, or geographical locations",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/regulatoryDefinitions"
+    },
+    "regulation_titles": {
+      "description": "List of names of the relevant regulations that established the site. Semicolon-separated.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/regulationName"
+    },
+    "regulation_urls": {
+      "description": "List of URLs of relevant regulations. Semicolon-separated.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/regulationUrl"
+    },
+    "urls": {
+      "description": "URL link to the most relevant webpage about the site",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/website"
+    },
+    "seasonality": {
+      "description": "Temporal applicability of the listed restrictions; either Year-round (permanent) or Seasonal (only effective between Effective From and Effective To dates each year)",
+      "type": "string",
+      "enum": [
+        "Year-round",
+        "Seasonal"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/season"
+    },
+    "effective_from": {
+      "description": "Date restrictions begin, if seasonal",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(\\d{4}-\\d{2}-\\d{2})?$",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/effectiveFrom",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "effective_to": {
+      "description": "Date restrictions end, if seasonal",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(\\d{4}-\\d{2}-\\d{2})?$",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/effectiveTo",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "protection_focus": {
+      "description": "The focus of the protection afforded by the site.",
+      "type": "string",
+      "enum": [
+        "Ecosystem",
+        "Focal Species",
+        "Human Health",
+        "Cultural Heritage",
+        "Human Safety",
+        "Water Quality",
+        "Marine Spatial Planning",
+        "Unknown"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/protectionFocus"
+    },
+    "species_of_concern": {
+      "description": "General categories of species that are of interest or concern",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/speciesOfConcern"
+    },
+    "focal_species_tokens": {
+      "description": "Search tokens derived from the species of concern. Not listed in the Navigator data dictionary; a technical field with no semantic mapping.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "government_level": {
+      "description": "Agency(s) level of government. NULL = Not Yet Coded",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "National",
+        "Subnational",
+        "Local",
+        "Collaborative Governance",
+        "Partnership",
+        "Private",
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/governmentLevel"
+    },
+    "year_established": {
+      "description": "Year the site was first established",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/yearEstablished"
+    },
+    "other_links": {
+      "description": "Other helpful URL links related to site",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/otherLinks"
+    },
+    "level_fishing_protection": {
+      "description": "An indicator of the strength of fishing regulations, coded on a 1-5 scale, with higher scores indicating more restrictions and more protection.",
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/levelOfFishingProtection"
+    },
+    "recreational_fishing": {
+      "description": "Fishing for recreational purposes - not sold",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/recreationalFishing"
+    },
+    "commercial_fishing": {
+      "description": "Professional large-scale fisheries that use large, often impactful, gear",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/commercialFishing"
+    },
+    "artisanal_fishing": {
+      "description": "Artisanal fisheries are those that use a relatively low level of technology: small canoes or boats instead of larger, more powerful vessels; no engines or very simple low-power engines; and traditional fishing gear such as spears or hand reels, some nets",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/artisanalFishing"
+    },
+    "subsistence_fishing": {
+      "description": "Fishing in order to feed the fisher's family - not sold",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/subsistenceFishing"
+    },
+    "bottom_trawling": {
+      "description": "A fishing practice that herds and captures the target species, like ground fish or crabs, by towing a net along the ocean floor",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/bottomTrawling"
+    },
+    "pelagic_trawling": {
+      "description": "Pelagic or midwater trawling involves towing a large net through the water column. Trawls are designed to capture and trap the target species inside the codend as the net is hauled through the water",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/pelagicTrawling"
+    },
+    "hook_and_line": {
+      "description": "A fishing method that catches fish by means of a series of baited hooks, which are suspended on lines into the ocean. Excludes trolling and longline, which are separate categories",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/hookAndLine"
+    },
+    "trolling": {
+      "description": "To trail artificial or natural baits behind a moving boat. The bait can be made to skip along the surface or trailed below at any depth to just above the bottom. A bait or lure trailed behind an angler walking along a pier, bridge, or breakwater is also called trolling",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/trolling"
+    },
+    "purse_seine_surrounding_nets": {
+      "description": "A net that encircles schools of fish",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/purseSeineSurroundingNets"
+    },
+    "gillnets_entangling_nets": {
+      "description": "Gillnets and entangling nets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/gillnetsEntanglingNets"
+    },
+    "trammel_nets": {
+      "description": "An entangling net that hangs down in several curtains",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/trammelNets"
+    },
+    "dip_scoop_nets": {
+      "description": "A bag net with a handle that is used to scoop fish from the water",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/dipScoopNets"
+    },
+    "cast_nets": {
+      "description": "A net constructed from a series of tailored netting sections joined together to produce a cone-shaped net with weights and a drawstring attached to the perimeter and cast by a fisher to catch fish",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/castNets"
+    },
+    "drift_nets": {
+      "description": "A fishing net that drifts with the tide or current and is buoyed or attached to a boat",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/driftNets"
+    },
+    "other_nets": {
+      "description": "Any fishing net types not accounted for",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/otherNets"
+    },
+    "dredges": {
+      "description": "Dredges are dragged along the seafloor to catch shellfish. Dredges are made from an openmouthed frame that scoops shellfish from the seafloor. Attached to the back of the frame is a collection area made from metal rings or mesh",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/dredges"
+    },
+    "traps_pots": {
+      "description": "Traps and pots are submerged three-dimensional wire or wood devices that permit organisms to enter the enclosure but make escape extremely difficult or impossible",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/trapsAndPots"
+    },
+    "spear_fishing": {
+      "description": "Fishing with a shaft with one or more sharpened points at one end",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/spearFishing"
+    },
+    "underwater_extraction_diving": {
+      "description": "Fishing or collecting marine life underwater by hand, spear, or harpoon gun with or without the use of an underwater breathing device gear",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/underwaterExtractionDiving"
+    },
+    "hand_capture": {
+      "description": "Fishing or collecting by hand without the use of gear",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/handCapture"
+    },
+    "fish_aggregating_devices": {
+      "description": "Floating objects that are designed and strategically placed to attract pelagic fish. Includes both static and free-floating",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/fishAggregatingDevices"
+    },
+    "longlining": {
+      "description": "A line that is deployed horizontally to which gangions and hooks are attached. A longline may be a bottom longline, i.e., designed for use on the bottom, or a pelagic longline, i.e., designed for use off the bottom. The longline hauler may be manually, electrically, or hydraulically operated",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/longlining"
+    },
+    "gillnetting_legacyV1": {
+      "description": "Gillnets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/gillnetting"
+    },
+    "nets_other_legacyV1": {
+      "description": "Any fishing net types not accounted for",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/nets"
+    },
+    "gear_misc_legacyV1": {
+      "description": "Any fishing gear not included elsewhere",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/miscellaneousGear"
+    },
+    "tribal_exemptions": {
+      "description": "Are there tribal exemptions to fishing restrictions? Yes (0); No (1); Not Yet Coded (null)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/tribalExemptions"
+    },
+    "discharge": {
+      "description": "The deliberate disposal at sea of wastes or other matter from vessels",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/discharge"
+    },
+    "vessel_speed": {
+      "description": "Speed of vessel. Prohibited (i.e. no transit) (1); Restricted (2); N/A or Unknown (3); Not Yet Coded (null)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/vesselSpeed"
+    },
+    "vessel_entry": {
+      "description": "Permittance of vessel types to enter or transit the area",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/vesselEntry"
+    },
+    "diving": {
+      "description": "Recreational, non-extractive, SCUBA diving or freediving",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/diving"
+    },
+    "historic_artifact_removal": {
+      "description": "Removal of fossils or artifacts",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/historicArtifactRemoval"
+    },
+    "vessel_stopping": {
+      "description": "Permittance of vessels to stop in area (opposed to continuous transit required)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/vesselStopping"
+    },
+    "anchoring": {
+      "description": "Holding a vessel in place by mooring it to the seafloor with an anchor",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/anchoring"
+    },
+    "mooring": {
+      "description": "Securing a vessel to a fixed object, such as a mooring buoy",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/mooring"
+    },
+    "landing": {
+      "description": "Stopping a vessel to load and unload things or people to/from land",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/landing"
+    },
+    "dredging_dumping": {
+      "description": "Removal of silt and other material from the bottom of bodies of water and/or dumping of dredged material",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/dredgingDumping"
+    },
+    "industrial_exploration": {
+      "description": "Exploration methods for finding minerals, oil, and gas, for example seismic exploration",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/industrialExploration"
+    },
+    "industrial_extraction": {
+      "description": "Extraction of oil, gas, or minerals",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/industrialExtraction"
+    },
+    "aquaculture": {
+      "description": "Any type of marine farmed fishing",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/aquaculture"
+    },
+    "construction": {
+      "description": "Development or construction of new infrastructure",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/construction"
+    },
+    "overflight_drones": {
+      "description": "Overflight with manned or unmanned aircraft",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/overflightDrones"
+    },
+    "anchor_dragging_legacyV1": {
+      "description": "Dragging an anchor along the seafloor",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/anchorDragging"
+    },
+    "dredging_legacyV1": {
+      "description": "Removal of silt and other material from the bottom of bodies of water",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/dredging"
+    },
+    "drilling_legacyV1": {
+      "description": "Drilling for the purpose of oil or gas extraction",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/drilling"
+    },
+    "subzone": {
+      "description": "1 = Subzone, 0 = not a subzone",
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/subzone"
+    },
+    "primary_site_id": {
+      "description": "Site ID of the primary site of a subzone. NULL = not a subzone",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/primarySiteId"
+    },
+    "coastline_match": {
+      "description": "Site boundary does not follow coastline (0); At least part of site boundary follows coastline (1)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/coastlineMatch"
+    },
+    "site_location": {
+      "description": "Marine (site is either completely or partially offshore) (0); Inland Water (main component) (1), Island (2); Inland Terrestrial (main component) (3)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/locationType"
+    },
+    "boundary_source": {
+      "description": "Source of site boundary data",
+      "type": "string",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/boundarySource"
+    },
+    "s57_category_legacyV1": {
+      "description": "S-57 Category",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/s57Category"
+    },
+    "site_major_version": {
+      "description": "Data major version of site attributes and boundary",
+      "type": "integer",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/siteMajorVersion"
+    },
+    "site_minor_version": {
+      "description": "Data minor version of site attributes and boundary",
+      "type": "integer",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/siteMinorVersion"
+    },
+    "version_start_date": {
+      "description": "Date this version became effective",
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/versionStartDate",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "change_type_regulations": {
+      "description": "Site regulations change between versions",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Correction",
+        "Regulation Increase",
+        "Regulation Decrease",
+        "Regulation Neutral",
+        "New Site",
+        "Removed Site",
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/changeTypeRegulations"
+    },
+    "change_type_boundary": {
+      "description": "Site boundary change between versions",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Correction",
+        "Boundary Increase",
+        "Boundary Decrease",
+        "Boundary Neutral",
+        "New Site",
+        "Removed Site",
+        null
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/changeTypeBoundary"
+    },
+    "regulation_updates_legacyV1": {
+      "description": "Email, phone number, and/or mailing lists to receive the latest updates on regulations regarding removal of marine life",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/latestUpdates"
+    },
+    "last_update": {
+      "description": "Date of the most recent site attributes update",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "x-jsonld-id": "http://purl.org/dc/terms/modified",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "last_reviewed": {
+      "description": "Date of most recent ProtectedSeas review",
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "x-jsonld-id": "https://w3id.org/ogc/hosted/demo/marine-protections/lastReviewed",
+      "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "geom_complexity": {
+      "description": "Geometry complexity measure of the serving database (the sample value equals the vertex count of the geometry). Not listed in the Navigator data dictionary; a technical field with no semantic mapping.",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "site_id",
+    "site_name",
+    "country",
+    "category_name",
+    "level_fishing_protection"
+  ],
+  "x-jsonld-prefixes": {
+    "dct": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "mpr": "https://w3id.org/ogc/hosted/demo/marine-protections/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "x-bblocks-metadata": {
+    "itemIdentifier": "ogc.hosted.seadots.linkeddata.marineProtectionProperties",
+    "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
+    "version": "0.1",
+    "dateOfLastChange": "2026-11-03"
+  }
+}

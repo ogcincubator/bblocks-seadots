@@ -1,0 +1,5 @@
+additionalSteps:
+  - type: jq
+    code: '.id = .properties.site_id | .properties |= with_entries(select(.value != "" and .value != "null"))'
+  - type: sparql-update
+    ref: uplift/add-type.sparql

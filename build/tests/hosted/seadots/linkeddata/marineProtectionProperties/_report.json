@@ -1,0 +1,97 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.linkeddata.marineProtectionProperties - Marine Protection Properties",
+  "bblockName": "Marine Protection Properties",
+  "bblockId": "ogc.hosted.seadots.linkeddata.marineProtectionProperties",
+  "generated": "2026-11-03T13:13:13.741297+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/linkeddata/marineProtectionProperties/navigator-properties.json",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/linkeddata/marineProtectionProperties/navigator-properties.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using ../marineProtectionFeature/examples/navigator-items.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "navigator-properties.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD navigator-properties.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "navigator-properties.ttl",
+              "size": 73,
+              "isError": false,
+              "message": "Output Turtle navigator-properties.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl\n - http://pav-ontology.github.io/pav/pav.rdf"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "focusNodes": {
+                "mpr:MarineManagedAreaShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n - Shape mpr:MarineManagedAreaShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  }
+}

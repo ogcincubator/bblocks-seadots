@@ -1,0 +1,746 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: Attributes of a marine managed area in the ProtectedSeas Navigator dataset, as served by the Ocean Data Platform features API.
+type: object
+properties:
+  ogc_fid:
+    description: Row identifier of the serving database. Not listed in the Navigator data dictionary; a technical field with no semantic mapping.
+    type: integer
+  site_id:
+    description: ProtectedSeas-assigned unique identifier
+    type: string
+  site_name:
+    description: Site name
+    type: string
+  country:
+    description: Country name
+    type: string
+  category_name:
+    description: Site category. The value is the category name from the Navigator Site Categories table.
+    type: string
+    enum:
+    - Marine Protected Area
+    - Other Effective Area-Based Conservation Area
+    - Fisheries Management Area
+    - Water Quality/Human Health Area
+    - Recreational Area
+    - Vessel Restricted Area
+    - Vessel Reporting Area
+    - Voluntary Conservation Measure Area
+    - Jurisdictional Authority Area
+    - Other
+    - To Be Determined
+    - Local Marine Managed Area
+    - Marine Spatial Planning Area
+  designation:
+    description: Specific site type (e.g. National Marine Sanctuary)
+    type:
+    - string
+    - 'null'
+  managing_authority:
+    description: Agency(s) with presiding jurisdiction over this site
+    type:
+    - string
+    - 'null'
+  state:
+    description: Subnational unit name, if applicable (e.g. State, Province)
+    type:
+    - string
+    - 'null'
+  wdpa_id:
+    description: WDPA-assigned unique identifier for site. NULL = Area not included in WDPA
+    type:
+    - string
+    - 'null'
+  iucn_category:
+    description: IUCN Protected Area Category. 'Unassigned' if no value found, not reported, or not applicable
+    type:
+    - string
+    - 'null'
+  purpose:
+    description: Short summary explaining what is special about this marine area; number of habitats and endangered species
+    type:
+    - string
+    - 'null'
+  restrictions:
+    description: Lists prohibited or entirely banned marine-related activities (fishing, dumping, pollution, anchoring, boating) and outlines restricted commercial and/or recreational fishing activities
+    type:
+    - string
+    - 'null'
+  allowed:
+    description: Lists allowed marine-related activities, including associated licenses/permits if applicable
+    type:
+    - string
+    - 'null'
+  definitions:
+    description: Definitions, where necessary and possible, of terms contained in 'Restrictions' or 'Allowed', e.g. fishing gear, enumerated species, or geographical locations
+    type:
+    - string
+    - 'null'
+  regulation_titles:
+    description: List of names of the relevant regulations that established the site. Semicolon-separated.
+    type:
+    - string
+    - 'null'
+  regulation_urls:
+    description: List of URLs of relevant regulations. Semicolon-separated.
+    type:
+    - string
+    - 'null'
+  urls:
+    description: URL link to the most relevant webpage about the site
+    type:
+    - string
+    - 'null'
+  seasonality:
+    description: Temporal applicability of the listed restrictions; either Year-round (permanent) or Seasonal (only effective between Effective From and Effective To dates each year)
+    type: string
+    enum:
+    - Year-round
+    - Seasonal
+  effective_from:
+    description: Date restrictions begin, if seasonal
+    type:
+    - string
+    - 'null'
+    pattern: ^(\d{4}-\d{2}-\d{2})?$
+  effective_to:
+    description: Date restrictions end, if seasonal
+    type:
+    - string
+    - 'null'
+    pattern: ^(\d{4}-\d{2}-\d{2})?$
+  protection_focus:
+    description: The focus of the protection afforded by the site.
+    type: string
+    enum:
+    - Ecosystem
+    - Focal Species
+    - Human Health
+    - Cultural Heritage
+    - Human Safety
+    - Water Quality
+    - Marine Spatial Planning
+    - Unknown
+  species_of_concern:
+    description: General categories of species that are of interest or concern
+    type:
+    - string
+    - 'null'
+  focal_species_tokens:
+    description: Search tokens derived from the species of concern. Not listed in the Navigator data dictionary; a technical field with no semantic mapping.
+    type:
+    - string
+    - 'null'
+  government_level:
+    description: Agency(s) level of government. NULL = Not Yet Coded
+    type:
+    - string
+    - 'null'
+    enum:
+    - National
+    - Subnational
+    - Local
+    - Collaborative Governance
+    - Partnership
+    - Private
+    - null
+  year_established:
+    description: Year the site was first established
+    type:
+    - integer
+    - 'null'
+  other_links:
+    description: Other helpful URL links related to site
+    type:
+    - string
+    - 'null'
+  level_fishing_protection:
+    description: An indicator of the strength of fishing regulations, coded on a 1-5 scale, with higher scores indicating more restrictions and more protection.
+    type: integer
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  recreational_fishing:
+    description: Fishing for recreational purposes - not sold
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  commercial_fishing:
+    description: Professional large-scale fisheries that use large, often impactful, gear
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  artisanal_fishing:
+    description: 'Artisanal fisheries are those that use a relatively low level of technology: small canoes or boats instead of larger, more powerful vessels; no engines or very simple low-power engines; and traditional fishing gear such as spears or hand reels, some nets'
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  subsistence_fishing:
+    description: Fishing in order to feed the fisher's family - not sold
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  bottom_trawling:
+    description: A fishing practice that herds and captures the target species, like ground fish or crabs, by towing a net along the ocean floor
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  pelagic_trawling:
+    description: Pelagic or midwater trawling involves towing a large net through the water column. Trawls are designed to capture and trap the target species inside the codend as the net is hauled through the water
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  hook_and_line:
+    description: A fishing method that catches fish by means of a series of baited hooks, which are suspended on lines into the ocean. Excludes trolling and longline, which are separate categories
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  trolling:
+    description: To trail artificial or natural baits behind a moving boat. The bait can be made to skip along the surface or trailed below at any depth to just above the bottom. A bait or lure trailed behind an angler walking along a pier, bridge, or breakwater is also called trolling
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  purse_seine_surrounding_nets:
+    description: A net that encircles schools of fish
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  gillnets_entangling_nets:
+    description: Gillnets and entangling nets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  trammel_nets:
+    description: An entangling net that hangs down in several curtains
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  dip_scoop_nets:
+    description: A bag net with a handle that is used to scoop fish from the water
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  cast_nets:
+    description: A net constructed from a series of tailored netting sections joined together to produce a cone-shaped net with weights and a drawstring attached to the perimeter and cast by a fisher to catch fish
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  drift_nets:
+    description: A fishing net that drifts with the tide or current and is buoyed or attached to a boat
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  other_nets:
+    description: Any fishing net types not accounted for
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  dredges:
+    description: Dredges are dragged along the seafloor to catch shellfish. Dredges are made from an openmouthed frame that scoops shellfish from the seafloor. Attached to the back of the frame is a collection area made from metal rings or mesh
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  traps_pots:
+    description: Traps and pots are submerged three-dimensional wire or wood devices that permit organisms to enter the enclosure but make escape extremely difficult or impossible
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  spear_fishing:
+    description: Fishing with a shaft with one or more sharpened points at one end
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  underwater_extraction_diving:
+    description: Fishing or collecting marine life underwater by hand, spear, or harpoon gun with or without the use of an underwater breathing device gear
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  hand_capture:
+    description: Fishing or collecting by hand without the use of gear
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  fish_aggregating_devices:
+    description: Floating objects that are designed and strategically placed to attract pelagic fish. Includes both static and free-floating
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  longlining:
+    description: A line that is deployed horizontally to which gangions and hooks are attached. A longline may be a bottom longline, i.e., designed for use on the bottom, or a pelagic longline, i.e., designed for use off the bottom. The longline hauler may be manually, electrically, or hydraulically operated
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  gillnetting_legacyV1:
+    description: Gillnets are walls of netting that hang in the water column, typically made of monofilament or multifilament nylon
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  nets_other_legacyV1:
+    description: Any fishing net types not accounted for
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  gear_misc_legacyV1:
+    description: Any fishing gear not included elsewhere
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  tribal_exemptions:
+    description: Are there tribal exemptions to fishing restrictions? Yes (0); No (1); Not Yet Coded (null)
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - null
+  discharge:
+    description: The deliberate disposal at sea of wastes or other matter from vessels
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  vessel_speed:
+    description: Speed of vessel. Prohibited (i.e. no transit) (1); Restricted (2); N/A or Unknown (3); Not Yet Coded (null)
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 1
+    - 2
+    - 3
+    - null
+  vessel_entry:
+    description: Permittance of vessel types to enter or transit the area
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  diving:
+    description: Recreational, non-extractive, SCUBA diving or freediving
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  historic_artifact_removal:
+    description: Removal of fossils or artifacts
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  vessel_stopping:
+    description: Permittance of vessels to stop in area (opposed to continuous transit required)
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  anchoring:
+    description: Holding a vessel in place by mooring it to the seafloor with an anchor
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  mooring:
+    description: Securing a vessel to a fixed object, such as a mooring buoy
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  landing:
+    description: Stopping a vessel to load and unload things or people to/from land
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  dredging_dumping:
+    description: Removal of silt and other material from the bottom of bodies of water and/or dumping of dredged material
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  industrial_exploration:
+    description: Exploration methods for finding minerals, oil, and gas, for example seismic exploration
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  industrial_extraction:
+    description: Extraction of oil, gas, or minerals
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  aquaculture:
+    description: Any type of marine farmed fishing
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  construction:
+    description: Development or construction of new infrastructure
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  overflight_drones:
+    description: Overflight with manned or unmanned aircraft
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  anchor_dragging_legacyV1:
+    description: Dragging an anchor along the seafloor
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  dredging_legacyV1:
+    description: Removal of silt and other material from the bottom of bodies of water
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  drilling_legacyV1:
+    description: Drilling for the purpose of oil or gas extraction
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  subzone:
+    description: 1 = Subzone, 0 = not a subzone
+    type: integer
+    enum:
+    - 0
+    - 1
+  primary_site_id:
+    description: Site ID of the primary site of a subzone. NULL = not a subzone
+    type:
+    - string
+    - 'null'
+  coastline_match:
+    description: Site boundary does not follow coastline (0); At least part of site boundary follows coastline (1)
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - null
+  site_location:
+    description: Marine (site is either completely or partially offshore) (0); Inland Water (main component) (1), Island (2); Inland Terrestrial (main component) (3)
+    type:
+    - integer
+    - 'null'
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - null
+  boundary_source:
+    description: Source of site boundary data
+    type: string
+  s57_category_legacyV1:
+    description: S-57 Category
+    type:
+    - integer
+    - 'null'
+  site_major_version:
+    description: Data major version of site attributes and boundary
+    type: integer
+  site_minor_version:
+    description: Data minor version of site attributes and boundary
+    type: integer
+  version_start_date:
+    description: Date this version became effective
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}$
+  change_type_regulations:
+    description: Site regulations change between versions
+    type:
+    - string
+    - 'null'
+    enum:
+    - Correction
+    - Regulation Increase
+    - Regulation Decrease
+    - Regulation Neutral
+    - New Site
+    - Removed Site
+    - null
+  change_type_boundary:
+    description: Site boundary change between versions
+    type:
+    - string
+    - 'null'
+    enum:
+    - Correction
+    - Boundary Increase
+    - Boundary Decrease
+    - Boundary Neutral
+    - New Site
+    - Removed Site
+    - null
+  regulation_updates_legacyV1:
+    description: Email, phone number, and/or mailing lists to receive the latest updates on regulations regarding removal of marine life
+    type:
+    - string
+    - 'null'
+  last_update:
+    description: Date of the most recent site attributes update
+    type:
+    - string
+    - 'null'
+    pattern: ^\d{4}-\d{2}-\d{2}$
+  last_reviewed:
+    description: Date of most recent ProtectedSeas review
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}$
+  geom_complexity:
+    description: Geometry complexity measure of the serving database (the sample value equals the vertex count of the geometry). Not listed in the Navigator data dictionary; a technical field with no semantic mapping.
+    type: integer
+required:
+- site_id
+- site_name
+- country
+- category_name
+- level_fishing_protection

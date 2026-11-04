@@ -1,0 +1,148 @@
+{
+  "title": "Validation report for ogc.hosted.seadots.linkeddata.marine-protection-ontology - Marine Protections Ontology",
+  "bblockName": "Marine Protections Ontology",
+  "bblockId": "ogc.hosted.seadots.linkeddata.marine-protection-ontology",
+  "generated": "2026-11-03T13:13:11.378948+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "TEST_RESOURCE",
+        "requireFail": true,
+        "filename": "_sources/linkeddata/marine-protection-ontology/tests/invalid-fishing-protection-fail.ttl",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/_sources/linkeddata/marine-protection-ontology/tests/invalid-fishing-protection-fail.ttl",
+        "language": "ttl"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "GENERAL",
+          "title": "General",
+          "entries": [
+            {
+              "op": "require-fail",
+              "isError": false,
+              "message": "Test was expected to fail and it did."
+            }
+          ]
+        },
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using invalid-fishing-protection-fail.ttl from test resources"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl\n - http://pav-ontology.github.io/pav/pav.rdf"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "graph": "@prefix mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <https://w3id.org/ogc/hosted/demo/marine-protections/site/test> ;\n            sh:resultMessage \"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\" ;\n            sh:resultPath mpr:levelOfFishingProtection ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:InConstraintComponent ;\n            sh:sourceShape [ sh:in ( 0 1 2 3 4 5 ) ;\n                    sh:maxCount 1 ;\n                    sh:message \"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\" ;\n                    sh:minCount 1 ;\n                    sh:path mpr:levelOfFishingProtection ] ;\n            sh:value 9 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <https://w3id.org/ogc/hosted/demo/marine-protections/site/test> ;\n            sh:resultMessage \"mpr:bottomTrawling must be a single regulation status code.\" ;\n            sh:resultPath mpr:bottomTrawling ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:InConstraintComponent ;\n            sh:sourceShape [ sh:in ( 0 1 2 3 ) ;\n                    sh:maxCount 1 ;\n                    sh:message \"mpr:bottomTrawling must be a single regulation status code.\" ;\n                    sh:path mpr:bottomTrawling ] ;\n            sh:value 7 ] .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (2):\n  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:in ( Literal(\"0\", datatype=xsd:integer) Literal(\"1\", datatype=xsd:integer) Literal(\"2\", datatype=xsd:integer) Literal(\"3\", datatype=xsd:integer) Literal(\"4\", datatype=xsd:integer) Literal(\"5\", datatype=xsd:integer) ) ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:message Literal(\"mpr:levelOfFishingProtection must be a single integer from 0 to 5.\") ; sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:path mpr:levelOfFishingProtection ]\n  \tFocus Node: <https://w3id.org/ogc/hosted/demo/marine-protections/site/test>\n  \tValue Node: Literal(\"9\", datatype=xsd:integer)\n  \tResult Path: mpr:levelOfFishingProtection\n  \tMessage: mpr:levelOfFishingProtection must be a single integer from 0 to 5.\n  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:in ( Literal(\"0\", datatype=xsd:integer) Literal(\"1\", datatype=xsd:integer) Literal(\"2\", datatype=xsd:integer) Literal(\"3\", datatype=xsd:integer) ) ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:message Literal(\"mpr:bottomTrawling must be a single regulation status code.\") ; sh:path mpr:bottomTrawling ]\n  \tFocus Node: <https://w3id.org/ogc/hosted/demo/marine-protections/site/test>\n  \tValue Node: Literal(\"7\", datatype=xsd:integer)\n  \tResult Path: mpr:bottomTrawling\n  \tMessage: mpr:bottomTrawling must be a single regulation status code.\n  "
+            },
+            {
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "focusNodes": {
+                "mpr:MarineManagedAreaShape": {
+                  "nodes": [
+                    "<https://w3id.org/ogc/hosted/demo/marine-protections/site/test>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n - Shape mpr:MarineManagedAreaShape: <https://w3id.org/ogc/hosted/demo/marine-protections/site/test>\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/hosted/seadots/linkeddata/marine-protection-ontology/marine-managed-area.ttl",
+        "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/linkeddata/marine-protection-ontology/marine-managed-area.ttl",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "text/turtle"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using example_1_1.ttl from examples"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "marine-managed-area.ttl",
+              "size": 13,
+              "isError": false,
+              "message": "Output Turtle marine-managed-area.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "TURTLE",
+          "title": "Turtle",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Prefixes are defined for mpr, dct, schema, xsd"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl\n - http://pav-ontology.github.io/pav/pav.rdf"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/linkeddata/marine-protection-ontology/shapes.shacl",
+              "focusNodes": {
+                "mpr:MarineManagedAreaShape": {
+                  "nodes": [
+                    "<https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:\n - Shape mpr:MarineManagedAreaShape: <https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29>\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  }
+}

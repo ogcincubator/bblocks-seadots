@@ -1,0 +1,28 @@
+prefixes:
+  mpr: https://w3id.org/ogc/hosted/demo/marine-protections/
+  dct: http://purl.org/dc/terms/
+  schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+examples:
+  - title: A marine managed area
+    base-output-filename: marine-managed-area
+    content: |-
+      Uses a subset of the values of the Yurupari - Malpelo site in the
+      [ProtectedSeas Navigator](https://navigatormap.org/) dataset (CC BY 4.0).
+    snippets:
+      - language: turtle
+        code: |
+          <https://w3id.org/ogc/hosted/demo/marine-protections/site/AICOL29> a mpr:MarineManagedArea ;
+            dct:identifier "AICOL29" ;
+            schema:name "Yurupari - Malpelo" ;
+            schema:addressCountry "Colombia" ;
+            mpr:category "Marine Protected Area" ;
+            mpr:designation "Integrated Management District" ;
+            mpr:wdpaId "555636046" ;
+            mpr:iucnCategory "VI" ;
+            mpr:levelOfFishingProtection 1 ;
+            mpr:bottomTrawling 3 ;
+            mpr:vesselEntry 3 ;
+            mpr:yearEstablished 2017 ;
+            dct:modified "2025-09-03"^^xsd:date .

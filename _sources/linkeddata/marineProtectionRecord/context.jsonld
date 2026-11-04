@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "dataset": "http://www.w3.org/ns/dcat#Dataset",
+    "interval": {
+      "@id": "http://www.w3.org/2006/time#hasTime",
+      "@container": "@list"
+    },
+    "organization": "vcard:organization-name",
+    "roles": {
+      "@id": "vcard:role",
+      "@container": "@set"
+    },
+    "emails": {
+      "@id": "vcard:hasEmail",
+      "@container": "@set",
+      "@context": {
+        "value": "@value"
+      }
+    },
+    "isAccessibleForFree": {
+      "@id": "schema:isAccessibleForFree",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "citation": {
+      "@id": "schema:citation",
+      "@container": "@set"
+    }
+  }
+}

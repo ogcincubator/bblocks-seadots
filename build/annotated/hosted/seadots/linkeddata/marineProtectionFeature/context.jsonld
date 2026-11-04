@@ -1,0 +1,159 @@
+{
+  "@context": {
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
+    },
+    "type": "@type",
+    "id": "@id",
+    "properties": "@nest",
+    "geometry": {
+      "@context": {
+        "coordinates": {
+          "@container": "@list",
+          "@id": "geojson:coordinates"
+        }
+      },
+      "@id": "geojson:geometry"
+    },
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "links": {
+      "@context": {
+        "href": {
+          "@type": "@id",
+          "@id": "oa:hasTarget"
+        },
+        "rel": {
+          "@context": {
+            "@base": "http://www.iana.org/assignments/relation/"
+          },
+          "@id": "http://www.iana.org/assignments/relation",
+          "@type": "@id"
+        },
+        "type": "dct:type",
+        "hreflang": "dct:language",
+        "title": "rdfs:label",
+        "length": "dct:extent"
+      },
+      "@id": "rdfs:seeAlso"
+    },
+    "site_id": "dct:identifier",
+    "site_name": "schema:name",
+    "country": "schema:addressCountry",
+    "category_name": "mpr:category",
+    "designation": "mpr:designation",
+    "managing_authority": "mpr:managingAuthority",
+    "state": "schema:addressRegion",
+    "wdpa_id": "mpr:wdpaId",
+    "iucn_category": "mpr:iucnCategory",
+    "purpose": "mpr:purpose",
+    "restrictions": "mpr:restrictions",
+    "allowed": "mpr:allowedActivities",
+    "definitions": "mpr:regulatoryDefinitions",
+    "regulation_titles": "mpr:regulationName",
+    "regulation_urls": "mpr:regulationUrl",
+    "urls": "mpr:website",
+    "seasonality": "mpr:season",
+    "effective_from": {
+      "@id": "mpr:effectiveFrom",
+      "@type": "xsd:date"
+    },
+    "effective_to": {
+      "@id": "mpr:effectiveTo",
+      "@type": "xsd:date"
+    },
+    "protection_focus": "mpr:protectionFocus",
+    "species_of_concern": "mpr:speciesOfConcern",
+    "government_level": "mpr:governmentLevel",
+    "year_established": "mpr:yearEstablished",
+    "other_links": "mpr:otherLinks",
+    "level_fishing_protection": "mpr:levelOfFishingProtection",
+    "recreational_fishing": "mpr:recreationalFishing",
+    "commercial_fishing": "mpr:commercialFishing",
+    "artisanal_fishing": "mpr:artisanalFishing",
+    "subsistence_fishing": "mpr:subsistenceFishing",
+    "bottom_trawling": "mpr:bottomTrawling",
+    "pelagic_trawling": "mpr:pelagicTrawling",
+    "hook_and_line": "mpr:hookAndLine",
+    "trolling": "mpr:trolling",
+    "purse_seine_surrounding_nets": "mpr:purseSeineSurroundingNets",
+    "gillnets_entangling_nets": "mpr:gillnetsEntanglingNets",
+    "trammel_nets": "mpr:trammelNets",
+    "dip_scoop_nets": "mpr:dipScoopNets",
+    "cast_nets": "mpr:castNets",
+    "drift_nets": "mpr:driftNets",
+    "other_nets": "mpr:otherNets",
+    "dredges": "mpr:dredges",
+    "traps_pots": "mpr:trapsAndPots",
+    "spear_fishing": "mpr:spearFishing",
+    "underwater_extraction_diving": "mpr:underwaterExtractionDiving",
+    "hand_capture": "mpr:handCapture",
+    "fish_aggregating_devices": "mpr:fishAggregatingDevices",
+    "longlining": "mpr:longlining",
+    "gillnetting_legacyV1": "mpr:gillnetting",
+    "nets_other_legacyV1": "mpr:nets",
+    "gear_misc_legacyV1": "mpr:miscellaneousGear",
+    "tribal_exemptions": "mpr:tribalExemptions",
+    "discharge": "mpr:discharge",
+    "vessel_speed": "mpr:vesselSpeed",
+    "vessel_entry": "mpr:vesselEntry",
+    "diving": "mpr:diving",
+    "historic_artifact_removal": "mpr:historicArtifactRemoval",
+    "vessel_stopping": "mpr:vesselStopping",
+    "anchoring": "mpr:anchoring",
+    "mooring": "mpr:mooring",
+    "landing": "mpr:landing",
+    "dredging_dumping": "mpr:dredgingDumping",
+    "industrial_exploration": "mpr:industrialExploration",
+    "industrial_extraction": "mpr:industrialExtraction",
+    "aquaculture": "mpr:aquaculture",
+    "construction": "mpr:construction",
+    "overflight_drones": "mpr:overflightDrones",
+    "anchor_dragging_legacyV1": "mpr:anchorDragging",
+    "dredging_legacyV1": "mpr:dredging",
+    "drilling_legacyV1": "mpr:drilling",
+    "subzone": "mpr:subzone",
+    "primary_site_id": "mpr:primarySiteId",
+    "coastline_match": "mpr:coastlineMatch",
+    "site_location": "mpr:locationType",
+    "boundary_source": "mpr:boundarySource",
+    "s57_category_legacyV1": "mpr:s57Category",
+    "site_major_version": "mpr:siteMajorVersion",
+    "site_minor_version": "mpr:siteMinorVersion",
+    "version_start_date": {
+      "@id": "mpr:versionStartDate",
+      "@type": "xsd:date"
+    },
+    "change_type_regulations": "mpr:changeTypeRegulations",
+    "change_type_boundary": "mpr:changeTypeBoundary",
+    "regulation_updates_legacyV1": "mpr:latestUpdates",
+    "last_update": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "last_reviewed": {
+      "@id": "mpr:lastReviewed",
+      "@type": "xsd:date"
+    },
+    "geojson": "https://purl.org/geojson/vocab#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dct": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "mpr": "https://w3id.org/ogc/hosted/demo/marine-protections/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "@version": 1.1
+  }
+}

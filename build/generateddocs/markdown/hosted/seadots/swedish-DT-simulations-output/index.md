@@ -61354,14 +61354,14 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                                             :ellipsoid [ csvw:name "WGS 84" ;
                                                     :inverse_flattening 2.982572e+02 ;
                                                     :semi_major_axis 6378137 ] ;
-                                            :members [ csvw:name "World Geodetic System 1984 (G730)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1762)" ],
+                                            :members [ csvw:name "World Geodetic System 1984 (G873)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G1150)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G730)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1762)" ],
                                                 [ csvw:name "World Geodetic System 1984 (Transit)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G2139)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G873)" ] ] ;
+                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2139)" ] ] ;
                                     :scope "Not known." ] ;
                             :edges "planar" ;
                             :exampleGeometryGeoJSON [ a <http://www.opengis.net/ont/sf#Polygon> ;
@@ -62060,7 +62060,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.swedish-DT-simulations-output
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-02'
+  dateOfLastChange: '2026-11-03'
 
 ```
 

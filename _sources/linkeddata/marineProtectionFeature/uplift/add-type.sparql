@@ -1,0 +1,6 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX geojson: <https://purl.org/geojson/vocab#>
+PREFIX mpr: <https://w3id.org/ogc/hosted/demo/marine-protections/>
+
+INSERT { ?feature a mpr:MarineManagedArea }
+WHERE { ?feature a geojson:Feature ; dct:identifier ?id }
