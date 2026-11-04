@@ -62,6 +62,12 @@ Defines seadots properties
 
 Report member (`seadotsTransformReport`) that every protected-area transform adds to its output FeatureCollection: which source features were excluded and why, which were routed to another EMODnet layer instead of being duplicated, which are not yet reported to the EEA, which carry an inferred crosswalk value or need a geometric overlay, and where the transformed values differ from the EMODnet record for the same site.
 
+### `ogc.hosted.seadots.windfarms.common-windfarm-ontology` — Windfarm ontology (designated areas and wind turbines)
+
+**Type:** model
+
+Shared ontology for wind farms as designated areas and for individual wind turbines, used by the common-windfarm-designated-area and common-windfarm-turbine building blocks. It aligns EMODnet Human Activities, OpenStreetMap, IHO S-100 and national (NVE, Polish) source properties, with SKOS concept schemes for status, country, rotor axis, source type and location status.
+
 ### `ogc.hosted.seadots.linkeddata.marine-protection-ontology` — Marine Protections Ontology
 
 **Type:** model
@@ -80,17 +86,17 @@ Core ontology for signed, weighted fuzzy cognitive maps: concept nodes, influenc
 
 Provides a common model for defining property relationships bound to the ontology
 
-### `ogc.hosted.seadots.windfarms.common-windfarm-designated-area` — EMODnet windfarm
+### `ogc.hosted.seadots.windfarms.windfarm-openstreetmap` — OpenStreetMap offshore wind source feature collection
 
 **Type:** schema
 
-GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.
+Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.
 
-### `ogc.hosted.seadots.windfarms.common-windfarm-ontology` — Offshore Windfarm (OWF) and Wind Turbine (WT) ontology with properties available in IHO, EmodNet, OpenStreetMaps, national sources
+### `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` — EMODnet windfarm
 
-**Type:** model
+**Type:** schema
 
-Ontology defined terms for Offshore Windfarm (OWF) and Wind Turbine (WT) with properties available in IHO, EmodNet, OpenStreetMaps, national sources.
+GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.
 
 ### `ogc.hosted.seadots.linkeddata.marineProtectionProperties` — Marine Protection Properties
 
@@ -128,23 +134,35 @@ Profile of the OGC API - Features collection description for collections that se
 
 Common GeoJSON Feature envelope and shared vocabulary bindings (country, IUCN category, major ecosystem type, EEA designation type) for protected-area features published through OGC API - Features in a form that is field-for-field compatible with the EMODnet Human Activities protected-area layers. Parent of the EMODnet target profiles (nationally designated areas, Regional Sea Convention MPAs), the Norwegian and HELCOM source profiles with their transforms, and the API collection profile.
 
+### `ogc.hosted.seadots.windfarms.common-windfarm-designated-area` — Windfarm designated area
+
+**Type:** schema
+
+GeoJSON representation of a wind farm as a designated area or project, without individual devices such as turbines. A single Feature or a FeatureCollection, with EMODnet windfarm attributes extended by the windpark parameters found in OpenStreetMap, the Norwegian NVE register, and the Polish national pipeline, plus source and location provenance.
+
 ### `ogc.hosted.seadots.windfarms.common-windfarm-turbine` — Wind turbine
 
 **Type:** schema
 
 GeoJSON representation of a single wind turbine (Feature with Point geometry) or a FeatureCollection of turbines, with harmonised properties: manufacturer, model, rated power, hub height, rotor diameter, rotor axis, operator, condition, and the wind farm it belongs to.
 
-### `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` — EMODnet windfarm
+### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
 
 **Type:** schema
 
-GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.
+Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
 
-### `ogc.hosted.seadots.windfarms.windfarm-openstreetmap` — OpenStreetMap offshore wind source feature collection
+### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
 
 **Type:** schema
 
-Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.
+Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
+
+### `ogc.hosted.seadots.windfarms.emodnet-windfarm-osm` — EMODnet windfarm OSM extension
+
+**Type:** schema
+
+A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.
 
 ### `ogc.hosted.seadots.linkeddata.marineProtectionFeature` — Marine Protection Feature
 
@@ -169,24 +187,6 @@ GeoJSON Feature profile reproducing the 36-attribute schema of the EMODnet Human
 **Type:** schema
 
 GeoJSON Feature profile reproducing the attribute schema of the EMODnet Human Activities layer emodnet:marineprotectedareas (MPAs reported to the Regional Sea Conventions, rsc = HELCOM or OSPAR) with unchanged field names and types. Target profile for publishing HELCOM MPAs through OGC API - Features in EMODnet form.
-
-### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
-
-**Type:** schema
-
-Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
-
-### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
-
-**Type:** schema
-
-Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
-
-### `ogc.hosted.seadots.windfarms.emodnet-windfarm-osm` — EMODnet windfarm OSM extension
-
-**Type:** schema
-
-A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.
 
 ### `ogc.hosted.seadots.fcm-sequence` — FCM sequence
 

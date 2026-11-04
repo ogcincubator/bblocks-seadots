@@ -1,7 +1,7 @@
-Validation report for ogc.hosted.seadots.windfarms.common-windfarm-designated-area - EMODnet windfarm
-Generated 2026-11-04T18:04:52.921798+00:00
+Validation report for ogc.hosted.seadots.windfarms.common-windfarm-designated-area - Windfarm designated area
+Generated 2026-11-04T18:25:01.728078+00:00
 === Files ===
-Using examples/operational-offshore-wind-farm.json from examples
+Using examples/osm-baltic-power-area.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_1_1.jsonld created
 Output Turtle example_1_1.ttl created
@@ -12,15 +12,29 @@ Validation passed
 === End JSON Schema ===
 
 === SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/windfarms/common-windfarm-ontology/ontology.ttl
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:FeatureShape: <https://example.org/windfarms/belgium-belwind-alstom-haliade-demonstration-bligh-bank>
- - Shape geojson:GeometryShape: *none*
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: <https://www.openstreetmap.org/relation/21402440>
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:FeatureCollectionShape: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
 
 === End SHACL ===

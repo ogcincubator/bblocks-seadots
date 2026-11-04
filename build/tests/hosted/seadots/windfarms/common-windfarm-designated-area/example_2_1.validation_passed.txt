@@ -1,7 +1,7 @@
-Validation report for ogc.hosted.seadots.windfarms.common-windfarm-designated-area - EMODnet windfarm
-Generated 2026-11-04T18:04:52.933457+00:00
+Validation report for ogc.hosted.seadots.windfarms.common-windfarm-designated-area - Windfarm designated area
+Generated 2026-11-04T18:25:02.532266+00:00
 === Files ===
-Using examples/ocean_data_hub-windfarms.json from examples
+Using examples/windfarm-areas-pl-no.json from examples
 JSON-LD context is present - uplifting
 Output JSON-LD example_2_1.jsonld created
 Output Turtle example_2_1.ttl created
@@ -12,15 +12,29 @@ Validation passed
 === End JSON Schema ===
 
 === SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/windfarms/common-windfarm-ontology/ontology.ttl
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:FeatureShape: <file:///github/workspace/0>
- - Shape geojson:GeometryShape: *none*
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.270>,<urn:baltic-ses:national:1:example-project>,<https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.272>,<https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268>,<https://www.openstreetmap.org/relation/21402440>,<https://www.openstreetmap.org/way/1560193204>,<https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.276>,<https://www.openstreetmap.org/relation/21409513>,<https://www.openstreetmap.org/relation/21410256>,<https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591>,<https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.275>,<https://www.openstreetmap.org/relation/21409512>
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:FeatureCollectionShape: _:Nf636650ee7c24311a6e28e309bee35b8
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
 
 === End SHACL ===

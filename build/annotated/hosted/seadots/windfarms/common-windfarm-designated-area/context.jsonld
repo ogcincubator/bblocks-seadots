@@ -16,26 +16,7 @@
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "country": {
-          "@id": "schema:addressCountry",
-          "@type": "@vocab"
-        },
-        "n_turbines": "seadots:nTurbines",
-        "power_mw": "seadots:powerMW",
-        "status": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-          "@type": "@vocab"
-        },
-        "type_inst": "schema:additionalType",
-        "updateyear": "seadots:updateYear",
-        "year": "seadots:year",
-        "dist_coast": "seadots:distanceToCoast",
-        "notes": "dct:description"
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": "geojson:geometry",
     "bbox": {
       "@container": "@list",
@@ -65,15 +46,121 @@
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
+    "WindfarmArea": "owf:WindfarmArea",
+    "osm": "owf:OpenStreetMapSource",
+    "emodnet": "owf:EmodnetSource",
+    "national": "owf:NationalSource",
+    "source-provided": "owf:LocationSourceProvided",
+    "mapped": "owf:LocationMapped",
+    "anticipated": "owf:LocationAnticipated",
+    "unmatched": "owf:LocationUnmatched",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "schema": "https://schema.org/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-    "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "name": "schema:name",
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "@vocab"
+    },
+    "n_turbines": {
+      "@id": "owf:nTurbines",
+      "@type": "xsd:integer"
+    },
+    "power_mw": {
+      "@id": "owf:powerMW",
+      "@type": "xsd:decimal"
+    },
+    "status": {
+      "@id": "owf:conditionOfFacility",
+      "@type": "@vocab"
+    },
+    "status_detail": "owf:statusDetail",
+    "status_as_of": {
+      "@id": "owf:statusAsOf",
+      "@type": "xsd:date"
+    },
+    "type_inst": "owf:installationType",
+    "offshore": {
+      "@id": "owf:offshore",
+      "@type": "xsd:boolean"
+    },
+    "year": "owf:year",
+    "year_semantics": "owf:yearSemantics",
+    "year_is_assumed": {
+      "@id": "owf:yearIsAssumed",
+      "@type": "xsd:boolean"
+    },
+    "updateyear": "owf:updateYear",
+    "operational_date": {
+      "@id": "owf:operationalDate",
+      "@type": "xsd:date"
+    },
+    "dist_coast": {
+      "@id": "owf:distanceToCoast",
+      "@type": "xsd:decimal"
+    },
+    "area_sqkm": {
+      "@id": "owf:areaSqKm",
+      "@type": "xsd:decimal"
+    },
+    "operator": {
+      "@id": "owf:operatorName",
+      "@container": "@set"
+    },
+    "owner": "owf:ownerName",
+    "developer": "owf:developerName",
+    "licence_status": "owf:licenceStatus",
+    "licensing_case": {
+      "@id": "owf:licensingCase",
+      "@type": "@id"
+    },
+    "admin_units": {
+      "@id": "owf:administrativeUnit",
+      "@container": "@set"
+    },
+    "electricity_price_area": "owf:electricityPriceArea",
+    "mean_annual_production_gwh": {
+      "@id": "owf:meanAnnualProductionGWh",
+      "@type": "xsd:decimal"
+    },
+    "notes": "dct:description",
+    "source_type": {
+      "@id": "owf:sourceType",
+      "@type": "@vocab"
+    },
+    "source_dataset": "owf:sourceDataset",
+    "source_reference": {
+      "@id": "dct:source",
+      "@type": "@id"
+    },
+    "source_record_id": "dct:identifier",
+    "source_snapshot_date": {
+      "@id": "owf:sourceSnapshotDate",
+      "@type": "xsd:date"
+    },
+    "last_updated": {
+      "@id": "dct:modified",
+      "@type": "xsd:dateTime"
+    },
+    "location_status": {
+      "@id": "owf:locationStatus",
+      "@type": "@vocab"
+    },
+    "location_method": "owf:locationMethod",
+    "location_reference": {
+      "@id": "owf:locationReference",
+      "@type": "@id"
+    },
+    "same_as": {
+      "@id": "schema:sameAs",
+      "@type": "@id",
+      "@container": "@set"
+    },
     "@version": 1.1
   }
 }
