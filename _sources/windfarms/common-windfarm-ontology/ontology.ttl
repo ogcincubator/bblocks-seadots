@@ -204,6 +204,15 @@ owf:partOfWindfarm a owl:ObjectProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:subPropertyOf dcterms:isPartOf .
 
+owf:positionalAccuracyM a owl:DatatypeProperty ;
+    rdfs:label "positional accuracy in metres"@en ;
+    qudt:hasQuantityKind quantitykind:Length ;
+    qudt:unit unit:M ;
+    rdfs:comment "Absolute positional accuracy of the wind farm geometry in metres (ISO 19157 absolute external positional accuracy)."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
+
 owf:powerMW a owl:DatatypeProperty ;
     rdfs:label "installed capacity in megawatts"@en ;
     rdfs:comment "Installed or planned nameplate electrical capacity of the windfarm, expressed in megawatts (MW)."@en ;
@@ -304,6 +313,14 @@ owf:updateYear a owl:DatatypeProperty ;
     rdfs:domain owf:WindfarmArea ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string .
+
+owf:validFrom a owl:DatatypeProperty ;
+    rdfs:label "valid from"@en ;
+    rdfs:comment "Date from which the record describes the wind farm, as the INSPIRE validFrom attribute."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:date ;
+    rdfs:seeAlso <https://inspire.ec.europa.eu/data-model/approved/r4618-ir/html/> .
 
 owf:windfarmName a owl:DatatypeProperty ;
     rdfs:label "windfarm name"@en ;

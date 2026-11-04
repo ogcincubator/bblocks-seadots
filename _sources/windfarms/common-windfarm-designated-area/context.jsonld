@@ -2,6 +2,7 @@
   "@context": {
     "@version": 1.1,
     "prov": "http://www.w3.org/ns/prov#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "geojson": "https://purl.org/geojson/vocab#",
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
@@ -67,6 +68,10 @@
       "@id": "owf:operationalDate",
       "@type": "xsd:date"
     },
+    "valid_from": {
+      "@id": "owf:validFrom",
+      "@type": "xsd:date"
+    },
     "dist_coast": {
       "@id": "owf:distanceToCoast",
       "@type": "xsd:decimal"
@@ -114,6 +119,14 @@
       "@id": "dcterms:modified",
       "@type": "xsd:dateTime"
     },
+    "update_date": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:date"
+    },
+    "metadata_record": {
+      "@id": "foaf:isPrimaryTopicOf",
+      "@type": "@id"
+    },
     "location_status": {
       "@id": "owf:locationStatus",
       "@type": "@vocab"
@@ -122,6 +135,10 @@
     "location_reference": {
       "@id": "owf:locationReference",
       "@type": "@id"
+    },
+    "positional_accuracy_m": {
+      "@id": "owf:positionalAccuracyM",
+      "@type": "xsd:decimal"
     },
     "same_as": {
       "@id": "prov:alternateOf",

@@ -39,11 +39,11 @@ ONTOLOGY_PATH = "_sources/windfarms/windfarm-openstreetmap/ontology.ttl"
 
 FIELDS = ["name", "country", "n_turbines", "power_mw", "status", "status_detail", "status_as_of",
           "type_inst", "offshore", "year", "year_semantics", "year_is_assumed", "updateyear",
-          "operational_date", "dist_coast", "area_sqkm", "operator", "owner", "developer",
+          "operational_date", "valid_from", "dist_coast", "area_sqkm", "operator", "owner", "developer",
           "licence_status", "licensing_case", "admin_units", "electricity_price_area",
           "mean_annual_production_gwh", "notes", "source_type", "source_dataset", "source_reference",
-          "source_record_id", "source_snapshot_date", "last_updated", "location_status",
-          "location_method", "location_reference", "same_as"]
+          "source_record_id", "source_snapshot_date", "last_updated", "update_date", "metadata_record",
+          "location_status", "location_method", "location_reference", "positional_accuracy_m", "same_as"]
 
 
 # ---------------------------------------------------------------- alignment

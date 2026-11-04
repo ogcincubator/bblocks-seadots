@@ -20,3 +20,26 @@ examples:
     snippets:
       - language: json
         ref: examples/windfarm-areas-pl-no.json
+  - title: NVE Smøla wind farm (Norwegian register)
+    content: >
+      The onshore Smøla wind farm from the
+      [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/) block, in this model.
+      Counties and municipalities become `admin_units`, and licensing and production data keep
+      their own properties. NVE's turbine details are left out, because turbines are modelled in
+      the turbine block. NVE gives no geometry on the facility page, so geometry is null.
+    snippets:
+      - language: json
+        ref: examples/nve-smola-windfarm-area.json
+  - title: North Sea demonstrator wind farm (illustrative)
+    content: >
+      The illustrative record from [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/)
+      with its fields renamed to this model: `identifier` → `source_record_id`,
+      `lifecycleStatus` → `status`/`status_detail`, `turbineCount` → `n_turbines`,
+      `installedCapacityMW` → `power_mw`, `commissioningDate` → `operational_date`,
+      `sourceDataset` → `source_reference`, `remarks` → `notes`, and `country` "NL" → "Netherlands"
+      (NL is that concept's INSPIRE CountryCode notation). `validFrom`, `updateDate`, `metadataRecord`
+      and `positionalAccuracyM` map to `valid_from`, `update_date`, `metadata_record` and
+      `positional_accuracy_m`. All URLs and values are placeholders from the source example.
+    snippets:
+      - language: json
+        ref: examples/north-sea-demo-windfarm-area.json

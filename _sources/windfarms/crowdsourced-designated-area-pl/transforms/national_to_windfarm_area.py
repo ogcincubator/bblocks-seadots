@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Transform the Polish national offshore wind project compilation (national-windfarm-source,
+Transform the Polish national offshore wind project compilation (windfarms/crowdsourced-designated-area-pl,
 CSV from gramwzielone.pl) into windfarm designated areas (common-windfarm-designated-area),
-driven by the alignment in national-windfarm-source/ontology.ttl.
+driven by the alignment in crowdsourced-designated-area-pl/ontology.ttl.
 
 The ontology declares, for every target property, an ns:ColumnMapping: the source columns
 (as the properties of this block's context.jsonld, e.g. ns:reportedCapacityMW = column
@@ -41,7 +41,7 @@ from rdflib.collection import Collection
 
 NS = Namespace("https://w3id.org/ogc/hosted/seadots/national-windfarm-source#")
 ONTOLOGY_IRI = URIRef("https://w3id.org/ogc/hosted/seadots/national-windfarm-source")
-BLOCK_DIR = "_sources/national-windfarm-source"
+BLOCK_DIR = "_sources/windfarms/crowdsourced-designated-area-pl"
 TARGET_CONTEXT = "_sources/windfarms/common-windfarm-designated-area/context.jsonld"
 EMODNET_WFS = ("https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature"
                "&typeNames=emodnet:windfarms&featureID=")
@@ -77,7 +77,7 @@ def block_file(meta: Any, key: str, name: str) -> Path:
     here = _here()
     found = _find(meta, key, Path(BLOCK_DIR) / name, *([here / name] if here else []))
     if not found:
-        raise FileNotFoundError(f"{name} of national-windfarm-source not found")
+        raise FileNotFoundError(f"{name} of crowdsourced-designated-area-pl not found")
     return found
 
 
@@ -246,7 +246,7 @@ def transform(raw_csv: str, meta: Any = None) -> str:
     context = block_file(meta, "source_context", "context.jsonld")
     here = _here()
     target = _find(meta, "target_context", Path(TARGET_CONTEXT),
-                   *([here.parent / "windfarms/common-windfarm-designated-area/context.jsonld"] if here else []))
+                   *([here.parent / "common-windfarm-designated-area/context.jsonld"] if here else []))
     crosswalk_path = _find(meta, "crosswalk") if _meta(meta, "crosswalk") else None
     emodnet_path = _find(meta, "emodnet_snapshot") if _meta(meta, "emodnet_snapshot") else None
     load = lambda p: json.loads(p.read_text(encoding="utf-8")) if p else None

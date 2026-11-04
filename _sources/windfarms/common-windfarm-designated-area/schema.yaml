@@ -90,7 +90,11 @@ $defs:
               operational_date:
                 type: [string, 'null']
                 format: date
-                description: Date the wind farm entered operation.
+                description: Date the wind farm entered operation (commissioning date).
+              valid_from:
+                type: [string, 'null']
+                format: date
+                description: Date from which the record describes the wind farm (INSPIRE validFrom).
               # --- geometry-derived ---
               dist_coast:
                 type: [number, 'null']
@@ -154,6 +158,13 @@ $defs:
                 type: [string, 'null']
                 format: date-time
                 description: Time of the last edit of the source record.
+              update_date:
+                type: [string, 'null']
+                format: date
+                description: Date of the last update of the source record, when the source gives a date rather than a time.
+              metadata_record:
+                $ref: '#/$defs/nullableUri'
+                description: URI of the catalogue (metadata) record describing the wind farm data.
               # --- location provenance ---
               location_status:
                 enum: [source-provided, mapped, anticipated, unmatched]
@@ -164,6 +175,10 @@ $defs:
               location_reference:
                 $ref: '#/$defs/nullableUri'
                 description: URI of a source supporting the location.
+              positional_accuracy_m:
+                type: [number, 'null']
+                minimum: 0
+                description: Absolute positional accuracy of the geometry in metres.
               same_as:
                 type: [array, 'null']
                 items: {type: string, format: uri}
