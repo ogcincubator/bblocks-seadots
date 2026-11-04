@@ -1,0 +1,35 @@
+transforms:
+  - id: to-windfarm-designated-area
+    description: >
+      Converts the Polish national offshore wind project compilation (CSV,
+      gramwzielone.pl, 26 Aug 2026) into windfarm designated areas
+      (`common-windfarm-designated-area`). The transformation is driven by the
+      alignment declared in this block's `ontology.ttl`: `ns:columnMappings`
+      maps the source columns (properties of this block's context) onto `owf:`,
+      `schema:` and `dcterms:` properties with conversions, ordered value rules
+      (e.g. status wording to the EMODnet status vocabulary) or constants. One
+      row becomes one feature. The source has no coordinates; when the optional
+      `crosswalk` and `emodnet_snapshot` are given, the project's EMODnet sites
+      become `same_as` links and the geometry their centroid (`mapped`), or a
+      documented approximate point (`anticipated`); otherwise the geometry is
+      null (`unmatched`).
+    type: python
+    ref: transforms/national_to_windfarm_area.py
+    inputs:
+      mediaTypes:
+        - text/csv
+    outputs:
+      mediaTypes:
+        - application/geo+json
+        - application/json
+      profiles:
+        - bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area
+    metadata:
+      ontology: _sources/national-windfarm-source/ontology.ttl
+      source_context: _sources/national-windfarm-source/context.jsonld
+      target_context: _sources/windfarms/common-windfarm-designated-area/context.jsonld
+      crosswalk: docs/baltic-ses-exercise/windfarm-data-integration/config/location-mapping.json
+      emodnet_snapshot: docs/baltic-ses-exercise/data/emodnet_windfarms_PL_wfs_2026-10-30.geojson
+      dependencies:
+        pip:
+          - rdflib

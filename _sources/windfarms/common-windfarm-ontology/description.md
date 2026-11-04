@@ -5,7 +5,7 @@ This is the shared ontology `https://w3id.org/ogc/hosted/seadots/windfarm` (pref
 - [common-windfarm-designated-area](../common-windfarm-designated-area/): a wind farm as a designated area or project, without its devices;
 - [common-windfarm-turbine](../common-windfarm-turbine/): a single wind turbine, linked to its wind farm.
 
-Each of those blocks has a `context.jsonld` that maps every schema property and every coded value to a term defined here, or to a standard vocabulary (`schema:name`, `schema:model`, `schema:addressCountry`, `schema:sameAs`, `dcterms:source`, `dcterms:identifier`, `dcterms:description`, `dcterms:modified`). The ontology IRI is the `owf:` namespace without `#`, so a w3id lookup of any `owf:` term resolves to this ontology. Its earlier IRI `https://w3id.org/ogc/hosted/seadots/offshore-windfarm` is kept as `owl:priorVersion`.
+Each of those blocks has a `context.jsonld` that maps every schema property and every coded value to a term defined here, or to DCAT/Dublin Core and PROV terms (`dcterms:title`, `dcterms:source`, `dcterms:identifier`, `dcterms:description`, `dcterms:modified`, `prov:alternateOf`). INSPIRE code lists are used for coded values, and schema.org appears only as `skos:closeMatch` alignments. The ontology IRI is the `owf:` namespace without `#`, so a w3id lookup of any `owf:` term resolves to this ontology. Its earlier IRI `https://w3id.org/ogc/hosted/seadots/offshore-windfarm` is kept as `owl:priorVersion`.
 
 ## Classes
 
@@ -22,8 +22,9 @@ Each of those blocks has a `context.jsonld` that maps every schema property and 
   - organisations: `ownerName`, `developerName`;
   - licensing and administration: `licenceStatus`, `licensingCase`, `administrativeUnit`, `electricityPriceArea`, `meanAnnualProductionGWh`;
   - provenance: `sourceType`, `sourceDataset`, `sourceSnapshotDate`, `locationStatus`, `locationMethod`, `locationReference`.
-- **Turbine** (`rdfs:domain owf:WindTurbine`): `turbineReference`, `partOfWindfarm`, `manufacturerName`, `ratedPowerMW`, `hubHeight`, `rotorDiameter`, `rotorAxis`, `commissioningYear`.
-- **Shared**: `windfarmName`, `operatorName`, `offshore`, `conditionOfFacility`.
+- **Turbine** (`rdfs:domain owf:WindTurbine`): `turbineReference`, `partOfWindfarm`, `manufacturerName`, `modelName`, `ratedPowerMW`, `hubHeight`, `rotorDiameter`, `rotorAxis`, `commissioningYear`.
+- **Shared**: `windfarmName` (sub-property of `dcterms:title`), `operatorName`, `offshore`, `conditionOfFacility`.
+- **Country**: `country`, a proxy for INSPIRE CountryCode. INSPIRE publishes that code list without resolvable item URIs, so its values are the `seadots-emodnet:Country` concepts. Each carries the INSPIRE code (EU Interinstitutional Style Guide, e.g. `PL`, `EL`, `UK`) as `skos:notation` and has `skos:exactMatch` to the EU Publications Office country authority.
 
 Quantities carry `qudt:unit` and `qudt:hasQuantityKind`: MW, m, km², GWh. Where the Norwegian ([emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/), `nve:`) or Polish ([emodnet-compliant-windfarm-pl](../emodnet-compliant-windfarm-pl/), `ses:`) blocks define the same property, it is declared `owl:equivalentProperty`. `sourceType` and `locationStatus` take concepts rather than strings, so they only refer to the Polish terms with `rdfs:seeAlso`.
 
@@ -32,7 +33,7 @@ Quantities carry `qudt:unit` and `qudt:hasQuantityKind`: MW, m, km², GWh. Where
 | Scheme | Concepts | Used by |
 |---|---|---|
 | `seadots-emodnet:WindfarmStatus` | Planned, Approved, Construction, Production, TestSuite, Dismantled, each matched to INSPIRE ConditionOfFacilityValue | `status` (designated area) |
-| `seadots-emodnet:Country` | Country names returned by the EMODnet windfarms WFS, matched to the EU country authority table | `country` (designated area) |
+| `seadots-emodnet:Country` | Country names returned by the EMODnet windfarms WFS, with INSPIRE CountryCode notation, matched to the EU country authority table | `country` (designated area, EMODnet, PL) |
 | INSPIRE ConditionOfFacilityValue | projected, underConstruction, functional, disused, decommissioned | `status` (turbine) |
 | `owf:RotorAxis` | HorizontalAxis, VerticalAxis | `rotor_axis` (turbine) |
 | `owf:SourceType` | OpenStreetMapSource, EmodnetSource, NationalSource (`osm`, `emodnet`, `national`) | `source_type` (designated area) |

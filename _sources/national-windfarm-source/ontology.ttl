@@ -14,3 +14,134 @@ ns:projectName a rdf:Property ; rdfs:label "reported project name"@en ; rdfs:com
 ns:reportedCapacityMW a rdf:Property ; rdfs:label "reported capacity in megawatts"@en ; rdfs:comment "Windfarm capacity reported by the national source as supplied in its CSV field, with the unit indicated by the field name."@en ; rdfs:range xsd:string .
 ns:reportedStatusAugust2026 a rdf:Property ; rdfs:label "status reported in August 2026"@en ; rdfs:comment "Status wording reported by the national source in its August 2026 snapshot."@en ; rdfs:range xsd:string .
 ns:reportedFirstPowerOrCompletionYear a rdf:Property ; rdfs:label "reported first-power or completion year"@en ; rdfs:comment "Year string reported for expected first power or project completion; the precise meaning follows the source notes."@en ; rdfs:range xsd:string .
+
+#################################################################
+# Alignment to the common windfarm model
+# (common-windfarm-designated-area / common-windfarm-ontology, owf:)
+#
+# Machine-readable: transforms/national_to_windfarm_area.py only interprets
+# the mappings below. Each ns:ColumnMapping fills one JSON key of the target
+# block (= one owf: / schema: / dcterms: property) from the CSV columns, with a
+# conversion, ordered value rules (first match wins) or a constant.
+#################################################################
+
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://w3id.org/ogc/hosted/seadots/national-windfarm-source>
+    owl:imports <https://w3id.org/ogc/hosted/seadots/windfarm> .
+
+# ---------- alignment vocabulary ----------
+
+ns:ColumnMapping a owl:Class ;
+    rdfs:label "column mapping"@en ;
+    rdfs:comment "Fills one property of the target block from one or more source columns, a value rule list, or a constant."@en .
+ns:ValueRule a owl:Class ;
+    rdfs:label "value rule"@en ;
+    rdfs:comment "Matches a source column against a case-insensitive regular expression and yields a target value."@en .
+ns:Conversion a owl:Class ;
+    rdfs:label "value conversion"@en .
+
+ns:targetProperty a owl:ObjectProperty ; rdfs:domain ns:ColumnMapping ; rdfs:range rdf:Property ;
+    rdfs:label "target property"@en .
+ns:targetKey a owl:DatatypeProperty ; rdfs:domain ns:ColumnMapping ; rdfs:range xsd:string ;
+    rdfs:label "target JSON key"@en ; rdfs:comment "Property name in the target block, i.e. the context term of ns:targetProperty."@en .
+ns:sourceColumns a owl:ObjectProperty ; rdfs:domain ns:ColumnMapping ; rdfs:range rdf:List ;
+    rdfs:label "source columns"@en ; rdfs:comment "Ordered list of source column properties; the first non-empty one is used."@en .
+ns:conversion a owl:ObjectProperty ; rdfs:domain ns:ColumnMapping ; rdfs:range ns:Conversion ;
+    rdfs:label "conversion"@en .
+ns:valueRules a owl:ObjectProperty ; rdfs:domain ns:ColumnMapping ; rdfs:range rdf:List ;
+    rdfs:label "value rules"@en ; rdfs:comment "Ordered list of ns:ValueRule; the first matching rule gives the value."@en .
+ns:constant a owl:DatatypeProperty ; rdfs:domain ns:ColumnMapping ;
+    rdfs:label "constant"@en ; rdfs:comment "Value that holds for every record of this source (a literal or a concept)."@en .
+ns:ruleColumn a owl:ObjectProperty ; rdfs:domain ns:ValueRule ; rdfs:range rdf:Property ;
+    rdfs:label "rule column"@en .
+ns:rulePattern a owl:DatatypeProperty ; rdfs:domain ns:ValueRule ; rdfs:range xsd:string ;
+    rdfs:label "rule pattern"@en ; rdfs:comment "Case-insensitive regular expression searched in the column value."@en .
+ns:yields a rdf:Property ; rdfs:domain ns:ValueRule ;
+    rdfs:label "yields"@en ; rdfs:comment "Target value: a concept (written as its notation or local name) or a literal."@en .
+
+ns:Copy a ns:Conversion ; rdfs:label "copy"@en ; rdfs:comment "The column value, trimmed."@en .
+ns:ParseDecimal a ns:Conversion ; rdfs:label "parse decimal"@en ; rdfs:comment "A number; null when the value is not one."@en .
+ns:ParenthesisText a ns:Conversion ; rdfs:label "text in parentheses"@en ;
+    rdfs:comment "The text inside the first pair of parentheses, e.g. 'construction (first power 10 Jul 2026)' -> 'first power 10 Jul 2026'; null when there is none."@en .
+ns:ParseReportDate a ns:Conversion ; rdfs:label "parse report date"@en ;
+    rdfs:comment "The first 'D Mon YYYY' date in the value as an ISO date, e.g. 'gramwzielone.pl 26 Aug 2026' -> 2026-08-26."@en .
+ns:ParseReportYear a ns:Conversion ; rdfs:label "parse report year"@en ;
+    rdfs:comment "The year of ns:ParseReportDate, as a string."@en .
+
+# ---------- class alignment ----------
+# One CSV row = one national project record = one owf:WindfarmArea feature with null geometry.
+
+ns:ProjectRecord a owl:Class ;
+    rdfs:label "national project record"@en ;
+    rdfs:comment "One row of the Polish national offshore wind project compilation. A project can span several EMODnet sites (e.g. Baltyk 2 + Baltyk 3)."@en ;
+    skos:closeMatch owf:WindfarmArea .
+
+# ---------- property alignment, applied in this order ----------
+
+ns:columnMappings a owl:AnnotationProperty ; rdfs:label "column mappings"@en .
+
+<https://w3id.org/ogc/hosted/seadots/national-windfarm-source>
+    ns:columnMappings ( ns:map-name ns:map-country ns:map-power ns:map-status ns:map-status-detail
+        ns:map-status-as-of ns:map-offshore ns:map-year ns:map-year-semantics ns:map-year-assumed
+        ns:map-updateyear ns:map-developer ns:map-notes ns:map-source-type ns:map-source-dataset
+        ns:map-source-reference ns:map-snapshot-date ) .
+
+ns:map-name a ns:ColumnMapping ; ns:targetProperty schema:name ; ns:targetKey "name" ;
+    ns:sourceColumns ( ns:projectName ) ; ns:conversion ns:Copy .
+ns:map-country a ns:ColumnMapping ; ns:targetProperty schema:addressCountry ; ns:targetKey "country" ;
+    ns:constant seadots-emodnet:Poland .
+ns:map-power a ns:ColumnMapping ; ns:targetProperty owf:powerMW ; ns:targetKey "power_mw" ;
+    ns:sourceColumns ( ns:reportedCapacityMW ) ; ns:conversion ns:ParseDecimal .
+ns:map-status a ns:ColumnMapping ; ns:targetProperty owf:conditionOfFacility ; ns:targetKey "status" ;
+    ns:valueRules (
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedStatusAugust2026 ; ns:rulePattern "^\\s*(in )?operation|^\\s*production|^\\s*operating" ; ns:yields seadots-emodnet:Production ]
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedStatusAugust2026 ; ns:rulePattern "^\\s*(under )?construction" ; ns:yields seadots-emodnet:Construction ]
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedStatusAugust2026 ; ns:rulePattern "^\\s*approved|^\\s*permitted" ; ns:yields seadots-emodnet:Approved ]
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedStatusAugust2026 ; ns:rulePattern "^\\s*planned|^\\s*in planning" ; ns:yields seadots-emodnet:Planned ]
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedStatusAugust2026 ; ns:rulePattern "^\\s*dismantled|^\\s*decommissioned" ; ns:yields seadots-emodnet:Dismantled ] ) .
+ns:map-status-detail a ns:ColumnMapping ; ns:targetProperty owf:statusDetail ; ns:targetKey "status_detail" ;
+    ns:sourceColumns ( ns:reportedStatusAugust2026 ) ; ns:conversion ns:Copy .
+ns:map-status-as-of a ns:ColumnMapping ; ns:targetProperty owf:statusAsOf ; ns:targetKey "status_as_of" ;
+    ns:sourceColumns ( dcterms:source ) ; ns:conversion ns:ParseReportDate .
+ns:map-offshore a ns:ColumnMapping ; ns:targetProperty owf:offshore ; ns:targetKey "offshore" ;
+    ns:constant true .
+ns:map-year a ns:ColumnMapping ; ns:targetProperty owf:year ; ns:targetKey "year" ;
+    ns:sourceColumns ( ns:reportedFirstPowerOrCompletionYear ) ; ns:conversion ns:Copy .
+ns:map-year-semantics a ns:ColumnMapping ; ns:targetProperty owf:yearSemantics ; ns:targetKey "year_semantics" ;
+    ns:constant "planned first-power or completion year" .
+ns:map-year-assumed a ns:ColumnMapping ; ns:targetProperty owf:yearIsAssumed ; ns:targetKey "year_is_assumed" ;
+    ns:valueRules (
+        [ a ns:ValueRule ; ns:ruleColumn dcterms:source ; ns:rulePattern "assumed" ; ns:yields true ]
+        [ a ns:ValueRule ; ns:ruleColumn ns:reportedFirstPowerOrCompletionYear ; ns:rulePattern "^\\s*\\d{4}\\s*$" ; ns:yields false ] ) .
+ns:map-updateyear a ns:ColumnMapping ; ns:targetProperty owf:updateYear ; ns:targetKey "updateyear" ;
+    ns:sourceColumns ( dcterms:source ) ; ns:conversion ns:ParseReportYear .
+ns:map-developer a ns:ColumnMapping ; ns:targetProperty owf:developerName ; ns:targetKey "developer" ;
+    ns:sourceColumns ( schema:creator ) ; ns:conversion ns:Copy .
+ns:map-notes a ns:ColumnMapping ; ns:targetProperty dcterms:description ; ns:targetKey "notes" ;
+    ns:sourceColumns ( dcterms:source ) ; ns:conversion ns:ParenthesisText .
+ns:map-source-type a ns:ColumnMapping ; ns:targetProperty owf:sourceType ; ns:targetKey "source_type" ;
+    ns:constant owf:NationalSource .
+ns:map-source-dataset a ns:ColumnMapping ; ns:targetProperty owf:sourceDataset ; ns:targetKey "source_dataset" ;
+    ns:constant "Polish national offshore wind project pipeline (gramwzielone.pl)" .
+ns:map-source-reference a ns:ColumnMapping ; ns:targetProperty dcterms:source ; ns:targetKey "source_reference" ;
+    ns:constant "https://www.gramwzielone.pl/?p=20373718" .
+ns:map-snapshot-date a ns:ColumnMapping ; ns:targetProperty owf:sourceSnapshotDate ; ns:targetKey "source_snapshot_date" ;
+    ns:sourceColumns ( dcterms:source ) ; ns:conversion ns:ParseReportDate .
+
+# ---------- record-level alignment (not column based) ----------
+# Implemented by the transform as structural rules:
+#   row number + project name        -> feature id urn:baltic-ses:national:{row}:{slug}, dcterms:identifier "national-{row}"
+#   no coordinates in the source     -> geometry null, owf:locationStatus LocationUnmatched
+#   optional location crosswalk      -> schema:sameAs to the EMODnet WFS records of the project;
+#                                        an anticipated point gives geometry with owf:locationStatus LocationAnticipated
+# Not in the source and left null: n_turbines, type_inst, dist_coast, area_sqkm, operator, owner,
+# operational_date, licensing fields.
+
+ns:projectName skos:closeMatch schema:name .
+ns:reportedCapacityMW skos:closeMatch owf:powerMW .
+ns:reportedStatusAugust2026 skos:closeMatch owf:statusDetail ; skos:relatedMatch owf:conditionOfFacility .
+ns:reportedFirstPowerOrCompletionYear skos:closeMatch owf:year .

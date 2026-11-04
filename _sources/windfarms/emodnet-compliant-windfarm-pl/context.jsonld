@@ -1,9 +1,9 @@
 {
   "@context": {
     "@version": 1.1,
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#",
     "geojson": "https://purl.org/geojson/vocab#",
-    "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
@@ -19,23 +19,26 @@
       "@container": "@set"
     },
     "country": {
-      "@id": "schema:addressCountry",
-      "@type": "@vocab"
+      "@id": "owf:country",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+        "United Kingdom": "https://w3id.org/ogc/hosted/seadots/emodnet/UnitedKingdom"
+      }
     },
-    "Poland": "http://publications.europa.eu/resource/authority/country/POL",
     "n_turbines": "em:nTurbines",
     "power_mw": "em:powerMW",
     "status": {
       "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
       "@type": "@vocab"
     },
-    "type_inst": "schema:additionalType",
+    "type_inst": "owf:installationType",
     "updateyear": "em:updateYear",
     "year": "em:year",
     "dist_coast": "em:distanceToCoast",
     "notes": "dcterms:description",
-    "name": "schema:name",
-    "developer": "schema:creator",
+    "name": "dcterms:title",
+    "developer": "owf:developerName",
     "status_detail": "ses:statusDetail",
     "status_as_of": {
       "@id": "ses:statusAsOf",

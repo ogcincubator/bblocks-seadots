@@ -1,10 +1,10 @@
 {
   "@context": {
     "@version": 1.1,
+    "prov": "http://www.w3.org/ns/prov#",
     "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "geojson": "https://purl.org/geojson/vocab#",
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
-    "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "id": "@id",
@@ -25,10 +25,14 @@
     },
     "properties": "@nest",
     "WindfarmArea": "owf:WindfarmArea",
-    "name": "schema:name",
+    "name": "dcterms:title",
     "country": {
-      "@id": "schema:addressCountry",
-      "@type": "@vocab"
+      "@id": "owf:country",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+        "United Kingdom": "https://w3id.org/ogc/hosted/seadots/emodnet/UnitedKingdom"
+      }
     },
     "n_turbines": {
       "@id": "owf:nTurbines",
@@ -120,7 +124,7 @@
       "@type": "@id"
     },
     "same_as": {
-      "@id": "schema:sameAs",
+      "@id": "prov:alternateOf",
       "@type": "@id",
       "@container": "@set"
     },

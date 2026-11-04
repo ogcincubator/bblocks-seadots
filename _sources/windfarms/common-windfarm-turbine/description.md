@@ -27,7 +27,7 @@ The feature `id` is the URL of the source element, e.g. `https://www.openstreetm
 
 ## Semantics
 
-`context.jsonld` maps `properties` with `@nest`, so the turbine attributes attach directly to the feature resource rather than to an intermediate node. Terms come from the shared windfarm ontology (`owf:`, [common-windfarm-ontology](../common-windfarm-ontology/)), which defines `owf:WindTurbine`, aligned by `rdfs:seeAlso` to the [IHO S-100 wind turbine](https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0) definition. It also defines the turbine properties, with QUDT units where they apply, and the rotor-axis concepts. `model` maps to `schema:model`, `last_updated` to `dcterms:modified`, and `status` to [INSPIRE ConditionOfFacilityValue](http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) concepts.
+`context.jsonld` maps `properties` with `@nest`, so the turbine attributes attach directly to the feature resource rather than to an intermediate node. Terms come from the shared windfarm ontology (`owf:`, [common-windfarm-ontology](../common-windfarm-ontology/)), which defines `owf:WindTurbine`, aligned by `rdfs:seeAlso` to the [IHO S-100 wind turbine](https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0) definition. It also defines the turbine properties, with QUDT units where they apply, and the rotor-axis concepts. `model` maps to `owf:modelName` (aligned with `skos:closeMatch` to `schema:model`), `last_updated` to `dcterms:modified`, and `status` to [INSPIRE ConditionOfFacilityValue](http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) concepts.
 
 ## Examples
 
