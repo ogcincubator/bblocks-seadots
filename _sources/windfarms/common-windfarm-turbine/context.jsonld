@@ -12,29 +12,63 @@
     "FeatureCollection": "geojson:FeatureCollection",
     "Feature": "geojson:Feature",
     "Point": "geojson:Point",
-    "features": {"@id": "geojson:features", "@container": "@set"},
+    "features": {
+      "@id": "geojson:features",
+      "@container": "@set"
+    },
     "geometry": "geojson:geometry",
-    "coordinates": {"@id": "geojson:coordinates", "@container": "@list"},
+    "coordinates": {
+      "@id": "geojson:coordinates",
+      "@container": "@list"
+    },
     "properties": "@nest",
+    "WindTurbine": "owf:WindTurbine",
     "ref": "owf:turbineReference",
     "windfarm_name": "owf:windfarmName",
-    "windfarm": {"@id": "owf:partOfWindfarm", "@type": "@id"},
+    "windfarm": {
+      "@id": "owf:partOfWindfarm",
+      "@type": "@id"
+    },
     "manufacturer": "owf:manufacturerName",
     "model": "schema:model",
-    "rated_power_mw": {"@id": "owf:ratedPowerMW", "@type": "xsd:decimal"},
-    "hub_height_m": {"@id": "owf:hubHeight", "@type": "xsd:decimal"},
-    "rotor_diameter_m": {"@id": "owf:rotorDiameter", "@type": "xsd:decimal"},
-    "rotor_axis": {"@id": "owf:rotorAxis", "@type": "@vocab"},
+    "rated_power_mw": {
+      "@id": "owf:ratedPowerMW",
+      "@type": "xsd:decimal"
+    },
+    "hub_height_m": {
+      "@id": "owf:hubHeight",
+      "@type": "xsd:decimal"
+    },
+    "rotor_diameter_m": {
+      "@id": "owf:rotorDiameter",
+      "@type": "xsd:decimal"
+    },
+    "rotor_axis": {
+      "@id": "owf:rotorAxis",
+      "@type": "@vocab"
+    },
     "horizontal_axis": "owf:HorizontalAxis",
     "vertical_axis": "owf:VerticalAxis",
-    "offshore": {"@id": "owf:offshore", "@type": "xsd:boolean"},
-    "operator": {"@id": "owf:operatorName", "@container": "@set"},
-    "status": {"@id": "owf:conditionOfFacility", "@type": "@vocab"},
+    "offshore": {
+      "@id": "owf:offshore",
+      "@type": "xsd:boolean"
+    },
+    "operator": {
+      "@id": "owf:operatorName",
+      "@container": "@set"
+    },
+    "status": {
+      "@id": "owf:conditionOfFacility",
+      "@type": "@vocab"
+    },
     "projected": "inspire-cofv:projected",
     "underConstruction": "inspire-cofv:underConstruction",
     "functional": "inspire-cofv:functional",
     "disused": "inspire-cofv:disused",
     "decommissioned": "inspire-cofv:decommissioned",
-    "last_updated": {"@id": "dcterms:modified", "@type": "xsd:dateTime"}
+    "last_updated": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    }
   }
 }

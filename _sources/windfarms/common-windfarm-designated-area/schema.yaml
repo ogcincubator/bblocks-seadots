@@ -1,43 +1,171 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: EMODnet windfarm feature
+title: Windfarm designated area
 description: >
-  GeoJSON representation of the EMODnet Human Activities windfarms feature
-  type. Property names, optionality, nullability, and value types follow the
-  service's published windfarms XSD.
-allOf:
-  - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json
-  - type: object
-    required: [properties]
-    properties:
-      properties:
-        type: object
+  A wind farm as a designated area or project, without its individual devices
+  (turbines, substations, cables). A single GeoJSON Feature or a
+  FeatureCollection of such features. Property names extend the EMODnet
+  Human Activities windfarm attributes with the windpark parameters found in
+  OpenStreetMap, the Norwegian NVE register, and the Polish national pipeline.
+  Values a source does not state are null.
+anyOf:
+  - $ref: '#/$defs/WindfarmArea'
+  - $ref: '#/$defs/WindfarmAreaCollection'
+$defs:
+  nullableString: {type: [string, 'null']}
+  nullableUri: {type: [string, 'null'], format: uri}
+  WindfarmAreaCollection:
+    allOf:
+      - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.json
+      - type: object
+        required: [features]
         properties:
-          country:
-            type: [string, 'null']
-            description: Country name as published by EMODnet; the XSD type is nullable xsd:string.
-          n_turbines:
-            type: [number, 'null']
-          power_mw:
-            type: [number, 'null']
-          status:
-            type: [string, 'null']
-            description: Status text as published by EMODnet (nullable xsd:string).
-          type_inst:
-            type: [string, 'null']
-          updateyear:
-            type: [string, 'null']
-          year:
-            type: [string, 'null']
-          dist_coast:
-            type: [number, 'null']
-          notes:
-            type: [string, 'null']
-          shape_leng:
-            type: [number, 'null']
-          shape_area:
-            type: [number, 'null']
-          name:
-            type: [string, 'null']
-          area_sqkm:
-            type: [number, 'null']
-      additionalProperties: true
+          features:
+            type: array
+            items: {$ref: '#/$defs/WindfarmArea'}
+  WindfarmArea:
+    allOf:
+      - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json
+      - type: object
+        required: [id, geometry, properties]
+        properties:
+          id:
+            type: string
+            format: uri
+            description: Identifier of the source record, e.g. an OSM element URL or an EMODnet WFS feature URL.
+          geometry:
+            oneOf:
+              - type: 'null'
+              - type: object
+                required: [type, coordinates]
+                properties:
+                  type: {enum: [Polygon, MultiPolygon, Point]}
+          properties:
+            type: object
+            required: [name, country, status, source_type, source_reference, location_status]
+            properties:
+              # --- identification and EMODnet core attributes ---
+              name:
+                $ref: '#/$defs/nullableString'
+                description: Wind farm name as reported by the source.
+              country:
+                $ref: '#/$defs/nullableString'
+                description: Country name, as used by EMODnet (e.g. "Poland"); null when the source does not state it.
+              n_turbines:
+                type: [integer, 'null']
+                minimum: 0
+                description: Number of turbines in the wind farm (a count, not the devices themselves).
+              power_mw:
+                type: [number, 'null']
+                minimum: 0
+                description: Installed or planned capacity of the wind farm in MW.
+              status:
+                enum: [Planned, Approved, Construction, Production, Dismantled, null]
+                description: Project status using the EMODnet status vocabulary.
+              status_detail:
+                $ref: '#/$defs/nullableString'
+                description: Status wording or tag as given by the source, before normalisation.
+              status_as_of:
+                type: [string, 'null']
+                format: date
+                description: Date on which the status was reported.
+              type_inst:
+                $ref: '#/$defs/nullableString'
+                description: Foundation / installation type as published by EMODnet (e.g. Grounded, Floating).
+              offshore:
+                type: [boolean, 'null']
+                description: Whether the wind farm is offshore.
+              # --- time ---
+              year:
+                $ref: '#/$defs/nullableString'
+                description: Year associated with the project; see year_semantics for its meaning.
+              year_semantics:
+                $ref: '#/$defs/nullableString'
+                description: What the year represents, e.g. reported project year or planned start of operation.
+              year_is_assumed:
+                type: [boolean, 'null']
+                description: True when the year is an estimate rather than an explicit source statement.
+              updateyear:
+                $ref: '#/$defs/nullableString'
+                description: Year the source record was last updated (EMODnet updateyear).
+              operational_date:
+                type: [string, 'null']
+                format: date
+                description: Date the wind farm entered operation.
+              # --- geometry-derived ---
+              dist_coast:
+                type: [number, 'null']
+                minimum: 0
+                description: Distance to the coast in metres, as published by EMODnet.
+              area_sqkm:
+                type: [number, 'null']
+                minimum: 0
+                description: Area of the designated area polygon in km².
+              # --- organisations ---
+              operator:
+                type: [array, 'null']
+                minItems: 1
+                items: {type: string}
+                description: Operating organisation(s).
+              owner:
+                $ref: '#/$defs/nullableString'
+                description: Owning organisation.
+              developer:
+                $ref: '#/$defs/nullableString'
+                description: Developing organisation.
+              # --- licensing and administration ---
+              licence_status:
+                $ref: '#/$defs/nullableString'
+                description: Licensing status as worded by the licensing authority, independent of the operational status.
+              licensing_case:
+                $ref: '#/$defs/nullableUri'
+                description: URI of the licensing case.
+              admin_units:
+                type: [array, 'null']
+                items: {type: string}
+                description: Administrative units (counties, municipalities) the wind farm lies in.
+              electricity_price_area:
+                $ref: '#/$defs/nullableString'
+                description: Electricity price (bidding) area.
+              mean_annual_production_gwh:
+                type: [number, 'null']
+                minimum: 0
+                description: Mean annual electrical production in GWh.
+              notes:
+                $ref: '#/$defs/nullableString'
+              # --- provenance ---
+              source_type:
+                enum: [osm, emodnet, national]
+                description: Kind of source the record comes from.
+              source_dataset:
+                $ref: '#/$defs/nullableString'
+                description: Name of the source dataset.
+              source_reference:
+                type: string
+                format: uri
+                description: URI of the source service, dataset, or publication.
+              source_record_id:
+                $ref: '#/$defs/nullableString'
+                description: Identifier of the record in the source dataset.
+              source_snapshot_date:
+                type: [string, 'null']
+                format: date
+                description: Date the source snapshot was retrieved.
+              last_updated:
+                type: [string, 'null']
+                format: date-time
+                description: Time of the last edit of the source record.
+              # --- location provenance ---
+              location_status:
+                enum: [source-provided, mapped, anticipated, unmatched]
+                description: How the geometry was obtained; unmatched when geometry is null.
+              location_method:
+                $ref: '#/$defs/nullableString'
+                description: How the geometry was obtained or why it is missing.
+              location_reference:
+                $ref: '#/$defs/nullableUri'
+                description: URI of a source supporting the location.
+              same_as:
+                type: [array, 'null']
+                items: {type: string, format: uri}
+                description: Other records (in this or other sources) describing the same wind farm.
+            additionalProperties: false

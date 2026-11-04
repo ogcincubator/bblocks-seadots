@@ -1,20 +1,27 @@
 {
-  "name": "EMODnet windfarm",
-  "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
+  "name": "Windfarm designated area",
+  "abstract": "GeoJSON representation of a wind farm as a designated area or project, without individual devices such as turbines. A single Feature or a FeatureCollection, with EMODnet windfarm attributes extended by the windpark parameters found in OpenStreetMap, the Norwegian NVE register, and the Polish national pipeline, plus source and location provenance.",
   "status": "under-development",
   "dateTimeAddition": "2026-07-24T00:00:00Z",
+  "dateOfLastChange": "2026-11-04",
   "itemClass": "schema",
   "register": "ogc-marine-dt-seadots",
-  "version": "0.1",
+  "version": "0.2",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "tags": ["EMODnet", "Human Activities", "energy", "windfarm", "WFS", "XSD", "GeoJSON"],
+  "tags": ["windfarm", "designated area", "Offshore Windfarm", "EMODnet", "OpenStreetMap", "NVE", "energy", "GeoJSON"],
   "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
   "sources": [
     { "title": "EMODnet Human Activities — Wind Farms service", "link": "https://www.emodnet-humanactivities.eu/" },
-    { "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ", "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms" },
+    { "title": "OpenStreetMap power plant tagging", "link": "https://wiki.openstreetmap.org/wiki/Tag:power%3Dplant" },
+    { "title": "NVE wind power plants dataset", "link": "https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk" },
+    { "title": "IHO windfarm definition in S-100", "link": "https://registry.iho.int/fdd/view1.do?idx=798&type=1" },
     { "title": "EU Publications Office Country authority table", "link": "http://publications.europa.eu/resource/authority/country/" }
   ],
-  "dependsOn": ["ogc.geo.features.feature"],
+  "dependsOn": [
+    "ogc.geo.features.feature",
+    "ogc.geo.features.featureCollection",
+    "ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+  ],
   "ldContext": "context.jsonld",
   "shaclRules": [],
   "standards": ["https://datatracker.ietf.org/doc/html/rfc7946", "https://inspire.ec.europa.eu/id/document/tg/er"],

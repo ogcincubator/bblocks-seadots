@@ -1,347 +1,692 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix schema: <https://schema.org/> .
-@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
-@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
-@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix nve: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/ogc/hosted/seadots/offshore-windfarm>
-    a owl:Ontology ;
-    dcterms:title "EMODnet windfarm vocabulary"@en ;
-    dcterms:description "Properties and status concepts used by the SeaDOTs EMODnet windfarm Building Block."@en .
+inspire-cofv:decommissioned a skos:Concept ;
+    rdfs:label "decommissioned"@en ;
+    skos:inScheme <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> ;
+    skos:prefLabel "decommissioned"@en .
 
-owf:nTurbines
-    a rdf:Property ;
-    rdfs:label "number of turbines"@en ;
-    rdfs:comment "Number of wind turbines associated with the windfarm project, as reported by the source."@en ;
-    rdfs:range xsd:integer .
+owf:administrativeUnit a owl:DatatypeProperty ;
+    rdfs:label "administrative unit"@en ;
+    rdfs:comment "Name of an administrative unit (county, municipality) the wind farm lies in."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string .
 
-owf:powerMW
-    a rdf:Property ;
-    rdfs:label "installed capacity in megawatts"@en ;
-    rdfs:comment "Installed or planned nameplate electrical capacity of the windfarm, expressed in megawatts (MW)."@en ;
+owf:areaSqKm a owl:DatatypeProperty ;
+    rdfs:label "area in square kilometres"@en ;
+    qudt:hasQuantityKind quantitykind:Area ;
+    qudt:unit unit:KiloM2 ;
+    rdfs:comment "The area of the windfarm's shape, expressed in square kilometres."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:decimal .
 
-owf:updateYear
-    a rdf:Property ;
-    rdfs:label "source update year"@en ;
-    rdfs:comment "Year in which the source record was last updated. This describes the record update, not the project's construction or operation year."@en ;
+owf:conditionOfFacility a owl:ObjectProperty ;
+    rdfs:label "condition of facility"@en ;
+    rdfs:comment "Condition of the facility as an INSPIRE ConditionOfFacilityValue concept."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> .
+
+owf:developerName a owl:DatatypeProperty ;
+    rdfs:label "developer name"@en ;
+    rdfs:comment "Name of the developing organisation."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string .
 
-owf:year
-    a rdf:Property ;
-    rdfs:label "reported project year"@en ;
-    rdfs:comment "Year associated with the windfarm project in the source record. Its precise meaning depends on the source and should be stated separately when known."@en ;
-    rdfs:range xsd:string .
-
-owf:distanceToCoast
-    a rdf:Property ;
+owf:distanceToCoast a owl:DatatypeProperty ;
     rdfs:label "distance to coast"@en ;
     rdfs:comment "Distance from the windfarm location to the coast, expressed in metres."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:decimal .
 
-owf:shapeLength
-    a rdf:Property ;
-    rdfs:label "shape length"@en ;
-    rdfs:comment "The length of the windfarm's shape, expressed in metres."@en ;
+owf:electricityPriceArea a owl:DatatypeProperty ;
+    rdfs:label "electricity price area"@en ;
+    rdfs:comment "Electricity price (bidding) area of the wind farm."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty nve:electricityPriceArea .
+
+owf:hubHeight a owl:DatatypeProperty ;
+    rdfs:label "hub height"@en ;
+    qudt:hasQuantityKind quantitykind:Height ;
+    qudt:unit unit:M ;
+    rdfs:comment "Height of the rotor hub in metres (OSM tag height:hub)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:decimal .
 
-owf:shapeArea
-    a rdf:Property ;
-    rdfs:label "shape area"@en ;
-    rdfs:comment "The area of the windfarm's shape, expressed in square metres."@en ;
-    rdfs:range xsd:decimal .
-
-owf:areaSqKm
-    a owl:DatatypeProperty ;
-    rdfs:label "area in square kilometres"@en ;
-    rdfs:comment "The area of the windfarm's shape, expressed in square kilometres."@en ;
-    rdfs:range xsd:decimal ;
-    qudt:hasQuantityKind quantitykind:Area ;
-    qudt:unit unit:KiloM2 .
-
-owf:windfarmName
-    a rdf:Property ;
-    rdfs:label "windfarm name"@en ;
-    rdfs:comment "The name of the windfarm, as reported by the source."@en ;
+owf:installationType a owl:DatatypeProperty ;
+    rdfs:label "installation type"@en ;
+    rdfs:comment "Foundation or installation type, e.g. Grounded or Floating (EMODnet type_inst)."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string .
 
-### 1. Definiiton of concepts in local EMODNet vocabulary
-seadots-emodnet:Planned
-    a skos:Concept ;
-    rdfs:label "Planned"@en, "Planowana"@pl ;
-    skos:definition "The wind farm project is proposed or under spatial planning evaluation."@en ;
-    skos:broadMatch inspire-cofv:projected .
+owf:licenceStatus a owl:DatatypeProperty ;
+    rdfs:label "licence status"@en ;
+    rdfs:comment "Licensing status as worded by the licensing authority, independent of the operational status."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty nve:licenceStatus .
 
-seadots-emodnet:Approved
-    a skos:Concept ;
-    rdfs:label "Approved"@en, "Zatwierdzona"@pl ;
-    skos:definition "The wind farm has received legal consent or construction permits, but work has not started."@en ;
-    skos:broadMatch inspire-cofv:projected .
+owf:licensingCase a owl:ObjectProperty ;
+    rdfs:label "licensing case"@en ;
+    rdfs:comment "Licensing case of the wind farm."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range rdfs:Resource ;
+    owl:equivalentProperty nve:licensingCase .
 
-seadots-emodnet:Construction
-    a skos:Concept ;
-    rdfs:label "Construction"@en, "W budowie"@pl ;
-    skos:definition "Physical infrastructure and turbines are currently being installed on site."@en ;
-    skos:exactMatch inspire-cofv:underConstruction .
+owf:locationMethod a owl:DatatypeProperty ;
+    rdfs:label "location method"@en ;
+    rdfs:comment "How the geometry was obtained or why it is missing."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty ses:locationMethod .
 
-seadots-emodnet:Production
-    a skos:Concept ;
-    rdfs:label "Production"@en, "Operacyjna"@pl ;
-    skos:definition "The offshore wind farm is fully functional and actively generating commercial electricity."@en ;
-    skos:exactMatch inspire-cofv:functional .
+owf:locationReference a owl:ObjectProperty ;
+    rdfs:label "location reference"@en ;
+    rdfs:comment "Source supporting the location."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range rdfs:Resource ;
+    owl:equivalentProperty ses:locationReference .
 
-seadots-emodnet:TestSuite
-    a skos:Concept ;
-    rdfs:label "Test site"@en, "Obszar testowy"@pl ;
-    skos:definition "The location is used as a demonstration or experimental site, actively operating turbines."@en ;
-    skos:broadMatch inspire-cofv:functional .
+owf:locationStatus a owl:ObjectProperty ;
+    rdfs:label "location status"@en ;
+    rdfs:comment "How the geometry was obtained: source-provided, mapped, anticipated, or unmatched."@en,
+        "Values are concepts of the owf:LocationStatus scheme."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso ses:locationStatus .
 
-seadots-emodnet:Dismantled
-    a skos:Concept ;
-    rdfs:label "Dismantled"@en, "Zdemontowana"@pl ;
-    skos:definition "The wind farm has been permanently decommissioned and structures have been removed."@en ;
-    skos:exactMatch inspire-cofv:disused .
-
-
-### 2. Country bindings for full country names
-# Covers every distinct `country` value returned by the live EMODnet Human
-# Activities windfarms WFS service (queried 2026-07-31 via GetPropertyValue on
-# emodnet:windfarms, valueReference=country). Matched against the EU
-# Publications Office Country authority table (ISO 3166-1 alpha-3 codes),
-# which is not restricted to EU/EEA member states, rather than the smaller
-# INSPIRE CountryCodeValue code list used previously.
-seadots-emodnet:Belgium
-    a skos:Concept ;
-    rdfs:label "Belgium"@en ;
-    skos:exactMatch eu-country:BEL .
-
-seadots-emodnet:Denmark
-    a skos:Concept ;
-    rdfs:label "Denmark"@en ;
-    skos:exactMatch eu-country:DNK .
-
-seadots-emodnet:Estonia
-    a skos:Concept ;
-    rdfs:label "Estonia"@en ;
-    skos:exactMatch eu-country:EST .
-
-seadots-emodnet:Finland
-    a skos:Concept ;
-    rdfs:label "Finland"@en ;
-    skos:exactMatch eu-country:FIN .
-
-seadots-emodnet:France
-    a skos:Concept ;
-    rdfs:label "France"@en ;
-    skos:exactMatch eu-country:FRA .
-
-seadots-emodnet:Germany
-    a skos:Concept ;
-    rdfs:label "Germany"@en ;
-    skos:exactMatch eu-country:DEU .
-
-seadots-emodnet:Greece
-    a skos:Concept ;
-    rdfs:label "Greece"@en ;
-    skos:exactMatch eu-country:GRC .
-
-seadots-emodnet:Ireland
-    a skos:Concept ;
-    rdfs:label "Ireland"@en ;
-    skos:exactMatch eu-country:IRL .
-
-seadots-emodnet:Italy
-    a skos:Concept ;
-    rdfs:label "Italy"@en ;
-    skos:exactMatch eu-country:ITA .
-
-seadots-emodnet:Latvia
-    a skos:Concept ;
-    rdfs:label "Latvia"@en ;
-    skos:exactMatch eu-country:LVA .
-
-seadots-emodnet:Lithuania
-    a skos:Concept ;
-    rdfs:label "Lithuania"@en ;
-    skos:exactMatch eu-country:LTU .
-
-seadots-emodnet:Malta
-    a skos:Concept ;
-    rdfs:label "Malta"@en ;
-    skos:exactMatch eu-country:MLT .
-
-seadots-emodnet:Netherlands
-    a skos:Concept ;
-    rdfs:label "Netherlands"@en ;
-    skos:exactMatch eu-country:NLD .
-
-seadots-emodnet:Norway
-    a skos:Concept ;
-    rdfs:label "Norway"@en ;
-    skos:exactMatch eu-country:NOR .
-
-seadots-emodnet:Poland
-    a skos:Concept ;
-    rdfs:label "Poland"@en ;
-    skos:exactMatch eu-country:POL .
-
-seadots-emodnet:Portugal
-    a skos:Concept ;
-    rdfs:label "Portugal"@en ;
-    skos:exactMatch eu-country:PRT .
-
-seadots-emodnet:Romania
-    a skos:Concept ;
-    rdfs:label "Romania"@en ;
-    skos:exactMatch eu-country:ROU .
-
-seadots-emodnet:Spain
-    a skos:Concept ;
-    rdfs:label "Spain"@en ;
-    skos:exactMatch eu-country:ESP .
-
-seadots-emodnet:Sweden
-    a skos:Concept ;
-    rdfs:label "Sweden"@en ;
-    skos:exactMatch eu-country:SWE .
-
-seadots-emodnet:UnitedKingdom
-    a skos:Concept ;
-    rdfs:label "United Kingdom"@en ;
-    skos:exactMatch eu-country:GBR .
-
-### 3. External references from INSPIRE
-inspire-cofv:projected
-    a skos:Concept ;
-    rdfs:label "projected"@en .
-
-inspire-cofv:underConstruction
-    a skos:Concept ;
-    rdfs:label "underConstruction"@en .
-
-inspire-cofv:functional
-    a skos:Concept ;
-    rdfs:label "functional"@en .
-
-inspire-cofv:disused
-    a skos:Concept ;
-    rdfs:label "disused"@en .
-
-inspire-cofv:decommissioned
-    a skos:Concept ;
-    rdfs:label "decommissioned"@en .
-
-
-### 3. Wind turbine
-# Terms used by the common-windfarm-turbine building block.
-
-owf:WindTurbine
-    a owl:Class ;
-    rdfs:label "wind turbine"@en ;
-    rdfs:comment "A single machine converting wind energy into electricity, located at a point."@en ;
-    rdfs:seeAlso <https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0> , <https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind> .
-
-owf:turbineReference
-    a owl:DatatypeProperty ;
-    rdfs:label "turbine reference"@en ;
-    rdfs:comment "Reference label of the turbine within its wind farm, as assigned by the source (OSM tag ref)."@en ;
-    rdfs:domain owf:WindTurbine ;
-    rdfs:range xsd:string .
-
-owf:partOfWindfarm
-    a owl:ObjectProperty ;
-    rdfs:label "part of windfarm"@en ;
-    rdfs:comment "Wind farm the turbine belongs to."@en ;
-    rdfs:domain owf:WindTurbine ;
-    rdfs:subPropertyOf dcterms:isPartOf .
-
-owf:manufacturerName
-    a owl:DatatypeProperty ;
+owf:manufacturerName a owl:DatatypeProperty ;
     rdfs:label "manufacturer name"@en ;
     rdfs:comment "Name of the turbine manufacturer (OSM tag manufacturer)."@en ;
     rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string .
 
-owf:ratedPowerMW
-    a owl:DatatypeProperty ;
+owf:meanAnnualProductionGWh a owl:DatatypeProperty ;
+    rdfs:label "mean annual production in GWh"@en ;
+    qudt:hasQuantityKind quantitykind:Energy ;
+    qudt:unit unit:GigaW-HR ;
+    rdfs:comment "Mean annual electrical production in gigawatt-hours."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal ;
+    owl:equivalentProperty nve:meanAnnualProductionGWh .
+
+owf:nTurbines a owl:DatatypeProperty ;
+    rdfs:label "number of turbines"@en ;
+    rdfs:comment "Number of wind turbines associated with the windfarm project, as reported by the source."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:integer .
+
+owf:offshore a owl:DatatypeProperty ;
+    rdfs:label "offshore"@en ;
+    rdfs:comment "Whether the wind farm or turbine is offshore (OSM tag offshore)."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:boolean .
+
+owf:operationalDate a owl:DatatypeProperty ;
+    rdfs:label "operational date"@en ;
+    rdfs:comment "Date the wind farm entered operation."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:date ;
+    owl:equivalentProperty nve:operationalDate .
+
+owf:operatorName a owl:DatatypeProperty ;
+    rdfs:label "operator name"@en ;
+    rdfs:comment "Name of an organisation operating the turbine; repeated for joint operators (OSM tag operator, split on ';')."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string .
+
+owf:ownerName a owl:DatatypeProperty ;
+    rdfs:label "owner name"@en ;
+    rdfs:comment "Name of the owning organisation."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string .
+
+owf:partOfWindfarm a owl:ObjectProperty ;
+    rdfs:label "part of windfarm"@en ;
+    rdfs:comment "Wind farm the turbine belongs to."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:subPropertyOf dcterms:isPartOf .
+
+owf:powerMW a owl:DatatypeProperty ;
+    rdfs:label "installed capacity in megawatts"@en ;
+    rdfs:comment "Installed or planned nameplate electrical capacity of the windfarm, expressed in megawatts (MW)."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
+
+owf:ratedPowerMW a owl:DatatypeProperty ;
     rdfs:label "rated power in megawatts"@en ;
+    qudt:hasQuantityKind quantitykind:Power ;
+    qudt:unit unit:MegaW ;
     rdfs:comment "Rated (nameplate) electrical output of a single turbine in megawatts (OSM tag generator:output:electricity)."@en ;
     rdfs:domain owf:WindTurbine ;
-    rdfs:range xsd:decimal ;
-    qudt:hasQuantityKind quantitykind:Power ;
-    qudt:unit unit:MegaW .
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
 
-owf:hubHeight
-    a owl:DatatypeProperty ;
-    rdfs:label "hub height"@en ;
-    rdfs:comment "Height of the rotor hub in metres (OSM tag height:hub)."@en ;
-    rdfs:domain owf:WindTurbine ;
-    rdfs:range xsd:decimal ;
-    qudt:hasQuantityKind quantitykind:Height ;
-    qudt:unit unit:M .
-
-owf:rotorDiameter
-    a owl:DatatypeProperty ;
-    rdfs:label "rotor diameter"@en ;
-    rdfs:comment "Diameter of the rotor in metres (OSM tag rotor:diameter)."@en ;
-    rdfs:domain owf:WindTurbine ;
-    rdfs:range xsd:decimal ;
-    qudt:hasQuantityKind quantitykind:Diameter ;
-    qudt:unit unit:M .
-
-owf:rotorAxis
-    a owl:ObjectProperty ;
+owf:rotorAxis a owl:ObjectProperty ;
     rdfs:label "rotor axis"@en ;
     rdfs:comment "Orientation of the rotor axis (OSM tag generator:type)."@en ;
     rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range skos:Concept .
 
-owf:RotorAxis
-    a skos:ConceptScheme ;
-    rdfs:label "rotor axis orientations"@en ;
-    skos:hasTopConcept owf:HorizontalAxis , owf:VerticalAxis .
-
-owf:HorizontalAxis
-    a skos:Concept ;
-    rdfs:label "horizontal axis"@en ;
-    skos:prefLabel "horizontal axis"@en ;
-    skos:definition "Rotor rotates around an axis parallel to the ground."@en ;
-    skos:inScheme owf:RotorAxis ;
-    skos:topConceptOf owf:RotorAxis .
-
-owf:VerticalAxis
-    a skos:Concept ;
-    rdfs:label "vertical axis"@en ;
-    skos:prefLabel "vertical axis"@en ;
-    skos:definition "Rotor rotates around an axis perpendicular to the ground."@en ;
-    skos:inScheme owf:RotorAxis ;
-    skos:topConceptOf owf:RotorAxis .
-
-owf:offshore
-    a owl:DatatypeProperty ;
-    rdfs:label "offshore"@en ;
-    rdfs:comment "Whether the turbine stands offshore (OSM tag offshore)."@en ;
+owf:rotorDiameter a owl:DatatypeProperty ;
+    rdfs:label "rotor diameter"@en ;
+    qudt:hasQuantityKind quantitykind:Diameter ;
+    qudt:unit unit:M ;
+    rdfs:comment "Diameter of the rotor in metres (OSM tag rotor:diameter)."@en ;
     rdfs:domain owf:WindTurbine ;
-    rdfs:range xsd:boolean .
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
 
-owf:operatorName
-    a owl:DatatypeProperty ;
-    rdfs:label "operator name"@en ;
-    rdfs:comment "Name of an organisation operating the turbine; repeated for joint operators (OSM tag operator, split on ';')."@en ;
+owf:shapeArea a owl:DatatypeProperty ;
+    rdfs:label "shape area"@en ;
+    rdfs:comment "The area of the windfarm's shape, expressed in square metres."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
+
+owf:shapeLength a owl:DatatypeProperty ;
+    rdfs:label "shape length"@en ;
+    rdfs:comment "The length of the windfarm's shape, expressed in metres."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:decimal .
+
+owf:sourceDataset a owl:DatatypeProperty ;
+    rdfs:label "source dataset"@en ;
+    rdfs:comment "Name of the dataset the record was taken from."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty ses:sourceDataset .
+
+owf:sourceSnapshotDate a owl:DatatypeProperty ;
+    rdfs:label "source snapshot date"@en ;
+    rdfs:comment "Date the source snapshot was retrieved."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:date ;
+    owl:equivalentProperty ses:sourceSnapshotDate .
+
+owf:sourceType a owl:ObjectProperty ;
+    rdfs:label "source type"@en ;
+    rdfs:comment "Kind of source the record comes from: osm, emodnet, or national."@en,
+        "Values are concepts of the owf:SourceType scheme."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso ses:sourceType .
+
+owf:statusAsOf a owl:DatatypeProperty ;
+    rdfs:label "status as of"@en ;
+    rdfs:comment "Date on which the status was reported."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:date ;
+    owl:equivalentProperty ses:statusAsOf .
+
+owf:statusDetail a owl:DatatypeProperty ;
+    rdfs:label "status detail"@en ;
+    rdfs:comment "Status wording or tag as given by the source, before normalisation."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty ses:statusDetail .
+
+owf:turbineReference a owl:DatatypeProperty ;
+    rdfs:label "turbine reference"@en ;
+    rdfs:comment "Reference label of the turbine within its wind farm, as assigned by the source (OSM tag ref)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string .
 
-owf:conditionOfFacility
-    a owl:ObjectProperty ;
-    rdfs:label "condition of facility"@en ;
-    rdfs:comment "Condition of the facility as an INSPIRE ConditionOfFacilityValue concept."@en ;
-    rdfs:range skos:Concept ;
-    rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> .
+owf:updateYear a owl:DatatypeProperty ;
+    rdfs:label "source update year"@en ;
+    rdfs:comment "Year in which the source record was last updated. This describes the record update, not the project's construction or operation year."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string .
+
+owf:windfarmName a owl:DatatypeProperty ;
+    rdfs:label "windfarm name"@en ;
+    rdfs:comment "Name of the wind farm, as reported by the source. Used on a turbine to name the farm it belongs to."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf schema:name .
+
+owf:year a owl:DatatypeProperty ;
+    rdfs:label "reported project year"@en ;
+    rdfs:comment "Year associated with the windfarm project in the source record. Its precise meaning depends on the source and should be stated separately when known."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string .
+
+owf:yearIsAssumed a owl:DatatypeProperty ;
+    rdfs:label "year is assumed"@en ;
+    rdfs:comment "True when the year is an estimate rather than an explicit source statement."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:boolean ;
+    owl:equivalentProperty ses:yearIsAssumed .
+
+owf:yearSemantics a owl:DatatypeProperty ;
+    rdfs:label "year semantics"@en ;
+    rdfs:comment "What the year value represents, e.g. reported project year or planned start of operation."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty ses:yearSemantics .
+
+inspire-cofv:disused a skos:Concept ;
+    rdfs:label "disused"@en ;
+    skos:inScheme <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> ;
+    skos:prefLabel "disused"@en .
+
+inspire-cofv:underConstruction a skos:Concept ;
+    rdfs:label "underConstruction"@en ;
+    skos:inScheme <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> ;
+    skos:prefLabel "underConstruction"@en .
+
+seadots-emodnet:Approved a skos:Concept ;
+    rdfs:label "Approved"@en,
+        "Zatwierdzona"@pl ;
+    skos:broadMatch inspire-cofv:projected ;
+    skos:definition "The wind farm has received legal consent or construction permits, but work has not started."@en ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Approved"@en,
+        "Zatwierdzona"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:Belgium a skos:Concept ;
+    rdfs:label "Belgium"@en ;
+    skos:exactMatch eu-country:BEL ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Belgium"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Construction a skos:Concept ;
+    rdfs:label "Construction"@en,
+        "W budowie"@pl ;
+    skos:definition "Physical infrastructure and turbines are currently being installed on site."@en ;
+    skos:exactMatch inspire-cofv:underConstruction ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Construction"@en,
+        "W budowie"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:Denmark a skos:Concept ;
+    rdfs:label "Denmark"@en ;
+    skos:exactMatch eu-country:DNK ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Denmark"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Dismantled a skos:Concept ;
+    rdfs:label "Dismantled"@en,
+        "Zdemontowana"@pl ;
+    skos:definition "The wind farm has been permanently decommissioned and structures have been removed."@en ;
+    skos:exactMatch inspire-cofv:disused ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Dismantled"@en,
+        "Zdemontowana"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:Estonia a skos:Concept ;
+    rdfs:label "Estonia"@en ;
+    skos:exactMatch eu-country:EST ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Estonia"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Finland a skos:Concept ;
+    rdfs:label "Finland"@en ;
+    skos:exactMatch eu-country:FIN ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Finland"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:France a skos:Concept ;
+    rdfs:label "France"@en ;
+    skos:exactMatch eu-country:FRA ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "France"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Germany a skos:Concept ;
+    rdfs:label "Germany"@en ;
+    skos:exactMatch eu-country:DEU ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Germany"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Greece a skos:Concept ;
+    rdfs:label "Greece"@en ;
+    skos:exactMatch eu-country:GRC ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Greece"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Ireland a skos:Concept ;
+    rdfs:label "Ireland"@en ;
+    skos:exactMatch eu-country:IRL ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Ireland"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Italy a skos:Concept ;
+    rdfs:label "Italy"@en ;
+    skos:exactMatch eu-country:ITA ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Italy"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Latvia a skos:Concept ;
+    rdfs:label "Latvia"@en ;
+    skos:exactMatch eu-country:LVA ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Latvia"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Lithuania a skos:Concept ;
+    rdfs:label "Lithuania"@en ;
+    skos:exactMatch eu-country:LTU ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Lithuania"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Malta a skos:Concept ;
+    rdfs:label "Malta"@en ;
+    skos:exactMatch eu-country:MLT ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Malta"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Netherlands a skos:Concept ;
+    rdfs:label "Netherlands"@en ;
+    skos:exactMatch eu-country:NLD ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Netherlands"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Norway a skos:Concept ;
+    rdfs:label "Norway"@en ;
+    skos:exactMatch eu-country:NOR ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Norway"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Planned a skos:Concept ;
+    rdfs:label "Planned"@en,
+        "Planowana"@pl ;
+    skos:broadMatch inspire-cofv:projected ;
+    skos:definition "The wind farm project is proposed or under spatial planning evaluation."@en ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Planned"@en,
+        "Planowana"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:Poland a skos:Concept ;
+    rdfs:label "Poland"@en ;
+    skos:exactMatch eu-country:POL ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Poland"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Portugal a skos:Concept ;
+    rdfs:label "Portugal"@en ;
+    skos:exactMatch eu-country:PRT ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Portugal"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Production a skos:Concept ;
+    rdfs:label "Production"@en,
+        "Operacyjna"@pl ;
+    skos:definition "The offshore wind farm is fully functional and actively generating commercial electricity."@en ;
+    skos:exactMatch inspire-cofv:functional ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Production"@en,
+        "Operacyjna"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:Romania a skos:Concept ;
+    rdfs:label "Romania"@en ;
+    skos:exactMatch eu-country:ROU ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Romania"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Spain a skos:Concept ;
+    rdfs:label "Spain"@en ;
+    skos:exactMatch eu-country:ESP ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Spain"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:Sweden a skos:Concept ;
+    rdfs:label "Sweden"@en ;
+    skos:exactMatch eu-country:SWE ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "Sweden"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+seadots-emodnet:TestSuite a skos:Concept ;
+    rdfs:label "Test site"@en,
+        "Obszar testowy"@pl ;
+    skos:broadMatch inspire-cofv:functional ;
+    skos:definition "The location is used as a demonstration or experimental site, actively operating turbines."@en ;
+    skos:inScheme seadots-emodnet:WindfarmStatus ;
+    skos:prefLabel "Test site"@en,
+        "Obszar testowy"@pl ;
+    skos:topConceptOf seadots-emodnet:WindfarmStatus .
+
+seadots-emodnet:UnitedKingdom a skos:Concept ;
+    rdfs:label "United Kingdom"@en ;
+    skos:exactMatch eu-country:GBR ;
+    skos:inScheme seadots-emodnet:Country ;
+    skos:prefLabel "United Kingdom"@en ;
+    skos:topConceptOf seadots-emodnet:Country .
+
+owf:EmodnetSource a skos:Concept ;
+    rdfs:label "EMODnet"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Record taken from EMODnet Human Activities."@en ;
+    skos:inScheme owf:SourceType ;
+    skos:notation "emodnet" ;
+    skos:prefLabel "EMODnet"@en ;
+    skos:topConceptOf owf:SourceType .
+
+owf:HorizontalAxis a skos:Concept ;
+    rdfs:label "horizontal axis"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Rotor rotates around an axis parallel to the ground."@en ;
+    skos:inScheme owf:RotorAxis ;
+    skos:prefLabel "horizontal axis"@en ;
+    skos:topConceptOf owf:RotorAxis .
+
+owf:LocationAnticipated a skos:Concept ;
+    rdfs:label "anticipated"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Geometry is estimated from public evidence."@en ;
+    skos:inScheme owf:LocationStatus ;
+    skos:notation "anticipated" ;
+    skos:prefLabel "anticipated"@en ;
+    skos:topConceptOf owf:LocationStatus .
+
+owf:LocationMapped a skos:Concept ;
+    rdfs:label "mapped"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Geometry is taken from a matched reference record."@en ;
+    skos:inScheme owf:LocationStatus ;
+    skos:notation "mapped" ;
+    skos:prefLabel "mapped"@en ;
+    skos:topConceptOf owf:LocationStatus .
+
+owf:LocationSourceProvided a skos:Concept ;
+    rdfs:label "source-provided"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Geometry is supplied by the source record."@en ;
+    skos:inScheme owf:LocationStatus ;
+    skos:notation "source-provided" ;
+    skos:prefLabel "source-provided"@en ;
+    skos:topConceptOf owf:LocationStatus .
+
+owf:LocationUnmatched a skos:Concept ;
+    rdfs:label "unmatched"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "No geometry is available; the feature geometry is null."@en ;
+    skos:inScheme owf:LocationStatus ;
+    skos:notation "unmatched" ;
+    skos:prefLabel "unmatched"@en ;
+    skos:topConceptOf owf:LocationStatus .
+
+owf:NationalSource a skos:Concept ;
+    rdfs:label "national source"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Record taken from a national register or reporting source."@en ;
+    skos:inScheme owf:SourceType ;
+    skos:notation "national" ;
+    skos:prefLabel "national source"@en ;
+    skos:topConceptOf owf:SourceType .
+
+owf:OpenStreetMapSource a skos:Concept ;
+    rdfs:label "OpenStreetMap"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Record taken from OpenStreetMap."@en ;
+    skos:inScheme owf:SourceType ;
+    skos:notation "osm" ;
+    skos:prefLabel "OpenStreetMap"@en ;
+    skos:topConceptOf owf:SourceType .
+
+owf:VerticalAxis a skos:Concept ;
+    rdfs:label "vertical axis"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Rotor rotates around an axis perpendicular to the ground."@en ;
+    skos:inScheme owf:RotorAxis ;
+    skos:prefLabel "vertical axis"@en ;
+    skos:topConceptOf owf:RotorAxis .
+
+inspire-cofv:functional a skos:Concept ;
+    rdfs:label "functional"@en ;
+    skos:inScheme <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> ;
+    skos:prefLabel "functional"@en .
+
+inspire-cofv:projected a skos:Concept ;
+    rdfs:label "projected"@en ;
+    skos:inScheme <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> ;
+    skos:prefLabel "projected"@en .
+
+owf:RotorAxis a skos:ConceptScheme ;
+    rdfs:label "rotor axis orientations"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:hasTopConcept owf:HorizontalAxis,
+        owf:VerticalAxis .
+
+owf:SourceType a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Kind of source a windfarm record comes from."@en ;
+    skos:hasTopConcept owf:EmodnetSource,
+        owf:NationalSource,
+        owf:OpenStreetMapSource ;
+    skos:prefLabel "source types"@en .
+
+owf:WindTurbine a owl:Class ;
+    rdfs:label "wind turbine"@en ;
+    rdfs:comment "A single machine converting wind energy into electricity, located at a point."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:seeAlso <https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0>,
+        <https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind> .
+
+owf:LocationStatus a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "How the geometry of a windfarm record was obtained."@en ;
+    skos:hasTopConcept owf:LocationAnticipated,
+        owf:LocationMapped,
+        owf:LocationSourceProvided,
+        owf:LocationUnmatched ;
+    skos:prefLabel "location statuss"@en .
+
+seadots-emodnet:WindfarmStatus a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Project status values used by EMODnet Human Activities windfarms, matched to INSPIRE ConditionOfFacilityValue."@en ;
+    skos:hasTopConcept seadots-emodnet:Approved,
+        seadots-emodnet:Construction,
+        seadots-emodnet:Dismantled,
+        seadots-emodnet:Planned,
+        seadots-emodnet:Production,
+        seadots-emodnet:TestSuite ;
+    skos:prefLabel "EMODnet windfarm status"@en .
+
+owf:WindfarmArea a owl:Class ;
+    rdfs:label "windfarm designated area"@en ;
+    rdfs:comment "A wind farm as a designated area or project, without its individual devices."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:seeAlso <https://registry.iho.int/fdd/view1.do?idx=798&type=1> .
+
+seadots-emodnet:Country a skos:ConceptScheme ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    skos:definition "Country names returned by the EMODnet Human Activities windfarms WFS (queried 2026-07-31), matched to the EU Publications Office Country authority table."@en ;
+    skos:hasTopConcept seadots-emodnet:Belgium,
+        seadots-emodnet:Denmark,
+        seadots-emodnet:Estonia,
+        seadots-emodnet:Finland,
+        seadots-emodnet:France,
+        seadots-emodnet:Germany,
+        seadots-emodnet:Greece,
+        seadots-emodnet:Ireland,
+        seadots-emodnet:Italy,
+        seadots-emodnet:Latvia,
+        seadots-emodnet:Lithuania,
+        seadots-emodnet:Malta,
+        seadots-emodnet:Netherlands,
+        seadots-emodnet:Norway,
+        seadots-emodnet:Poland,
+        seadots-emodnet:Portugal,
+        seadots-emodnet:Romania,
+        seadots-emodnet:Spain,
+        seadots-emodnet:Sweden,
+        seadots-emodnet:UnitedKingdom ;
+    skos:prefLabel "EMODnet windfarm country names"@en .
+
+<https://w3id.org/ogc/hosted/seadots/windfarm> a owl:Ontology ;
+    rdfs:label "SeaDOTs windfarm ontology"@en ;
+    dcterms:creator "SeaDOTs Marine Data Team" ;
+    dcterms:description "Classes, properties and concept schemes for wind farms as designated areas (common-windfarm-designated-area) and for individual wind turbines (common-windfarm-turbine), harmonising EMODnet Human Activities, OpenStreetMap, IHO S-100 and national (NVE, Polish) sources."@en ;
+    dcterms:modified "2026-11-04"^^xsd:date ;
+    dcterms:title "SeaDOTs windfarm ontology"@en ;
+    owl:priorVersion <https://w3id.org/ogc/hosted/seadots/offshore-windfarm> ;
+    owl:versionInfo "0.2" .
+
