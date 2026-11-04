@@ -1,0 +1,131 @@
+{
+  "@context": {
+    "MapResponse": "osmdata:MapResponse",
+    "Bounds": "osmdata:Bounds",
+    "Element": "osmdata:Element",
+    "TagSet": "osmdata:TagSet",
+    "RelationMember": "osmdata:RelationMember",
+    "version": "osmdata:apiVersion",
+    "generator": "osmdata:generator",
+    "copyright": "dcterms:rights",
+    "attribution": {
+      "@id": "cc:attributionURL",
+      "@type": "@id"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "bounds": {
+      "@context": {
+        "minlat": {
+          "@id": "osmdata:minlat",
+          "@type": "xsd:decimal"
+        },
+        "minlon": {
+          "@id": "osmdata:minlon",
+          "@type": "xsd:decimal"
+        },
+        "maxlat": {
+          "@id": "osmdata:maxlat",
+          "@type": "xsd:decimal"
+        },
+        "maxlon": {
+          "@id": "osmdata:maxlon",
+          "@type": "xsd:decimal"
+        }
+      },
+      "@id": "osmdata:bounds"
+    },
+    "elements": {
+      "@context": {
+        "type": "@type",
+        "id": {
+          "@id": "osmdata:elementIdentifier",
+          "@type": "xsd:integer"
+        },
+        "timestamp": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "changeset": {
+          "@id": "osmdata:changeset",
+          "@type": "xsd:integer"
+        },
+        "user": "osmdata:user",
+        "uid": {
+          "@id": "osmdata:uid",
+          "@type": "xsd:integer"
+        },
+        "tags": {
+          "@id": "osmdata:tagSet",
+          "@context": {
+            "@version": 1.1,
+            "osmkey": "https://www.openstreetmap.org/wiki/Key:",
+            "@vocab": "https://www.openstreetmap.org/wiki/Key:",
+            "ISO3166-1": "https://www.openstreetmap.org/wiki/Key:ISO3166-1:",
+            "TMC": "https://www.openstreetmap.org/wiki/Key:TMC:",
+            "alt_name": "https://www.openstreetmap.org/wiki/Key:alt_name:",
+            "construction": "https://www.openstreetmap.org/wiki/Key:construction:",
+            "contact": "https://www.openstreetmap.org/wiki/Key:contact:",
+            "description": "https://www.openstreetmap.org/wiki/Key:description:",
+            "generator": "https://www.openstreetmap.org/wiki/Key:generator:",
+            "height": "https://www.openstreetmap.org/wiki/Key:height:",
+            "long_name": "https://www.openstreetmap.org/wiki/Key:long_name:",
+            "name": "https://www.openstreetmap.org/wiki/Key:name:",
+            "note": "https://www.openstreetmap.org/wiki/Key:note:",
+            "official_name": "https://www.openstreetmap.org/wiki/Key:official_name:",
+            "old_name": "https://www.openstreetmap.org/wiki/Key:old_name:",
+            "plant": "https://www.openstreetmap.org/wiki/Key:plant:",
+            "population": "https://www.openstreetmap.org/wiki/Key:population:",
+            "rotor": "https://www.openstreetmap.org/wiki/Key:rotor:",
+            "seamark": "https://www.openstreetmap.org/wiki/Key:seamark:",
+            "short_name": "https://www.openstreetmap.org/wiki/Key:short_name:",
+            "source": "https://www.openstreetmap.org/wiki/Key:source:",
+            "teryt": "https://www.openstreetmap.org/wiki/Key:teryt:",
+            "wreck": "https://www.openstreetmap.org/wiki/Key:wreck:"
+          }
+        },
+        "lat": {
+          "@id": "geo:lat",
+          "@type": "xsd:decimal"
+        },
+        "lon": {
+          "@id": "geo:long",
+          "@type": "xsd:decimal"
+        },
+        "nodes": {
+          "@id": "osmdata:nodeReference",
+          "@container": "@list",
+          "@type": "xsd:integer"
+        },
+        "members": {
+          "@context": {
+            "type": {
+              "@id": "@type",
+              "@type": "@vocab"
+            },
+            "ref": {
+              "@id": "osmdata:memberReference",
+              "@type": "xsd:integer"
+            },
+            "role": "osmdata:memberRole"
+          },
+          "@id": "osmdata:relationMember",
+          "@container": "@list"
+        },
+        "node": "osmdata:Node",
+        "way": "osmdata:Way",
+        "relation": "osmdata:Relation"
+      },
+      "@id": "osmdata:element",
+      "@container": "@set"
+    },
+    "osmdata": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "cc": "http://creativecommons.org/ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "@version": 1.1
+  }
+}

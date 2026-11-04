@@ -3,12 +3,12 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-11-03T13:11:50.938844",
+  "modified": "2026-11-04T17:47:20.879782",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"862052921203373f8136e6f464e0dfdd693e79f5",
-      "shortCommitId": "\"862052",
-      "date": "2026-10-26T21:53:11+00:00\""
+      "commitId": "\"c1af50a182c92d7ab055f34158d5605167dfe786",
+      "shortCommitId": "\"c1af50",
+      "date": "2026-11-04T12:47:53+00:00\""
     }
   },
   "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
@@ -31,85 +31,6 @@
   ],
   "bblocks": [
     {
-      "itemIdentifier": "ogc.hosted.seadots.osm-offshore-wind-source",
-      "name": "OpenStreetMap offshore wind source feature collection",
-      "abstract": "Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-10-27T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "license": {
-        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
-      },
-      "tags": [
-        "OpenStreetMap",
-        "OSM",
-        "wind energy",
-        "GeoJSON",
-        "source data",
-        "Poland"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "OpenStreetMap copyright and ODbL attribution",
-          "link": "https://www.openstreetmap.org/copyright"
-        },
-        {
-          "title": "OpenStreetMap API map endpoint",
-          "link": "https://api.openstreetmap.org/api/0.6/map"
-        },
-        {
-          "title": "OpenStreetMap elements: nodes, ways, and relations",
-          "link": "https://wiki.openstreetmap.org/wiki/Elements"
-        },
-        {
-          "title": "IHO S-100 Registry: Category of Offshore Production Area",
-          "link": "https://registry.iho.int/fdd/view3.do?idx=42&type=3"
-        }
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946",
-        "https://opendatacommons.org/licenses/odbl/1-0/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {},
-      "dateOfLastChange": "2026-11-03",
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-source/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-source/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/osm-offshore-wind-source/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/osm-offshore-wind-source/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/osm-offshore-wind-source/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.osm-offshore-wind-source"
-        }
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.fcm-activation-scheme",
       "name": "FCM activation and inference scheme",
       "abstract": "SKOS concept schemes naming the activation (transfer) functions and inference rules used to iterate a fuzzy cognitive map, so that a map can be exchanged between implementations that call the same function by different names.",
@@ -118,7 +39,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [],
       "shaclRules": [],
       "sources": [
@@ -168,7 +89,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -207,7 +128,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -270,7 +191,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -384,7 +305,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -487,7 +408,7 @@
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {},
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.yaml",
@@ -523,7 +444,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -625,7 +546,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [],
       "tags": [
         "seadots",
@@ -657,7 +578,7 @@
       "abstract": "Report member (`seadotsTransformReport`) that every protected-area transform adds to its output FeatureCollection: which source features were excluded and why, which were routed to another EMODnet layer instead of being duplicated, which are not yet reported to the EEA, which carry an inferred crosswalk value or need a geometric overlay, and where the transformed values differ from the EMODnet record for the same site.",
       "status": "under-development",
       "dateTimeAddition": "2026-10-06T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -717,7 +638,7 @@
       "dateTimeAddition": "2026-11-03T00:00:00Z",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "model",
       "shaclShapes": {
         "ogc.hosted.seadots.linkeddata.marine-protection-ontology": [
@@ -796,7 +717,7 @@
       "itemClass": "model",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.fcm-activation-scheme",
         "bblocks://ogc.hosted.seadots.ontology"
@@ -854,7 +775,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "1.0",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.ontology",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -896,7 +817,7 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm",
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-designated-area",
       "name": "EMODnet windfarm",
       "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
       "status": "under-development",
@@ -939,7 +860,7 @@
       "dependsOn": [
         "bblocks://ogc.geo.features.feature"
       ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/context.jsonld",
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/context.jsonld",
       "shaclRules": [],
       "standards": [
         "https://datatracker.ietf.org/doc/html/rfc7946",
@@ -952,30 +873,197 @@
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
         ]
       },
-      "dateOfLastChange": "2026-11-03",
-      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/ontology.ttl",
+      "dateOfLastChange": "2026-11-04",
       "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/schema.json"
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/schema.json"
       },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm/",
-      "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm/",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-designated-area/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-designated-area/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-designated-area/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-designated-area/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-compliant-windfarm/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/common-windfarm-designated-area/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-compliant-windfarm/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/common-windfarm-designated-area/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-compliant-windfarm"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-designated-area"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-ontology",
+      "name": "Offshore Windfarm (OWF) and Wind Turbine (WT) ontology with properties available in IHO, EmodNet, OpenStreetMaps, national sources",
+      "abstract": "Ontology defined terms for Offshore Windfarm (OWF) and Wind Turbine (WT) with properties available in IHO, EmodNet, OpenStreetMaps, national sources.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-24T00:00:00Z",
+      "dateOfLastChange": "2026-11-05",
+      "itemClass": "model",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "tags": [
+        "OWF",
+        "Offshore Windfarm",
+        "IHO",
+        "Wind turbine",
+        "EMODnet",
+        "Human Activities",
+        "energy",
+        "windfarm"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "OGC"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet Human Activities \u2014 Wind Farms service",
+          "link": "https://www.emodnet-humanactivities.eu/"
+        },
+        {
+          "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ",
+          "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
+        },
+        {
+          "title": "EU Publications Office Country authority table",
+          "link": "http://publications.europa.eu/resource/authority/country/"
+        },
+        {
+          "title": "IHO windfarm definition in S-100",
+          "link": "https://registry.iho.int/fdd/view1.do?idx=798&type=1"
+        },
+        {
+          "title": "IHO wind turbine definition in S-100",
+          "link": "https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.features.feature"
+      ],
+      "shaclRules": [],
+      "maturity": "development",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/context.jsonld",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/ontology.ttl",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-ontology/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/common-windfarm-ontology/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/common-windfarm-ontology/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-turbine",
+      "name": "EMODnet windfarm",
+      "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-24T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "tags": [
+        "EMODnet",
+        "Human Activities",
+        "energy",
+        "windfarm",
+        "WFS",
+        "XSD",
+        "GeoJSON"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet Human Activities \u2014 Wind Farms service",
+          "link": "https://www.emodnet-humanactivities.eu/"
+        },
+        {
+          "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ",
+          "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
+        },
+        {
+          "title": "EU Publications Office Country authority table",
+          "link": "http://publications.europa.eu/resource/authority/country/"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.features.feature"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "https://inspire.ec.europa.eu/id/document/tg/er"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "dateOfLastChange": "2026-11-04",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/common-windfarm-turbine/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/common-windfarm-turbine/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-turbine"
         }
       }
     },
@@ -987,7 +1075,7 @@
       "dateTimeAddition": "2026-11-03T00:00:00Z",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "sources": [
         {
@@ -1050,7 +1138,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -1128,7 +1216,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -1204,7 +1292,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.property-relationship",
         "bblocks://ogc.ogc-utils.iri-or-curie"
@@ -1254,7 +1342,7 @@
       "abstract": "Profile of the OGC API - Features collection description for collections that serve an EMODnet-compliant view of a national or regional source. Requires links to the EMODnet profile (rel=profile), the item schema (describedby), queryables, the source collection it is derived from, the corresponding EMODnet Human Activities layer and the source licence.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1327,7 +1415,7 @@
       "abstract": "Common GeoJSON Feature envelope and shared vocabulary bindings (country, IUCN category, major ecosystem type, EEA designation type) for protected-area features published through OGC API - Features in a form that is field-for-field compatible with the EMODnet Human Activities protected-area layers. Parent of the EMODnet target profiles (nationally designated areas, Regional Sea Convention MPAs), the Norwegian and HELCOM source profiles with their transforms, and the API collection profile.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1418,11 +1506,11 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.emodnet-windfarm-osm",
-      "name": "EMODnet windfarm OSM extension",
-      "abstract": "A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.",
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet",
+      "name": "EMODnet windfarm",
+      "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.",
       "status": "under-development",
-      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "dateTimeAddition": "2026-07-24T00:00:00Z",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -1431,137 +1519,11 @@
       },
       "tags": [
         "EMODnet",
-        "OpenStreetMap",
+        "Human Activities",
+        "energy",
         "windfarm",
-        "GeoJSON-LD",
-        "harmonization",
-        "Poland"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "EMODnet-compliant windfarm Building Block",
-          "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
-        },
-        {
-          "title": "OpenStreetMap copyright and ODbL attribution",
-          "link": "https://www.openstreetmap.org/copyright"
-        },
-        {
-          "title": "OpenStreetMap API map endpoint used for the source snapshot",
-          "link": "https://api.openstreetmap.org/api/0.6/map"
-        },
-        {
-          "title": "IHO S-100 Registry: Category of Offshore Production Area",
-          "link": "https://registry.iho.int/fdd/view3.do?idx=42&type=3"
-        },
-        {
-          "title": "IHO S-101 Electronic Navigational Chart Product Specification",
-          "link": "https://metanorma.github.io/iho-s-101/documents/2.0.0/annex-a/document.html"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm",
-        "bblocks://ogc.hosted.seadots.osm-offshore-wind-source"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946",
-        "https://opendatacommons.org/licenses/odbl/1-0/"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ]
-      },
-      "dateOfLastChange": "2026-11-03",
-      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/ontology.ttl",
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-windfarm-osm/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-windfarm-osm/",
-      "transforms": [
-        {
-          "id": "harmonize-osm-windfarm",
-          "description": "Add EMODnet-compatible properties for explicitly supported OSM tags while preserving source identity, tag dictionaries, geometry, relation members, source attribution, and all unmapped values.",
-          "type": "python",
-          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/emodnet-windfarm-osm/transforms/to_emodnet_windfarm.py",
-          "inputs": {
-            "mediaTypes": [
-              {
-                "mimeType": "application/json",
-                "label": "JSON",
-                "defaultExtension": "json"
-              },
-              {
-                "mimeType": "application/geo+json",
-                "label": "GeoJSON",
-                "defaultExtension": "geojson"
-              }
-            ]
-          },
-          "outputs": {
-            "mediaTypes": [
-              {
-                "mimeType": "application/geo+json",
-                "label": "GeoJSON",
-                "defaultExtension": "geojson"
-              }
-            ],
-            "profiles": [
-              "bblocks://ogc.hosted.seadots.emodnet-windfarm-osm"
-            ]
-          },
-          "code": "\"\"\"Add defensible EMODnet properties while preserving the complete OSM source.\"\"\"\nimport json\nimport re\n\n\ndef as_mw(value):\n    \"\"\"Return numeric MW only when the tag explicitly supplies the MW unit.\"\"\"\n    if not isinstance(value, str):\n        return None\n    match = re.fullmatch(r\"\\s*([0-9]+(?:\\.[0-9]+)?)\\s*MW\\s*\", value, re.IGNORECASE)\n    return float(match.group(1)) if match else None\n\n\ndef as_count(value):\n    \"\"\"Return an integer for an explicit whole-number count, otherwise None.\"\"\"\n    if not isinstance(value, str) or not re.fullmatch(r\"\\s*[0-9]+\\s*\", value):\n        return None\n    return int(value)\n\n\ndef transform(collection):\n    if collection.get(\"type\") != \"FeatureCollection\" or not isinstance(collection.get(\"features\"), list):\n        raise ValueError(\"Expected a GeoJSON FeatureCollection with a features array\")\n    result = dict(collection)\n    features = []\n    for source_feature in collection[\"features\"]:\n        feature = dict(source_feature)\n        source_properties = source_feature.get(\"properties\") or {}\n        properties = dict(source_properties)\n        tags = source_properties.get(\"tags\") or {}\n\n        # Preserve source fields and raw tags, then add only supported harmonized properties.\n        name = tags.get(\"name\") or tags.get(\"seamark:name\")\n        if name is not None:\n            properties[\"name\"] = name\n        for tag_key in (\"plant:output:electricity\", \"generator:output:electricity\"):\n            capacity = as_mw(tags.get(tag_key))\n            if capacity is not None:\n                properties[\"power_mw\"] = capacity\n                break\n        for source_key, target_key in (\n            (\"status\", \"status\"),\n            (\"plant:type\", \"type_inst\"),\n            (\"start_date\", \"year\"),\n        ):\n            if tags.get(source_key) is not None:\n                properties[target_key] = tags[source_key]\n        turbine_count = as_count(tags.get(\"turbines\"))\n        if turbine_count is not None:\n            properties[\"n_turbines\"] = turbine_count\n\n        geometry = source_feature.get(\"geometry\")\n        geometry_type = geometry.get(\"type\") if isinstance(geometry, dict) else None\n        is_area_geometry = (\n            geometry_type in {\"Polygon\", \"MultiPolygon\"}\n            or (source_properties.get(\"osm_type\") == \"relation\" and tags.get(\"type\") == \"multipolygon\")\n        )\n        has_windfarm_evidence = (\n            tags.get(\"industrial\") == \"windfarm\"\n            or tags.get(\"seamark:landmark:production_area\") == \"wind_farm\"\n            or (tags.get(\"plant:source\") == \"wind\" and tags.get(\"plant:type\") == \"offshore\")\n        )\n        is_windfarm_area = is_area_geometry and has_windfarm_evidence\n        if is_windfarm_area:\n            properties[\"category_of_offshore_production_area\"] = 1\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#OffshoreProductionArea\"\n            )\n        elif (\n            source_properties.get(\"osm_type\") == \"node\"\n            and geometry_type == \"Point\"\n            and tags.get(\"generator:method\") == \"wind_turbine\"\n        ):\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#WindTurbine\"\n            )\n\n        feature[\"properties\"] = properties\n        features.append(feature)\n    result[\"features\"] = features\n    return result\n\n\n# The bblocks Python transform runner provides input_data and reads output_data.\nif \"input_data\" in globals():\n    output_data = json.dumps(transform(json.loads(input_data)), ensure_ascii=False, indent=2) + \"\\n\"\n"
-        }
-      ],
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-windfarm-osm/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-windfarm-osm/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-windfarm-osm"
-        }
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm-no",
-      "name": "Norwegian NVE windfarm extension for EMODnet",
-      "abstract": "Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-10-28T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "license": {
-        "name": "https://data.norge.no/nlod/no/2.0"
-      },
-      "tags": [
-        "EMODnet",
-        "windfarm",
-        "Norway",
-        "NVE",
-        "extension",
+        "WFS",
+        "XSD",
         "GeoJSON"
       ],
       "authors": [
@@ -1572,30 +1534,20 @@
       ],
       "sources": [
         {
-          "title": "NVE wind power plants dataset",
-          "link": "https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk"
+          "title": "EMODnet Human Activities \u2014 Wind Farms service",
+          "link": "https://www.emodnet-humanactivities.eu/"
         },
         {
-          "title": "NVE Sm\u00f8la wind farm record",
-          "link": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591"
-        },
-        {
-          "title": "NVE Sm\u00f8la licensing case",
-          "link": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A"
-        },
-        {
-          "title": "Base EMODnet windfarm block",
-          "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
+          "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ",
+          "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
         }
       ],
-      "isProfileOf": [
-        "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm"
+      "dependsOn": [
+        "bblocks://ogc.geo.features.feature",
+        "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-ontology"
       ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/context.jsonld",
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/context.jsonld",
       "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946"
-      ],
       "maturity": "development",
       "scope": "dev",
       "shaclShapes": {
@@ -1603,55 +1555,51 @@
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
         ]
       },
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm"
-      ],
-      "dateOfLastChange": "2026-11-03",
-      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/ontology.ttl",
+      "dateOfLastChange": "2026-11-04",
       "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/schema.json"
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/schema.json"
       },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-no/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-no/",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/",
       "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm-no/",
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/windfarm-designated-area-emodnet/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-compliant-windfarm-no/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/windfarm-designated-area-emodnet/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-compliant-windfarm-no/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/windfarm-designated-area-emodnet/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-compliant-windfarm-no"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
         }
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.emodnet-compliant-windfarm-pl",
-      "name": "Polish windfarm extension for EMODnet",
-      "abstract": "Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.",
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.windfarm-openstreetmap",
+      "name": "OpenStreetMap offshore wind source feature collection",
+      "abstract": "Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.",
       "status": "under-development",
       "dateTimeAddition": "2026-10-27T00:00:00Z",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "license": {
-        "name": "https://creativecommons.org/licenses/by/4.0/"
+        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
       },
       "tags": [
-        "EMODnet",
-        "windfarm",
-        "GeoJSON-LD",
-        "Poland",
-        "harmonization",
-        "provenance"
+        "OpenStreetMap",
+        "OSM",
+        "wind energy",
+        "GeoJSON",
+        "source data",
+        "Poland"
       ],
       "authors": [
         {
@@ -1661,57 +1609,53 @@
       ],
       "sources": [
         {
-          "title": "EMODnet-compliant windfarm Building Block",
-          "link": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm"
+          "title": "OpenStreetMap copyright and ODbL attribution",
+          "link": "https://www.openstreetmap.org/copyright"
         },
         {
-          "title": "Polish offshore wind pipeline article",
-          "link": "https://www.gramwzielone.pl/?p=20373718"
+          "title": "OpenStreetMap API map endpoint",
+          "link": "https://api.openstreetmap.org/api/0.6/map"
         },
         {
-          "title": "EMODnet Human Activities WFS",
-          "link": "https://ows.emodnet-humanactivities.eu/wfs"
+          "title": "OpenStreetMap elements: nodes, ways, and relations",
+          "link": "https://wiki.openstreetmap.org/wiki/Elements"
         }
       ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.emodnet-compliant-windfarm"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/context.jsonld",
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-openstreetmap/context.jsonld",
       "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946"
-      ],
       "maturity": "development",
-      "scope": "dev",
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+      ],
       "shaclShapes": {
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
         ]
       },
-      "dateOfLastChange": "2026-11-03",
-      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/ontology.ttl",
+      "dateOfLastChange": "2026-11-04",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-openstreetmap/ontology.ttl",
       "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/schema.json"
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-openstreetmap/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-openstreetmap/schema.json"
       },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-pl/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-pl/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-compliant-windfarm-pl/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/emodnet-compliant-windfarm-pl/",
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-openstreetmap/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-openstreetmap/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-openstreetmap/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-openstreetmap/",
       "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/emodnet-compliant-windfarm-pl/",
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/windfarm-openstreetmap/",
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/emodnet-compliant-windfarm-pl/index.md"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/windfarm-openstreetmap/index.md"
         },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/emodnet-compliant-windfarm-pl/index.json"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/windfarm-openstreetmap/index.json"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-compliant-windfarm-pl"
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.windfarm-openstreetmap"
         }
       }
     },
@@ -1723,7 +1667,7 @@
       "dateTimeAddition": "2026-11-03T00:00:00Z",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "shaclShapes": {
         "ogc.hosted.seadots.linkeddata.marineProtectionFeature": [
@@ -1807,7 +1751,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -1917,7 +1861,7 @@
       ],
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "license": {
@@ -2011,7 +1955,7 @@
       ],
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "license": {
@@ -2066,6 +2010,304 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no",
+      "name": "Norwegian NVE windfarm extension for EMODnet",
+      "abstract": "Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-28T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://data.norge.no/nlod/no/2.0"
+      },
+      "tags": [
+        "EMODnet",
+        "windfarm",
+        "Norway",
+        "NVE",
+        "extension",
+        "GeoJSON"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVE wind power plants dataset",
+          "link": "https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk"
+        },
+        {
+          "title": "NVE Sm\u00f8la wind farm record",
+          "link": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591"
+        },
+        {
+          "title": "NVE Sm\u00f8la licensing case",
+          "link": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A"
+        },
+        {
+          "title": "Base EMODnet windfarm block",
+          "link": "https://w3id.org/ogc/hosted/seadots/windfarms/windfarm-designated-area-emodnet"
+        }
+      ],
+      "isProfileOf": [
+        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
+      ],
+      "dateOfLastChange": "2026-11-04",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/ontology.ttl",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl",
+      "name": "Polish windfarm extension for EMODnet",
+      "abstract": "Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "tags": [
+        "EMODnet",
+        "windfarm",
+        "GeoJSON-LD",
+        "Poland",
+        "harmonization",
+        "provenance"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet-compliant windfarm Building Block",
+          "link": "https://w3id.org/ogc/hosted/seadots/windfarms/windfarm-designated-area-emodnet"
+        },
+        {
+          "title": "Polish offshore wind pipeline article",
+          "link": "https://www.gramwzielone.pl/?p=20373718"
+        },
+        {
+          "title": "EMODnet Human Activities WFS",
+          "link": "https://ows.emodnet-humanactivities.eu/wfs"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "dateOfLastChange": "2026-11-04",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/ontology.ttl",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-pl/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-pl/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-pl/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/emodnet-compliant-windfarm-pl/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl"
+        }
+      }
+    },
+    {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.emodnet-windfarm-osm",
+      "name": "EMODnet windfarm OSM extension",
+      "abstract": "A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "tags": [
+        "EMODnet",
+        "OpenStreetMap",
+        "windfarm",
+        "GeoJSON-LD",
+        "harmonization",
+        "Poland"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "EMODnet-compliant windfarm Building Block",
+          "link": "https://w3id.org/ogc/hosted/seadots/windfarms/windfarm-designated-area-emodnet"
+        },
+        {
+          "title": "OpenStreetMap copyright and ODbL attribution",
+          "link": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "title": "OpenStreetMap API map endpoint used for the source snapshot",
+          "link": "https://api.openstreetmap.org/api/0.6/map"
+        },
+        {
+          "title": "IHO S-100 Registry: Category of Offshore Production Area",
+          "link": "https://registry.iho.int/fdd/view3.do?idx=42&type=3"
+        },
+        {
+          "title": "IHO S-101 Electronic Navigational Chart Product Specification",
+          "link": "https://metanorma.github.io/iho-s-101/documents/2.0.0/annex-a/document.html"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet",
+        "bblocks://ogc.hosted.seadots.windfarms.windfarm-openstreetmap"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-windfarm-osm/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946",
+        "https://opendatacommons.org/licenses/odbl/1-0/"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ]
+      },
+      "dateOfLastChange": "2026-11-04",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-windfarm-osm/ontology.ttl",
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-windfarm-osm/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-windfarm-osm/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-windfarm-osm/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-windfarm-osm/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-windfarm-osm/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-windfarm-osm/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/emodnet-windfarm-osm/",
+      "transforms": [
+        {
+          "id": "harmonize-osm-windfarm",
+          "description": "Add EMODnet-compatible properties for explicitly supported OSM tags while preserving source identity, tag dictionaries, geometry, relation members, source attribution, and all unmapped values.",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-windfarm-osm/transforms/to_emodnet_windfarm.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              },
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.emodnet-windfarm-osm"
+            ]
+          },
+          "code": "\"\"\"Add defensible EMODnet properties while preserving the complete OSM source.\"\"\"\nimport json\nimport re\n\n\ndef as_mw(value):\n    \"\"\"Return numeric MW only when the tag explicitly supplies the MW unit.\"\"\"\n    if not isinstance(value, str):\n        return None\n    match = re.fullmatch(r\"\\s*([0-9]+(?:\\.[0-9]+)?)\\s*MW\\s*\", value, re.IGNORECASE)\n    return float(match.group(1)) if match else None\n\n\ndef as_count(value):\n    \"\"\"Return an integer for an explicit whole-number count, otherwise None.\"\"\"\n    if not isinstance(value, str) or not re.fullmatch(r\"\\s*[0-9]+\\s*\", value):\n        return None\n    return int(value)\n\n\ndef transform(collection):\n    if collection.get(\"type\") != \"FeatureCollection\" or not isinstance(collection.get(\"features\"), list):\n        raise ValueError(\"Expected a GeoJSON FeatureCollection with a features array\")\n    result = dict(collection)\n    features = []\n    for source_feature in collection[\"features\"]:\n        feature = dict(source_feature)\n        source_properties = source_feature.get(\"properties\") or {}\n        properties = dict(source_properties)\n        tags = source_properties.get(\"tags\") or {}\n\n        # Preserve source fields and raw tags, then add only supported harmonized properties.\n        name = tags.get(\"name\") or tags.get(\"seamark:name\")\n        if name is not None:\n            properties[\"name\"] = name\n        for tag_key in (\"plant:output:electricity\", \"generator:output:electricity\"):\n            capacity = as_mw(tags.get(tag_key))\n            if capacity is not None:\n                properties[\"power_mw\"] = capacity\n                break\n        for source_key, target_key in (\n            (\"status\", \"status\"),\n            (\"plant:type\", \"type_inst\"),\n            (\"start_date\", \"year\"),\n        ):\n            if tags.get(source_key) is not None:\n                properties[target_key] = tags[source_key]\n        turbine_count = as_count(tags.get(\"turbines\"))\n        if turbine_count is not None:\n            properties[\"n_turbines\"] = turbine_count\n\n        geometry = source_feature.get(\"geometry\")\n        geometry_type = geometry.get(\"type\") if isinstance(geometry, dict) else None\n        is_area_geometry = (\n            geometry_type in {\"Polygon\", \"MultiPolygon\"}\n            or (source_properties.get(\"osm_type\") == \"relation\" and tags.get(\"type\") == \"multipolygon\")\n        )\n        has_windfarm_evidence = (\n            tags.get(\"industrial\") == \"windfarm\"\n            or tags.get(\"seamark:landmark:production_area\") == \"wind_farm\"\n            or (tags.get(\"plant:source\") == \"wind\" and tags.get(\"plant:type\") == \"offshore\")\n        )\n        is_windfarm_area = is_area_geometry and has_windfarm_evidence\n        if is_windfarm_area:\n            properties[\"category_of_offshore_production_area\"] = 1\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#OffshoreProductionArea\"\n            )\n        elif (\n            source_properties.get(\"osm_type\") == \"node\"\n            and geometry_type == \"Point\"\n            and tags.get(\"generator:method\") == \"wind_turbine\"\n        ):\n            properties[\"iho_feature_role\"] = (\n                \"https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#WindTurbine\"\n            )\n\n        feature[\"properties\"] = properties\n        features.append(feature)\n    result[\"features\"] = features\n    return result\n\n\n# The bblocks Python transform runner provides input_data and reads output_data.\nif \"input_data\" in globals():\n    output_data = json.dumps(transform(json.loads(input_data)), ensure_ascii=False, indent=2) + \"\\n\"\n"
+        }
+      ],
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/emodnet-windfarm-osm/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/emodnet-windfarm-osm/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.emodnet-windfarm-osm"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.fcm-sequence",
       "name": "FCM sequence",
       "abstract": "A time-indexed series of fuzzy cognitive maps and the solutions computed from them: how the causal structure a stakeholder group describes, and the equilibria it implies, change over successive elicitation rounds. Source-faithful to the DeterministicFCMSequence struct of FuzzyCognitiveMapTools.jl.",
@@ -2074,7 +2316,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2151,7 +2393,7 @@
       "abstract": "Source-faithful profile of Norwegian protected sites (Milj\u00f8direktoratet Naturvernomr\u00e5der, vern layer 0) as served by the Seadots OGC API - Features collections, with the crosswalks (verneform to EEA designation type, IUCN, ecosystem) and the Python transform that produces the EMODnet-compliant nationally designated area view.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -2275,7 +2517,7 @@
       "abstract": "Source-faithful profile of HELCOM marine protected areas (HELCOM MADS layer 54 'HELCOM MPAs' and layer 190 'Baltic Sea MPA network 2026') as served by the Seadots OGC API - Features collections, with the Python transform that produces the EMODnet-compliant Regional Sea Convention MPA view and routes non-HELCOM codes to the EMODnet layers that already publish them.",
       "status": "under-development",
       "dateTimeAddition": "2026-09-30T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -2402,7 +2644,7 @@
       "itemClass": "model",
       "register": "ogc-incubator",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.model.cross-domain.all"
       ],
@@ -2471,7 +2713,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2544,7 +2786,7 @@
       "dateTimeAddition": "2026-11-03T00:00:00Z",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "isProfileOf": [
         "bblocks://ogc.geo.geodcat.geodcat-records"
@@ -2618,7 +2860,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2693,7 +2935,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2769,7 +3011,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -2860,7 +3102,7 @@
       "itemClass": "schema",
       "register": "iliad-apis",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.oim-variables"
       ],
@@ -2939,7 +3181,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3045,7 +3287,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3134,7 +3376,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3221,7 +3463,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3314,7 +3556,7 @@
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
       "dateTimeAddition": "2026-07-28T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "dependsOn": [
         "bblocks://ogc.hosted.seadots.oim-variable-observation"
       ],
@@ -3413,7 +3655,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3532,7 +3774,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3654,7 +3896,7 @@
       "abstract": "GeoParquet representation of the source-faithful harvest_timeseries_scenario_Scen_M3 point time series: id, Point geometry, bwmus and time, unchanged from harvest-timeseries-scen-m3-source. geometry_types, bbox and CRS are derived from the actual data, not declared placeholders.",
       "status": "under-development",
       "dateTimeAddition": "2026-07-31T00:00:00Z",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
@@ -3751,7 +3993,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3857,7 +4099,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -3968,7 +4210,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4064,111 +4306,6 @@
       }
     },
     {
-      "itemIdentifier": "ogc.hosted.seadots.osm-offshore-wind-catalog",
-      "name": "OSM Polish Offshore Wind Catalog Record",
-      "abstract": "Representative catalog record for the 2026-10-27 OpenStreetMap GeoJSON snapshot of offshore wind infrastructure in the Polish Baltic. Profiles the SeaDOTs catalog-data-tabular record envelope while describing the source asset as GeoJSON and linking its source and wind-farm interpretation profiles.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-10-27T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
-      "license": {
-        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
-      },
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.catalog-data-tabular",
-        "bblocks://ogc.hosted.seadots.emodnet-windfarm-osm",
-        "bblocks://ogc.hosted.seadots.osm-offshore-wind-source"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/context.jsonld",
-      "shaclRules": [],
-      "tags": [
-        "catalog",
-        "geojson",
-        "openstreetmap",
-        "offshore-wind",
-        "baltic-sea",
-        "odbl"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "OpenStreetMap contributors",
-          "link": "https://www.openstreetmap.org/copyright"
-        },
-        {
-          "title": "OpenStreetMap API map endpoint",
-          "link": "https://api.openstreetmap.org/api/0.6/map"
-        },
-        {
-          "title": "Open Data Commons Open Database License (ODbL) 1.0",
-          "link": "https://opendatacommons.org/licenses/odbl/1-0/"
-        }
-      ],
-      "standards": [
-        "https://www.rfc-editor.org/rfc/rfc7946",
-        "https://docs.ogc.org/is/20-004/20-004.html"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {
-        "ogc.contrib.stac.components.assets-ontology": [
-          "https://ogcincubator.github.io/bblocks-stac/_sources/components/assets-ontology/shapes.shacl"
-        ],
-        "ogc.contrib.stac.core-ontology": [
-          "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl"
-        ],
-        "ogc.model.cross-domain.prov": [
-          "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl"
-        ],
-        "ogc.contrib.stac.extensions.cf-ontology": [
-          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/cf-ontology/shapes.shacl"
-        ],
-        "ogc.api.records.v1.schemas.linkTemplate": [
-          "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl"
-        ],
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ],
-        "ogc.contrib.stac.extensions.osc-ontology": [
-          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl"
-        ],
-        "ogc.contrib.stac.extensions.themes-ontology": [
-          "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/themes-ontology/shapes.shacl"
-        ]
-      },
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/osm-offshore-wind-catalog/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/_staging/osm-offshore-wind-catalog/",
-      "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/osm-offshore-wind-catalog/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/osm-offshore-wind-catalog/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/osm-offshore-wind-catalog/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.osm-offshore-wind-catalog"
-        }
-      }
-    },
-    {
       "itemIdentifier": "ogc.hosted.seadots.catalog-data-tabular-survey",
       "name": "SeaDOTs Catalog Data Tabular Survey",
       "abstract": "Tabular survey-data profile for the saltmarsh perceptions questionnaire, designed to carry ELSST thesaurus mappings, CESSDA controlled-vocabulary references, and DDI-style descriptive metadata for questionnaire variables and response categories.",
@@ -4177,7 +4314,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4289,7 +4426,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4398,7 +4535,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4503,7 +4640,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.2",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4640,7 +4777,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
@@ -4775,7 +4912,7 @@
       "itemClass": "schema",
       "register": "ogc-marine-dt-seadots",
       "version": "0.1",
-      "dateOfLastChange": "2026-11-03",
+      "dateOfLastChange": "2026-11-04",
       "license": {
         "name": "https://creativecommons.org/licenses/by/4.0/"
       },
