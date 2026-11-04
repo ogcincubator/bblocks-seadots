@@ -35,9 +35,6 @@ $defs:
               type: {const: Point}
           properties:
             type: object
-            required: [ref, windfarm_name, windfarm, manufacturer, model, rated_power_mw,
-                       hub_height_m, rotor_diameter_m, rotor_axis, offshore, operator, status,
-                       last_updated]
             properties:
               ref:
                 type: [string, 'null']
@@ -87,4 +84,9 @@ $defs:
                 type: [string, 'null']
                 format: date-time
                 description: Time of the last edit of the source record.
-            additionalProperties: false
+              commissioning_year:
+                type: [integer, 'null']
+                minimum: 1900
+                maximum: 2100
+                description: Year the turbine was commissioned; null when the source does not state it.
+

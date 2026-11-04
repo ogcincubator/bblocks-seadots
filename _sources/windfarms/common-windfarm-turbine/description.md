@@ -19,8 +19,9 @@ A single wind turbine, represented as a GeoJSON Feature with Point geometry. A s
 | `operator` | array of strings | Operating organisations | `operator`, split on `;` |
 | `status` | INSPIRE ConditionOfFacilityValue code | Condition of the turbine | `status` |
 | `last_updated` | date-time | Last edit of the source record | element `timestamp` |
+| `commissioning_year` | integer (optional) | Year the turbine was commissioned | not tagged in the OSM snapshot; e.g. NVE turbine details |
 
-Every property is present on every feature. A value is `null` when the source does not state it or states it in a form that cannot be read unambiguously. The converter never fills in a default. For example, `offshore` is not set to `true` just because the turbine is at sea, and `status` is not set to `functional` when the tag is absent. Units are fixed by the property name, so `"15 MW"` becomes `15` and `"141"` (OSM's default unit is metres) becomes `141`. `generator:method=wind_turbine` and `generator:source=wind` are the selection criteria, so they are not repeated as properties.
+All properties are optional and nullable, and additional properties are allowed. The example converter writes every property listed here, with `null` when the source does not state it or states it in a form that cannot be read unambiguously. The converter never fills in a default. For example, `offshore` is not set to `true` just because the turbine is at sea, and `status` is not set to `functional` when the tag is absent. Units are fixed by the property name, so `"15 MW"` becomes `15` and `"141"` (OSM's default unit is metres) becomes `141`. `generator:method=wind_turbine` and `generator:source=wind` are the selection criteria, so they are not repeated as properties.
 
 The feature `id` is the URL of the source element, e.g. `https://www.openstreetmap.org/node/14185128565`.
 

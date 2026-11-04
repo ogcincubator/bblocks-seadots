@@ -41,7 +41,7 @@ $defs:
                   type: {enum: [Polygon, MultiPolygon, Point]}
           properties:
             type: object
-            required: [name, country, status, source_type, source_reference, location_status]
+            required: [source_type, source_reference, location_status]
             properties:
               # --- identification and EMODnet core attributes ---
               name:
@@ -168,4 +168,4 @@ $defs:
                 type: [array, 'null']
                 items: {type: string, format: uri}
                 description: Other records (in this or other sources) describing the same wind farm.
-            additionalProperties: false
+            additionalProperties: true
