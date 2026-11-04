@@ -35,6 +35,14 @@ owf:areaSqKm a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:decimal .
 
+owf:commissioningYear a owl:DatatypeProperty ;
+    rdfs:label "commissioning year"@en ;
+    rdfs:comment "Year the turbine was commissioned."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:gYear ;
+    owl:equivalentProperty nve:commissioningYear .
+
 owf:conditionOfFacility a owl:ObjectProperty ;
     rdfs:label "condition of facility"@en ;
     rdfs:comment "Condition of the facility as an INSPIRE ConditionOfFacilityValue concept."@en ;
@@ -623,13 +631,6 @@ owf:SourceType a skos:ConceptScheme ;
         owf:OpenStreetMapSource ;
     skos:prefLabel "source types"@en .
 
-owf:WindTurbine a owl:Class ;
-    rdfs:label "wind turbine"@en ;
-    rdfs:comment "A single machine converting wind energy into electricity, located at a point."@en ;
-    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
-    rdfs:seeAlso <https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0>,
-        <https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind> .
-
 owf:LocationStatus a skos:ConceptScheme ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     skos:definition "How the geometry of a windfarm record was obtained."@en ;
@@ -638,6 +639,13 @@ owf:LocationStatus a skos:ConceptScheme ;
         owf:LocationSourceProvided,
         owf:LocationUnmatched ;
     skos:prefLabel "location statuss"@en .
+
+owf:WindTurbine a owl:Class ;
+    rdfs:label "wind turbine"@en ;
+    rdfs:comment "A single machine converting wind energy into electricity, located at a point."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:seeAlso <https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0>,
+        <https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind> .
 
 seadots-emodnet:WindfarmStatus a skos:ConceptScheme ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;

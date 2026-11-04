@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no - Norwegian NVE windfarm extension for EMODnet
-Generated 2026-11-04T18:25:04.969336+00:00
+Generated 2026-11-04T18:50:36.863083+00:00
 === Files ===
 Using examples/operational-offshore-wind-farm.json from examples
 JSON-LD context is present - uplifting
@@ -10,7 +10,7 @@ Output Turtle example_1_1.ttl created
 === JSON Schema ===
 
 ** Validation error **
-ValidationError: 'name' is a required property
+ValidationError: 'nve_facility_id' is a required property
 
 Failed validating 'required' in schema['allOf'][1]['properties']['properties']:
     {'properties': {'name': {'description': 'Facility name as published by '
@@ -119,33 +119,27 @@ Failed validating 'required' in schema['allOf'][1]['properties']['properties']:
      'type': 'object'}
 
 On instance['properties']:
-    {'description': 'Illustrative EMODnet Human Activities contribution '
-                    'record for an operational offshore wind-farm field.',
-     'title': 'North Sea Demonstrator Offshore Wind Farm',
-     'windFarm': {'commissioningDate': '2025-01-01',
-                  'country': 'NL',
-                  'identifier': 'NS-DEMO-01',
-                  'installedCapacityMW': 288,
-                  'lifecycleStatus': 'operational',
-                  'metadataRecord': 'https://example.org/metadata/north-sea-demo-wind-farm',
-                  'name': 'North Sea Demonstrator Offshore Wind Farm',
-                  'operator': 'Example Offshore Energy B.V.',
-                  'positionalAccuracyM': 10,
-                  'remarks': 'Illustrative record; replace all example '
-                             'URLs and values with the authoritative '
-                             'provider data and metadata record before '
-                             'publication.',
-                  'sourceDataset': 'https://example.org/datasets/north-sea-demo-wind-farm.geojson',
-                  'turbineCount': 24,
-                  'updateDate': '2026-07-01',
-                  'validFrom': '2025-01-01'}}
+    {'commissioningDate': '2025-01-01',
+     'country': 'NL',
+     'identifier': 'NS-DEMO-01',
+     'installedCapacityMW': 288,
+     'lifecycleStatus': 'operational',
+     'metadataRecord': 'https://example.org/metadata/north-sea-demo-wind-farm',
+     'name': 'North Sea Demonstrator Offshore Wind Farm',
+     'operator': 'Example Offshore Energy B.V.',
+     'positionalAccuracyM': 10,
+     'remarks': 'Illustrative record; replace all example URLs and values '
+                'with the authoritative provider data and metadata record '
+                'before publication.',
+     'sourceDataset': 'https://example.org/datasets/north-sea-demo-wind-farm.geojson',
+     'turbineCount': 24,
+     'updateDate': '2026-07-01',
+     'validFrom': '2025-01-01'}
 === End JSON Schema ===
 
 === SHACL ===
-Error processing closure source /github/workspace/_sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl: at line 65 of <>:
-Bad syntax (Prefix "qudt:" not bound) at ^ in:
-"...b'n square kilometres."@en ;\n    rdfs:range xsd:decimal ;\n    '^b'qudt:hasQuantityKind quantitykind:Area ;\n    qudt:unit unit:'..." - SHACL validation will run against an incomplete closure graph
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl
  - /github/workspace/_sources/windfarms/common-windfarm-ontology/ontology.ttl
  - /github/workspace/_sources/windfarms/emodnet-compliant-windfarm-no/ontology.ttl
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
@@ -153,11 +147,11 @@ Validation result for https://opengeospatial.github.io/bblocks/registereditems/g
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:LinkShape: *none*
- - Shape geojson:FeatureShape: <https://example.org/wind-farms/north-sea-demo-01>
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
  - Shape geojson:GeometryShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: <https://example.org/wind-farms/north-sea-demo-01>
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
 
 === End SHACL ===
 

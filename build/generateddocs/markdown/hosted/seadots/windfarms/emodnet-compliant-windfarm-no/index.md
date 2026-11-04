@@ -70,9 +70,6 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
   },
 
   "properties": {
-    "title": "North Sea Demonstrator Offshore Wind Farm",
-    "description": "Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field.",
-    "windFarm": {
       "identifier": "NS-DEMO-01",
       "name": "North Sea Demonstrator Offshore Wind Farm",
       "country": "NL",
@@ -87,7 +84,6 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
       "updateDate": "2026-07-01",
       "positionalAccuracyM": 10,
       "remarks": "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication."
-    }
   }
 }
 
@@ -127,24 +123,20 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
     ]
   },
   "properties": {
-    "title": "North Sea Demonstrator Offshore Wind Farm",
-    "description": "Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field.",
-    "windFarm": {
-      "identifier": "NS-DEMO-01",
-      "name": "North Sea Demonstrator Offshore Wind Farm",
-      "country": "NL",
-      "lifecycleStatus": "operational",
-      "turbineCount": 24,
-      "installedCapacityMW": 288,
-      "validFrom": "2025-01-01",
-      "commissioningDate": "2025-01-01",
-      "operator": "Example Offshore Energy B.V.",
-      "sourceDataset": "https://example.org/datasets/north-sea-demo-wind-farm.geojson",
-      "metadataRecord": "https://example.org/metadata/north-sea-demo-wind-farm",
-      "updateDate": "2026-07-01",
-      "positionalAccuracyM": 10,
-      "remarks": "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication."
-    }
+    "identifier": "NS-DEMO-01",
+    "name": "North Sea Demonstrator Offshore Wind Farm",
+    "country": "NL",
+    "lifecycleStatus": "operational",
+    "turbineCount": 24,
+    "installedCapacityMW": 288,
+    "validFrom": "2025-01-01",
+    "commissioningDate": "2025-01-01",
+    "operator": "Example Offshore Energy B.V.",
+    "sourceDataset": "https://example.org/datasets/north-sea-demo-wind-farm.geojson",
+    "metadataRecord": "https://example.org/metadata/north-sea-demo-wind-farm",
+    "updateDate": "2026-07-01",
+    "positionalAccuracyM": 10,
+    "remarks": "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication."
   }
 }
 ```
@@ -160,22 +152,20 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
 <https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;
-    geojson:properties [ seadots-emodnet:description "Illustrative EMODnet Human Activities contribution record for an operational offshore wind-farm field." ;
-            seadots-emodnet:title "North Sea Demonstrator Offshore Wind Farm" ;
-            seadots-emodnet:windFarm [ schema:addressCountry seadots-emodnet:NL ;
-                    schema:name "North Sea Demonstrator Offshore Wind Farm" ;
-                    seadots-emodnet:commissioningDate "2025-01-01" ;
-                    seadots-emodnet:identifier "NS-DEMO-01" ;
-                    seadots-emodnet:installedCapacityMW 288 ;
-                    seadots-emodnet:lifecycleStatus "operational" ;
-                    seadots-emodnet:metadataRecord "https://example.org/metadata/north-sea-demo-wind-farm" ;
-                    seadots-emodnet:operator "Example Offshore Energy B.V." ;
-                    seadots-emodnet:positionalAccuracyM 10 ;
-                    seadots-emodnet:remarks "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication." ;
-                    seadots-emodnet:sourceDataset "https://example.org/datasets/north-sea-demo-wind-farm.geojson" ;
-                    seadots-emodnet:turbineCount 24 ;
-                    seadots-emodnet:updateDate "2026-07-01" ;
-                    seadots-emodnet:validFrom "2025-01-01" ] ] .
+    geojson:properties [ schema:addressCountry seadots-emodnet:NL ;
+            schema:name "North Sea Demonstrator Offshore Wind Farm" ;
+            seadots-emodnet:commissioningDate "2025-01-01" ;
+            seadots-emodnet:identifier "NS-DEMO-01" ;
+            seadots-emodnet:installedCapacityMW 288 ;
+            seadots-emodnet:lifecycleStatus "operational" ;
+            seadots-emodnet:metadataRecord "https://example.org/metadata/north-sea-demo-wind-farm" ;
+            seadots-emodnet:operator "Example Offshore Energy B.V." ;
+            seadots-emodnet:positionalAccuracyM 10 ;
+            seadots-emodnet:remarks "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication." ;
+            seadots-emodnet:sourceDataset "https://example.org/datasets/north-sea-demo-wind-farm.geojson" ;
+            seadots-emodnet:turbineCount 24 ;
+            seadots-emodnet:updateDate "2026-07-01" ;
+            seadots-emodnet:validFrom "2025-01-01" ] .
 
 
 ```

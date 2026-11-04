@@ -15,11 +15,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM Observations profile" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
-        [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
+    rdfs:seeAlso [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
@@ -27,12 +23,16 @@
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr> ],
-        [ rdfs:label "MAREANO programme" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ],
+        [ rdfs:label "OIM Observations profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
         [ rdfs:label "Institute of Marine Research" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://www.hi.no/> ] ;
+            oa:hasTarget <https://www.hi.no/> ],
+        [ rdfs:label "MAREANO programme" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://mareano.no/> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -88,18 +88,7 @@
                                 "2024007005",
                                 "2025001009",
                                 "2026007006" ;
-                            seadots:perTaxon [ dwc:scientificName "Aplysilla" ;
-                                    seadots:cruises "2009105",
-                                        "2009111",
-                                        "2010110",
-                                        "2010112" ;
-                                    seadots:equipment "Beamtrawl",
-                                        "VVgrab020" ;
-                                    seadots:samplesInAOI 10 ;
-                                    seadots:samplesWithWeight 1 ;
-                                    seadots:totalIndividuals 0 ;
-                                    seadots:totalWeight_kg 5e+03 ],
-                                [ dwc:scientificName "Actiniaria" ;
+                            seadots:perTaxon [ dwc:scientificName "Actiniaria" ;
                                     seadots:cruises "2007105",
                                         "2007111",
                                         "2024007003",
@@ -112,7 +101,18 @@
                                     seadots:samplesInAOI 476 ;
                                     seadots:samplesWithWeight 95 ;
                                     seadots:totalIndividuals 656 ;
-                                    seadots:totalWeight_kg 4.473589e+03 ] ;
+                                    seadots:totalWeight_kg 4.473589e+03 ],
+                                [ dwc:scientificName "Aplysilla" ;
+                                    seadots:cruises "2009105",
+                                        "2009111",
+                                        "2010110",
+                                        "2010112" ;
+                                    seadots:equipment "Beamtrawl",
+                                        "VVgrab020" ;
+                                    seadots:samplesInAOI 10 ;
+                                    seadots:samplesWithWeight 1 ;
+                                    seadots:totalIndividuals 0 ;
+                                    seadots:totalWeight_kg 5e+03 ] ;
                             seadots:samplingGear "Beamtrawl",
                                 "Bioboks",
                                 "Boxcorer",

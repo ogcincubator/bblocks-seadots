@@ -30,8 +30,9 @@ A single wind turbine, represented as a GeoJSON Feature with Point geometry. A s
 | `operator` | array of strings | Operating organisations | `operator`, split on `;` |
 | `status` | INSPIRE ConditionOfFacilityValue code | Condition of the turbine | `status` |
 | `last_updated` | date-time | Last edit of the source record | element `timestamp` |
+| `commissioning_year` | integer (optional) | Year the turbine was commissioned | not tagged in the OSM snapshot; e.g. NVE turbine details |
 
-Every property is present on every feature. A value is `null` when the source does not state it or states it in a form that cannot be read unambiguously. The converter never fills in a default. For example, `offshore` is not set to `true` just because the turbine is at sea, and `status` is not set to `functional` when the tag is absent. Units are fixed by the property name, so `"15 MW"` becomes `15` and `"141"` (OSM's default unit is metres) becomes `141`. `generator:method=wind_turbine` and `generator:source=wind` are the selection criteria, so they are not repeated as properties.
+All properties are optional and nullable, and additional properties are allowed. The example converter writes every property listed here, with `null` when the source does not state it or states it in a form that cannot be read unambiguously. The converter never fills in a default. For example, `offshore` is not set to `true` just because the turbine is at sea, and `status` is not set to `functional` when the tag is absent. Units are fixed by the property name, so `"15 MW"` becomes `15` and `"141"` (OSM's default unit is metres) becomes `141`. `generator:method=wind_turbine` and `generator:source=wind` are the selection criteria, so they are not repeated as properties.
 
 The feature `id` is the URL of the source element, e.g. `https://www.openstreetmap.org/node/14185128565`.
 
@@ -78,7 +79,8 @@ Turbine 76 of the Baltic Power offshore wind farm (Vestas V236-15.0 MW), convert
     "offshore": true,
     "operator": null,
     "status": null,
-    "last_updated": "2026-09-16T14:23:07Z"
+    "last_updated": "2026-09-16T14:23:07Z",
+    "commissioning_year": 2051
   }
 }
 ```
@@ -109,7 +111,8 @@ Turbine 76 of the Baltic Power offshore wind farm (Vestas V236-15.0 MW), convert
     "offshore": true,
     "operator": null,
     "status": null,
-    "last_updated": "2026-09-16T14:23:07Z"
+    "last_updated": "2026-09-16T14:23:07Z",
+    "commissioning_year": 2051
   }
 }
 ```
@@ -128,6 +131,7 @@ Turbine 76 of the Baltic Power offshore wind farm (Vestas V236-15.0 MW), convert
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.765358e+01 5.500667e+01 ) ] ;
     schema:model "V236-15.0 MW" ;
+    owf:commissioningYear "2051"^^xsd:gYear ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
     owf:offshore true ;
@@ -20621,20 +20625,6 @@ $defs:
           x-jsonld-id: https://purl.org/geojson/vocab#geometry
         properties:
           type: object
-          required:
-          - ref
-          - windfarm_name
-          - windfarm
-          - manufacturer
-          - model
-          - rated_power_mw
-          - hub_height_m
-          - rotor_diameter_m
-          - rotor_axis
-          - offshore
-          - operator
-          - status
-          - last_updated
           properties:
             ref:
               type:
@@ -20740,7 +20730,16 @@ $defs:
               description: Time of the last edit of the source record.
               x-jsonld-id: http://purl.org/dc/terms/modified
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-          additionalProperties: false
+            commissioning_year:
+              type:
+              - integer
+              - 'null'
+              minimum: 1900
+              maximum: 2100
+              description: Year the turbine was commissioned; null when the source
+                does not state it.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#commissioningYear
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#gYear
           x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection
@@ -20863,6 +20862,10 @@ Links to the schema:
     "last_updated": {
       "@id": "dct:modified",
       "@type": "xsd:dateTime"
+    },
+    "commissioning_year": {
+      "@id": "owf:commissioningYear",
+      "@type": "xsd:gYear"
     },
     "coordinates": {
       "@id": "geojson:coordinates",

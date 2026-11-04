@@ -574,7 +574,12 @@ The `reefEffectRun.inputBindings[]` and `reefEffectRun.outputBindings[]` arrays 
                 "Porifera" ] ;
     seadots:status "completed" ;
     seadotsRun:reefEffectRun [ dcterms:purpose "Evaluate the reef-biomass equation B_reef = sum_i (A_sub . D_pre,i . AF_i . C_t) for the surroundings of Utsira island under the Norwegian SES scenario. Inputs are six per-class records; outputs are reef-effect-output and catalog output records. The PROV-O provenance record is embedded in the structured result output." ;
-            prov:generated [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
+            prov:generated [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
+                    dcterms:title "STAC catalog for the run" ;
+                    oa:hasTarget <file:///reef-effect-output/examples/stac_catalog.json> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
                     dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
                     dcterms:title "Catalog output item for the reef biomass result" ;
                     oa:hasTarget <file:///catalog-data/examples/output-stac-item.json> ;
@@ -583,11 +588,6 @@ The `reefEffectRun.inputBindings[]` and `reefEffectRun.outputBindings[]` arrays 
                     dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
                     dcterms:title "Reef-associated biomass - structured result" ;
                     oa:hasTarget <file:///reef-effect-output/examples/reef_biomass_result.json> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-effect-output> ;
-                    dcterms:title "STAC catalog for the run" ;
-                    oa:hasTarget <file:///reef-effect-output/examples/stac_catalog.json> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#output" ] ;
             prov:used [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
                     dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.reef-aggregation-index> ;
@@ -595,6 +595,18 @@ The `reefEffectRun.inputBindings[]` and `reefEffectRun.outputBindings[]` arrays 
                     oa:hasTarget <file:///reef-aggregation-index/examples/degraer2020_bindings.json> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
                     seadotsRun:equationBinding "AF_i" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-imr> ;
+                    dcterms:title "IMR benthic biomass baseline - fallback" ;
+                    oa:hasTarget <file:///benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsRun:equationBinding "D_{pre,i}" ],
+                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
+                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
+                    dcterms:title "MAREANO benthic biomass density - primary baseline" ;
+                    oa:hasTarget <file:///benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json> ;
+                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
+                    seadotsRun:equationBinding "D_{pre,i}" ],
                 [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/geo+json> ;
                     dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
                     dcterms:title "AOI - surroundings of Utsira island" ;
@@ -611,24 +623,18 @@ The `reefEffectRun.inputBindings[]` and `reefEffectRun.outputBindings[]` arrays 
                     dcterms:title "Colonisation time factor" ;
                     oa:hasTarget <file:///colonisation-time-factor/examples/default_sigmoid.json> ;
                     seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsRun:equationBinding "C_t" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-imr> ;
-                    dcterms:title "IMR benthic biomass baseline - fallback" ;
-                    oa:hasTarget <file:///benthic-biomass-density-imr/examples/imr_ices_iva_fallback.json> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsRun:equationBinding "D_{pre,i}" ],
-                [ a <https://w3id.org/ogc/hosted/seadots/catalog#application/json> ;
-                    dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
-                    dcterms:title "MAREANO benthic biomass density - primary baseline" ;
-                    oa:hasTarget <file:///benthic-biomass-density-mareano/examples/mareano_norwegian_shelf.json> ;
-                    seadots:rel "https://w3id.org/ogc/hosted/seadots/reef-effect#input" ;
-                    seadotsRun:equationBinding "D_{pre,i}" ] ;
+                    seadotsRun:equationBinding "C_t" ] ;
             seadots:parameters [ rdfs:label "aoi" ;
                     dcterms:description "Polygon delimiting the study area. Defaults to the surroundings of Utsira island." ;
                     dcterms:title "Area of interest" ;
                     skos:exactMatch <http://www.opengis.net/def/property/OGC/0/area-of-interest> ;
                     seadotsRun:parameterSchema [ seadots:format "application/geo+json" ] ],
+                [ rdfs:label "taxon_groups" ;
+                    dcterms:description "Scientific names iterated by index i." ;
+                    dcterms:title "TaxonGroup index values" ;
+                    skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
+                    seadotsRun:parameterSchema [ a seadots:array ;
+                            seadots:items [ a seadots:string ] ] ],
                 [ rdfs:label "scenario_t0" ;
                     dcterms:title "Scenario start date" ;
                     seadotsRun:parameterSchema [ a seadots:string ;
@@ -636,13 +642,7 @@ The `reefEffectRun.inputBindings[]` and `reefEffectRun.outputBindings[]` arrays 
                 [ rdfs:label "colonisation_months" ;
                     dcterms:title "Months since installation" ;
                     seadotsRun:parameterSchema [ a seadots:integer ;
-                            seadots:minimum 0 ] ],
-                [ rdfs:label "taxon_groups" ;
-                    dcterms:description "Scientific names iterated by index i." ;
-                    dcterms:title "TaxonGroup index values" ;
-                    skos:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
-                    seadotsRun:parameterSchema [ a seadots:array ;
-                            seadots:items [ a seadots:string ] ] ] ;
+                            seadots:minimum 0 ] ] ;
             seadotsRun:application [ a <https://w3id.org/ogc/hosted/seadots/catalog#text/x-python> ;
                     dcterms:title "Utsira reef-biomass calculator (Python script)" ;
                     oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect/scripts/utsira_reef_biomass.py> ;

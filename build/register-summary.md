@@ -158,12 +158,6 @@ Example profile that maps a Norwegian Water Resources and Energy Directorate (NV
 
 Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
 
-### `ogc.hosted.seadots.windfarms.emodnet-windfarm-osm` — EMODnet windfarm OSM extension
-
-**Type:** schema
-
-A profile of the EMODnet-compliant windfarm feature that harmonizes explicit OpenStreetMap name, installed capacity, status, installation type, and year tags while preserving the source OSM element identity, complete tag dictionary, relation members, geometry, and null geometry.
-
 ### `ogc.hosted.seadots.linkeddata.marineProtectionFeature` — Marine Protection Feature
 
 **Type:** schema

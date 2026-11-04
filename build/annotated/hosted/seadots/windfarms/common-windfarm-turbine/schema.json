@@ -69,21 +69,6 @@
             },
             "properties": {
               "type": "object",
-              "required": [
-                "ref",
-                "windfarm_name",
-                "windfarm",
-                "manufacturer",
-                "model",
-                "rated_power_mw",
-                "hub_height_m",
-                "rotor_diameter_m",
-                "rotor_axis",
-                "offshore",
-                "operator",
-                "status",
-                "last_updated"
-              ],
               "properties": {
                 "ref": {
                   "type": [
@@ -211,9 +196,19 @@
                   "description": "Time of the last edit of the source record.",
                   "x-jsonld-id": "http://purl.org/dc/terms/modified",
                   "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+                },
+                "commissioning_year": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1900,
+                  "maximum": 2100,
+                  "description": "Year the turbine was commissioned; null when the source does not state it.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#commissioningYear",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#gYear"
                 }
               },
-              "additionalProperties": false,
               "x-jsonld-id": "@nest"
             }
           }
