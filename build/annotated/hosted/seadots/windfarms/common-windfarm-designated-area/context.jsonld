@@ -61,6 +61,7 @@
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "prov": "http://www.w3.org/ns/prov#",
     "name": "dct:title",
     "country": {
@@ -101,6 +102,10 @@
     "updateyear": "owf:updateYear",
     "operational_date": {
       "@id": "owf:operationalDate",
+      "@type": "xsd:date"
+    },
+    "valid_from": {
+      "@id": "owf:validFrom",
       "@type": "xsd:date"
     },
     "dist_coast": {
@@ -150,6 +155,14 @@
       "@id": "dct:modified",
       "@type": "xsd:dateTime"
     },
+    "update_date": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "metadata_record": {
+      "@id": "foaf:isPrimaryTopicOf",
+      "@type": "@id"
+    },
     "location_status": {
       "@id": "owf:locationStatus",
       "@type": "@vocab"
@@ -158,6 +171,10 @@
     "location_reference": {
       "@id": "owf:locationReference",
       "@type": "@id"
+    },
+    "positional_accuracy_m": {
+      "@id": "owf:positionalAccuracyM",
+      "@type": "xsd:decimal"
     },
     "same_as": {
       "@id": "prov:alternateOf",

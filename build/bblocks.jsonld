@@ -217,7 +217,7 @@
   "name": "Building Blocks - Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-11-04T19:36:33.105159",
+  "modified": "2026-11-04T22:41:54.605994",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"c1af50a182c92d7ab055f34158d5605167dfe786",
@@ -746,155 +746,6 @@
       "skos:prefLabel": "GeoParquet Header",
       "openAPIDocument": null,
       "ontology": null,
-      "rdfData": [],
-      "dependsOn": null,
-      "isProfileOf": null,
-      "isDescribedBy": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.national-windfarm-source",
-      "name": "Polish national offshore windfarm source record",
-      "abstract": "Raw project records compiled from Polish national reporting. Retains the published input fields and has no source-provided geometry; a separate, explicit crosswalk can associate projects with EMODnet locations for the harmonized view.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-10-27T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "license": {
-        "name": "https://creativecommons.org/licenses/by/4.0/"
-      },
-      "tags": [
-        "windfarm",
-        "Poland",
-        "national source",
-        "CSV",
-        "Baltic"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Polish offshore wind project compilation",
-          "link": "https://www.gramwzielone.pl/?p=20373718"
-        }
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": null,
-      "dateOfLastChange": "2026-11-04",
-      "ontology": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/ontology.ttl",
-        "prof:hasRole": "role:specification",
-        "dct:format": "text/turtle",
-        "dct:conformsTo": "http://www.w3.org/2002/07/owl#Ontology"
-      },
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/national-windfarm-source/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/",
-      "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/national-windfarm-source/",
-      "transforms": [
-        {
-          "id": "to-windfarm-designated-area",
-          "description": "Converts the Polish national offshore wind project compilation (CSV, gramwzielone.pl, 26 Aug 2026) into windfarm designated areas (`common-windfarm-designated-area`). The transformation is driven by the alignment declared in this block's `ontology.ttl`: `ns:columnMappings` maps the source columns (properties of this block's context) onto `owf:`, `schema:` and `dcterms:` properties with conversions, ordered value rules (e.g. status wording to the EMODnet status vocabulary) or constants. One row becomes one feature. The source has no coordinates; when the optional `crosswalk` and `emodnet_snapshot` are given, the project's EMODnet sites become `same_as` links and the geometry their centroid (`mapped`), or a documented approximate point (`anticipated`); otherwise the geometry is null (`unmatched`).\n",
-          "type": "python",
-          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/national-windfarm-source/transforms/national_to_windfarm_area.py",
-          "inputs": {
-            "mediaTypes": [
-              {
-                "mimeType": "text/csv",
-                "label": "CSV",
-                "defaultExtension": "csv"
-              }
-            ]
-          },
-          "outputs": {
-            "mediaTypes": [
-              {
-                "mimeType": "application/geo+json",
-                "label": "GeoJSON",
-                "defaultExtension": "geojson"
-              },
-              {
-                "mimeType": "application/json",
-                "label": "JSON",
-                "defaultExtension": "json"
-              }
-            ],
-            "profiles": [
-              "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area"
-            ]
-          },
-          "metadata": {
-            "ontology": "_sources/national-windfarm-source/ontology.ttl",
-            "source_context": "_sources/national-windfarm-source/context.jsonld",
-            "target_context": "_sources/windfarms/common-windfarm-designated-area/context.jsonld",
-            "crosswalk": "docs/baltic-ses-exercise/windfarm-data-integration/config/location-mapping.json",
-            "emodnet_snapshot": "docs/baltic-ses-exercise/data/emodnet_windfarms_PL_wfs_2026-10-30.geojson",
-            "dependencies": {
-              "pip": [
-                "rdflib"
-              ]
-            }
-          },
-          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform the Polish national offshore wind project compilation (national-windfarm-source,\nCSV from gramwzielone.pl) into windfarm designated areas (common-windfarm-designated-area),\ndriven by the alignment in national-windfarm-source/ontology.ttl.\n\nThe ontology declares, for every target property, an ns:ColumnMapping: the source columns\n(as the properties of this block's context.jsonld, e.g. ns:reportedCapacityMW = column\n`capacity_mw`), a conversion, ordered value rules or a constant. This script only interprets\nthat alignment and applies the record-level rules documented in the ontology:\n\n* one CSV row -> one Feature, id urn:baltic-ses:national:{row}:{slug}, source_record_id national-{row};\n* the source has no coordinates -> geometry null, location_status \"unmatched\";\n* optional location crosswalk (metadata `crosswalk`, `emodnet_snapshot`): the project's EMODnet\n  sites become `same_as` links (EMODnet WFS feature URLs, the ids used by the EMODnet records of\n  the common model), the geometry their centroid with location_status \"mapped\"; a separately\n  documented approximate point gives location_status \"anticipated\".\n\nConcepts are written as the target block's JSON terms (owf:NationalSource -> \"national\",\nseadots-emodnet:Construction -> \"Construction\"), read from the target context.\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* standalone: python3 national_to_windfarm_area.py [--crosswalk mapping.json --emodnet snapshot.geojson] < pipeline.csv > areas.geojson\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport csv\nimport io\nimport json\nimport re\nimport sys\nimport unicodedata\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Any\n\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\n\nNS = Namespace(\"https://w3id.org/ogc/hosted/seadots/national-windfarm-source#\")\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/national-windfarm-source\")\nBLOCK_DIR = \"_sources/national-windfarm-source\"\nTARGET_CONTEXT = \"_sources/windfarms/common-windfarm-designated-area/context.jsonld\"\nEMODNET_WFS = (\"https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature\"\n               \"&typeNames=emodnet:windfarms&featureID=\")\n\nFIELDS = [\"name\", \"country\", \"n_turbines\", \"power_mw\", \"status\", \"status_detail\", \"status_as_of\",\n          \"type_inst\", \"offshore\", \"year\", \"year_semantics\", \"year_is_assumed\", \"updateyear\",\n          \"operational_date\", \"dist_coast\", \"area_sqkm\", \"operator\", \"owner\", \"developer\",\n          \"licence_status\", \"licensing_case\", \"admin_units\", \"electricity_price_area\",\n          \"mean_annual_production_gwh\", \"notes\", \"source_type\", \"source_dataset\", \"source_reference\",\n          \"source_record_id\", \"source_snapshot_date\", \"last_updated\", \"location_status\",\n          \"location_method\", \"location_reference\", \"same_as\"]\n\n\n# ---------------------------------------------------------------- locating block files\n\ndef _meta(meta: Any, key: str):\n    if not meta or not hasattr(meta, \"get\"):\n        return None\n    inner = meta.get(\"metadata\")\n    return meta.get(key) or (inner.get(key) if hasattr(inner, \"get\") else None)\n\n\ndef _find(meta: Any, key: str, *defaults: Path) -> Path | None:\n    candidates = [Path(p) for p in [_meta(meta, key)] if p] + list(defaults)\n    return next((c for c in candidates if c.is_file()), None)\n\n\ndef _here() -> Path | None:\n    return Path(__file__).resolve().parent.parent if \"__file__\" in globals() else None\n\n\ndef block_file(meta: Any, key: str, name: str) -> Path:\n    here = _here()\n    found = _find(meta, key, Path(BLOCK_DIR) / name, *([here / name] if here else []))\n    if not found:\n        raise FileNotFoundError(f\"{name} of national-windfarm-source not found\")\n    return found\n\n\n# ---------------------------------------------------------------- alignment\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef column_names(context_path: Path) -> dict[str, str]:\n    \"\"\"Property IRI -> CSV column, from the source block's JSON-LD context.\"\"\"\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    vocab = ctx.get(\"@vocab\", \"\")\n    out = {}\n    for term, value in ctx.items():\n        iri = value if isinstance(value, str) else value.get(\"@id\") if isinstance(value, dict) else None\n        if not iri or term.startswith(\"@\"):\n            continue\n        out[iri if \":\" in iri and \"/\" in iri else vocab + iri] = term\n    return out\n\n\ndef concept_terms(context_path: Path | None) -> dict[str, str]:\n    \"\"\"Concept IRI -> JSON term of the target block (e.g. owf:NationalSource -> 'national').\"\"\"\n    if not context_path:\n        return {}\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    prefixes = {k: v for k, v in ctx.items() if isinstance(v, str) and v.endswith((\"#\", \"/\"))}\n\n    def expand(v: str) -> str:\n        p, _, local = v.partition(\":\")\n        return prefixes[p] + local if p in prefixes else v\n    return {expand(v): k for k, v in ctx.items()\n            if isinstance(v, str) and not k.startswith(\"@\") and k not in prefixes and k[:1].islower()}\n\n\ndef load_alignment(ontology: Path, context: Path) -> list[dict]:\n    g = Graph().parse(str(ontology), format=\"turtle\")\n    cols = column_names(context)\n\n    def col(iri) -> str:\n        # the source context writes dcterms as https://purl.org/dc/terms/; accept either scheme\n        for candidate in (str(iri), re.sub(r\"^http:\", \"https:\", str(iri)), re.sub(r\"^https:\", \"http:\", str(iri))):\n            if candidate in cols:\n                return cols[candidate]\n        if str(iri) not in cols:\n            raise ValueError(f\"{iri} is not a column of the source context\")\n        return cols[str(iri)]\n\n    mappings = []\n    for m in rlist(g, g.value(ONTOLOGY_IRI, NS.columnMappings)):\n        mappings.append({\n            \"key\": str(g.value(m, NS.targetKey)),\n            \"columns\": [col(c) for c in rlist(g, g.value(m, NS.sourceColumns))],\n            \"conversion\": g.value(m, NS.conversion),\n            \"constant\": g.value(m, NS.constant),\n            \"rules\": [(col(g.value(r, NS.ruleColumn)), str(g.value(r, NS.rulePattern)), g.value(r, NS.yields))\n                      for r in rlist(g, g.value(m, NS.valueRules))],\n        })\n    if not mappings:\n        raise ValueError(f\"no ns:columnMappings found in {ontology}\")\n    return mappings\n\n\n# ---------------------------------------------------------------- conversions\n\nDATE = re.compile(r\"(\\d{1,2})\\s+([A-Za-z]{3})[a-z]*\\.?\\s+(\\d{4})\")\n\n\ndef convert(conversion: URIRef | None, value: str) -> Any:\n    value = value.strip()\n    if conversion is None or conversion == NS.Copy:\n        return value or None\n    if conversion == NS.ParseDecimal:\n        try:\n            number = float(value.replace(\",\", \".\"))\n        except ValueError:\n            return None\n        return int(number) if number.is_integer() else number\n    if conversion == NS.ParenthesisText:\n        m = re.search(r\"\\(([^)]*)\\)\", value)\n        return m.group(1).strip() if m else None\n    if conversion in (NS.ParseReportDate, NS.ParseReportYear):\n        m = DATE.search(value)\n        if not m:\n            return None\n        day = datetime.strptime(f\"{m.group(1)} {m.group(2)[:3].title()} {m.group(3)}\", \"%d %b %Y\").date()\n        return day.isoformat() if conversion == NS.ParseReportDate else str(day.year)\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\ndef as_json(node: Any, terms: dict[str, str]) -> Any:\n    if node is None:\n        return None\n    if isinstance(node, Literal):\n        return node.toPython()\n    return terms.get(str(node)) or re.split(r\"[/#]\", str(node))[-1]   # concept -> JSON term / code\n\n\ndef apply(mapping: dict, row: dict[str, str], terms: dict[str, str]) -> Any:\n    if mapping[\"constant\"] is not None:\n        return as_json(mapping[\"constant\"], terms)\n    for column, pattern, yields in mapping[\"rules\"]:\n        if re.search(pattern, row.get(column) or \"\", re.IGNORECASE):\n            return as_json(yields, terms)\n    for column in mapping[\"columns\"]:\n        if (row.get(column) or \"\").strip():\n            return convert(mapping[\"conversion\"], row[column])\n    return None\n\n\n# ---------------------------------------------------------------- record-level rules\n\ndef slug(text: str) -> str:\n    text = unicodedata.normalize(\"NFKD\", text).encode(\"ascii\", \"ignore\").decode()\n    return re.sub(r\"[^a-z0-9]+\", \"-\", text.lower()).strip(\"-\")\n\n\ndef locate(name: str, crosswalk: dict | None, emodnet: dict | None) -> dict:\n    \"\"\"Geometry and location properties of one project from the optional crosswalk.\"\"\"\n    if not crosswalk:\n        return {\"geometry\": None, \"location_status\": \"unmatched\",\n                \"location_method\": \"The national source has no coordinates and no location crosswalk was applied.\"}\n    by_name = {f[\"properties\"].get(\"name\"): f for f in (emodnet or {}).get(\"features\", [])}\n    sites = [by_name[n] for n in crosswalk.get(\"mappings\", {}).get(name, []) if n in by_name]\n    if sites:\n        ids = [str(f[\"id\"]) for f in sites]\n        xs = [f[\"geometry\"][\"coordinates\"][0] for f in sites]\n        ys = [f[\"geometry\"][\"coordinates\"][1] for f in sites]\n        names = \", \".join(f[\"properties\"][\"name\"] for f in sites)\n        return {\"geometry\": {\"type\": \"Point\", \"coordinates\": [round(sum(xs) / len(xs), 6), round(sum(ys) / len(ys), 6)]},\n                \"location_status\": \"mapped\",\n                \"location_method\": (f\"Explicit name crosswalk to EMODnet site(s) {names}; \"\n                                    + (\"centroid of their EMODnet points.\" if len(sites) > 1 else \"its EMODnet point.\")),\n                \"location_reference\": EMODNET_WFS + \",\".join(ids),\n                \"same_as\": [EMODNET_WFS + i for i in ids]}\n    anticipated = crosswalk.get(\"anticipated_locations\", {}).get(name)\n    if anticipated:\n        confidence = anticipated.get(\"confidence\")\n        return {\"geometry\": anticipated[\"geometry\"], \"location_status\": \"anticipated\",\n                \"location_method\": anticipated[\"method\"] + (f\" Confidence: {confidence}.\" if confidence else \"\"),\n                \"location_reference\": anticipated.get(\"reference\")}\n    reason = crosswalk.get(\"unmatched_reasons\", {}).get(name)\n    return {\"geometry\": None, \"location_status\": \"unmatched\",\n            \"location_method\": reason or \"No EMODnet site listed for this project in the location crosswalk.\"}\n\n\ndef transform_rows(rows: list[dict], mappings: list[dict], terms: dict[str, str],\n                   crosswalk: dict | None = None, emodnet: dict | None = None) -> dict:\n    features = []\n    for n, row in enumerate(rows, start=1):\n        props: dict[str, Any] = dict.fromkeys(FIELDS)\n        for m in mappings:\n            props[m[\"key\"]] = apply(m, row, terms)\n        loc = locate(props[\"name\"] or \"\", crosswalk, emodnet)\n        geometry = loc.pop(\"geometry\")\n        props.update(loc)\n        props[\"source_record_id\"] = f\"national-{n}\"\n        features.append({\"type\": \"Feature\", \"id\": f\"urn:baltic-ses:national:{n}:{slug(props['name'] or str(n))}\",\n                         \"geometry\": geometry, \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_csv: str, meta: Any = None) -> str:\n    ontology = block_file(meta, \"ontology\", \"ontology.ttl\")\n    context = block_file(meta, \"source_context\", \"context.jsonld\")\n    here = _here()\n    target = _find(meta, \"target_context\", Path(TARGET_CONTEXT),\n                   *([here.parent / \"windfarms/common-windfarm-designated-area/context.jsonld\"] if here else []))\n    crosswalk_path = _find(meta, \"crosswalk\") if _meta(meta, \"crosswalk\") else None\n    emodnet_path = _find(meta, \"emodnet_snapshot\") if _meta(meta, \"emodnet_snapshot\") else None\n    load = lambda p: json.loads(p.read_text(encoding=\"utf-8\")) if p else None\n    rows = list(csv.DictReader(io.StringIO(raw_csv)))\n    out = transform_rows(rows, load_alignment(ontology, context), concept_terms(target),\n                         load(crosswalk_path), load(emodnet_path))\n    return json.dumps(out, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\\n\")[0])\n    ap.add_argument(\"--ontology\"); ap.add_argument(\"--source-context\"); ap.add_argument(\"--target-context\")\n    ap.add_argument(\"--crosswalk\"); ap.add_argument(\"--emodnet\", dest=\"emodnet_snapshot\")\n    args = {k: v for k, v in vars(ap.parse_args()).items() if v}\n    sys.stdout.write(transform(sys.stdin.read(), args) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
-        }
-      ],
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/national-windfarm-source/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/national-windfarm-source/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.national-windfarm-source"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.national-windfarm-source",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "Polish national offshore windfarm source record",
-      "openAPIDocument": null,
       "rdfData": [],
       "dependsOn": null,
       "isProfileOf": null,
@@ -1569,6 +1420,157 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl",
+      "name": "Polish national offshore windfarm source record",
+      "abstract": "Raw project records compiled from Polish national reporting. Retains the published input fields and has no source-provided geometry; a separate, explicit crosswalk can associate projects with EMODnet locations for the harmonized view.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-10-27T00:00:00Z",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.1",
+      "license": {
+        "name": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "tags": [
+        "windfarm",
+        "Poland",
+        "national source",
+        "CSV",
+        "Baltic"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Polish offshore wind project compilation",
+          "link": "https://www.gramwzielone.pl/?p=20373718"
+        }
+      ],
+      "ldContext": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/crowdsourced-designated-area-pl/context.jsonld",
+        "prof:hasRole": "role:mapping",
+        "dct:format": "application/ld+json",
+        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
+      },
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "dependsOn": [
+        "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+      ],
+      "dateOfLastChange": "2026-11-04",
+      "shaclShapes": null,
+      "ontology": {
+        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/crowdsourced-designated-area-pl/ontology.ttl",
+        "prof:hasRole": "role:specification",
+        "dct:format": "text/turtle",
+        "dct:conformsTo": "http://www.w3.org/2002/07/owl#Ontology"
+      },
+      "schema": [
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/crowdsourced-designated-area-pl/schema.yaml",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/yaml",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        },
+        {
+          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/crowdsourced-designated-area-pl/schema.json",
+          "prof:hasRole": "role:schema",
+          "dct:format": "application/json",
+          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
+        }
+      ],
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/crowdsourced-designated-area-pl/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/crowdsourced-designated-area-pl/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/crowdsourced-designated-area-pl/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/crowdsourced-designated-area-pl/",
+      "validationPassed": false,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/crowdsourced-designated-area-pl/",
+      "transforms": [
+        {
+          "id": "to-windfarm-designated-area",
+          "description": "Converts the Polish national offshore wind project compilation (CSV, gramwzielone.pl, 26 Aug 2026) into windfarm designated areas (`common-windfarm-designated-area`). The transformation is driven by the alignment declared in this block's `ontology.ttl`: `ns:columnMappings` maps the source columns (properties of this block's context) onto `owf:`, `schema:` and `dcterms:` properties with conversions, ordered value rules (e.g. status wording to the EMODnet status vocabulary) or constants. One row becomes one feature. The source has no coordinates; when the optional `crosswalk` and `emodnet_snapshot` are given, the project's EMODnet sites become `same_as` links and the geometry their centroid (`mapped`), or a documented approximate point (`anticipated`); otherwise the geometry is null (`unmatched`).\n",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/crowdsourced-designated-area-pl/transforms/national_to_windfarm_area.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "text/csv",
+                "label": "CSV",
+                "defaultExtension": "csv"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              },
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area"
+            ]
+          },
+          "metadata": {
+            "ontology": "_sources/windfarms/crowdsourced-designated-area-pl/ontology.ttl",
+            "source_context": "_sources/windfarms/crowdsourced-designated-area-pl/context.jsonld",
+            "target_context": "_sources/windfarms/common-windfarm-designated-area/context.jsonld",
+            "crosswalk": "docs/baltic-ses-exercise/windfarm-data-integration/config/location-mapping.json",
+            "emodnet_snapshot": "docs/baltic-ses-exercise/data/emodnet_windfarms_PL_wfs_2026-10-30.geojson",
+            "dependencies": {
+              "pip": [
+                "rdflib"
+              ]
+            }
+          },
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform the Polish national offshore wind project compilation (windfarms/crowdsourced-designated-area-pl,\nCSV from gramwzielone.pl) into windfarm designated areas (common-windfarm-designated-area),\ndriven by the alignment in crowdsourced-designated-area-pl/ontology.ttl.\n\nThe ontology declares, for every target property, an ns:ColumnMapping: the source columns\n(as the properties of this block's context.jsonld, e.g. ns:reportedCapacityMW = column\n`capacity_mw`), a conversion, ordered value rules or a constant. This script only interprets\nthat alignment and applies the record-level rules documented in the ontology:\n\n* one CSV row -> one Feature, id urn:baltic-ses:national:{row}:{slug}, source_record_id national-{row};\n* the source has no coordinates -> geometry null, location_status \"unmatched\";\n* optional location crosswalk (metadata `crosswalk`, `emodnet_snapshot`): the project's EMODnet\n  sites become `same_as` links (EMODnet WFS feature URLs, the ids used by the EMODnet records of\n  the common model), the geometry their centroid with location_status \"mapped\"; a separately\n  documented approximate point gives location_status \"anticipated\".\n\nConcepts are written as the target block's JSON terms (owf:NationalSource -> \"national\",\nseadots-emodnet:Construction -> \"Construction\"), read from the target context.\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* standalone: python3 national_to_windfarm_area.py [--crosswalk mapping.json --emodnet snapshot.geojson] < pipeline.csv > areas.geojson\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport csv\nimport io\nimport json\nimport re\nimport sys\nimport unicodedata\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Any\n\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\n\nNS = Namespace(\"https://w3id.org/ogc/hosted/seadots/national-windfarm-source#\")\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/national-windfarm-source\")\nBLOCK_DIR = \"_sources/windfarms/crowdsourced-designated-area-pl\"\nTARGET_CONTEXT = \"_sources/windfarms/common-windfarm-designated-area/context.jsonld\"\nEMODNET_WFS = (\"https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature\"\n               \"&typeNames=emodnet:windfarms&featureID=\")\n\nFIELDS = [\"name\", \"country\", \"n_turbines\", \"power_mw\", \"status\", \"status_detail\", \"status_as_of\",\n          \"type_inst\", \"offshore\", \"year\", \"year_semantics\", \"year_is_assumed\", \"updateyear\",\n          \"operational_date\", \"dist_coast\", \"area_sqkm\", \"operator\", \"owner\", \"developer\",\n          \"licence_status\", \"licensing_case\", \"admin_units\", \"electricity_price_area\",\n          \"mean_annual_production_gwh\", \"notes\", \"source_type\", \"source_dataset\", \"source_reference\",\n          \"source_record_id\", \"source_snapshot_date\", \"last_updated\", \"location_status\",\n          \"location_method\", \"location_reference\", \"same_as\"]\n\n\n# ---------------------------------------------------------------- locating block files\n\ndef _meta(meta: Any, key: str):\n    if not meta or not hasattr(meta, \"get\"):\n        return None\n    inner = meta.get(\"metadata\")\n    return meta.get(key) or (inner.get(key) if hasattr(inner, \"get\") else None)\n\n\ndef _find(meta: Any, key: str, *defaults: Path) -> Path | None:\n    candidates = [Path(p) for p in [_meta(meta, key)] if p] + list(defaults)\n    return next((c for c in candidates if c.is_file()), None)\n\n\ndef _here() -> Path | None:\n    return Path(__file__).resolve().parent.parent if \"__file__\" in globals() else None\n\n\ndef block_file(meta: Any, key: str, name: str) -> Path:\n    here = _here()\n    found = _find(meta, key, Path(BLOCK_DIR) / name, *([here / name] if here else []))\n    if not found:\n        raise FileNotFoundError(f\"{name} of crowdsourced-designated-area-pl not found\")\n    return found\n\n\n# ---------------------------------------------------------------- alignment\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef column_names(context_path: Path) -> dict[str, str]:\n    \"\"\"Property IRI -> CSV column, from the source block's JSON-LD context.\"\"\"\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    vocab = ctx.get(\"@vocab\", \"\")\n    out = {}\n    for term, value in ctx.items():\n        iri = value if isinstance(value, str) else value.get(\"@id\") if isinstance(value, dict) else None\n        if not iri or term.startswith(\"@\"):\n            continue\n        out[iri if \":\" in iri and \"/\" in iri else vocab + iri] = term\n    return out\n\n\ndef concept_terms(context_path: Path | None) -> dict[str, str]:\n    \"\"\"Concept IRI -> JSON term of the target block (e.g. owf:NationalSource -> 'national').\"\"\"\n    if not context_path:\n        return {}\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    prefixes = {k: v for k, v in ctx.items() if isinstance(v, str) and v.endswith((\"#\", \"/\"))}\n\n    def expand(v: str) -> str:\n        p, _, local = v.partition(\":\")\n        return prefixes[p] + local if p in prefixes else v\n    return {expand(v): k for k, v in ctx.items()\n            if isinstance(v, str) and not k.startswith(\"@\") and k not in prefixes and k[:1].islower()}\n\n\ndef load_alignment(ontology: Path, context: Path) -> list[dict]:\n    g = Graph().parse(str(ontology), format=\"turtle\")\n    cols = column_names(context)\n\n    def col(iri) -> str:\n        # the source context writes dcterms as https://purl.org/dc/terms/; accept either scheme\n        for candidate in (str(iri), re.sub(r\"^http:\", \"https:\", str(iri)), re.sub(r\"^https:\", \"http:\", str(iri))):\n            if candidate in cols:\n                return cols[candidate]\n        if str(iri) not in cols:\n            raise ValueError(f\"{iri} is not a column of the source context\")\n        return cols[str(iri)]\n\n    mappings = []\n    for m in rlist(g, g.value(ONTOLOGY_IRI, NS.columnMappings)):\n        mappings.append({\n            \"key\": str(g.value(m, NS.targetKey)),\n            \"columns\": [col(c) for c in rlist(g, g.value(m, NS.sourceColumns))],\n            \"conversion\": g.value(m, NS.conversion),\n            \"constant\": g.value(m, NS.constant),\n            \"rules\": [(col(g.value(r, NS.ruleColumn)), str(g.value(r, NS.rulePattern)), g.value(r, NS.yields))\n                      for r in rlist(g, g.value(m, NS.valueRules))],\n        })\n    if not mappings:\n        raise ValueError(f\"no ns:columnMappings found in {ontology}\")\n    return mappings\n\n\n# ---------------------------------------------------------------- conversions\n\nDATE = re.compile(r\"(\\d{1,2})\\s+([A-Za-z]{3})[a-z]*\\.?\\s+(\\d{4})\")\n\n\ndef convert(conversion: URIRef | None, value: str) -> Any:\n    value = value.strip()\n    if conversion is None or conversion == NS.Copy:\n        return value or None\n    if conversion == NS.ParseDecimal:\n        try:\n            number = float(value.replace(\",\", \".\"))\n        except ValueError:\n            return None\n        return int(number) if number.is_integer() else number\n    if conversion == NS.ParenthesisText:\n        m = re.search(r\"\\(([^)]*)\\)\", value)\n        return m.group(1).strip() if m else None\n    if conversion in (NS.ParseReportDate, NS.ParseReportYear):\n        m = DATE.search(value)\n        if not m:\n            return None\n        day = datetime.strptime(f\"{m.group(1)} {m.group(2)[:3].title()} {m.group(3)}\", \"%d %b %Y\").date()\n        return day.isoformat() if conversion == NS.ParseReportDate else str(day.year)\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\ndef as_json(node: Any, terms: dict[str, str]) -> Any:\n    if node is None:\n        return None\n    if isinstance(node, Literal):\n        return node.toPython()\n    return terms.get(str(node)) or re.split(r\"[/#]\", str(node))[-1]   # concept -> JSON term / code\n\n\ndef apply(mapping: dict, row: dict[str, str], terms: dict[str, str]) -> Any:\n    if mapping[\"constant\"] is not None:\n        return as_json(mapping[\"constant\"], terms)\n    for column, pattern, yields in mapping[\"rules\"]:\n        if re.search(pattern, row.get(column) or \"\", re.IGNORECASE):\n            return as_json(yields, terms)\n    for column in mapping[\"columns\"]:\n        if (row.get(column) or \"\").strip():\n            return convert(mapping[\"conversion\"], row[column])\n    return None\n\n\n# ---------------------------------------------------------------- record-level rules\n\ndef slug(text: str) -> str:\n    text = unicodedata.normalize(\"NFKD\", text).encode(\"ascii\", \"ignore\").decode()\n    return re.sub(r\"[^a-z0-9]+\", \"-\", text.lower()).strip(\"-\")\n\n\ndef locate(name: str, crosswalk: dict | None, emodnet: dict | None) -> dict:\n    \"\"\"Geometry and location properties of one project from the optional crosswalk.\"\"\"\n    if not crosswalk:\n        return {\"geometry\": None, \"location_status\": \"unmatched\",\n                \"location_method\": \"The national source has no coordinates and no location crosswalk was applied.\"}\n    by_name = {f[\"properties\"].get(\"name\"): f for f in (emodnet or {}).get(\"features\", [])}\n    sites = [by_name[n] for n in crosswalk.get(\"mappings\", {}).get(name, []) if n in by_name]\n    if sites:\n        ids = [str(f[\"id\"]) for f in sites]\n        xs = [f[\"geometry\"][\"coordinates\"][0] for f in sites]\n        ys = [f[\"geometry\"][\"coordinates\"][1] for f in sites]\n        names = \", \".join(f[\"properties\"][\"name\"] for f in sites)\n        return {\"geometry\": {\"type\": \"Point\", \"coordinates\": [round(sum(xs) / len(xs), 6), round(sum(ys) / len(ys), 6)]},\n                \"location_status\": \"mapped\",\n                \"location_method\": (f\"Explicit name crosswalk to EMODnet site(s) {names}; \"\n                                    + (\"centroid of their EMODnet points.\" if len(sites) > 1 else \"its EMODnet point.\")),\n                \"location_reference\": EMODNET_WFS + \",\".join(ids),\n                \"same_as\": [EMODNET_WFS + i for i in ids]}\n    anticipated = crosswalk.get(\"anticipated_locations\", {}).get(name)\n    if anticipated:\n        confidence = anticipated.get(\"confidence\")\n        return {\"geometry\": anticipated[\"geometry\"], \"location_status\": \"anticipated\",\n                \"location_method\": anticipated[\"method\"] + (f\" Confidence: {confidence}.\" if confidence else \"\"),\n                \"location_reference\": anticipated.get(\"reference\")}\n    reason = crosswalk.get(\"unmatched_reasons\", {}).get(name)\n    return {\"geometry\": None, \"location_status\": \"unmatched\",\n            \"location_method\": reason or \"No EMODnet site listed for this project in the location crosswalk.\"}\n\n\ndef transform_rows(rows: list[dict], mappings: list[dict], terms: dict[str, str],\n                   crosswalk: dict | None = None, emodnet: dict | None = None) -> dict:\n    features = []\n    for n, row in enumerate(rows, start=1):\n        props: dict[str, Any] = dict.fromkeys(FIELDS)\n        for m in mappings:\n            props[m[\"key\"]] = apply(m, row, terms)\n        loc = locate(props[\"name\"] or \"\", crosswalk, emodnet)\n        geometry = loc.pop(\"geometry\")\n        props.update(loc)\n        props[\"source_record_id\"] = f\"national-{n}\"\n        features.append({\"type\": \"Feature\", \"id\": f\"urn:baltic-ses:national:{n}:{slug(props['name'] or str(n))}\",\n                         \"geometry\": geometry, \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_csv: str, meta: Any = None) -> str:\n    ontology = block_file(meta, \"ontology\", \"ontology.ttl\")\n    context = block_file(meta, \"source_context\", \"context.jsonld\")\n    here = _here()\n    target = _find(meta, \"target_context\", Path(TARGET_CONTEXT),\n                   *([here.parent / \"common-windfarm-designated-area/context.jsonld\"] if here else []))\n    crosswalk_path = _find(meta, \"crosswalk\") if _meta(meta, \"crosswalk\") else None\n    emodnet_path = _find(meta, \"emodnet_snapshot\") if _meta(meta, \"emodnet_snapshot\") else None\n    load = lambda p: json.loads(p.read_text(encoding=\"utf-8\")) if p else None\n    rows = list(csv.DictReader(io.StringIO(raw_csv)))\n    out = transform_rows(rows, load_alignment(ontology, context), concept_terms(target),\n                         load(crosswalk_path), load(emodnet_path))\n    return json.dumps(out, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\\n\")[0])\n    ap.add_argument(\"--ontology\"); ap.add_argument(\"--source-context\"); ap.add_argument(\"--target-context\")\n    ap.add_argument(\"--crosswalk\"); ap.add_argument(\"--emodnet\", dest=\"emodnet_snapshot\")\n    args = {k: v for k, v in vars(ap.parse_args()).items() if v}\n    sys.stdout.write(transform(sys.stdin.read(), args) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        }
+      ],
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/crowdsourced-designated-area-pl/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/crowdsourced-designated-area-pl/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl"
+        }
+      },
+      "@id": "bblocks://ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl",
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset",
+        "bblocks:BBlock"
+      ],
+      "skos:prefLabel": "Polish national offshore windfarm source record",
+      "openAPIDocument": null,
+      "rdfData": [],
+      "isProfileOf": null,
+      "isDescribedBy": null,
+      "skos:topConceptOf": {
+        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.windfarms.windfarm-openstreetmap",
       "name": "OpenStreetMap offshore wind source feature collection",
       "abstract": "Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.",
@@ -1690,7 +1692,49 @@
               ]
             }
           },
-          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform an OSM API 0.6 map response (windfarm-openstreetmap) into windfarm\ndesignated areas (common-windfarm-designated-area), driven by the alignment in\nwindfarm-openstreetmap/ontology.ttl.\n\nThe ontology declares which elements are wind farms (osmdata:WindfarmElement and\nits osmdata:selectionRules) and how tags map onto owf: properties\n(osmdata:windfarmTagMappings: source keys, value rules, conversions). This script\nonly interprets that alignment and applies the element-level rules documented in\nthe ontology (merging relation parts, geometry, provenance).\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* when run standalone: python3 osm_to_windfarm_area.py [ontology.ttl] < osm.json > areas.json\n\nThe ontology is located from transform metadata `ontology`, then\n_sources/windfarms/windfarm-openstreetmap/ontology.ttl relative to the working\ndirectory, then next to this script.\n\"\"\"\nfrom __future__ import annotations\n\nimport json\nimport re\nimport sys\nfrom pathlib import Path\nfrom typing import Any\n\nfrom pyproj import Geod\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\nfrom rdflib.namespace import RDF\n\nOSMD = Namespace(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#\")\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source\")\nKEY_NS = \"https://www.openstreetmap.org/wiki/Key:\"\nOSM = \"https://www.openstreetmap.org/\"\nONTOLOGY_PATH = \"_sources/windfarms/windfarm-openstreetmap/ontology.ttl\"\n\nFIELDS = [\"name\", \"country\", \"n_turbines\", \"power_mw\", \"status\", \"status_detail\", \"status_as_of\",\n          \"type_inst\", \"offshore\", \"year\", \"year_semantics\", \"year_is_assumed\", \"updateyear\",\n          \"operational_date\", \"dist_coast\", \"area_sqkm\", \"operator\", \"owner\", \"developer\",\n          \"licence_status\", \"licensing_case\", \"admin_units\", \"electricity_price_area\",\n          \"mean_annual_production_gwh\", \"notes\", \"source_type\", \"source_dataset\", \"source_reference\",\n          \"source_record_id\", \"source_snapshot_date\", \"last_updated\", \"location_status\",\n          \"location_method\", \"location_reference\", \"same_as\"]\n\n\n# ---------------------------------------------------------------- alignment\n\ndef tag_key(iri: URIRef) -> str:\n    \"\"\"Key IRI -> JSON tag key. Bare keys that are also prefixes carry a trailing colon.\"\"\"\n    key = str(iri)[len(KEY_NS):]\n    return key[:-1] if key.endswith(\":\") else key\n\n\ndef local_name(iri: URIRef) -> str:\n    return re.split(r\"[/#]\", str(iri))[-1]\n\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef load_alignment(path: str | Path) -> dict[str, Any]:\n    g = Graph().parse(str(path), format=\"turtle\")\n    selection = [(tag_key(g.value(r, OSMD.ruleKey)), str(g.value(r, OSMD.ruleValue)))\n                 for r in rlist(g, g.value(OSMD.WindfarmElement, OSMD.selectionRules))]\n    mappings = []\n    for m in rlist(g, g.value(ONTOLOGY_IRI, OSMD.windfarmTagMappings)):\n        rules = []\n        for r in rlist(g, g.value(m, OSMD.valueRules)):\n            value = g.value(r, OSMD.ruleValue)\n            rules.append((tag_key(g.value(r, OSMD.ruleKey)), str(value) if value is not None else None,\n                          g.value(r, OSMD.yields)))\n        when = g.value(m, OSMD.whenPresent)\n        mappings.append({\n            \"key\": str(g.value(m, OSMD.targetKey)),\n            \"sources\": [tag_key(k) for k in rlist(g, g.value(m, OSMD.sourceKeys))],\n            \"conversion\": g.value(m, OSMD.conversion),\n            \"fallback\": g.value(m, OSMD.fallback),\n            \"rules\": rules,\n            \"when_present\": str(when) if when is not None else None,\n        })\n    if not selection or not mappings:\n        raise ValueError(f\"no windfarm alignment found in {path}\")\n    return {\"selection\": selection, \"mappings\": mappings}\n\n\ndef find_ontology(meta: Any) -> Path:\n    candidates = []\n    if meta:\n        inner = meta.get(\"metadata\") if hasattr(meta, \"get\") else None\n        for src in (meta, inner):\n            if src and hasattr(src, \"get\") and src.get(\"ontology\"):\n                candidates.append(Path(src.get(\"ontology\")))\n    candidates.append(Path(ONTOLOGY_PATH))\n    if \"__file__\" in globals():\n        candidates.append(Path(__file__).resolve().parent.parent / \"ontology.ttl\")\n    for c in candidates:\n        if c.is_file():\n            return c\n    raise FileNotFoundError(f\"ontology with the windfarm alignment not found; tried {candidates}\")\n\n\n# ---------------------------------------------------------------- conversions\n\ndef convert(conversion: URIRef | None, value: str) -> Any:\n    if conversion is None or conversion == OSMD.Copy:\n        return value\n    if conversion == OSMD.ParseInteger:\n        return int(value) if re.fullmatch(r\"\\s*\\d+\\s*\", value) else None\n    if conversion == OSMD.ParseMegawatts:\n        m = re.fullmatch(r\"\\s*(\\d+(?:\\.\\d+)?)\\s*(?:MW)?\\s*\", value)\n        return float(m.group(1)) if m else None\n    if conversion == OSMD.SplitSemicolon:\n        return [v.strip() for v in value.split(\";\") if v.strip()] or None\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\ndef rule_result(yields: Any, key: str, value: str) -> Any:\n    if yields == OSMD.Copy:\n        return value\n    if yields == OSMD.KeyEqualsValue:\n        return f\"{key}={value}\"\n    if isinstance(yields, Literal):\n        return yields.toPython()\n    return local_name(yields)          # concept -> its code, e.g. seadots-emodnet:Construction -> \"Construction\"\n\n\n# ---------------------------------------------------------------- transform\n\ndef transform_response(src: dict, alignment: dict, snapshot_date: str | None = None) -> dict:\n    elements = src[\"elements\"]\n    index = {(e[\"type\"], e[\"id\"]): e for e in elements}\n    selected = [e for e in elements if e[\"type\"] in (\"way\", \"relation\")\n                and any(e.get(\"tags\", {}).get(k) == v for k, v in alignment[\"selection\"])]\n    relations = [e for e in selected if e[\"type\"] == \"relation\"]\n\n    def outer_ways(rel):\n        return [index[(\"way\", m[\"ref\"])] for m in rel[\"members\"]\n                if m[\"type\"] == \"way\" and m[\"role\"] == \"outer\" and (\"way\", m[\"ref\"]) in index]\n\n    def same_name_ways(rel):\n        name = rel.get(\"tags\", {}).get(\"name\")\n        return [w for w in selected if w[\"type\"] == \"way\" and name and w.get(\"tags\", {}).get(\"name\") == name\n                and w not in outer_ways(rel)]\n\n    merged = {w[\"id\"] for r in relations for w in outer_ways(r) + same_name_ways(r)}\n    primaries = relations + [w for w in selected if w[\"type\"] == \"way\" and w[\"id\"] not in merged]\n\n    b = src[\"bounds\"]\n    source_reference = (f\"https://api.openstreetmap.org/api/0.6/map.json?bbox=\"\n                        f\"{b['minlon']},{b['minlat']},{b['maxlon']},{b['maxlat']}\")\n    geod = Geod(ellps=\"WGS84\")\n    features = []\n    for el in primaries:\n        parts = outer_ways(el) + same_name_ways(el) if el[\"type\"] == \"relation\" else []\n        chain = [el] + parts\n\n        def tag(key):\n            for p in chain:\n                if key in p.get(\"tags\", {}):\n                    return p[\"tags\"][key]\n            return None\n\n        props: dict[str, Any] = {k: None for k in FIELDS}\n        for m in alignment[\"mappings\"]:\n            value = None\n            if m[\"sources\"]:\n                raw = next((tag(k) for k in m[\"sources\"] if tag(k) is not None), None)\n                if raw is not None:\n                    value = m[\"when_present\"] if m[\"when_present\"] else convert(m[\"conversion\"], raw)\n                elif m[\"fallback\"] == OSMD.CountGeneratorMembers:\n                    n = sum(1 for x in el.get(\"members\", []) if x[\"role\"] == \"generator\")\n                    value = n or None\n            for key, match, yields in m[\"rules\"]:\n                v = tag(key)\n                if v is not None and (match is None or v == match):\n                    value = rule_result(yields, key, v)\n                    break\n            props[m[\"key\"]] = value\n\n        area_way = el if el[\"type\"] == \"way\" else (outer_ways(el) or [None])[0]\n        geometry = None\n        if area_way:\n            ring = [[index[(\"node\", n)][\"lon\"], index[(\"node\", n)][\"lat\"]] for n in area_way[\"nodes\"]]\n            geometry = {\"type\": \"Polygon\", \"coordinates\": [ring]}\n            area, _ = geod.polygon_area_perimeter([c[0] for c in ring], [c[1] for c in ring])\n            props[\"area_sqkm\"] = round(abs(area) / 1e6, 3)\n        props.update({\n            \"source_type\": \"osm\",\n            \"source_dataset\": \"OpenStreetMap\",\n            \"source_reference\": source_reference,\n            \"source_record_id\": f\"{el['type']}/{el['id']}\",\n            \"source_snapshot_date\": snapshot_date,\n            \"last_updated\": max(p[\"timestamp\"] for p in chain),\n            \"location_status\": \"source-provided\" if geometry else \"unmatched\",\n            \"location_method\": (f\"outer way {area_way['id']} of the OSM element\" if geometry else\n                                \"no OSM area contains this wind farm's turbines; geometry left null\"),\n            \"same_as\": [f\"{OSM}way/{p['id']}\" for p in parts] or None,\n        })\n        features.append({\"type\": \"Feature\", \"id\": f\"{OSM}{el['type']}/{el['id']}\",\n                         \"geometry\": geometry, \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_json: str, meta: Any = None) -> str:\n    alignment = load_alignment(find_ontology(meta))\n    snapshot = None\n    if meta and hasattr(meta, \"get\"):\n        inner = meta.get(\"metadata\") or {}\n        snapshot = meta.get(\"source_snapshot_date\") or (inner.get(\"source_snapshot_date\") if hasattr(inner, \"get\") else None)\n    return json.dumps(transform_response(json.loads(raw_json), alignment, snapshot), indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    meta = {\"ontology\": sys.argv[1]} if len(sys.argv) > 1 else {}\n    if len(sys.argv) > 2:\n        meta[\"source_snapshot_date\"] = sys.argv[2]\n    sys.stdout.write(transform(sys.stdin.read(), meta) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform an OSM API 0.6 map response (windfarm-openstreetmap) into windfarm\ndesignated areas (common-windfarm-designated-area), driven by the alignment in\nwindfarm-openstreetmap/ontology.ttl.\n\nThe ontology declares which elements are wind farms (osmdata:WindfarmElement and\nits osmdata:selectionRules) and how tags map onto owf: properties\n(osmdata:windfarmTagMappings: source keys, value rules, conversions). This script\nonly interprets that alignment and applies the element-level rules documented in\nthe ontology (merging relation parts, geometry, provenance).\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* when run standalone: python3 osm_to_windfarm_area.py [ontology.ttl] < osm.json > areas.json\n\nThe ontology is located from transform metadata `ontology`, then\n_sources/windfarms/windfarm-openstreetmap/ontology.ttl relative to the working\ndirectory, then next to this script.\n\"\"\"\nfrom __future__ import annotations\n\nimport json\nimport re\nimport sys\nfrom pathlib import Path\nfrom typing import Any\n\nfrom pyproj import Geod\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\nfrom rdflib.namespace import RDF\n\nOSMD = Namespace(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#\")\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source\")\nKEY_NS = \"https://www.openstreetmap.org/wiki/Key:\"\nOSM = \"https://www.openstreetmap.org/\"\nONTOLOGY_PATH = \"_sources/windfarms/windfarm-openstreetmap/ontology.ttl\"\n\nFIELDS = [\"name\", \"country\", \"n_turbines\", \"power_mw\", \"status\", \"status_detail\", \"status_as_of\",\n          \"type_inst\", \"offshore\", \"year\", \"year_semantics\", \"year_is_assumed\", \"updateyear\",\n          \"operational_date\", \"valid_from\", \"dist_coast\", \"area_sqkm\", \"operator\", \"owner\", \"developer\",\n          \"licence_status\", \"licensing_case\", \"admin_units\", \"electricity_price_area\",\n          \"mean_annual_production_gwh\", \"notes\", \"source_type\", \"source_dataset\", \"source_reference\",\n          \"source_record_id\", \"source_snapshot_date\", \"last_updated\", \"update_date\", \"metadata_record\",\n          \"location_status\", \"location_method\", \"location_reference\", \"positional_accuracy_m\", \"same_as\"]\n\n\n# ---------------------------------------------------------------- alignment\n\ndef tag_key(iri: URIRef) -> str:\n    \"\"\"Key IRI -> JSON tag key. Bare keys that are also prefixes carry a trailing colon.\"\"\"\n    key = str(iri)[len(KEY_NS):]\n    return key[:-1] if key.endswith(\":\") else key\n\n\ndef local_name(iri: URIRef) -> str:\n    return re.split(r\"[/#]\", str(iri))[-1]\n\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef load_alignment(path: str | Path) -> dict[str, Any]:\n    g = Graph().parse(str(path), format=\"turtle\")\n    selection = [(tag_key(g.value(r, OSMD.ruleKey)), str(g.value(r, OSMD.ruleValue)))\n                 for r in rlist(g, g.value(OSMD.WindfarmElement, OSMD.selectionRules))]\n    mappings = []\n    for m in rlist(g, g.value(ONTOLOGY_IRI, OSMD.windfarmTagMappings)):\n        rules = []\n        for r in rlist(g, g.value(m, OSMD.valueRules)):\n            value = g.value(r, OSMD.ruleValue)\n            rules.append((tag_key(g.value(r, OSMD.ruleKey)), str(value) if value is not None else None,\n                          g.value(r, OSMD.yields)))\n        when = g.value(m, OSMD.whenPresent)\n        mappings.append({\n            \"key\": str(g.value(m, OSMD.targetKey)),\n            \"sources\": [tag_key(k) for k in rlist(g, g.value(m, OSMD.sourceKeys))],\n            \"conversion\": g.value(m, OSMD.conversion),\n            \"fallback\": g.value(m, OSMD.fallback),\n            \"rules\": rules,\n            \"when_present\": str(when) if when is not None else None,\n        })\n    if not selection or not mappings:\n        raise ValueError(f\"no windfarm alignment found in {path}\")\n    return {\"selection\": selection, \"mappings\": mappings}\n\n\ndef find_ontology(meta: Any) -> Path:\n    candidates = []\n    if meta:\n        inner = meta.get(\"metadata\") if hasattr(meta, \"get\") else None\n        for src in (meta, inner):\n            if src and hasattr(src, \"get\") and src.get(\"ontology\"):\n                candidates.append(Path(src.get(\"ontology\")))\n    candidates.append(Path(ONTOLOGY_PATH))\n    if \"__file__\" in globals():\n        candidates.append(Path(__file__).resolve().parent.parent / \"ontology.ttl\")\n    for c in candidates:\n        if c.is_file():\n            return c\n    raise FileNotFoundError(f\"ontology with the windfarm alignment not found; tried {candidates}\")\n\n\n# ---------------------------------------------------------------- conversions\n\ndef convert(conversion: URIRef | None, value: str) -> Any:\n    if conversion is None or conversion == OSMD.Copy:\n        return value\n    if conversion == OSMD.ParseInteger:\n        return int(value) if re.fullmatch(r\"\\s*\\d+\\s*\", value) else None\n    if conversion == OSMD.ParseMegawatts:\n        m = re.fullmatch(r\"\\s*(\\d+(?:\\.\\d+)?)\\s*(?:MW)?\\s*\", value)\n        return float(m.group(1)) if m else None\n    if conversion == OSMD.SplitSemicolon:\n        return [v.strip() for v in value.split(\";\") if v.strip()] or None\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\ndef rule_result(yields: Any, key: str, value: str) -> Any:\n    if yields == OSMD.Copy:\n        return value\n    if yields == OSMD.KeyEqualsValue:\n        return f\"{key}={value}\"\n    if isinstance(yields, Literal):\n        return yields.toPython()\n    return local_name(yields)          # concept -> its code, e.g. seadots-emodnet:Construction -> \"Construction\"\n\n\n# ---------------------------------------------------------------- transform\n\ndef transform_response(src: dict, alignment: dict, snapshot_date: str | None = None) -> dict:\n    elements = src[\"elements\"]\n    index = {(e[\"type\"], e[\"id\"]): e for e in elements}\n    selected = [e for e in elements if e[\"type\"] in (\"way\", \"relation\")\n                and any(e.get(\"tags\", {}).get(k) == v for k, v in alignment[\"selection\"])]\n    relations = [e for e in selected if e[\"type\"] == \"relation\"]\n\n    def outer_ways(rel):\n        return [index[(\"way\", m[\"ref\"])] for m in rel[\"members\"]\n                if m[\"type\"] == \"way\" and m[\"role\"] == \"outer\" and (\"way\", m[\"ref\"]) in index]\n\n    def same_name_ways(rel):\n        name = rel.get(\"tags\", {}).get(\"name\")\n        return [w for w in selected if w[\"type\"] == \"way\" and name and w.get(\"tags\", {}).get(\"name\") == name\n                and w not in outer_ways(rel)]\n\n    merged = {w[\"id\"] for r in relations for w in outer_ways(r) + same_name_ways(r)}\n    primaries = relations + [w for w in selected if w[\"type\"] == \"way\" and w[\"id\"] not in merged]\n\n    b = src[\"bounds\"]\n    source_reference = (f\"https://api.openstreetmap.org/api/0.6/map.json?bbox=\"\n                        f\"{b['minlon']},{b['minlat']},{b['maxlon']},{b['maxlat']}\")\n    geod = Geod(ellps=\"WGS84\")\n    features = []\n    for el in primaries:\n        parts = outer_ways(el) + same_name_ways(el) if el[\"type\"] == \"relation\" else []\n        chain = [el] + parts\n\n        def tag(key):\n            for p in chain:\n                if key in p.get(\"tags\", {}):\n                    return p[\"tags\"][key]\n            return None\n\n        props: dict[str, Any] = {k: None for k in FIELDS}\n        for m in alignment[\"mappings\"]:\n            value = None\n            if m[\"sources\"]:\n                raw = next((tag(k) for k in m[\"sources\"] if tag(k) is not None), None)\n                if raw is not None:\n                    value = m[\"when_present\"] if m[\"when_present\"] else convert(m[\"conversion\"], raw)\n                elif m[\"fallback\"] == OSMD.CountGeneratorMembers:\n                    n = sum(1 for x in el.get(\"members\", []) if x[\"role\"] == \"generator\")\n                    value = n or None\n            for key, match, yields in m[\"rules\"]:\n                v = tag(key)\n                if v is not None and (match is None or v == match):\n                    value = rule_result(yields, key, v)\n                    break\n            props[m[\"key\"]] = value\n\n        area_way = el if el[\"type\"] == \"way\" else (outer_ways(el) or [None])[0]\n        geometry = None\n        if area_way:\n            ring = [[index[(\"node\", n)][\"lon\"], index[(\"node\", n)][\"lat\"]] for n in area_way[\"nodes\"]]\n            geometry = {\"type\": \"Polygon\", \"coordinates\": [ring]}\n            area, _ = geod.polygon_area_perimeter([c[0] for c in ring], [c[1] for c in ring])\n            props[\"area_sqkm\"] = round(abs(area) / 1e6, 3)\n        props.update({\n            \"source_type\": \"osm\",\n            \"source_dataset\": \"OpenStreetMap\",\n            \"source_reference\": source_reference,\n            \"source_record_id\": f\"{el['type']}/{el['id']}\",\n            \"source_snapshot_date\": snapshot_date,\n            \"last_updated\": max(p[\"timestamp\"] for p in chain),\n            \"location_status\": \"source-provided\" if geometry else \"unmatched\",\n            \"location_method\": (f\"outer way {area_way['id']} of the OSM element\" if geometry else\n                                \"no OSM area contains this wind farm's turbines; geometry left null\"),\n            \"same_as\": [f\"{OSM}way/{p['id']}\" for p in parts] or None,\n        })\n        features.append({\"type\": \"Feature\", \"id\": f\"{OSM}{el['type']}/{el['id']}\",\n                         \"geometry\": geometry, \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_json: str, meta: Any = None) -> str:\n    alignment = load_alignment(find_ontology(meta))\n    snapshot = None\n    if meta and hasattr(meta, \"get\"):\n        inner = meta.get(\"metadata\") or {}\n        snapshot = meta.get(\"source_snapshot_date\") or (inner.get(\"source_snapshot_date\") if hasattr(inner, \"get\") else None)\n    return json.dumps(transform_response(json.loads(raw_json), alignment, snapshot), indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    meta = {\"ontology\": sys.argv[1]} if len(sys.argv) > 1 else {}\n    if len(sys.argv) > 2:\n        meta[\"source_snapshot_date\"] = sys.argv[2]\n    sys.stdout.write(transform(sys.stdin.read(), meta) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        },
+        {
+          "id": "to-windfarm-turbine",
+          "description": "Converts an OSM API 0.6 map response into wind turbines (`common-windfarm-turbine`). The transformation is driven by the alignment declared in this block's `ontology.ttl`: `osmdata:TurbineElement` selects `power=generator` nodes and `osmdata:turbineTagMappings` maps their tags onto `owf:` properties (rated power, hub height, rotor diameter, rotor axis, condition). Each turbine gets the wind farm relation it is a member of as `windfarm`, and the relation name as `windfarm_name`.\n",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-openstreetmap/transforms/osm_to_windfarm_turbine.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              },
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-turbine"
+            ]
+          },
+          "metadata": {
+            "ontology": "_sources/windfarms/windfarm-openstreetmap/ontology.ttl",
+            "target_context": "_sources/windfarms/common-windfarm-turbine/context.jsonld",
+            "dependencies": {
+              "pip": [
+                "rdflib"
+              ]
+            }
+          },
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform an OSM API 0.6 map response (windfarm-openstreetmap) into wind turbines\n(common-windfarm-turbine), driven by the alignment in windfarm-openstreetmap/ontology.ttl.\n\nThe ontology declares which nodes are turbines (osmdata:TurbineElement and its selection rules)\nand how their tags map onto owf: properties (osmdata:turbineTagMappings, with the same\nTagMapping / ValueRule vocabulary as the wind farm areas). This script only interprets that\nalignment and applies the element-level rules documented in the ontology: node -> Point\nfeature, membership of a wind farm relation (osmdata:WindfarmElement) -> windfarm and\nwindfarm_name, node timestamp -> last_updated.\n\nConcepts are written as the target block's JSON terms (owf:HorizontalAxis -> \"horizontal_axis\",\ninspire-cofv:underConstruction -> \"underConstruction\"), read from the target context.\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* standalone: python3 osm_to_windfarm_turbine.py [--ontology ontology.ttl] < osm.json > turbines.geojson\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport json\nimport re\nimport sys\nfrom pathlib import Path\nfrom typing import Any\n\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\n\nOSMD = Namespace(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#\")\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source\")\nKEY_NS = \"https://www.openstreetmap.org/wiki/Key:\"\nOSM = \"https://www.openstreetmap.org/\"\nBLOCK_DIR = \"_sources/windfarms/windfarm-openstreetmap\"\nTARGET_CONTEXT = \"_sources/windfarms/common-windfarm-turbine/context.jsonld\"\n\nFIELDS = [\"ref\", \"windfarm_name\", \"windfarm\", \"manufacturer\", \"model\", \"rated_power_mw\", \"hub_height_m\",\n          \"rotor_diameter_m\", \"rotor_axis\", \"offshore\", \"operator\", \"status\", \"last_updated\"]\n\n\n# ---------------------------------------------------------------- locating block files\n\ndef _meta(meta: Any, key: str):\n    if not meta or not hasattr(meta, \"get\"):\n        return None\n    inner = meta.get(\"metadata\")\n    return meta.get(key) or (inner.get(key) if hasattr(inner, \"get\") else None)\n\n\ndef _here() -> Path | None:\n    return Path(__file__).resolve().parent.parent if \"__file__\" in globals() else None\n\n\ndef _find(meta: Any, key: str, *defaults: Path) -> Path | None:\n    candidates = [Path(p) for p in [_meta(meta, key)] if p] + list(defaults)\n    return next((c for c in candidates if c.is_file()), None)\n\n\n# ---------------------------------------------------------------- alignment\n\ndef tag_key(iri: URIRef) -> str:\n    \"\"\"Key IRI -> JSON tag key. Bare keys that are also prefixes carry a trailing colon.\"\"\"\n    key = str(iri)[len(KEY_NS):]\n    return key[:-1] if key.endswith(\":\") else key\n\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef concept_terms(context_path: Path | None) -> dict[str, str]:\n    \"\"\"Concept IRI -> JSON term of the target block (e.g. owf:HorizontalAxis -> 'horizontal_axis').\"\"\"\n    if not context_path:\n        return {}\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    prefixes = {k: v for k, v in ctx.items() if isinstance(v, str) and v.endswith((\"#\", \"/\"))}\n\n    def expand(v: str) -> str:\n        p, _, local = v.partition(\":\")\n        return prefixes[p] + local if p in prefixes else v\n    return {expand(v): k for k, v in ctx.items()\n            if isinstance(v, str) and not k.startswith(\"@\") and k not in prefixes and k[:1].islower()}\n\n\ndef _rules(g: Graph, node) -> list:\n    out = []\n    for r in rlist(g, node):\n        value = g.value(r, OSMD.ruleValue)\n        out.append((tag_key(g.value(r, OSMD.ruleKey)), str(value) if value is not None else None, g.value(r, OSMD.yields)))\n    return out\n\n\ndef load_alignment(path: str | Path) -> dict[str, Any]:\n    g = Graph().parse(str(path), format=\"turtle\")\n    mappings = [{\"key\": str(g.value(m, OSMD.targetKey)),\n                 \"sources\": [tag_key(k) for k in rlist(g, g.value(m, OSMD.sourceKeys))],\n                 \"conversion\": g.value(m, OSMD.conversion),\n                 \"rules\": _rules(g, g.value(m, OSMD.valueRules))}\n                for m in rlist(g, g.value(ONTOLOGY_IRI, OSMD.turbineTagMappings))]\n    turbine = [(k, v) for k, v, _ in _rules(g, g.value(OSMD.TurbineElement, OSMD.selectionRules))]\n    windfarm = [(k, v) for k, v, _ in _rules(g, g.value(OSMD.WindfarmElement, OSMD.selectionRules))]\n    if not mappings or not turbine:\n        raise ValueError(f\"no turbine alignment found in {path}\")\n    return {\"mappings\": mappings, \"turbine\": turbine, \"windfarm\": windfarm}\n\n\n# ---------------------------------------------------------------- conversions\n\ndef convert(conversion: URIRef | None, value: str) -> Any:\n    if conversion is None or conversion == OSMD.Copy:\n        return value\n    if conversion == OSMD.ParseMegawatts:\n        m = re.fullmatch(r\"\\s*(\\d+(?:\\.\\d+)?)\\s*(?:MW)?\\s*\", value)\n        return float(m.group(1)) if m else None\n    if conversion == OSMD.ParseNumber:\n        m = re.fullmatch(r\"\\s*(\\d+(?:\\.\\d+)?)\\s*(?:m)?\\s*\", value)\n        return float(m.group(1)) if m else None\n    if conversion == OSMD.SplitSemicolon:\n        return [v.strip() for v in value.split(\";\") if v.strip()] or None\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\ndef rule_result(yields: Any, terms: dict[str, str], value: str) -> Any:\n    if yields == OSMD.Copy:\n        return value\n    if isinstance(yields, Literal):\n        return yields.toPython()\n    return terms.get(str(yields)) or re.split(r\"[/#]\", str(yields))[-1]\n\n\n# ---------------------------------------------------------------- transform\n\ndef transform_response(src: dict, alignment: dict, terms: dict[str, str]) -> dict:\n    elements = src[\"elements\"]\n    matches = lambda e, rules: any(e.get(\"tags\", {}).get(k) == v for k, v in rules)\n    farm_of = {}\n    for rel in elements:\n        if rel[\"type\"] == \"relation\" and matches(rel, alignment[\"windfarm\"]):\n            for m in rel.get(\"members\", []):\n                if m[\"type\"] == \"node\":\n                    farm_of.setdefault(m[\"ref\"], rel)\n    features = []\n    for el in elements:\n        if el[\"type\"] != \"node\" or not matches(el, alignment[\"turbine\"]):\n            continue\n        tags = el.get(\"tags\", {})\n        props: dict[str, Any] = dict.fromkeys(FIELDS)\n        for m in alignment[\"mappings\"]:\n            value = None\n            raw = next((tags[k] for k in m[\"sources\"] if k in tags), None)\n            if raw is not None:\n                value = convert(m[\"conversion\"], raw)\n            for key, match, yields in m[\"rules\"]:\n                if key in tags and (match is None or tags[key] == match):\n                    value = rule_result(yields, terms, tags[key])\n                    break\n            props[m[\"key\"]] = value\n        farm = farm_of.get(el[\"id\"])\n        if farm:\n            props[\"windfarm\"] = f\"{OSM}relation/{farm['id']}\"\n            props[\"windfarm_name\"] = farm.get(\"tags\", {}).get(\"name\")\n        props[\"last_updated\"] = el.get(\"timestamp\")\n        features.append({\"type\": \"Feature\", \"id\": f\"{OSM}node/{el['id']}\",\n                         \"geometry\": {\"type\": \"Point\", \"coordinates\": [el[\"lon\"], el[\"lat\"]]},\n                         \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_json: str, meta: Any = None) -> str:\n    here = _here()\n    ontology = _find(meta, \"ontology\", Path(BLOCK_DIR) / \"ontology.ttl\", *([here / \"ontology.ttl\"] if here else []))\n    if not ontology:\n        raise FileNotFoundError(\"ontology.ttl of windfarm-openstreetmap not found\")\n    target = _find(meta, \"target_context\", Path(TARGET_CONTEXT),\n                   *([here.parent / \"common-windfarm-turbine/context.jsonld\"] if here else []))\n    out = transform_response(json.loads(raw_json), load_alignment(ontology), concept_terms(target))\n    return json.dumps(out, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\\n\")[0])\n    ap.add_argument(\"--ontology\"); ap.add_argument(\"--target-context\")\n    args = {k: v for k, v in vars(ap.parse_args()).items() if v}\n    sys.stdout.write(transform(sys.stdin.read(), args) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
         }
       ],
       "documentation": {
@@ -1811,6 +1855,56 @@
       "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/",
       "validationPassed": false,
       "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/windfarm-designated-area-emodnet/",
+      "transforms": [
+        {
+          "id": "to-windfarm-designated-area",
+          "description": "Converts EMODnet Human Activities WFS GeoJSON output (`emodnet:windfarms` points and `emodnet:windfarmspoly` polygons) into windfarm designated areas (`common-windfarm-designated-area`). The transformation is driven by the alignment declared in this block's `ontology.ttl`: `emodnet:propertyMappings` maps each WFS property onto `owf:`, `schema:` and `dcterms:` properties with a conversion or a constant; status and country become `seadots-emodnet:` concepts by their English label. Each feature keeps its geometry and gets the WFS GetFeature URL of the record as identifier.\n",
+          "type": "python",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/transforms/emodnet_to_windfarm_area.py",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              },
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              },
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ],
+            "profiles": [
+              "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area"
+            ]
+          },
+          "metadata": {
+            "ontology": "_sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl",
+            "target_context": "_sources/windfarms/common-windfarm-designated-area/context.jsonld",
+            "source_snapshot_date": "2026-10-30",
+            "dependencies": {
+              "pip": [
+                "rdflib"
+              ]
+            }
+          },
+          "code": "#!/usr/bin/env python3\n\"\"\"\nTransform EMODnet Human Activities wind farm features (windfarm-designated-area-emodnet: WFS GeoJSON\noutput of emodnet:windfarms points and/or emodnet:windfarmspoly polygons) into windfarm designated\nareas (common-windfarm-designated-area), driven by the alignment in\nwindfarm-designated-area-emodnet/ontology.ttl.\n\nThe ontology declares an emodnet:PropertyMapping for every target property (source JSON key,\nconversion or constant, optionally limited to one WFS feature type). Status and country are looked\nup among the seadots-emodnet: concepts by their English label. This script only interprets that\nalignment and applies the record-level rules documented in the ontology:\n\n* feature id windfarms.268 -> id = WFS GetFeature URL of that feature, source_record_id windfarms.268;\n* geometry is kept as published;\n* source_snapshot_date from metadata `source_snapshot_date`, else the date of the response timeStamp.\n\nConcepts are written as the target block's JSON terms (owf:EmodnetSource -> \"emodnet\",\nseadots-emodnet:Construction -> \"Construction\"), read from the target context.\n\nOGC Building Blocks Python transform compatibility:\n* when `input_data` is provided, assigns `output_data`;\n* standalone: python3 emodnet_to_windfarm_area.py [--snapshot-date 2026-10-30] < wfs.geojson > areas.geojson\n  (several WFS responses can be passed as files: ... a.geojson b.geojson > areas.geojson)\n\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport json\nimport re\nimport sys\nfrom pathlib import Path\nfrom typing import Any\n\nfrom rdflib import Graph, Literal, Namespace, URIRef\nfrom rdflib.collection import Collection\nfrom rdflib.namespace import RDFS\n\nEM = Namespace(\"https://w3id.org/ogc/hosted/seadots/emodnet/windfarm#\")\nSEM = \"https://w3id.org/ogc/hosted/seadots/emodnet/\"\nONTOLOGY_IRI = URIRef(\"https://w3id.org/ogc/hosted/seadots/offshore-windfarm\")\nBLOCK_DIR = \"_sources/windfarms/windfarm-designated-area-emodnet\"\nTARGET_CONTEXT = \"_sources/windfarms/common-windfarm-designated-area/context.jsonld\"\nWFS = \"https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:{type}&featureID={id}\"\n\nFIELDS = [\"name\", \"country\", \"n_turbines\", \"power_mw\", \"status\", \"status_detail\", \"status_as_of\",\n          \"type_inst\", \"offshore\", \"year\", \"year_semantics\", \"year_is_assumed\", \"updateyear\",\n          \"operational_date\", \"valid_from\", \"dist_coast\", \"area_sqkm\", \"operator\", \"owner\", \"developer\",\n          \"licence_status\", \"licensing_case\", \"admin_units\", \"electricity_price_area\",\n          \"mean_annual_production_gwh\", \"notes\", \"source_type\", \"source_dataset\", \"source_reference\",\n          \"source_record_id\", \"source_snapshot_date\", \"last_updated\", \"update_date\", \"metadata_record\",\n          \"location_status\", \"location_method\", \"location_reference\", \"positional_accuracy_m\", \"same_as\"]\n\n\n# ---------------------------------------------------------------- locating block files\n\ndef _meta(meta: Any, key: str):\n    if not meta or not hasattr(meta, \"get\"):\n        return None\n    inner = meta.get(\"metadata\")\n    return meta.get(key) or (inner.get(key) if hasattr(inner, \"get\") else None)\n\n\ndef _here() -> Path | None:\n    return Path(__file__).resolve().parent.parent if \"__file__\" in globals() else None\n\n\ndef _find(meta: Any, key: str, *defaults: Path) -> Path | None:\n    candidates = [Path(p) for p in [_meta(meta, key)] if p] + list(defaults)\n    return next((c for c in candidates if c.is_file()), None)\n\n\n# ---------------------------------------------------------------- alignment\n\ndef rlist(g: Graph, node) -> list:\n    return list(Collection(g, node)) if node is not None else []\n\n\ndef concept_terms(context_path: Path | None) -> dict[str, str]:\n    \"\"\"Concept IRI -> JSON term of the target block (e.g. owf:EmodnetSource -> 'emodnet').\"\"\"\n    if not context_path:\n        return {}\n    ctx = json.loads(context_path.read_text(encoding=\"utf-8\"))[\"@context\"]\n    prefixes = {k: v for k, v in ctx.items() if isinstance(v, str) and v.endswith((\"#\", \"/\"))}\n\n    def expand(v: str) -> str:\n        p, _, local = v.partition(\":\")\n        return prefixes[p] + local if p in prefixes else v\n    return {expand(v): k for k, v in ctx.items()\n            if isinstance(v, str) and not k.startswith(\"@\") and k not in prefixes and k[:1].islower()}\n\n\ndef load_alignment(ontology: Path) -> dict:\n    g = Graph().parse(str(ontology), format=\"turtle\")\n    labels = {str(label).lower(): s for s, label in g.subject_objects(RDFS.label)\n              if str(s).startswith(SEM) and isinstance(label, Literal) and label.language == \"en\"}\n    mappings = []\n    for m in rlist(g, g.value(ONTOLOGY_IRI, EM.propertyMappings)):\n        get = lambda p: g.value(m, p)\n        mappings.append({\"key\": str(get(EM.targetKey)),\n                         \"source\": str(get(EM.sourceKey)) if get(EM.sourceKey) is not None else None,\n                         \"conversion\": get(EM.conversion), \"constant\": get(EM.constant),\n                         \"when_present\": get(EM.whenPresent),\n                         \"feature_type\": str(get(EM.forFeatureType)) if get(EM.forFeatureType) is not None else None})\n    if not mappings:\n        raise ValueError(f\"no emodnet:propertyMappings found in {ontology}\")\n    return {\"mappings\": mappings, \"labels\": labels}\n\n\n# ---------------------------------------------------------------- conversions\n\ndef as_json(node: Any, terms: dict[str, str]) -> Any:\n    if node is None:\n        return None\n    if isinstance(node, Literal):\n        return node.toPython()\n    return terms.get(str(node)) or re.split(r\"[/#]\", str(node))[-1]\n\n\ndef convert(conversion: URIRef | None, value: Any, labels: dict, terms: dict) -> Any:\n    if value is None or (isinstance(value, str) and not value.strip()):\n        return None\n    if conversion is None or conversion == EM.Copy:\n        return value.strip() if isinstance(value, str) else value\n    if conversion in (EM.ParseNumber, EM.ParseInteger):\n        try:\n            number = float(value)\n        except (TypeError, ValueError):\n            return None\n        if conversion == EM.ParseInteger:\n            return int(number) if number.is_integer() else None\n        return int(number) if number.is_integer() and isinstance(value, int) else number\n    if conversion == EM.YearString:\n        m = re.fullmatch(r\"\\s*(\\d{4})(?:\\.0+)?\\s*\", str(value))\n        return m.group(1) if m else str(value)\n    if conversion == EM.ConceptByLabel:\n        concept = labels.get(str(value).strip().lower())\n        return as_json(concept, terms) if concept is not None else None\n    raise ValueError(f\"unsupported conversion {conversion}\")\n\n\n# ---------------------------------------------------------------- transform\n\ndef transform_features(responses: list[dict], alignment: dict, terms: dict[str, str],\n                       snapshot_date: str | None = None) -> dict:\n    features = []\n    for response in responses:\n        stamp = snapshot_date or (str(response.get(\"timeStamp\", \"\"))[:10] or None)\n        for f in response.get(\"features\", []):\n            fid = str(f[\"id\"])\n            ftype = fid.split(\".\", 1)[0]\n            src = f.get(\"properties\") or {}\n            props: dict[str, Any] = dict.fromkeys(FIELDS)\n            for m in alignment[\"mappings\"]:\n                if m[\"feature_type\"] and m[\"feature_type\"] != ftype:\n                    continue\n                if m[\"constant\"] is not None:\n                    props[m[\"key\"]] = as_json(m[\"constant\"], terms)\n                elif m[\"when_present\"] is not None:\n                    if src.get(m[\"source\"]) not in (None, \"\"):\n                        props[m[\"key\"]] = as_json(m[\"when_present\"], terms)\n                else:\n                    props[m[\"key\"]] = convert(m[\"conversion\"], src.get(m[\"source\"]), alignment[\"labels\"], terms)\n            props[\"source_record_id\"] = fid\n            props[\"source_snapshot_date\"] = stamp\n            features.append({\"type\": \"Feature\", \"id\": WFS.format(type=ftype, id=fid),\n                             \"geometry\": f.get(\"geometry\"), \"properties\": props})\n    return {\"type\": \"FeatureCollection\", \"features\": features}\n\n\ndef transform(raw_json: str | list, meta: Any = None) -> str:\n    here = _here()\n    ontology = _find(meta, \"ontology\", Path(BLOCK_DIR) / \"ontology.ttl\", *([here / \"ontology.ttl\"] if here else []))\n    if not ontology:\n        raise FileNotFoundError(\"ontology.ttl of windfarm-designated-area-emodnet not found\")\n    target = _find(meta, \"target_context\", Path(TARGET_CONTEXT),\n                   *([here.parent / \"common-windfarm-designated-area/context.jsonld\"] if here else []))\n    responses = raw_json if isinstance(raw_json, list) else [json.loads(raw_json)]\n    responses = [json.loads(r) if isinstance(r, str) else r for r in responses]\n    out = transform_features(responses, load_alignment(ontology), concept_terms(target),\n                             _meta(meta, \"source_snapshot_date\"))\n    return json.dumps(out, indent=2, ensure_ascii=False)\n\n\ndef main() -> int:\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\\n\")[0])\n    ap.add_argument(\"files\", nargs=\"*\", help=\"WFS GeoJSON responses (default: stdin)\")\n    ap.add_argument(\"--ontology\"); ap.add_argument(\"--target-context\"); ap.add_argument(\"--snapshot-date\", dest=\"source_snapshot_date\")\n    args = vars(ap.parse_args())\n    files = args.pop(\"files\")\n    inputs = [Path(p).read_text(encoding=\"utf-8\") for p in files] if files else [sys.stdin.read()]\n    sys.stdout.write(transform(inputs, {k: v for k, v in args.items() if v}) + \"\\n\")\n    return 0\n\n\nif \"input_data\" in globals():\n    output_data = transform(input_data, globals().get(\"metadata\"))  # noqa: F821\nelif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+        }
+      ],
       "documentation": {
         "markdown": {
           "mediatype": "text/markdown",
@@ -2787,135 +2881,6 @@
       "ontology": null,
       "rdfData": [],
       "isProfileOf": null,
-      "isDescribedBy": null,
-      "skos:topConceptOf": {
-        "@id": "https://ogcincubator.github.io/bblocks-seadots/"
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no",
-      "name": "Norwegian NVE windfarm extension for EMODnet",
-      "abstract": "Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-10-28T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "license": {
-        "name": "https://data.norge.no/nlod/no/2.0"
-      },
-      "tags": [
-        "EMODnet",
-        "windfarm",
-        "Norway",
-        "NVE",
-        "extension",
-        "GeoJSON"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "NVE wind power plants dataset",
-          "link": "https://data.norge.no/nb/datasets/363af211-1914-3814-a365-8439d12466cf/vindkraftverk"
-        },
-        {
-          "title": "NVE Sm\u00f8la wind farm record",
-          "link": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591"
-        },
-        {
-          "title": "NVE Sm\u00f8la licensing case",
-          "link": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A"
-        },
-        {
-          "title": "Base EMODnet windfarm block",
-          "link": "https://w3id.org/ogc/hosted/seadots/windfarms/windfarm-designated-area-emodnet"
-        }
-      ],
-      "isProfileOf": [
-        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
-      ],
-      "ldContext": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/context.jsonld",
-        "prof:hasRole": "role:mapping",
-        "dct:format": "application/ld+json",
-        "dct:conformsTo": "https://www.w3.org/TR/json-ld11/"
-      },
-      "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946"
-      ],
-      "maturity": "development",
-      "highlighted": true,
-      "shaclShapes": [
-        {
-          "prof:hasArtifact": [
-            "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-          ],
-          "rdfs:seeAlso": "bblocks://ogc.geo.features.feature",
-          "prof:hasRole": "role:validation",
-          "dct:format": "text/turtle",
-          "dct:conformsTo": "shacl:"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet"
-      ],
-      "dateOfLastChange": "2026-11-04",
-      "ontology": {
-        "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/ontology.ttl",
-        "prof:hasRole": "role:specification",
-        "dct:format": "text/turtle",
-        "dct:conformsTo": "http://www.w3.org/2002/07/owl#Ontology"
-      },
-      "schema": [
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/schema.yaml",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/yaml",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        },
-        {
-          "prof:hasArtifact": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/schema.json",
-          "prof:hasRole": "role:schema",
-          "dct:format": "application/json",
-          "dct:conformsTo": "https://json-schema.org/draft/2020-12/schema"
-        }
-      ],
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/emodnet-compliant-windfarm-no/",
-      "validationPassed": false,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/emodnet-compliant-windfarm-no/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no"
-        }
-      },
-      "@id": "bblocks://ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no",
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset",
-        "bblocks:BBlock"
-      ],
-      "skos:prefLabel": "Norwegian NVE windfarm extension for EMODnet",
-      "openAPIDocument": null,
-      "rdfData": [],
       "isDescribedBy": null,
       "skos:topConceptOf": {
         "@id": "https://ogcincubator.github.io/bblocks-seadots/"
@@ -8156,9 +8121,6 @@
       "@id": "bblocks://ogc.hosted.seadots.geoparquet-header"
     },
     {
-      "@id": "bblocks://ogc.hosted.seadots.national-windfarm-source"
-    },
-    {
       "@id": "bblocks://ogc.hosted.seadots.obis-mareano-checklist"
     },
     {
@@ -8178,6 +8140,9 @@
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.property-relationship"
+    },
+    {
+      "@id": "bblocks://ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl"
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.windfarms.windfarm-openstreetmap"
@@ -8208,9 +8173,6 @@
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-turbine"
-    },
-    {
-      "@id": "bblocks://ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no"
     },
     {
       "@id": "bblocks://ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl"

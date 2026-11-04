@@ -38,12 +38,6 @@ GeoJSON FeatureCollection profile for raw IMR / MAREANO Marbunn benthic biomass 
 
 Generic, reusable CSVW + GeoParquet 1.1 metadata header envelope shape (fileName, source, parquetSchema, geo). Dataset-specific GeoParquet profiles reference this schema via $ref rather than redefining the envelope inline.
 
-### `ogc.hosted.seadots.national-windfarm-source` — Polish national offshore windfarm source record
-
-**Type:** schema
-
-Raw project records compiled from Polish national reporting. Retains the published input fields and has no source-provided geometry; a separate, explicit crosswalk can associate projects with EMODnet locations for the harmonized view.
-
 ### `ogc.hosted.seadots.obis-mareano-checklist` — OBIS MAREANO Checklist
 
 **Type:** schema
@@ -85,6 +79,12 @@ Core ontology for signed, weighted fuzzy cognitive maps: concept nodes, influenc
 **Type:** schema
 
 Provides a common model for defining property relationships bound to the ontology
+
+### `ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl` — Polish national offshore windfarm source record
+
+**Type:** schema
+
+Raw project records compiled from Polish national reporting. Retains the published input fields and has no source-provided geometry; a separate, explicit crosswalk can associate projects with EMODnet locations for the harmonized view.
 
 ### `ogc.hosted.seadots.windfarms.windfarm-openstreetmap` — OpenStreetMap offshore wind source feature collection
 
@@ -145,12 +145,6 @@ GeoJSON representation of a wind farm as a designated area or project, without i
 **Type:** schema
 
 GeoJSON representation of a single wind turbine (Feature with Point geometry) or a FeatureCollection of turbines, with harmonised properties: manufacturer, model, rated power, hub height, rotor diameter, rotor axis, operator, condition, and the wind farm it belongs to.
-
-### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no` — Norwegian NVE windfarm extension for EMODnet
-
-**Type:** schema
-
-Example profile that maps a Norwegian Water Resources and Energy Directorate (NVE) windfarm record to the EMODnet windfarm model and preserves Norway-specific licensing, ownership, production, and turbine details.
 
 ### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
 

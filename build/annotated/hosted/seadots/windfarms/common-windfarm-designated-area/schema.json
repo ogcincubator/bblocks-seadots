@@ -203,8 +203,18 @@
                     "null"
                   ],
                   "format": "date",
-                  "description": "Date the wind farm entered operation.",
+                  "description": "Date the wind farm entered operation (commissioning date).",
                   "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#operationalDate",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+                },
+                "valid_from": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date",
+                  "description": "Date from which the record describes the wind farm (INSPIRE validFrom).",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#validFrom",
                   "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
                 },
                 "dist_coast": {
@@ -339,6 +349,22 @@
                   "x-jsonld-id": "http://purl.org/dc/terms/modified",
                   "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
                 },
+                "update_date": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date",
+                  "description": "Date of the last update of the source record, when the source gives a date rather than a time.",
+                  "x-jsonld-id": "http://purl.org/dc/terms/modified",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#date"
+                },
+                "metadata_record": {
+                  "$ref": "#/$defs/nullableUri",
+                  "description": "URI of the catalogue (metadata) record describing the wind farm data.",
+                  "x-jsonld-id": "http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
+                  "x-jsonld-type": "@id"
+                },
                 "location_status": {
                   "enum": [
                     "source-provided",
@@ -360,6 +386,16 @@
                   "description": "URI of a source supporting the location.",
                   "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#locationReference",
                   "x-jsonld-type": "@id"
+                },
+                "positional_accuracy_m": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "description": "Absolute positional accuracy of the geometry in metres.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#positionalAccuracyM",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#decimal"
                 },
                 "same_as": {
                   "type": [
@@ -409,6 +445,7 @@
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "prov": "http://www.w3.org/ns/prov#"
   },
   "x-bblocks-metadata": {

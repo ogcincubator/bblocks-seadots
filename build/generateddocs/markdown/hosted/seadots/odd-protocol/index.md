@@ -470,6 +470,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S4.pdf> ],
+        [ rdfs:label "JASSS 23(2)7 — journal article" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
         [ rdfs:label "Supplement S3 — Nested ODD for complex models" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
@@ -478,18 +482,14 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://www.jasss.org/23/2/7/S2.pdf> ],
-        [ rdfs:label "JASSS 23(2)7 — journal article" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7.html> ],
-        [ rdfs:label "DOI" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ],
         [ rdfs:label "Supplement S1 — ODD Guidance and checklists" ;
             dcterms:format "application/pdf" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ] ;
+            oa:hasTarget <https://www.jasss.org/23/2/7/S1.pdf> ],
+        [ rdfs:label "DOI" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.18564/jasss.4259> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -543,10 +543,10 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
             rec:scheme "doi" ],
         [ rec:id "1460-7425" ;
             rec:scheme "issn" ] ;
-    rec:themes [ thns:concepts [ thns:id "individual-based-model"^^xsd:string ],
+    rec:themes [ thns:concepts [ thns:id "agent-based-model"^^xsd:string ],
+                [ thns:id "individual-based-model"^^xsd:string ],
                 [ thns:id "protocol"^^xsd:string ],
                 [ thns:id "model-documentation"^^xsd:string ],
-                [ thns:id "agent-based-model"^^xsd:string ],
                 [ thns:id "simulation"^^xsd:string ] ;
             thns:scheme "https://vocabularies.jasss.org/themes" ] .
 
@@ -2005,30 +2005,30 @@ The TRACE framework (Transparent and Comprehensive model Evaluation) documents b
     dcterms:modified "2020-01-01" ;
     dcterms:temporal [ ] ;
     dcterms:title "OSMOSE — Object-oriented Simulator of Marine Ecosystems: ODD Protocol Description" ;
-    rdfs:seeAlso [ rdfs:label "OSMOSE model website" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
-            oa:hasTarget <https://osmose-model.org/> ],
-        [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
+    rdfs:seeAlso [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
+            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
+        [ rdfs:label "OSMOSE ODD Protocol description document" ;
+            dcterms:format "application/pdf" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://osmose-model.org/documentation/odd> ],
         [ rdfs:label "Travers et al. 2009 — OSMOSE ODD paper (Ecological Modelling)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.1016/j.ecolmodel.2009.07.031> ],
-        [ rdfs:label "Grimm et al. 2005 — Pattern-Oriented Modeling (used in calibration)" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://doi.org/10.1371/journal.pcbi.1000356> ],
         [ rdfs:label "OSMOSE source code (GitHub)" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <https://github.com/osmose-model/osmose> ],
-        [ rdfs:label "OSMOSE ODD Protocol description document" ;
-            dcterms:format "application/pdf" ;
+        [ rdfs:label "Shannon et al. 2003 — Patterns for model calibration (Ecological Modelling)" ;
+            dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://osmose-model.org/documentation/odd> ] ;
+            oa:hasTarget <https://doi.org/10.1016/S0304-3800(03)00148-8> ],
+        [ rdfs:label "OSMOSE model website" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/canonical> ;
+            oa:hasTarget <https://osmose-model.org/> ] ;
     dcat:contactPoint [ ],
         [ ],
         [ ],
@@ -2364,20 +2364,20 @@ SSR-based (Beverton-Holt):
     rec:language [ rec:languageCode "en" ] ;
     rec:scopedIdentifier [ rec:id "https://github.com/osmose-model/osmose" ;
             rec:scheme "github" ],
-        [ rec:id "https://osmose-model.org/" ;
-            rec:scheme "url" ],
         [ rec:id "10.1016/j.ecolmodel.2009.07.031" ;
-            rec:scheme "doi" ] ;
-    rec:themes [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ],
-                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ] ;
-            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ],
-        [ thns:concepts [ thns:id "fish-community"^^xsd:string ],
-                [ thns:id "end-to-end-model"^^xsd:string ],
-                [ thns:id "individual-based-model"^^xsd:string ],
-                [ thns:id "size-based-predation"^^xsd:string ],
+            rec:scheme "doi" ],
+        [ rec:id "https://osmose-model.org/" ;
+            rec:scheme "url" ] ;
+    rec:themes [ thns:concepts [ thns:id "end-to-end-model"^^xsd:string ],
+                [ thns:id "fish-community"^^xsd:string ],
+                [ thns:id "multispecies-model"^^xsd:string ],
                 [ thns:id "marine-ecosystem"^^xsd:string ],
-                [ thns:id "multispecies-model"^^xsd:string ] ;
-            thns:scheme "https://vocabularies.osmose-model.org/" ] .
+                [ thns:id "individual-based-model"^^xsd:string ],
+                [ thns:id "size-based-predation"^^xsd:string ] ;
+            thns:scheme "https://vocabularies.osmose-model.org/" ],
+        [ thns:concepts [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/BIOL/"^^xsd:string ],
+                [ thns:id "http://vocab.nerc.ac.uk/collection/P02/current/FISH/"^^xsd:string ] ;
+            thns:scheme "http://vocab.nerc.ac.uk/collection/P02/current/" ] .
 
 
 ```
@@ -2794,14 +2794,14 @@ SSR-based (Beverton-Holt):
     dcterms:modified "2026-05-13" ;
     dcterms:temporal [ ] ;
     dcterms:title "Utsira reef-biomass demonstrator — one-submodel ODD" ;
-    rdfs:seeAlso [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
-            dcterms:format "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ],
-        [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
+    rdfs:seeAlso [ rdfs:label "ODD Protocol bblock — describes the structure of this record" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.odd-protocol> ],
+        [ rdfs:label "Utsira biomass upscaler v1 — model attribution" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://example.org/norwegian-ses/utsira-biomass-upscaler-v1> ] ;
     dcat:contactPoint [ ] ;
     dcat:keyword "ODD",
         "SeaDOTs",
@@ -2862,8 +2862,8 @@ SSR-based (Beverton-Holt):
     rec:format [ rec:mediaType "application/json" ] ;
     rec:language [ rec:languageCode "en" ] ;
     rec:themes [ thns:concepts [ thns:id "benthic-biomass"^^xsd:string ],
-                [ thns:id "impact-assessment"^^xsd:string ],
-                [ thns:id "reef-effect"^^xsd:string ] ;
+                [ thns:id "reef-effect"^^xsd:string ],
+                [ thns:id "impact-assessment"^^xsd:string ] ;
             thns:scheme "https://id3.seadots.eu/themes" ] .
 
 

@@ -18,18 +18,20 @@ The property set extends the EMODnet Human Activities windfarm attributes with t
 | Group | Properties | Sources |
 |---|---|---|
 | EMODnet core | `name`, `country`, `n_turbines`, `power_mw`, `status`, `type_inst`, `year`, `updateyear`, `dist_coast`, `area_sqkm`, `notes` | EMODnet, OSM, NVE, PL |
-| Status and time | `status_detail`, `status_as_of`, `year_semantics`, `year_is_assumed`, `operational_date`, `offshore` | OSM, NVE, PL |
+| Status and time | `status_detail`, `status_as_of`, `year_semantics`, `year_is_assumed`, `operational_date`, `valid_from`, `offshore` | OSM, NVE, PL |
 | Organisations | `operator` (array), `owner`, `developer` | OSM, NVE, PL |
 | Licensing and administration | `licence_status`, `licensing_case`, `admin_units`, `electricity_price_area`, `mean_annual_production_gwh` | NVE |
-| Provenance | `source_type` (`osm` \| `emodnet` \| `national`), `source_dataset`, `source_reference`, `source_record_id`, `source_snapshot_date`, `last_updated` | all |
-| Location provenance | `location_status`, `location_method`, `location_reference`, `same_as` | all |
+| Provenance | `source_type` (`osm` \| `emodnet` \| `national`), `source_dataset`, `source_reference`, `source_record_id`, `source_snapshot_date`, `last_updated`, `update_date`, `metadata_record` | all |
+| Location provenance | `location_status`, `location_method`, `location_reference`, `positional_accuracy_m`, `same_as` | all |
 
 `status` uses the EMODnet vocabulary (`Planned`, `Approved`, `Construction`, `Production`, `Dismantled`), and the source wording is kept in `status_detail`. `licence_status` is the licensing authority's wording and is kept separate from the operational status. Geometry is a Polygon or MultiPolygon for a designated area, a Point when the source only publishes a location (EMODnet), or `null` when no geometry is available. In the `null` case `location_status` is `unmatched` and `location_method` says why.
 
 Every feature is one source record. Records of the same wind farm from different sources are not merged. Instead they are linked with `same_as`, so conflicting values stay visible. For example, OSM tags Baltic Power as an operating plant (`power=plant`), while EMODnet reports it as under construction with 1,140 MW against OSM's 1,200 MW.
 
+`last_updated` is a date-time and `update_date` is a date, for sources that only give the day. Both map to `dcterms:modified` with the matching datatype. `metadata_record` links the wind farm to its catalogue record with `foaf:isPrimaryTopicOf`, as in GeoDCAT-AP. `valid_from` follows the INSPIRE `validFrom` lifecycle attribute.
+
 Not carried over from the source blocks:
-- `nve_turbine_details`, which is device-level and belongs in the turbine block;
+- `nve_turbine_details`, which describes turbines and belongs in the turbine block;
 - `shape_leng` and `shape_area`, which are GIS artefacts of the EMODnet service;
 - the record-matching scores from the Polish block (`MatchCandidate`). The block-specific `location_emodnet_ids` becomes the general `same_as`.
 
@@ -41,6 +43,10 @@ The example FeatureCollection has 12 records:
 - **EMODnet** (WFS `emodnet:windfarms`, retrieved 2026-11-04): the five records for the same farms, matched by name.
 - **NVE**: the Smøla onshore record from [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/).
 - **Polish national pipeline**: the illustrative record from [emodnet-compliant-windfarm-pl](../emodnet-compliant-windfarm-pl/).
+
+Both examples from [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/) are also given on their own:
+- `nve-smola-windfarm-area.json`: Smøla;
+- `north-sea-demo-windfarm-area.json`: the illustrative North Sea demonstrator, with its fields renamed to this model's properties (see `examples.yaml`).
 
 ## Semantics
 
@@ -141,9 +147,14 @@ The Baltic Power wind farm area converted from [OSM relation 21402440](https://w
     "same_as": [
       "https://www.openstreetmap.org/way/1532855580",
       "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268"
-    ]
+    ],
+    "valid_from": null,
+    "update_date": null,
+    "metadata_record": null,
+    "positional_accuracy_m": null
   }
 }
+
 ```
 
 #### jsonld
@@ -235,7 +246,11 @@ The Baltic Power wind farm area converted from [OSM relation 21402440](https://w
     "same_as": [
       "https://www.openstreetmap.org/way/1532855580",
       "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268"
-    ]
+    ],
+    "valid_from": null,
+    "update_date": null,
+    "metadata_record": null,
+    "positional_accuracy_m": null
   }
 }
 ```
@@ -369,7 +384,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "same_as": [
           "https://www.openstreetmap.org/way/1532855580",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -695,7 +714,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "same_as": [
           "https://www.openstreetmap.org/way/1560193205",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.270"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -947,7 +970,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.272"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1050,7 +1077,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
           "https://www.openstreetmap.org/way/1560146691",
           "https://www.openstreetmap.org/way/1560132096",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.275"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1097,7 +1128,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.276"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1147,7 +1182,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21402440"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1197,7 +1236,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21410256"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1247,7 +1290,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/way/1560193204"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1297,7 +1344,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21409513"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1347,7 +1398,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21409512"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1392,7 +1447,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_status": "unmatched",
         "location_method": "geometry not taken from the NVE facility page",
         "location_reference": null,
-        "same_as": null
+        "same_as": null,
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1434,7 +1493,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_status": "unmatched",
         "location_method": null,
         "location_reference": null,
-        "same_as": null
+        "same_as": null,
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     }
   ]
@@ -1534,7 +1597,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "same_as": [
           "https://www.openstreetmap.org/way/1532855580",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -1860,7 +1927,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "same_as": [
           "https://www.openstreetmap.org/way/1560193205",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.270"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2112,7 +2183,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.272"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2215,7 +2290,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
           "https://www.openstreetmap.org/way/1560146691",
           "https://www.openstreetmap.org/way/1560132096",
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.275"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2262,7 +2341,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.276"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2312,7 +2395,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21402440"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2362,7 +2449,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21410256"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2412,7 +2503,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/way/1560193204"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2462,7 +2557,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21409513"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2512,7 +2611,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_reference": null,
         "same_as": [
           "https://www.openstreetmap.org/relation/21409512"
-        ]
+        ],
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2557,7 +2660,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_status": "unmatched",
         "location_method": "geometry not taken from the NVE facility page",
         "location_reference": null,
-        "same_as": null
+        "same_as": null,
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     },
     {
@@ -2599,7 +2706,11 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
         "location_status": "unmatched",
         "location_method": null,
         "location_reference": null,
-        "same_as": null
+        "same_as": null,
+        "valid_from": null,
+        "update_date": null,
+        "metadata_record": null,
+        "positional_accuracy_m": null
       }
     }
   ]
@@ -2887,6 +2998,352 @@ FeatureCollection with one feature per source record: five Polish Baltic wind fa
 
 ```
 
+
+### NVE Smøla wind farm (Norwegian register)
+The onshore Smøla wind farm from the [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/) block, in this model. Counties and municipalities become `admin_units`, and licensing and production data keep their own properties. NVE's turbine details are left out, because turbines are modelled in the turbine block. NVE gives no geometry on the facility page, so geometry is null.
+
+#### json
+```json
+{
+  "type": "Feature",
+  "id": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591",
+  "geometry": null,
+  "properties": {
+    "name": "Smøla",
+    "country": "Norway",
+    "n_turbines": 66,
+    "power_mw": 145.8,
+    "status": "Production",
+    "status_detail": null,
+    "status_as_of": null,
+    "type_inst": null,
+    "offshore": false,
+    "year": "2005",
+    "year_semantics": "year of entry into operation",
+    "year_is_assumed": null,
+    "updateyear": null,
+    "operational_date": "2005-11-21",
+    "dist_coast": null,
+    "area_sqkm": null,
+    "operator": null,
+    "owner": "SMØLA VIND 2 AS",
+    "developer": null,
+    "licence_status": "Konsesjon gitt",
+    "licensing_case": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A",
+    "admin_units": [
+      "Møre og Romsdal",
+      "Smøla"
+    ],
+    "electricity_price_area": "NO 3",
+    "mean_annual_production_gwh": 316.9,
+    "notes": "NVE onshore wind power plant example. Geometry is null here because this worked example uses the facility detail page; obtain the facility geometry from the NVE GIS distribution for mapping.",
+    "source_type": "national",
+    "source_dataset": "NVE wind power plants (vindkraftverk)",
+    "source_reference": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591",
+    "source_record_id": "9591",
+    "source_snapshot_date": null,
+    "last_updated": null,
+    "location_status": "unmatched",
+    "location_method": "geometry not taken from the NVE facility page",
+    "location_reference": null,
+    "same_as": null,
+    "valid_from": null,
+    "update_date": null,
+    "metadata_record": null,
+    "positional_accuracy_m": null
+  }
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/context.jsonld",
+  "type": "Feature",
+  "id": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591",
+  "geometry": null,
+  "properties": {
+    "name": "Sm\u00f8la",
+    "country": "Norway",
+    "n_turbines": 66,
+    "power_mw": 145.8,
+    "status": "Production",
+    "status_detail": null,
+    "status_as_of": null,
+    "type_inst": null,
+    "offshore": false,
+    "year": "2005",
+    "year_semantics": "year of entry into operation",
+    "year_is_assumed": null,
+    "updateyear": null,
+    "operational_date": "2005-11-21",
+    "dist_coast": null,
+    "area_sqkm": null,
+    "operator": null,
+    "owner": "SM\u00d8LA VIND 2 AS",
+    "developer": null,
+    "licence_status": "Konsesjon gitt",
+    "licensing_case": "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A",
+    "admin_units": [
+      "M\u00f8re og Romsdal",
+      "Sm\u00f8la"
+    ],
+    "electricity_price_area": "NO 3",
+    "mean_annual_production_gwh": 316.9,
+    "notes": "NVE onshore wind power plant example. Geometry is null here because this worked example uses the facility detail page; obtain the facility geometry from the NVE GIS distribution for mapping.",
+    "source_type": "national",
+    "source_dataset": "NVE wind power plants (vindkraftverk)",
+    "source_reference": "https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591",
+    "source_record_id": "9591",
+    "source_snapshot_date": null,
+    "last_updated": null,
+    "location_status": "unmatched",
+    "location_method": "geometry not taken from the NVE facility page",
+    "location_reference": null,
+    "same_as": null,
+    "valid_from": null,
+    "update_date": null,
+    "metadata_record": null,
+    "positional_accuracy_m": null
+  }
+}
+```
+
+#### ttl
+```ttl
+@prefix : <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591> a geojson:Feature ;
+    dcterms:description "NVE onshore wind power plant example. Geometry is null here because this worked example uses the facility detail page; obtain the facility geometry from the NVE GIS distribution for mapping." ;
+    dcterms:identifier "9591" ;
+    dcterms:source <https://www.nve.no/energi/energisystem/vindkraft-paa-land/data-for-utbygde-vindkraftverk-i-norge/vindkraftverk-sider/vindkraftverk/?id=9591> ;
+    dcterms:title "Smøla" ;
+    owf:administrativeUnit "Møre og Romsdal",
+        "Smøla" ;
+    owf:conditionOfFacility :Production ;
+    owf:country :Norway ;
+    owf:electricityPriceArea "NO 3" ;
+    owf:licenceStatus "Konsesjon gitt" ;
+    owf:licensingCase <https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=3&type=A> ;
+    owf:locationMethod "geometry not taken from the NVE facility page" ;
+    owf:locationStatus owf:LocationUnmatched ;
+    owf:meanAnnualProductionGWh 316.9 ;
+    owf:nTurbines 66 ;
+    owf:offshore false ;
+    owf:operationalDate "2005-11-21"^^xsd:date ;
+    owf:ownerName "SMØLA VIND 2 AS" ;
+    owf:powerMW 145.8 ;
+    owf:sourceDataset "NVE wind power plants (vindkraftverk)" ;
+    owf:sourceType owf:NationalSource ;
+    owf:year "2005" ;
+    owf:yearSemantics "year of entry into operation" .
+
+
+```
+
+
+### North Sea demonstrator wind farm (illustrative)
+The illustrative record from [emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/) with its fields renamed to this model: `identifier` → `source_record_id`, `lifecycleStatus` → `status`/`status_detail`, `turbineCount` → `n_turbines`, `installedCapacityMW` → `power_mw`, `commissioningDate` → `operational_date`, `sourceDataset` → `source_reference`, `remarks` → `notes`, and `country` "NL" → "Netherlands" (NL is that concept's INSPIRE CountryCode notation). `validFrom`, `updateDate`, `metadataRecord` and `positionalAccuracyM` map to `valid_from`, `update_date`, `metadata_record` and `positional_accuracy_m`. All URLs and values are placeholders from the source example.
+
+#### json
+```json
+{
+  "type": "Feature",
+  "id": "https://example.org/wind-farms/north-sea-demo-01",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.9,
+          54.2
+        ],
+        [
+          4.98,
+          54.2
+        ],
+        [
+          4.98,
+          54.26
+        ],
+        [
+          4.9,
+          54.26
+        ],
+        [
+          4.9,
+          54.2
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "name": "North Sea Demonstrator Offshore Wind Farm",
+    "country": "Netherlands",
+    "n_turbines": 24,
+    "power_mw": 288,
+    "status": "Production",
+    "status_detail": "operational",
+    "status_as_of": null,
+    "type_inst": null,
+    "offshore": null,
+    "year": null,
+    "year_semantics": null,
+    "year_is_assumed": null,
+    "updateyear": "2026",
+    "operational_date": "2025-01-01",
+    "dist_coast": null,
+    "area_sqkm": null,
+    "operator": [
+      "Example Offshore Energy B.V."
+    ],
+    "owner": null,
+    "developer": null,
+    "licence_status": null,
+    "licensing_case": null,
+    "admin_units": null,
+    "electricity_price_area": null,
+    "mean_annual_production_gwh": null,
+    "notes": "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication.",
+    "source_type": "national",
+    "source_dataset": null,
+    "source_reference": "https://example.org/datasets/north-sea-demo-wind-farm.geojson",
+    "source_record_id": "NS-DEMO-01",
+    "source_snapshot_date": null,
+    "last_updated": null,
+    "location_status": "source-provided",
+    "location_method": "polygon supplied with the source record",
+    "location_reference": null,
+    "same_as": null,
+    "valid_from": "2025-01-01",
+    "update_date": "2026-07-01",
+    "metadata_record": "https://example.org/metadata/north-sea-demo-wind-farm",
+    "positional_accuracy_m": 10
+  }
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-designated-area/context.jsonld",
+  "type": "Feature",
+  "id": "https://example.org/wind-farms/north-sea-demo-01",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.9,
+          54.2
+        ],
+        [
+          4.98,
+          54.2
+        ],
+        [
+          4.98,
+          54.26
+        ],
+        [
+          4.9,
+          54.26
+        ],
+        [
+          4.9,
+          54.2
+        ]
+      ]
+    ]
+  },
+  "properties": {
+    "name": "North Sea Demonstrator Offshore Wind Farm",
+    "country": "Netherlands",
+    "n_turbines": 24,
+    "power_mw": 288,
+    "status": "Production",
+    "status_detail": "operational",
+    "status_as_of": null,
+    "type_inst": null,
+    "offshore": null,
+    "year": null,
+    "year_semantics": null,
+    "year_is_assumed": null,
+    "updateyear": "2026",
+    "operational_date": "2025-01-01",
+    "dist_coast": null,
+    "area_sqkm": null,
+    "operator": [
+      "Example Offshore Energy B.V."
+    ],
+    "owner": null,
+    "developer": null,
+    "licence_status": null,
+    "licensing_case": null,
+    "admin_units": null,
+    "electricity_price_area": null,
+    "mean_annual_production_gwh": null,
+    "notes": "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication.",
+    "source_type": "national",
+    "source_dataset": null,
+    "source_reference": "https://example.org/datasets/north-sea-demo-wind-farm.geojson",
+    "source_record_id": "NS-DEMO-01",
+    "source_snapshot_date": null,
+    "last_updated": null,
+    "location_status": "source-provided",
+    "location_method": "polygon supplied with the source record",
+    "location_reference": null,
+    "same_as": null,
+    "valid_from": "2025-01-01",
+    "update_date": "2026-07-01",
+    "metadata_record": "https://example.org/metadata/north-sea-demo-wind-farm",
+    "positional_accuracy_m": 10
+  }
+}
+```
+
+#### ttl
+```ttl
+@prefix : <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;
+    dcterms:description "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication." ;
+    dcterms:identifier "NS-DEMO-01" ;
+    dcterms:modified "2026-07-01"^^xsd:date ;
+    dcterms:source <https://example.org/datasets/north-sea-demo-wind-farm.geojson> ;
+    dcterms:title "North Sea Demonstrator Offshore Wind Farm" ;
+    foaf:isPrimaryTopicOf <https://example.org/metadata/north-sea-demo-wind-farm> ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;
+    owf:conditionOfFacility :Production ;
+    owf:country :Netherlands ;
+    owf:locationMethod "polygon supplied with the source record" ;
+    owf:locationStatus owf:LocationSourceProvided ;
+    owf:nTurbines 24 ;
+    owf:operationalDate "2025-01-01"^^xsd:date ;
+    owf:operatorName "Example Offshore Energy B.V." ;
+    owf:positionalAccuracyM 10.0 ;
+    owf:powerMW 288.0 ;
+    owf:sourceType owf:NationalSource ;
+    owf:statusDetail "operational" ;
+    owf:updateYear "2026" ;
+    owf:validFrom "2025-01-01"^^xsd:date .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -3052,8 +3509,17 @@ $defs:
               - string
               - 'null'
               format: date
-              description: Date the wind farm entered operation.
+              description: Date the wind farm entered operation (commissioning date).
               x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#operationalDate
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+            valid_from:
+              type:
+              - string
+              - 'null'
+              format: date
+              description: Date from which the record describes the wind farm (INSPIRE
+                validFrom).
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#validFrom
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
             dist_coast:
               type:
@@ -3162,6 +3628,21 @@ $defs:
               description: Time of the last edit of the source record.
               x-jsonld-id: http://purl.org/dc/terms/modified
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+            update_date:
+              type:
+              - string
+              - 'null'
+              format: date
+              description: Date of the last update of the source record, when the
+                source gives a date rather than a time.
+              x-jsonld-id: http://purl.org/dc/terms/modified
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
+            metadata_record:
+              $ref: '#/$defs/nullableUri'
+              description: URI of the catalogue (metadata) record describing the wind
+                farm data.
+              x-jsonld-id: http://xmlns.com/foaf/0.1/isPrimaryTopicOf
+              x-jsonld-type: '@id'
             location_status:
               enum:
               - source-provided
@@ -3181,6 +3662,14 @@ $defs:
               description: URI of a source supporting the location.
               x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#locationReference
               x-jsonld-type: '@id'
+            positional_accuracy_m:
+              type:
+              - number
+              - 'null'
+              minimum: 0
+              description: Absolute positional accuracy of the geometry in metres.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#positionalAccuracyM
+              x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
             same_as:
               type:
               - array
@@ -3218,6 +3707,7 @@ x-jsonld-prefixes:
   owf: https://w3id.org/ogc/hosted/seadots/windfarm#
   dcterms: http://purl.org/dc/terms/
   xsd: http://www.w3.org/2001/XMLSchema#
+  foaf: http://xmlns.com/foaf/0.1/
   prov: http://www.w3.org/ns/prov#
 x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.windfarms.common-windfarm-designated-area
@@ -3299,6 +3789,7 @@ Links to the schema:
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "prov": "http://www.w3.org/ns/prov#",
     "name": "dct:title",
     "country": {
@@ -3339,6 +3830,10 @@ Links to the schema:
     "updateyear": "owf:updateYear",
     "operational_date": {
       "@id": "owf:operationalDate",
+      "@type": "xsd:date"
+    },
+    "valid_from": {
+      "@id": "owf:validFrom",
       "@type": "xsd:date"
     },
     "dist_coast": {
@@ -3388,6 +3883,14 @@ Links to the schema:
       "@id": "dct:modified",
       "@type": "xsd:dateTime"
     },
+    "update_date": {
+      "@id": "dct:modified",
+      "@type": "xsd:date"
+    },
+    "metadata_record": {
+      "@id": "foaf:isPrimaryTopicOf",
+      "@type": "@id"
+    },
     "location_status": {
       "@id": "owf:locationStatus",
       "@type": "@vocab"
@@ -3396,6 +3899,10 @@ Links to the schema:
     "location_reference": {
       "@id": "owf:locationReference",
       "@type": "@id"
+    },
+    "positional_accuracy_m": {
+      "@id": "owf:positionalAccuracyM",
+      "@type": "xsd:decimal"
     },
     "same_as": {
       "@id": "prov:alternateOf",

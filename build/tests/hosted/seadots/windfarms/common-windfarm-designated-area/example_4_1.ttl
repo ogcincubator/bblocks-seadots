@@ -1,0 +1,31 @@
+@prefix : <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;
+    dcterms:description "Illustrative record; replace all example URLs and values with the authoritative provider data and metadata record before publication." ;
+    dcterms:identifier "NS-DEMO-01" ;
+    dcterms:modified "2026-07-01"^^xsd:date ;
+    dcterms:source <https://example.org/datasets/north-sea-demo-wind-farm.geojson> ;
+    dcterms:title "North Sea Demonstrator Offshore Wind Farm" ;
+    foaf:isPrimaryTopicOf <https://example.org/metadata/north-sea-demo-wind-farm> ;
+    geojson:geometry [ a geojson:Polygon ;
+            geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;
+    owf:conditionOfFacility :Production ;
+    owf:country :Netherlands ;
+    owf:locationMethod "polygon supplied with the source record" ;
+    owf:locationStatus owf:LocationSourceProvided ;
+    owf:nTurbines 24 ;
+    owf:operationalDate "2025-01-01"^^xsd:date ;
+    owf:operatorName "Example Offshore Energy B.V." ;
+    owf:positionalAccuracyM 10.0 ;
+    owf:powerMW 288.0 ;
+    owf:sourceType owf:NationalSource ;
+    owf:statusDetail "operational" ;
+    owf:updateYear "2026" ;
+    owf:validFrom "2025-01-01"^^xsd:date .
+

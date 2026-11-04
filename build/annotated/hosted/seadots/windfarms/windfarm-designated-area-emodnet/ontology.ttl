@@ -2,11 +2,13 @@
 @prefix emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/windfarm#> .
 @prefix eu-country: <http://publications.europa.eu/resource/authority/country/> .
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
@@ -135,10 +137,26 @@ emodnet:areaSqKm a owl:DatatypeProperty ;
     rdfs:comment "The area of the windfarm's shape, expressed in square kilometres."@en ;
     rdfs:range xsd:decimal .
 
+emodnet:constant a owl:DatatypeProperty ;
+    rdfs:label "constant"@en ;
+    rdfs:comment "Value written for every record (of emodnet:forFeatureType, when given)."@en ;
+    rdfs:domain emodnet:PropertyMapping .
+
+emodnet:conversion a owl:ObjectProperty ;
+    rdfs:label "conversion"@en ;
+    rdfs:domain emodnet:PropertyMapping ;
+    rdfs:range emodnet:Conversion .
+
 emodnet:distanceToCoast a rdf:Property ;
     rdfs:label "distance to coast"@en ;
     rdfs:comment "Distance from the windfarm location to the coast, expressed in metres."@en ;
     rdfs:range xsd:decimal .
+
+emodnet:forFeatureType a owl:DatatypeProperty ;
+    rdfs:label "for feature type"@en ;
+    rdfs:comment "WFS feature type (windfarms, windfarmspoly) the mapping is limited to."@en ;
+    rdfs:domain emodnet:PropertyMapping ;
+    rdfs:range xsd:string .
 
 emodnet:nTurbines a rdf:Property ;
     rdfs:label "number of turbines"@en ;
@@ -150,6 +168,9 @@ emodnet:powerMW a rdf:Property ;
     rdfs:comment "Installed or planned nameplate electrical capacity of the windfarm, expressed in megawatts (MW)."@en ;
     rdfs:range xsd:decimal .
 
+emodnet:propertyMappings a owl:AnnotationProperty ;
+    rdfs:label "property mappings"@en .
+
 emodnet:shapeArea a rdf:Property ;
     rdfs:label "shape area"@en ;
     rdfs:comment "The area of the windfarm's shape, expressed in square metres."@en ;
@@ -160,10 +181,32 @@ emodnet:shapeLength a rdf:Property ;
     rdfs:comment "The length of the windfarm's shape, expressed in metres."@en ;
     rdfs:range xsd:decimal .
 
+emodnet:sourceKey a owl:DatatypeProperty ;
+    rdfs:label "source key"@en ;
+    rdfs:comment "JSON key of the property in the EMODnet WFS GeoJSON output."@en ;
+    rdfs:domain emodnet:PropertyMapping ;
+    rdfs:range xsd:string .
+
+emodnet:targetKey a owl:DatatypeProperty ;
+    rdfs:label "target JSON key"@en ;
+    rdfs:comment "Property name in the target block, i.e. the context term of emodnet:targetProperty."@en ;
+    rdfs:domain emodnet:PropertyMapping ;
+    rdfs:range xsd:string .
+
+emodnet:targetProperty a owl:ObjectProperty ;
+    rdfs:label "target property"@en ;
+    rdfs:domain emodnet:PropertyMapping ;
+    rdfs:range rdf:Property .
+
 emodnet:updateYear a rdf:Property ;
     rdfs:label "source update year"@en ;
     rdfs:comment "Year in which the source record was last updated. This describes the record update, not the project's construction or operation year."@en ;
     rdfs:range xsd:string .
+
+emodnet:whenPresent a owl:DatatypeProperty ;
+    rdfs:label "constant when present"@en ;
+    rdfs:comment "Constant written only when the source key has a value (used for explanatory fields)."@en ;
+    rdfs:domain emodnet:PropertyMapping .
 
 emodnet:windfarmName a rdf:Property ;
     rdfs:label "windfarm name"@en ;
@@ -177,7 +220,8 @@ emodnet:year a rdf:Property ;
 
 <https://w3id.org/ogc/hosted/seadots/offshore-windfarm> a owl:Ontology ;
     dcterms:description "Properties and status concepts used by the SeaDOTs EMODnet windfarm Building Block."@en ;
-    dcterms:title "EMODnet windfarm vocabulary"@en .
+    dcterms:title "EMODnet windfarm vocabulary"@en ;
+    emodnet:propertyMappings ( emodnet:map-name emodnet:map-country emodnet:map-n-turbines emodnet:map-power emodnet:map-status emodnet:map-type-inst emodnet:map-year emodnet:map-year-semantics emodnet:map-updateyear emodnet:map-dist-coast emodnet:map-area emodnet:map-notes emodnet:map-source-type emodnet:map-dataset-points emodnet:map-dataset-polygons emodnet:map-source-reference emodnet:map-location-status emodnet:map-location-points emodnet:map-location-polygons ) .
 
 inspire-cofv:disused a skos:Concept ;
     rdfs:label "disused"@en .
@@ -185,9 +229,147 @@ inspire-cofv:disused a skos:Concept ;
 inspire-cofv:underConstruction a skos:Concept ;
     rdfs:label "underConstruction"@en .
 
+emodnet:ParseInteger a emodnet:Conversion ;
+    rdfs:label "parse integer"@en ;
+    rdfs:comment "An integer; null when the value is not one."@en .
+
+emodnet:map-area a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ParseNumber ;
+    emodnet:sourceKey "area_sqkm" ;
+    emodnet:targetKey "area_sqkm" ;
+    emodnet:targetProperty owf:areaSqKm .
+
+emodnet:map-country a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ConceptByLabel ;
+    emodnet:sourceKey "country" ;
+    emodnet:targetKey "country" ;
+    emodnet:targetProperty schema:addressCountry .
+
+emodnet:map-dataset-points a emodnet:PropertyMapping ;
+    emodnet:constant "EMODnet Human Activities - Wind Farms (emodnet:windfarms)" ;
+    emodnet:forFeatureType "windfarms" ;
+    emodnet:targetKey "source_dataset" ;
+    emodnet:targetProperty owf:sourceDataset .
+
+emodnet:map-dataset-polygons a emodnet:PropertyMapping ;
+    emodnet:constant "EMODnet Human Activities - Wind Farms polygons (emodnet:windfarmspoly)" ;
+    emodnet:forFeatureType "windfarmspoly" ;
+    emodnet:targetKey "source_dataset" ;
+    emodnet:targetProperty owf:sourceDataset .
+
+emodnet:map-dist-coast a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ParseNumber ;
+    emodnet:sourceKey "dist_coast" ;
+    emodnet:targetKey "dist_coast" ;
+    emodnet:targetProperty owf:distanceToCoast .
+
+emodnet:map-location-points a emodnet:PropertyMapping ;
+    emodnet:constant "EMODnet point location" ;
+    emodnet:forFeatureType "windfarms" ;
+    emodnet:targetKey "location_method" ;
+    emodnet:targetProperty owf:locationMethod .
+
+emodnet:map-location-polygons a emodnet:PropertyMapping ;
+    emodnet:constant "EMODnet polygon" ;
+    emodnet:forFeatureType "windfarmspoly" ;
+    emodnet:targetKey "location_method" ;
+    emodnet:targetProperty owf:locationMethod .
+
+emodnet:map-location-status a emodnet:PropertyMapping ;
+    emodnet:constant owf:LocationSourceProvided ;
+    emodnet:targetKey "location_status" ;
+    emodnet:targetProperty owf:locationStatus .
+
+emodnet:map-n-turbines a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ParseInteger ;
+    emodnet:sourceKey "n_turbines" ;
+    emodnet:targetKey "n_turbines" ;
+    emodnet:targetProperty owf:nTurbines .
+
+emodnet:map-name a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:Copy ;
+    emodnet:sourceKey "name" ;
+    emodnet:targetKey "name" ;
+    emodnet:targetProperty dcterms:title .
+
+emodnet:map-notes a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:Copy ;
+    emodnet:sourceKey "notes" ;
+    emodnet:targetKey "notes" ;
+    emodnet:targetProperty dcterms:description .
+
+emodnet:map-power a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ParseNumber ;
+    emodnet:sourceKey "power_mw" ;
+    emodnet:targetKey "power_mw" ;
+    emodnet:targetProperty owf:powerMW .
+
+emodnet:map-source-reference a emodnet:PropertyMapping ;
+    emodnet:constant "https://ows.emodnet-humanactivities.eu/wfs" ;
+    emodnet:targetKey "source_reference" ;
+    emodnet:targetProperty dcterms:source .
+
+emodnet:map-source-type a emodnet:PropertyMapping ;
+    emodnet:constant owf:EmodnetSource ;
+    emodnet:targetKey "source_type" ;
+    emodnet:targetProperty owf:sourceType .
+
+emodnet:map-status a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:ConceptByLabel ;
+    emodnet:sourceKey "status" ;
+    emodnet:targetKey "status" ;
+    emodnet:targetProperty owf:conditionOfFacility .
+
+emodnet:map-type-inst a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:Copy ;
+    emodnet:sourceKey "type_inst" ;
+    emodnet:targetKey "type_inst" ;
+    emodnet:targetProperty owf:installationType .
+
+emodnet:map-updateyear a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:YearString ;
+    emodnet:sourceKey "updateyear" ;
+    emodnet:targetKey "updateyear" ;
+    emodnet:targetProperty owf:updateYear .
+
+emodnet:map-year a emodnet:PropertyMapping ;
+    emodnet:conversion emodnet:YearString ;
+    emodnet:sourceKey "year" ;
+    emodnet:targetKey "year" ;
+    emodnet:targetProperty owf:year .
+
+emodnet:map-year-semantics a emodnet:PropertyMapping ;
+    emodnet:sourceKey "year" ;
+    emodnet:targetKey "year_semantics" ;
+    emodnet:targetProperty owf:yearSemantics ;
+    emodnet:whenPresent "EMODnet reported project year" .
+
 inspire-cofv:functional a skos:Concept ;
     rdfs:label "functional"@en .
 
 inspire-cofv:projected a skos:Concept ;
     rdfs:label "projected"@en .
+
+emodnet:ConceptByLabel a emodnet:Conversion ;
+    rdfs:label "concept by label"@en ;
+    rdfs:comment "The seadots-emodnet: concept whose English rdfs:label equals the value (case-insensitive); null when there is none."@en .
+
+emodnet:YearString a emodnet:Conversion ;
+    rdfs:label "year as string"@en ;
+    rdfs:comment "A four-digit year as a string (2028.0 -> \"2028\")."@en .
+
+emodnet:Copy a emodnet:Conversion ;
+    rdfs:label "copy"@en ;
+    rdfs:comment "The value unchanged; empty strings become null."@en .
+
+emodnet:ParseNumber a emodnet:Conversion ;
+    rdfs:label "parse number"@en ;
+    rdfs:comment "A number; null when the value is not one."@en .
+
+emodnet:Conversion a owl:Class ;
+    rdfs:label "value conversion"@en .
+
+emodnet:PropertyMapping a owl:Class ;
+    rdfs:label "property mapping"@en ;
+    rdfs:comment "Fills one property of the target block from one EMODnet property, or with a constant."@en .
 
