@@ -450,6 +450,69 @@ osmkey:status skos:relatedMatch owf:conditionOfFacility .
 osmkey:power skos:relatedMatch owf:conditionOfFacility .
 
 
+# ================================================================
+# Turbines: alignment to common-windfarm-turbine (owf:WindTurbine)
+# Interpreted by transforms/osm_to_windfarm_turbine.py with the same
+# TagMapping / ValueRule vocabulary as the wind farm areas above.
+# ================================================================
+
+@prefix schema: <https://schema.org/> .
+@prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
+
+osmdata:ParseNumber a osmdata:Conversion ; rdfs:label "parse number"@en ;
+    rdfs:comment "A plain number with an optional metre unit, e.g. \"141\" or \"141 m\" -> 141; null for any other unit or text."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:TurbineElement a owl:Class ;
+    rdfs:label "OSM wind turbine element"@en ;
+    rdfs:comment "A node tagged as a wind generator. It belongs to the wind farm relation (an osmdata:WindfarmElement) that has it as a member, in any role."@en ;
+    rdfs:subClassOf osmdata:Element ;
+    skos:closeMatch owf:WindTurbine ;
+    osmdata:selectionRules ( osmdata:sel-generator ) ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:sel-generator a osmdata:ValueRule ; osmdata:ruleKey osmkey:power ; osmdata:ruleValue "generator" .
+
+osmdata:turbineTagMappings a owl:AnnotationProperty ;
+    rdfs:label "turbine tag mappings"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+<https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source>
+    osmdata:turbineTagMappings ( osmdata:tmap-ref osmdata:tmap-manufacturer osmdata:tmap-model
+        osmdata:tmap-rated-power osmdata:tmap-hub-height osmdata:tmap-rotor-diameter osmdata:tmap-rotor-axis
+        osmdata:tmap-offshore osmdata:tmap-operator osmdata:tmap-status ) .
+
+osmdata:tmap-ref a osmdata:TagMapping ; osmdata:targetProperty owf:turbineReference ; osmdata:targetKey "ref" ;
+    osmdata:sourceKeys ( osmkey:ref ) ; osmdata:conversion osmdata:Copy .
+osmdata:tmap-manufacturer a osmdata:TagMapping ; osmdata:targetProperty owf:manufacturerName ; osmdata:targetKey "manufacturer" ;
+    osmdata:sourceKeys ( osmkey:manufacturer ) ; osmdata:conversion osmdata:Copy .
+osmdata:tmap-model a osmdata:TagMapping ; osmdata:targetProperty schema:model ; osmdata:targetKey "model" ;
+    osmdata:sourceKeys ( osmkey:model ) ; osmdata:conversion osmdata:Copy .
+osmdata:tmap-rated-power a osmdata:TagMapping ; osmdata:targetProperty owf:ratedPowerMW ; osmdata:targetKey "rated_power_mw" ;
+    osmdata:sourceKeys ( osmkey:generator:output:electricity ) ; osmdata:conversion osmdata:ParseMegawatts .
+osmdata:tmap-hub-height a osmdata:TagMapping ; osmdata:targetProperty owf:hubHeight ; osmdata:targetKey "hub_height_m" ;
+    osmdata:sourceKeys ( osmkey:height:hub ) ; osmdata:conversion osmdata:ParseNumber .
+osmdata:tmap-rotor-diameter a osmdata:TagMapping ; osmdata:targetProperty owf:rotorDiameter ; osmdata:targetKey "rotor_diameter_m" ;
+    osmdata:sourceKeys ( osmkey:rotor:diameter ) ; osmdata:conversion osmdata:ParseNumber .
+osmdata:tmap-rotor-axis a osmdata:TagMapping ; osmdata:targetProperty owf:rotorAxis ; osmdata:targetKey "rotor_axis" ;
+    osmdata:valueRules (
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:generator:type ; osmdata:ruleValue "horizontal_axis" ; osmdata:yields owf:HorizontalAxis ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:generator:type ; osmdata:ruleValue "vertical_axis" ; osmdata:yields owf:VerticalAxis ] ) .
+osmdata:tmap-offshore a osmdata:TagMapping ; osmdata:targetProperty owf:offshore ; osmdata:targetKey "offshore" ;
+    osmdata:valueRules ( [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:offshore ; osmdata:ruleValue "yes" ; osmdata:yields true ] ) .
+osmdata:tmap-operator a osmdata:TagMapping ; osmdata:targetProperty owf:operatorName ; osmdata:targetKey "operator" ;
+    osmdata:sourceKeys ( osmkey:operator ) ; osmdata:conversion osmdata:SplitSemicolon .
+osmdata:tmap-status a osmdata:TagMapping ; osmdata:targetProperty owf:conditionOfFacility ; osmdata:targetKey "status" ;
+    osmdata:valueRules (
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:status ; osmdata:ruleValue "construction" ; osmdata:yields inspire-cofv:underConstruction ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:construction:power ; osmdata:ruleValue "generator" ; osmdata:yields inspire-cofv:underConstruction ] ) .
+
+# Element-level rules for turbines (implemented by the transform):
+#   node id                          -> feature id <https://www.openstreetmap.org/node/{id}>, Point geometry from lat/lon
+#   member of a wind farm relation   -> windfarm (relation URL), windfarm_name (relation name)
+#   node timestamp                   -> last_updated
+# generator:type=offshore is not a rotor axis value and gives no rotor_axis.
+
 #################################################################
 # Tag keys (generated by gen_osm_tags.py from the block examples; do not edit by hand)
 #

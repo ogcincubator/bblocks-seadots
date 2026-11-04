@@ -1,0 +1,30 @@
+transforms:
+  - id: to-windfarm-designated-area
+    description: >
+      Converts EMODnet Human Activities WFS GeoJSON output (`emodnet:windfarms`
+      points and `emodnet:windfarmspoly` polygons) into windfarm designated areas
+      (`common-windfarm-designated-area`). The transformation is driven by the
+      alignment declared in this block's `ontology.ttl`: `emodnet:propertyMappings`
+      maps each WFS property onto `owf:`, `schema:` and `dcterms:` properties with
+      a conversion or a constant; status and country become `seadots-emodnet:`
+      concepts by their English label. Each feature keeps its geometry and gets the
+      WFS GetFeature URL of the record as identifier.
+    type: python
+    ref: transforms/emodnet_to_windfarm_area.py
+    inputs:
+      mediaTypes:
+        - application/geo+json
+        - application/json
+    outputs:
+      mediaTypes:
+        - application/geo+json
+        - application/json
+      profiles:
+        - bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area
+    metadata:
+      ontology: _sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl
+      target_context: _sources/windfarms/common-windfarm-designated-area/context.jsonld
+      source_snapshot_date: '2026-10-30'
+      dependencies:
+        pip:
+          - rdflib

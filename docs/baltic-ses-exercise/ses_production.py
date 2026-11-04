@@ -234,46 +234,42 @@ def net_capacity_factor(gross_cf, wake_efficiency, availability=0.95, electrical
 # =============================================================== analysis steps used by the notebook
 # Each function is one logical step; the notebook only chooses inputs and assumptions.
 
-def turbines_from_osm(data, rules):
-    """OpenStreetMap wind-turbine nodes -> GeoDataFrame with the wind site each turbine belongs to.
+def assign_turbines(turbines, rules):
+    """Turbines in the common model (common-windfarm-turbine) -> GeoDataFrame with the wind site of each turbine.
 
-    ``rules`` = {site: {"model": ..., "ref_prefix": ..., "relation": "relation/<id>"}}; the first matching
-    rule wins. ``data`` is the raw OSM GeoJSON (dict or path).
+    ``turbines`` is a FeatureCollection (dict or path) or a GeoDataFrame of ``common-windfarm-turbine``
+    features. ``rules`` = {site: {"model": ..., "ref_prefix": ..., "windfarm": <wind farm id>}}; the first
+    matching rule wins.
     """
-    import json as _json
-    import geopandas as gpd
-    from shapely.geometry import shape
-    fc = _json.loads(open(data, encoding="utf-8").read()) if not isinstance(data, dict) else data
-    members = {}
-    for f in fc["features"]:
-        if f["properties"].get("osm_type") == "relation":
-            members[f["id"]] = {m.split(":")[0] for m in f["properties"].get("members", [])}
-    def site_of(f):
-        tags = f["properties"]["tags"]
+    import viz
+    gdf = viz.to_gdf(turbines)
+
+    def site_of(t):
         for site, rule in rules.items():
-            if "ref_prefix" in rule and tags.get("ref", "").startswith(rule["ref_prefix"]):
+            if "ref_prefix" in rule and str(t.get("ref") or "").startswith(rule["ref_prefix"]):
                 return site
-            if "relation" in rule and f["id"] in members.get(rule["relation"], ()):
+            if "windfarm" in rule and t.get("windfarm") == rule["windfarm"]:
                 return site
-            if "model" in rule and tags.get("model") == rule["model"] and "ref_prefix" not in rule:
+            if "model" in rule and t.get("model") == rule["model"] and "ref_prefix" not in rule:
                 return site
         return None
-    rows = [{"osm_id": f["id"], "wind_site": site_of(f), "model": f["properties"]["tags"].get("model"),
-             "rotor_d": float(f["properties"]["tags"]["rotor:diameter"]),
-             "hub_m_osm": f["properties"]["tags"].get("height:hub"), "ref": f["properties"]["tags"].get("ref"),
-             "geometry": shape(f["geometry"])}
-            for f in fc["features"] if f["properties"]["tags"].get("power") == "generator"]
-    return gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
+    out = gdf[["id", "model", "ref", "geometry"]].rename(columns={"id": "turbine_id"}).copy()
+    out.insert(1, "wind_site", [site_of(t) for _, t in gdf.iterrows()])
+    out["rotor_d"] = gdf["rotor_diameter_m"].astype(float)
+    out["hub_m_osm"] = gdf["hub_height_m"]
+    return out[["turbine_id", "wind_site", "model", "rotor_d", "hub_m_osm", "ref", "geometry"]]
 
 
 def layout_summary(turbines, assignment, national):
-    """Turbines per wind site with model, rotor, OSM hub height and installed MW vs national MW."""
-    summary = turbines.groupby("wind_site").agg(turbines=("osm_id", "size"), model=("model", "first"),
+    """Turbines per wind site with model, rotor, OSM hub height and installed MW vs national MW.
+
+    ``national`` holds the national projects in the common model (``name``, ``power_mw``, ``year``)."""
+    summary = turbines.groupby("wind_site").agg(turbines=("turbine_id", "size"), model=("model", "first"),
                                                 rotor_m=("rotor_d", "first"), hub_m_osm=("hub_m_osm", "first"))
     a = assignment.set_index("wind_site")
     summary = summary.join(a[["project", "unit_mw", "hub_m", "share_of_project"]])
     summary["MW_from_turbines"] = summary.turbines * summary.unit_mw
-    summary["MW_national"] = summary.project.map(national.set_index("farm").capacity_mw) * summary.share_of_project
+    summary["MW_national"] = summary.project.map(national.set_index("name").power_mw) * summary.share_of_project
     return summary.drop(columns="share_of_project")
 
 
@@ -383,7 +379,7 @@ def wake_efficiencies(turbines, roses, curves, k=0.04):
 def net_cf_by_project(gross, wakes, assignment, national, availability=0.95, electrical=0.98,
                       gross_column="turbine curve, ICON hub"):
     """Net capacity factor per national project; sites without a layout get the mean modelled wake efficiency."""
-    mw = assignment.set_index("wind_site").project.map(national.set_index("farm").capacity_mw) * \
+    mw = assignment.set_index("wind_site").project.map(national.set_index("name").power_mw) * \
          assignment.set_index("wind_site").share_of_project
     modelled = wakes["in the cluster"]
     default = np.average(modelled, weights=mw.loc[modelled.index])
@@ -396,7 +392,7 @@ def net_cf_by_project(gross, wakes, assignment, national, availability=0.95, ele
         "MW": g.MW.sum(), "turbine": g.turbine.iloc[0], "gross_cf": np.average(g.gross_cf, weights=g.MW),
         "wake_eff": np.average(g.wake_eff, weights=g.MW), "net_cf": np.average(g.net_cf, weights=g.MW),
         "wake": g.wake.iloc[0]}), include_groups=False)
-    by_project["first power"] = by_project.index.map(national.set_index("farm").first_power_or_completion_year)
+    by_project["first power"] = by_project.index.map(national.set_index("name").year)
     return by_project, default
 
 
@@ -411,7 +407,7 @@ def contracted_cf_grid(assignment, hist, curves, specs, wakes, national, default
     choices = {"turbine: datasheet": "low", "turbine: midpoint": "mid", "turbine: rotor physics": "high",
                "IEA 15 MW": "IEA-15-240-RWT", "generic": "generic (extension 1)"}
     sel = assignment[~assignment.project.isin(exclude)]
-    weights = [national.set_index("farm").capacity_mw[a.project] * a.share_of_project for _, a in sel.iterrows()]
+    weights = [national.set_index("name").power_mw[a.project] * a.share_of_project for _, a in sel.iterrows()]
     grid = {}
     for label, choice in choices.items():
         col = {}

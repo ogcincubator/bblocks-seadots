@@ -97,9 +97,18 @@ def update_ices_dependent_parameters(P, ices, econ, alpha, beta):
 
 
 def investment_path(national, years=YEARS, exclude_farms=()):
-    """Aggregate pipeline MW by first-power year and return annual additions in GW."""
-    selected = national[~national.farm.isin(exclude_farms)]
-    grouped = selected.groupby("first_power_or_completion_year").capacity_mw.sum() / 1000
+    """Aggregate pipeline MW by first-power year and return annual additions in GW.
+
+    ``national`` is either the national CSV (columns farm, capacity_mw, first_power_or_completion_year)
+    or the national projects in the common model (common-windfarm-designated-area: name, power_mw, year).
+    """
+    if "farm" in national:
+        name, mw, year = national.farm, national.capacity_mw, national.first_power_or_completion_year
+    else:
+        name, mw = national["name"], national["power_mw"]
+        year = national["year"].map(lambda y: int(str(y)[:4]) if y is not None and str(y)[:4].isdigit() else None)
+    keep = ~name.isin(exclude_farms)
+    grouped = mw[keep].groupby(year[keep]).sum() / 1000
     return [float(grouped.get(year, 0.0)) for year in years]
 
 

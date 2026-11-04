@@ -234,3 +234,103 @@ inspire-cofv:functional
 inspire-cofv:disused
     a skos:Concept ;
     rdfs:label "disused"@en .
+
+
+#################################################################
+# 4. Alignment to the common windfarm model
+#    (common-windfarm-designated-area / common-windfarm-ontology, owf:)
+#
+# Machine-readable: transforms/emodnet_to_windfarm_area.py only interprets the
+# mappings below. Each emodnet:PropertyMapping fills one JSON key of the target
+# block from one EMODnet WFS property (by its JSON key), with a conversion, or
+# writes a constant. emodnet:ConceptByLabel looks the value up among the
+# seadots-emodnet: concepts of this ontology by their English label, so status
+# and country become concepts (e.g. "Test site" -> seadots-emodnet:TestSuite).
+# A mapping with emodnet:forFeatureType applies only to that WFS feature type.
+#################################################################
+
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix schema: <https://schema.org/> .
+
+emodnet:PropertyMapping a owl:Class ;
+    rdfs:label "property mapping"@en ;
+    rdfs:comment "Fills one property of the target block from one EMODnet property, or with a constant."@en .
+emodnet:Conversion a owl:Class ; rdfs:label "value conversion"@en .
+
+emodnet:sourceKey a owl:DatatypeProperty ; rdfs:domain emodnet:PropertyMapping ; rdfs:range xsd:string ;
+    rdfs:label "source key"@en ; rdfs:comment "JSON key of the property in the EMODnet WFS GeoJSON output."@en .
+emodnet:targetKey a owl:DatatypeProperty ; rdfs:domain emodnet:PropertyMapping ; rdfs:range xsd:string ;
+    rdfs:label "target JSON key"@en ; rdfs:comment "Property name in the target block, i.e. the context term of emodnet:targetProperty."@en .
+emodnet:targetProperty a owl:ObjectProperty ; rdfs:domain emodnet:PropertyMapping ; rdfs:range rdf:Property ;
+    rdfs:label "target property"@en .
+emodnet:conversion a owl:ObjectProperty ; rdfs:domain emodnet:PropertyMapping ; rdfs:range emodnet:Conversion ;
+    rdfs:label "conversion"@en .
+emodnet:constant a owl:DatatypeProperty ; rdfs:domain emodnet:PropertyMapping ;
+    rdfs:label "constant"@en ; rdfs:comment "Value written for every record (of emodnet:forFeatureType, when given)."@en .
+emodnet:whenPresent a owl:DatatypeProperty ; rdfs:domain emodnet:PropertyMapping ;
+    rdfs:label "constant when present"@en ; rdfs:comment "Constant written only when the source key has a value (used for explanatory fields)."@en .
+emodnet:forFeatureType a owl:DatatypeProperty ; rdfs:domain emodnet:PropertyMapping ; rdfs:range xsd:string ;
+    rdfs:label "for feature type"@en ; rdfs:comment "WFS feature type (windfarms, windfarmspoly) the mapping is limited to."@en .
+
+emodnet:Copy a emodnet:Conversion ; rdfs:label "copy"@en ; rdfs:comment "The value unchanged; empty strings become null."@en .
+emodnet:ParseNumber a emodnet:Conversion ; rdfs:label "parse number"@en ; rdfs:comment "A number; null when the value is not one."@en .
+emodnet:ParseInteger a emodnet:Conversion ; rdfs:label "parse integer"@en ; rdfs:comment "An integer; null when the value is not one."@en .
+emodnet:YearString a emodnet:Conversion ; rdfs:label "year as string"@en ; rdfs:comment "A four-digit year as a string (2028.0 -> \"2028\")."@en .
+emodnet:ConceptByLabel a emodnet:Conversion ; rdfs:label "concept by label"@en ;
+    rdfs:comment "The seadots-emodnet: concept whose English rdfs:label equals the value (case-insensitive); null when there is none."@en .
+
+emodnet:propertyMappings a owl:AnnotationProperty ; rdfs:label "property mappings"@en .
+
+<https://w3id.org/ogc/hosted/seadots/offshore-windfarm>
+    emodnet:propertyMappings ( emodnet:map-name emodnet:map-country emodnet:map-n-turbines emodnet:map-power
+        emodnet:map-status emodnet:map-type-inst emodnet:map-year emodnet:map-year-semantics emodnet:map-updateyear
+        emodnet:map-dist-coast emodnet:map-area emodnet:map-notes emodnet:map-source-type
+        emodnet:map-dataset-points emodnet:map-dataset-polygons emodnet:map-source-reference
+        emodnet:map-location-status emodnet:map-location-points emodnet:map-location-polygons ) .
+
+emodnet:map-name a emodnet:PropertyMapping ; emodnet:targetProperty dcterms:title ; emodnet:targetKey "name" ;
+    emodnet:sourceKey "name" ; emodnet:conversion emodnet:Copy .
+emodnet:map-country a emodnet:PropertyMapping ; emodnet:targetProperty schema:addressCountry ; emodnet:targetKey "country" ;
+    emodnet:sourceKey "country" ; emodnet:conversion emodnet:ConceptByLabel .
+emodnet:map-n-turbines a emodnet:PropertyMapping ; emodnet:targetProperty owf:nTurbines ; emodnet:targetKey "n_turbines" ;
+    emodnet:sourceKey "n_turbines" ; emodnet:conversion emodnet:ParseInteger .
+emodnet:map-power a emodnet:PropertyMapping ; emodnet:targetProperty owf:powerMW ; emodnet:targetKey "power_mw" ;
+    emodnet:sourceKey "power_mw" ; emodnet:conversion emodnet:ParseNumber .
+emodnet:map-status a emodnet:PropertyMapping ; emodnet:targetProperty owf:conditionOfFacility ; emodnet:targetKey "status" ;
+    emodnet:sourceKey "status" ; emodnet:conversion emodnet:ConceptByLabel .
+emodnet:map-type-inst a emodnet:PropertyMapping ; emodnet:targetProperty owf:installationType ; emodnet:targetKey "type_inst" ;
+    emodnet:sourceKey "type_inst" ; emodnet:conversion emodnet:Copy .
+emodnet:map-year a emodnet:PropertyMapping ; emodnet:targetProperty owf:year ; emodnet:targetKey "year" ;
+    emodnet:sourceKey "year" ; emodnet:conversion emodnet:YearString .
+emodnet:map-year-semantics a emodnet:PropertyMapping ; emodnet:targetProperty owf:yearSemantics ; emodnet:targetKey "year_semantics" ;
+    emodnet:sourceKey "year" ; emodnet:whenPresent "EMODnet reported project year" .
+emodnet:map-updateyear a emodnet:PropertyMapping ; emodnet:targetProperty owf:updateYear ; emodnet:targetKey "updateyear" ;
+    emodnet:sourceKey "updateyear" ; emodnet:conversion emodnet:YearString .
+emodnet:map-dist-coast a emodnet:PropertyMapping ; emodnet:targetProperty owf:distanceToCoast ; emodnet:targetKey "dist_coast" ;
+    emodnet:sourceKey "dist_coast" ; emodnet:conversion emodnet:ParseNumber .
+emodnet:map-area a emodnet:PropertyMapping ; emodnet:targetProperty owf:areaSqKm ; emodnet:targetKey "area_sqkm" ;
+    emodnet:sourceKey "area_sqkm" ; emodnet:conversion emodnet:ParseNumber .
+emodnet:map-notes a emodnet:PropertyMapping ; emodnet:targetProperty dcterms:description ; emodnet:targetKey "notes" ;
+    emodnet:sourceKey "notes" ; emodnet:conversion emodnet:Copy .
+emodnet:map-source-type a emodnet:PropertyMapping ; emodnet:targetProperty owf:sourceType ; emodnet:targetKey "source_type" ;
+    emodnet:constant owf:EmodnetSource .
+emodnet:map-dataset-points a emodnet:PropertyMapping ; emodnet:targetProperty owf:sourceDataset ; emodnet:targetKey "source_dataset" ;
+    emodnet:forFeatureType "windfarms" ; emodnet:constant "EMODnet Human Activities - Wind Farms (emodnet:windfarms)" .
+emodnet:map-dataset-polygons a emodnet:PropertyMapping ; emodnet:targetProperty owf:sourceDataset ; emodnet:targetKey "source_dataset" ;
+    emodnet:forFeatureType "windfarmspoly" ; emodnet:constant "EMODnet Human Activities - Wind Farms polygons (emodnet:windfarmspoly)" .
+emodnet:map-source-reference a emodnet:PropertyMapping ; emodnet:targetProperty dcterms:source ; emodnet:targetKey "source_reference" ;
+    emodnet:constant "https://ows.emodnet-humanactivities.eu/wfs" .
+emodnet:map-location-status a emodnet:PropertyMapping ; emodnet:targetProperty owf:locationStatus ; emodnet:targetKey "location_status" ;
+    emodnet:constant owf:LocationSourceProvided .
+emodnet:map-location-points a emodnet:PropertyMapping ; emodnet:targetProperty owf:locationMethod ; emodnet:targetKey "location_method" ;
+    emodnet:forFeatureType "windfarms" ; emodnet:constant "EMODnet point location" .
+emodnet:map-location-polygons a emodnet:PropertyMapping ; emodnet:targetProperty owf:locationMethod ; emodnet:targetKey "location_method" ;
+    emodnet:forFeatureType "windfarmspoly" ; emodnet:constant "EMODnet polygon" .
+
+# ---------- record-level alignment (not property based) ----------
+# Implemented by the transform as structural rules:
+#   WFS feature id (type.n)        -> feature id = WFS GetFeature URL for that feature, dcterms:identifier "type.n"
+#   WFS geometry                   -> geometry unchanged (Point for windfarms, Polygon/MultiPolygon for windfarmspoly)
+#   response timeStamp / metadata  -> owf:sourceSnapshotDate
+# Not in EMODnet and left null: status detail, offshore, operator, owner, developer, licensing fields, same_as.
+# shape_leng / shape_area are GIS bookkeeping in degrees and are not carried over (area_sqkm is).

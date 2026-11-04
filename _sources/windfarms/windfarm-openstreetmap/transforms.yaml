@@ -27,3 +27,29 @@ transforms:
         pip:
           - rdflib
           - pyproj
+  - id: to-windfarm-turbine
+    description: >
+      Converts an OSM API 0.6 map response into wind turbines
+      (`common-windfarm-turbine`). The transformation is driven by the alignment
+      declared in this block's `ontology.ttl`: `osmdata:TurbineElement` selects
+      `power=generator` nodes and `osmdata:turbineTagMappings` maps their tags onto
+      `owf:` properties (rated power, hub height, rotor diameter, rotor axis,
+      condition). Each turbine gets the wind farm relation it is a member of as
+      `windfarm`, and the relation name as `windfarm_name`.
+    type: python
+    ref: transforms/osm_to_windfarm_turbine.py
+    inputs:
+      mediaTypes:
+        - application/json
+    outputs:
+      mediaTypes:
+        - application/geo+json
+        - application/json
+      profiles:
+        - bblocks://ogc.hosted.seadots.windfarms.common-windfarm-turbine
+    metadata:
+      ontology: _sources/windfarms/windfarm-openstreetmap/ontology.ttl
+      target_context: _sources/windfarms/common-windfarm-turbine/context.jsonld
+      dependencies:
+        pip:
+          - rdflib
