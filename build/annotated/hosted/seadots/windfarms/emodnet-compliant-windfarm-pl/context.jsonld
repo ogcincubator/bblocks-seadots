@@ -19,7 +19,10 @@
     "properties": {
       "@context": {
         "country": {
-          "@id": "schema:addressCountry",
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
+          },
+          "@id": "owf:country",
           "@type": "@vocab"
         },
         "n_turbines": "seadots:nTurbines",
@@ -28,13 +31,13 @@
           "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
           "@type": "@vocab"
         },
-        "type_inst": "schema:additionalType",
+        "type_inst": "owf:installationType",
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
         "notes": "dct:description",
-        "name": "schema:name",
-        "developer": "schema:creator",
+        "name": "dct:title",
+        "developer": "owf:developerName",
         "status_detail": "ses:statusDetail",
         "status_as_of": {
           "@id": "ses:statusAsOf",
@@ -98,7 +101,6 @@
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
-    "Poland": "http://publications.europa.eu/resource/authority/country/POL",
     "MatchCandidate": "ses:MatchCandidate",
     "source_record": {
       "@id": "ses:sourceRecord",
@@ -145,7 +147,7 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",

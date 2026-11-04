@@ -38,7 +38,7 @@ The feature `id` is the URL of the source element, e.g. `https://www.openstreetm
 
 ## Semantics
 
-`context.jsonld` maps `properties` with `@nest`, so the turbine attributes attach directly to the feature resource rather than to an intermediate node. Terms come from the shared windfarm ontology (`owf:`, [common-windfarm-ontology](../common-windfarm-ontology/)), which defines `owf:WindTurbine`, aligned by `rdfs:seeAlso` to the [IHO S-100 wind turbine](https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0) definition. It also defines the turbine properties, with QUDT units where they apply, and the rotor-axis concepts. `model` maps to `schema:model`, `last_updated` to `dcterms:modified`, and `status` to [INSPIRE ConditionOfFacilityValue](http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) concepts.
+`context.jsonld` maps `properties` with `@nest`, so the turbine attributes attach directly to the feature resource rather than to an intermediate node. Terms come from the shared windfarm ontology (`owf:`, [common-windfarm-ontology](../common-windfarm-ontology/)), which defines `owf:WindTurbine`, aligned by `rdfs:seeAlso` to the [IHO S-100 wind turbine](https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0) definition. It also defines the turbine properties, with QUDT units where they apply, and the rotor-axis concepts. `model` maps to `owf:modelName` (aligned with `skos:closeMatch` to `schema:model`), `last_updated` to `dcterms:modified`, and `status` to [INSPIRE ConditionOfFacilityValue](http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) concepts.
 
 ## Examples
 
@@ -123,17 +123,16 @@ Turbine 76 of the Baltic Power offshore wind farm (Vestas V236-15.0 MW), convert
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.openstreetmap.org/node/14185128565> a geojson:Feature ;
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.765358e+01 5.500667e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:commissioningYear "2051"^^xsd:gYear ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16134,16 +16133,15 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
 @prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.openstreetmap.org/node/14185128565> a geojson:Feature ;
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.765358e+01 5.500667e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16156,9 +16154,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.763486e+01 5.502063e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16171,9 +16169,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.766107e+01 5.508046e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16186,9 +16184,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.764328e+01 5.506036e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16201,9 +16199,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.764e+01 5.504937e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16216,9 +16214,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.766812e+01 5.510027e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16231,9 +16229,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.761012e+01 5.504387e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16246,9 +16244,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.768346e+01 5.506614e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16261,9 +16259,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.774762e+01 5.509924e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16276,9 +16274,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.765435e+01 5.507138e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16291,9 +16289,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.764002e+01 5.503966e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16306,9 +16304,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.763531e+01 5.502982e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16321,9 +16319,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.762887e+01 5.500997e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16336,9 +16334,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.762683e+01 5.500081e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16351,9 +16349,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.758926e+01 5.499338e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16366,9 +16364,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.771684e+01 5.50906e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16381,9 +16379,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.766301e+01 5.509107e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16396,9 +16394,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767817e+01 5.51094e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16411,9 +16409,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767228e+01 5.50146e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16426,9 +16424,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767218e+01 5.502328e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16441,9 +16439,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767545e+01 5.503189e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16456,9 +16454,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767507e+01 5.504086e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16471,9 +16469,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767309e+01 5.504981e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16486,9 +16484,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.766844e+01 5.50588e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16501,9 +16499,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.768571e+01 5.507647e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16516,9 +16514,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.76895e+01 5.508797e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16531,9 +16529,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.769492e+01 5.509878e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16546,9 +16544,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770164e+01 5.510965e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16561,9 +16559,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.759436e+01 5.500322e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16576,9 +16574,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.760223e+01 5.50149e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16591,9 +16589,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.760432e+01 5.502411e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16606,9 +16604,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.760638e+01 5.503469e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16621,9 +16619,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.761611e+01 5.505298e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16636,9 +16634,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.761844e+01 5.50638e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16651,9 +16649,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.762462e+01 5.507448e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16666,9 +16664,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.763226e+01 5.508373e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16681,9 +16679,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.763667e+01 5.50928e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16696,9 +16694,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.763818e+01 5.51029e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16711,9 +16709,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.76546e+01 5.510918e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16726,9 +16724,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.772245e+01 5.510092e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16741,9 +16739,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.772459e+01 5.510981e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16756,9 +16754,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.774705e+01 5.51082e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16771,9 +16769,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.774346e+01 5.509015e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16786,9 +16784,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.776984e+01 5.510858e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16801,9 +16799,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.77716e+01 5.509879e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16816,9 +16814,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.776571e+01 5.508855e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16831,9 +16829,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770855e+01 5.508098e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16846,9 +16844,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770855e+01 5.50718e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16861,9 +16859,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770855e+01 5.506282e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16876,9 +16874,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770856e+01 5.50538e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16891,9 +16889,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770858e+01 5.504482e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16906,9 +16904,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770862e+01 5.503583e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16921,9 +16919,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770864e+01 5.502344e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16936,9 +16934,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770859e+01 5.501423e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16951,9 +16949,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.770896e+01 5.500527e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16966,9 +16964,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.768887e+01 5.500887e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16981,9 +16979,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.767377e+01 5.500127e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -16996,9 +16994,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.76507e+01 5.499582e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17011,9 +17009,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.762848e+01 5.499182e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17026,9 +17024,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.760743e+01 5.498794e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17041,9 +17039,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.758752e+01 5.498289e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17056,9 +17054,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.762182e+01 5.510877e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17071,9 +17069,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.761634e+01 5.509955e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17086,9 +17084,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.761225e+01 5.50888e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17101,9 +17099,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.760376e+01 5.507959e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17116,9 +17114,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.759547e+01 5.507059e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17131,9 +17129,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.758705e+01 5.506144e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17146,9 +17144,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.758379e+01 5.505254e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17161,9 +17159,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.758153e+01 5.504358e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17176,9 +17174,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.757925e+01 5.503458e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17191,9 +17189,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.757696e+01 5.502553e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17206,9 +17204,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.757467e+01 5.501648e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17221,9 +17219,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.757237e+01 5.500736e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17236,9 +17234,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.757008e+01 5.499832e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17251,9 +17249,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.75678e+01 5.498929e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17266,9 +17264,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-16T14:23:07+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.756552e+01 5.498027e+01 ) ] ;
-    schema:model "V236-15.0 MW" ;
     owf:hubHeight 141.0 ;
     owf:manufacturerName "Vestas" ;
+    owf:modelName "V236-15.0 MW" ;
     owf:offshore true ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21402440> ;
     owf:ratedPowerMW 15.0 ;
@@ -17281,9 +17279,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.727005e+01 5.499878e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17295,9 +17293,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.727541e+01 5.501067e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17309,9 +17307,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.728105e+01 5.502246e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17323,9 +17321,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.728381e+01 5.498389e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17337,9 +17335,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.728946e+01 5.499559e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17351,9 +17349,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.729541e+01 5.500735e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17365,9 +17363,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.730046e+01 5.501902e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17379,9 +17377,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.730608e+01 5.503064e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17393,9 +17391,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.72925e+01 5.495707e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17407,9 +17405,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.729817e+01 5.496872e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17421,9 +17419,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.730348e+01 5.498053e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17435,9 +17433,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.730896e+01 5.499226e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17449,9 +17447,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.731449e+01 5.500367e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17463,9 +17461,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.731991e+01 5.501559e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17477,9 +17475,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.732559e+01 5.502728e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17491,9 +17489,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.731185e+01 5.495373e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17505,9 +17503,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.731743e+01 5.496536e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17519,9 +17517,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.732287e+01 5.497706e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17533,9 +17531,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.732849e+01 5.498885e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17547,9 +17545,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.733377e+01 5.500045e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17561,9 +17559,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.733931e+01 5.50122e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17575,9 +17573,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.734481e+01 5.502392e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17589,9 +17587,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.733677e+01 5.496209e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17603,9 +17601,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.734226e+01 5.497366e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17617,9 +17615,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.734798e+01 5.498538e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17631,9 +17629,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.736425e+01 5.502055e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17645,9 +17643,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.735613e+01 5.49585e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17659,9 +17657,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.73617e+01 5.497031e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17673,9 +17671,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.73729e+01 5.499377e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17687,9 +17685,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.737807e+01 5.500545e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17701,9 +17699,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.738362e+01 5.501712e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17715,9 +17713,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.738124e+01 5.496689e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17729,9 +17727,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.738653e+01 5.497858e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17743,9 +17741,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.739201e+01 5.499022e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17757,9 +17755,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.740311e+01 5.501374e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17771,9 +17769,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.740052e+01 5.496347e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17785,9 +17783,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.740578e+01 5.497531e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17799,9 +17797,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.741168e+01 5.498702e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17813,9 +17811,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.741696e+01 5.49986e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17827,9 +17825,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.742238e+01 5.501032e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17841,9 +17839,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.742528e+01 5.497176e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17855,9 +17853,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.743081e+01 5.498352e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17869,9 +17867,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.74362e+01 5.49952e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17883,9 +17881,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.744177e+01 5.500691e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17897,9 +17895,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.745015e+01 5.498002e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17911,9 +17909,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.745567e+01 5.499177e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17925,9 +17923,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.746127e+01 5.500353e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17939,9 +17937,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.747507e+01 5.498838e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17953,9 +17951,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.748057e+01 5.499996e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17967,9 +17965,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:34:04+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.749978e+01 5.499656e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409512> ;
@@ -17981,9 +17979,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.67776e+01 5.5108e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -17995,9 +17993,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.680314e+01 5.508687e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18009,9 +18007,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.680055e+01 5.509781e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18023,9 +18021,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.679816e+01 5.510893e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18037,9 +18035,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.682537e+01 5.507658e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18051,9 +18049,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.682296e+01 5.508794e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18065,9 +18063,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.682072e+01 5.509906e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18079,9 +18077,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.681869e+01 5.51099e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18093,9 +18091,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.681603e+01 5.512121e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18107,9 +18105,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.684783e+01 5.506684e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18121,9 +18119,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.684575e+01 5.507773e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18135,9 +18133,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.684345e+01 5.508889e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18149,9 +18147,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.684111e+01 5.510004e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18163,9 +18161,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.683836e+01 5.511103e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18177,9 +18175,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.68365e+01 5.512231e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18191,9 +18189,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.686798e+01 5.506797e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18205,9 +18203,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.686587e+01 5.507891e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18219,9 +18217,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.686363e+01 5.509011e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18233,9 +18231,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.685869e+01 5.511234e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18247,9 +18245,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.6856e+01 5.512346e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18261,9 +18259,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.689104e+01 5.505779e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18275,9 +18273,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.688808e+01 5.50688e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18289,9 +18287,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.688626e+01 5.507997e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18303,9 +18301,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.688153e+01 5.510228e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18317,9 +18315,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.687895e+01 5.511362e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18331,9 +18329,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.687668e+01 5.512452e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18345,9 +18343,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.691368e+01 5.504767e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18359,9 +18357,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.691121e+01 5.505851e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18373,9 +18371,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.690873e+01 5.507015e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18387,9 +18385,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.690412e+01 5.509222e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18401,9 +18399,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.689871e+01 5.511362e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18415,9 +18413,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.689714e+01 5.512559e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18429,9 +18427,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.693639e+01 5.503735e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18443,9 +18441,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.693361e+01 5.504874e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18457,9 +18455,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.69316e+01 5.505984e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18471,9 +18469,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.692912e+01 5.507094e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18485,9 +18483,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.692701e+01 5.508208e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18499,9 +18497,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.692447e+01 5.509334e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18513,9 +18511,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.69224e+01 5.510413e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18527,9 +18525,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.691954e+01 5.511559e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18541,9 +18539,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.691725e+01 5.512673e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18555,9 +18553,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.695657e+01 5.503868e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18569,9 +18567,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.695422e+01 5.50498e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18583,9 +18581,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.695173e+01 5.506098e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18597,9 +18595,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.694915e+01 5.507234e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18611,9 +18609,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.694712e+01 5.508304e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18625,9 +18623,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.694459e+01 5.509417e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18639,9 +18637,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.694217e+01 5.510557e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18653,9 +18651,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.694029e+01 5.511681e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18667,9 +18665,9 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-18T12:35:13+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.693714e+01 5.512781e+01 ) ] ;
-    schema:model "SG 14-236 DD" ;
     owf:conditionOfFacility inspire-cofv:underConstruction ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-236 DD" ;
     owf:operatorName "Equinor",
         "Polenergia" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21409513> ;
@@ -18681,8 +18679,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705676e+01 5.505042e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18696,8 +18694,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.716228e+01 5.507434e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18711,8 +18709,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705515e+01 5.505911e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18726,8 +18724,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.699413e+01 5.504852e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18741,8 +18739,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.708136e+01 5.508485e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18756,8 +18754,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.720759e+01 5.508408e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18771,8 +18769,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.714581e+01 5.50777e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18786,8 +18784,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.717915e+01 5.504845e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18801,8 +18799,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.726865e+01 5.509771e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18816,8 +18814,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.720592e+01 5.509244e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18831,8 +18829,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.697586e+01 5.506017e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18846,8 +18844,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.702308e+01 5.506088e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18861,8 +18859,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.700884e+01 5.505364e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18876,8 +18874,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.697936e+01 5.504307e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18891,8 +18889,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.708699e+01 5.502731e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18906,8 +18904,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.704343e+01 5.511174e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18921,8 +18919,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.706485e+01 5.508823e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18936,8 +18934,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.713015e+01 5.507724e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18951,8 +18949,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719098e+01 5.508831e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18966,8 +18964,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.710555e+01 5.510715e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18981,8 +18979,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.714781e+01 5.506772e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -18996,8 +18994,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.714991e+01 5.505728e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19011,8 +19009,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.726886e+01 5.508929e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19026,8 +19024,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.724511e+01 5.51018e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19041,8 +19039,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.723017e+01 5.509884e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19056,8 +19054,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.697318e+01 5.507473e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19071,8 +19069,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.697761e+01 5.505161e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19086,8 +19084,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.703697e+01 5.507025e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19101,8 +19099,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.710478e+01 5.507016e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19116,8 +19114,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.699636e+01 5.511284e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19131,8 +19129,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.696483e+01 5.511279e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19146,8 +19144,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.698107e+01 5.503456e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19161,8 +19159,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.702511e+01 5.50233e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19176,8 +19174,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.707141e+01 5.501194e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19191,8 +19189,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709376e+01 5.504418e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19206,8 +19204,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.706945e+01 5.506554e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19221,8 +19219,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705896e+01 5.511084e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19236,8 +19234,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.706266e+01 5.509905e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19251,8 +19249,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.70977e+01 5.508177e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19266,8 +19264,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.72146e+01 5.509997e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19281,8 +19279,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.712107e+01 5.510639e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19296,8 +19294,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.716454e+01 5.506287e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19311,8 +19309,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.716461e+01 5.505315e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19326,8 +19324,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719478e+01 5.504513e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19341,8 +19339,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.72586e+01 5.508246e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19356,8 +19354,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.726001e+01 5.510446e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19371,8 +19369,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.7222e+01 5.509048e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19386,8 +19384,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.696943e+01 5.509297e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19401,8 +19399,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.699238e+01 5.50571e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19416,8 +19414,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.70403e+01 5.50539e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19431,8 +19429,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709799e+01 5.506137e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19446,8 +19444,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.696725e+01 5.51036e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19461,8 +19459,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.699589e+01 5.503992e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19476,8 +19474,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.699577e+01 5.503076e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19491,8 +19489,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705538e+01 5.501558e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19506,8 +19504,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.708337e+01 5.501866e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19521,8 +19519,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709034e+01 5.503558e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19536,8 +19534,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.707118e+01 5.505702e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19551,8 +19549,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.707457e+01 5.510974e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19566,8 +19564,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.707807e+01 5.510079e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19581,8 +19579,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.713341e+01 5.506146e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19596,8 +19594,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719319e+01 5.5077e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19611,8 +19609,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719918e+01 5.510106e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19626,8 +19624,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.715232e+01 5.510425e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19641,8 +19639,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.717897e+01 5.506972e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19656,8 +19654,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.718146e+01 5.505705e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19671,8 +19669,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.720848e+01 5.504966e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19686,8 +19684,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.724846e+01 5.50757e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19701,8 +19699,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.725315e+01 5.509213e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19716,8 +19714,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.722412e+01 5.50802e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19731,8 +19729,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.697121e+01 5.508431e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19746,8 +19744,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.700692e+01 5.506332e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19761,8 +19759,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705326e+01 5.506769e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19776,8 +19774,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.708362e+01 5.507323e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19791,8 +19789,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.69839e+01 5.50985e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19806,8 +19804,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.701242e+01 5.503638e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19821,8 +19819,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.701071e+01 5.502696e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19836,8 +19834,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.704016e+01 5.501946e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19851,8 +19849,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.706219e+01 5.502291e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19866,8 +19864,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.707505e+01 5.503843e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19881,8 +19879,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709481e+01 5.505316e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19896,8 +19894,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709013e+01 5.510825e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19911,8 +19909,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.709417e+01 5.509921e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19926,8 +19924,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.712445e+01 5.506864e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19941,8 +19939,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.71766e+01 5.508135e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19956,8 +19954,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.718342e+01 5.510215e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19971,8 +19969,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719546e+01 5.506597e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -19986,8 +19984,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.719729e+01 5.505604e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20001,8 +19999,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.721923e+01 5.50562e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20016,8 +20014,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.723807e+01 5.506882e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20031,8 +20029,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.723868e+01 5.508617e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20046,8 +20044,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.720974e+01 5.507345e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20061,8 +20059,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.698806e+01 5.50775e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20076,8 +20074,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.703494e+01 5.508042e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20091,8 +20089,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.70512e+01 5.507782e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20106,8 +20104,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.704649e+01 5.510128e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20121,8 +20119,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.700159e+01 5.508883e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20136,8 +20134,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.702713e+01 5.504135e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20151,8 +20149,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.702888e+01 5.503258e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20166,8 +20164,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.704547e+01 5.502911e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20181,8 +20179,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.706063e+01 5.503135e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20196,8 +20194,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.705909e+01 5.503974e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20211,8 +20209,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.711011e+01 5.509818e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20226,8 +20224,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.70959e+01 5.509067e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20241,8 +20239,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.715982e+01 5.508568e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20256,8 +20254,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.716785e+01 5.510319e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20271,8 +20269,8 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
     dcterms:modified "2026-09-27T23:02:59+00:00"^^xsd:dateTime ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.712655e+01 5.50952e+01 ) ] ;
-    schema:model "SG 14-222 DD" ;
     owf:manufacturerName "Siemens Gamesa" ;
+    owf:modelName "SG 14-222 DD" ;
     owf:operatorName "Orsted",
         "PGE" ;
     owf:partOfWindfarm <https://www.openstreetmap.org/relation/21410256> ;
@@ -20659,7 +20657,7 @@ $defs:
               - string
               - 'null'
               description: Turbine model designation.
-              x-jsonld-id: https://schema.org/model
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#modelName
             rated_power_mw:
               type:
               - number
@@ -20759,7 +20757,6 @@ x-jsonld-extra-terms:
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   owf: https://w3id.org/ogc/hosted/seadots/windfarm#
-  schema: https://schema.org/
   xsd: http://www.w3.org/2001/XMLSchema#
   inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
   dcterms: http://purl.org/dc/terms/
@@ -20830,7 +20827,7 @@ Links to the schema:
       "@type": "@id"
     },
     "manufacturer": "owf:manufacturerName",
-    "model": "schema:model",
+    "model": "owf:modelName",
     "rated_power_mw": {
       "@id": "owf:ratedPowerMW",
       "@type": "xsd:decimal"
@@ -20884,7 +20881,6 @@ Links to the schema:
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
-    "schema": "https://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
     "dcterms": "http://purl.org/dc/terms/",

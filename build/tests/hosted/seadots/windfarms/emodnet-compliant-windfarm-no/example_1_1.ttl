@@ -1,14 +1,14 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;
-    geojson:properties [ schema:addressCountry seadots-emodnet:NL ;
-            schema:name "North Sea Demonstrator Offshore Wind Farm" ;
+    geojson:properties [ dcterms:title "North Sea Demonstrator Offshore Wind Farm" ;
             seadots-emodnet:commissioningDate "2025-01-01" ;
             seadots-emodnet:identifier "NS-DEMO-01" ;
             seadots-emodnet:installedCapacityMW 288 ;
@@ -20,5 +20,6 @@
             seadots-emodnet:sourceDataset "https://example.org/datasets/north-sea-demo-wind-farm.geojson" ;
             seadots-emodnet:turbineCount 24 ;
             seadots-emodnet:updateDate "2026-07-01" ;
-            seadots-emodnet:validFrom "2025-01-01" ] .
+            seadots-emodnet:validFrom "2025-01-01" ;
+            owf:country seadots-emodnet:NL ] .
 

@@ -1,31 +1,245 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ns: <https://w3id.org/ogc/hosted/seadots/national-windfarm-source#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/national-windfarm-source> a owl:Ontology ;
     dcterms:description "Terms describing the original columns in the Polish national windfarm source snapshot."@en ;
-    dcterms:title "Polish national windfarm source vocabulary"@en .
+    dcterms:title "Polish national windfarm source vocabulary"@en ;
+    owl:imports <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    ns:columnMappings ( ns:map-name ns:map-country ns:map-power ns:map-status ns:map-status-detail ns:map-status-as-of ns:map-offshore ns:map-year ns:map-year-semantics ns:map-year-assumed ns:map-updateyear ns:map-developer ns:map-notes ns:map-source-type ns:map-source-dataset ns:map-source-reference ns:map-snapshot-date ) .
+
+ns:ProjectRecord a owl:Class ;
+    rdfs:label "national project record"@en ;
+    rdfs:comment "One row of the Polish national offshore wind project compilation. A project can span several EMODnet sites (e.g. Baltyk 2 + Baltyk 3)."@en ;
+    skos:closeMatch owf:WindfarmArea .
+
+ns:columnMappings a owl:AnnotationProperty ;
+    rdfs:label "column mappings"@en .
+
+ns:constant a owl:DatatypeProperty ;
+    rdfs:label "constant"@en ;
+    rdfs:comment "Value that holds for every record of this source (a literal or a concept)."@en ;
+    rdfs:domain ns:ColumnMapping .
+
+ns:conversion a owl:ObjectProperty ;
+    rdfs:label "conversion"@en ;
+    rdfs:domain ns:ColumnMapping ;
+    rdfs:range ns:Conversion .
+
+ns:ruleColumn a owl:ObjectProperty ;
+    rdfs:label "rule column"@en ;
+    rdfs:domain ns:ValueRule ;
+    rdfs:range rdf:Property .
+
+ns:rulePattern a owl:DatatypeProperty ;
+    rdfs:label "rule pattern"@en ;
+    rdfs:comment "Case-insensitive regular expression searched in the column value."@en ;
+    rdfs:domain ns:ValueRule ;
+    rdfs:range xsd:string .
+
+ns:sourceColumns a owl:ObjectProperty ;
+    rdfs:label "source columns"@en ;
+    rdfs:comment "Ordered list of source column properties; the first non-empty one is used."@en ;
+    rdfs:domain ns:ColumnMapping ;
+    rdfs:range rdf:List .
+
+ns:targetKey a owl:DatatypeProperty ;
+    rdfs:label "target JSON key"@en ;
+    rdfs:comment "Property name in the target block, i.e. the context term of ns:targetProperty."@en ;
+    rdfs:domain ns:ColumnMapping ;
+    rdfs:range xsd:string .
+
+ns:targetProperty a owl:ObjectProperty ;
+    rdfs:label "target property"@en ;
+    rdfs:domain ns:ColumnMapping ;
+    rdfs:range rdf:Property .
+
+ns:valueRules a owl:ObjectProperty ;
+    rdfs:label "value rules"@en ;
+    rdfs:comment "Ordered list of ns:ValueRule; the first matching rule gives the value."@en ;
+    rdfs:domain ns:ColumnMapping ;
+    rdfs:range rdf:List .
+
+ns:yields a rdf:Property ;
+    rdfs:label "yields"@en ;
+    rdfs:comment "Target value: a concept (written as its notation or local name) or a literal."@en ;
+    rdfs:domain ns:ValueRule .
+
+ns:ParenthesisText a ns:Conversion ;
+    rdfs:label "text in parentheses"@en ;
+    rdfs:comment "The text inside the first pair of parentheses, e.g. 'construction (first power 10 Jul 2026)' -> 'first power 10 Jul 2026'; null when there is none."@en .
+
+ns:ParseDecimal a ns:Conversion ;
+    rdfs:label "parse decimal"@en ;
+    rdfs:comment "A number; null when the value is not one."@en .
+
+ns:ParseReportYear a ns:Conversion ;
+    rdfs:label "parse report year"@en ;
+    rdfs:comment "The year of ns:ParseReportDate, as a string."@en .
+
+ns:map-country a ns:ColumnMapping ;
+    ns:constant seadots-emodnet:Poland ;
+    ns:targetKey "country" ;
+    ns:targetProperty schema:addressCountry .
+
+ns:map-developer a ns:ColumnMapping ;
+    ns:conversion ns:Copy ;
+    ns:sourceColumns ( schema:creator ) ;
+    ns:targetKey "developer" ;
+    ns:targetProperty owf:developerName .
+
+ns:map-name a ns:ColumnMapping ;
+    ns:conversion ns:Copy ;
+    ns:sourceColumns ( ns:projectName ) ;
+    ns:targetKey "name" ;
+    ns:targetProperty schema:name .
+
+ns:map-notes a ns:ColumnMapping ;
+    ns:conversion ns:ParenthesisText ;
+    ns:sourceColumns ( dcterms:source ) ;
+    ns:targetKey "notes" ;
+    ns:targetProperty dcterms:description .
+
+ns:map-offshore a ns:ColumnMapping ;
+    ns:constant true ;
+    ns:targetKey "offshore" ;
+    ns:targetProperty owf:offshore .
+
+ns:map-power a ns:ColumnMapping ;
+    ns:conversion ns:ParseDecimal ;
+    ns:sourceColumns ( ns:reportedCapacityMW ) ;
+    ns:targetKey "power_mw" ;
+    ns:targetProperty owf:powerMW .
+
+ns:map-snapshot-date a ns:ColumnMapping ;
+    ns:conversion ns:ParseReportDate ;
+    ns:sourceColumns ( dcterms:source ) ;
+    ns:targetKey "source_snapshot_date" ;
+    ns:targetProperty owf:sourceSnapshotDate .
+
+ns:map-source-dataset a ns:ColumnMapping ;
+    ns:constant "Polish national offshore wind project pipeline (gramwzielone.pl)" ;
+    ns:targetKey "source_dataset" ;
+    ns:targetProperty owf:sourceDataset .
+
+ns:map-source-reference a ns:ColumnMapping ;
+    ns:constant "https://www.gramwzielone.pl/?p=20373718" ;
+    ns:targetKey "source_reference" ;
+    ns:targetProperty dcterms:source .
+
+ns:map-source-type a ns:ColumnMapping ;
+    ns:constant owf:NationalSource ;
+    ns:targetKey "source_type" ;
+    ns:targetProperty owf:sourceType .
+
+ns:map-status a ns:ColumnMapping ;
+    ns:targetKey "status" ;
+    ns:targetProperty owf:conditionOfFacility ;
+    ns:valueRules ( [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedStatusAugust2026 ;
+                ns:rulePattern "^\\s*(in )?operation|^\\s*production|^\\s*operating" ;
+                ns:yields seadots-emodnet:Production ] [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedStatusAugust2026 ;
+                ns:rulePattern "^\\s*(under )?construction" ;
+                ns:yields seadots-emodnet:Construction ] [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedStatusAugust2026 ;
+                ns:rulePattern "^\\s*approved|^\\s*permitted" ;
+                ns:yields seadots-emodnet:Approved ] [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedStatusAugust2026 ;
+                ns:rulePattern "^\\s*planned|^\\s*in planning" ;
+                ns:yields seadots-emodnet:Planned ] [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedStatusAugust2026 ;
+                ns:rulePattern "^\\s*dismantled|^\\s*decommissioned" ;
+                ns:yields seadots-emodnet:Dismantled ] ) .
+
+ns:map-status-as-of a ns:ColumnMapping ;
+    ns:conversion ns:ParseReportDate ;
+    ns:sourceColumns ( dcterms:source ) ;
+    ns:targetKey "status_as_of" ;
+    ns:targetProperty owf:statusAsOf .
+
+ns:map-status-detail a ns:ColumnMapping ;
+    ns:conversion ns:Copy ;
+    ns:sourceColumns ( ns:reportedStatusAugust2026 ) ;
+    ns:targetKey "status_detail" ;
+    ns:targetProperty owf:statusDetail .
+
+ns:map-updateyear a ns:ColumnMapping ;
+    ns:conversion ns:ParseReportYear ;
+    ns:sourceColumns ( dcterms:source ) ;
+    ns:targetKey "updateyear" ;
+    ns:targetProperty owf:updateYear .
+
+ns:map-year a ns:ColumnMapping ;
+    ns:conversion ns:Copy ;
+    ns:sourceColumns ( ns:reportedFirstPowerOrCompletionYear ) ;
+    ns:targetKey "year" ;
+    ns:targetProperty owf:year .
+
+ns:map-year-assumed a ns:ColumnMapping ;
+    ns:targetKey "year_is_assumed" ;
+    ns:targetProperty owf:yearIsAssumed ;
+    ns:valueRules ( [ a ns:ValueRule ;
+                ns:ruleColumn dcterms:source ;
+                ns:rulePattern "assumed" ;
+                ns:yields true ] [ a ns:ValueRule ;
+                ns:ruleColumn ns:reportedFirstPowerOrCompletionYear ;
+                ns:rulePattern "^\\s*\\d{4}\\s*$" ;
+                ns:yields false ] ) .
+
+ns:map-year-semantics a ns:ColumnMapping ;
+    ns:constant "planned first-power or completion year" ;
+    ns:targetKey "year_semantics" ;
+    ns:targetProperty owf:yearSemantics .
 
 ns:projectName a rdf:Property ;
     rdfs:label "reported project name"@en ;
     rdfs:comment "Windfarm or project name as reported by the national source."@en ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    skos:closeMatch schema:name .
 
 ns:reportedCapacityMW a rdf:Property ;
     rdfs:label "reported capacity in megawatts"@en ;
     rdfs:comment "Windfarm capacity reported by the national source as supplied in its CSV field, with the unit indicated by the field name."@en ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    skos:closeMatch owf:powerMW .
+
+ns:ParseReportDate a ns:Conversion ;
+    rdfs:label "parse report date"@en ;
+    rdfs:comment "The first 'D Mon YYYY' date in the value as an ISO date, e.g. 'gramwzielone.pl 26 Aug 2026' -> 2026-08-26."@en .
 
 ns:reportedFirstPowerOrCompletionYear a rdf:Property ;
     rdfs:label "reported first-power or completion year"@en ;
     rdfs:comment "Year string reported for expected first power or project completion; the precise meaning follows the source notes."@en ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    skos:closeMatch owf:year .
+
+ns:Copy a ns:Conversion ;
+    rdfs:label "copy"@en ;
+    rdfs:comment "The column value, trimmed."@en .
+
+ns:Conversion a owl:Class ;
+    rdfs:label "value conversion"@en .
 
 ns:reportedStatusAugust2026 a rdf:Property ;
     rdfs:label "status reported in August 2026"@en ;
     rdfs:comment "Status wording reported by the national source in its August 2026 snapshot."@en ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    skos:closeMatch owf:statusDetail ;
+    skos:relatedMatch owf:conditionOfFacility .
+
+ns:ValueRule a owl:Class ;
+    rdfs:label "value rule"@en ;
+    rdfs:comment "Matches a source column against a case-insensitive regular expression and yields a target value."@en .
+
+ns:ColumnMapping a owl:Class ;
+    rdfs:label "column mapping"@en ;
+    rdfs:comment "Fills one property of the target block from one or more source columns, a value rule list, or a constant."@en .
 

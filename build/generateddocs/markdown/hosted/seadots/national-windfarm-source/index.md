@@ -21,8 +21,19 @@ The exercise applies the separate `location-mapping.json` crosswalk when it buil
 One row as reported by the national compilation; no geometry is invented at this stage.
 #### json
 ```json
-{"id":"national-001","type":"Feature","geometry":null,"properties":{"farm":"MFW Baltic Power","developer":"Orlen; Northland Power","capacity_mw":1200,"status_aug2026":"construction (first power 10 Jul 2026)","first_power_or_completion_year":2026,"source":"gramwzielone.pl 26 Aug 2026"}}
-
+{
+    "id": "national-001",
+    "type": "Feature",
+    "geometry": null,
+    "properties": {
+        "farm": "MFW Baltic Power",
+        "developer": "Orlen; Northland Power",
+        "capacity_mw": 1200,
+        "status_aug2026": "construction (first power 10 Jul 2026)",
+        "first_power_or_completion_year": 2026,
+        "source": "gramwzielone.pl 26 Aug 2026"
+    }
+}
 ```
 
 #### jsonld

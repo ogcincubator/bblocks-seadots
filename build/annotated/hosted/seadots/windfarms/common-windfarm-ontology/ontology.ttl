@@ -50,6 +50,15 @@ owf:conditionOfFacility a owl:ObjectProperty ;
     rdfs:range skos:Concept ;
     rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue> .
 
+owf:country a owl:ObjectProperty ;
+    rdfs:label "country"@en ;
+    rdfs:comment "Country of the wind farm. Proxy for the INSPIRE CountryCode code list: values are concepts of seadots-emodnet:Country, whose skos:notation is the INSPIRE CountryCode value and whose skos:exactMatch is the EU Publications Office country authority. INSPIRE publishes the code list without resolvable item URIs, so the concepts stand in for its values."@en ;
+    rdfs:domain owf:WindfarmArea ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/CountryCode>,
+        <http://publications.europa.eu/resource/authority/country> .
+
 owf:developerName a owl:DatatypeProperty ;
     rdfs:label "developer name"@en ;
     rdfs:comment "Name of the developing organisation."@en ;
@@ -145,6 +154,14 @@ owf:meanAnnualProductionGWh a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:decimal ;
     owl:equivalentProperty nve:meanAnnualProductionGWh .
+
+owf:modelName a owl:DatatypeProperty ;
+    rdfs:label "model name"@en ;
+    rdfs:comment "Model designation of the turbine (OSM tag model)."@en ;
+    rdfs:domain owf:WindTurbine ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    rdfs:range xsd:string ;
+    skos:closeMatch schema:model .
 
 owf:nTurbines a owl:DatatypeProperty ;
     rdfs:label "number of turbines"@en ;
@@ -293,7 +310,7 @@ owf:windfarmName a owl:DatatypeProperty ;
     rdfs:comment "Name of the wind farm, as reported by the source. Used on a turbine to name the farm it belongs to."@en ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
     rdfs:range xsd:string ;
-    rdfs:subPropertyOf schema:name .
+    rdfs:subPropertyOf dcterms:title .
 
 owf:year a owl:DatatypeProperty ;
     rdfs:label "reported project year"@en ;
@@ -342,6 +359,7 @@ seadots-emodnet:Belgium a skos:Concept ;
     rdfs:label "Belgium"@en ;
     skos:exactMatch eu-country:BEL ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "BE" ;
     skos:prefLabel "Belgium"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -359,6 +377,7 @@ seadots-emodnet:Denmark a skos:Concept ;
     rdfs:label "Denmark"@en ;
     skos:exactMatch eu-country:DNK ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "DK" ;
     skos:prefLabel "Denmark"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -376,6 +395,7 @@ seadots-emodnet:Estonia a skos:Concept ;
     rdfs:label "Estonia"@en ;
     skos:exactMatch eu-country:EST ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "EE" ;
     skos:prefLabel "Estonia"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -383,6 +403,7 @@ seadots-emodnet:Finland a skos:Concept ;
     rdfs:label "Finland"@en ;
     skos:exactMatch eu-country:FIN ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "FI" ;
     skos:prefLabel "Finland"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -390,6 +411,7 @@ seadots-emodnet:France a skos:Concept ;
     rdfs:label "France"@en ;
     skos:exactMatch eu-country:FRA ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "FR" ;
     skos:prefLabel "France"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -397,6 +419,7 @@ seadots-emodnet:Germany a skos:Concept ;
     rdfs:label "Germany"@en ;
     skos:exactMatch eu-country:DEU ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "DE" ;
     skos:prefLabel "Germany"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -404,6 +427,7 @@ seadots-emodnet:Greece a skos:Concept ;
     rdfs:label "Greece"@en ;
     skos:exactMatch eu-country:GRC ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "EL" ;
     skos:prefLabel "Greece"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -411,6 +435,7 @@ seadots-emodnet:Ireland a skos:Concept ;
     rdfs:label "Ireland"@en ;
     skos:exactMatch eu-country:IRL ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "IE" ;
     skos:prefLabel "Ireland"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -418,6 +443,7 @@ seadots-emodnet:Italy a skos:Concept ;
     rdfs:label "Italy"@en ;
     skos:exactMatch eu-country:ITA ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "IT" ;
     skos:prefLabel "Italy"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -425,6 +451,7 @@ seadots-emodnet:Latvia a skos:Concept ;
     rdfs:label "Latvia"@en ;
     skos:exactMatch eu-country:LVA ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "LV" ;
     skos:prefLabel "Latvia"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -432,6 +459,7 @@ seadots-emodnet:Lithuania a skos:Concept ;
     rdfs:label "Lithuania"@en ;
     skos:exactMatch eu-country:LTU ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "LT" ;
     skos:prefLabel "Lithuania"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -439,6 +467,7 @@ seadots-emodnet:Malta a skos:Concept ;
     rdfs:label "Malta"@en ;
     skos:exactMatch eu-country:MLT ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "MT" ;
     skos:prefLabel "Malta"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -446,6 +475,7 @@ seadots-emodnet:Netherlands a skos:Concept ;
     rdfs:label "Netherlands"@en ;
     skos:exactMatch eu-country:NLD ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "NL" ;
     skos:prefLabel "Netherlands"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -453,6 +483,7 @@ seadots-emodnet:Norway a skos:Concept ;
     rdfs:label "Norway"@en ;
     skos:exactMatch eu-country:NOR ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "NO" ;
     skos:prefLabel "Norway"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -470,6 +501,7 @@ seadots-emodnet:Poland a skos:Concept ;
     rdfs:label "Poland"@en ;
     skos:exactMatch eu-country:POL ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "PL" ;
     skos:prefLabel "Poland"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -477,6 +509,7 @@ seadots-emodnet:Portugal a skos:Concept ;
     rdfs:label "Portugal"@en ;
     skos:exactMatch eu-country:PRT ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "PT" ;
     skos:prefLabel "Portugal"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -494,6 +527,7 @@ seadots-emodnet:Romania a skos:Concept ;
     rdfs:label "Romania"@en ;
     skos:exactMatch eu-country:ROU ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "RO" ;
     skos:prefLabel "Romania"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -501,6 +535,7 @@ seadots-emodnet:Spain a skos:Concept ;
     rdfs:label "Spain"@en ;
     skos:exactMatch eu-country:ESP ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "ES" ;
     skos:prefLabel "Spain"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -508,6 +543,7 @@ seadots-emodnet:Sweden a skos:Concept ;
     rdfs:label "Sweden"@en ;
     skos:exactMatch eu-country:SWE ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "SE" ;
     skos:prefLabel "Sweden"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -523,8 +559,10 @@ seadots-emodnet:TestSuite a skos:Concept ;
 
 seadots-emodnet:UnitedKingdom a skos:Concept ;
     rdfs:label "United Kingdom"@en ;
+    skos:altLabel "United Kingdom"@en ;
     skos:exactMatch eu-country:GBR ;
     skos:inScheme seadots-emodnet:Country ;
+    skos:notation "UK" ;
     skos:prefLabel "United Kingdom"@en ;
     skos:topConceptOf seadots-emodnet:Country .
 
@@ -666,7 +704,8 @@ owf:WindfarmArea a owl:Class ;
 
 seadots-emodnet:Country a skos:ConceptScheme ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/windfarm> ;
-    skos:definition "Country names returned by the EMODnet Human Activities windfarms WFS (queried 2026-07-31), matched to the EU Publications Office Country authority table."@en ;
+    rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/CountryCode> ;
+    skos:definition "Country names returned by the EMODnet Human Activities windfarms WFS (queried 2026-07-31). Each concept carries the INSPIRE CountryCode value (EU Interinstitutional Style Guide code, e.g. PL, EL, UK) as skos:notation and is matched to the EU Publications Office Country authority table."@en ;
     skos:hasTopConcept seadots-emodnet:Belgium,
         seadots-emodnet:Denmark,
         seadots-emodnet:Estonia,
