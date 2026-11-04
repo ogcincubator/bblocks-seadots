@@ -33,7 +33,7 @@ the API's `/items` responses and the transform outputs validate against it.
 The blocks reuse `ogc.geo.features.feature`, `ogc.api.features.v1.schemas.collection` and,
 for the dataset records, the Seadots `catalog-data` profile. EMODnet's field names are kept
 exactly as the service publishes them. This follows the pattern of the existing
-`emodnet-compliant-windfarm` block. Semantics are added by the JSON-LD contexts, never by
+`windfarm-designated-area-emodnet` block. Semantics are added by the JSON-LD contexts, never by
 renaming fields.
 
 ## Source → EMODnet layer assignment

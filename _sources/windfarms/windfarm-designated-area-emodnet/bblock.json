@@ -1,0 +1,22 @@
+{
+  "name": "EMODnet windfarm",
+  "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-24T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "tags": ["EMODnet", "Human Activities", "energy", "windfarm", "WFS", "XSD", "GeoJSON"],
+  "authors": [{ "name": "SeaDOTs Marine Data Team", "organization": "SINTEF Ocean (SeaDOTs)" }],
+  "sources": [
+    { "title": "EMODnet Human Activities — Wind Farms service", "link": "https://www.emodnet-humanactivities.eu/" },
+    { "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ", "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms" }
+  ],
+  "dependsOn": ["ogc.geo.features.feature",
+"ogc.marine.dt.seadots.common-windfarm-ontology"],
+  "ldContext": "context.jsonld",
+  "shaclRules": [],
+  "maturity": "development",
+  "scope": "dev"
+}

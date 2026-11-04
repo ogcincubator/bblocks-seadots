@@ -78,7 +78,7 @@ The pre-staging catalog search covered local `_sources/` blocks and imported reg
 | Role | Catalog matches and decision |
 |---|---|
 | BB1 source data | Catalog results included OGC GeoJSON / Feature / FeatureCollection blocks (`ogc.geo.common.data_types.geojson`, `ogc.geo.features.feature`, and `ogc.geo.features.featureCollection`, plus JSON-FG variants). None profiles the OSM element identity, open-ended source tags, relation members, and null geometry in this supplied representation. A source-aligned profile was staged. |
-| BB2 target model | Catalog results included the local `ogc.hosted.seadots.emodnet-compliant-windfarm` and its Polish extension. The user selected the base EMODnet-compliant windfarm block as the target and requested a new extension, not the PL extension. The extension preserves OSM data and adds only explicit mappings. |
+| BB2 target model | Catalog results included the local `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` and its Polish extension. The user selected the base EMODnet-compliant windfarm block as the target and requested a new extension, not the PL extension. The extension preserves OSM data and adds only explicit mappings. |
 | BB3 metadata/catalog | The local `ogc.hosted.seadots.catalog-data-tabular` was selected by the user for reuse as the catalog envelope. The staged profile characterizes its asset as GeoJSON, without implying that the asset is tabular. The existing catalog block is unchanged. |
 
 For BB2, the EMODnet block was the closest thematic match. Broader imported vocabularies and models did not provide a closer offshore-windfarm feature profile. IHO terminology was used only where the source explicitly identifies wind turbines or wind-farm areas; local terms cite IHO registry and S-101/S-32 references rather than minting unsupported IHO identifiers.
@@ -87,8 +87,8 @@ For BB2, the EMODnet block was the closest thematic match. Broader imported voca
 
 ### BB1 — OSM source representation
 
-- Path: `_sources/_staging/osm-offshore-wind-source/`
-- ID: `ogc.hosted.seadots.osm-offshore-wind-source`
+- Path: `_sources/windfarms/windfarm-openstreetmap/`
+- ID: `ogc.hosted.seadots.windfarms.windfarm-openstreetmap`
 - `dependsOn`: none
 - Purpose: preserve the supplied FeatureCollection, original OSM IDs/types/tags, relation members, geometries, null geometry, and source attribution.
 - Design: tags remain an open key/value map; geometry accommodates the observed Point, Polygon, and null forms. The complete supplied GeoJSON snapshot is the example and is retained without fetch, filtering, or representation conversion.
@@ -108,7 +108,7 @@ For BB2, the EMODnet block was the closest thematic match. Broader imported voca
 
 - Path: `_sources/_staging/emodnet-windfarm-osm/`
 - ID: `ogc.hosted.seadots.emodnet-windfarm-osm`
-- `dependsOn`: `ogc.hosted.seadots.emodnet-compliant-windfarm`, `ogc.hosted.seadots.osm-offshore-wind-source`
+- `dependsOn`: `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet`, `ogc.hosted.seadots.windfarms.windfarm-openstreetmap`
 - Purpose: profile the existing EMODnet windfarm feature and add supported OSM harmonizations while preserving all source properties.
 - Design: composed schema and contexts reference the base EMODnet model and BB1. It accepts a Feature or FeatureCollection. Missing EMODnet values remain absent; raw OSM tags, geometry, IDs, and members remain in output.
 
@@ -130,7 +130,7 @@ The exact heading **“Source-property coverage gaps”** is included in the BB2
 
 - Path: `_sources/_staging/osm-offshore-wind-catalog/`
 - ID: `ogc.hosted.seadots.osm-offshore-wind-catalog`
-- `dependsOn`: `ogc.hosted.seadots.catalog-data-tabular`, `ogc.hosted.seadots.osm-offshore-wind-source`, `ogc.hosted.seadots.emodnet-windfarm-osm`
+- `dependsOn`: `ogc.hosted.seadots.catalog-data-tabular`, `ogc.hosted.seadots.windfarms.windfarm-openstreetmap`, `ogc.hosted.seadots.emodnet-windfarm-osm`
 - Purpose: provide a reusable catalog record for the dated source asset and link it to its source and harmonized profiles.
 - Design: composes the selected tabular catalog context/schema as a shared metadata envelope, while the linked asset has `application/geo+json`. The existing catalog block was not edited. BB2 profile link surfaces the mapping and gap documentation.
 
@@ -192,7 +192,7 @@ The Python transform at `_sources/_staging/emodnet-windfarm-osm/transforms/to_em
 - [OpenStreetMap copyright and ODbL attribution](https://www.openstreetmap.org/copyright)
 - [OpenStreetMap API map endpoint](https://api.openstreetmap.org/api/0.6/map)
 - [OpenStreetMap elements](https://wiki.openstreetmap.org/wiki/Elements)
-- [EMODnet-compliant windfarm base block](https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm)
+- [EMODnet-compliant windfarm base block](https://w3id.org/ogc/hosted/seadots/windfarms/windfarm-designated-area-emodnet)
 - [SeaDOTs catalog-data-tabular block](https://w3id.org/ogc/hosted/seadots/catalog-data-tabular)
 - [IHO Registry: Category of Offshore Production Area, item 42](https://registry.iho.int/fdd/view3.do?idx=42&type=3)
 - [IHO S-101 Annex A](https://metanorma.github.io/iho-s-101/documents/2.0.0/annex-a/document.html)

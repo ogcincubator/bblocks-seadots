@@ -1,3 +1,5 @@
+# this file needs updates!!!
+
 # EMODnet Human Activities — source-to-block mapping
 
 This mapping turns each source in [the source inventory](data_sources_for_EMODnet_Human_Activities.md) into an interoperable publication profile. A *source profile* validates the data itself; all profiles also use the shared catalogue/metadata profile below. “Proposed” means that the block should be authored in this register; it is not a claim that EMODnet has already adopted that exact profile.
@@ -43,7 +45,7 @@ This avoids a separate “metadata block” for every thematic dataset while ret
 
 | Block | Status | Data model and relevant conventions | Used by |
 | --- | --- | --- | --- |
-| `ogc.hosted.seadots.emodnet-compliant-windfarm` | Existing | EMODnet Human Activities windfarms WFS/XSD field set; GeoJSON RFC 7946; INSPIRE Energy Resources. Requires `country`, `n_turbines`, `power_mw`, `status`, `type_inst`, year information and geometry. | Unified three-area wind parks; German Bight monopile locations. |
+| `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` | Existing | EMODnet Human Activities windfarms WFS/XSD field set; GeoJSON RFC 7946; INSPIRE Energy Resources. Requires `country`, `n_turbines`, `power_mw`, `status`, `type_inst`, year information and geometry. | Unified three-area wind parks; German Bight monopile locations. |
 | `ogc.hosted.seadots.emodnet-protected-area` | Proposed | INSPIRE Protected Sites; GeoJSON feature geometry; nationally designated / Natura 2000 designation vocabulary; protected-area identifier, designation, authority, legal status, dates and source licence. | Naturbase protected areas / marine MPAs. |
 | `ogc.hosted.seadots.emodnet-fishing-activity-event` | Proposed | Event-level logbook/landing model; ISO 8601 time; FAO 3-alpha species code and scientific-name/AphiaID when available; vessel identifier, landing port/municipality, gear, quantity/unit, spatial unit or geometry, confidentiality flag. CSVW metadata is mandatory for CSV distribution. | Norwegian Fiskeridirektoratet landings linked to vessels; Swedish licensed-fisher logbook data. |
 | `ogc.hosted.seadots.emodnet-fishing-effort-grid` | Proposed | Spatiotemporal grid/area product; GeoJSON polygons or a coverage; declared grid CRS/resolution, period, effort measure/unit, gear/fleet/species dimensions, aggregation method, disclosure control and source. CSVW metadata for CSV; use OGC API Coverages/WCS if delivered as a gridded coverage. | ICES VMS/logbook effort products; German Bight fisheries intensity; Global Fishing Watch public fishing effort. |
@@ -57,13 +59,13 @@ This avoids a separate “metadata block” for every thematic dataset while ret
 
 | Demonstrator case | Source from inventory | Required source profile(s) | Why this is the correct level of reuse |
 | --- | --- | --- | --- |
-| All | Unified wind-park development dataset | `emodnet-compliant-windfarm` | Same feature type and mandatory EMODnet wind-farm fields as the German monopile source. |
+| All | Unified wind-park development dataset | `windfarm-designated-area-emodnet` | Same feature type and mandatory EMODnet wind-farm fields as the German monopile source. |
 | Norwegian North Sea | Naturbase protected areas / marine MPAs | `emodnet-protected-area` | A protected-site designation is not an energy or infrastructure feature. |
 | Norwegian North Sea | Fiskeridirektoratet landings linked with vessel data | `emodnet-fishing-activity-event` | Retains event/landing-level measures and potentially sensitive vessel information. |
 | Norwegian North Sea | ICES VMS and logbook spatial effort products | `emodnet-fishing-effort-grid` | It is an already aggregated spatial effort product, not raw events. |
 | Norwegian North Sea | Kystverket / BarentsWatch historical AIS | `emodnet-vessel-density-grid` | The intended EMODnet contribution is a derived vessel-density product rather than raw AIS tracks. |
 | Norwegian North Sea | Kartverket / Geonorge basemap, bathymetry, cable and pipeline routes | `emodnet-bathymetry-coverage-reference` **and** `emodnet-marine-infrastructure-route` | One provider source contains two incompatible data types: gridded bathymetry and linear infrastructure. |
-| German Bight | Offshore windfarm monopile locations | `emodnet-compliant-windfarm` | A monopile location is an installation/component of the same wind-farm domain; use `type_inst` and notes/component identifiers instead of a new parallel wind-farm model. |
+| German Bight | Offshore windfarm monopile locations | `windfarm-designated-area-emodnet` | A monopile location is an installation/component of the same wind-farm domain; use `type_inst` and notes/component identifiers instead of a new parallel wind-farm model. |
 | German Bight | Monthly AIS vessel-density maps | `emodnet-vessel-density-grid` | Same cell, vessel-class, period and aggregation requirements as the Norwegian AIS product. |
 | German Bight | Port traffic | `emodnet-port-traffic` | Port calls/statistics are point/time-series observations, not density cells. |
 | German Bight | Fisheries intensity | `emodnet-fishing-effort-grid` | A spatially aggregated intensity map shares the ICES/GFW grid profile. |

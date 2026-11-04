@@ -1,0 +1,134 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OpenStreetMap offshore wind snapshot
+description: >-
+  Unconverted OpenStreetMap API 0.6 JSON response (`/api/0.6/map` with a bounding
+  box). The response carries API metadata, the request bounds, and a flat list of
+  OSM elements: nodes with coordinates, ways with ordered node references, and
+  relations with typed, role-labelled members. Tag keys and values remain
+  uninterpreted source strings.
+type: object
+required: [version, generator, copyright, attribution, license, bounds, elements]
+properties:
+  version:
+    type: string
+    description: OSM API version of the response.
+    const: '0.6'
+  generator:
+    type: string
+    description: Server software that produced the response.
+  copyright:
+    type: string
+  attribution:
+    type: string
+    format: uri
+  license:
+    type: string
+    format: uri
+  bounds:
+    type: object
+    description: Bounding box of the request, in WGS 84 decimal degrees.
+    required: [minlat, minlon, maxlat, maxlon]
+    properties:
+      minlat: {$ref: '#/$defs/latitude'}
+      minlon: {$ref: '#/$defs/longitude'}
+      maxlat: {$ref: '#/$defs/latitude'}
+      maxlon: {$ref: '#/$defs/longitude'}
+    additionalProperties: false
+  elements:
+    type: array
+    description: OSM elements returned for the bounding box, in source order.
+    items:
+      oneOf:
+        - $ref: '#/$defs/node'
+        - $ref: '#/$defs/way'
+        - $ref: '#/$defs/relation'
+additionalProperties: false
+$defs:
+  latitude:
+    type: number
+    minimum: -90
+    maximum: 90
+  longitude:
+    type: number
+    minimum: -180
+    maximum: 180
+  elementType:
+    type: string
+    enum: [node, way, relation]
+  elementId:
+    type: integer
+    minimum: 1
+    description: Numeric identifier, unique only within its element type.
+  elementCommon:
+    type: object
+    required: [type, id, timestamp, version, changeset, user, uid]
+    properties:
+      type: {$ref: '#/$defs/elementType'}
+      id: {$ref: '#/$defs/elementId'}
+      timestamp:
+        type: string
+        format: date-time
+        description: Time of the last edit of this element version.
+      version:
+        type: integer
+        minimum: 1
+      changeset:
+        type: integer
+        minimum: 1
+      user:
+        type: string
+        description: Display name of the last editor.
+      uid:
+        type: integer
+        minimum: 0
+        description: Numeric identifier of the last editor.
+      tags:
+        type: object
+        description: Unmodified key-value tags; keys and values are source-defined strings.
+        minProperties: 1
+        additionalProperties:
+          type: string
+  node:
+    allOf:
+      - $ref: '#/$defs/elementCommon'
+      - type: object
+        required: [lat, lon]
+        properties:
+          type: {const: node}
+          lat: {$ref: '#/$defs/latitude'}
+          lon: {$ref: '#/$defs/longitude'}
+    unevaluatedProperties: false
+  way:
+    allOf:
+      - $ref: '#/$defs/elementCommon'
+      - type: object
+        required: [nodes]
+        properties:
+          type: {const: way}
+          nodes:
+            type: array
+            description: Ordered node references; a closed way repeats its first node last.
+            minItems: 2
+            items: {$ref: '#/$defs/elementId'}
+    unevaluatedProperties: false
+  relation:
+    allOf:
+      - $ref: '#/$defs/elementCommon'
+      - type: object
+        required: [members]
+        properties:
+          type: {const: relation}
+          members:
+            type: array
+            description: Member references in source order.
+            items:
+              type: object
+              required: [type, ref, role]
+              properties:
+                type: {$ref: '#/$defs/elementType'}
+                ref: {$ref: '#/$defs/elementId'}
+                role:
+                  type: string
+                  description: Member role; may be empty.
+              additionalProperties: false
+    unevaluatedProperties: false
