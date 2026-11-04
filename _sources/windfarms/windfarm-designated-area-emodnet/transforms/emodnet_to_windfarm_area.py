@@ -35,7 +35,7 @@ from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.collection import Collection
 from rdflib.namespace import RDFS
 
-EM = Namespace("https://w3id.org/ogc/hosted/seadots/emodnet/windfarm#")
+EM = Namespace("https://w3id.org/ogc/hosted/seadots/emodnet/windfarm/")
 SEM = "https://w3id.org/ogc/hosted/seadots/emodnet/"
 ONTOLOGY_IRI = URIRef("https://w3id.org/ogc/hosted/seadots/offshore-windfarm")
 BLOCK_DIR = "_sources/windfarms/windfarm-designated-area-emodnet"

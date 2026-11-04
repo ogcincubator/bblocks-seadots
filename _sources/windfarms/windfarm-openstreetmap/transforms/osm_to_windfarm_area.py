@@ -31,7 +31,7 @@ from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.collection import Collection
 from rdflib.namespace import RDF
 
-OSMD = Namespace("https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#")
+OSMD = Namespace("https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source/")
 ONTOLOGY_IRI = URIRef("https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source")
 KEY_NS = "https://www.openstreetmap.org/wiki/Key:"
 OSM = "https://www.openstreetmap.org/"

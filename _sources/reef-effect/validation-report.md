@@ -31,7 +31,7 @@ Every key appearing in the example record now has a `@context` term mapping. The
 
 ## 5. Terms still needing authoritative vocabulary URIs
 
-The following terms are currently mapped to the local `https://w3id.org/ogc/hosted/seadots/reef-effect#` namespace (via the `seadots:` prefix or `@vocab` default) and SHOULD be replaced with authoritative URIs when a community vocabulary is identified:
+The following terms are currently mapped to the local `https://w3id.org/ogc/hosted/seadots/reef-effect/` namespace (via the `seadots:` prefix or `@vocab` default) and SHOULD be replaced with authoritative URIs when a community vocabulary is identified:
 
 | Term | Current @id | Suggested vocabulary search | Status |
 |---|---|---|---|

@@ -39,7 +39,7 @@ from typing import Any
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.collection import Collection
 
-NS = Namespace("https://w3id.org/ogc/hosted/seadots/national-windfarm-source#")
+NS = Namespace("https://w3id.org/ogc/hosted/seadots/national-windfarm-source/")
 ONTOLOGY_IRI = URIRef("https://w3id.org/ogc/hosted/seadots/national-windfarm-source")
 BLOCK_DIR = "_sources/windfarms/crowdsourced-designated-area-pl"
 TARGET_CONTEXT = "_sources/windfarms/common-windfarm-designated-area/context.jsonld"
