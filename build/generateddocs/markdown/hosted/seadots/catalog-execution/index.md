@@ -142,10 +142,10 @@ dataset. No source properties are intentionally dropped.
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ] ;
     prov:generated <file:///catalog-data/examples/output-stac-item.json> ;
     prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
     prov:used <file:///catalog-data/examples/input-stac-item.json> ;
@@ -649,7 +649,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-execution
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-03'
+  dateOfLastChange: '2026-11-04'
 
 ```
 

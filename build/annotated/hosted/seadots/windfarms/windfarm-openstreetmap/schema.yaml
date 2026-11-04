@@ -1,0 +1,278 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OpenStreetMap offshore wind snapshot
+description: 'Unconverted OpenStreetMap API 0.6 JSON response (`/api/0.6/map` with
+  a bounding box). The response carries API metadata, the request bounds, and a flat
+  list of OSM elements: nodes with coordinates, ways with ordered node references,
+  and relations with typed, role-labelled members. Tag keys and values remain uninterpreted
+  source strings.'
+type: object
+required:
+- version
+- generator
+- copyright
+- attribution
+- license
+- bounds
+- elements
+properties:
+  version:
+    type: string
+    description: OSM API version of the response.
+    const: '0.6'
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#apiVersion
+  generator:
+    type: string
+    description: Server software that produced the response.
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#generator
+  copyright:
+    type: string
+    x-jsonld-id: http://purl.org/dc/terms/rights
+  attribution:
+    type: string
+    format: uri
+    x-jsonld-id: http://creativecommons.org/ns#attributionURL
+    x-jsonld-type: '@id'
+  license:
+    type: string
+    format: uri
+    x-jsonld-id: http://purl.org/dc/terms/license
+    x-jsonld-type: '@id'
+  bounds:
+    type: object
+    description: Bounding box of the request, in WGS 84 decimal degrees.
+    required:
+    - minlat
+    - minlon
+    - maxlat
+    - maxlon
+    properties:
+      minlat:
+        $ref: '#/$defs/latitude'
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#minlat
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+      minlon:
+        $ref: '#/$defs/longitude'
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#minlon
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+      maxlat:
+        $ref: '#/$defs/latitude'
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#maxlat
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+      maxlon:
+        $ref: '#/$defs/longitude'
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#maxlon
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+    additionalProperties: false
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#bounds
+  elements:
+    type: array
+    description: OSM elements returned for the bounding box, in source order.
+    items:
+      oneOf:
+      - $ref: '#/$defs/node'
+      - $ref: '#/$defs/way'
+      - $ref: '#/$defs/relation'
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#element
+    x-jsonld-container: '@set'
+    x-jsonld-extra-terms:
+      node: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#Node
+      way: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#Way
+      relation: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#Relation
+      id:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#elementIdentifier
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      timestamp:
+        x-jsonld-id: http://purl.org/dc/terms/modified
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
+      version:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#elementVersion
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      changeset:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#changeset
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      user: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#user
+      uid:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#uid
+        x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+      tags:
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#tagSet
+        x-jsonld-context:
+          '@version': 1.1
+          osmkey: 'https://www.openstreetmap.org/wiki/Key:'
+          '@vocab': 'https://www.openstreetmap.org/wiki/Key:'
+          ISO3166-1: 'https://www.openstreetmap.org/wiki/Key:ISO3166-1:'
+          TMC: 'https://www.openstreetmap.org/wiki/Key:TMC:'
+          alt_name: 'https://www.openstreetmap.org/wiki/Key:alt_name:'
+          construction: 'https://www.openstreetmap.org/wiki/Key:construction:'
+          contact: 'https://www.openstreetmap.org/wiki/Key:contact:'
+          description: 'https://www.openstreetmap.org/wiki/Key:description:'
+          generator: 'https://www.openstreetmap.org/wiki/Key:generator:'
+          height: 'https://www.openstreetmap.org/wiki/Key:height:'
+          long_name: 'https://www.openstreetmap.org/wiki/Key:long_name:'
+          name: 'https://www.openstreetmap.org/wiki/Key:name:'
+          note: 'https://www.openstreetmap.org/wiki/Key:note:'
+          official_name: 'https://www.openstreetmap.org/wiki/Key:official_name:'
+          old_name: 'https://www.openstreetmap.org/wiki/Key:old_name:'
+          plant: 'https://www.openstreetmap.org/wiki/Key:plant:'
+          population: 'https://www.openstreetmap.org/wiki/Key:population:'
+          rotor: 'https://www.openstreetmap.org/wiki/Key:rotor:'
+          seamark: 'https://www.openstreetmap.org/wiki/Key:seamark:'
+          short_name: 'https://www.openstreetmap.org/wiki/Key:short_name:'
+          source: 'https://www.openstreetmap.org/wiki/Key:source:'
+          teryt: 'https://www.openstreetmap.org/wiki/Key:teryt:'
+          wreck: 'https://www.openstreetmap.org/wiki/Key:wreck:'
+additionalProperties: false
+$defs:
+  latitude:
+    type: number
+    minimum: -90
+    maximum: 90
+  longitude:
+    type: number
+    minimum: -180
+    maximum: 180
+  elementType:
+    type: string
+    enum:
+    - node
+    - way
+    - relation
+  elementId:
+    type: integer
+    minimum: 1
+    description: Numeric identifier, unique only within its element type.
+  elementCommon:
+    type: object
+    required:
+    - type
+    - id
+    - timestamp
+    - version
+    - changeset
+    - user
+    - uid
+    properties:
+      type:
+        $ref: '#/$defs/elementType'
+        x-jsonld-id: '@type'
+      id:
+        $ref: '#/$defs/elementId'
+      timestamp:
+        type: string
+        format: date-time
+        description: Time of the last edit of this element version.
+      version:
+        type: integer
+        minimum: 1
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#apiVersion
+      changeset:
+        type: integer
+        minimum: 1
+      user:
+        type: string
+        description: Display name of the last editor.
+      uid:
+        type: integer
+        minimum: 0
+        description: Numeric identifier of the last editor.
+      tags:
+        type: object
+        description: Unmodified key-value tags; keys and values are source-defined
+          strings.
+        minProperties: 1
+        additionalProperties:
+          type: string
+  node:
+    allOf:
+    - $ref: '#/$defs/elementCommon'
+    - type: object
+      required:
+      - lat
+      - lon
+      properties:
+        type:
+          const: node
+          x-jsonld-id: '@type'
+        lat:
+          $ref: '#/$defs/latitude'
+          x-jsonld-id: http://www.w3.org/2003/01/geo/wgs84_pos#lat
+          x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+        lon:
+          $ref: '#/$defs/longitude'
+          x-jsonld-id: http://www.w3.org/2003/01/geo/wgs84_pos#long
+          x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
+    unevaluatedProperties: false
+  way:
+    allOf:
+    - $ref: '#/$defs/elementCommon'
+    - type: object
+      required:
+      - nodes
+      properties:
+        type:
+          const: way
+          x-jsonld-id: '@type'
+        nodes:
+          type: array
+          description: Ordered node references; a closed way repeats its first node
+            last.
+          minItems: 2
+          items:
+            $ref: '#/$defs/elementId'
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#nodeReference
+          x-jsonld-container: '@list'
+          x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+    unevaluatedProperties: false
+  relation:
+    allOf:
+    - $ref: '#/$defs/elementCommon'
+    - type: object
+      required:
+      - members
+      properties:
+        type:
+          const: relation
+          x-jsonld-id: '@type'
+        members:
+          type: array
+          description: Member references in source order.
+          items:
+            type: object
+            required:
+            - type
+            - ref
+            - role
+            properties:
+              type:
+                $ref: '#/$defs/elementType'
+                x-jsonld-id: '@type'
+                x-jsonld-type: '@vocab'
+              ref:
+                $ref: '#/$defs/elementId'
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#memberReference
+                x-jsonld-type: http://www.w3.org/2001/XMLSchema#integer
+              role:
+                type: string
+                description: Member role; may be empty.
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#memberRole
+            additionalProperties: false
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#relationMember
+          x-jsonld-container: '@list'
+    unevaluatedProperties: false
+x-jsonld-extra-terms:
+  MapResponse: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#MapResponse
+  Bounds: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#Bounds
+  Element: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#Element
+  TagSet: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#TagSet
+  RelationMember: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#RelationMember
+x-jsonld-prefixes:
+  osmdata: https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#
+  dcterms: http://purl.org/dc/terms/
+  cc: http://creativecommons.org/ns#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  geo: http://www.w3.org/2003/01/geo/wgs84_pos#
+x-bblocks-metadata:
+  itemIdentifier: ogc.hosted.seadots.windfarms.windfarm-openstreetmap
+  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-10-27'

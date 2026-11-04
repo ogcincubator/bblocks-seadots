@@ -1,0 +1,127 @@
+
+
+{
+  "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-turbine",
+  "name": "EMODnet windfarm",
+  "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-07-24T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogc-marine-dt-seadots",
+  "version": "0.1",
+  "license": {
+    "name": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "EMODnet",
+    "Human Activities",
+    "energy",
+    "windfarm",
+    "WFS",
+    "XSD",
+    "GeoJSON"
+  ],
+  "authors": [
+    {
+      "name": "SeaDOTs Marine Data Team",
+      "organization": "SINTEF Ocean (SeaDOTs)"
+    }
+  ],
+  "sources": [
+    {
+      "title": "EMODnet Human Activities \u2014 Wind Farms service",
+      "link": "https://www.emodnet-humanactivities.eu/"
+    },
+    {
+      "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ",
+      "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
+    },
+    {
+      "title": "EU Publications Office Country authority table",
+      "link": "http://publications.europa.eu/resource/authority/country/"
+    }
+  ],
+  "dependsOn": [
+    "ogc.geo.features.feature"
+  ],
+  "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld",
+  "shaclRules": [],
+  "standards": [
+    "https://datatracker.ietf.org/doc/html/rfc7946",
+    "https://inspire.ec.europa.eu/id/document/tg/er"
+  ],
+  "maturity": "development",
+  "scope": "dev",
+  "shaclShapes": {
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ]
+  },
+  "dateOfLastChange": "2026-11-04",
+  "schema": {
+    "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.yaml",
+    "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.json"
+  },
+  "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/schema.yaml",
+  "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/context.jsonld",
+  "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/resolvedProperties.json",
+  "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/",
+  "description": "# EMODnet windfarm\n\nThis is the single EMODnet windfarm representation in this register. It is a\nGeoJSON representation aligned with the official EMODnet Human Activities\nwindfarms XSD. It uses the service's published attribute names and primitive\ntypes and maps the official `the_geom` concept to GeoJSON `geometry`.\n\nThe XSD fields are optional and nillable, and the schema reflects that. The\n`country` value is represented as the source country name, not as an ISO code;\nthe underlying field is a nullable `xsd:string`. `context.jsonld` and\n`ontology.ttl` bind country names currently observed in the live service to the\n[EU Publications Office Country authority table](http://publications.europa.eu/resource/authority/country/).\n\nThe properties are `country`, `n_turbines`, `power_mw`, `status`, `type_inst`,\n`updateyear`, `year`, `dist_coast`, and `notes`.\n\nSource-specific extracts, such as the Baltic exercise CSV, are translated into\nthis representation before being served. Their column mapping is exercise\nconfiguration, not a second EMODnet data model.\n\nThe independent [`emodnet-compliant-windfarm-pl`](../emodnet-compliant-windfarm-pl/)\nblock uses this representation for Polish national-source integration, adding\nproject names, reporting details, provenance, and location matching. The\nindependent [`emodnet-compliant-windfarm-no`](../emodnet-compliant-windfarm-no/)\nblock demonstrates the same base model with Norwegian NVE source details.\n\nThis block is intended for publication as a GeoJSON Feature or WFS feature and\nas an interchange layer before downstream semantic enrichment.\n",
+  "examples": [
+    {
+      "title": "EMODnet sample windfarm feature",
+      "content": "An example does not mirrors the official EMODnet windfarms XSD field names and uses the same geometry-to-attribute mapping as the service.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/examples/operational-offshore-wind-farm.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_1_1.json",
+          "sizeBytes": 576,
+          "code": "{\n  \"id\": \"https://example.org/windfarms/belgium-belwind-alstom-haliade-demonstration-bligh-bank\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [2.84, 51.69]\n  },\n  \"properties\": {\n    \"country\": \"Belgium\",\n    \"n_turbines\": 1,\n    \"power_mw\": 6,\n    \"status\": \"Production\",\n    \"type_inst\": \"Grounded\",\n    \"updateyear\": \"2024\",\n    \"year\": \"2013\",\n    \"dist_coast\": 43900.7770495,\n    \"notes\": null,\n    \"name\": \"Some name of the wind farm\",\n    \"area_sqkm\": 0.5,\n    \"shape_leng\": 0.0196987539439,\n    \"shape_area\": 0.0000275744276405\n  }\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_1_1.jsonld",
+          "sizeBytes": 736,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld\",\n  \"id\": \"https://example.org/windfarms/belgium-belwind-alstom-haliade-demonstration-bligh-bank\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      2.84,\n      51.69\n    ]\n  },\n  \"properties\": {\n    \"country\": \"Belgium\",\n    \"n_turbines\": 1,\n    \"power_mw\": 6,\n    \"status\": \"Production\",\n    \"type_inst\": \"Grounded\",\n    \"updateyear\": \"2024\",\n    \"year\": \"2013\",\n    \"dist_coast\": 43900.7770495,\n    \"notes\": null,\n    \"name\": \"Some name of the wind farm\",\n    \"area_sqkm\": 0.5,\n    \"shape_leng\": 0.0196987539439,\n    \"shape_area\": 2.75744276405e-05\n  }\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_1_1.ttl",
+          "sizeBytes": 1163,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix schema: <https://schema.org/> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .\n@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<https://example.org/windfarms/belgium-belwind-alstom-haliade-demonstration-bligh-bank> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 2.84e+00 5.169e+01 ) ] ;\n    geojson:properties [ schema:additionalType \"Grounded\" ;\n            schema:addressCountry seadots-emodnet:Belgium ;\n            seadots:distanceToCoast 4.390078e+04 ;\n            seadots:nTurbines 1 ;\n            seadots:powerMW 6 ;\n            seadots:updateYear \"2024\" ;\n            seadots:year \"2013\" ;\n            seadots-emodnet: seadots-emodnet:Production ;\n            seadots-emodnet:area_sqkm 5e-01 ;\n            seadots-emodnet:name \"Some name of the wind farm\" ;\n            seadots-emodnet:shape_area 2.757443e-05 ;\n            seadots-emodnet:shape_leng 1.969875e-02 ] .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Ocean Data Platform sample windfarm feature taken from EMODnet",
+      "content": "this is real data from the \n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/examples/ocean_data_hub-windfarms.json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_2_1.json",
+          "sizeBytes": 513,
+          "code": "{\n\"type\": \"Feature\",\n\"geometry\": {\n\"type\": \"Polygon\",\n    \"coordinates\": [[\n      [4.40, 59.20],\n      [5.10, 59.20],\n      [5.10, 59.55],\n      [4.40, 59.55],\n      [4.40, 59.20]\n    ]]\n},\n\"properties\": {\n\"country\": \"United Kingdom\",\n\"name\": \"Dogger Bank East Met Mast\",\n\"n_turbines\": 1,\n\"power_mw\": null,\n\"status\": \"Dismantled\",\n\"updateyear\": null,\n\"year\": null,\n\"dist_coast\": 210099.226384,\n\"area_sqkm\": 0.19595891411,\n\"notes\": null,\n\"shape_leng\": 0.0196987539439,\n\"shape_area\": 0.0000275744276405\n},\n\"id\": 0\n}"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_2_1.jsonld",
+          "sizeBytes": 886,
+          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld\",\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          4.4,\n          59.2\n        ],\n        [\n          5.1,\n          59.2\n        ],\n        [\n          5.1,\n          59.55\n        ],\n        [\n          4.4,\n          59.55\n        ],\n        [\n          4.4,\n          59.2\n        ]\n      ]\n    ]\n  },\n  \"properties\": {\n    \"country\": \"United Kingdom\",\n    \"name\": \"Dogger Bank East Met Mast\",\n    \"n_turbines\": 1,\n    \"power_mw\": null,\n    \"status\": \"Dismantled\",\n    \"updateyear\": null,\n    \"year\": null,\n    \"dist_coast\": 210099.226384,\n    \"area_sqkm\": 0.19595891411,\n    \"notes\": null,\n    \"shape_leng\": 0.0196987539439,\n    \"shape_area\": 2.75744276405e-05\n  },\n  \"id\": 0\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/example_2_1.ttl",
+          "sizeBytes": 951,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .\n@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<file:///github/workspace/0> a geojson:Feature ;\n    geojson:geometry [ a geojson:Polygon ;\n            geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;\n    geojson:properties [ seadots:distanceToCoast 2.100992e+05 ;\n            seadots:nTurbines 1 ;\n            seadots-emodnet: seadots-emodnet:Dismantled ;\n            seadots-emodnet:area_sqkm 1.959589e-01 ;\n            seadots-emodnet:name \"Dogger Bank East Met Mast\" ;\n            seadots-emodnet:shape_area 2.757443e-05 ;\n            seadots-emodnet:shape_leng 1.969875e-02 ] .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ntitle: EMODnet windfarm feature\ndescription: 'GeoJSON representation of the EMODnet Human Activities windfarms feature\n  type. Property names, optionality, nullability, and value types follow the service''s\n  published windfarms XSD.\n\n  '\nallOf:\n- $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml\n- type: object\n  required:\n  - properties\n  properties:\n    properties:\n      type: object\n      properties:\n        country:\n          type:\n          - string\n          - 'null'\n          description: Country name as published by EMODnet; the XSD type is nullable\n            xsd:string.\n          x-jsonld-id: https://schema.org/addressCountry\n          x-jsonld-type: '@vocab'\n        n_turbines:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines\n        power_mw:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW\n        status:\n          type:\n          - string\n          - 'null'\n          description: Status text as published by EMODnet (nullable xsd:string).\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/\n          x-jsonld-type: '@vocab'\n        type_inst:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://schema.org/additionalType\n        updateyear:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear\n        year:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year\n        dist_coast:\n          type:\n          - number\n          - 'null'\n          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast\n        notes:\n          type:\n          - string\n          - 'null'\n          x-jsonld-id: http://purl.org/dc/terms/description\n        shape_leng:\n          type:\n          - number\n          - 'null'\n        shape_area:\n          type:\n          - number\n          - 'null'\n        name:\n          type:\n          - string\n          - 'null'\n        area_sqkm:\n          type:\n          - number\n          - 'null'\n      x-jsonld-id: https://purl.org/geojson/vocab#properties\n    additionalProperties: {}\nx-jsonld-extra-terms:\n  id: '@id'\n  type: '@type'\n  Feature: https://purl.org/geojson/vocab#Feature\n  Point: https://purl.org/geojson/vocab#Point\n  Polygon: https://purl.org/geojson/vocab#Polygon\n  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon\n  geometry: https://purl.org/geojson/vocab#geometry\n  coordinates:\n    x-jsonld-id: https://purl.org/geojson/vocab#coordinates\n    x-jsonld-container: '@list'\nx-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  schema: https://schema.org/\n  seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#\n  dcterms: http://purl.org/dc/terms/\n  seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/\n  inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/\nx-bblocks-metadata:\n  itemIdentifier: ogc.hosted.seadots.windfarms.common-windfarm-turbine\n  register: https://ogcincubator.github.io/bblocks-seadots/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-07-24'\n",
+  "gitRepository": "https://github.com/ogcincubator/bblocks-seadots",
+  "gitPath": "_sources/windfarms/common-windfarm-turbine"
+}
