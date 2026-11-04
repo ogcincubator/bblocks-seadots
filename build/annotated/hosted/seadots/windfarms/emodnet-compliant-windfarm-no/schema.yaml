@@ -25,7 +25,7 @@ allOf:
         name:
           type: string
           description: Facility name as published by NVE.
-          x-jsonld-id: https://schema.org/name
+          x-jsonld-id: http://purl.org/dc/terms/title
         nve_facility_id:
           type: string
           description: Identifier in the NVE wind power plant facility pages.
@@ -46,7 +46,7 @@ allOf:
         nve_owner:
           type: string
           description: Facility owner reported by NVE.
-          x-jsonld-id: https://schema.org/owner
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#ownerName
         nve_counties:
           type: array
           items:
@@ -82,10 +82,10 @@ allOf:
             properties:
               manufacturer:
                 type: string
-                x-jsonld-id: https://schema.org/manufacturer
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#manufacturerName
               model:
                 type: string
-                x-jsonld-id: https://schema.org/model
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#modelName
               count:
                 type: integer
                 minimum: 1
@@ -110,11 +110,18 @@ allOf:
           description: URI of the NVE licensing case for this facility.
           x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licensingCase
           x-jsonld-type: '@id'
+x-jsonld-extra-terms:
+  country:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+      United Kingdom: https://w3id.org/ogc/hosted/seadots/emodnet/UnitedKingdom
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#
 x-jsonld-prefixes:
-  schema: https://schema.org/
   dcterms: http://purl.org/dc/terms/
   nve: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
   prov: http://www.w3.org/ns/prov#
   em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
 x-bblocks-metadata:

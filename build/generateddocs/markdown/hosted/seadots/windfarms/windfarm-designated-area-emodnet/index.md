@@ -220,8 +220,8 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
 #### ttl
 ```ttl
 @prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -229,35 +229,35 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
 <file:///github/workspace/windfarms.557> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.54921e+01 5.43636e+01 ) ] ;
-    geojson:properties [ schema:additionalType "Grounded" ;
-            schema:addressCountry seadots-emodnet:Poland ;
-            seadots:distanceToCoast 2.006722e+04 ;
+    geojson:properties [ seadots:distanceToCoast 2.006722e+04 ;
             seadots:powerMW 9e+02 ;
             seadots:updateYear "2026" ;
             seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Energa MFW 1 Offshore wind farm 1" ] ;
+            seadots-emodnet:name "Energa MFW 1 Offshore wind farm 1" ;
+            owf:country seadots-emodnet:Poland ;
+            owf:installationType "Grounded" ] ;
     seadots-emodnet:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.610> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.649e+01 5.505e+01 ) ] ;
-    geojson:properties [ schema:addressCountry seadots-emodnet:Poland ;
-            seadots:distanceToCoast 3.384265e+04 ;
+    geojson:properties [ seadots:distanceToCoast 3.384265e+04 ;
             seadots:powerMW 9.75e+02 ;
             seadots:updateYear "2026" ;
             seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltica 9" ] ;
+            seadots-emodnet:name "Baltica 9" ;
+            owf:country seadots-emodnet:Poland ] ;
     seadots-emodnet:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.613> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 1.784e+01 5.505e+01 ) ] ;
-    geojson:properties [ schema:addressCountry seadots-emodnet:Poland ;
-            seadots:distanceToCoast 2.539022e+04 ;
+    geojson:properties [ seadots:distanceToCoast 2.539022e+04 ;
             seadots:powerMW 9.66e+02 ;
             seadots:updateYear "2026" ;
             seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltic East" ] ;
+            seadots-emodnet:name "Baltic East" ;
+            owf:country seadots-emodnet:Poland ] ;
     seadots-emodnet:geometry_name "the_geom" .
 
 [] a geojson:FeatureCollection ;
@@ -407,8 +407,9 @@ allOf:
           - 'null'
           description: Country name as published by EMODnet; the XSD type is nullable
             xsd:string.
-          x-jsonld-id: https://schema.org/addressCountry
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
           x-jsonld-type: '@vocab'
+          x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
         n_turbines:
           type:
           - number
@@ -430,7 +431,7 @@ allOf:
           type:
           - string
           - 'null'
-          x-jsonld-id: https://schema.org/additionalType
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#installationType
         updateyear:
           type:
           - string
@@ -483,7 +484,7 @@ x-jsonld-extra-terms:
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  schema: https://schema.org/
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
   seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
   dcterms: http://purl.org/dc/terms/
   seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
@@ -526,7 +527,10 @@ Links to the schema:
     "properties": {
       "@context": {
         "country": {
-          "@id": "schema:addressCountry",
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
+          },
+          "@id": "owf:country",
           "@type": "@vocab"
         },
         "n_turbines": "seadots:nTurbines",
@@ -535,7 +539,7 @@ Links to the schema:
           "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
           "@type": "@vocab"
         },
-        "type_inst": "schema:additionalType",
+        "type_inst": "owf:installationType",
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
@@ -576,7 +580,7 @@ Links to the schema:
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",

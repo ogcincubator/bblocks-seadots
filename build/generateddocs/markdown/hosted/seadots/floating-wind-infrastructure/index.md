@@ -321,13 +321,13 @@ The accompanying calculator script (`_sources/reef-effect/scripts/utsira_reef_bi
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.578e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
-                                [ dcterms:identifier "U03" ;
-                                    geojson:latitude 5.93812e+01 ;
-                                    geojson:longitude 4.604e+00 ;
-                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
                                 [ dcterms:identifier "U01" ;
                                     geojson:latitude 5.93812e+01 ;
                                     geojson:longitude 4.552e+00 ;
+                                    seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ],
+                                [ dcterms:identifier "U03" ;
+                                    geojson:latitude 5.93812e+01 ;
+                                    geojson:longitude 4.604e+00 ;
                                     seadots:submergedArea_m2 "1825"^^qudt:QuantityValue ] ;
                             seadots:unitDesign "15 MW semi-submersible (3-column hull, 3-point catenary mooring, drag-embedment anchors)" ] ;
                     seadots:role "feature-of-interest geometry" ] ;

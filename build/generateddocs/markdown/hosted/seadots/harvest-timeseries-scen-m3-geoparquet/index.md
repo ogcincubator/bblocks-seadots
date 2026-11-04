@@ -335,8 +335,8 @@ for details and recommended fallbacks.
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <https://geoparquet.org/metadata#> .
-@prefix ns2: <https://geoparquet.org/> .
-@prefix ns3: <https://geoparquet.org/schema#> .
+@prefix ns2: <https://geoparquet.org/schema#> .
+@prefix ns3: <https://geoparquet.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -345,7 +345,7 @@ for details and recommended fallbacks.
             dct:references <file:///github/harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ;
             schema:numberOfColumns 4 ;
             schema:numberOfItems 19920 ] ;
-    ns2:metadata [ ns1:columns [ geojson:geometry [ ns1:bbox 7.642571e+00,
+    ns3:metadata [ ns1:columns [ geojson:geometry [ ns1:bbox 7.642571e+00,
                                 7.713493e+00,
                                 5.437365e+01,
                                 5.44095e+01 ;
@@ -357,19 +357,19 @@ for details and recommended fallbacks.
                             schema:encodingFormat "WKB" ] ] ;
             ns1:primary_column "geometry" ;
             schema:version "1.1.0" ] ;
-    ns2:schema ( [ csvw:datatype "INT64" ;
+    ns3:schema ( [ csvw:datatype "INT64" ;
                 csvw:name "id" ;
                 csvw:propertyUrl dct:identifier ;
-                ns3:nullable false ] [ csvw:datatype "BYTE_ARRAY/WKB" ;
+                ns2:nullable false ] [ csvw:datatype "BYTE_ARRAY/WKB" ;
                 csvw:name "geometry" ;
                 csvw:propertyUrl geojson:geometry ;
-                ns3:nullable true ] [ csvw:datatype "DOUBLE" ;
+                ns2:nullable true ] [ csvw:datatype "DOUBLE" ;
                 csvw:name "bwmus" ;
                 csvw:propertyUrl <https://w3id.org/iliad/property/bwmus> ;
-                ns3:nullable false ] [ csvw:datatype "BYTE_ARRAY/UTF8" ;
+                ns2:nullable false ] [ csvw:datatype "BYTE_ARRAY/UTF8" ;
                 csvw:name "time" ;
                 csvw:propertyUrl dct:temporal ;
-                ns3:nullable false ] ) ;
+                ns2:nullable false ] ) ;
     schema:contentUrl "harvest-timeseries-scen-m3.geoparquet" ;
     schema:encodingFormat "GeoParquet 1.1.0; Parquet logical types; geometry encoded as WKB" .
 

@@ -72,12 +72,13 @@
           "properties": {
             "name": {
               "type": "string",
-              "x-jsonld-id": "https://schema.org/name"
+              "x-jsonld-id": "http://purl.org/dc/terms/title"
             },
             "country": {
               "type": "string",
-              "x-jsonld-id": "https://schema.org/addressCountry",
-              "x-jsonld-type": "@vocab"
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#country",
+              "x-jsonld-type": "@vocab",
+              "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
             },
             "n_turbines": {
               "type": [
@@ -118,7 +119,7 @@
                 "string",
                 "null"
               ],
-              "x-jsonld-id": "https://schema.org/additionalType"
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#installationType"
             },
             "updateyear": {
               "type": [
@@ -156,7 +157,7 @@
                 "string",
                 "null"
               ],
-              "x-jsonld-id": "https://schema.org/creator"
+              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#developerName"
             },
             "status_detail": {
               "type": [
@@ -272,7 +273,6 @@
       "x-jsonld-id": "https://purl.org/geojson/vocab#features",
       "x-jsonld-container": "@set"
     },
-    "Poland": "http://publications.europa.eu/resource/authority/country/POL",
     "MatchCandidate": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#MatchCandidate",
     "source_record": {
       "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceRecord",
@@ -319,7 +319,7 @@
   "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#",
   "x-jsonld-prefixes": {
     "geojson": "https://purl.org/geojson/vocab#",
-    "schema": "https://schema.org/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "ses": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#",

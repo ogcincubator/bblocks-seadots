@@ -2,19 +2,19 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.openstreetmap.org/relation/21402440> a geojson:Feature ;
     dcterms:identifier "relation/21402440" ;
     dcterms:modified "2026-09-18T16:06:52+00:00"^^xsd:dateTime ;
     dcterms:source <https://api.openstreetmap.org/api/0.6/map.json?bbox=16.74361,54.953732,17.78045,55.13824> ;
+    dcterms:title "Baltic Power" ;
+    prov:alternateOf <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268>,
+        <https://www.openstreetmap.org/way/1532855580> ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 1.756412e+01 5.49776e+01 ) ( 1.765142e+01 5.499505e+01 ) ( 1.771816e+01 5.500498e+01 ) ( 1.771614e+01 5.508525e+01 ) ( 1.776867e+01 5.508348e+01 ) ( 1.778045e+01 5.511133e+01 ) ( 1.76207e+01 5.511137e+01 ) ( 1.758828e+01 5.507482e+01 ) ( 1.756412e+01 5.49776e+01 ) ) ) ] ;
-    schema:name "Baltic Power" ;
-    schema:sameAs <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet:windfarms&featureID=windfarms.268>,
-        <https://www.openstreetmap.org/way/1532855580> ;
     owf:areaSqKm 122.01 ;
     owf:conditionOfFacility :Production ;
     owf:locationMethod "outer way 1532855580 of the OSM element" ;

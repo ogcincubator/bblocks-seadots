@@ -143,17 +143,17 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
 
 #### ttl
 ```ttl
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/wind-farms/north-sea-demo-01> a geojson:Feature ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.9e+00 5.42e+01 ) ( 4.98e+00 5.42e+01 ) ( 4.98e+00 5.426e+01 ) ( 4.9e+00 5.426e+01 ) ( 4.9e+00 5.42e+01 ) ) ) ] ;
-    geojson:properties [ schema:addressCountry seadots-emodnet:NL ;
-            schema:name "North Sea Demonstrator Offshore Wind Farm" ;
+    geojson:properties [ dcterms:title "North Sea Demonstrator Offshore Wind Farm" ;
             seadots-emodnet:commissioningDate "2025-01-01" ;
             seadots-emodnet:identifier "NS-DEMO-01" ;
             seadots-emodnet:installedCapacityMW 288 ;
@@ -165,7 +165,8 @@ Worked Norway example. EMODnet properties carry the mapped country, operating st
             seadots-emodnet:sourceDataset "https://example.org/datasets/north-sea-demo-wind-farm.geojson" ;
             seadots-emodnet:turbineCount 24 ;
             seadots-emodnet:updateDate "2026-07-01" ;
-            seadots-emodnet:validFrom "2025-01-01" ] .
+            seadots-emodnet:validFrom "2025-01-01" ;
+            owf:country seadots-emodnet:NL ] .
 
 
 ```
@@ -200,7 +201,7 @@ allOf:
         name:
           type: string
           description: Facility name as published by NVE.
-          x-jsonld-id: https://schema.org/name
+          x-jsonld-id: http://purl.org/dc/terms/title
         nve_facility_id:
           type: string
           description: Identifier in the NVE wind power plant facility pages.
@@ -221,7 +222,7 @@ allOf:
         nve_owner:
           type: string
           description: Facility owner reported by NVE.
-          x-jsonld-id: https://schema.org/owner
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#ownerName
         nve_counties:
           type: array
           items:
@@ -257,10 +258,10 @@ allOf:
             properties:
               manufacturer:
                 type: string
-                x-jsonld-id: https://schema.org/manufacturer
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#manufacturerName
               model:
                 type: string
-                x-jsonld-id: https://schema.org/model
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#modelName
               count:
                 type: integer
                 minimum: 1
@@ -285,11 +286,18 @@ allOf:
           description: URI of the NVE licensing case for this facility.
           x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#licensingCase
           x-jsonld-type: '@id'
+x-jsonld-extra-terms:
+  country:
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
+    x-jsonld-type: '@vocab'
+    x-jsonld-context:
+      '@vocab': https://w3id.org/ogc/hosted/seadots/emodnet/
+      United Kingdom: https://w3id.org/ogc/hosted/seadots/emodnet/UnitedKingdom
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#
 x-jsonld-prefixes:
-  schema: https://schema.org/
   dcterms: http://purl.org/dc/terms/
   nve: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-no#
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
   prov: http://www.w3.org/ns/prov#
   em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
 x-bblocks-metadata:
@@ -329,29 +337,25 @@ Links to the schema:
     "id": "@id",
     "properties": {
       "@context": {
-        "country": {
-          "@id": "schema:addressCountry",
-          "@type": "@vocab"
-        },
         "n_turbines": "seadots:nTurbines",
         "power_mw": "seadots:powerMW",
         "status": {
           "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
           "@type": "@vocab"
         },
-        "type_inst": "schema:additionalType",
+        "type_inst": "owf:installationType",
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
         "notes": "dct:description",
-        "name": "schema:name",
+        "name": "dct:title",
         "nve_facility_id": "dct:identifier",
         "nve_licence_status": "nve:licenceStatus",
         "nve_operational_date": {
           "@id": "nve:operationalDate",
           "@type": "http://www.w3.org/2001/XMLSchema#date"
         },
-        "nve_owner": "schema:owner",
+        "nve_owner": "owf:ownerName",
         "nve_counties": {
           "@id": "nve:county",
           "@container": "@set"
@@ -364,8 +368,8 @@ Links to the schema:
         "nve_price_area": "nve:electricityPriceArea",
         "nve_turbine_details": {
           "@context": {
-            "manufacturer": "schema:manufacturer",
-            "model": "schema:model",
+            "manufacturer": "owf:manufacturerName",
+            "model": "owf:modelName",
             "count": "nve:turbineCount",
             "commissioning_year": "nve:commissioningYear"
           },
@@ -412,11 +416,19 @@ Links to the schema:
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
+    "country": {
+      "@id": "owf:country",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+        "United Kingdom": "seadots-emodnet:UnitedKingdom"
+      }
+    },
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",

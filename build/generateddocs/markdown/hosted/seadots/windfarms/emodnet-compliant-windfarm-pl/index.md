@@ -91,16 +91,14 @@ National source values translated to EMODnet property names and generic extensio
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix schema: <https://schema.org/> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <urn:baltic-ses:national:1:example-project> a geojson:Feature ;
     geojson:properties [ dcterms:description "Year reported as assumed in the source." ;
-            schema:addressCountry <http://publications.europa.eu/resource/authority/country/POL> ;
-            schema:creator "Example Energy" ;
-            schema:name "Example Baltic Wind" ;
+            dcterms:title "Example Baltic Wind" ;
             em:powerMW 1200 ;
             em:updateYear "2026" ;
             em:year "2028" ;
@@ -112,7 +110,9 @@ National source values translated to EMODnet property names and generic extensio
             ses:statusDetail "In planning (auction pathway)" ;
             ses:yearIsAssumed true ;
             ses:yearSemantics "planned first-power or completion year" ;
-            seadots-emodnet: seadots-emodnet:Planned ] .
+            seadots-emodnet: seadots-emodnet:Planned ;
+            owf:country seadots-emodnet:Poland ;
+            owf:developerName "Example Energy" ] .
 
 
 ```
@@ -178,11 +178,12 @@ $defs:
         properties:
           name:
             type: string
-            x-jsonld-id: https://schema.org/name
+            x-jsonld-id: http://purl.org/dc/terms/title
           country:
             type: string
-            x-jsonld-id: https://schema.org/addressCountry
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
             x-jsonld-type: '@vocab'
+            x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
           n_turbines:
             type:
             - number
@@ -210,7 +211,7 @@ $defs:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://schema.org/additionalType
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#installationType
           updateyear:
             type:
             - string
@@ -238,7 +239,7 @@ $defs:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://schema.org/creator
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#developerName
           status_detail:
             type:
             - string
@@ -324,7 +325,6 @@ x-jsonld-extra-terms:
   features:
     x-jsonld-id: https://purl.org/geojson/vocab#features
     x-jsonld-container: '@set'
-  Poland: http://publications.europa.eu/resource/authority/country/POL
   MatchCandidate: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#MatchCandidate
   source_record:
     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceRecord
@@ -360,7 +360,7 @@ x-jsonld-extra-terms:
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  schema: https://schema.org/
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
   em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
   dcterms: http://purl.org/dc/terms/
   ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
@@ -403,7 +403,10 @@ Links to the schema:
     "properties": {
       "@context": {
         "country": {
-          "@id": "schema:addressCountry",
+          "@context": {
+            "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
+          },
+          "@id": "owf:country",
           "@type": "@vocab"
         },
         "n_turbines": "seadots:nTurbines",
@@ -412,13 +415,13 @@ Links to the schema:
           "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
           "@type": "@vocab"
         },
-        "type_inst": "schema:additionalType",
+        "type_inst": "owf:installationType",
         "updateyear": "seadots:updateYear",
         "year": "seadots:year",
         "dist_coast": "seadots:distanceToCoast",
         "notes": "dct:description",
-        "name": "schema:name",
-        "developer": "schema:creator",
+        "name": "dct:title",
+        "developer": "owf:developerName",
         "status_detail": "ses:statusDetail",
         "status_as_of": {
           "@id": "ses:statusAsOf",
@@ -482,7 +485,6 @@ Links to the schema:
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
-    "Poland": "http://publications.europa.eu/resource/authority/country/POL",
     "MatchCandidate": "ses:MatchCandidate",
     "source_record": {
       "@id": "ses:sourceRecord",
@@ -529,7 +531,7 @@ Links to the schema:
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",

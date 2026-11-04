@@ -1,16 +1,14 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix schema: <https://schema.org/> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <urn:baltic-ses:national:1:example-project> a geojson:Feature ;
     geojson:properties [ dcterms:description "Year reported as assumed in the source." ;
-            schema:addressCountry <http://publications.europa.eu/resource/authority/country/POL> ;
-            schema:creator "Example Energy" ;
-            schema:name "Example Baltic Wind" ;
+            dcterms:title "Example Baltic Wind" ;
             em:powerMW 1200 ;
             em:updateYear "2026" ;
             em:year "2028" ;
@@ -22,5 +20,7 @@
             ses:statusDetail "In planning (auction pathway)" ;
             ses:yearIsAssumed true ;
             ses:yearSemantics "planned first-power or completion year" ;
-            seadots-emodnet: seadots-emodnet:Planned ] .
+            seadots-emodnet: seadots-emodnet:Planned ;
+            owf:country seadots-emodnet:Poland ;
+            owf:developerName "Example Energy" ] .
 

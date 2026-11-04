@@ -102,13 +102,14 @@
                 "name": {
                   "$ref": "#/$defs/nullableString",
                   "description": "Wind farm name as reported by the source.",
-                  "x-jsonld-id": "https://schema.org/name"
+                  "x-jsonld-id": "http://purl.org/dc/terms/title"
                 },
                 "country": {
                   "$ref": "#/$defs/nullableString",
                   "description": "Country name, as used by EMODnet (e.g. \"Poland\"); null when the source does not state it.",
-                  "x-jsonld-id": "https://schema.org/addressCountry",
-                  "x-jsonld-type": "@vocab"
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#country",
+                  "x-jsonld-type": "@vocab",
+                  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
                 },
                 "n_turbines": {
                   "type": [
@@ -370,7 +371,7 @@
                     "format": "uri"
                   },
                   "description": "Other records (in this or other sources) describing the same wind farm.",
-                  "x-jsonld-id": "https://schema.org/sameAs",
+                  "x-jsonld-id": "http://www.w3.org/ns/prov#alternateOf",
                   "x-jsonld-type": "@id",
                   "x-jsonld-container": "@set"
                 }
@@ -406,9 +407,9 @@
   "x-jsonld-prefixes": {
     "geojson": "https://purl.org/geojson/vocab#",
     "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
-    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "dcterms": "http://purl.org/dc/terms/"
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "x-bblocks-metadata": {
     "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-designated-area",
