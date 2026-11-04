@@ -3,7 +3,7 @@
   "name": "Seadots project",
   "abstract": "This is a collection of OGC Blocks for the [SeaDOTs project](http://seadots-project.eu).\nIt defines the indicator model, property relationship schema, and supporting ontologies\nused across the three SeaDOTs Digital Twin demonstrators (Germany, Norway, Sweden).\nSee also: [iliad-apis-features](https://github.com/ogcincubator/iliad-apis-features) for data types and DT processes.\n",
   "sparqlEndpoint": "http://defs-hosted.opengis.net/fuseki-hosted/query",
-  "modified": "2026-11-04T17:47:20.879782",
+  "modified": "2026-11-04T18:03:28.276949",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"c1af50a182c92d7ab055f34158d5605167dfe786",
@@ -958,7 +958,7 @@
         ]
       },
       "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/context.jsonld",
-      "ontology": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-ontology/ontology.ttl",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.yaml",
         "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-ontology/schema.json"
@@ -981,89 +981,6 @@
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-ontology"
-        }
-      }
-    },
-    {
-      "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-turbine",
-      "name": "EMODnet windfarm",
-      "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names, optionality, nullability, and value types.",
-      "status": "under-development",
-      "dateTimeAddition": "2026-07-24T00:00:00Z",
-      "itemClass": "schema",
-      "register": "ogc-marine-dt-seadots",
-      "version": "0.1",
-      "license": {
-        "name": "https://creativecommons.org/licenses/by/4.0/"
-      },
-      "tags": [
-        "EMODnet",
-        "Human Activities",
-        "energy",
-        "windfarm",
-        "WFS",
-        "XSD",
-        "GeoJSON"
-      ],
-      "authors": [
-        {
-          "name": "SeaDOTs Marine Data Team",
-          "organization": "SINTEF Ocean (SeaDOTs)"
-        }
-      ],
-      "sources": [
-        {
-          "title": "EMODnet Human Activities \u2014 Wind Farms service",
-          "link": "https://www.emodnet-humanactivities.eu/"
-        },
-        {
-          "title": "EMODnet windfarms XSD, NOTE XSD does not match Feature services which contain additional 3 fields: ",
-          "link": "https://ows.emodnet-humanactivities.eu/wfs?request=DescribeFeatureType&typeName=emodnet:windfarms"
-        },
-        {
-          "title": "EU Publications Office Country authority table",
-          "link": "http://publications.europa.eu/resource/authority/country/"
-        }
-      ],
-      "dependsOn": [
-        "bblocks://ogc.geo.features.feature"
-      ],
-      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld",
-      "shaclRules": [],
-      "standards": [
-        "https://datatracker.ietf.org/doc/html/rfc7946",
-        "https://inspire.ec.europa.eu/id/document/tg/er"
-      ],
-      "maturity": "development",
-      "scope": "dev",
-      "shaclShapes": {
-        "ogc.geo.features.feature": [
-          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-        ]
-      },
-      "dateOfLastChange": "2026-11-04",
-      "schema": {
-        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.yaml",
-        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.json"
-      },
-      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/schema.yaml",
-      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/context.jsonld",
-      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/resolvedProperties.json",
-      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/",
-      "validationPassed": true,
-      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/",
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/common-windfarm-turbine/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/common-windfarm-turbine/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-turbine"
         }
       }
     },
@@ -1506,6 +1423,92 @@
       }
     },
     {
+      "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-turbine",
+      "name": "Wind turbine",
+      "abstract": "GeoJSON representation of a single wind turbine (Feature with Point geometry) or a FeatureCollection of turbines, with harmonised properties: manufacturer, model, rated power, hub height, rotor diameter, rotor axis, operator, condition, and the wind farm it belongs to.",
+      "status": "under-development",
+      "dateTimeAddition": "2026-07-24T00:00:00Z",
+      "dateOfLastChange": "2026-11-04",
+      "itemClass": "schema",
+      "register": "ogc-marine-dt-seadots",
+      "version": "0.2",
+      "license": {
+        "name": "https://opendatacommons.org/licenses/odbl/1-0/"
+      },
+      "tags": [
+        "wind turbine",
+        "Offshore Windfarm",
+        "energy",
+        "GeoJSON",
+        "OpenStreetMap",
+        "IHO"
+      ],
+      "authors": [
+        {
+          "name": "SeaDOTs Marine Data Team",
+          "organization": "SINTEF Ocean (SeaDOTs)"
+        }
+      ],
+      "sources": [
+        {
+          "title": "IHO wind turbine definition in S-100",
+          "link": "https://registry.iho.int/fdd/view5.do?idx=341&type=5&valueType=0"
+        },
+        {
+          "title": "OpenStreetMap wind turbine tagging (generator:source=wind)",
+          "link": "https://wiki.openstreetmap.org/wiki/Tag:generator:source%3Dwind"
+        },
+        {
+          "title": "INSPIRE ConditionOfFacilityValue code list",
+          "link": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue"
+        }
+      ],
+      "dependsOn": [
+        "bblocks://ogc.geo.features.feature",
+        "bblocks://ogc.geo.features.featureCollection",
+        "bblocks://ogc.hosted.seadots.windfarms.common-windfarm-ontology"
+      ],
+      "ldContext": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/context.jsonld",
+      "shaclRules": [],
+      "standards": [
+        "https://datatracker.ietf.org/doc/html/rfc7946"
+      ],
+      "maturity": "development",
+      "scope": "dev",
+      "shaclShapes": {
+        "ogc.geo.features.feature": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.features.featureCollection": [
+          "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+        ]
+      },
+      "schema": {
+        "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.yaml",
+        "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/schema.json"
+      },
+      "sourceSchema": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/schema.yaml",
+      "sourceLdContext": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/context.jsonld",
+      "resolvedSchemaProperties": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/common-windfarm-turbine/resolvedProperties.json",
+      "sourceFiles": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/common-windfarm-turbine/",
+      "validationPassed": true,
+      "testOutputs": "https://github.com/ogcincubator/bblocks-seadots/blob/master/build/tests/hosted/seadots/windfarms/common-windfarm-turbine/",
+      "documentation": {
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/markdown/hosted/seadots/windfarms/common-windfarm-turbine/index.md"
+        },
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/build/generateddocs/json-full/hosted/seadots/windfarms/common-windfarm-turbine/index.json"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.windfarms.common-windfarm-turbine"
+        }
+      }
+    },
+    {
       "itemIdentifier": "ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet",
       "name": "EMODnet windfarm",
       "abstract": "GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.",
@@ -1556,6 +1559,7 @@
         ]
       },
       "dateOfLastChange": "2026-11-04",
+      "ontology": "https://ogcincubator.github.io/bblocks-seadots/_sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl",
       "schema": {
         "application/yaml": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/schema.yaml",
         "application/json": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/windfarms/windfarm-designated-area-emodnet/schema.json"

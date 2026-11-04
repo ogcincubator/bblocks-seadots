@@ -249,20 +249,20 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
-            dcterms:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
-    survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
-            seadots:uri "https://elsst.uk/" ;
-            thns:scheme "ELSST" ],
-        [ seadots:label "CESSDA controlled vocabularies" ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
+        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+            dcterms:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
+    survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
             seadots:uri "https://www.cessda.eu/" ;
-            thns:scheme "CESSDA" ] ;
+            thns:scheme "CESSDA" ],
+        [ seadots:label "European Language Social Science Thesaurus" ;
+            seadots:uri "https://elsst.uk/" ;
+            thns:scheme "ELSST" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
     survey:variableMetadata [ ddi:variableDescription "Age group of the respondent" ;

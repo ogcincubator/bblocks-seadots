@@ -1,6 +1,5 @@
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -16,26 +15,7 @@
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "country": {
-          "@id": "schema:addressCountry",
-          "@type": "@vocab"
-        },
-        "n_turbines": "seadots:nTurbines",
-        "power_mw": "seadots:powerMW",
-        "status": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-          "@type": "@vocab"
-        },
-        "type_inst": "schema:additionalType",
-        "updateyear": "seadots:updateYear",
-        "year": "seadots:year",
-        "dist_coast": "seadots:distanceToCoast",
-        "notes": "dct:description"
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": "geojson:geometry",
     "bbox": {
       "@container": "@list",
@@ -61,19 +41,66 @@
       },
       "@id": "rdfs:seeAlso"
     },
+    "ref": "owf:turbineReference",
+    "windfarm_name": "owf:windfarmName",
+    "windfarm": {
+      "@id": "owf:partOfWindfarm",
+      "@type": "@id"
+    },
+    "manufacturer": "owf:manufacturerName",
+    "model": "schema:model",
+    "rated_power_mw": {
+      "@id": "owf:ratedPowerMW",
+      "@type": "xsd:decimal"
+    },
+    "hub_height_m": {
+      "@id": "owf:hubHeight",
+      "@type": "xsd:decimal"
+    },
+    "rotor_diameter_m": {
+      "@id": "owf:rotorDiameter",
+      "@type": "xsd:decimal"
+    },
+    "rotor_axis": {
+      "@id": "owf:rotorAxis",
+      "@type": "@vocab"
+    },
+    "offshore": {
+      "@id": "owf:offshore",
+      "@type": "xsd:boolean"
+    },
+    "operator": {
+      "@id": "owf:operatorName",
+      "@container": "@set"
+    },
+    "status": {
+      "@id": "owf:conditionOfFacility",
+      "@type": "@vocab"
+    },
+    "last_updated": {
+      "@id": "dct:modified",
+      "@type": "xsd:dateTime"
+    },
     "coordinates": {
       "@id": "geojson:coordinates",
       "@container": "@list"
     },
+    "horizontal_axis": "owf:HorizontalAxis",
+    "vertical_axis": "owf:VerticalAxis",
+    "projected": "inspire-cofv:projected",
+    "underConstruction": "inspire-cofv:underConstruction",
+    "functional": "inspire-cofv:functional",
+    "disused": "inspire-cofv:disused",
+    "decommissioned": "inspire-cofv:decommissioned",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "schema": "https://schema.org/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "dcterms": "http://purl.org/dc/terms/",
     "@version": 1.1
   }
 }
