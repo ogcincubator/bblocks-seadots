@@ -1,30 +1,139 @@
 {
   "@context": {
     "@version": 1.1,
-    "geojson": "https://purl.org/geojson/vocab#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "schema": "https://schema.org/",
     "osmdata": "https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "cc": "http://creativecommons.org/ns#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "type": "@type",
-    "FeatureCollection": "geojson:FeatureCollection",
-    "Feature": "geojson:Feature",
-    "Point": "geojson:Point",
-    "Polygon": "geojson:Polygon",
-    "MultiPoint": "geojson:MultiPoint",
-    "LineString": "geojson:LineString",
-    "MultiLineString": "geojson:MultiLineString",
-    "MultiPolygon": "geojson:MultiPolygon",
-    "GeometryCollection": "geojson:GeometryCollection",
-    "id": {"@id": "osmdata:sourceElementReference", "@type": "xsd:string"},
-    "source": "dcterms:source",
-    "features": {"@id": "geojson:features", "@container": "@set"},
-    "geometry": "geojson:geometry",
-    "coordinates": {"@id": "geojson:coordinates", "@container": "@list"},
-    "properties": "geojson:properties",
-    "osm_type": "osmdata:elementType",
-    "osm_id": {"@id": "osmdata:elementIdentifier", "@type": "xsd:integer"},
-    "tags": {"@id": "osmdata:tagSet", "@type": "@json"},
-    "members": {"@id": "osmdata:relationMemberReference", "@container": "@list"}
+    "MapResponse": "osmdata:MapResponse",
+    "Bounds": "osmdata:Bounds",
+    "Element": "osmdata:Element",
+    "TagSet": "osmdata:TagSet",
+    "RelationMember": "osmdata:RelationMember",
+    "version": "osmdata:apiVersion",
+    "generator": "osmdata:generator",
+    "copyright": "dcterms:rights",
+    "attribution": {
+      "@id": "cc:attributionURL",
+      "@type": "@id"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "bounds": {
+      "@id": "osmdata:bounds",
+      "@context": {
+        "minlat": {
+          "@id": "osmdata:minlat",
+          "@type": "xsd:decimal"
+        },
+        "minlon": {
+          "@id": "osmdata:minlon",
+          "@type": "xsd:decimal"
+        },
+        "maxlat": {
+          "@id": "osmdata:maxlat",
+          "@type": "xsd:decimal"
+        },
+        "maxlon": {
+          "@id": "osmdata:maxlon",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+    "elements": {
+      "@id": "osmdata:element",
+      "@container": "@set",
+      "@context": {
+        "type": "@type",
+        "node": "osmdata:Node",
+        "way": "osmdata:Way",
+        "relation": "osmdata:Relation",
+        "id": {
+          "@id": "osmdata:elementIdentifier",
+          "@type": "xsd:integer"
+        },
+        "timestamp": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "version": {
+          "@id": "osmdata:elementVersion",
+          "@type": "xsd:integer"
+        },
+        "changeset": {
+          "@id": "osmdata:changeset",
+          "@type": "xsd:integer"
+        },
+        "user": "osmdata:user",
+        "uid": {
+          "@id": "osmdata:uid",
+          "@type": "xsd:integer"
+        },
+        "tags": {
+          "@id": "osmdata:tagSet",
+          "@context": [
+            null,
+            {
+              "@version": 1.1,
+              "osmkey": "https://www.openstreetmap.org/wiki/Key:",
+              "@vocab": "https://www.openstreetmap.org/wiki/Key:",
+              "ISO3166-1": "osmkey:ISO3166-1:",
+              "TMC": "osmkey:TMC:",
+              "alt_name": "osmkey:alt_name:",
+              "construction": "osmkey:construction:",
+              "contact": "osmkey:contact:",
+              "description": "osmkey:description:",
+              "generator": "osmkey:generator:",
+              "height": "osmkey:height:",
+              "long_name": "osmkey:long_name:",
+              "name": "osmkey:name:",
+              "note": "osmkey:note:",
+              "official_name": "osmkey:official_name:",
+              "old_name": "osmkey:old_name:",
+              "plant": "osmkey:plant:",
+              "population": "osmkey:population:",
+              "rotor": "osmkey:rotor:",
+              "seamark": "osmkey:seamark:",
+              "short_name": "osmkey:short_name:",
+              "source": "osmkey:source:",
+              "teryt": "osmkey:teryt:",
+              "wreck": "osmkey:wreck:"
+            }
+          ]
+        },
+        "lat": {
+          "@id": "geo:lat",
+          "@type": "xsd:decimal"
+        },
+        "lon": {
+          "@id": "geo:long",
+          "@type": "xsd:decimal"
+        },
+        "nodes": {
+          "@id": "osmdata:nodeReference",
+          "@container": "@list",
+          "@type": "xsd:integer"
+        },
+        "members": {
+          "@id": "osmdata:relationMember",
+          "@container": "@list",
+          "@context": {
+            "type": {
+              "@id": "osmdata:memberType",
+              "@type": "@vocab"
+            },
+            "ref": {
+              "@id": "osmdata:memberReference",
+              "@type": "xsd:integer"
+            },
+            "role": "osmdata:memberRole"
+          }
+        }
+      }
+    }
   }
 }

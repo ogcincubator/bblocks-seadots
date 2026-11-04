@@ -1,0 +1,3567 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix osmdata: <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#> .
+
+<https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source>
+    a owl:Ontology ;
+    rdfs:label "OpenStreetMap API 0.6 source vocabulary"@en ;
+    dcterms:title "OpenStreetMap API 0.6 source vocabulary"@en ;
+    dcterms:description "Terms used by the SeaDOTs JSON-LD context for unconverted OpenStreetMap API 0.6 map responses: response metadata, request bounds, nodes, ways, relations, relation members, and edit metadata. Tag keys and values are kept as an uninterpreted JSON literal."@en ;
+    dcterms:created "2026-11-04"^^xsd:date ;
+    dcterms:creator "SeaDOTs Marine Data Team" ;
+    dcterms:source <https://wiki.openstreetmap.org/wiki/API_v0.6> , <https://wiki.openstreetmap.org/wiki/Elements> ;
+    owl:versionInfo "0.1" ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/OSM_JSON> .
+
+#################################################################
+# Classes
+#################################################################
+
+osmdata:MapResponse
+    a owl:Class ;
+    rdfs:label "OSM map response"@en ;
+    rdfs:comment "Response body of the OSM API 0.6 map call for a bounding box, carrying API metadata, the request bounds, and the returned elements."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/API_v0.6#Retrieving_map_data_by_bounding_box:_GET_/api/0.6/map> .
+
+osmdata:Bounds
+    a owl:Class ;
+    rdfs:label "bounds"@en ;
+    rdfs:comment "Bounding box of an OSM map request in WGS 84 decimal degrees."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:Element
+    a owl:Class ;
+    rdfs:label "OSM element"@en ;
+    rdfs:comment "Basic component of the OpenStreetMap data model: a node, way, or relation. Identifiers are unique only within each element type."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Elements> .
+
+osmdata:Node
+    a owl:Class ;
+    rdfs:subClassOf osmdata:Element ;
+    rdfs:label "node"@en ;
+    rdfs:comment "OSM element representing a single point, defined by latitude and longitude."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Node> .
+
+osmdata:Way
+    a owl:Class ;
+    rdfs:subClassOf osmdata:Element ;
+    rdfs:label "way"@en ;
+    rdfs:comment "OSM element defined by an ordered list of node references; a closed way repeats its first node last."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Way> .
+
+osmdata:Relation
+    a owl:Class ;
+    rdfs:subClassOf osmdata:Element ;
+    rdfs:label "relation"@en ;
+    rdfs:comment "OSM element grouping other elements as an ordered list of role-labelled members."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Relation> .
+
+osmdata:RelationMember
+    a owl:Class ;
+    rdfs:label "relation member"@en ;
+    rdfs:comment "Reference from a relation to a member element, given by member type, numeric identifier, and role. It is a reference, not the member element itself."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+#################################################################
+# Response metadata
+#################################################################
+
+osmdata:apiVersion
+    a owl:DatatypeProperty ;
+    rdfs:label "API version"@en ;
+    rdfs:comment "Version of the OSM API that produced the response, e.g. \"0.6\"."@en ;
+    rdfs:domain osmdata:MapResponse ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:generator
+    a owl:DatatypeProperty ;
+    rdfs:label "generator"@en ;
+    rdfs:comment "Power generator device?"@en ;
+    rdfs:domain osmdata:MapResponse ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:bounds
+    a owl:ObjectProperty ;
+    rdfs:label "bounds"@en ;
+    rdfs:comment "Bounding box of the request that produced the response."@en ;
+    rdfs:domain osmdata:MapResponse ;
+    rdfs:range osmdata:Bounds ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:minlat
+    a owl:DatatypeProperty ;
+    rdfs:label "minimum latitude"@en ;
+    rdfs:comment "Southern edge of the bounding box, WGS 84 decimal degrees."@en ;
+    rdfs:domain osmdata:Bounds ;
+    rdfs:range xsd:decimal ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:minlon
+    a owl:DatatypeProperty ;
+    rdfs:label "minimum longitude"@en ;
+    rdfs:comment "Western edge of the bounding box, WGS 84 decimal degrees."@en ;
+    rdfs:domain osmdata:Bounds ;
+    rdfs:range xsd:decimal ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:maxlat
+    a owl:DatatypeProperty ;
+    rdfs:label "maximum latitude"@en ;
+    rdfs:comment "Northern edge of the bounding box, WGS 84 decimal degrees."@en ;
+    rdfs:domain osmdata:Bounds ;
+    rdfs:range xsd:decimal ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:maxlon
+    a owl:DatatypeProperty ;
+    rdfs:label "maximum longitude"@en ;
+    rdfs:comment "Eastern edge of the bounding box, WGS 84 decimal degrees."@en ;
+    rdfs:domain osmdata:Bounds ;
+    rdfs:range xsd:decimal ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:element
+    a owl:ObjectProperty ;
+    rdfs:label "element"@en ;
+    rdfs:comment "OSM element returned in the response."@en ;
+    rdfs:domain osmdata:MapResponse ;
+    rdfs:range osmdata:Element ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+#################################################################
+# Element properties
+#################################################################
+
+osmdata:elementIdentifier
+    a owl:DatatypeProperty ;
+    rdfs:label "element identifier"@en ;
+    rdfs:comment "Numeric OSM identifier of an element. It is unique only within its element type, so it identifies an element only together with the element's class."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:elementVersion
+    a owl:DatatypeProperty ;
+    rdfs:label "element version"@en ;
+    rdfs:comment "Version number of the element, incremented on each edit."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:changeset
+    a owl:DatatypeProperty ;
+    rdfs:label "changeset"@en ;
+    rdfs:comment "Numeric identifier of the changeset in which this element version was created."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Changeset> .
+
+osmdata:user
+    a owl:DatatypeProperty ;
+    rdfs:label "user"@en ;
+    rdfs:comment "Display name of the user who last edited the element. Display names can change; osmdata:uid is the stable identifier."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:uid
+    a owl:DatatypeProperty ;
+    rdfs:label "user identifier"@en ;
+    rdfs:comment "Numeric identifier of the user who last edited the element."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:TagSet
+    a owl:Class ;
+    rdfs:label "tag set"@en ;
+    rdfs:comment "Set of key-value tags of an OSM element. Each tag is a property whose IRI is the OSM key appended to <https://www.openstreetmap.org/wiki/Key:> (the osm2rdf convention, e.g. osmkey:plant:source); values are the uninterpreted source strings."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Tags> , <https://github.com/ad-freiburg/osm2rdf> .
+
+osmdata:tagSet
+    a owl:ObjectProperty ;
+    rdfs:label "tag set"@en ;
+    rdfs:comment "Key-value tags of the element."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:range osmdata:TagSet ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Tags> .
+
+osmdata:nodeReference
+    a owl:ObjectProperty ;
+    rdfs:label "node reference"@en ;
+    rdfs:comment "Ordered list (rdf:List) of numeric node identifiers that define a way."@en ;
+    rdfs:domain osmdata:Way ;
+    rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:relationMember
+    a owl:ObjectProperty ;
+    rdfs:label "relation member"@en ;
+    rdfs:comment "Ordered list (rdf:List) of the members of a relation."@en ;
+    rdfs:domain osmdata:Relation ;
+    rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+#################################################################
+# Relation member properties
+#################################################################
+
+osmdata:memberType
+    a owl:ObjectProperty ;
+    rdfs:label "member type"@en ;
+    rdfs:comment "Element class of the referenced member: osmdata:Node, osmdata:Way, or osmdata:Relation."@en ;
+    rdfs:domain osmdata:RelationMember ;
+    rdfs:range owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:memberReference
+    a owl:DatatypeProperty ;
+    rdfs:label "member reference"@en ;
+    rdfs:comment "Numeric identifier of the referenced member, interpreted within the type given by osmdata:memberType."@en ;
+    rdfs:domain osmdata:RelationMember ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:memberRole
+    a owl:DatatypeProperty ;
+    rdfs:label "member role"@en ;
+    rdfs:comment "Role of the member within the relation, e.g. \"outer\" or \"inner\"; may be empty."@en ;
+    rdfs:domain osmdata:RelationMember ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Relation#Roles> .
+
+#################################################################
+# Tag keys (generated by gen_osm_tags.py from the block examples; do not edit by hand)
+#
+# Each OSM tag key is a property <https://www.openstreetmap.org/wiki/Key:<key>> (osm2rdf convention).
+# Bare keys that are also the first segment of a colon key (ISO3166-1, alt_name, name, note, official_name, population, short_name, source)
+# expand with a trailing colon (JSON-LD 1.1 prefix rule) and are aligned to the plain key IRI.
+#################################################################
+
+<https://www.openstreetmap.org/wiki/Key:ISO3166-1:>
+    a owl:DatatypeProperty ;
+    rdfs:label "ISO3166-1" ;
+    skos:notation "ISO3166-1" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:ISO3166-1> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ISO3166-1> .
+
+<https://www.openstreetmap.org/wiki/Key:ISO3166-1:alpha2>
+    a owl:DatatypeProperty ;
+    rdfs:label "ISO3166-1:alpha2" ;
+    skos:notation "ISO3166-1:alpha2" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ISO3166-1:alpha2> .
+
+<https://www.openstreetmap.org/wiki/Key:ISO3166-1:alpha3>
+    a owl:DatatypeProperty ;
+    rdfs:label "ISO3166-1:alpha3" ;
+    skos:notation "ISO3166-1:alpha3" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ISO3166-1:alpha3> .
+
+<https://www.openstreetmap.org/wiki/Key:ISO3166-1:numeric>
+    a owl:DatatypeProperty ;
+    rdfs:label "ISO3166-1:numeric" ;
+    skos:notation "ISO3166-1:numeric" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ISO3166-1:numeric> .
+
+<https://www.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:Class>
+    a owl:DatatypeProperty ;
+    rdfs:label "TMC:cid_58:tabcd_1:Class" ;
+    skos:notation "TMC:cid_58:tabcd_1:Class" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:Class> .
+
+<https://www.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:LCLversion>
+    a owl:DatatypeProperty ;
+    rdfs:label "TMC:cid_58:tabcd_1:LCLversion" ;
+    skos:notation "TMC:cid_58:tabcd_1:LCLversion" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:LCLversion> .
+
+<https://www.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:LocationCode>
+    a owl:DatatypeProperty ;
+    rdfs:label "TMC:cid_58:tabcd_1:LocationCode" ;
+    skos:notation "TMC:cid_58:tabcd_1:LocationCode" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:LocationCode> .
+
+<https://www.openstreetmap.org/wiki/Key:access>
+    a owl:DatatypeProperty ;
+    rdfs:label "access" ;
+    skos:notation "access" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:access> .
+
+<https://www.openstreetmap.org/wiki/Key:admin_level>
+    a owl:DatatypeProperty ;
+    rdfs:label "admin_level" ;
+    skos:notation "admin_level" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:admin_level> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name" ;
+    skos:notation "alt_name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:alt_name> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:ar>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:ar" ;
+    skos:notation "alt_name:ar" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:ar> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:br>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:br" ;
+    skos:notation "alt_name:br" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:br> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:ckb>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:ckb" ;
+    skos:notation "alt_name:ckb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:ckb> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:en>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:en" ;
+    skos:notation "alt_name:en" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:en> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:eo>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:eo" ;
+    skos:notation "alt_name:eo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:eo> .
+
+<https://www.openstreetmap.org/wiki/Key:alt_name:vi>
+    a owl:DatatypeProperty ;
+    rdfs:label "alt_name:vi" ;
+    skos:notation "alt_name:vi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:vi> .
+
+<https://www.openstreetmap.org/wiki/Key:border_type>
+    a owl:DatatypeProperty ;
+    rdfs:label "border_type" ;
+    skos:notation "border_type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:border_type> .
+
+<https://www.openstreetmap.org/wiki/Key:boundary>
+    a owl:DatatypeProperty ;
+    rdfs:label "boundary" ;
+    skos:notation "boundary" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:boundary> .
+
+<https://www.openstreetmap.org/wiki/Key:cables>
+    a owl:DatatypeProperty ;
+    rdfs:label "cables" ;
+    skos:notation "cables" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:cables> .
+
+<https://www.openstreetmap.org/wiki/Key:circuits>
+    a owl:DatatypeProperty ;
+    rdfs:label "circuits" ;
+    skos:notation "circuits" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:circuits> .
+
+<https://www.openstreetmap.org/wiki/Key:coat_of_arms>
+    a owl:DatatypeProperty ;
+    rdfs:label "coat_of_arms" ;
+    skos:notation "coat_of_arms" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:coat_of_arms> .
+
+<https://www.openstreetmap.org/wiki/Key:construction:power>
+    a owl:DatatypeProperty ;
+    rdfs:label "construction:power" ;
+    skos:notation "construction:power" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:construction:power> .
+
+<https://www.openstreetmap.org/wiki/Key:contact:twitter>
+    a owl:DatatypeProperty ;
+    rdfs:label "contact:twitter" ;
+    skos:notation "contact:twitter" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:contact:twitter> .
+
+<https://www.openstreetmap.org/wiki/Key:contact:website>
+    a owl:DatatypeProperty ;
+    rdfs:label "contact:website" ;
+    skos:notation "contact:website" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:contact:website> .
+
+<https://www.openstreetmap.org/wiki/Key:country>
+    a owl:DatatypeProperty ;
+    rdfs:label "country" ;
+    skos:notation "country" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:country> .
+
+<https://www.openstreetmap.org/wiki/Key:currency>
+    a owl:DatatypeProperty ;
+    rdfs:label "currency" ;
+    skos:notation "currency" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:currency> .
+
+<https://www.openstreetmap.org/wiki/Key:daytime_headlight>
+    a owl:DatatypeProperty ;
+    rdfs:label "daytime_headlight" ;
+    skos:notation "daytime_headlight" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:daytime_headlight> .
+
+<https://www.openstreetmap.org/wiki/Key:default_language>
+    a owl:DatatypeProperty ;
+    rdfs:label "default_language" ;
+    skos:notation "default_language" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:default_language> .
+
+<https://www.openstreetmap.org/wiki/Key:depth>
+    a owl:DatatypeProperty ;
+    rdfs:label "depth" ;
+    skos:notation "depth" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:depth> .
+
+<https://www.openstreetmap.org/wiki/Key:description:en>
+    a owl:DatatypeProperty ;
+    rdfs:label "description:en" ;
+    skos:notation "description:en" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:description:en> .
+
+<https://www.openstreetmap.org/wiki/Key:designation>
+    a owl:DatatypeProperty ;
+    rdfs:label "designation" ;
+    skos:notation "designation" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:designation> .
+
+<https://www.openstreetmap.org/wiki/Key:driving_side>
+    a owl:DatatypeProperty ;
+    rdfs:label "driving_side" ;
+    skos:notation "driving_side" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:driving_side> .
+
+<https://www.openstreetmap.org/wiki/Key:fixme>
+    a owl:DatatypeProperty ;
+    rdfs:label "fixme" ;
+    skos:notation "fixme" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:fixme> .
+
+<https://www.openstreetmap.org/wiki/Key:flag>
+    a owl:DatatypeProperty ;
+    rdfs:label "flag" ;
+    skos:notation "flag" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:flag> .
+
+<https://www.openstreetmap.org/wiki/Key:frequency>
+    a owl:DatatypeProperty ;
+    rdfs:label "frequency" ;
+    skos:notation "frequency" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:frequency> .
+
+<https://www.openstreetmap.org/wiki/Key:generator:method>
+    a owl:DatatypeProperty ;
+    rdfs:label "generator:method" ;
+    skos:notation "generator:method" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:generator:method> .
+
+<https://www.openstreetmap.org/wiki/Key:generator:output:electricity>
+    a owl:DatatypeProperty ;
+    rdfs:label "generator:output:electricity" ;
+    skos:notation "generator:output:electricity" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:generator:output:electricity> .
+
+<https://www.openstreetmap.org/wiki/Key:generator:source>
+    a owl:DatatypeProperty ;
+    rdfs:label "generator:source" ;
+    skos:notation "generator:source" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:generator:source> .
+
+<https://www.openstreetmap.org/wiki/Key:generator:type>
+    a owl:DatatypeProperty ;
+    rdfs:label "generator:type" ;
+    skos:notation "generator:type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:generator:type> .
+
+<https://www.openstreetmap.org/wiki/Key:group>
+    a owl:DatatypeProperty ;
+    rdfs:label "group" ;
+    skos:notation "group" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:group> .
+
+<https://www.openstreetmap.org/wiki/Key:height:hub>
+    a owl:DatatypeProperty ;
+    rdfs:label "height:hub" ;
+    skos:notation "height:hub" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:height:hub> .
+
+<https://www.openstreetmap.org/wiki/Key:historic>
+    a owl:DatatypeProperty ;
+    rdfs:label "historic" ;
+    skos:notation "historic" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:historic> .
+
+<https://www.openstreetmap.org/wiki/Key:industrial>
+    a owl:DatatypeProperty ;
+    rdfs:label "industrial" ;
+    skos:notation "industrial" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:industrial> .
+
+<https://www.openstreetmap.org/wiki/Key:int_name>
+    a owl:DatatypeProperty ;
+    rdfs:label "int_name" ;
+    skos:notation "int_name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:int_name> .
+
+<https://www.openstreetmap.org/wiki/Key:layer>
+    a owl:DatatypeProperty ;
+    rdfs:label "layer" ;
+    skos:notation "layer" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:layer> .
+
+<https://www.openstreetmap.org/wiki/Key:location>
+    a owl:DatatypeProperty ;
+    rdfs:label "location" ;
+    skos:notation "location" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:location> .
+
+<https://www.openstreetmap.org/wiki/Key:long_name:ar>
+    a owl:DatatypeProperty ;
+    rdfs:label "long_name:ar" ;
+    skos:notation "long_name:ar" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:long_name:ar> .
+
+<https://www.openstreetmap.org/wiki/Key:manufacturer>
+    a owl:DatatypeProperty ;
+    rdfs:label "manufacturer" ;
+    skos:notation "manufacturer" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:manufacturer> .
+
+<https://www.openstreetmap.org/wiki/Key:maritime>
+    a owl:DatatypeProperty ;
+    rdfs:label "maritime" ;
+    skos:notation "maritime" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:maritime> .
+
+<https://www.openstreetmap.org/wiki/Key:model>
+    a owl:DatatypeProperty ;
+    rdfs:label "model" ;
+    skos:notation "model" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:model> .
+
+<https://www.openstreetmap.org/wiki/Key:name:>
+    a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    skos:notation "name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:name> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ab>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ab" ;
+    skos:notation "name:ab" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ab> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ace>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ace" ;
+    skos:notation "name:ace" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ace> .
+
+<https://www.openstreetmap.org/wiki/Key:name:af>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:af" ;
+    skos:notation "name:af" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:af> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ak>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ak" ;
+    skos:notation "name:ak" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ak> .
+
+<https://www.openstreetmap.org/wiki/Key:name:als>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:als" ;
+    skos:notation "name:als" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:als> .
+
+<https://www.openstreetmap.org/wiki/Key:name:am>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:am" ;
+    skos:notation "name:am" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:am> .
+
+<https://www.openstreetmap.org/wiki/Key:name:an>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:an" ;
+    skos:notation "name:an" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:an> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ang>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ang" ;
+    skos:notation "name:ang" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ang> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ar>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ar" ;
+    skos:notation "name:ar" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ar> .
+
+<https://www.openstreetmap.org/wiki/Key:name:arc>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:arc" ;
+    skos:notation "name:arc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:arc> .
+
+<https://www.openstreetmap.org/wiki/Key:name:arz>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:arz" ;
+    skos:notation "name:arz" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:arz> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ast>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ast" ;
+    skos:notation "name:ast" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ast> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ay>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ay" ;
+    skos:notation "name:ay" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ay> .
+
+<https://www.openstreetmap.org/wiki/Key:name:az>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:az" ;
+    skos:notation "name:az" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:az> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ba>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ba" ;
+    skos:notation "name:ba" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ba> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bar>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bar" ;
+    skos:notation "name:bar" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bar> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bcl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bcl" ;
+    skos:notation "name:bcl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bcl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:be>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:be" ;
+    skos:notation "name:be" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:be> .
+
+<https://www.openstreetmap.org/wiki/Key:name:be-tarask>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:be-tarask" ;
+    skos:notation "name:be-tarask" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:be-tarask> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ber>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ber" ;
+    skos:notation "name:ber" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ber> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bg" ;
+    skos:notation "name:bg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bi" ;
+    skos:notation "name:bi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bn" ;
+    skos:notation "name:bn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bo" ;
+    skos:notation "name:bo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bpy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bpy" ;
+    skos:notation "name:bpy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bpy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:br>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:br" ;
+    skos:notation "name:br" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:br> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bs>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bs" ;
+    skos:notation "name:bs" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bs> .
+
+<https://www.openstreetmap.org/wiki/Key:name:bxr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:bxr" ;
+    skos:notation "name:bxr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:bxr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ca>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ca" ;
+    skos:notation "name:ca" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ca> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cdo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cdo" ;
+    skos:notation "name:cdo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cdo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ce>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ce" ;
+    skos:notation "name:ce" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ce> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ceb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ceb" ;
+    skos:notation "name:ceb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ceb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:chr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:chr" ;
+    skos:notation "name:chr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:chr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:chy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:chy" ;
+    skos:notation "name:chy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:chy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ckb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ckb" ;
+    skos:notation "name:ckb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ckb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cnr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cnr" ;
+    skos:notation "name:cnr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cnr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:co>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:co" ;
+    skos:notation "name:co" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:co> .
+
+<https://www.openstreetmap.org/wiki/Key:name:crh>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:crh" ;
+    skos:notation "name:crh" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:crh> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cs>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cs" ;
+    skos:notation "name:cs" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cs> .
+
+<https://www.openstreetmap.org/wiki/Key:name:csb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:csb" ;
+    skos:notation "name:csb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:csb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cu" ;
+    skos:notation "name:cu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cv" ;
+    skos:notation "name:cv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:cy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:cy" ;
+    skos:notation "name:cy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:cy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:da>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:da" ;
+    skos:notation "name:da" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:da> .
+
+<https://www.openstreetmap.org/wiki/Key:name:dative>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:dative" ;
+    skos:notation "name:dative" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:dative> .
+
+<https://www.openstreetmap.org/wiki/Key:name:de>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:de" ;
+    skos:notation "name:de" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:de> .
+
+<https://www.openstreetmap.org/wiki/Key:name:diq>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:diq" ;
+    skos:notation "name:diq" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:diq> .
+
+<https://www.openstreetmap.org/wiki/Key:name:dsb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:dsb" ;
+    skos:notation "name:dsb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:dsb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:dv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:dv" ;
+    skos:notation "name:dv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:dv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ee>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ee" ;
+    skos:notation "name:ee" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ee> .
+
+<https://www.openstreetmap.org/wiki/Key:name:el>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:el" ;
+    skos:notation "name:el" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:el> .
+
+<https://www.openstreetmap.org/wiki/Key:name:eml>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:eml" ;
+    skos:notation "name:eml" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:eml> .
+
+<https://www.openstreetmap.org/wiki/Key:name:en>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:en" ;
+    skos:notation "name:en" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:en> .
+
+<https://www.openstreetmap.org/wiki/Key:name:eo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:eo" ;
+    skos:notation "name:eo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:eo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:es>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:es" ;
+    skos:notation "name:es" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:es> .
+
+<https://www.openstreetmap.org/wiki/Key:name:et>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:et" ;
+    skos:notation "name:et" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:et> .
+
+<https://www.openstreetmap.org/wiki/Key:name:etymology:wikidata>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:etymology:wikidata" ;
+    skos:notation "name:etymology:wikidata" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:etymology:wikidata> .
+
+<https://www.openstreetmap.org/wiki/Key:name:eu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:eu" ;
+    skos:notation "name:eu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:eu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ext>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ext" ;
+    skos:notation "name:ext" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ext> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fa>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fa" ;
+    skos:notation "name:fa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fa> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ff>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ff" ;
+    skos:notation "name:ff" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ff> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fi" ;
+    skos:notation "name:fi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fo" ;
+    skos:notation "name:fo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fr" ;
+    skos:notation "name:fr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:frp>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:frp" ;
+    skos:notation "name:frp" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:frp> .
+
+<https://www.openstreetmap.org/wiki/Key:name:frr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:frr" ;
+    skos:notation "name:frr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:frr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fur>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fur" ;
+    skos:notation "name:fur" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fur> .
+
+<https://www.openstreetmap.org/wiki/Key:name:fy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:fy" ;
+    skos:notation "name:fy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:fy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ga>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ga" ;
+    skos:notation "name:ga" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ga> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gaceria>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gaceria" ;
+    skos:notation "name:gaceria" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gaceria> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gag>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gag" ;
+    skos:notation "name:gag" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gag> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gan>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gan" ;
+    skos:notation "name:gan" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gan> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gd>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gd" ;
+    skos:notation "name:gd" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gd> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gl" ;
+    skos:notation "name:gl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gn" ;
+    skos:notation "name:gn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gu" ;
+    skos:notation "name:gu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:gv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:gv" ;
+    skos:notation "name:gv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:gv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ha>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ha" ;
+    skos:notation "name:ha" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ha> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hak>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hak" ;
+    skos:notation "name:hak" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hak> .
+
+<https://www.openstreetmap.org/wiki/Key:name:haw>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:haw" ;
+    skos:notation "name:haw" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:haw> .
+
+<https://www.openstreetmap.org/wiki/Key:name:he>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:he" ;
+    skos:notation "name:he" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:he> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hi" ;
+    skos:notation "name:hi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hif>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hif" ;
+    skos:notation "name:hif" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hif> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hr" ;
+    skos:notation "name:hr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hsb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hsb" ;
+    skos:notation "name:hsb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hsb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ht>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ht" ;
+    skos:notation "name:ht" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ht> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hu" ;
+    skos:notation "name:hu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:hy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:hy" ;
+    skos:notation "name:hy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:hy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ia>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ia" ;
+    skos:notation "name:ia" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ia> .
+
+<https://www.openstreetmap.org/wiki/Key:name:id>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:id" ;
+    skos:notation "name:id" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:id> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ie>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ie" ;
+    skos:notation "name:ie" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ie> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ig>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ig" ;
+    skos:notation "name:ig" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ig> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ilo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ilo" ;
+    skos:notation "name:ilo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ilo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:io>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:io" ;
+    skos:notation "name:io" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:io> .
+
+<https://www.openstreetmap.org/wiki/Key:name:is>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:is" ;
+    skos:notation "name:is" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:is> .
+
+<https://www.openstreetmap.org/wiki/Key:name:it>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:it" ;
+    skos:notation "name:it" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:it> .
+
+<https://www.openstreetmap.org/wiki/Key:name:iu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:iu" ;
+    skos:notation "name:iu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:iu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ja>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ja" ;
+    skos:notation "name:ja" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ja> .
+
+<https://www.openstreetmap.org/wiki/Key:name:jbo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:jbo" ;
+    skos:notation "name:jbo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:jbo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:jv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:jv" ;
+    skos:notation "name:jv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:jv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ka>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ka" ;
+    skos:notation "name:ka" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ka> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kaa>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kaa" ;
+    skos:notation "name:kaa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kaa> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kab>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kab" ;
+    skos:notation "name:kab" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kab> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kbd>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kbd" ;
+    skos:notation "name:kbd" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kbd> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kg" ;
+    skos:notation "name:kg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kk>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kk" ;
+    skos:notation "name:kk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kk> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kl" ;
+    skos:notation "name:kl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:km>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:km" ;
+    skos:notation "name:km" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:km> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kn" ;
+    skos:notation "name:kn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ko>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ko" ;
+    skos:notation "name:ko" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ko> .
+
+<https://www.openstreetmap.org/wiki/Key:name:koi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:koi" ;
+    skos:notation "name:koi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:koi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:krc>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:krc" ;
+    skos:notation "name:krc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:krc> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ku>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ku" ;
+    skos:notation "name:ku" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ku> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kv" ;
+    skos:notation "name:kv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:kw>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:kw" ;
+    skos:notation "name:kw" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:kw> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ky>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ky" ;
+    skos:notation "name:ky" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ky> .
+
+<https://www.openstreetmap.org/wiki/Key:name:la>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:la" ;
+    skos:notation "name:la" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:la> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lad>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lad" ;
+    skos:notation "name:lad" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lad> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lb" ;
+    skos:notation "name:lb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lez>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lez" ;
+    skos:notation "name:lez" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lez> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lg" ;
+    skos:notation "name:lg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:li>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:li" ;
+    skos:notation "name:li" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:li> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lij>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lij" ;
+    skos:notation "name:lij" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lij> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lmo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lmo" ;
+    skos:notation "name:lmo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lmo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ln>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ln" ;
+    skos:notation "name:ln" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ln> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lt>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lt" ;
+    skos:notation "name:lt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lt> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ltg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ltg" ;
+    skos:notation "name:ltg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ltg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lv" ;
+    skos:notation "name:lv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:lzh>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:lzh" ;
+    skos:notation "name:lzh" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:lzh> .
+
+<https://www.openstreetmap.org/wiki/Key:name:map-bms>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:map-bms" ;
+    skos:notation "name:map-bms" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:map-bms> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mdf>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mdf" ;
+    skos:notation "name:mdf" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mdf> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mg" ;
+    skos:notation "name:mg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mhr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mhr" ;
+    skos:notation "name:mhr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mhr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mi" ;
+    skos:notation "name:mi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mk>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mk" ;
+    skos:notation "name:mk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mk> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ml>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ml" ;
+    skos:notation "name:ml" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ml> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mn" ;
+    skos:notation "name:mn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mr" ;
+    skos:notation "name:mr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mrj>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mrj" ;
+    skos:notation "name:mrj" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mrj> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ms>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ms" ;
+    skos:notation "name:ms" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ms> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mt>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mt" ;
+    skos:notation "name:mt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mt> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mwl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mwl" ;
+    skos:notation "name:mwl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mwl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:my>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:my" ;
+    skos:notation "name:my" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:my> .
+
+<https://www.openstreetmap.org/wiki/Key:name:mzn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:mzn" ;
+    skos:notation "name:mzn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:mzn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:na>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:na" ;
+    skos:notation "name:na" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:na> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nah>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nah" ;
+    skos:notation "name:nah" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nah> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nan>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nan" ;
+    skos:notation "name:nan" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nan> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nan-Hans>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nan-Hans" ;
+    skos:notation "name:nan-Hans" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nan-Hans> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nan-Latn-pehoeji>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nan-Latn-pehoeji" ;
+    skos:notation "name:nan-Latn-pehoeji" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nan-Latn-pehoeji> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nan-Latn-tailo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nan-Latn-tailo" ;
+    skos:notation "name:nan-Latn-tailo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nan-Latn-tailo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nap>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nap" ;
+    skos:notation "name:nap" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nap> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nds>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nds" ;
+    skos:notation "name:nds" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nds> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nds-nl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nds-nl" ;
+    skos:notation "name:nds-nl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nds-nl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ne>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ne" ;
+    skos:notation "name:ne" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ne> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nl" ;
+    skos:notation "name:nl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nn" ;
+    skos:notation "name:nn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:no>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:no" ;
+    skos:notation "name:no" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:no> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nov>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nov" ;
+    skos:notation "name:nov" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nov> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nrm>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nrm" ;
+    skos:notation "name:nrm" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nrm> .
+
+<https://www.openstreetmap.org/wiki/Key:name:nv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:nv" ;
+    skos:notation "name:nv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:nv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:oc>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:oc" ;
+    skos:notation "name:oc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:oc> .
+
+<https://www.openstreetmap.org/wiki/Key:name:or>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:or" ;
+    skos:notation "name:or" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:or> .
+
+<https://www.openstreetmap.org/wiki/Key:name:os>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:os" ;
+    skos:notation "name:os" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:os> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pa>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pa" ;
+    skos:notation "name:pa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pa> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pam>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pam" ;
+    skos:notation "name:pam" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pam> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pap>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pap" ;
+    skos:notation "name:pap" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pap> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pcd>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pcd" ;
+    skos:notation "name:pcd" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pcd> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pdc>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pdc" ;
+    skos:notation "name:pdc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pdc> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pfl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pfl" ;
+    skos:notation "name:pfl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pfl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pih>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pih" ;
+    skos:notation "name:pih" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pih> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pl" ;
+    skos:notation "name:pl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pms>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pms" ;
+    skos:notation "name:pms" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pms> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pnb>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pnb" ;
+    skos:notation "name:pnb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pnb> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pnt>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pnt" ;
+    skos:notation "name:pnt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pnt> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ps>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ps" ;
+    skos:notation "name:ps" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ps> .
+
+<https://www.openstreetmap.org/wiki/Key:name:pt>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:pt" ;
+    skos:notation "name:pt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:pt> .
+
+<https://www.openstreetmap.org/wiki/Key:name:qu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:qu" ;
+    skos:notation "name:qu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:qu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:rm>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:rm" ;
+    skos:notation "name:rm" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:rm> .
+
+<https://www.openstreetmap.org/wiki/Key:name:rmy>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:rmy" ;
+    skos:notation "name:rmy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:rmy> .
+
+<https://www.openstreetmap.org/wiki/Key:name:rn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:rn" ;
+    skos:notation "name:rn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:rn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ro>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ro" ;
+    skos:notation "name:ro" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ro> .
+
+<https://www.openstreetmap.org/wiki/Key:name:roa-tara>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:roa-tara" ;
+    skos:notation "name:roa-tara" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:roa-tara> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ru>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ru" ;
+    skos:notation "name:ru" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ru> .
+
+<https://www.openstreetmap.org/wiki/Key:name:rue>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:rue" ;
+    skos:notation "name:rue" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:rue> .
+
+<https://www.openstreetmap.org/wiki/Key:name:rw>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:rw" ;
+    skos:notation "name:rw" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:rw> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sa>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sa" ;
+    skos:notation "name:sa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sa> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sah>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sah" ;
+    skos:notation "name:sah" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sah> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sc>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sc" ;
+    skos:notation "name:sc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sc> .
+
+<https://www.openstreetmap.org/wiki/Key:name:scn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:scn" ;
+    skos:notation "name:scn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:scn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sco>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sco" ;
+    skos:notation "name:sco" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sco> .
+
+<https://www.openstreetmap.org/wiki/Key:name:se>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:se" ;
+    skos:notation "name:se" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:se> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sg" ;
+    skos:notation "name:sg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sgs>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sgs" ;
+    skos:notation "name:sgs" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sgs> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sh>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sh" ;
+    skos:notation "name:sh" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sh> .
+
+<https://www.openstreetmap.org/wiki/Key:name:si>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:si" ;
+    skos:notation "name:si" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:si> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sk>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sk" ;
+    skos:notation "name:sk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sk> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sl" ;
+    skos:notation "name:sl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sm>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sm" ;
+    skos:notation "name:sm" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sm> .
+
+<https://www.openstreetmap.org/wiki/Key:name:smn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:smn" ;
+    skos:notation "name:smn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:smn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sms>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sms" ;
+    skos:notation "name:sms" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sms> .
+
+<https://www.openstreetmap.org/wiki/Key:name:so>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:so" ;
+    skos:notation "name:so" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:so> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sq>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sq" ;
+    skos:notation "name:sq" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sq> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sr" ;
+    skos:notation "name:sr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sr-Latn>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sr-Latn" ;
+    skos:notation "name:sr-Latn" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sr-Latn> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ss>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ss" ;
+    skos:notation "name:ss" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ss> .
+
+<https://www.openstreetmap.org/wiki/Key:name:st>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:st" ;
+    skos:notation "name:st" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:st> .
+
+<https://www.openstreetmap.org/wiki/Key:name:stq>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:stq" ;
+    skos:notation "name:stq" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:stq> .
+
+<https://www.openstreetmap.org/wiki/Key:name:su>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:su" ;
+    skos:notation "name:su" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:su> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sv>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sv" ;
+    skos:notation "name:sv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sv> .
+
+<https://www.openstreetmap.org/wiki/Key:name:sw>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:sw" ;
+    skos:notation "name:sw" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:sw> .
+
+<https://www.openstreetmap.org/wiki/Key:name:szl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:szl" ;
+    skos:notation "name:szl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:szl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ta>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ta" ;
+    skos:notation "name:ta" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ta> .
+
+<https://www.openstreetmap.org/wiki/Key:name:te>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:te" ;
+    skos:notation "name:te" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:te> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tet>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tet" ;
+    skos:notation "name:tet" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tet> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tg>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tg" ;
+    skos:notation "name:tg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tg> .
+
+<https://www.openstreetmap.org/wiki/Key:name:th>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:th" ;
+    skos:notation "name:th" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:th> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tk>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tk" ;
+    skos:notation "name:tk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tk> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tl" ;
+    skos:notation "name:tl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tok>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tok" ;
+    skos:notation "name:tok" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tok> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tpi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tpi" ;
+    skos:notation "name:tpi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tpi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tr>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tr" ;
+    skos:notation "name:tr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tr> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tt>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tt" ;
+    skos:notation "name:tt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tt> .
+
+<https://www.openstreetmap.org/wiki/Key:name:tzl>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:tzl" ;
+    skos:notation "name:tzl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:tzl> .
+
+<https://www.openstreetmap.org/wiki/Key:name:udm>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:udm" ;
+    skos:notation "name:udm" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:udm> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ug>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ug" ;
+    skos:notation "name:ug" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ug> .
+
+<https://www.openstreetmap.org/wiki/Key:name:uk>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:uk" ;
+    skos:notation "name:uk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:uk> .
+
+<https://www.openstreetmap.org/wiki/Key:name:ur>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:ur" ;
+    skos:notation "name:ur" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:ur> .
+
+<https://www.openstreetmap.org/wiki/Key:name:uz>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:uz" ;
+    skos:notation "name:uz" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:uz> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vec>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vec" ;
+    skos:notation "name:vec" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vec> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vep>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vep" ;
+    skos:notation "name:vep" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vep> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vi" ;
+    skos:notation "name:vi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vls>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vls" ;
+    skos:notation "name:vls" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vls> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vo" ;
+    skos:notation "name:vo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:vro>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:vro" ;
+    skos:notation "name:vro" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:vro> .
+
+<https://www.openstreetmap.org/wiki/Key:name:wa>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:wa" ;
+    skos:notation "name:wa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:wa> .
+
+<https://www.openstreetmap.org/wiki/Key:name:war>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:war" ;
+    skos:notation "name:war" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:war> .
+
+<https://www.openstreetmap.org/wiki/Key:name:wo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:wo" ;
+    skos:notation "name:wo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:wo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:wuu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:wuu" ;
+    skos:notation "name:wuu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:wuu> .
+
+<https://www.openstreetmap.org/wiki/Key:name:xal>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:xal" ;
+    skos:notation "name:xal" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:xal> .
+
+<https://www.openstreetmap.org/wiki/Key:name:xmf>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:xmf" ;
+    skos:notation "name:xmf" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:xmf> .
+
+<https://www.openstreetmap.org/wiki/Key:name:yi>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:yi" ;
+    skos:notation "name:yi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:yi> .
+
+<https://www.openstreetmap.org/wiki/Key:name:yo>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:yo" ;
+    skos:notation "name:yo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:yo> .
+
+<https://www.openstreetmap.org/wiki/Key:name:yue>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:yue" ;
+    skos:notation "name:yue" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:yue> .
+
+<https://www.openstreetmap.org/wiki/Key:name:zea>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:zea" ;
+    skos:notation "name:zea" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zea> .
+
+<https://www.openstreetmap.org/wiki/Key:name:zh>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:zh" ;
+    skos:notation "name:zh" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zh> .
+
+<https://www.openstreetmap.org/wiki/Key:name:zh-Hans>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:zh-Hans" ;
+    skos:notation "name:zh-Hans" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zh-Hans> .
+
+<https://www.openstreetmap.org/wiki/Key:name:zh-Hant>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:zh-Hant" ;
+    skos:notation "name:zh-Hant" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zh-Hant> .
+
+<https://www.openstreetmap.org/wiki/Key:name:zu>
+    a owl:DatatypeProperty ;
+    rdfs:label "name:zu" ;
+    skos:notation "name:zu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zu> .
+
+<https://www.openstreetmap.org/wiki/Key:natural>
+    a owl:DatatypeProperty ;
+    rdfs:label "natural" ;
+    skos:notation "natural" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:natural> .
+
+<https://www.openstreetmap.org/wiki/Key:note:>
+    a owl:DatatypeProperty ;
+    rdfs:label "note" ;
+    skos:notation "note" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:note> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note> .
+
+<https://www.openstreetmap.org/wiki/Key:note:ISO3166-1>
+    a owl:DatatypeProperty ;
+    rdfs:label "note:ISO3166-1" ;
+    skos:notation "note:ISO3166-1" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note:ISO3166-1> .
+
+<https://www.openstreetmap.org/wiki/Key:note:description>
+    a owl:DatatypeProperty ;
+    rdfs:label "note:description" ;
+    skos:notation "note:description" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note:description> .
+
+<https://www.openstreetmap.org/wiki/Key:note:name>
+    a owl:DatatypeProperty ;
+    rdfs:label "note:name" ;
+    skos:notation "note:name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note:name> .
+
+<https://www.openstreetmap.org/wiki/Key:note:url>
+    a owl:DatatypeProperty ;
+    rdfs:label "note:url" ;
+    skos:notation "note:url" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note:url> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name" ;
+    skos:notation "official_name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:official_name> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:ar>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:ar" ;
+    skos:notation "official_name:ar" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:ar> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:be>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:be" ;
+    skos:notation "official_name:be" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:be> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:be-tarask>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:be-tarask" ;
+    skos:notation "official_name:be-tarask" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:be-tarask> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:ca>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:ca" ;
+    skos:notation "official_name:ca" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:ca> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:cnr>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:cnr" ;
+    skos:notation "official_name:cnr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:cnr> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:cs>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:cs" ;
+    skos:notation "official_name:cs" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:cs> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:de>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:de" ;
+    skos:notation "official_name:de" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:de> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:el>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:el" ;
+    skos:notation "official_name:el" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:el> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:en>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:en" ;
+    skos:notation "official_name:en" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:en> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:eo>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:eo" ;
+    skos:notation "official_name:eo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:eo> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:es>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:es" ;
+    skos:notation "official_name:es" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:es> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:fi>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:fi" ;
+    skos:notation "official_name:fi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:fi> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:fr>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:fr" ;
+    skos:notation "official_name:fr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:fr> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:hu>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:hu" ;
+    skos:notation "official_name:hu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:hu> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:mi>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:mi" ;
+    skos:notation "official_name:mi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:mi> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:pl>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:pl" ;
+    skos:notation "official_name:pl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:pl> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:ru>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:ru" ;
+    skos:notation "official_name:ru" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:ru> .
+
+<https://www.openstreetmap.org/wiki/Key:official_name:sr>
+    a owl:DatatypeProperty ;
+    rdfs:label "official_name:sr" ;
+    skos:notation "official_name:sr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:sr> .
+
+<https://www.openstreetmap.org/wiki/Key:offshore>
+    a owl:DatatypeProperty ;
+    rdfs:label "offshore" ;
+    skos:notation "offshore" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:offshore> .
+
+<https://www.openstreetmap.org/wiki/Key:old_name:is>
+    a owl:DatatypeProperty ;
+    rdfs:label "old_name:is" ;
+    skos:notation "old_name:is" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:old_name:is> .
+
+<https://www.openstreetmap.org/wiki/Key:operator>
+    a owl:DatatypeProperty ;
+    rdfs:label "operator" ;
+    skos:notation "operator" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:operator> .
+
+<https://www.openstreetmap.org/wiki/Key:place>
+    a owl:DatatypeProperty ;
+    rdfs:label "place" ;
+    skos:notation "place" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:place> .
+
+<https://www.openstreetmap.org/wiki/Key:plant:method>
+    a owl:DatatypeProperty ;
+    rdfs:label "plant:method" ;
+    skos:notation "plant:method" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:method> .
+
+<https://www.openstreetmap.org/wiki/Key:plant:output:electricity>
+    a owl:DatatypeProperty ;
+    rdfs:label "plant:output:electricity" ;
+    skos:notation "plant:output:electricity" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:output:electricity> .
+
+<https://www.openstreetmap.org/wiki/Key:plant:source>
+    a owl:DatatypeProperty ;
+    rdfs:label "plant:source" ;
+    skos:notation "plant:source" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:source> .
+
+<https://www.openstreetmap.org/wiki/Key:plant:type>
+    a owl:DatatypeProperty ;
+    rdfs:label "plant:type" ;
+    skos:notation "plant:type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:type> .
+
+<https://www.openstreetmap.org/wiki/Key:poles>
+    a owl:DatatypeProperty ;
+    rdfs:label "poles" ;
+    skos:notation "poles" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:poles> .
+
+<https://www.openstreetmap.org/wiki/Key:population:>
+    a owl:DatatypeProperty ;
+    rdfs:label "population" ;
+    skos:notation "population" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:population> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:population> .
+
+<https://www.openstreetmap.org/wiki/Key:population:date>
+    a owl:DatatypeProperty ;
+    rdfs:label "population:date" ;
+    skos:notation "population:date" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:population:date> .
+
+<https://www.openstreetmap.org/wiki/Key:power>
+    a owl:DatatypeProperty ;
+    rdfs:label "power" ;
+    skos:notation "power" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:power> .
+
+<https://www.openstreetmap.org/wiki/Key:protect_class>
+    a owl:DatatypeProperty ;
+    rdfs:label "protect_class" ;
+    skos:notation "protect_class" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:protect_class> .
+
+<https://www.openstreetmap.org/wiki/Key:protection_title>
+    a owl:DatatypeProperty ;
+    rdfs:label "protection_title" ;
+    skos:notation "protection_title" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:protection_title> .
+
+<https://www.openstreetmap.org/wiki/Key:rating>
+    a owl:DatatypeProperty ;
+    rdfs:label "rating" ;
+    skos:notation "rating" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:rating> .
+
+<https://www.openstreetmap.org/wiki/Key:reef>
+    a owl:DatatypeProperty ;
+    rdfs:label "reef" ;
+    skos:notation "reef" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:reef> .
+
+<https://www.openstreetmap.org/wiki/Key:ref>
+    a owl:DatatypeProperty ;
+    rdfs:label "ref" ;
+    skos:notation "ref" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ref> .
+
+<https://www.openstreetmap.org/wiki/Key:rotor:diameter>
+    a owl:DatatypeProperty ;
+    rdfs:label "rotor:diameter" ;
+    skos:notation "rotor:diameter" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:rotor:diameter> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:cable_submarine:category>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:cable_submarine:category" ;
+    skos:notation "seamark:cable_submarine:category" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:cable_submarine:category> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:landmark:category>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:landmark:category" ;
+    skos:notation "seamark:landmark:category" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:landmark:category> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:landmark:production_area>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:landmark:production_area" ;
+    skos:notation "seamark:landmark:production_area" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:landmark:production_area> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:name>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:name" ;
+    skos:notation "seamark:name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:name> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:platform:category>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:platform:category" ;
+    skos:notation "seamark:platform:category" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:platform:category> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:production_area:product>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:production_area:product" ;
+    skos:notation "seamark:production_area:product" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:production_area:product> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:type>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:type" ;
+    skos:notation "seamark:type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:type> .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:wreck:category>
+    a owl:DatatypeProperty ;
+    rdfs:label "seamark:wreck:category" ;
+    skos:notation "seamark:wreck:category" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:wreck:category> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name" ;
+    skos:notation "short_name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:short_name> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:be>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:be" ;
+    skos:notation "short_name:be" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:be> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:bg>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:bg" ;
+    skos:notation "short_name:bg" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:bg> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:cnr>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:cnr" ;
+    skos:notation "short_name:cnr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:cnr> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:cs>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:cs" ;
+    skos:notation "short_name:cs" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:cs> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:cv>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:cv" ;
+    skos:notation "short_name:cv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:cv> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:cy>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:cy" ;
+    skos:notation "short_name:cy" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:cy> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:da>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:da" ;
+    skos:notation "short_name:da" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:da> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:de>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:de" ;
+    skos:notation "short_name:de" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:de> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:el>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:el" ;
+    skos:notation "short_name:el" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:el> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:en>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:en" ;
+    skos:notation "short_name:en" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:en> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:eo>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:eo" ;
+    skos:notation "short_name:eo" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:eo> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:es>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:es" ;
+    skos:notation "short_name:es" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:es> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:et>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:et" ;
+    skos:notation "short_name:et" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:et> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:fi>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:fi" ;
+    skos:notation "short_name:fi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:fi> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:fr>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:fr" ;
+    skos:notation "short_name:fr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:fr> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:fur>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:fur" ;
+    skos:notation "short_name:fur" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:fur> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:ga>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:ga" ;
+    skos:notation "short_name:ga" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:ga> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:hr>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:hr" ;
+    skos:notation "short_name:hr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:hr> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:hu>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:hu" ;
+    skos:notation "short_name:hu" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:hu> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:it>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:it" ;
+    skos:notation "short_name:it" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:it> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:lb>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:lb" ;
+    skos:notation "short_name:lb" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:lb> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:li>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:li" ;
+    skos:notation "short_name:li" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:li> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:lt>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:lt" ;
+    skos:notation "short_name:lt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:lt> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:lv>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:lv" ;
+    skos:notation "short_name:lv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:lv> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:mi>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:mi" ;
+    skos:notation "short_name:mi" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:mi> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:mt>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:mt" ;
+    skos:notation "short_name:mt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:mt> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:nl>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:nl" ;
+    skos:notation "short_name:nl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:nl> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:pcd>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:pcd" ;
+    skos:notation "short_name:pcd" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:pcd> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:pl>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:pl" ;
+    skos:notation "short_name:pl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:pl> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:pt>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:pt" ;
+    skos:notation "short_name:pt" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:pt> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:ro>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:ro" ;
+    skos:notation "short_name:ro" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:ro> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:ru>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:ru" ;
+    skos:notation "short_name:ru" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:ru> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:sk>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:sk" ;
+    skos:notation "short_name:sk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:sk> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:sl>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:sl" ;
+    skos:notation "short_name:sl" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:sl> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:sv>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:sv" ;
+    skos:notation "short_name:sv" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:sv> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:tr>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:tr" ;
+    skos:notation "short_name:tr" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:tr> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:uk>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:uk" ;
+    skos:notation "short_name:uk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:uk> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:vls>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:vls" ;
+    skos:notation "short_name:vls" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:vls> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:wa>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:wa" ;
+    skos:notation "short_name:wa" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:wa> .
+
+<https://www.openstreetmap.org/wiki/Key:short_name:zea>
+    a owl:DatatypeProperty ;
+    rdfs:label "short_name:zea" ;
+    skos:notation "short_name:zea" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name:zea> .
+
+<https://www.openstreetmap.org/wiki/Key:source:>
+    a owl:DatatypeProperty ;
+    rdfs:label "source" ;
+    skos:notation "source" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:source> ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source> .
+
+<https://www.openstreetmap.org/wiki/Key:source:ISO3166-1>
+    a owl:DatatypeProperty ;
+    rdfs:label "source:ISO3166-1" ;
+    skos:notation "source:ISO3166-1" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source:ISO3166-1> .
+
+<https://www.openstreetmap.org/wiki/Key:source:name:oc>
+    a owl:DatatypeProperty ;
+    rdfs:label "source:name:oc" ;
+    skos:notation "source:name:oc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source:name:oc> .
+
+<https://www.openstreetmap.org/wiki/Key:source:note:name>
+    a owl:DatatypeProperty ;
+    rdfs:label "source:note:name" ;
+    skos:notation "source:note:name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source:note:name> .
+
+<https://www.openstreetmap.org/wiki/Key:source:population>
+    a owl:DatatypeProperty ;
+    rdfs:label "source:population" ;
+    skos:notation "source:population" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source:population> .
+
+<https://www.openstreetmap.org/wiki/Key:start_date>
+    a owl:DatatypeProperty ;
+    rdfs:label "start_date" ;
+    skos:notation "start_date" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:start_date> .
+
+<https://www.openstreetmap.org/wiki/Key:status>
+    a owl:DatatypeProperty ;
+    rdfs:label "status" ;
+    skos:notation "status" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:status> .
+
+<https://www.openstreetmap.org/wiki/Key:substation>
+    a owl:DatatypeProperty ;
+    rdfs:label "substation" ;
+    skos:notation "substation" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:substation> .
+
+<https://www.openstreetmap.org/wiki/Key:teryt:terc>
+    a owl:DatatypeProperty ;
+    rdfs:label "teryt:terc" ;
+    skos:notation "teryt:terc" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:teryt:terc> .
+
+<https://www.openstreetmap.org/wiki/Key:timezone>
+    a owl:DatatypeProperty ;
+    rdfs:label "timezone" ;
+    skos:notation "timezone" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:timezone> .
+
+<https://www.openstreetmap.org/wiki/Key:turbines>
+    a owl:DatatypeProperty ;
+    rdfs:label "turbines" ;
+    skos:notation "turbines" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:turbines> .
+
+<https://www.openstreetmap.org/wiki/Key:type>
+    a owl:DatatypeProperty ;
+    rdfs:label "type" ;
+    skos:notation "type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:type> .
+
+<https://www.openstreetmap.org/wiki/Key:voltage>
+    a owl:DatatypeProperty ;
+    rdfs:label "voltage" ;
+    skos:notation "voltage" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:voltage> .
+
+<https://www.openstreetmap.org/wiki/Key:wikidata>
+    a owl:DatatypeProperty ;
+    rdfs:label "wikidata" ;
+    skos:notation "wikidata" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wikidata> .
+
+<https://www.openstreetmap.org/wiki/Key:wikimedia_commons>
+    a owl:DatatypeProperty ;
+    rdfs:label "wikimedia_commons" ;
+    skos:notation "wikimedia_commons" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wikimedia_commons> .
+
+<https://www.openstreetmap.org/wiki/Key:wikipedia>
+    a owl:DatatypeProperty ;
+    rdfs:label "wikipedia" ;
+    skos:notation "wikipedia" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wikipedia> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:clearance>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:clearance" ;
+    skos:notation "wreck:clearance" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:clearance> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:date_commissioned>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:date_commissioned" ;
+    skos:notation "wreck:date_commissioned" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:date_commissioned> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:date_sunk>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:date_sunk" ;
+    skos:notation "wreck:date_sunk" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:date_sunk> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:gross_tonnage>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:gross_tonnage" ;
+    skos:notation "wreck:gross_tonnage" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:gross_tonnage> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:length>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:length" ;
+    skos:notation "wreck:length" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:length> .
+
+<https://www.openstreetmap.org/wiki/Key:wreck:width>
+    a owl:DatatypeProperty ;
+    rdfs:label "wreck:width" ;
+    skos:notation "wreck:width" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:width> .
