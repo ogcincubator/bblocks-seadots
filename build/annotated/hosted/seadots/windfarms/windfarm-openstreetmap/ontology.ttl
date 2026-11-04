@@ -1,8 +1,12 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix osmdata: <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source#> .
+@prefix osmkey: <https://www.openstreetmap.org/wiki/Key:> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -12,6 +16,23 @@ osmdata:Node a owl:Class ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Node> ;
     rdfs:subClassOf osmdata:Element .
+
+osmdata:WindfarmElement a owl:Class ;
+    rdfs:label "OSM wind farm element"@en ;
+    rdfs:comment "A way or relation tagged as a wind farm. A way that is an outer member of a wind farm relation, or has the same name as one, is part of that relation's wind farm; the relation is the primary element, the ways are linked with schema:sameAs, and the first area way gives the geometry."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:subClassOf osmdata:Element ;
+    owl:equivalentClass [ owl:intersectionOf ( osmdata:Element [ a owl:Restriction ;
+                        owl:onProperty osmdata:tagSet ;
+                        owl:someValuesFrom [ owl:unionOf ( [ a owl:Restriction ;
+                                            owl:hasValue "wind" ;
+                                            owl:onProperty <https://www.openstreetmap.org/wiki/Key:plant:source> ] [ a owl:Restriction ;
+                                            owl:hasValue "windfarm" ;
+                                            owl:onProperty osmkey:industrial ] [ a owl:Restriction ;
+                                            owl:hasValue "wind_farm" ;
+                                            owl:onProperty <https://www.openstreetmap.org/wiki/Key:seamark:landmark:production_area> ] ) ] ] ) ] ;
+    skos:closeMatch owf:WindfarmArea ;
+    osmdata:selectionRules ( osmdata:sel-plant-source osmdata:sel-industrial osmdata:sel-seamark ) .
 
 osmdata:apiVersion a owl:DatatypeProperty ;
     rdfs:label "API version"@en ;
@@ -25,7 +46,8 @@ osmdata:bounds a owl:ObjectProperty ;
     rdfs:comment "Bounding box of the request that produced the response."@en ;
     rdfs:domain osmdata:MapResponse ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
-    rdfs:range osmdata:Bounds .
+    rdfs:range osmdata:Bounds ;
+    skos:relatedMatch dcterms:source .
 
 osmdata:changeset a owl:DatatypeProperty ;
     rdfs:label "changeset"@en ;
@@ -34,6 +56,12 @@ osmdata:changeset a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:range xsd:integer ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Changeset> .
+
+osmdata:conversion a owl:ObjectProperty ;
+    rdfs:label "conversion"@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range osmdata:Conversion .
 
 osmdata:element a owl:ObjectProperty ;
     rdfs:label "element"@en ;
@@ -47,7 +75,8 @@ osmdata:elementIdentifier a owl:DatatypeProperty ;
     rdfs:comment "Numeric OSM identifier of an element. It is unique only within its element type, so it identifies an element only together with the element's class."@en ;
     rdfs:domain osmdata:Element ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
-    rdfs:range xsd:integer .
+    rdfs:range xsd:integer ;
+    skos:relatedMatch dcterms:identifier .
 
 osmdata:elementVersion a owl:DatatypeProperty ;
     rdfs:label "element version"@en ;
@@ -55,6 +84,13 @@ osmdata:elementVersion a owl:DatatypeProperty ;
     rdfs:domain osmdata:Element ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:range xsd:integer .
+
+osmdata:fallback a owl:ObjectProperty ;
+    rdfs:label "fallback"@en ;
+    rdfs:comment "Conversion applied when no source key has a value."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range osmdata:Conversion .
 
 osmdata:generator a owl:DatatypeProperty ;
     rdfs:label "generator"@en ;
@@ -127,13 +163,44 @@ osmdata:relationMember a owl:ObjectProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:range rdf:List .
 
-osmdata:tagSet a owl:ObjectProperty ;
-    rdfs:label "tag set"@en ;
-    rdfs:comment "Key-value tags of the element."@en ;
-    rdfs:domain osmdata:Element ;
+osmdata:ruleKey a owl:ObjectProperty ;
+    rdfs:label "rule key"@en ;
+    rdfs:domain osmdata:ValueRule ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
-    rdfs:range osmdata:TagSet ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Tags> .
+    rdfs:range rdf:Property .
+
+osmdata:ruleValue a owl:DatatypeProperty ;
+    rdfs:label "rule value"@en ;
+    rdfs:comment "Source tag value the rule matches; omitted to match any value."@en ;
+    rdfs:domain osmdata:ValueRule ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range xsd:string .
+
+osmdata:selectionRules a owl:AnnotationProperty ;
+    rdfs:label "selection rules"@en ;
+    rdfs:comment "Any matching rule selects an element; machine-readable form of the class definition."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:sourceKeys a owl:ObjectProperty ;
+    rdfs:label "source keys"@en ;
+    rdfs:comment "Ordered list (rdf:List) of OSM tag key properties; the first key with a value is used."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range rdf:List .
+
+osmdata:targetKey a owl:DatatypeProperty ;
+    rdfs:label "target JSON key"@en ;
+    rdfs:comment "JSON property name in the target block, i.e. the context term for osmdata:targetProperty."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range xsd:string .
+
+osmdata:targetProperty a owl:ObjectProperty ;
+    rdfs:label "target property"@en ;
+    rdfs:comment "The ontology property the mapping produces."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range rdf:Property .
 
 osmdata:uid a owl:DatatypeProperty ;
     rdfs:label "user identifier"@en ;
@@ -149,12 +216,36 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:range xsd:string .
 
+osmdata:valueRules a owl:ObjectProperty ;
+    rdfs:label "value rules"@en ;
+    rdfs:comment "Ordered list (rdf:List) of osmdata:ValueRule; the first rule whose key/value matches gives the target value."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range rdf:List .
+
+osmdata:whenPresent a owl:DatatypeProperty ;
+    rdfs:label "constant when present"@en ;
+    rdfs:comment "Constant target value written when the mapping's source key has a value (used for explanatory fields)."@en ;
+    rdfs:domain osmdata:TagMapping ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range xsd:string .
+
+osmdata:windfarmTagMappings a owl:AnnotationProperty ;
+    rdfs:label "windfarm tag mappings"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:yields a rdf:Property ;
+    rdfs:label "yields"@en ;
+    rdfs:comment "Target value of a rule: a concept (written as its local name), a literal, or osmdata:KeyEqualsValue."@en ;
+    rdfs:domain osmdata:ValueRule ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
 <https://www.openstreetmap.org/wiki/Key:ISO3166-1:> a owl:DatatypeProperty ;
     rdfs:label "ISO3166-1" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:ISO3166-1> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:ISO3166-1> ;
+    owl:equivalentProperty osmkey:ISO3166-1 ;
     skos:notation "ISO3166-1" .
 
 <https://www.openstreetmap.org/wiki/Key:ISO3166-1:alpha2> a owl:DatatypeProperty ;
@@ -199,14 +290,14 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:TMC:cid_58:tabcd_1:LocationCode> ;
     skos:notation "TMC:cid_58:tabcd_1:LocationCode" .
 
-<https://www.openstreetmap.org/wiki/Key:access> a owl:DatatypeProperty ;
+osmkey:access a owl:DatatypeProperty ;
     rdfs:label "access" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:access> ;
     skos:notation "access" .
 
-<https://www.openstreetmap.org/wiki/Key:admin_level> a owl:DatatypeProperty ;
+osmkey:admin_level a owl:DatatypeProperty ;
     rdfs:label "admin_level" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -218,7 +309,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:alt_name> ;
+    owl:equivalentProperty osmkey:alt_name ;
     skos:notation "alt_name" .
 
 <https://www.openstreetmap.org/wiki/Key:alt_name:ar> a owl:DatatypeProperty ;
@@ -263,47 +354,40 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:alt_name:vi> ;
     skos:notation "alt_name:vi" .
 
-<https://www.openstreetmap.org/wiki/Key:border_type> a owl:DatatypeProperty ;
+osmkey:border_type a owl:DatatypeProperty ;
     rdfs:label "border_type" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:border_type> ;
     skos:notation "border_type" .
 
-<https://www.openstreetmap.org/wiki/Key:boundary> a owl:DatatypeProperty ;
+osmkey:boundary a owl:DatatypeProperty ;
     rdfs:label "boundary" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:boundary> ;
     skos:notation "boundary" .
 
-<https://www.openstreetmap.org/wiki/Key:cables> a owl:DatatypeProperty ;
+osmkey:cables a owl:DatatypeProperty ;
     rdfs:label "cables" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:cables> ;
     skos:notation "cables" .
 
-<https://www.openstreetmap.org/wiki/Key:circuits> a owl:DatatypeProperty ;
+osmkey:circuits a owl:DatatypeProperty ;
     rdfs:label "circuits" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:circuits> ;
     skos:notation "circuits" .
 
-<https://www.openstreetmap.org/wiki/Key:coat_of_arms> a owl:DatatypeProperty ;
+osmkey:coat_of_arms a owl:DatatypeProperty ;
     rdfs:label "coat_of_arms" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:coat_of_arms> ;
     skos:notation "coat_of_arms" .
-
-<https://www.openstreetmap.org/wiki/Key:construction:power> a owl:DatatypeProperty ;
-    rdfs:label "construction:power" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:construction:power> ;
-    skos:notation "construction:power" .
 
 <https://www.openstreetmap.org/wiki/Key:contact:twitter> a owl:DatatypeProperty ;
     rdfs:label "contact:twitter" ;
@@ -319,35 +403,35 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:contact:website> ;
     skos:notation "contact:website" .
 
-<https://www.openstreetmap.org/wiki/Key:country> a owl:DatatypeProperty ;
+osmkey:country a owl:DatatypeProperty ;
     rdfs:label "country" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:country> ;
     skos:notation "country" .
 
-<https://www.openstreetmap.org/wiki/Key:currency> a owl:DatatypeProperty ;
+osmkey:currency a owl:DatatypeProperty ;
     rdfs:label "currency" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:currency> ;
     skos:notation "currency" .
 
-<https://www.openstreetmap.org/wiki/Key:daytime_headlight> a owl:DatatypeProperty ;
+osmkey:daytime_headlight a owl:DatatypeProperty ;
     rdfs:label "daytime_headlight" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:daytime_headlight> ;
     skos:notation "daytime_headlight" .
 
-<https://www.openstreetmap.org/wiki/Key:default_language> a owl:DatatypeProperty ;
+osmkey:default_language a owl:DatatypeProperty ;
     rdfs:label "default_language" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:default_language> ;
     skos:notation "default_language" .
 
-<https://www.openstreetmap.org/wiki/Key:depth> a owl:DatatypeProperty ;
+osmkey:depth a owl:DatatypeProperty ;
     rdfs:label "depth" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -361,35 +445,35 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:description:en> ;
     skos:notation "description:en" .
 
-<https://www.openstreetmap.org/wiki/Key:designation> a owl:DatatypeProperty ;
+osmkey:designation a owl:DatatypeProperty ;
     rdfs:label "designation" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:designation> ;
     skos:notation "designation" .
 
-<https://www.openstreetmap.org/wiki/Key:driving_side> a owl:DatatypeProperty ;
+osmkey:driving_side a owl:DatatypeProperty ;
     rdfs:label "driving_side" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:driving_side> ;
     skos:notation "driving_side" .
 
-<https://www.openstreetmap.org/wiki/Key:fixme> a owl:DatatypeProperty ;
+osmkey:fixme a owl:DatatypeProperty ;
     rdfs:label "fixme" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:fixme> ;
     skos:notation "fixme" .
 
-<https://www.openstreetmap.org/wiki/Key:flag> a owl:DatatypeProperty ;
+osmkey:flag a owl:DatatypeProperty ;
     rdfs:label "flag" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:flag> ;
     skos:notation "flag" .
 
-<https://www.openstreetmap.org/wiki/Key:frequency> a owl:DatatypeProperty ;
+osmkey:frequency a owl:DatatypeProperty ;
     rdfs:label "frequency" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -424,7 +508,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:generator:type> ;
     skos:notation "generator:type" .
 
-<https://www.openstreetmap.org/wiki/Key:group> a owl:DatatypeProperty ;
+osmkey:group a owl:DatatypeProperty ;
     rdfs:label "group" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -438,35 +522,28 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:height:hub> ;
     skos:notation "height:hub" .
 
-<https://www.openstreetmap.org/wiki/Key:historic> a owl:DatatypeProperty ;
+osmkey:historic a owl:DatatypeProperty ;
     rdfs:label "historic" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:historic> ;
     skos:notation "historic" .
 
-<https://www.openstreetmap.org/wiki/Key:industrial> a owl:DatatypeProperty ;
-    rdfs:label "industrial" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:industrial> ;
-    skos:notation "industrial" .
-
-<https://www.openstreetmap.org/wiki/Key:int_name> a owl:DatatypeProperty ;
+osmkey:int_name a owl:DatatypeProperty ;
     rdfs:label "int_name" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:int_name> ;
     skos:notation "int_name" .
 
-<https://www.openstreetmap.org/wiki/Key:layer> a owl:DatatypeProperty ;
+osmkey:layer a owl:DatatypeProperty ;
     rdfs:label "layer" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:layer> ;
     skos:notation "layer" .
 
-<https://www.openstreetmap.org/wiki/Key:location> a owl:DatatypeProperty ;
+osmkey:location a owl:DatatypeProperty ;
     rdfs:label "location" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -480,34 +557,26 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:long_name:ar> ;
     skos:notation "long_name:ar" .
 
-<https://www.openstreetmap.org/wiki/Key:manufacturer> a owl:DatatypeProperty ;
+osmkey:manufacturer a owl:DatatypeProperty ;
     rdfs:label "manufacturer" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:manufacturer> ;
     skos:notation "manufacturer" .
 
-<https://www.openstreetmap.org/wiki/Key:maritime> a owl:DatatypeProperty ;
+osmkey:maritime a owl:DatatypeProperty ;
     rdfs:label "maritime" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:maritime> ;
     skos:notation "maritime" .
 
-<https://www.openstreetmap.org/wiki/Key:model> a owl:DatatypeProperty ;
+osmkey:model a owl:DatatypeProperty ;
     rdfs:label "model" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:model> ;
     skos:notation "model" .
-
-<https://www.openstreetmap.org/wiki/Key:name:> a owl:DatatypeProperty ;
-    rdfs:label "name" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:name> ;
-    skos:notation "name" .
 
 <https://www.openstreetmap.org/wiki/Key:name:ab> a owl:DatatypeProperty ;
     rdfs:label "name:ab" ;
@@ -2245,7 +2314,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name:zu> ;
     skos:notation "name:zu" .
 
-<https://www.openstreetmap.org/wiki/Key:natural> a owl:DatatypeProperty ;
+osmkey:natural a owl:DatatypeProperty ;
     rdfs:label "natural" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -2257,7 +2326,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:note> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:note> ;
+    owl:equivalentProperty osmkey:note ;
     skos:notation "note" .
 
 <https://www.openstreetmap.org/wiki/Key:note:ISO3166-1> a owl:DatatypeProperty ;
@@ -2293,7 +2362,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:official_name> ;
+    owl:equivalentProperty osmkey:official_name ;
     skos:notation "official_name" .
 
 <https://www.openstreetmap.org/wiki/Key:official_name:ar> a owl:DatatypeProperty ;
@@ -2422,13 +2491,6 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:official_name:sr> ;
     skos:notation "official_name:sr" .
 
-<https://www.openstreetmap.org/wiki/Key:offshore> a owl:DatatypeProperty ;
-    rdfs:label "offshore" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:offshore> ;
-    skos:notation "offshore" .
-
 <https://www.openstreetmap.org/wiki/Key:old_name:is> a owl:DatatypeProperty ;
     rdfs:label "old_name:is" ;
     rdfs:domain osmdata:TagSet ;
@@ -2436,14 +2498,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:old_name:is> ;
     skos:notation "old_name:is" .
 
-<https://www.openstreetmap.org/wiki/Key:operator> a owl:DatatypeProperty ;
-    rdfs:label "operator" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:operator> ;
-    skos:notation "operator" .
-
-<https://www.openstreetmap.org/wiki/Key:place> a owl:DatatypeProperty ;
+osmkey:place a owl:DatatypeProperty ;
     rdfs:label "place" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -2457,28 +2512,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:method> ;
     skos:notation "plant:method" .
 
-<https://www.openstreetmap.org/wiki/Key:plant:output:electricity> a owl:DatatypeProperty ;
-    rdfs:label "plant:output:electricity" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:output:electricity> ;
-    skos:notation "plant:output:electricity" .
-
-<https://www.openstreetmap.org/wiki/Key:plant:source> a owl:DatatypeProperty ;
-    rdfs:label "plant:source" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:source> ;
-    skos:notation "plant:source" .
-
-<https://www.openstreetmap.org/wiki/Key:plant:type> a owl:DatatypeProperty ;
-    rdfs:label "plant:type" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:type> ;
-    skos:notation "plant:type" .
-
-<https://www.openstreetmap.org/wiki/Key:poles> a owl:DatatypeProperty ;
+osmkey:poles a owl:DatatypeProperty ;
     rdfs:label "poles" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -2490,7 +2524,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:population> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:population> ;
+    owl:equivalentProperty osmkey:population ;
     skos:notation "population" .
 
 <https://www.openstreetmap.org/wiki/Key:population:date> a owl:DatatypeProperty ;
@@ -2500,42 +2534,35 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:population:date> ;
     skos:notation "population:date" .
 
-<https://www.openstreetmap.org/wiki/Key:power> a owl:DatatypeProperty ;
-    rdfs:label "power" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:power> ;
-    skos:notation "power" .
-
-<https://www.openstreetmap.org/wiki/Key:protect_class> a owl:DatatypeProperty ;
+osmkey:protect_class a owl:DatatypeProperty ;
     rdfs:label "protect_class" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:protect_class> ;
     skos:notation "protect_class" .
 
-<https://www.openstreetmap.org/wiki/Key:protection_title> a owl:DatatypeProperty ;
+osmkey:protection_title a owl:DatatypeProperty ;
     rdfs:label "protection_title" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:protection_title> ;
     skos:notation "protection_title" .
 
-<https://www.openstreetmap.org/wiki/Key:rating> a owl:DatatypeProperty ;
+osmkey:rating a owl:DatatypeProperty ;
     rdfs:label "rating" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:rating> ;
     skos:notation "rating" .
 
-<https://www.openstreetmap.org/wiki/Key:reef> a owl:DatatypeProperty ;
+osmkey:reef a owl:DatatypeProperty ;
     rdfs:label "reef" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:reef> ;
     skos:notation "reef" .
 
-<https://www.openstreetmap.org/wiki/Key:ref> a owl:DatatypeProperty ;
+osmkey:ref a owl:DatatypeProperty ;
     rdfs:label "ref" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -2562,20 +2589,6 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:landmark:category> ;
     skos:notation "seamark:landmark:category" .
-
-<https://www.openstreetmap.org/wiki/Key:seamark:landmark:production_area> a owl:DatatypeProperty ;
-    rdfs:label "seamark:landmark:production_area" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:landmark:production_area> ;
-    skos:notation "seamark:landmark:production_area" .
-
-<https://www.openstreetmap.org/wiki/Key:seamark:name> a owl:DatatypeProperty ;
-    rdfs:label "seamark:name" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:name> ;
-    skos:notation "seamark:name" .
 
 <https://www.openstreetmap.org/wiki/Key:seamark:platform:category> a owl:DatatypeProperty ;
     rdfs:label "seamark:platform:category" ;
@@ -2610,7 +2623,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:short_name> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:short_name> ;
+    owl:equivalentProperty osmkey:short_name ;
     skos:notation "short_name" .
 
 <https://www.openstreetmap.org/wiki/Key:short_name:be> a owl:DatatypeProperty ;
@@ -2898,7 +2911,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source> ;
-    owl:equivalentProperty <https://www.openstreetmap.org/wiki/Key:source> ;
+    owl:equivalentProperty osmkey:source ;
     skos:notation "source" .
 
 <https://www.openstreetmap.org/wiki/Key:source:ISO3166-1> a owl:DatatypeProperty ;
@@ -2929,21 +2942,7 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:source:population> ;
     skos:notation "source:population" .
 
-<https://www.openstreetmap.org/wiki/Key:start_date> a owl:DatatypeProperty ;
-    rdfs:label "start_date" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:start_date> ;
-    skos:notation "start_date" .
-
-<https://www.openstreetmap.org/wiki/Key:status> a owl:DatatypeProperty ;
-    rdfs:label "status" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:status> ;
-    skos:notation "status" .
-
-<https://www.openstreetmap.org/wiki/Key:substation> a owl:DatatypeProperty ;
+osmkey:substation a owl:DatatypeProperty ;
     rdfs:label "substation" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -2957,49 +2956,42 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:teryt:terc> ;
     skos:notation "teryt:terc" .
 
-<https://www.openstreetmap.org/wiki/Key:timezone> a owl:DatatypeProperty ;
+osmkey:timezone a owl:DatatypeProperty ;
     rdfs:label "timezone" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:timezone> ;
     skos:notation "timezone" .
 
-<https://www.openstreetmap.org/wiki/Key:turbines> a owl:DatatypeProperty ;
-    rdfs:label "turbines" ;
-    rdfs:domain osmdata:TagSet ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:turbines> ;
-    skos:notation "turbines" .
-
-<https://www.openstreetmap.org/wiki/Key:type> a owl:DatatypeProperty ;
+osmkey:type a owl:DatatypeProperty ;
     rdfs:label "type" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:type> ;
     skos:notation "type" .
 
-<https://www.openstreetmap.org/wiki/Key:voltage> a owl:DatatypeProperty ;
+osmkey:voltage a owl:DatatypeProperty ;
     rdfs:label "voltage" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:voltage> ;
     skos:notation "voltage" .
 
-<https://www.openstreetmap.org/wiki/Key:wikidata> a owl:DatatypeProperty ;
+osmkey:wikidata a owl:DatatypeProperty ;
     rdfs:label "wikidata" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wikidata> ;
     skos:notation "wikidata" .
 
-<https://www.openstreetmap.org/wiki/Key:wikimedia_commons> a owl:DatatypeProperty ;
+osmkey:wikimedia_commons a owl:DatatypeProperty ;
     rdfs:label "wikimedia_commons" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wikimedia_commons> ;
     skos:notation "wikimedia_commons" .
 
-<https://www.openstreetmap.org/wiki/Key:wikipedia> a owl:DatatypeProperty ;
+osmkey:wikipedia a owl:DatatypeProperty ;
     rdfs:label "wikipedia" ;
     rdfs:domain osmdata:TagSet ;
     rdfs:range xsd:string ;
@@ -3048,6 +3040,26 @@ osmdata:user a owl:DatatypeProperty ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:wreck:width> ;
     skos:notation "wreck:width" .
 
+osmdata:CountGeneratorMembers a osmdata:Conversion ;
+    rdfs:label "count generator members"@en ;
+    rdfs:comment "Number of relation members with role generator; null when there are none."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:KeyEqualsValue a owl:NamedIndividual ;
+    rdfs:label "key=value"@en ;
+    rdfs:comment "Rule result: the matched tag written as key=value."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:ParseInteger a osmdata:Conversion ;
+    rdfs:label "parse integer"@en ;
+    rdfs:comment "The tag value read as an integer; null when it is not one."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:ParseMegawatts a osmdata:Conversion ;
+    rdfs:label "parse megawatts"@en ;
+    rdfs:comment "A number with optional unit MW, e.g. \"720 MW\" -> 720; null for any other unit or text."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
 osmdata:Relation a owl:Class ;
     rdfs:label "relation"@en ;
     rdfs:comment "OSM element grouping other elements as an ordered list of role-labelled members."@en ;
@@ -3055,12 +3067,222 @@ osmdata:Relation a owl:Class ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Relation> ;
     rdfs:subClassOf osmdata:Element .
 
+osmdata:SplitSemicolon a osmdata:Conversion ;
+    rdfs:label "split on semicolon"@en ;
+    rdfs:comment "The OSM multi-value convention: split on ';' and trim, giving an array."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
 osmdata:Way a owl:Class ;
     rdfs:label "way"@en ;
     rdfs:comment "OSM element defined by an ordered list of node references; a closed way repeats its first node last."@en ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Way> ;
     rdfs:subClassOf osmdata:Element .
+
+osmdata:map-n-turbines a osmdata:TagMapping ;
+    osmdata:conversion osmdata:ParseInteger ;
+    osmdata:fallback osmdata:CountGeneratorMembers ;
+    osmdata:sourceKeys ( osmkey:turbines ) ;
+    osmdata:targetKey "n_turbines" ;
+    osmdata:targetProperty owf:nTurbines .
+
+osmdata:map-name a osmdata:TagMapping ;
+    osmdata:conversion osmdata:Copy ;
+    osmdata:sourceKeys ( <https://www.openstreetmap.org/wiki/Key:name:> <https://www.openstreetmap.org/wiki/Key:seamark:name> ) ;
+    osmdata:targetKey "name" ;
+    osmdata:targetProperty schema:name .
+
+osmdata:map-offshore a osmdata:TagMapping ;
+    osmdata:targetKey "offshore" ;
+    osmdata:targetProperty owf:offshore ;
+    osmdata:valueRules ( [ a osmdata:ValueRule ;
+                osmdata:ruleKey osmkey:offshore ;
+                osmdata:ruleValue "yes" ;
+                osmdata:yields true ] [ a osmdata:ValueRule ;
+                osmdata:ruleKey <https://www.openstreetmap.org/wiki/Key:plant:type> ;
+                osmdata:ruleValue "offshore" ;
+                osmdata:yields true ] ) .
+
+osmdata:map-operator a osmdata:TagMapping ;
+    osmdata:conversion osmdata:SplitSemicolon ;
+    osmdata:sourceKeys ( osmkey:operator ) ;
+    osmdata:targetKey "operator" ;
+    osmdata:targetProperty owf:operatorName .
+
+osmdata:map-power a osmdata:TagMapping ;
+    osmdata:conversion osmdata:ParseMegawatts ;
+    osmdata:sourceKeys ( <https://www.openstreetmap.org/wiki/Key:plant:output:electricity> ) ;
+    osmdata:targetKey "power_mw" ;
+    osmdata:targetProperty owf:powerMW .
+
+osmdata:map-status a osmdata:TagMapping ;
+    osmdata:targetKey "status" ;
+    osmdata:targetProperty owf:conditionOfFacility ;
+    osmdata:valueRules ( [ a osmdata:ValueRule ;
+                osmdata:ruleKey <https://www.openstreetmap.org/wiki/Key:construction:power> ;
+                osmdata:ruleValue "plant" ;
+                osmdata:yields seadots-emodnet:Construction ] [ a osmdata:ValueRule ;
+                osmdata:ruleKey osmkey:status ;
+                osmdata:ruleValue "construction" ;
+                osmdata:yields seadots-emodnet:Construction ] [ a osmdata:ValueRule ;
+                osmdata:ruleKey osmkey:power ;
+                osmdata:ruleValue "plant" ;
+                osmdata:yields seadots-emodnet:Production ] ) .
+
+osmdata:map-status-detail a osmdata:TagMapping ;
+    osmdata:targetKey "status_detail" ;
+    osmdata:targetProperty owf:statusDetail ;
+    osmdata:valueRules ( [ a osmdata:ValueRule ;
+                osmdata:ruleKey osmkey:status ;
+                osmdata:yields osmdata:Copy ] [ a osmdata:ValueRule ;
+                osmdata:ruleKey <https://www.openstreetmap.org/wiki/Key:construction:power> ;
+                osmdata:yields osmdata:KeyEqualsValue ] ) .
+
+osmdata:map-year a osmdata:TagMapping ;
+    osmdata:conversion osmdata:Copy ;
+    osmdata:sourceKeys ( osmkey:start_date ) ;
+    osmdata:targetKey "year" ;
+    osmdata:targetProperty owf:year .
+
+osmdata:map-year-semantics a osmdata:TagMapping ;
+    osmdata:sourceKeys ( osmkey:start_date ) ;
+    osmdata:targetKey "year_semantics" ;
+    osmdata:targetProperty owf:yearSemantics ;
+    osmdata:whenPresent "planned start of operation (OSM start_date)" .
+
+osmdata:sel-industrial a osmdata:ValueRule ;
+    osmdata:ruleKey osmkey:industrial ;
+    osmdata:ruleValue "windfarm" .
+
+osmdata:sel-plant-source a osmdata:ValueRule ;
+    osmdata:ruleKey <https://www.openstreetmap.org/wiki/Key:plant:source> ;
+    osmdata:ruleValue "wind" .
+
+osmdata:sel-seamark a osmdata:ValueRule ;
+    osmdata:ruleKey <https://www.openstreetmap.org/wiki/Key:seamark:landmark:production_area> ;
+    osmdata:ruleValue "wind_farm" .
+
+osmdata:tagSet a owl:ObjectProperty ;
+    rdfs:label "tag set"@en ;
+    rdfs:comment "Key-value tags of the element."@en ;
+    rdfs:domain osmdata:Element ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
+    rdfs:range osmdata:TagSet ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Tags> .
+
+<https://www.openstreetmap.org/wiki/Key:name:> a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:name> ;
+    owl:equivalentProperty osmkey:name ;
+    skos:closeMatch schema:name ;
+    skos:notation "name" .
+
+osmkey:offshore a owl:DatatypeProperty ;
+    rdfs:label "offshore" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:offshore> ;
+    skos:closeMatch owf:offshore ;
+    skos:notation "offshore" .
+
+osmkey:operator a owl:DatatypeProperty ;
+    rdfs:label "operator" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:operator> ;
+    skos:closeMatch owf:operatorName ;
+    skos:notation "operator" .
+
+<https://www.openstreetmap.org/wiki/Key:plant:output:electricity> a owl:DatatypeProperty ;
+    rdfs:label "plant:output:electricity" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:output:electricity> ;
+    skos:closeMatch owf:powerMW ;
+    skos:notation "plant:output:electricity" .
+
+<https://www.openstreetmap.org/wiki/Key:plant:type> a owl:DatatypeProperty ;
+    rdfs:label "plant:type" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:type> ;
+    skos:notation "plant:type" .
+
+osmkey:power a owl:DatatypeProperty ;
+    rdfs:label "power" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:power> ;
+    skos:notation "power" ;
+    skos:relatedMatch owf:conditionOfFacility .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:name> a owl:DatatypeProperty ;
+    rdfs:label "seamark:name" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:name> ;
+    skos:closeMatch schema:name ;
+    skos:notation "seamark:name" .
+
+osmkey:turbines a owl:DatatypeProperty ;
+    rdfs:label "turbines" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:turbines> ;
+    skos:closeMatch owf:nTurbines ;
+    skos:notation "turbines" .
+
+<https://www.openstreetmap.org/wiki/Key:construction:power> a owl:DatatypeProperty ;
+    rdfs:label "construction:power" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:construction:power> ;
+    skos:notation "construction:power" ;
+    skos:relatedMatch owf:conditionOfFacility .
+
+osmkey:industrial a owl:DatatypeProperty ;
+    rdfs:label "industrial" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:industrial> ;
+    skos:notation "industrial" .
+
+<https://www.openstreetmap.org/wiki/Key:plant:source> a owl:DatatypeProperty ;
+    rdfs:label "plant:source" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:plant:source> ;
+    skos:notation "plant:source" .
+
+<https://www.openstreetmap.org/wiki/Key:seamark:landmark:production_area> a owl:DatatypeProperty ;
+    rdfs:label "seamark:landmark:production_area" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:seamark:landmark:production_area> ;
+    skos:notation "seamark:landmark:production_area" .
+
+osmkey:start_date a owl:DatatypeProperty ;
+    rdfs:label "start_date" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:start_date> ;
+    skos:closeMatch owf:year ;
+    skos:notation "start_date" .
+
+osmkey:status a owl:DatatypeProperty ;
+    rdfs:label "status" ;
+    rdfs:domain osmdata:TagSet ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Key:status> ;
+    skos:notation "status" ;
+    skos:relatedMatch owf:conditionOfFacility .
+
+osmdata:Copy a osmdata:Conversion ;
+    rdfs:label "copy"@en ;
+    rdfs:comment "The tag value unchanged."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
 
 osmdata:RelationMember a owl:Class ;
     rdfs:label "relation member"@en ;
@@ -3078,11 +3300,26 @@ osmdata:Bounds a owl:Class ;
     rdfs:comment "Bounding box of an OSM map request in WGS 84 decimal degrees."@en ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
 
+osmdata:Conversion a owl:Class ;
+    rdfs:label "value conversion"@en ;
+    rdfs:comment "How a source tag value is turned into the target value."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
 osmdata:Element a owl:Class ;
     rdfs:label "OSM element"@en ;
     rdfs:comment "Basic component of the OpenStreetMap data model: a node, way, or relation. Identifiers are unique only within each element type."@en ;
     rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Elements> .
+
+osmdata:ValueRule a owl:Class ;
+    rdfs:label "value rule"@en ;
+    rdfs:comment "Maps one OSM tag key/value pair to a target value."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:TagMapping a owl:Class ;
+    rdfs:label "tag mapping"@en ;
+    rdfs:comment "Maps one or more OSM tag keys of a wind farm element onto one owf property and the corresponding JSON property of the target block."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
 
 <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> a owl:Ontology ;
     rdfs:label "OpenStreetMap API 0.6 source vocabulary"@en ;
@@ -3093,7 +3330,9 @@ osmdata:Element a owl:Class ;
         <https://wiki.openstreetmap.org/wiki/Elements> ;
     dcterms:title "OpenStreetMap API 0.6 source vocabulary"@en ;
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/OSM_JSON> ;
-    owl:versionInfo "0.1" .
+    owl:imports <https://w3id.org/ogc/hosted/seadots/windfarm> ;
+    owl:versionInfo "0.1" ;
+    osmdata:windfarmTagMappings ( osmdata:map-name osmdata:map-n-turbines osmdata:map-power osmdata:map-status osmdata:map-status-detail osmdata:map-offshore osmdata:map-year osmdata:map-year-semantics osmdata:map-operator ) .
 
 osmdata:TagSet a owl:Class ;
     rdfs:label "tag set"@en ;

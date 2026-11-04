@@ -2958,9 +2958,6 @@ $defs:
         properties:
           type: object
           required:
-          - name
-          - country
-          - status
           - source_type
           - source_reference
           - location_status
@@ -3195,7 +3192,7 @@ $defs:
               x-jsonld-id: https://schema.org/sameAs
               x-jsonld-type: '@id'
               x-jsonld-container: '@set'
-          additionalProperties: false
+          additionalProperties: true
           x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   FeatureCollection: https://purl.org/geojson/vocab#FeatureCollection

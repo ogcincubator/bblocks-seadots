@@ -33,7 +33,7 @@ Each of those blocks has a `context.jsonld` that maps every schema property and 
   - organisations: `ownerName`, `developerName`;
   - licensing and administration: `licenceStatus`, `licensingCase`, `administrativeUnit`, `electricityPriceArea`, `meanAnnualProductionGWh`;
   - provenance: `sourceType`, `sourceDataset`, `sourceSnapshotDate`, `locationStatus`, `locationMethod`, `locationReference`.
-- **Turbine** (`rdfs:domain owf:WindTurbine`): `turbineReference`, `partOfWindfarm`, `manufacturerName`, `ratedPowerMW`, `hubHeight`, `rotorDiameter`, `rotorAxis`.
+- **Turbine** (`rdfs:domain owf:WindTurbine`): `turbineReference`, `partOfWindfarm`, `manufacturerName`, `ratedPowerMW`, `hubHeight`, `rotorDiameter`, `rotorAxis`, `commissioningYear`.
 - **Shared**: `windfarmName`, `operatorName`, `offshore`, `conditionOfFacility`.
 
 Quantities carry `qudt:unit` and `qudt:hasQuantityKind`: MW, m, km², GWh. Where the Norwegian ([emodnet-compliant-windfarm-no](../emodnet-compliant-windfarm-no/), `nve:`) or Polish ([emodnet-compliant-windfarm-pl](../emodnet-compliant-windfarm-pl/), `ses:`) blocks define the same property, it is declared `owl:equivalentProperty`. `sourceType` and `locationStatus` take concepts rather than strings, so they only refer to the Polish terms with `rdfs:seeAlso`.
