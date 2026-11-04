@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area - EMODnet-compliant nationally designated area",
   "bblockName": "EMODnet-compliant nationally designated area",
   "bblockId": "ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area",
-  "generated": "2026-11-04T17:50:29.680292+00:00",
+  "generated": "2026-11-04T18:07:12.252954+00:00",
   "result": true,
   "items": [
     {
@@ -75,7 +75,12 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "_:Ndb80e53259614fda83e37692dcfc5b5a"
+                  ]
+                },
+                "geojson:FeatureShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape": {
@@ -84,20 +89,15 @@
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "_:Ncf40933f4ec9412d9fcba8d10036b5de"
-                  ]
-                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureCollectionShape: _:Ncf40933f4ec9412d9fcba8d10036b5de\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: _:Ndb80e53259614fda83e37692dcfc5b5a\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -109,27 +109,27 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<file:///github/workspace/183154>",
+                    "<file:///github/workspace/555560034>"
+                  ]
+                },
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
-                  "nodes": []
-                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
-                  "nodes": [
-                    "<file:///github/workspace/555560034>",
-                    "<file:///github/workspace/183154>"
-                  ]
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/555560034>,<file:///github/workspace/183154>\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: <file:///github/workspace/183154>,<file:///github/workspace/555560034>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -143,31 +143,31 @@
               "focusNodes": {
                 "pa:EcosystemShape": {
                   "nodes": [
-                    "<file:///github/workspace/555560034>",
-                    "<file:///github/workspace/183154>"
-                  ]
-                },
-                "pa:SiteNameShape": {
-                  "nodes": [
-                    "<file:///github/workspace/555560034>",
-                    "<file:///github/workspace/183154>"
-                  ]
-                },
-                "pa:DesignationTypeShape": {
-                  "nodes": [
-                    "<file:///github/workspace/555560034>",
-                    "<file:///github/workspace/183154>"
+                    "<file:///github/workspace/183154>",
+                    "<file:///github/workspace/555560034>"
                   ]
                 },
                 "pa:IUCNShape": {
                   "nodes": [
-                    "<file:///github/workspace/555560034>",
-                    "<file:///github/workspace/183154>"
+                    "<file:///github/workspace/183154>",
+                    "<file:///github/workspace/555560034>"
+                  ]
+                },
+                "pa:DesignationTypeShape": {
+                  "nodes": [
+                    "<file:///github/workspace/183154>",
+                    "<file:///github/workspace/555560034>"
+                  ]
+                },
+                "pa:SiteNameShape": {
+                  "nodes": [
+                    "<file:///github/workspace/183154>",
+                    "<file:///github/workspace/555560034>"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/emodnet-protected-area/rules.shacl:\n - Shape pa:EcosystemShape: <file:///github/workspace/555560034>,<file:///github/workspace/183154>\n - Shape pa:SiteNameShape: <file:///github/workspace/555560034>,<file:///github/workspace/183154>\n - Shape pa:DesignationTypeShape: <file:///github/workspace/555560034>,<file:///github/workspace/183154>\n - Shape pa:IUCNShape: <file:///github/workspace/555560034>,<file:///github/workspace/183154>\n"
+              "message": "Focus nodes for _sources/emodnet-protected-area/rules.shacl:\n - Shape pa:EcosystemShape: <file:///github/workspace/183154>,<file:///github/workspace/555560034>\n - Shape pa:IUCNShape: <file:///github/workspace/183154>,<file:///github/workspace/555560034>\n - Shape pa:DesignationTypeShape: <file:///github/workspace/183154>,<file:///github/workspace/555560034>\n - Shape pa:SiteNameShape: <file:///github/workspace/183154>,<file:///github/workspace/555560034>\n"
             }
           ]
         },

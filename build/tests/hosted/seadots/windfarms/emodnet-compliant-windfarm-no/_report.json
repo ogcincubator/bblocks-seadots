@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no - Norwegian NVE windfarm extension for EMODnet",
   "bblockName": "Norwegian NVE windfarm extension for EMODnet",
   "bblockId": "ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-no",
-  "generated": "2026-11-04T17:48:38.773136+00:00",
+  "generated": "2026-11-04T18:05:07.405854+00:00",
   "result": false,
   "items": [
     {
@@ -66,11 +66,11 @@
           "entries": [
             {
               "isError": false,
-              "message": "Error processing closure source /github/workspace/_sources/windfarms/common-windfarm-ontology/ontology.ttl: at line 65 of <>:\nBad syntax (Prefix \"qudt:\" not bound) at ^ in:\n\"...b'n square kilometres.\"@en ;\\n    rdfs:range xsd:decimal ;\\n    '^b'qudt:hasQuantityKind quantitykind:Area ;\\n    qudt:unit unit:'...\" - SHACL validation will run against an incomplete closure graph"
+              "message": "Error processing closure source /github/workspace/_sources/windfarms/windfarm-designated-area-emodnet/ontology.ttl: at line 65 of <>:\nBad syntax (Prefix \"qudt:\" not bound) at ^ in:\n\"...b'n square kilometres.\"@en ;\\n    rdfs:range xsd:decimal ;\\n    '^b'qudt:hasQuantityKind quantitykind:Area ;\\n    qudt:unit unit:'...\" - SHACL validation will run against an incomplete closure graph"
             },
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/windfarms/emodnet-compliant-windfarm-no/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/windfarms/emodnet-compliant-windfarm-no/ontology.ttl\n - /github/workspace/_sources/windfarms/common-windfarm-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -82,26 +82,26 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<https://example.org/wind-farms/north-sea-demo-01>"
+                  ]
                 },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
-                  "nodes": [
-                    "<https://example.org/wind-farms/north-sea-demo-01>"
-                  ]
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://example.org/wind-farms/north-sea-demo-01>\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:FeatureShape: <https://example.org/wind-farms/north-sea-demo-01>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
             }
           ]
         }

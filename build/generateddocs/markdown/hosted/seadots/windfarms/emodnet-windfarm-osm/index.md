@@ -18396,17 +18396,17 @@ The source tags remain present alongside mapped properties. This sample includes
 @prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix iho: <https://w3id.org/ogc/hosted/seadots/emodnet-windfarm-osm#> .
-@prefix ns1: <generator:> .
-@prefix ns10: <seamark:platform:> .
-@prefix ns11: <construction:> .
-@prefix ns2: <rotor:> .
-@prefix ns3: <generator:output:> .
+@prefix ns1: <generator:output:> .
+@prefix ns10: <plant:output:> .
+@prefix ns11: <seamark:landmark:> .
+@prefix ns2: <generator:> .
+@prefix ns3: <rotor:> .
 @prefix ns4: <height:> .
 @prefix ns5: <plant:> .
-@prefix ns6: <seamark:production_area:> .
+@prefix ns6: <seamark:platform:> .
 @prefix ns7: <seamark:> .
-@prefix ns8: <plant:output:> .
-@prefix ns9: <seamark:landmark:> .
+@prefix ns8: <seamark:production_area:> .
+@prefix ns9: <construction:> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
@@ -18423,7 +18423,7 @@ The source tags remain present alongside mapped properties. This sample includes
                     seadots-emodnet:power "substation" ;
                     seadots-emodnet:substation "generation" ;
                     seadots-emodnet:voltage "230000;66000" ;
-                    ns10:category "production" ;
+                    ns6:category "production" ;
                     ns7:type "platform" ] ] .
 
 <file:///github/workspace/node/14185128564> a geojson:Feature ;
@@ -18437,7 +18437,7 @@ The source tags remain present alongside mapped properties. This sample includes
                     seadots-emodnet:power "substation" ;
                     seadots-emodnet:substation "generation" ;
                     seadots-emodnet:voltage "230000;66000" ;
-                    ns10:category "production" ;
+                    ns6:category "production" ;
                     ns7:type "platform" ] ] .
 
 <file:///github/workspace/node/14185128565> a geojson:Feature ;
@@ -18447,17 +18447,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128565 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "76" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128566> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18466,17 +18466,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128566 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "75" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128567> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18485,17 +18485,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128567 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "74" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128568> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18504,17 +18504,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128568 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "73" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128569> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18523,17 +18523,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128569 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "72" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128570> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18542,17 +18542,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128570 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "71" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128571> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18561,17 +18561,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128571 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "70" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128572> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18580,17 +18580,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128572 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "69" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128573> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18599,17 +18599,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128573 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "68" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128574> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18618,17 +18618,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128574 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "67" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128575> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18637,17 +18637,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128575 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "66" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128576> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18656,17 +18656,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128576 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "65" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128577> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18675,17 +18675,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128577 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "64" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128578> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18694,17 +18694,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128578 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "63" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128579> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18713,17 +18713,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128579 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "62" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128580> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18732,17 +18732,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128580 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "61" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128581> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18751,17 +18751,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128581 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "60" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128582> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18770,17 +18770,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128582 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "59" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128583> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18789,17 +18789,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128583 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "58" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128584> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18808,17 +18808,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128584 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "57" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128585> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18827,17 +18827,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128585 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "56" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128586> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18846,17 +18846,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128586 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "55" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128587> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18865,17 +18865,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128587 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "54" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128588> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18884,17 +18884,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128588 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "53" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128589> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18903,17 +18903,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128589 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "52" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128590> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18922,17 +18922,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128590 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "51" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128591> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18941,17 +18941,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128591 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "50" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128592> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18960,17 +18960,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128592 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "49" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128593> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18979,17 +18979,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128593 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "48" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128594> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -18998,17 +18998,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128594 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "47" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128595> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19017,17 +19017,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128595 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "46" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128596> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19036,17 +19036,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128596 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "45" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128597> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19055,17 +19055,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128597 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "44" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128598> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19074,17 +19074,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128598 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "43" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128599> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19093,17 +19093,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128599 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "42" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185128600> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19112,17 +19112,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185128600 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "41" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129401> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19131,17 +19131,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129401 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "40" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129402> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19150,17 +19150,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129402 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "39" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129403> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19169,17 +19169,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129403 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "38" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129404> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19188,17 +19188,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129404 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "37" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129405> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19207,17 +19207,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129405 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "36" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129406> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19226,17 +19226,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129406 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "35" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129407> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19245,17 +19245,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129407 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "34" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129408> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19264,17 +19264,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129408 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "33" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129409> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19283,17 +19283,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129409 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "32" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129410> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19302,17 +19302,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129410 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "31" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129411> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19321,17 +19321,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129411 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "30" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129412> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19340,17 +19340,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129412 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "29" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129413> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19359,17 +19359,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129413 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "28" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129414> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19378,17 +19378,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129414 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "27" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129415> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19397,17 +19397,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129415 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "26" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129416> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19416,17 +19416,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129416 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "25" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129417> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19435,17 +19435,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129417 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "24" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129418> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19454,17 +19454,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129418 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "23" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129419> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19473,17 +19473,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129419 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "22" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129420> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19492,17 +19492,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129420 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "21" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129421> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19511,17 +19511,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129421 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "20" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129422> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19530,17 +19530,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129422 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "19" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129423> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19549,17 +19549,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129423 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "18" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129424> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19568,17 +19568,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129424 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "17" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129425> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19587,17 +19587,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129425 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "16" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129426> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19606,17 +19606,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129426 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "15" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129427> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19625,17 +19625,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129427 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "14" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129428> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19644,17 +19644,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129428 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "13" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129429> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19663,17 +19663,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129429 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "12" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129430> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19682,17 +19682,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129430 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "11" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129431> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19701,17 +19701,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129431 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "10" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129432> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19720,17 +19720,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129432 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "9" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129433> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19739,17 +19739,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129433 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "8" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129434> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19758,17 +19758,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129434 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "7" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129435> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19777,17 +19777,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129435 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "6" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129436> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19796,17 +19796,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129436 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "5" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129437> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19815,17 +19815,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129437 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "4" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129438> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19834,17 +19834,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129438 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "3" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129439> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19853,17 +19853,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129439 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "2" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14185129440> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19872,17 +19872,17 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14185129440 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "15 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "15 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     ns4:hub "141" ;
                     seadots-emodnet:manufacturer "Vestas" ;
                     seadots-emodnet:model "V236-15.0 MW" ;
                     seadots-emodnet:offshore "yes" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "1" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537539> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19906,16 +19906,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537540 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 M04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537541> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19924,16 +19924,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537541 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 M03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537542> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19942,16 +19942,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537542 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 M02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537543> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19960,16 +19960,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537543 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 L05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537544> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19978,16 +19978,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537544 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 L04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537545> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -19996,16 +19996,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537545 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 L03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537546> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20014,16 +20014,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537546 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 L02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537547> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20032,16 +20032,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537547 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 L01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537548> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20050,16 +20050,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537548 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537549> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20068,16 +20068,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537549 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537550> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20086,16 +20086,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537550 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537551> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20104,16 +20104,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537551 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537552> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20122,16 +20122,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537552 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537553> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20140,16 +20140,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537553 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537554> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20158,16 +20158,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537554 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 K01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537555> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20176,16 +20176,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537555 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537556> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20194,16 +20194,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537556 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537557> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20212,16 +20212,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537557 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537558> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20230,16 +20230,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537558 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537559> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20248,16 +20248,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537559 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537560> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20266,16 +20266,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537560 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537561> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20284,16 +20284,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537561 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 J01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537562> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20302,16 +20302,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537562 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 H06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537563> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20320,16 +20320,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537563 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 H05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537564> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20338,16 +20338,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537564 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 H04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537565> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20356,16 +20356,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537565 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 H01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537566> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20374,16 +20374,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537566 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 G06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537567> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20392,16 +20392,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537567 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 G05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537568> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20410,16 +20410,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537568 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 G03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537569> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20428,16 +20428,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537569 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 G02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537570> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20446,16 +20446,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537570 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 G01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537571> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20464,16 +20464,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537571 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 F05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537572> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20482,16 +20482,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537572 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 F04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537573> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20500,16 +20500,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537573 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 F03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537574> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20518,16 +20518,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537574 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 F01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537575> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20536,16 +20536,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537575 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 E05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537576> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20554,16 +20554,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537576 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 E04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537577> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20572,16 +20572,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537577 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 E03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537578> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20590,16 +20590,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537578 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 E02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537579> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20608,16 +20608,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537579 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 E01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537580> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20626,16 +20626,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537580 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 D04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537581> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20644,16 +20644,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537581 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 D03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537582> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20662,16 +20662,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537582 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 D02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537583> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20680,16 +20680,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537583 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 D01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537584> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20698,16 +20698,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537584 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 C03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537585> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20716,16 +20716,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537585 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 C02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537586> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20734,16 +20734,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537586 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 C01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537587> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20752,16 +20752,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537587 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 B02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537588> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20770,16 +20770,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537588 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 B01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191537589> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20788,16 +20788,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191537589 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK3 A01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571016> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20821,16 +20821,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571017 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 J02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571018> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20839,16 +20839,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571018 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 H04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571019> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20857,16 +20857,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571019 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 H03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571020> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20875,16 +20875,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571020 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 H02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571021> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20893,16 +20893,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571021 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 G05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571022> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20911,16 +20911,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571022 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 G04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571023> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20929,16 +20929,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571023 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 G03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571024> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20947,16 +20947,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571024 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 G02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571025> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20965,16 +20965,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571025 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 G01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571026> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -20983,16 +20983,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571026 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571027> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21001,16 +21001,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571027 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571028> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21019,16 +21019,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571028 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571029> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21037,16 +21037,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571029 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571030> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21055,16 +21055,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571030 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571031> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21073,16 +21073,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571031 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 F01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571032> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21091,16 +21091,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571032 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 E06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571033> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21109,16 +21109,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571033 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 E05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571034> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21127,16 +21127,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571034 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 E04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571035> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21145,16 +21145,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571035 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 E02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571036> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21163,16 +21163,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571036 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 E01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571037> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21181,16 +21181,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571037 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571038> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21199,16 +21199,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571038 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571039> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21217,16 +21217,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571039 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571040> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21235,16 +21235,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571040 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571041> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21253,16 +21253,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571041 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571042> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21271,16 +21271,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571042 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 D01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571043> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21289,16 +21289,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571043 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C08" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571044> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21307,16 +21307,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571044 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571045> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21325,16 +21325,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571045 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571046> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21343,16 +21343,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571046 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571047> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21361,16 +21361,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571047 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571048> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21379,16 +21379,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571048 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 C01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571049> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21397,16 +21397,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571049 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B09" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571050> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21415,16 +21415,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571050 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B08" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571051> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21433,16 +21433,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571051 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571052> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21451,16 +21451,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571052 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571053> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21469,16 +21469,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571053 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571054> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21487,16 +21487,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571054 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571055> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21505,16 +21505,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571055 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571056> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21523,16 +21523,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571056 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571057> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21541,16 +21541,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571057 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 B01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571058> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21559,16 +21559,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571058 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A09" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571059> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21577,16 +21577,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571059 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A08" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571060> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21595,16 +21595,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571060 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A07" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571061> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21613,16 +21613,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571061 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A06" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571062> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21631,16 +21631,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571062 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A05" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571063> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21649,16 +21649,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571063 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A04" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571064> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21667,16 +21667,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571064 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A03" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571065> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21685,16 +21685,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571065 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A02" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191571066> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21703,16 +21703,16 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet: seadots-emodnet:construction ;
             seadots-emodnet:osm_id 14191571066 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns1:source "wind" ;
-                    ns1:type "offshore" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns2:source "wind" ;
+                    ns2:type "offshore" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-236 DD" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "BK2 A01" ;
-                    ns2:diameter "236" ] ] .
+                    ns3:diameter "236" ] ] .
 
 <file:///github/workspace/node/14191911456> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21721,16 +21721,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911456 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "G16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911457> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21739,16 +21739,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911457 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "F24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911458> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21757,16 +21757,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911458 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "F16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911459> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21775,16 +21775,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911459 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "F12" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911460> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21793,16 +21793,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911460 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "F04" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911461> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21811,16 +21811,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911461 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "F03" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911462> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21829,16 +21829,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911462 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911463> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21847,16 +21847,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911463 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E23" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911464> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21865,16 +21865,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911464 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E21" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911465> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21883,16 +21883,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911465 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E19" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911466> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21901,16 +21901,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911466 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E17" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911467> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21919,16 +21919,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911467 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911468> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21937,16 +21937,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911468 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E12" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911469> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21955,16 +21955,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911469 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E11" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911470> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21973,16 +21973,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911470 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E08" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911471> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -21991,16 +21991,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911471 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E06" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911472> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22009,16 +22009,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911472 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E05" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911473> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22027,16 +22027,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911473 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E04" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911474> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22045,16 +22045,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911474 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E03" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911475> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22063,16 +22063,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911475 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "E01" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911476> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22081,16 +22081,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911476 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911477> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22099,16 +22099,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911477 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D23" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911478> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22117,16 +22117,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911478 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D21" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911479> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22135,16 +22135,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911479 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D20" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911480> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22153,16 +22153,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911480 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D19" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911481> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22171,16 +22171,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911481 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D18" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911482> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22189,16 +22189,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911482 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D17" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911483> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22207,16 +22207,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911483 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911484> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22225,16 +22225,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911484 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D15" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911485> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22243,16 +22243,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911485 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D14" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911486> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22261,16 +22261,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911486 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D13" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911487> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22279,16 +22279,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911487 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D11" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911488> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22297,16 +22297,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911488 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D10" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911489> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22315,16 +22315,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911489 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D09" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911490> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22333,16 +22333,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911490 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D08" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911491> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22351,16 +22351,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911491 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D07" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911492> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22369,16 +22369,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911492 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D06" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911493> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22387,16 +22387,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911493 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D05" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911494> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22405,16 +22405,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911494 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D04" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911495> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22423,16 +22423,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911495 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D02" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911496> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22441,16 +22441,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911496 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "D01" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911497> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22459,16 +22459,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911497 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911498> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22477,16 +22477,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911498 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C23" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911499> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22495,16 +22495,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911499 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C22" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191911500> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22513,16 +22513,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191911500 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C21" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968201> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22531,16 +22531,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968201 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C20" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968202> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22549,16 +22549,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968202 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C19" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968203> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22567,16 +22567,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968203 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C18" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968204> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22585,16 +22585,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968204 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C17" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968205> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22603,16 +22603,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968205 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968206> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22621,16 +22621,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968206 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C15" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968207> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22639,16 +22639,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968207 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C13" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968208> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22657,16 +22657,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968208 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C12" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968209> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22675,16 +22675,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968209 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C11" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968210> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22693,16 +22693,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968210 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C10" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968211> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22711,16 +22711,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968211 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C09" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968212> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22729,16 +22729,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968212 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C08" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968213> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22747,16 +22747,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968213 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C07" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968214> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22765,16 +22765,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968214 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C06" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968215> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22783,16 +22783,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968215 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C05" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968216> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22801,16 +22801,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968216 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C04" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968217> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22819,16 +22819,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968217 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C03" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968218> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22837,16 +22837,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968218 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C02" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968219> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22855,16 +22855,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968219 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "C01" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968220> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22873,16 +22873,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968220 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968221> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22891,16 +22891,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968221 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B23" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968222> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22909,16 +22909,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968222 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B22" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968223> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22927,16 +22927,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968223 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B21" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968224> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22945,16 +22945,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968224 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B20" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968225> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22963,16 +22963,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968225 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B19" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968226> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22981,16 +22981,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968226 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B18" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968227> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -22999,16 +22999,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968227 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B17" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968228> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23017,16 +23017,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968228 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968229> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23035,16 +23035,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968229 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B15" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968230> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23053,16 +23053,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968230 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B13" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968231> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23071,16 +23071,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968231 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B12" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968232> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23089,16 +23089,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968232 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B11" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968233> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23107,16 +23107,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968233 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B10" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968234> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23125,16 +23125,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968234 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B09" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968235> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23143,16 +23143,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968235 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B08" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968236> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23161,16 +23161,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968236 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B07" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968237> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23179,16 +23179,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968237 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B06" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968238> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23197,16 +23197,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968238 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B05" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968239> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23215,16 +23215,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968239 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B04" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968240> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23233,16 +23233,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968240 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B03" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968241> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23251,16 +23251,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968241 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "B02" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968242> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23269,16 +23269,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968242 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A24" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968243> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23287,16 +23287,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968243 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A23" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968244> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23305,16 +23305,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968244 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A22" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968245> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23323,16 +23323,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968245 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A21" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968246> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23341,16 +23341,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968246 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A20" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968247> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23359,16 +23359,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968247 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A19" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968248> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23377,16 +23377,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968248 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A18" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968249> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23395,16 +23395,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968249 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A17" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968250> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23413,16 +23413,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968250 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A16" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968251> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23431,16 +23431,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968251 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A14" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968252> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23449,16 +23449,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968252 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A13" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968253> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23467,16 +23467,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968253 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A12" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968254> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23485,16 +23485,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968254 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A11" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968255> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23503,16 +23503,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968255 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A10" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968256> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23521,16 +23521,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968256 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A09" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968257> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23539,16 +23539,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968257 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A08" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968258> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23557,16 +23557,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968258 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A06" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968259> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23575,16 +23575,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968259 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A05" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968260> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23593,16 +23593,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968260 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A03" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968261> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23611,16 +23611,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968261 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A02" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/node/14191968262> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23629,16 +23629,16 @@ The source tags remain present alongside mapped properties. This sample includes
             iho:featureRole iho:WindTurbine ;
             seadots-emodnet:osm_id 14191968262 ;
             seadots-emodnet:osm_type "node" ;
-            seadots-emodnet:tags [ ns1:method "wind_turbine" ;
-                    ns3:electricity "14 MW" ;
-                    ns1:source "wind" ;
-                    ns1:type "horizontal_axis" ;
+            seadots-emodnet:tags [ ns2:method "wind_turbine" ;
+                    ns1:electricity "14 MW" ;
+                    ns2:source "wind" ;
+                    ns2:type "horizontal_axis" ;
                     seadots-emodnet:manufacturer "Siemens Gamesa" ;
                     seadots-emodnet:model "SG 14-222 DD" ;
                     seadots-emodnet:operator "PGE; Orsted" ;
                     seadots-emodnet:power "generator" ;
                     seadots-emodnet:ref "A01" ;
-                    ns2:diameter "222" ] ] .
+                    ns3:diameter "222" ] ] .
 
 <file:///github/workspace/relation/21402440> a geojson:Feature ;
     geojson:properties [ em:powerMW 1.2e+03 ;
@@ -23732,9 +23732,9 @@ The source tags remain present alongside mapped properties. This sample includes
                     seadots-emodnet:operator "Baltic Power" ;
                     seadots-emodnet:power "plant" ;
                     ns5:method "wind_turbine" ;
-                    ns8:electricity "1200 MW" ;
+                    ns10:electricity "1200 MW" ;
                     ns5:source "wind" ;
-                    ns9:production_area "wind_farm" ;
+                    ns11:production_area "wind_farm" ;
                     ns7:type "production_area" ] ] .
 
 <file:///github/workspace/way/1532855580> a geojson:Feature ;
@@ -23748,7 +23748,7 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet:tags [ seadots-emodnet:boundary "maritime" ;
                     seadots-emodnet:industrial "windfarm" ;
                     ns7:name "Baltic Power" ;
-                    ns6:product "power" ;
+                    ns8:product "power" ;
                     ns7:type "production_area" ] ] .
 
 <file:///github/workspace/way/1560132096> a geojson:Feature ;
@@ -23764,14 +23764,14 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet:name "MFW Bałtyk II Offshore Wind Farm" ;
             seadots-emodnet:osm_id 1560132096 ;
             seadots-emodnet:osm_type "way" ;
-            seadots-emodnet:tags [ ns11:power "plant" ;
+            seadots-emodnet:tags [ ns9:power "plant" ;
                     seadots-emodnet: seadots-emodnet:construction ;
                     seadots-emodnet:boundary "industrial" ;
                     seadots-emodnet:name "MFW Bałtyk II Offshore Wind Farm" ;
                     seadots-emodnet:operator "Equinor;Polenergia" ;
                     seadots-emodnet:start_date "2027" ;
                     seadots-emodnet:turbines "50" ;
-                    ns8:electricity "720 MW" ;
+                    ns10:electricity "720 MW" ;
                     ns5:source "wind" ;
                     ns5:type "offshore" ] ] .
 
@@ -23789,7 +23789,7 @@ The source tags remain present alongside mapped properties. This sample includes
                     seadots-emodnet:operator "PGE / Ørsted" ;
                     ns5:source "wind" ;
                     ns7:name "Baltica 3" ;
-                    ns6:product "power" ;
+                    ns8:product "power" ;
                     ns7:type "production_area" ] ] .
 
 <file:///github/workspace/way/1560193205> a geojson:Feature ;
@@ -23800,14 +23800,14 @@ The source tags remain present alongside mapped properties. This sample includes
             seadots-emodnet:name "Baltica 2 OWF" ;
             seadots-emodnet:osm_id 1560193205 ;
             seadots-emodnet:osm_type "way" ;
-            seadots-emodnet:tags [ ns11:power "plant" ;
+            seadots-emodnet:tags [ ns9:power "plant" ;
                     seadots-emodnet:boundary "maritime" ;
                     seadots-emodnet:industrial "windfarm" ;
                     seadots-emodnet:name "Baltica 2 OWF" ;
                     seadots-emodnet:operator "PGE / Ørsted" ;
                     ns5:source "wind" ;
                     ns7:name "Baltica 2" ;
-                    ns6:product "power" ;
+                    ns8:product "power" ;
                     ns7:type "production_area" ] ] .
 
 [] a geojson:FeatureCollection ;

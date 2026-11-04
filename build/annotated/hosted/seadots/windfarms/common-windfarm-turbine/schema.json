@@ -1,144 +1,254 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EMODnet windfarm feature",
-  "description": "GeoJSON representation of the EMODnet Human Activities windfarms feature type. Property names, optionality, nullability, and value types follow the service's published windfarms XSD.\n",
-  "allOf": [
+  "title": "Wind turbine",
+  "description": "A single wind turbine as a GeoJSON Feature with Point geometry, or a FeatureCollection of such turbines. Properties are harmonised from source tags: numeric values are parsed into SI-based units named in the property, and values that cannot be read unambiguously are null.\n",
+  "anyOf": [
     {
-      "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json"
+      "$ref": "#/$defs/WindTurbine"
     },
     {
-      "type": "object",
-      "required": [
-        "properties"
-      ],
-      "properties": {
-        "properties": {
-          "type": "object",
-          "properties": {
-            "country": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "description": "Country name as published by EMODnet; the XSD type is nullable xsd:string.",
-              "x-jsonld-id": "https://schema.org/addressCountry",
-              "x-jsonld-type": "@vocab"
-            },
-            "n_turbines": {
-              "type": [
-                "number",
-                "null"
-              ],
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines"
-            },
-            "power_mw": {
-              "type": [
-                "number",
-                "null"
-              ],
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW"
-            },
-            "status": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "description": "Status text as published by EMODnet (nullable xsd:string).",
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-              "x-jsonld-type": "@vocab"
-            },
-            "type_inst": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "x-jsonld-id": "https://schema.org/additionalType"
-            },
-            "updateyear": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear"
-            },
-            "year": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year"
-            },
-            "dist_coast": {
-              "type": [
-                "number",
-                "null"
-              ],
-              "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast"
-            },
-            "notes": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "x-jsonld-id": "http://purl.org/dc/terms/description"
-            },
-            "shape_leng": {
-              "type": [
-                "number",
-                "null"
-              ]
-            },
-            "shape_area": {
-              "type": [
-                "number",
-                "null"
-              ]
-            },
-            "name": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "area_sqkm": {
-              "type": [
-                "number",
-                "null"
-              ]
-            }
-          },
-          "x-jsonld-id": "https://purl.org/geojson/vocab#properties"
-        },
-        "additionalProperties": {}
-      }
+      "$ref": "#/$defs/WindTurbineCollection"
     }
   ],
+  "$defs": {
+    "WindTurbineCollection": {
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.json"
+        },
+        {
+          "type": "object",
+          "required": [
+            "features"
+          ],
+          "properties": {
+            "features": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/WindTurbine"
+              },
+              "x-jsonld-id": "https://purl.org/geojson/vocab#features",
+              "x-jsonld-container": "@set"
+            }
+          }
+        }
+      ]
+    },
+    "WindTurbine": {
+      "allOf": [
+        {
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.json"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "Persistent identifier of the turbine, e.g. its OpenStreetMap node URL.",
+              "x-jsonld-id": "@id"
+            },
+            "geometry": {
+              "type": "object",
+              "required": [
+                "type",
+                "coordinates"
+              ],
+              "properties": {
+                "type": {
+                  "const": "Point",
+                  "x-jsonld-id": "@type"
+                }
+              },
+              "x-jsonld-id": "https://purl.org/geojson/vocab#geometry"
+            },
+            "properties": {
+              "type": "object",
+              "required": [
+                "ref",
+                "windfarm_name",
+                "windfarm",
+                "manufacturer",
+                "model",
+                "rated_power_mw",
+                "hub_height_m",
+                "rotor_diameter_m",
+                "rotor_axis",
+                "offshore",
+                "operator",
+                "status",
+                "last_updated"
+              ],
+              "properties": {
+                "ref": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Turbine reference label within its wind farm, as assigned by the source.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#turbineReference"
+                },
+                "windfarm_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Name of the wind farm the turbine belongs to.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#windfarmName"
+                },
+                "windfarm": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uri",
+                  "description": "Identifier of the wind farm the turbine belongs to, e.g. its OpenStreetMap relation URL.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#partOfWindfarm",
+                  "x-jsonld-type": "@id"
+                },
+                "manufacturer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Turbine manufacturer name.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#manufacturerName"
+                },
+                "model": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Turbine model designation.",
+                  "x-jsonld-id": "https://schema.org/model"
+                },
+                "rated_power_mw": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "description": "Rated (nameplate) electrical output of the turbine in megawatts.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#ratedPowerMW",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#decimal"
+                },
+                "hub_height_m": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "description": "Height of the rotor hub in metres.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#hubHeight",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#decimal"
+                },
+                "rotor_diameter_m": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "description": "Rotor diameter in metres.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#rotorDiameter",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#decimal"
+                },
+                "rotor_axis": {
+                  "enum": [
+                    "horizontal_axis",
+                    "vertical_axis",
+                    null
+                  ],
+                  "description": "Orientation of the rotor axis.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#rotorAxis",
+                  "x-jsonld-type": "@vocab"
+                },
+                "offshore": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "description": "Whether the turbine stands offshore; null when the source does not say.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#offshore",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#boolean"
+                },
+                "operator": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Operating organisation(s).",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#operatorName",
+                  "x-jsonld-container": "@set"
+                },
+                "status": {
+                  "enum": [
+                    "projected",
+                    "underConstruction",
+                    "functional",
+                    "disused",
+                    "decommissioned",
+                    null
+                  ],
+                  "description": "Condition of the turbine as an INSPIRE ConditionOfFacilityValue code; null when the source does not state it.",
+                  "x-jsonld-id": "https://w3id.org/ogc/hosted/seadots/windfarm#conditionOfFacility",
+                  "x-jsonld-type": "@vocab"
+                },
+                "last_updated": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time",
+                  "description": "Time of the last edit of the source record.",
+                  "x-jsonld-id": "http://purl.org/dc/terms/modified",
+                  "x-jsonld-type": "http://www.w3.org/2001/XMLSchema#dateTime"
+                }
+              },
+              "additionalProperties": false,
+              "x-jsonld-id": "@nest"
+            }
+          }
+        }
+      ]
+    }
+  },
   "x-jsonld-extra-terms": {
-    "id": "@id",
-    "type": "@type",
+    "FeatureCollection": "https://purl.org/geojson/vocab#FeatureCollection",
     "Feature": "https://purl.org/geojson/vocab#Feature",
     "Point": "https://purl.org/geojson/vocab#Point",
-    "Polygon": "https://purl.org/geojson/vocab#Polygon",
-    "MultiPolygon": "https://purl.org/geojson/vocab#MultiPolygon",
-    "geometry": "https://purl.org/geojson/vocab#geometry",
     "coordinates": {
       "x-jsonld-id": "https://purl.org/geojson/vocab#coordinates",
       "x-jsonld-container": "@list"
-    }
+    },
+    "horizontal_axis": "https://w3id.org/ogc/hosted/seadots/windfarm#HorizontalAxis",
+    "vertical_axis": "https://w3id.org/ogc/hosted/seadots/windfarm#VerticalAxis",
+    "projected": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/projected",
+    "underConstruction": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/underConstruction",
+    "functional": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/functional",
+    "disused": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/disused",
+    "decommissioned": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/decommissioned"
   },
-  "x-jsonld-vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/",
   "x-jsonld-prefixes": {
     "geojson": "https://purl.org/geojson/vocab#",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
     "schema": "https://schema.org/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-    "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/"
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "dcterms": "http://purl.org/dc/terms/"
   },
   "x-bblocks-metadata": {
     "itemIdentifier": "ogc.hosted.seadots.windfarms.common-windfarm-turbine",
     "register": "https://ogcincubator.github.io/bblocks-seadots/build/register.json",
-    "version": "0.1",
-    "dateOfLastChange": "2026-07-24"
+    "version": "0.2",
+    "dateOfLastChange": "2026-11-04"
   }
 }
