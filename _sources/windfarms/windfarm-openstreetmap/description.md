@@ -25,6 +25,18 @@ The snapshot reflects the OSM database at retrieval time. It is not a stable or 
 
 IHO S-100 Data Dictionary item 42 is “Category of Offshore Production Area”, defined as the classification of an area at sea within which production facilities exist. Its listed value “Wind Farm” applies to wind-farm area features when source tags explicitly identify that category. The transform in the companion harmonised block asserts this IHO value only when the OSM tags identify a wind farm (`industrial=windfarm` or `seamark:landmark:production_area=wind_farm`). It does not assign the area category to individual turbine nodes or to ambiguous features. The IHO attribute is documented at the [IHO Geospatial Information Registry](https://registry.iho.int/fdd/view3.do?idx=42&type=3).
 
+## Alignment and transformation to windfarm designated areas
+
+`ontology.ttl` imports the SeaDOTs windfarm ontology (`owf:`, [common-windfarm-ontology](../common-windfarm-ontology/)) and declares, as data, how this source maps onto `owf:WindfarmArea` in [common-windfarm-designated-area](../common-windfarm-designated-area/):
+
+- **Which elements are wind farms:** `osmdata:WindfarmElement`, defined as an OWL class (an element whose tag set has `plant:source=wind`, `industrial=windfarm` or `seamark:landmark:production_area=wind_farm`), with the same rules in machine-readable form (`osmdata:selectionRules`). A way that is an outer member of a wind farm relation, or has the same name as one, is part of that relation's wind farm.
+- **How tags map onto properties:** `osmdata:windfarmTagMappings` is an ordered list of `osmdata:TagMapping` entries. Each one gives the target `owf:` property and its JSON key, the source tag keys in priority order, and either a conversion (`Copy`, `ParseInteger`, `ParseMegawatts`, `SplitSemicolon`, with a `CountGeneratorMembers` fallback) or ordered value rules. For example, `construction:power=plant` → `seadots-emodnet:Construction` and `power=plant` → `seadots-emodnet:Production`. Tag keys also carry `skos:closeMatch` / `skos:relatedMatch` links to the target properties.
+- **Element-level rules**, documented in the ontology and applied by the transform: feature id from the element type and id, geometry and geodesic `area_sqkm` from the area way, `last_updated` from the latest edit of the merged elements, `source_reference` from the response bounds, `location_status`, and `same_as` for the merged ways.
+
+`transforms.yaml` registers `to-windfarm-designated-area` (`transforms/osm_to_windfarm_area.py`). The transform loads the alignment from `ontology.ttl` and applies it, so editing a mapping there changes the output. On this block's example it reproduces the five OSM records of the designated-area example, geometry included. The only difference is the EMODnet `same_as` links, which cannot be derived from OSM. Country, installation type, distance to coast and EMODnet update year are not in OSM and stay null.
+
+The transform is Python, not SPARQL. Walking the RDF lists of this snapshot (a 1,626-member relation, ways of up to 853 nodes) exceeds rdflib's recursion limit in property-path evaluation, and that would break a `sparql-construct` transform in the bblocks build.
+
 ## Licence
 
 OSM data is licensed under the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Keep the attribution "© OpenStreetMap contributors" ([copyright](https://www.openstreetmap.org/copyright)) when redistributing the example.
