@@ -1,0 +1,29 @@
+transforms:
+  - id: to-windfarm-designated-area
+    description: >
+      Converts an OSM API 0.6 map response into windfarm designated areas
+      (`common-windfarm-designated-area`). The transformation is driven by the
+      alignment declared in this block's `ontology.ttl`: `osmdata:WindfarmElement`
+      selects wind farm ways and relations, and `osmdata:windfarmTagMappings`
+      maps OSM tags onto `owf:` properties with their value conversions. A wind
+      farm relation is merged with its outer and same-name ways, which become
+      `same_as` links. Geometry comes from the area way, with `area_sqkm`
+      computed geodesically. Turbines and other devices are not output.
+    type: python
+    ref: transforms/osm_to_windfarm_area.py
+    inputs:
+      mediaTypes:
+        - application/json
+    outputs:
+      mediaTypes:
+        - application/geo+json
+        - application/json
+      profiles:
+        - bblocks://ogc.hosted.seadots.windfarms.common-windfarm-designated-area
+    metadata:
+      ontology: _sources/windfarms/windfarm-openstreetmap/ontology.ttl
+      source_snapshot_date: '2026-10-27'
+      dependencies:
+        pip:
+          - rdflib
+          - pyproj

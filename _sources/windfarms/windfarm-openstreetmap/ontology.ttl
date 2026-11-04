@@ -247,6 +247,211 @@ osmdata:memberRole
     rdfs:seeAlso <https://wiki.openstreetmap.org/wiki/Relation#Roles> .
 
 #################################################################
+# Alignment with the SeaDOTs windfarm ontology (owf:)
+#
+# Declares how OSM elements and tags map onto owf:WindfarmArea as used by the
+# common-windfarm-designated-area block. The mapping is data: the transform
+# transforms/osm_to_windfarm_area.py reads it from this file and applies it, so
+# changing a mapping here changes the transformation.
+#################################################################
+
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix schema: <https://schema.org/> .
+@prefix osmkey: <https://www.openstreetmap.org/wiki/Key:> .
+
+<https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source>
+    owl:imports <https://w3id.org/ogc/hosted/seadots/windfarm> .
+
+# ---------- alignment vocabulary ----------
+
+osmdata:TagMapping a owl:Class ;
+    rdfs:label "tag mapping"@en ;
+    rdfs:comment "Maps one or more OSM tag keys of a wind farm element onto one owf property and the corresponding JSON property of the target block."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:ValueRule a owl:Class ;
+    rdfs:label "value rule"@en ;
+    rdfs:comment "Maps one OSM tag key/value pair to a target value."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:Conversion a owl:Class ;
+    rdfs:label "value conversion"@en ;
+    rdfs:comment "How a source tag value is turned into the target value."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:targetProperty a owl:ObjectProperty ;
+    rdfs:label "target property"@en ; rdfs:comment "The ontology property the mapping produces."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:targetKey a owl:DatatypeProperty ;
+    rdfs:label "target JSON key"@en ; rdfs:comment "JSON property name in the target block, i.e. the context term for osmdata:targetProperty."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:sourceKeys a owl:ObjectProperty ;
+    rdfs:label "source keys"@en ; rdfs:comment "Ordered list (rdf:List) of OSM tag key properties; the first key with a value is used."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:valueRules a owl:ObjectProperty ;
+    rdfs:label "value rules"@en ; rdfs:comment "Ordered list (rdf:List) of osmdata:ValueRule; the first rule whose key/value matches gives the target value."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:conversion a owl:ObjectProperty ;
+    rdfs:label "conversion"@en ; rdfs:domain osmdata:TagMapping ; rdfs:range osmdata:Conversion ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:fallback a owl:ObjectProperty ;
+    rdfs:label "fallback"@en ; rdfs:comment "Conversion applied when no source key has a value."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range osmdata:Conversion ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:whenPresent a owl:DatatypeProperty ;
+    rdfs:label "constant when present"@en ; rdfs:comment "Constant target value written when the mapping's source key has a value (used for explanatory fields)."@en ;
+    rdfs:domain osmdata:TagMapping ; rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:ruleKey a owl:ObjectProperty ;
+    rdfs:label "rule key"@en ; rdfs:domain osmdata:ValueRule ; rdfs:range rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:ruleValue a owl:DatatypeProperty ;
+    rdfs:label "rule value"@en ; rdfs:comment "Source tag value the rule matches; omitted to match any value."@en ;
+    rdfs:domain osmdata:ValueRule ; rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:yields a rdf:Property ;
+    rdfs:label "yields"@en ; rdfs:comment "Target value of a rule: a concept (written as its local name), a literal, or osmdata:KeyEqualsValue."@en ;
+    rdfs:domain osmdata:ValueRule ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:Copy a osmdata:Conversion ; rdfs:label "copy"@en ;
+    rdfs:comment "The tag value unchanged."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+osmdata:ParseInteger a osmdata:Conversion ; rdfs:label "parse integer"@en ;
+    rdfs:comment "The tag value read as an integer; null when it is not one."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+osmdata:ParseMegawatts a osmdata:Conversion ; rdfs:label "parse megawatts"@en ;
+    rdfs:comment "A number with optional unit MW, e.g. \"720 MW\" -> 720; null for any other unit or text."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+osmdata:SplitSemicolon a osmdata:Conversion ; rdfs:label "split on semicolon"@en ;
+    rdfs:comment "The OSM multi-value convention: split on ';' and trim, giving an array."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+osmdata:CountGeneratorMembers a osmdata:Conversion ; rdfs:label "count generator members"@en ;
+    rdfs:comment "Number of relation members with role generator; null when there are none."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+osmdata:KeyEqualsValue a owl:NamedIndividual ; rdfs:label "key=value"@en ;
+    rdfs:comment "Rule result: the matched tag written as key=value."@en ; rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+# ---------- class alignment ----------
+
+osmdata:WindfarmElement a owl:Class ;
+    rdfs:label "OSM wind farm element"@en ;
+    rdfs:comment "A way or relation tagged as a wind farm. A way that is an outer member of a wind farm relation, or has the same name as one, is part of that relation's wind farm; the relation is the primary element, the ways are linked with schema:sameAs, and the first area way gives the geometry."@en ;
+    rdfs:subClassOf osmdata:Element ;
+    owl:equivalentClass [
+        owl:intersectionOf ( osmdata:Element
+            [ a owl:Restriction ; owl:onProperty osmdata:tagSet ;
+              owl:someValuesFrom [ owl:unionOf (
+                  [ a owl:Restriction ; owl:onProperty osmkey:plant:source ; owl:hasValue "wind" ]
+                  [ a owl:Restriction ; owl:onProperty osmkey:industrial ; owl:hasValue "windfarm" ]
+                  [ a owl:Restriction ; owl:onProperty osmkey:seamark:landmark:production_area ; owl:hasValue "wind_farm" ] ) ] ] ) ] ;
+    skos:closeMatch owf:WindfarmArea ;
+    osmdata:selectionRules ( osmdata:sel-plant-source osmdata:sel-industrial osmdata:sel-seamark ) ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:selectionRules a owl:AnnotationProperty ;
+    rdfs:label "selection rules"@en ; rdfs:comment "Any matching rule selects an element; machine-readable form of the class definition."@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+osmdata:sel-plant-source a osmdata:ValueRule ; osmdata:ruleKey osmkey:plant:source ; osmdata:ruleValue "wind" .
+osmdata:sel-industrial a osmdata:ValueRule ; osmdata:ruleKey osmkey:industrial ; osmdata:ruleValue "windfarm" .
+osmdata:sel-seamark a osmdata:ValueRule ; osmdata:ruleKey osmkey:seamark:landmark:production_area ; osmdata:ruleValue "wind_farm" .
+
+# ---------- property alignment (tag mappings), applied in this order ----------
+
+osmdata:windfarmTagMappings a owl:AnnotationProperty ;
+    rdfs:label "windfarm tag mappings"@en ;
+    rdfs:isDefinedBy <https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source> .
+
+<https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-source>
+    osmdata:windfarmTagMappings ( osmdata:map-name osmdata:map-n-turbines osmdata:map-power
+        osmdata:map-status osmdata:map-status-detail osmdata:map-offshore osmdata:map-year
+        osmdata:map-year-semantics osmdata:map-operator ) .
+
+osmdata:map-name a osmdata:TagMapping ;
+    osmdata:targetProperty schema:name ; osmdata:targetKey "name" ;
+    osmdata:sourceKeys ( <https://www.openstreetmap.org/wiki/Key:name:> osmkey:seamark:name ) ;
+    osmdata:conversion osmdata:Copy .
+
+osmdata:map-n-turbines a osmdata:TagMapping ;
+    osmdata:targetProperty owf:nTurbines ; osmdata:targetKey "n_turbines" ;
+    osmdata:sourceKeys ( osmkey:turbines ) ;
+    osmdata:conversion osmdata:ParseInteger ;
+    osmdata:fallback osmdata:CountGeneratorMembers .
+
+osmdata:map-power a osmdata:TagMapping ;
+    osmdata:targetProperty owf:powerMW ; osmdata:targetKey "power_mw" ;
+    osmdata:sourceKeys ( osmkey:plant:output:electricity ) ;
+    osmdata:conversion osmdata:ParseMegawatts .
+
+osmdata:map-status a osmdata:TagMapping ;
+    osmdata:targetProperty owf:conditionOfFacility ; osmdata:targetKey "status" ;
+    osmdata:valueRules (
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:construction:power ; osmdata:ruleValue "plant" ; osmdata:yields seadots-emodnet:Construction ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:status ; osmdata:ruleValue "construction" ; osmdata:yields seadots-emodnet:Construction ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:power ; osmdata:ruleValue "plant" ; osmdata:yields seadots-emodnet:Production ] ) .
+
+osmdata:map-status-detail a osmdata:TagMapping ;
+    osmdata:targetProperty owf:statusDetail ; osmdata:targetKey "status_detail" ;
+    osmdata:valueRules (
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:status ; osmdata:yields osmdata:Copy ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:construction:power ; osmdata:yields osmdata:KeyEqualsValue ] ) .
+
+osmdata:map-offshore a osmdata:TagMapping ;
+    osmdata:targetProperty owf:offshore ; osmdata:targetKey "offshore" ;
+    osmdata:valueRules (
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:offshore ; osmdata:ruleValue "yes" ; osmdata:yields true ]
+        [ a osmdata:ValueRule ; osmdata:ruleKey osmkey:plant:type ; osmdata:ruleValue "offshore" ; osmdata:yields true ] ) .
+
+osmdata:map-year a osmdata:TagMapping ;
+    osmdata:targetProperty owf:year ; osmdata:targetKey "year" ;
+    osmdata:sourceKeys ( osmkey:start_date ) ;
+    osmdata:conversion osmdata:Copy .
+
+osmdata:map-year-semantics a osmdata:TagMapping ;
+    osmdata:targetProperty owf:yearSemantics ; osmdata:targetKey "year_semantics" ;
+    osmdata:sourceKeys ( osmkey:start_date ) ;
+    osmdata:whenPresent "planned start of operation (OSM start_date)" .
+
+osmdata:map-operator a osmdata:TagMapping ;
+    osmdata:targetProperty owf:operatorName ; osmdata:targetKey "operator" ;
+    osmdata:sourceKeys ( osmkey:operator ) ;
+    osmdata:conversion osmdata:SplitSemicolon .
+
+# ---------- element-level alignment (not tag based) ----------
+# Implemented by the transform as structural rules:
+#   element id (type/id)          -> feature id <https://www.openstreetmap.org/{type}/{id}>, dcterms:identifier
+#   max dcterms:modified of parts -> dcterms:modified (last_updated)
+#   osmdata:bounds of the response -> dcterms:source (OSM API map URL with that bbox)
+#   area way node list            -> geometry (Polygon), owf:areaSqKm (geodesic, WGS 84)
+#   area way present / absent     -> owf:locationStatus LocationSourceProvided / LocationUnmatched
+#   merged ways                   -> schema:sameAs
+# Not derivable from OSM and left null: country, type_inst, dist_coast, updateyear.
+
+osmdata:elementIdentifier skos:relatedMatch dcterms:identifier .
+osmdata:bounds skos:relatedMatch dcterms:source .
+<https://www.openstreetmap.org/wiki/Key:name:> skos:closeMatch schema:name .
+osmkey:seamark:name skos:closeMatch schema:name .
+osmkey:turbines skos:closeMatch owf:nTurbines .
+osmkey:plant:output:electricity skos:closeMatch owf:powerMW .
+osmkey:operator skos:closeMatch owf:operatorName .
+osmkey:start_date skos:closeMatch owf:year .
+osmkey:offshore skos:closeMatch owf:offshore .
+osmkey:construction:power skos:relatedMatch owf:conditionOfFacility .
+osmkey:status skos:relatedMatch owf:conditionOfFacility .
+osmkey:power skos:relatedMatch owf:conditionOfFacility .
+
+
+#################################################################
 # Tag keys (generated by gen_osm_tags.py from the block examples; do not edit by hand)
 #
 # Each OSM tag key is a property <https://www.openstreetmap.org/wiki/Key:<key>> (osm2rdf convention).
