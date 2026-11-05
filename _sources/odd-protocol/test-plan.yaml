@@ -6,15 +6,15 @@ tests:
       Validate the canonical JASSS paper example against the ODD Protocol
       schema. The record must pass GeoDCAT-Records base validation plus the
       odd extension properties.
-    input: ../examples/jasss_odd_protocol_2020.json
-    schema: ../schema.yaml
+    input: examples/jasss_odd_protocol_2020.json
+    schema: schema.yaml
     expected: valid
 
   - name: Required OGC Records fields present
     description: >
       The example must contain id, type, geometry (may be null), and properties
       with at least title, contacts, and externalIds.
-    input: ../examples/jasss_odd_protocol_2020.json
+    input: examples/jasss_odd_protocol_2020.json
     contains:
       - '"id"'
       - '"type"'
@@ -26,7 +26,7 @@ tests:
   - name: ODD extension present
     description: >
       The example must carry an `odd` object with the seven required keys.
-    input: ../examples/jasss_odd_protocol_2020.json
+    input: examples/jasss_odd_protocol_2020.json
     contains:
       - '"odd"'
       - '"purpose"'
@@ -39,7 +39,7 @@ tests:
 
   - name: DOI externalId present
     description: The record must include a DOI in externalIds.
-    input: ../examples/jasss_odd_protocol_2020.json
+    input: examples/jasss_odd_protocol_2020.json
     contains:
       - '"doi"'
       - '"10.18564/jasss.4259"'
@@ -47,7 +47,7 @@ tests:
   - name: All 11 design concepts keys present
     description: >
       The designConcepts object must contain all eleven ODD concept keys.
-    input: ../examples/jasss_odd_protocol_2020.json
+    input: examples/jasss_odd_protocol_2020.json
     contains:
       - '"basicPrinciples"'
       - '"emergence"'
@@ -68,13 +68,13 @@ tests:
       Validate the OSMOSE marine IBM ODD example against the building block
       schema. Exercises the full marine vocabulary annotation path (NERC P01,
       Darwin Core, CF) and multi-entity, multi-submodel structure.
-    input: ../examples/osmose_odd.json
-    schema: ../schema.yaml
+    input: examples/osmose_odd.json
+    schema: schema.yaml
     expected: valid
 
   - name: OSMOSE — OGC Records scaffold present
     description: Required OGC Records fields must be present in the OSMOSE record.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"id"'
       - '"type"'
@@ -85,7 +85,7 @@ tests:
 
   - name: OSMOSE — all seven ODD elements present
     description: The OSMOSE odd object must carry all seven required element keys.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"odd"'
       - '"purpose"'
@@ -101,7 +101,7 @@ tests:
       The OSMOSE example must contain the primary entity types characterising
       the marine IBM — School (super-individual), Cell (grid patch), and Resource
       (low trophic level).
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"School"'
       - '"Cell"'
@@ -112,7 +112,7 @@ tests:
     description: >
       State variables for length, weight, and abundance must carry NERC P01
       vocabulary term URIs to validate the domain vocabulary annotation path.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"http://vocab.nerc.ac.uk/collection/P01/current/OBSINDL01/"'
       - '"http://vocab.nerc.ac.uk/collection/P01/current/OBSINDW01/"'
@@ -122,7 +122,7 @@ tests:
     description: >
       The submodels array must include entries for the two core quantitative
       processes — Von Bertalanffy growth and size-based predation.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"Growth — Von Bertalanffy"'
       - '"Predation mortality"'
@@ -133,14 +133,14 @@ tests:
     description: >
       The inputData array must reference biogeochemical LTL forcing
       (NetCDF format) as a required external data source.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"application/x-netcdf"'
       - '"Low trophic level (LTL) biogeochemical forcing"'
 
   - name: OSMOSE — all 11 design concepts present
     description: All eleven ODD design concept keys must appear in the OSMOSE record.
-    input: ../examples/osmose_odd.json
+    input: examples/osmose_odd.json
     contains:
       - '"basicPrinciples"'
       - '"emergence"'

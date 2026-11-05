@@ -77,8 +77,8 @@ separately materialised: in this projection the key is the final segment of the 
 Directly-authored RDF should assert `fcm:nodeKey` as usual.
 
 **Edge keys stay literals.** `id` on an edge maps to `fcm:edgeKey`, not `@id`, because the
-conventional edge key `"C5->C3"` contains `>` and is not a legal IRI. Edges are blank
-nodes; they have no need for stable identity.
+edge key is a graph-local label, conventionally `SRC-DST` (e.g. `"C5-C3"`), and `src` and `dst`
+remain the authoritative endpoints. Edges are blank nodes; they have no need for stable identity.
 
 **Upstream activation labels are corrected on the way in.** `label` is `@type: @vocab`, so
 `"logistic"` → `fcmact:logistic` and `"other"` → `fcmact:offset`. Critically,

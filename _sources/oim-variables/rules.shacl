@@ -4,6 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix ses: <http://seadots.eu/ses#> .
 @prefix ind: <https://w3id.org/indicators/marine/> .
 @prefix ov: <https://w3id.org/indicators/marine/shapes#> .
@@ -38,7 +39,7 @@ ov:EdgeShape
         sh:datatype xsd:decimal ;
     ] .
 
-:CompositeIndicatorShape
+ov:CompositeIndicatorShape
     a sh:NodeShape ;
     sh:targetClass ind:CompositeIndicatorComputation ;
     sh:message "Composite indicator computations should reference at least one observed property." ;
