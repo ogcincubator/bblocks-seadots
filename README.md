@@ -153,3 +153,11 @@ SeaDOTs namespaces end in `/` rather than `#`, for example `https://w3id.org/ogc
 - [OGC Blocks documentation](https://ogcincubator.github.io/bblocks-docs/)
 - [Block structure and configuration](USAGE.md) (the template's guide, kept in this repository)
 - [Example register](https://github.com/ogcincubator/bblocks-examples)
+
+# Acknowledgements
+
+This work is supported with [SeaDOTs project](http://seadots-project.eu) project funded by the EU Horizon Europe Research and Innovation Programme under Grant Agreement No. 101156488
+
+# License
+Resources on this repo are shared under stadnard OGC license:
+https://opensource.org/license/apache-2.0
