@@ -177,24 +177,19 @@ The examples are **illustrative target designs**: the two views are specified bu
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-[] rdfs:seeAlso [ rdfs:label "EMODnet-compliant nationally designated area (OGC Building Block)" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area> ],
-        [ dct:type "application/geo+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/items> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas/items?f=json> ],
-        [ rdfs:label "Source: Naturvernområder, marine subset (snapshot)" ;
-            dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/derived-from> ;
-            oa:hasTarget <http://localhost:5000/collections/no-snapshot-naturvern-omrade-marine?f=json> ],
+[] rdfs:seeAlso [ rdfs:label "EMODnet Human Activities: nationallydesignatedareas" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=emodnet:nationallydesignatedareas> ],
+        [ dct:type "application/schema+json" ;
+            ns1:relation <http://www.opengis.net/def/rel/ogc/1.0/queryables> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas/queryables?f=json> ],
+        [ dct:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas?f=json> ],
         [ rdfs:label "Transform report: excluded sites, sites not yet reported to the EEA, differences from EMODnet" ;
             dct:type "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas/transform-report.json> ],
-        [ rdfs:label "Source dataset metadata (Geonorge)" ;
-            dct:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://kartkatalog.geonorge.no/metadata/5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4> ],
         [ dct:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-protected-area/nationally-designated-area/schema.json> ],
@@ -202,15 +197,20 @@ The examples are **illustrative target designs**: the two views are specified bu
             dct:type "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/license> ;
             oa:hasTarget <https://data.norge.no/nlod/en/2.0> ],
-        [ dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas?f=json> ],
-        [ rdfs:label "EMODnet Human Activities: nationallydesignatedareas" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=emodnet:nationallydesignatedareas> ],
-        [ dct:type "application/schema+json" ;
-            ns1:relation <http://www.opengis.net/def/rel/ogc/1.0/queryables> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas/queryables?f=json> ] .
+        [ rdfs:label "Source: Naturvernområder, marine subset (snapshot)" ;
+            dct:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/derived-from> ;
+            oa:hasTarget <http://localhost:5000/collections/no-snapshot-naturvern-omrade-marine?f=json> ],
+        [ rdfs:label "Source dataset metadata (Geonorge)" ;
+            dct:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://kartkatalog.geonorge.no/metadata/5857ec0a-8d2c-4cd8-baa2-0dc54ae213b4> ],
+        [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/items> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-no-nationallydesignatedareas/items?f=json> ],
+        [ rdfs:label "EMODnet-compliant nationally designated area (OGC Building Block)" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-protected-area.nationally-designated-area> ] .
 
 
 ```
@@ -337,31 +337,31 @@ The examples are **illustrative target designs**: the two views are specified bu
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-[] rdfs:seeAlso [ dct:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-protected-area/rsc-mpa/schema.json> ],
+[] rdfs:seeAlso [ dct:type "application/geo+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/items> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa/items?f=json> ],
+        [ dct:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa?f=json> ],
         [ rdfs:label "Source: HELCOM MPAs (live)" ;
             dct:type "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derived-from> ;
             oa:hasTarget <http://localhost:5000/collections/helcom-live-mpas?f=json> ],
-        [ dct:type "application/schema+json" ;
-            ns1:relation <http://www.opengis.net/def/rel/ogc/1.0/queryables> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa/queryables?f=json> ],
-        [ rdfs:label "EMODnet Human Activities: marineprotectedareas" ;
-            ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=emodnet:marineprotectedareas> ],
         [ rdfs:label "HELCOM data policy - cite HELCOM as the source" ;
             dct:type "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/license> ;
             oa:hasTarget <https://helcom.fi/about-us/data-policy/> ],
-        [ dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa?f=json> ],
+        [ dct:type "application/schema+json" ;
+            ns1:relation <http://www.opengis.net/def/rel/ogc/1.0/queryables> ;
+            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa/queryables?f=json> ],
+        [ dct:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/emodnet-protected-area/rsc-mpa/schema.json> ],
         [ ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <https://ogcincubator.github.io/bblocks-seadots/bblock/ogc.hosted.seadots.emodnet-protected-area.rsc-mpa> ],
-        [ dct:type "application/geo+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/items> ;
-            oa:hasTarget <http://localhost:5000/collections/emodnet-view-helcom-rsc-mpa/items?f=json> ] .
+        [ rdfs:label "EMODnet Human Activities: marineprotectedareas" ;
+            ns1:relation <http://www.iana.org/assignments/relation/related> ;
+            oa:hasTarget <https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=emodnet:marineprotectedareas> ] .
 
 
 ```

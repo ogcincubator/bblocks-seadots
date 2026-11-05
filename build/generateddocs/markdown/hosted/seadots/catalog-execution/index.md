@@ -139,10 +139,10 @@ dataset. No source properties are intentionally dropped.
         <https://docs.ogc.org/is/20-004/20-004.html> ;
     rdfs:seeAlso [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ] ;
