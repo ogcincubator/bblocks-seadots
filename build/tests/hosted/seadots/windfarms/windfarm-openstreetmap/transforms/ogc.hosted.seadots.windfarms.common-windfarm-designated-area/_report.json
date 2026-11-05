@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.windfarms.common-windfarm-designated-area - Windfarm designated area",
   "bblockName": "Windfarm designated area",
   "bblockId": "ogc.hosted.seadots.windfarms.common-windfarm-designated-area",
-  "generated": "2026-11-04T22:46:12.752533+00:00",
+  "generated": "2026-11-04T23:59:44.942731+00:00",
   "result": true,
   "items": [
     {
@@ -75,30 +75,30 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
-                },
-                "geojson:FeatureShape": {
-                  "nodes": [
-                    "<https://www.openstreetmap.org/relation/21410256>",
-                    "<https://www.openstreetmap.org/relation/21402440>",
-                    "<https://www.openstreetmap.org/relation/21409512>",
-                    "<https://www.openstreetmap.org/relation/21409513>",
-                    "<https://www.openstreetmap.org/way/1560193204>"
-                  ]
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:LinkShape": {
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<https://www.openstreetmap.org/relation/21402440>",
+                    "<https://www.openstreetmap.org/relation/21409512>",
+                    "<https://www.openstreetmap.org/way/1560193204>",
+                    "<https://www.openstreetmap.org/relation/21410256>",
+                    "<https://www.openstreetmap.org/relation/21409513>"
+                  ]
+                },
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:LinkShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <https://www.openstreetmap.org/relation/21410256>,<https://www.openstreetmap.org/relation/21402440>,<https://www.openstreetmap.org/relation/21409512>,<https://www.openstreetmap.org/relation/21409513>,<https://www.openstreetmap.org/way/1560193204>\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://www.openstreetmap.org/relation/21402440>,<https://www.openstreetmap.org/relation/21409512>,<https://www.openstreetmap.org/way/1560193204>,<https://www.openstreetmap.org/relation/21410256>,<https://www.openstreetmap.org/relation/21409513>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -110,15 +110,7 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
               "focusNodes": {
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "_:N9158428ab7834d80bc1a034c57eb1deb"
-                  ]
-                },
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
@@ -127,12 +119,20 @@
                 "geojson:LinkShape": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:FeatureShape": {
                   "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "_:N3c2e800505d1482e8c26ec2a10e979d7"
+                  ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: _:N9158428ab7834d80bc1a034c57eb1deb\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureCollectionShape: _:N3c2e800505d1482e8c26ec2a10e979d7\n"
             }
           ]
         }

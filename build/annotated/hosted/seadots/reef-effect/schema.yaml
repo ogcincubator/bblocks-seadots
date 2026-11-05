@@ -64,7 +64,7 @@ $defs:
           equation symbol (e.g. the AOI).
 
           '
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#equationBinding
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/equationBinding
 properties:
   properties:
     type: object
@@ -91,7 +91,7 @@ properties:
             - observational
             - mesocosm
             - in-situ
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#kind
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/kind
           purpose:
             type: string
             x-jsonld-id: http://purl.org/dc/terms/purpose
@@ -103,19 +103,19 @@ properties:
               `text/x-python`).
 
               '
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#application
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/application
             x-jsonld-type: '@id'
           modelledBy:
             $ref: '#/$defs/Link'
             description: Link to the model documentation (e.g. an ODD record) this
               experiment realises.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#modelledBy
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/modelledBy
             x-jsonld-type: '@id'
           evidenceEquation:
             $ref: '#/$defs/Link'
             description: Link to an `equation-property-relationship` record carrying
               the symbol table.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#evidenceEquation
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/evidenceEquation
             x-jsonld-type: '@id'
           parameters:
             type: array
@@ -138,13 +138,13 @@ properties:
                 parameterSchema:
                   type: object
                   description: Inline JSON Schema fragment for the parameter value.
-                  x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#parameterSchema
+                  x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/parameterSchema
                 vocabularyTerm:
                   type: string
                   format: uri
                   x-jsonld-id: http://www.w3.org/2004/02/skos/core#exactMatch
                   x-jsonld-type: '@id'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#parameter
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/parameter
             x-jsonld-container: '@set'
           inputs:
             type: array
@@ -154,14 +154,14 @@ properties:
               '
             items:
               $ref: '#/$defs/InputBinding'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#input
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/input
             x-jsonld-container: '@set'
           outputs:
             type: array
             description: References to `reef-effect-output` records. MUST NOT be inlined.
             items:
               $ref: '#/$defs/Link'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#output
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/output
             x-jsonld-container: '@set'
             x-jsonld-type: '@id'
           execution:
@@ -177,14 +177,14 @@ properties:
               languageVersion:
                 type: string
                 description: Minimum interpreter / runtime version.
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#languageVersion
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/languageVersion
               dependencies:
                 type: array
                 description: Runtime dependencies (e.g. PyPI packages with version
                   specs).
                 items:
                   type: string
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#dependency
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/dependency
                 x-jsonld-container: '@set'
               entrypoint:
                 type: string
@@ -192,28 +192,28 @@ properties:
                   root (e.g. `python3 _sources/reef-effect/scripts/foo.py`).
 
                   '
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#entrypoint
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/entrypoint
               scheduling:
                 type: string
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#scheduling
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/scheduling
               reproducibility:
                 type: object
                 properties:
                   seedPolicy:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#seedPolicy
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/seedPolicy
                   provenance:
                     type: string
                     x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#reproducibility
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#execution
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/reproducibility
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/execution
           successCriteria:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#successCriterion
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/successCriterion
             x-jsonld-container: '@set'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#experiment
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/experiment
     x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
@@ -598,15 +598,15 @@ x-jsonld-extra-terms:
   softwareVersion: https://schema.org/softwareVersion
   programmingLanguage: https://schema.org/programmingLanguage
   applicationPackage:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/applicationPackage
     x-jsonld-type: '@id'
   profileId:
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
   required:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#required
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/required
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
-  role: https://w3id.org/ogc/hosted/seadots/catalog#role
+  role: https://w3id.org/ogc/hosted/seadots/catalog/role
   code: http://purl.org/dc/terms/identifier
   roles:
     x-jsonld-id: http://www.w3.org/ns/dcat#hadRole
@@ -621,7 +621,7 @@ x-jsonld-extra-terms:
   label: http://www.w3.org/2004/02/skos/core#prefLabel
   format: http://purl.org/dc/terms/format
   mediaType: http://purl.org/dc/terms/format
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-effect#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-effect/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -635,9 +635,9 @@ x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   schema: https://schema.org/
   dcterms: http://purl.org/dc/terms/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
   apkg: https://w3id.org/apkg/terms/
-  seadotsReef: https://w3id.org/ogc/hosted/seadots/reef-effect#
+  seadotsReef: https://w3id.org/ogc/hosted/seadots/reef-effect/
   owl: http://www.w3.org/2002/07/owl#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   w3ctime: http://www.w3.org/2006/time#

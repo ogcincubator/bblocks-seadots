@@ -237,7 +237,7 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix stac: <https://w3id.org/ogc/stac/core/> .
 @prefix survey: <https://example.org/seadots/survey#> .
 @prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .
@@ -249,14 +249,14 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     dcterms:license "CC BY-NC-SA 4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
-        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
             dcterms:type "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
     survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
             seadots:uri "https://www.cessda.eu/" ;
             thns:scheme "CESSDA" ],
@@ -265,18 +265,18 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
             thns:scheme "ELSST" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
-    survey:variableMetadata [ ddi:variableDescription "Age group of the respondent" ;
-            survey:conceptUri "https://elsst.uk/terms/age" ;
-            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
-            seadots:label "Age group" ;
-            seadots:questionText "What is your age group?" ;
-            seadots:variableName "Q1" ],
-        [ ddi:variableDescription "Likert-style attitude question" ;
+    survey:variableMetadata [ ddi:variableDescription "Likert-style attitude question" ;
             survey:conceptUri "https://elsst.uk/terms/environmental-concern" ;
             survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#environmental-attitudes" ;
             seadots:label "Environmental concern" ;
             seadots:questionText "How important is the protection of the environment to you?" ;
-            seadots:variableName "Q5_1" ] ;
+            seadots:variableName "Q5_1" ],
+        [ ddi:variableDescription "Age group of the respondent" ;
+            survey:conceptUri "https://elsst.uk/terms/age" ;
+            survey:vocabularyUri "https://www.cessda.eu/cessda-vocabularies#age" ;
+            seadots:label "Age group" ;
+            seadots:questionText "What is your age group?" ;
+            seadots:variableName "Q1" ] ;
     table:columns ( [ dcterms:description "Respondent identifier" ;
                 dcterms:title "caseid" ;
                 dcterms:type "string" ] [ dcterms:description "Country of residence" ;
@@ -402,7 +402,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1186,7 +1186,7 @@ Links to the schema:
     "osc": "https://w3id.org/ogc/stac/osc/",
     "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "dcterms": "http://purl.org/dc/terms/",
     "table": "https://stac-extensions.github.io/table/v1.2.0/schema.json#",
     "survey": "https://example.org/seadots/survey#",

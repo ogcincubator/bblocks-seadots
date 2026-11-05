@@ -341,11 +341,12 @@ a service.
 @prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/catalog#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/workflow/fcm-solver> a prov:Plan,
@@ -356,13 +357,13 @@ a service.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread." ;
     dcterms:title "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)" ;
-    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ],
-        [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
+    rdfs:seeAlso [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ] ;
+            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ],
+        [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ] ;
     dcat:keyword "digital-twin",
         "fuzzy-cognitive-map",
         "open-science",
@@ -373,16 +374,16 @@ a service.
     schema:softwareVersion "0.1.0" ;
     apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm> ;
             dcterms:description "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification." ;
-            seadots:required true ;
-            seadots:role "map" ] ;
+            ns2:required true ;
+            ns2:role "map" ] ;
     apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
             dcterms:description "Produced only when the solver is applied stepwise over a time-indexed series of maps." ;
-            seadots:required false ;
-            seadots:role "sequence" ],
+            ns2:required false ;
+            ns2:role "sequence" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
             dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
-            seadots:required true ;
-            seadots:role "equilibria" ] ;
+            ns2:required true ;
+            ns2:role "equilibria" ] ;
     seadots:itemType "record" ;
     fcm:solverCapability [ seadots:executionParameters [ seadots:clusteringTolerance 1e-06 ;
                     seadots:convergenceTolerance 1e-10 ;
@@ -1047,7 +1048,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1545,7 +1546,7 @@ Links to the schema:
     "softwareVersion": "schema:softwareVersion",
     "programmingLanguage": "schema:programmingLanguage",
     "applicationPackage": {
-      "@id": "seadots:applicationPackage",
+      "@id": "https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage",
       "@type": "@id"
     },
     "inputs": {
@@ -1555,10 +1556,10 @@ Links to the schema:
           "@type": "@id"
         },
         "required": {
-          "@id": "seadots:required",
+          "@id": "https://w3id.org/ogc/hosted/seadots/catalog#required",
           "@type": "xsd:boolean"
         },
-        "role": "seadots:role"
+        "role": "https://w3id.org/ogc/hosted/seadots/catalog#role"
       },
       "@id": "apkg:inputs",
       "@container": "@set"
@@ -1570,10 +1571,10 @@ Links to the schema:
           "@type": "@id"
         },
         "required": {
-          "@id": "seadots:required",
+          "@id": "https://w3id.org/ogc/hosted/seadots/catalog#required",
           "@type": "xsd:boolean"
         },
-        "role": "seadots:role"
+        "role": "https://w3id.org/ogc/hosted/seadots/catalog#role"
       },
       "@id": "apkg:outputs",
       "@container": "@set"
@@ -1596,7 +1597,7 @@ Links to the schema:
     "thns": "https://w3id.org/ogc/stac/themes/",
     "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "apkg": "https://w3id.org/apkg/terms/",
     "fcm": "https://w3id.org/ogc/hosted/seadots/fcm/",
     "fcmact": "fcm:activation/",

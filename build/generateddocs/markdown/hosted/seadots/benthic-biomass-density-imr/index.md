@@ -470,30 +470,30 @@ their weights, while the raw block preserves the individual point features.
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "IMR benthic biomass observations bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr> ],
+    rdfs:seeAlso [ rdfs:label "Institute of Marine Research" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://www.hi.no/> ],
+        [ rdfs:label "MAREANO programme" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://mareano.no/> ],
         [ rdfs:label "OIM Observations profile" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
             oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
-        [ rdfs:label "MAREANO programme" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ],
-        [ rdfs:label "Institute of Marine Research" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://www.hi.no/> ],
         [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
+        [ rdfs:label "IMR benthic biomass observations bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -631,7 +631,7 @@ properties:
           role:
             type: string
             description: Usually `fallback baseline`.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#role
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/role
           source:
             type: string
             x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
@@ -697,7 +697,7 @@ properties:
                 x-jsonld-id: http://purl.org/dc/terms/methodology
               icesDivision:
                 type: string
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#icesDivision
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/icesDivision
               perTaxon:
                 type: array
                 items:
@@ -723,7 +723,7 @@ properties:
                       minimum: 0
                       description: "1\u03C3 standard uncertainty consumed for CV propagation."
                       x-jsonld-id: http://qudt.org/schema/qudt/standardUncertainty
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#perTaxon
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/perTaxon
                 x-jsonld-container: '@set'
               aggregateDensity_kg_m2:
                 type: number
@@ -741,10 +741,10 @@ properties:
                     - retrieved
                     - illustrative
                     - mixed
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#provenanceValues
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/provenanceValues
                   retrievalApiCall:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#retrievalApiCall
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/retrievalApiCall
                     x-jsonld-type: '@id'
                   rawCollectionBlock:
                     type: string
@@ -768,10 +768,10 @@ properties:
                       note:
                         type: string
                         x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#nearestAuthoritativeSource
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/nearestAuthoritativeSource
                   verificationGap:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#verificationGap
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/verificationGap
                   timeBoundaryNote:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
@@ -779,8 +779,8 @@ properties:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                 x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#data
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#benthicBiomassDensity
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/benthicBiomassDensity
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
   id: '@id'
@@ -819,12 +819,12 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
     x-jsonld-container: '@set'
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   skos: http://www.w3.org/2004/02/skos/core#
-  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#
+  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/
   sosa: http://www.w3.org/ns/sosa/
   time: http://www.w3.org/2006/time#
   qudt: http://qudt.org/schema/qudt/
@@ -850,7 +850,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/",
     "id": "@id",
     "properties": {
       "@id": "geojson:properties",
@@ -1810,7 +1810,7 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-imr/",
     "qudt": "http://qudt.org/schema/qudt/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
     "indo": "https://w3id.org/indicators/marine/obs/",

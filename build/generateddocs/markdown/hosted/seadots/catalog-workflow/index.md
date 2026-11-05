@@ -213,7 +213,7 @@ dataset. No source properties are intentionally dropped.
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,
@@ -239,18 +239,18 @@ dataset. No source properties are intentionally dropped.
     schema:applicationCategory "DigitalTwinApplication" ;
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.1.0" ;
-    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+            seadots:required true ;
+            seadots:role "area-of-interest" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
             seadots:required true ;
             seadots:role "input" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
             dcterms:description "Optional baseline benthic biomass-density input profile." ;
             seadots:required false ;
-            seadots:role "benthic-biomass-density" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
-            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
-            seadots:required true ;
-            seadots:role "area-of-interest" ] ;
+            seadots:role "benthic-biomass-density" ] ;
     apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item produced by this workflow." ;
             seadots:required true ;
@@ -340,7 +340,7 @@ properties:
       applicationPackage:
         type: string
         format: uri-reference
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/applicationPackage
         x-jsonld-type: '@id'
       inputs:
         type: array
@@ -360,12 +360,12 @@ properties:
             required:
               type: boolean
               description: Whether this input profile is required to execute the workflow.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#required
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/required
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
             role:
               type: string
               description: Workflow-specific input role.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/role
             description:
               type: string
               x-jsonld-container: '@set'
@@ -390,12 +390,12 @@ properties:
             required:
               type: boolean
               description: Whether this output profile is always produced by the workflow.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#required
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/required
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
             role:
               type: string
               description: Workflow-specific output role.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#role
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/role
             description:
               type: string
               x-jsonld-container: '@set'
@@ -793,7 +793,7 @@ x-jsonld-extra-terms:
     x-jsonld-type: '@id'
   name: http://www.w3.org/2000/01/rdf-schema#label
   Workflow: http://www.w3.org/ns/prov#Plan
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -807,7 +807,7 @@ x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   schema: https://schema.org/
   dcterms: http://purl.org/dc/terms/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
   apkg: https://w3id.org/apkg/terms/
   owl: http://www.w3.org/2002/07/owl#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -834,7 +834,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1344,7 +1344,7 @@ Links to the schema:
     "thns": "https://w3id.org/ogc/stac/themes/",
     "schema": "https://schema.org/",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "apkg": "https://w3id.org/apkg/terms/",
     "applicationCategory": "schema:applicationCategory",
     "version": "dct:hasVersion",

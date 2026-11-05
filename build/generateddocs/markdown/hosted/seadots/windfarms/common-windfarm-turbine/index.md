@@ -121,7 +121,7 @@ Turbine 76 of the Baltic Power offshore wind farm (Vestas V236-15.0 MW), convert
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -16131,7 +16131,7 @@ FeatureCollection of all 283 wind turbines in the 2026-10-27 OpenStreetMap snaps
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix inspire-cofv: <http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/> .
-@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -20630,13 +20630,13 @@ $defs:
               - 'null'
               description: Turbine reference label within its wind farm, as assigned
                 by the source.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#turbineReference
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/turbineReference
             windfarm_name:
               type:
               - string
               - 'null'
               description: Name of the wind farm the turbine belongs to.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#windfarmName
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/windfarmName
             windfarm:
               type:
               - string
@@ -20644,27 +20644,27 @@ $defs:
               format: uri
               description: Identifier of the wind farm the turbine belongs to, e.g.
                 its OpenStreetMap relation URL.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#partOfWindfarm
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/partOfWindfarm
               x-jsonld-type: '@id'
             manufacturer:
               type:
               - string
               - 'null'
               description: Turbine manufacturer name.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#manufacturerName
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/manufacturerName
             model:
               type:
               - string
               - 'null'
               description: Turbine model designation.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#modelName
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/modelName
             rated_power_mw:
               type:
               - number
               - 'null'
               minimum: 0
               description: Rated (nameplate) electrical output of the turbine in megawatts.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#ratedPowerMW
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/ratedPowerMW
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
             hub_height_m:
               type:
@@ -20672,7 +20672,7 @@ $defs:
               - 'null'
               minimum: 0
               description: Height of the rotor hub in metres.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#hubHeight
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/hubHeight
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
             rotor_diameter_m:
               type:
@@ -20680,7 +20680,7 @@ $defs:
               - 'null'
               minimum: 0
               description: Rotor diameter in metres.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#rotorDiameter
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/rotorDiameter
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
             rotor_axis:
               enum:
@@ -20688,7 +20688,7 @@ $defs:
               - vertical_axis
               - null
               description: Orientation of the rotor axis.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#rotorAxis
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/rotorAxis
               x-jsonld-type: '@vocab'
             offshore:
               type:
@@ -20696,7 +20696,7 @@ $defs:
               - 'null'
               description: Whether the turbine stands offshore; null when the source
                 does not say.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#offshore
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/offshore
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
             operator:
               type:
@@ -20706,7 +20706,7 @@ $defs:
               items:
                 type: string
               description: Operating organisation(s).
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#operatorName
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/operatorName
               x-jsonld-container: '@set'
             status:
               enum:
@@ -20718,7 +20718,7 @@ $defs:
               - null
               description: Condition of the turbine as an INSPIRE ConditionOfFacilityValue
                 code; null when the source does not state it.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#conditionOfFacility
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/conditionOfFacility
               x-jsonld-type: '@vocab'
             last_updated:
               type:
@@ -20736,7 +20736,7 @@ $defs:
               maximum: 2100
               description: Year the turbine was commissioned; null when the source
                 does not state it.
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#commissioningYear
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/commissioningYear
               x-jsonld-type: http://www.w3.org/2001/XMLSchema#gYear
           x-jsonld-id: '@nest'
 x-jsonld-extra-terms:
@@ -20746,9 +20746,9 @@ x-jsonld-extra-terms:
   coordinates:
     x-jsonld-id: https://purl.org/geojson/vocab#coordinates
     x-jsonld-container: '@list'
-  WindTurbine: https://w3id.org/ogc/hosted/seadots/windfarm#WindTurbine
-  horizontal_axis: https://w3id.org/ogc/hosted/seadots/windfarm#HorizontalAxis
-  vertical_axis: https://w3id.org/ogc/hosted/seadots/windfarm#VerticalAxis
+  WindTurbine: https://w3id.org/ogc/hosted/seadots/windfarm/WindTurbine
+  horizontal_axis: https://w3id.org/ogc/hosted/seadots/windfarm/HorizontalAxis
+  vertical_axis: https://w3id.org/ogc/hosted/seadots/windfarm/VerticalAxis
   projected: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/projected
   underConstruction: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/underConstruction
   functional: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/functional
@@ -20756,7 +20756,7 @@ x-jsonld-extra-terms:
   decommissioned: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/decommissioned
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm/
   xsd: http://www.w3.org/2001/XMLSchema#
   inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
   dcterms: http://purl.org/dc/terms/
@@ -20880,7 +20880,7 @@ Links to the schema:
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
     "dcterms": "http://purl.org/dc/terms/",

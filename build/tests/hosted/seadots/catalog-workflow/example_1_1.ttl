@@ -7,7 +7,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/workflow/reef-effect> a prov:Plan,
@@ -33,18 +33,18 @@
     schema:applicationCategory "DigitalTwinApplication" ;
     schema:programmingLanguage "Python" ;
     schema:softwareVersion "0.1.0" ;
-    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
+    apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
+            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
+            seadots:required true ;
+            seadots:role "area-of-interest" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item accepted by this workflow." ;
             seadots:required true ;
             seadots:role "input" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.benthic-biomass-density-mareano> ;
             dcterms:description "Optional baseline benthic biomass-density input profile." ;
             seadots:required false ;
-            seadots:role "benthic-biomass-density" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.area-of-interest> ;
-            dcterms:description "GeoJSON Feature defining the spatial area for the calculation." ;
-            seadots:required true ;
-            seadots:role "area-of-interest" ] ;
+            seadots:role "benthic-biomass-density" ] ;
     apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.catalog-data> ;
             dcterms:description "Generic STAC catalog data item produced by this workflow." ;
             seadots:required true ;

@@ -814,37 +814,37 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
-@prefix ns1: <https://w3id.org/ogc/hosted/seadots/reef-effect#> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/reef-effect/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-effect-output#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-effect-output/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix w3ctime: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-effect-output/reef-biomass-result> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Experiment record this output belongs to" ;
-            dcterms:format "application/json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
-            oa:hasTarget <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ],
-        [ rdfs:label "Equation evaluated to produce this result" ;
+    rdfs:seeAlso [ rdfs:label "Equation evaluated to produce this result" ;
             dcterms:format "application/ld+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ],
-        [ rdfs:label "Reef Effect Output bblock" ;
-            dcterms:format "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output> ],
         [ rdfs:label "Embedded PROV-O provenance record" ;
             dcterms:format "application/ld+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/provenance> ;
-            oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/prov-record> ] ;
+            ns1:relation <http://www.iana.org/assignments/relation/provenance> ;
+            oa:hasTarget <https://example.org/norwegian-ses/reef-effect-output/prov-record> ],
+        [ rdfs:label "Experiment record this output belongs to" ;
+            dcterms:format "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
+            oa:hasTarget <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ],
+        [ rdfs:label "Reef Effect Output bblock" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;
@@ -873,7 +873,6 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                     sosa:phenomenonTime [ w3ctime:hasBeginning "2026-05-13T00:00:00+00:00"^^xsd:dateTime ;
                             w3ctime:hasEnd "2028-05-13T00:00:00+00:00"^^xsd:dateTime ] ;
                     sosa:resultTime "2028-05-13T00:00:00+00:00"^^xsd:dateTime ;
-                    ns1:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ;
                     seadots:aggregation "sum-over-i" ;
                     seadots:data [ dcterms:temporal "2026-05-13",
                                 "2028-05-13" ;
@@ -958,19 +957,37 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                                     seadots:S_sigma_kg_m2 2.854e+00 ;
                                     seadots:S_value_kg_m2 6.825e+00 ;
                                     seadots:dominantUncertainty "AF_Mytilus edulis accounts for ≈80 % of total CV²(B_reef). Tightening that single prior pays back ~4× more than tightening any other input." ;
-                                    seadots:perTaxonVariance [ dwc:scientificName "Buccinum undatum" ;
-                                            seadots:D_times_AF 3.85e-01 ;
-                                            seadots:shareWithinS 5.9e-03 ;
-                                            seadots:var_D_times_AF 4.8e-02 ],
+                                    seadots:perTaxonVariance [ dwc:scientificName "Asterias rubens" ;
+                                            seadots:D_times_AF 1.4e+00 ;
+                                            seadots:shareWithinS 7.12e-02 ;
+                                            seadots:var_D_times_AF 5.8e-01 ],
                                         [ dwc:scientificName "Mytilus edulis" ;
                                             seadots:D_times_AF 5.04e+00 ;
                                             seadots:shareWithinS 9.229e-01 ;
                                             seadots:var_D_times_AF 7.517e+00 ],
-                                        [ dwc:scientificName "Asterias rubens" ;
-                                            seadots:D_times_AF 1.4e+00 ;
-                                            seadots:shareWithinS 7.12e-02 ;
-                                            seadots:var_D_times_AF 5.8e-01 ] ;
-                                    seadots:uncertaintyInput [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[1].uncertainty_kg_m2",
+                                        [ dwc:scientificName "Buccinum undatum" ;
+                                            seadots:D_times_AF 3.85e-01 ;
+                                            seadots:shareWithinS 5.9e-03 ;
+                                            seadots:var_D_times_AF 4.8e-02 ] ;
+                                    seadots:uncertaintyInput [ dcterms:source "assumed (CV=0.5 reflects wide literature variance; Degraer 2020 cites a single Mytilus value with no published spread)",
+                                                "reef_aggregation_index_bindings.json:data.perTaxon[0].AF_i" ;
+                                            qudt:coefficientOfVariation 5e-01 ;
+                                            qudt:standardUncertainty 6e+00 ;
+                                            qudt:unit "dimensionless" ;
+                                            qudt:value 1.2e+01 ;
+                                            seadots:sigmaKind "assumed" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "AF_Mytilus edulis" ],
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[0].uncertainty_kg_m2 (proxy — MAREANO row carries no σ)",
+                                                "mareano_baseline_density.json:data.perTaxon[0].density_kg_m2" ;
+                                            qudt:coefficientOfVariation 2.14e-01 ;
+                                            qudt:standardUncertainty 9e-02 ;
+                                            qudt:unit "kg m^-2" ;
+                                            qudt:value 4.2e-01 ;
+                                            seadots:sigmaKind "illustrative-proxy" ;
+                                            seadots:valueKind "illustrative" ;
+                                            seadots:variable "D_pre,Mytilus edulis" ],
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[1].uncertainty_kg_m2",
                                                 "mareano_baseline_density.json:data.perTaxon[1].density_kg_m2" ;
                                             qudt:coefficientOfVariation 2.73e-01 ;
                                             qudt:standardUncertainty 3e-02 ;
@@ -988,15 +1005,6 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                                             seadots:sigmaKind "assumed" ;
                                             seadots:valueKind "mixed" ;
                                             seadots:variable "A_sub" ],
-                                        [ dcterms:source "assumed (CV=0.5 reflects wide literature variance; Degraer 2020 cites a single Mytilus value with no published spread)",
-                                                "reef_aggregation_index_bindings.json:data.perTaxon[0].AF_i" ;
-                                            qudt:coefficientOfVariation 5e-01 ;
-                                            qudt:standardUncertainty 6e+00 ;
-                                            qudt:unit "dimensionless" ;
-                                            qudt:value 1.2e+01 ;
-                                            seadots:sigmaKind "assumed" ;
-                                            seadots:valueKind "illustrative" ;
-                                            seadots:variable "AF_Mytilus edulis" ],
                                         [ dcterms:source "assumed (near sigmoid saturation; small σ)",
                                                 "colonisation_time_factor.json:data.formula evaluated with parameters {L:1.0, k:0.30, t0_months:8}" ;
                                             qudt:coefficientOfVariation 2e-02 ;
@@ -1006,15 +1014,6 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                                             seadots:sigmaKind "assumed" ;
                                             seadots:valueKind "illustrative" ;
                                             seadots:variable "C_t(24 mo)" ],
-                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[2].uncertainty_kg_m2",
-                                                "mareano_baseline_density.json:data.perTaxon[2].density_kg_m2" ;
-                                            qudt:coefficientOfVariation 2.14e-01 ;
-                                            qudt:standardUncertainty 6e-02 ;
-                                            qudt:unit "kg m^-2" ;
-                                            qudt:value 2.8e-01 ;
-                                            seadots:sigmaKind "illustrative-proxy" ;
-                                            seadots:valueKind "illustrative" ;
-                                            seadots:variable "D_pre,Asterias rubens" ],
                                         [ dcterms:source "assumed (CV=0.5; no published value for Asterias in Degraer 2020)",
                                                 "reef_aggregation_index_bindings.json:data.perTaxon[2].AF_i" ;
                                             qudt:coefficientOfVariation 5e-01 ;
@@ -1033,25 +1032,26 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                                             seadots:sigmaKind "assumed" ;
                                             seadots:valueKind "illustrative" ;
                                             seadots:variable "AF_Buccinum undatum" ],
-                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[0].uncertainty_kg_m2 (proxy — MAREANO row carries no σ)",
-                                                "mareano_baseline_density.json:data.perTaxon[0].density_kg_m2" ;
+                                        [ dcterms:source "imr_baseline_density_fallback.json:data.perTaxon[2].uncertainty_kg_m2",
+                                                "mareano_baseline_density.json:data.perTaxon[2].density_kg_m2" ;
                                             qudt:coefficientOfVariation 2.14e-01 ;
-                                            qudt:standardUncertainty 9e-02 ;
+                                            qudt:standardUncertainty 6e-02 ;
                                             qudt:unit "kg m^-2" ;
-                                            qudt:value 4.2e-01 ;
+                                            qudt:value 2.8e-01 ;
                                             seadots:sigmaKind "illustrative-proxy" ;
                                             seadots:valueKind "illustrative" ;
-                                            seadots:variable "D_pre,Mytilus edulis" ] ;
+                                            seadots:variable "D_pre,Asterias rubens" ] ;
                                     seadots:varianceAttribution [ skos:notation "S = Σᵢ Dᵢ·AFᵢ" ;
                                             seadots:CV_squared 1.749e-01 ;
                                             seadots:shareOfTotal 8.842e-01 ],
-                                        [ skos:notation "A_sub" ;
-                                            seadots:CV_squared 2.25e-02 ;
-                                            seadots:shareOfTotal 1.137e-01 ],
                                         [ skos:notation "C_t" ;
                                             seadots:CV_squared 4e-04 ;
-                                            seadots:shareOfTotal 2e-03 ] ] ] ;
-                    seadots:role "primary result" ] ;
+                                            seadots:shareOfTotal 2e-03 ],
+                                        [ skos:notation "A_sub" ;
+                                            seadots:CV_squared 2.25e-02 ;
+                                            seadots:shareOfTotal 1.137e-01 ] ] ] ;
+                    seadots:role "primary result" ;
+                    ns2:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ] ;
             rec:format [ dcterms:format "application/json" ] ;
             rec:language [ rec:languageCode "en" ] ;
             rec:themes [ rec:concept [ skos:prefLabel "Floating-wind reef effect" ;
@@ -1070,8 +1070,8 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
     prov:wasDerivedFrom <file:///reef-effect/scripts/utsira_reef_biomass.py>,
         <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1>,
         <https://w3id.org/ogc/hosted/seadots/equation-property-relationship/examples/reef-biomass-equation> ;
-    ns1:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ;
-    seadots:role "provenance" .
+    seadots:role "provenance" ;
+    ns2:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> .
 
 
 ```
@@ -1185,19 +1185,19 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/hosted/seadots/reef-effect#> .
+@prefix ns1: <https://w3id.org/ogc/hosted/seadots/reef-effect/> .
+@prefix ns2: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-effect-output#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-effect-output/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-effect-output/stac-catalog> a geojson:Feature ;
     rdfs:seeAlso [ rdfs:label "Reef Effect Output bblock" ;
             dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output> ] ;
     geojson:properties [ a seadots:Catalog ;
             dcterms:created "2026-05-18" ;
@@ -1215,8 +1215,8 @@ $$\boxed{\ B_{reef}(24\ \text{mo}) \;=\; 741 \;\pm\; 330 \ \text{t}\ \ (1\sigma)
                     dcterms:format "application/json" ;
                     dcterms:title "STAC catalog for the run" ;
                     skos:exactMatch <https://stacspec.org/v1.0.0/catalog-spec/json-schema/catalog.json> ;
-                    ns2:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ;
-                    seadots:role "catalog" ] ;
+                    seadots:role "catalog" ;
+                    ns1:experiment <https://example.org/norwegian-ses/reef-effect/utsira-reef-biomass-surroundings-v1> ] ;
             rec:format [ dcterms:format "application/json" ] ;
             rec:language [ rec:languageCode "en" ] ;
             rec:themes [ rec:concept [ skos:prefLabel "STAC catalog" ;
@@ -1263,7 +1263,7 @@ properties:
             description: '`primary result`, `catalog`, `provenance`, `diagnostic`.
 
               '
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#role
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/role
           format:
             type: string
             description: Media type or format profile URI.
@@ -1278,7 +1278,7 @@ properties:
             type: string
             format: uri
             description: URI of the experiment record that produced this output.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect#experiment
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect/experiment
             x-jsonld-type: '@id'
           observedProperty:
             type: string
@@ -1342,7 +1342,7 @@ properties:
               applicable (e.g. `sum-over-i`, `per-taxon`, `scalar`).
 
               '
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#aggregation
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/aggregation
           data:
             type: object
             required:
@@ -1377,7 +1377,7 @@ properties:
                       the cited API call. `illustrative` \u2014 placeholders for schema
                       shape. `mixed` \u2014 some are computed/retrieved and the rest
                       are illustrative, annotated in-line.\n"
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#provenanceValues
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/provenanceValues
                   derivedFrom:
                     type: array
                     description: 'URIs of the input records that drive these values.
@@ -1411,7 +1411,7 @@ properties:
                       values.
 
                       '
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#computeCode
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/computeCode
                     x-jsonld-type: '@id'
                   uncertaintyMethod:
                     type: string
@@ -1419,13 +1419,13 @@ properties:
                       (e.g. `log-linear CV`, `Monte Carlo`, `analytic first-order`).
 
                       '
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertaintyMethod
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/uncertaintyMethod
                   note:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                 x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#data
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#output
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/output
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
   id: '@id'
@@ -1466,11 +1466,11 @@ x-jsonld-extra-terms:
   end:
     x-jsonld-id: http://www.w3.org/2006/time#hasEnd
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
-  equation: https://w3id.org/ogc/hosted/seadots/reef-effect-output#equation
-  asOf_months: https://w3id.org/ogc/hosted/seadots/reef-effect-output#asOf_months
+  equation: https://w3id.org/ogc/hosted/seadots/reef-effect-output/equation
+  asOf_months: https://w3id.org/ogc/hosted/seadots/reef-effect-output/asOf_months
   scenarioInterval: http://purl.org/dc/terms/temporal
   units: http://qudt.org/schema/qudt/unit
-  headline: https://w3id.org/ogc/hosted/seadots/reef-effect-output#headline
+  headline: https://w3id.org/ogc/hosted/seadots/reef-effect-output/headline
   B_reef_kg:
     x-jsonld-id: https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect
     x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
@@ -1483,10 +1483,10 @@ x-jsonld-extra-terms:
   totalSigma_tonnes: http://qudt.org/schema/qudt/standardUncertainty
   CV: http://qudt.org/schema/qudt/coefficientOfVariation
   totalCV: http://qudt.org/schema/qudt/coefficientOfVariation
-  ci95_kg: https://w3id.org/ogc/hosted/seadots/reef-effect-output#ci95_kg
-  ci95_tonnes: https://w3id.org/ogc/hosted/seadots/reef-effect-output#ci95_tonnes
+  ci95_kg: https://w3id.org/ogc/hosted/seadots/reef-effect-output/ci95_kg
+  ci95_tonnes: https://w3id.org/ogc/hosted/seadots/reef-effect-output/ci95_tonnes
   perTaxonAtT24:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#perTaxonAtT24
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/perTaxonAtT24
     x-jsonld-container: '@set'
   scientificName: http://rs.tdwg.org/dwc/terms/scientificName
   aphiaID: http://rs.tdwg.org/dwc/terms/taxonID
@@ -1505,41 +1505,41 @@ x-jsonld-extra-terms:
   B_kg:
     x-jsonld-id: https://w3id.org/indicators/marine/obs/floating-wind-reef-biomass-effect
     x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
-  shareOfTotal: https://w3id.org/ogc/hosted/seadots/reef-effect-output#shareOfTotal
+  shareOfTotal: https://w3id.org/ogc/hosted/seadots/reef-effect-output/shareOfTotal
   timeSeries:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#timeSeries
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/timeSeries
     x-jsonld-container: '@list'
-  t_months: https://w3id.org/ogc/hosted/seadots/reef-effect-output#t_months
+  t_months: https://w3id.org/ogc/hosted/seadots/reef-effect-output/t_months
   timeSeriesNote: http://www.w3.org/2004/02/skos/core#note
-  uncertainty: https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertainty
+  uncertainty: https://w3id.org/ogc/hosted/seadots/reef-effect-output/uncertainty
   method: http://purl.org/dc/terms/methodology
   methodDetail: http://www.w3.org/2004/02/skos/core#definition
   inputs:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#uncertaintyInput
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/uncertaintyInput
     x-jsonld-container: '@set'
-  variable: https://w3id.org/ogc/hosted/seadots/reef-effect-output#variable
+  variable: https://w3id.org/ogc/hosted/seadots/reef-effect-output/variable
   value: http://qudt.org/schema/qudt/value
   valueUnits: http://qudt.org/schema/qudt/unit
   sigma: http://qudt.org/schema/qudt/standardUncertainty
   valueSource: http://purl.org/dc/terms/source
-  valueKind: https://w3id.org/ogc/hosted/seadots/reef-effect-output#valueKind
+  valueKind: https://w3id.org/ogc/hosted/seadots/reef-effect-output/valueKind
   sigmaSource: http://purl.org/dc/terms/source
-  sigmaKind: https://w3id.org/ogc/hosted/seadots/reef-effect-output#sigmaKind
+  sigmaKind: https://w3id.org/ogc/hosted/seadots/reef-effect-output/sigmaKind
   perTaxonVariance:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#perTaxonVariance
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/perTaxonVariance
     x-jsonld-container: '@set'
-  D_times_AF: https://w3id.org/ogc/hosted/seadots/reef-effect-output#D_times_AF
-  var_D_times_AF: https://w3id.org/ogc/hosted/seadots/reef-effect-output#var_D_times_AF
-  shareWithinS: https://w3id.org/ogc/hosted/seadots/reef-effect-output#shareWithinS
-  S_value_kg_m2: https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_value_kg_m2
-  S_sigma_kg_m2: https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_sigma_kg_m2
-  S_CV: https://w3id.org/ogc/hosted/seadots/reef-effect-output#S_CV
+  D_times_AF: https://w3id.org/ogc/hosted/seadots/reef-effect-output/D_times_AF
+  var_D_times_AF: https://w3id.org/ogc/hosted/seadots/reef-effect-output/var_D_times_AF
+  shareWithinS: https://w3id.org/ogc/hosted/seadots/reef-effect-output/shareWithinS
+  S_value_kg_m2: https://w3id.org/ogc/hosted/seadots/reef-effect-output/S_value_kg_m2
+  S_sigma_kg_m2: https://w3id.org/ogc/hosted/seadots/reef-effect-output/S_sigma_kg_m2
+  S_CV: https://w3id.org/ogc/hosted/seadots/reef-effect-output/S_CV
   varianceAttribution:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output#varianceAttribution
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-effect-output/varianceAttribution
     x-jsonld-container: '@set'
   term: http://www.w3.org/2004/02/skos/core#notation
-  CV_squared: https://w3id.org/ogc/hosted/seadots/reef-effect-output#CV_squared
-  dominantUncertainty: https://w3id.org/ogc/hosted/seadots/reef-effect-output#dominantUncertainty
+  CV_squared: https://w3id.org/ogc/hosted/seadots/reef-effect-output/CV_squared
+  dominantUncertainty: https://w3id.org/ogc/hosted/seadots/reef-effect-output/dominantUncertainty
   caveats:
     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
     x-jsonld-container: '@set'
@@ -1547,12 +1547,12 @@ x-jsonld-extra-terms:
   provRecord:
     x-jsonld-id: http://www.w3.org/ns/prov#has_provenance
     x-jsonld-type: '@id'
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-effect-output#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-effect-output/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   skos: http://www.w3.org/2004/02/skos/core#
-  seadots: https://w3id.org/ogc/hosted/seadots/reef-effect-output#
+  seadots: https://w3id.org/ogc/hosted/seadots/reef-effect-output/
   sosa: http://www.w3.org/ns/sosa/
   qudt: http://qudt.org/schema/qudt/
   indo: https://w3id.org/indicators/marine/obs/
@@ -1581,7 +1581,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-effect-output/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1609,7 +1609,7 @@ Links to the schema:
               "@type": "@id"
             },
             "experiment": {
-              "@id": "https://w3id.org/ogc/hosted/seadots/reef-effect#experiment",
+              "@id": "https://w3id.org/ogc/hosted/seadots/reef-effect/experiment",
               "@type": "@id"
             },
             "observedProperty": {
@@ -1947,7 +1947,7 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect-output#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-effect-output/",
     "sosa": "http://www.w3.org/ns/sosa/",
     "qudt": "http://qudt.org/schema/qudt/",
     "indo": "ind:obs/",

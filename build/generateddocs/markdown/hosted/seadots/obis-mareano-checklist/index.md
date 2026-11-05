@@ -380,32 +380,10 @@ not a physical kg m-2 biomass measurement.
 ```ttl
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
 @prefix obis: <https://api.obis.org/v3/terms/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-[] seadots:checklistResult [ dwc:acceptedNameUsage "Hydrozoa" ;
-            dwc:acceptedNameUsageID 1337 ;
-            dwc:class "Hydrozoa" ;
-            dwc:kingdom "Animalia" ;
-            dwc:marine true ;
-            dwc:phylum "Cnidaria" ;
-            dwc:scientificName "Hydrozoa" ;
-            dwc:scientificNameAuthorship "Owen, 1843" ;
-            dwc:taxonID 1337 ;
-            dwc:taxonRank "Class" ;
-            dwc:taxonomicStatus "accepted" ;
-            obis:records 429 ;
-            seadots:classid 1337 ;
-            seadots:isBrackish true ;
-            seadots:isFreshwater true ;
-            seadots:isTerrestrial false ;
-            seadots:kingdomid 2 ;
-            seadots:ncbiId 6074 ;
-            seadots:phylumid 1267 ;
-            seadots:subphylum "Medusozoa" ;
-            seadots:subphylumid 1740301 ;
-            seadots:wrims true ],
-        [ dwc:acceptedNameUsage "Chone" ;
+[] seadots:checklistResult [ dwc:acceptedNameUsage "Chone" ;
             dwc:acceptedNameUsageID 129525 ;
             dwc:class "Polychaeta" ;
             dwc:family "Sabellidae" ;
@@ -438,6 +416,149 @@ not a physical kg m-2 biomass measurement.
             seadots:tribe "Myxicolini" ;
             seadots:tribeid 1470460 ;
             seadots:wrims true ],
+        [ dwc:acceptedNameUsage "Sipuncula" ;
+            dwc:acceptedNameUsageID 1268 ;
+            dwc:kingdom "Animalia" ;
+            dwc:marine true ;
+            dwc:order "Sipuncula" ;
+            dwc:phylum "Annelida" ;
+            dwc:scientificName "Sipuncula" ;
+            dwc:scientificNameAuthorship "Stephen, 1965" ;
+            dwc:taxonID 1268 ;
+            dwc:taxonRank "Order" ;
+            dwc:taxonomicStatus "accepted" ;
+            obis:records 459 ;
+            seadots:isBrackish true ;
+            seadots:isFreshwater false ;
+            seadots:isTerrestrial false ;
+            seadots:kingdomid 2 ;
+            seadots:ncbiId 6433 ;
+            seadots:orderid 1268 ;
+            seadots:phylumid 882 ;
+            seadots:wrims true ],
+        [ dwc:acceptedNameUsage "Hydrozoa" ;
+            dwc:acceptedNameUsageID 1337 ;
+            dwc:class "Hydrozoa" ;
+            dwc:kingdom "Animalia" ;
+            dwc:marine true ;
+            dwc:phylum "Cnidaria" ;
+            dwc:scientificName "Hydrozoa" ;
+            dwc:scientificNameAuthorship "Owen, 1843" ;
+            dwc:taxonID 1337 ;
+            dwc:taxonRank "Class" ;
+            dwc:taxonomicStatus "accepted" ;
+            obis:records 429 ;
+            seadots:classid 1337 ;
+            seadots:isBrackish true ;
+            seadots:isFreshwater true ;
+            seadots:isTerrestrial false ;
+            seadots:kingdomid 2 ;
+            seadots:ncbiId 6074 ;
+            seadots:phylumid 1267 ;
+            seadots:subphylum "Medusozoa" ;
+            seadots:subphylumid 1740301 ;
+            seadots:wrims true ],
+        [ dwc:acceptedNameUsage "Astarte sulcata" ;
+            dwc:acceptedNameUsageID 138824 ;
+            dwc:class "Bivalvia" ;
+            dwc:family "Astartidae" ;
+            dwc:genus "Astarte" ;
+            dwc:kingdom "Animalia" ;
+            dwc:marine true ;
+            dwc:order "Carditida" ;
+            dwc:phylum "Mollusca" ;
+            dwc:scientificName "Astarte sulcata" ;
+            dwc:scientificNameAuthorship "(da Costa, 1778)" ;
+            dwc:specificEpithet "Astarte sulcata" ;
+            dwc:taxonID 138824 ;
+            dwc:taxonRank "Species" ;
+            dwc:taxonomicStatus "accepted" ;
+            obis:records 388 ;
+            seadots:classid 105 ;
+            seadots:familyid 228 ;
+            seadots:genusid 137683 ;
+            seadots:infraclass "Heteroconchia" ;
+            seadots:infraclassid 1424949 ;
+            seadots:kingdomid 2 ;
+            seadots:ncbiId 462886 ;
+            seadots:orderid 382256 ;
+            seadots:phylumid 51 ;
+            seadots:speciesid 138824 ;
+            seadots:subclass "Autobranchia" ;
+            seadots:subclassid 1424948 ;
+            seadots:subfamily "Astartinae" ;
+            seadots:subfamilyid 1817149 ;
+            seadots:subterclass "Archiheterodonta" ;
+            seadots:subterclassid 382255 ;
+            seadots:superfamily "Crassatelloidea" ;
+            seadots:superfamilyid 23014 ],
+        [ dwc:acceptedNameUsage "Oedicerotidae" ;
+            dwc:acceptedNameUsageID 101400 ;
+            dwc:class "Malacostraca" ;
+            dwc:family "Oedicerotidae" ;
+            dwc:kingdom "Animalia" ;
+            dwc:marine true ;
+            dwc:order "Amphipoda" ;
+            dwc:phylum "Arthropoda" ;
+            dwc:scientificName "Oedicerotidae" ;
+            dwc:scientificNameAuthorship "Lilljeborg, 1865" ;
+            dwc:taxonID 101400 ;
+            dwc:taxonRank "Family" ;
+            dwc:taxonomicStatus "accepted" ;
+            obis:records 417 ;
+            seadots:classid 1071 ;
+            seadots:familyid 101400 ;
+            seadots:infraorder "Amphilochida" ;
+            seadots:infraorderid 1055679 ;
+            seadots:isBrackish false ;
+            seadots:isFreshwater false ;
+            seadots:isTerrestrial false ;
+            seadots:kingdomid 2 ;
+            seadots:ncbiId 181113 ;
+            seadots:orderid 1135 ;
+            seadots:parvorder "Oedicerotidira" ;
+            seadots:parvorderid 1055682 ;
+            seadots:phylumid 1065 ;
+            seadots:subclass "Eumalacostraca" ;
+            seadots:subclassid 1086 ;
+            seadots:suborder "Amphilochidea" ;
+            seadots:suborderid 1055678 ;
+            seadots:subphylum "Crustacea" ;
+            seadots:subphylumid 1066 ;
+            seadots:superclass "Multicrustacea" ;
+            seadots:superclassid 845959 ;
+            seadots:superfamily "Oedicerotoidea" ;
+            seadots:superfamilyid 1055683 ;
+            seadots:superorder "Peracarida" ;
+            seadots:superorderid 1090 ;
+            seadots:wrims true ],
+        [ dwc:acceptedNameUsage "Cephalaspidea" ;
+            dwc:acceptedNameUsageID 154 ;
+            dwc:class "Gastropoda" ;
+            dwc:kingdom "Animalia" ;
+            dwc:marine true ;
+            dwc:order "Cephalaspidea" ;
+            dwc:phylum "Mollusca" ;
+            dwc:scientificName "Cephalaspidea" ;
+            dwc:scientificNameAuthorship "P. Fischer, 1883" ;
+            dwc:taxonID 154 ;
+            dwc:taxonRank "Order" ;
+            dwc:taxonomicStatus "accepted" ;
+            obis:records 410 ;
+            seadots:classid 101 ;
+            seadots:infraclass "Euthyneura" ;
+            seadots:infraclassid 1057247 ;
+            seadots:isBrackish true ;
+            seadots:isFreshwater true ;
+            seadots:kingdomid 2 ;
+            seadots:ncbiId 69554 ;
+            seadots:orderid 154 ;
+            seadots:phylumid 51 ;
+            seadots:subclass "Heterobranchia" ;
+            seadots:subclassid 14712 ;
+            seadots:subterclass "Tectipleura" ;
+            seadots:subterclassid 1057250 ;
+            seadots:wrims true ],
         [ dwc:acceptedNameUsage "Aphelochaeta" ;
             dwc:acceptedNameUsageID 129240 ;
             dwc:class "Polychaeta" ;
@@ -469,36 +590,6 @@ not a physical kg m-2 biomass measurement.
             seadots:subclassid 754175 ;
             seadots:suborder "Cirratuliformia" ;
             seadots:suborderid 155087 ;
-            seadots:wrims true ],
-        [ dwc:acceptedNameUsage "Amphipoda" ;
-            dwc:acceptedNameUsageID 1135 ;
-            dwc:class "Malacostraca" ;
-            dwc:kingdom "Animalia" ;
-            dwc:marine true ;
-            dwc:order "Amphipoda" ;
-            dwc:phylum "Arthropoda" ;
-            dwc:scientificName "Amphipoda" ;
-            dwc:scientificNameAuthorship "Latreille, 1816" ;
-            dwc:taxonID 1135 ;
-            dwc:taxonRank "Order" ;
-            dwc:taxonomicStatus "accepted" ;
-            obis:records 452 ;
-            seadots:classid 1071 ;
-            seadots:isBrackish true ;
-            seadots:isFreshwater true ;
-            seadots:isTerrestrial true ;
-            seadots:kingdomid 2 ;
-            seadots:ncbiId 6821 ;
-            seadots:orderid 1135 ;
-            seadots:phylumid 1065 ;
-            seadots:subclass "Eumalacostraca" ;
-            seadots:subclassid 1086 ;
-            seadots:subphylum "Crustacea" ;
-            seadots:subphylumid 1066 ;
-            seadots:superclass "Multicrustacea" ;
-            seadots:superclassid 845959 ;
-            seadots:superorder "Peracarida" ;
-            seadots:superorderid 1090 ;
             seadots:wrims true ],
         [ dwc:acceptedNameUsage "Notomastus latericeus" ;
             dwc:acceptedNameUsageID 129898 ;
@@ -572,124 +663,33 @@ not a physical kg m-2 biomass measurement.
             seadots:superfamilyid 1055695 ;
             seadots:superorder "Peracarida" ;
             seadots:superorderid 1090 ],
-        [ dwc:acceptedNameUsage "Astarte sulcata" ;
-            dwc:acceptedNameUsageID 138824 ;
-            dwc:class "Bivalvia" ;
-            dwc:family "Astartidae" ;
-            dwc:genus "Astarte" ;
-            dwc:kingdom "Animalia" ;
-            dwc:marine true ;
-            dwc:order "Carditida" ;
-            dwc:phylum "Mollusca" ;
-            dwc:scientificName "Astarte sulcata" ;
-            dwc:scientificNameAuthorship "(da Costa, 1778)" ;
-            dwc:specificEpithet "Astarte sulcata" ;
-            dwc:taxonID 138824 ;
-            dwc:taxonRank "Species" ;
-            dwc:taxonomicStatus "accepted" ;
-            obis:records 388 ;
-            seadots:classid 105 ;
-            seadots:familyid 228 ;
-            seadots:genusid 137683 ;
-            seadots:infraclass "Heteroconchia" ;
-            seadots:infraclassid 1424949 ;
-            seadots:kingdomid 2 ;
-            seadots:ncbiId 462886 ;
-            seadots:orderid 382256 ;
-            seadots:phylumid 51 ;
-            seadots:speciesid 138824 ;
-            seadots:subclass "Autobranchia" ;
-            seadots:subclassid 1424948 ;
-            seadots:subfamily "Astartinae" ;
-            seadots:subfamilyid 1817149 ;
-            seadots:subterclass "Archiheterodonta" ;
-            seadots:subterclassid 382255 ;
-            seadots:superfamily "Crassatelloidea" ;
-            seadots:superfamilyid 23014 ],
-        [ dwc:acceptedNameUsage "Sipuncula" ;
-            dwc:acceptedNameUsageID 1268 ;
-            dwc:kingdom "Animalia" ;
-            dwc:marine true ;
-            dwc:order "Sipuncula" ;
-            dwc:phylum "Annelida" ;
-            dwc:scientificName "Sipuncula" ;
-            dwc:scientificNameAuthorship "Stephen, 1965" ;
-            dwc:taxonID 1268 ;
-            dwc:taxonRank "Order" ;
-            dwc:taxonomicStatus "accepted" ;
-            obis:records 459 ;
-            seadots:isBrackish true ;
-            seadots:isFreshwater false ;
-            seadots:isTerrestrial false ;
-            seadots:kingdomid 2 ;
-            seadots:ncbiId 6433 ;
-            seadots:orderid 1268 ;
-            seadots:phylumid 882 ;
-            seadots:wrims true ],
-        [ dwc:acceptedNameUsage "Cephalaspidea" ;
-            dwc:acceptedNameUsageID 154 ;
-            dwc:class "Gastropoda" ;
-            dwc:kingdom "Animalia" ;
-            dwc:marine true ;
-            dwc:order "Cephalaspidea" ;
-            dwc:phylum "Mollusca" ;
-            dwc:scientificName "Cephalaspidea" ;
-            dwc:scientificNameAuthorship "P. Fischer, 1883" ;
-            dwc:taxonID 154 ;
-            dwc:taxonRank "Order" ;
-            dwc:taxonomicStatus "accepted" ;
-            obis:records 410 ;
-            seadots:classid 101 ;
-            seadots:infraclass "Euthyneura" ;
-            seadots:infraclassid 1057247 ;
-            seadots:isBrackish true ;
-            seadots:isFreshwater true ;
-            seadots:kingdomid 2 ;
-            seadots:ncbiId 69554 ;
-            seadots:orderid 154 ;
-            seadots:phylumid 51 ;
-            seadots:subclass "Heterobranchia" ;
-            seadots:subclassid 14712 ;
-            seadots:subterclass "Tectipleura" ;
-            seadots:subterclassid 1057250 ;
-            seadots:wrims true ],
-        [ dwc:acceptedNameUsage "Oedicerotidae" ;
-            dwc:acceptedNameUsageID 101400 ;
+        [ dwc:acceptedNameUsage "Amphipoda" ;
+            dwc:acceptedNameUsageID 1135 ;
             dwc:class "Malacostraca" ;
-            dwc:family "Oedicerotidae" ;
             dwc:kingdom "Animalia" ;
             dwc:marine true ;
             dwc:order "Amphipoda" ;
             dwc:phylum "Arthropoda" ;
-            dwc:scientificName "Oedicerotidae" ;
-            dwc:scientificNameAuthorship "Lilljeborg, 1865" ;
-            dwc:taxonID 101400 ;
-            dwc:taxonRank "Family" ;
+            dwc:scientificName "Amphipoda" ;
+            dwc:scientificNameAuthorship "Latreille, 1816" ;
+            dwc:taxonID 1135 ;
+            dwc:taxonRank "Order" ;
             dwc:taxonomicStatus "accepted" ;
-            obis:records 417 ;
+            obis:records 452 ;
             seadots:classid 1071 ;
-            seadots:familyid 101400 ;
-            seadots:infraorder "Amphilochida" ;
-            seadots:infraorderid 1055679 ;
-            seadots:isBrackish false ;
-            seadots:isFreshwater false ;
-            seadots:isTerrestrial false ;
+            seadots:isBrackish true ;
+            seadots:isFreshwater true ;
+            seadots:isTerrestrial true ;
             seadots:kingdomid 2 ;
-            seadots:ncbiId 181113 ;
+            seadots:ncbiId 6821 ;
             seadots:orderid 1135 ;
-            seadots:parvorder "Oedicerotidira" ;
-            seadots:parvorderid 1055682 ;
             seadots:phylumid 1065 ;
             seadots:subclass "Eumalacostraca" ;
             seadots:subclassid 1086 ;
-            seadots:suborder "Amphilochidea" ;
-            seadots:suborderid 1055678 ;
             seadots:subphylum "Crustacea" ;
             seadots:subphylumid 1066 ;
             seadots:superclass "Multicrustacea" ;
             seadots:superclassid 845959 ;
-            seadots:superfamily "Oedicerotoidea" ;
-            seadots:superfamilyid 1055683 ;
             seadots:superorder "Peracarida" ;
             seadots:superorderid 1090 ;
             seadots:wrims true ] ;
@@ -1408,7 +1408,7 @@ not a physical kg m-2 biomass measurement.
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/00014e73-67d6-40ce-919f-0ca40089c1e6> dcterms:isPartOf "d556b9d4-7625-4aa2-894d-441eabae47f7",
@@ -2078,7 +2078,7 @@ properties:
   total:
     type: integer
     minimum: 0
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#totalChecklistRows
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/totalChecklistRows
   results:
     type: array
     items:
@@ -2158,22 +2158,22 @@ properties:
           x-jsonld-id: http://rs.tdwg.org/dwc/terms/maximumDepthInMeters
         ncbi_id:
           type: integer
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#ncbiId
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/ncbiId
         wrims:
           type: boolean
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#wrims
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/wrims
         is_marine:
           type: boolean
           x-jsonld-id: http://rs.tdwg.org/dwc/terms/marine
         is_brackish:
           type: boolean
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isBrackish
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/isBrackish
         is_freshwater:
           type: boolean
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isFreshwater
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/isFreshwater
         is_terrestrial:
           type: boolean
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#isTerrestrial
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/isTerrestrial
         kingdom:
           type: string
           x-jsonld-id: http://rs.tdwg.org/dwc/terms/kingdom
@@ -2196,12 +2196,12 @@ properties:
           type: string
           x-jsonld-id: http://rs.tdwg.org/dwc/terms/specificEpithet
       additionalProperties: true
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#checklistResult
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/checklistResult
     x-jsonld-container: '@set'
 additionalProperties: true
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/
 x-jsonld-prefixes:
-  seadots: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#
+  seadots: https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/
   dwc: http://rs.tdwg.org/dwc/terms/
   obis: https://api.obis.org/v3/terms/
   dcterms: http://purl.org/dc/terms/
@@ -2224,7 +2224,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/",
     "total": "seadots:totalChecklistRows",
     "results": {
       "@context": {
@@ -2268,7 +2268,7 @@ Links to the schema:
       "@id": "seadots:checklistResult",
       "@container": "@set"
     },
-    "seadots": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/obis-mareano-checklist/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
     "obis": "https://api.obis.org/v3/terms/",
     "dcterms": "http://purl.org/dc/terms/",

@@ -61308,14 +61308,14 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
 
 #### ttl
 ```ttl
-@prefix : <https://w3id.org/ogc/hosted/seadots/swedish-dt#> .
+@prefix : <https://w3id.org/ogc/hosted/seadots/swedish-dt/> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix indo: <https://w3id.org/indicators/marine/obs/> .
 @prefix indp: <https://w3id.org/indicators/marine/parameters/> .
 @prefix ns1: <http://qudt.org/schema/qudt/> .
-@prefix ns2: <https://w3id.org/ogc/hosted/seadots/swedish-dt#$> .
+@prefix ns2: <https://w3id.org/ogc/hosted/seadots/swedish-dt/$> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -61354,14 +61354,14 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                                             :ellipsoid [ csvw:name "WGS 84" ;
                                                     :inverse_flattening 2.982572e+02 ;
                                                     :semi_major_axis 6378137 ] ;
-                                            :members [ csvw:name "World Geodetic System 1984 (Transit)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G2139)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
+                                            :members [ csvw:name "World Geodetic System 1984 (G873)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G1150)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G730)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1762)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G873)" ] ] ;
+                                                [ csvw:name "World Geodetic System 1984 (G2139)" ],
+                                                [ csvw:name "World Geodetic System 1984 (Transit)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1762)" ] ] ;
                                     :scope "Not known." ] ;
                             :edges "planar" ;
                             :exampleGeometryGeoJSON [ a <http://www.opengis.net/ont/sf#Polygon> ;
@@ -61378,7 +61378,7 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                             :orientation "counterclockwise" ] ] ;
             :primary_column "geometry" ;
             :version "1.1.0" ] ;
-    csvw:tableSchema ( [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/WKB> ;
+    csvw:tableSchema ( [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/WKB> ;
                 dct:description "Placeholder single-region geometry for the case-study area. Not currently derived from `fu_01` .. `fu_17`, which are reserved-for-future-use columns, not region keys." ;
                 csvw:name "geometry" ;
                 csvw:propertyUrl geo:hasGeometry ;
@@ -61388,10 +61388,10 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                 :nullable false ] [ a :INT64 ;
                 csvw:name "ticks" ;
                 csvw:propertyUrl indp:ticks ;
-                :nullable false ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                :nullable false ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/UTF8> ;
                 csvw:name "current_herring_season" ;
                 csvw:propertyUrl indp:current_herring_season ;
-                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/UTF8> ;
                 csvw:name "current_management_season" ;
                 csvw:propertyUrl indp:current_management_season ;
                 :nullable true ] [ a :DOUBLE ;
@@ -61415,10 +61415,10 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                 :nullable true ] [ a :INT64 ;
                 csvw:name "spawning_closure_type" ;
                 csvw:propertyUrl indp:spawning_closure_type ;
-                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/UTF8> ;
                 csvw:name "trawling_limit" ;
                 csvw:propertyUrl indp:trawling_limit ;
-                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/UTF8> ;
                 csvw:name "fishing_algorithm" ;
                 csvw:propertyUrl indp:fishing_algorithm ;
                 :nullable true ] [ a :INT64 ;
@@ -61505,7 +61505,7 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                 :nullable true ] [ a :DOUBLE ;
                 csvw:name "herring_price_human_cons" ;
                 csvw:propertyUrl indo:herring_price_human_cons ;
-                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt#BYTE_ARRAY/UTF8> ;
+                :nullable true ] [ a <https://w3id.org/ogc/hosted/seadots/swedish-dt/BYTE_ARRAY/UTF8> ;
                 csvw:name "SV_herring_market" ;
                 csvw:propertyUrl indo:SV_herring_market ;
                 :nullable true ] [ a :DOUBLE ;
@@ -61705,7 +61705,7 @@ $defs:
               enum:
               - 0
               - 1
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/swedish-dt#regionIndicators
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/swedish-dt/regionIndicators
         additionalProperties: true
         x-jsonld-id: https://schema.org/variableMeasured
     additionalProperties: true
@@ -62049,7 +62049,7 @@ x-jsonld-extra-terms:
   encoding: https://schema.org/encodingFormat
   parquetSchema: https://geoparquet.org/schema
   geo: https://geoparquet.org/metadata
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/swedish-dt#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/swedish-dt/
 x-jsonld-prefixes:
   sosa: http://www.w3.org/ns/sosa/
   sta: http://www.opengis.net/def/ont/sensorthings/
@@ -62075,7 +62075,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/swedish-dt#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/swedish-dt/",
     "phenomenonTime": {
       "@id": "sosa:phenomenonTime",
       "@type": "@id"
@@ -62096,7 +62096,7 @@ Links to the schema:
         "sourceFormat": "dcterms:format",
         "columnCount": "schema:numberOfColumns",
         "rowCount": "schema:numberOfItems",
-        "regionIndicators": "https://w3id.org/ogc/hosted/seadots/swedish-dt#regionIndicators"
+        "regionIndicators": "https://w3id.org/ogc/hosted/seadots/swedish-dt/regionIndicators"
       },
       "@id": "schema:variableMeasured"
     },

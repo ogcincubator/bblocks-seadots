@@ -8807,7 +8807,7 @@ properties:
           role:
             type: string
             description: Usually `primary baseline`.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#role
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/role
           source:
             type: string
             x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
@@ -8874,19 +8874,19 @@ properties:
                       minimum: 0
                       description: Diagnostic mean of point-level weight/assumed-sampled-area
                         before spatial extrapolation.
-                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#observedMeanDensity_kg_m2
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/observedMeanDensity_kg_m2
                       x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
                     habitat:
                       type: string
                       x-jsonld-id: http://rs.tdwg.org/dwc/terms/habitat
                     depthBand_m:
                       type: string
-                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#depthBand_m
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/depthBand_m
                     nSamples:
                       type: integer
                       minimum: 0
                       x-jsonld-id: http://rs.tdwg.org/dwc/terms/sampleSizeValue
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#perTaxon
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/perTaxon
                 x-jsonld-container: '@set'
               aggregateDensity_kg_m2:
                 type: number
@@ -8935,7 +8935,7 @@ properties:
                       minimum: 0
                       x-jsonld-id: https://w3id.org/indicators/marine/obs/benthic-biomass-density-mareano
                       x-jsonld-type: http://qudt.org/schema/qudt/QuantityValue
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#observationOutputs
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/observationOutputs
                 x-jsonld-container: '@set'
               provenance:
                 type: object
@@ -8948,10 +8948,10 @@ properties:
                     - retrieved
                     - illustrative
                     - mixed
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#provenanceValues
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/provenanceValues
                   retrievalApiCall:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#retrievalApiCall
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/retrievalApiCall
                     x-jsonld-type: '@id'
                   verifiedOn:
                     type: string
@@ -8971,16 +8971,16 @@ properties:
                       note:
                         type: string
                         x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#nearestAuthoritativeSource
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/nearestAuthoritativeSource
                   verificationGap:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#verificationGap
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/verificationGap
                   note:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                 x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#data
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#benthicBiomassDensity
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/benthicBiomassDensity
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
   type: '@type'
@@ -9018,12 +9018,12 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://purl.org/dc/terms/conformsTo
     x-jsonld-type: '@id'
     x-jsonld-container: '@set'
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   skos: http://www.w3.org/2004/02/skos/core#
-  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#
+  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/
   sosa: http://www.w3.org/ns/sosa/
   qudt: http://qudt.org/schema/qudt/
   prov: http://www.w3.org/ns/prov#
@@ -9048,7 +9048,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/",
     "id": "@id",
     "properties": {
       "@id": "geojson:properties",
@@ -10010,7 +10010,7 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/",
     "qudt": "http://qudt.org/schema/qudt/",
     "prov": "http://www.w3.org/ns/prov#",
     "dwc": "http://rs.tdwg.org/dwc/terms/",

@@ -115,7 +115,7 @@ dataset. No source properties are intentionally dropped.
 @prefix cwl: <https://w3id.org/cwl/cwl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix schema: <https://schema.org/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 
 <file:///github/workspace/reef-effect> a apkg:ApplicationPackage ;
     dcterms:description "Minimal APKG/CWL package contract for the reef-effect biomass calculation." ;
@@ -180,14 +180,14 @@ x-jsonld-extra-terms:
   requirements:
     x-jsonld-id: https://w3id.org/cwl/cwl#requirements
     x-jsonld-container: '@set'
-  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog#dockerPull
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+  dockerPull: https://w3id.org/ogc/hosted/seadots/catalog/dockerPull
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog/
 x-jsonld-prefixes:
   apkg: https://w3id.org/apkg/terms/
   dcterms: http://purl.org/dc/terms/
   cwl: https://w3id.org/cwl/cwl#
   schema: https://schema.org/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
 x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-application-package
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
@@ -207,7 +207,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "id": "@id",
     "ApplicationPackage": "apkg:ApplicationPackage",
     "title": "dcterms:title",
@@ -233,7 +233,7 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "cwl": "https://w3id.org/cwl/cwl#",
     "schema": "https://schema.org/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "@version": 1.1
   }
 }

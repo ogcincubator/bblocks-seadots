@@ -131,7 +131,7 @@ dataset. No source properties are intentionally dropped.
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 
 <https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> a prov:Activity,
         geojson:Feature ;
@@ -142,10 +142,10 @@ dataset. No source properties are intentionally dropped.
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/input-stac-item.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ],
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ],
         [ dct:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-workflow/examples/workflow.json> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data/examples/output-stac-item.json> ] ;
     prov:generated <file:///catalog-data/examples/output-stac-item.json> ;
     prov:hadPlan <file:///catalog-workflow/examples/workflow.json> ;
     prov:used <file:///catalog-data/examples/input-stac-item.json> ;
@@ -213,10 +213,10 @@ properties:
         x-jsonld-type: http://www.w3.org/2001/XMLSchema#dateTime
       status:
         type: string
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#status
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/status
       parameters:
         type: object
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#parameters
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/parameters
       inputRecords:
         type: array
         minItems: 1
@@ -626,7 +626,7 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/oa#hasTarget
   rights: http://www.w3.org/ns/dcat#rights
   Execution: http://www.w3.org/ns/prov#Activity
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -638,7 +638,7 @@ x-jsonld-prefixes:
   thns: https://w3id.org/ogc/stac/themes/
   prov: http://www.w3.org/ns/prov#
   oa: http://www.w3.org/ns/oa#
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
   owl: http://www.w3.org/2002/07/owl#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   w3ctime: http://www.w3.org/2006/time#
@@ -664,7 +664,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1172,7 +1172,7 @@ Links to the schema:
     "prov": "http://www.w3.org/ns/prov#",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "workflow": {
       "@id": "prov:hadPlan",
       "@type": "@id"

@@ -210,7 +210,7 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -219,13 +219,13 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
+        [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
-        [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ] ;
     geojson:properties [ a seadots:Dataset ;
             dcterms:created "2026-05-18" ;
             dcterms:description "Per-taxon reef aggregation index for Mytilus edulis, Buccinum undatum, Asterias rubens used as AF_i in the reef-biomass equation. AF values are ILLUSTRATIVE — Degraer 2020 reports only one quantitative value (4000-fold biomass increase for Mytilus at turbine-footprint scale) and no per-m² coefficient." ;
@@ -252,18 +252,18 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
                                             dcat:accessURL <https://api.obis.org/v3/occurrence?scientificname=Mytilus%20edulis&geometry=POLYGON_PLACEHOLDER&datasetid=wind-farm-monitoring-dataset> ] ;
                                     seadots:provenanceValues "illustrative" ;
                                     seadots:verificationGap "Degraer 2020 numeric quote verified. AF_i values in this example NOT calibrated to that source." ] ;
-                            seadots:perTaxon [ dcterms:coverage "mixed substrate, 0-100 m" ;
-                                    dwc:scientificName "Asterias rubens" ;
-                                    dwc:taxonID 123776 ;
-                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ],
-                                [ dcterms:coverage "soft-sediment, 30-100 m" ;
+                            seadots:perTaxon [ dcterms:coverage "soft-sediment, 30-100 m" ;
                                     dwc:scientificName "Buccinum undatum" ;
                                     dwc:taxonID 138878 ;
                                     indp:reef-aggregation-index "3.5"^^qudt:DimensionlessQuantity ],
                                 [ dcterms:coverage "North Sea, 0-30 m" ;
                                     dwc:scientificName "Mytilus edulis" ;
                                     dwc:taxonID 140480 ;
-                                    indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ] ] ;
+                                    indp:reef-aggregation-index "12.0"^^qudt:DimensionlessQuantity ],
+                                [ dcterms:coverage "mixed substrate, 0-100 m" ;
+                                    dwc:scientificName "Asterias rubens" ;
+                                    dwc:taxonID 123776 ;
+                                    indp:reef-aggregation-index "5.0"^^qudt:DimensionlessQuantity ] ] ;
                     seadots:role "coefficient (per taxon)" ] ;
             rec:format [ dcterms:format "application/ld+json" ] ;
             rec:language [ rec:languageCode "en" ] ;
@@ -308,7 +308,7 @@ properties:
           role:
             type: string
             description: Usually `coefficient (per taxon)`.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#role
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/role
           source:
             type: string
             x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
@@ -360,7 +360,7 @@ properties:
                       format: uri
                       x-jsonld-id: http://www.w3.org/ns/prov#wasInfluencedBy
                       x-jsonld-type: '@id'
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#perTaxon
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/perTaxon
                 x-jsonld-container: '@set'
               provenance:
                 type: object
@@ -373,13 +373,13 @@ properties:
                     - retrieved
                     - illustrative
                     - mixed
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#provenanceValues
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/provenanceValues
                   primarySource:
                     type: object
                     properties:
                       doi:
                         type: string
-                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#doi
+                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/doi
                       url:
                         type: string
                         format: uri
@@ -390,7 +390,7 @@ properties:
                         x-jsonld-id: http://purl.org/dc/terms/bibliographicCitation
                       supportingFigure:
                         type: string
-                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#supportingFigure
+                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/supportingFigure
                     x-jsonld-id: http://purl.org/dc/terms/source
                   nearestAuthoritativeSource:
                     type: object
@@ -403,16 +403,16 @@ properties:
                       note:
                         type: string
                         x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#nearestAuthoritativeSource
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/nearestAuthoritativeSource
                   verificationGap:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#verificationGap
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/verificationGap
                   note:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                 x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#data
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#reefAggregationIndex
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/reefAggregationIndex
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
   id: '@id'
@@ -445,12 +445,12 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://purl.org/dc/terms/format
     x-jsonld-container: '@set'
   mediaType: http://purl.org/dc/terms/format
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   skos: http://www.w3.org/2004/02/skos/core#
-  seadots: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#
+  seadots: https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/
   qudt: http://qudt.org/schema/qudt/
   dwc: http://rs.tdwg.org/dwc/terms/
   indp: https://w3id.org/indicators/marine/parameters/
@@ -475,7 +475,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -746,7 +746,7 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/reef-aggregation-index/",
     "qudt": "http://qudt.org/schema/qudt/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
     "indp": "https://w3id.org/indicators/marine/parameters/",

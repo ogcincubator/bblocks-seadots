@@ -220,9 +220,9 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
 #### ttl
 ```ttl
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -364,7 +364,7 @@ this is real data from the
 ```ttl
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -407,19 +407,19 @@ allOf:
           - 'null'
           description: Country name as published by EMODnet; the XSD type is nullable
             xsd:string.
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
           x-jsonld-type: '@vocab'
           x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
         n_turbines:
           type:
           - number
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
         power_mw:
           type:
           - number
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
         status:
           type:
           - string
@@ -431,22 +431,22 @@ allOf:
           type:
           - string
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#installationType
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
         updateyear:
           type:
           - string
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
         year:
           type:
           - string
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
         dist_coast:
           type:
           - number
           - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
+          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
         notes:
           type:
           - string
@@ -484,8 +484,8 @@ x-jsonld-extra-terms:
 x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
-  seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm/
+  seadots: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/
   dcterms: http://purl.org/dc/terms/
   seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
   inspire-cofv: http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/
@@ -580,8 +580,8 @@ Links to the schema:
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",

@@ -322,7 +322,7 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix stac: <https://w3id.org/ogc/stac/core/> .
 @prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -340,13 +340,13 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
         "tabular" ;
     dcterms:title "North Sea cod occurrence table (synthetic)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular profile" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ],
+        [ rdfs:label "SeaDOTs Catalog Data Tabular bblock" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular> ] ;
     geojson:bbox ( 3e+00 5.6e+01 9e+00 6.1e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -569,7 +569,7 @@ For multidimensional gridded or array-oriented assets (NetCDF, Zarr), use `ogc.h
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/catalog/> .
 @prefix stac: <https://w3id.org/ogc/stac/core/> .
 @prefix table: <https://stac-extensions.github.io/table/v1.2.0/schema.json#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -1147,8 +1147,8 @@ x-jsonld-extra-terms:
   mentionOf:
     x-jsonld-id: http://www.w3.org/ns/prov#mentionOf
     x-jsonld-type: '@id'
-  role: https://w3id.org/ogc/hosted/seadots/catalog#role
-  convention: https://w3id.org/ogc/hosted/seadots/catalog#metadataConvention
+  role: https://w3id.org/ogc/hosted/seadots/catalog/role
+  convention: https://w3id.org/ogc/hosted/seadots/catalog/metadataConvention
   cf:parameter:
     x-jsonld-id: https://stac-extensions.github.io/cf/v0.2.0/schema.json#parameter
     x-jsonld-container: '@set'
@@ -1159,7 +1159,7 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
     x-jsonld-container: '@set'
     x-jsonld-type: '@id'
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -1175,7 +1175,7 @@ x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   qudt: http://qudt.org/schema/qudt/
   cf: https://stac-extensions.github.io/cf/v0.2.0/schema.json#
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
   dcterms: http://purl.org/dc/terms/
   table: https://stac-extensions.github.io/table/v1.2.0/schema.json#
   owl: http://www.w3.org/2002/07/owl#
@@ -1203,7 +1203,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -1985,7 +1985,7 @@ Links to the schema:
     "osc": "https://w3id.org/ogc/stac/osc/",
     "qudt": "http://qudt.org/schema/qudt/",
     "cf": "https://stac-extensions.github.io/cf/v0.2.0/schema.json#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/catalog/",
     "dcterms": "http://purl.org/dc/terms/",
     "table": "https://stac-extensions.github.io/table/v1.2.0/schema.json#",
     "table:columns": {

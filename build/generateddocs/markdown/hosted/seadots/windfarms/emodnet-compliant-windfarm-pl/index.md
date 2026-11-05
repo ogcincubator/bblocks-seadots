@@ -89,19 +89,16 @@ National source values translated to EMODnet property names and generic extensio
 #### ttl
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#> .
+@prefix em: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm#> .
+@prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
-@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#> .
+@prefix ses: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <urn:baltic-ses:national:1:example-project> a geojson:Feature ;
     geojson:properties [ dcterms:description "Year reported as assumed in the source." ;
             dcterms:title "Example Baltic Wind" ;
-            em:powerMW 1200 ;
-            em:updateYear "2026" ;
-            em:year "2028" ;
             ses:sourceDataset "Polish national offshore wind project pipeline" ;
             ses:sourceRecordId "national-1" ;
             ses:sourceReference <https://www.gramwzielone.pl/?p=20373718> ;
@@ -110,6 +107,9 @@ National source values translated to EMODnet property names and generic extensio
             ses:statusDetail "In planning (auction pathway)" ;
             ses:yearIsAssumed true ;
             ses:yearSemantics "planned first-power or completion year" ;
+            em:powerMW 1200 ;
+            em:updateYear "2026" ;
+            em:year "2028" ;
             seadots-emodnet: seadots-emodnet:Planned ;
             owf:country seadots-emodnet:Poland ;
             owf:developerName "Example Energy" ] .
@@ -181,20 +181,20 @@ $defs:
             x-jsonld-id: http://purl.org/dc/terms/title
           country:
             type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#country
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
             x-jsonld-type: '@vocab'
             x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
           n_turbines:
             type:
             - number
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#nTurbines
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
           power_mw:
             type:
             - number
             - 'null'
             minimum: 0
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#powerMW
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
           status:
             oneOf:
             - type: string
@@ -211,17 +211,17 @@ $defs:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#installationType
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
           updateyear:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#updateYear
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
           year:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#year
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
           dist_coast:
             type:
             - number
@@ -229,7 +229,7 @@ $defs:
             minimum: 0
             description: Distance to coast in metres
             as in the EMODnet source field.: null
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#distanceToCoast
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
           notes:
             type:
             - string
@@ -239,19 +239,19 @@ $defs:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm#developerName
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/developerName
           status_detail:
             type:
             - string
             - 'null'
             description: Source-reported status text before normalization.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#statusDetail
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/statusDetail
           status_as_of:
             type:
             - string
             - 'null'
             format: date
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#statusAsOf
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/statusAsOf
             x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
           year_semantics:
             type:
@@ -259,37 +259,37 @@ $defs:
             - 'null'
             description: Meaning of the year value
             such as reported year or planned first-power/completion year.: null
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#yearSemantics
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/yearSemantics
           year_is_assumed:
             type:
             - boolean
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#yearIsAssumed
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/yearIsAssumed
             x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
           source_type:
             type: string
             enum:
             - national
             - emodnet
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceType
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceType
           source_dataset:
             type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceDataset
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceDataset
           source_reference:
             type: string
             format: uri
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceReference
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceReference
             x-jsonld-type: '@id'
           source_snapshot_date:
             type: string
             format: date
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceSnapshotDate
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceSnapshotDate
             x-jsonld-type: http://www.w3.org/2001/XMLSchema#date
           source_record_id:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceRecordId
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceRecordId
           location_status:
             type: string
             enum:
@@ -297,24 +297,24 @@ $defs:
             - mapped
             - anticipated
             - unmatched
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#locationStatus
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/locationStatus
           location_method:
             type:
             - string
             - 'null'
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#locationMethod
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/locationMethod
           location_reference:
             type:
             - string
             - 'null'
             format: uri
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#locationReference
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/locationReference
             x-jsonld-type: '@id'
           location_emodnet_ids:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#locationEmodnetIds
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/locationEmodnetIds
             x-jsonld-container: '@set'
         additionalProperties: false
         x-jsonld-id: https://purl.org/geojson/vocab#properties
@@ -325,45 +325,45 @@ x-jsonld-extra-terms:
   features:
     x-jsonld-id: https://purl.org/geojson/vocab#features
     x-jsonld-container: '@set'
-  MatchCandidate: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#MatchCandidate
+  MatchCandidate: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/MatchCandidate
   source_record:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#sourceRecord
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/sourceRecord
     x-jsonld-type: '@id'
   target_record:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#targetRecord
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/targetRecord
     x-jsonld-type: '@id'
-  match_method: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#matchMethod
+  match_method: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/matchMethod
   name_score:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#nameSimilarity
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/nameSimilarity
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
   property_score:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#propertyAgreement
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/propertyAgreement
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
   candidate_rank_score:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#candidateRankScore
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/candidateRankScore
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
   capacity_similarity:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#capacitySimilarity
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/capacitySimilarity
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
   capacity_delta_mw:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#capacityDifferenceMW
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/capacityDifferenceMW
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
   status_match:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#statusMatch
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/statusMatch
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
   year_match:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#yearMatch
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/yearMatch
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#boolean
   distance_km:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#distanceKm
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/distanceKm
     x-jsonld-type: http://www.w3.org/2001/XMLSchema#decimal
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
-  owf: https://w3id.org/ogc/hosted/seadots/windfarm#
-  em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#
+  owf: https://w3id.org/ogc/hosted/seadots/windfarm/
+  em: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/
   dcterms: http://purl.org/dc/terms/
-  ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#
+  ses: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/
   seadots-emodnet: https://w3id.org/ogc/hosted/seadots/emodnet/
 x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl
@@ -531,13 +531,13 @@ Links to the schema:
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm#",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
+    "owf": "https://w3id.org/ogc/hosted/seadots/windfarm/",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/",
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
-    "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm#",
-    "ses": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl#",
+    "em": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/",
+    "ses": "https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm-pl/",
     "@version": 1.1
   }
 }

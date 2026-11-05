@@ -51,11 +51,11 @@ properties:
           speciesListEndpoint:
             type: string
             format: uri
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesListEndpoint
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/speciesListEndpoint
             x-jsonld-type: '@id'
           perSpeciesEndpoint:
             type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#perSpeciesEndpoint
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/perSpeciesEndpoint
           license:
             type: string
             x-jsonld-id: http://purl.org/dc/terms/license
@@ -72,7 +72,7 @@ properties:
           geometry:
             type: object
             x-jsonld-id: https://purl.org/geojson/vocab#geometry
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#areaOfInterest
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/areaOfInterest
       phenomenonTime:
         oneOf:
         - type: 'null'
@@ -98,44 +98,44 @@ properties:
           speciesQueried:
             type: integer
             minimum: 0
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesQueried
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/speciesQueried
           cruiseQueries:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruiseQueries
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/cruiseQueries
             x-jsonld-container: '@set'
           apiQueries:
             type: integer
             minimum: 0
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#apiQueries
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/apiQueries
           sourceFeatures:
             type: integer
             minimum: 0
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sourceFeatures
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/sourceFeatures
           featuresInAOI:
             type: integer
             minimum: 0
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#featuresInAOI
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/featuresInAOI
           speciesInAOI:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#speciesInAOI
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/speciesInAOI
             x-jsonld-container: '@set'
           cruisesInAOI:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cruisesInAOI
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/cruisesInAOI
             x-jsonld-container: '@set'
           equipmentInAOI:
             type: array
             items:
               type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#equipmentInAOI
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/equipmentInAOI
             x-jsonld-container: '@set'
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#summary
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/summary
       provenance:
         type: object
         properties:
@@ -145,7 +145,7 @@ properties:
             - retrieved
             - illustrative
             - mixed
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#provenanceValues
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/provenanceValues
           generator:
             type: string
             x-jsonld-id: http://www.w3.org/ns/prov#wasGeneratedBy
@@ -154,10 +154,10 @@ properties:
             x-jsonld-id: http://www.w3.org/ns/prov#generatedAtTime
           cacheDirectory:
             type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#cacheDirectory
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/cacheDirectory
           timeBoundaryNote:
             type: string
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#timeBoundaryNote
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/timeBoundaryNote
         x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
     x-jsonld-id: https://purl.org/geojson/vocab#properties
   links:
@@ -224,7 +224,7 @@ properties:
               x-jsonld-id: http://rs.tdwg.org/dwc/terms/scientificName
             sourceCruiseQuery:
               type: string
-              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#sourceCruiseQuery
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/sourceCruiseQuery
             cruise:
               type: string
               x-jsonld-id: https://vocab.nerc.ac.uk/collection/SDN/current/cruise
@@ -261,11 +261,11 @@ x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
   Point: https://purl.org/geojson/vocab#Point
   Polygon: https://purl.org/geojson/vocab#Polygon
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
-  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr#
+  seadots: https://w3id.org/ogc/hosted/seadots/benthic-biomass-observations-imr/
   time: http://www.w3.org/2006/time#
   prov: http://www.w3.org/ns/prov#
   dwc: http://rs.tdwg.org/dwc/terms/

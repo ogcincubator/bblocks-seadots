@@ -56,7 +56,7 @@ One row as reported by the national compilation; no geometry is invented at this
 
 #### ttl
 ```ttl
-@prefix : <https://w3id.org/ogc/hosted/seadots/national-windfarm-source#> .
+@prefix : <https://w3id.org/ogc/hosted/seadots/national-windfarm-source/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <https://purl.org/dc/terms/> .
 @prefix schema: <https://schema.org/> .
@@ -130,7 +130,7 @@ properties:
 additionalProperties: false
 x-jsonld-extra-terms:
   Feature: https://purl.org/geojson/vocab#Feature
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/national-windfarm-source#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/national-windfarm-source/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
 x-bblocks-metadata:
@@ -152,7 +152,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/national-windfarm-source#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/national-windfarm-source/",
     "Feature": "geojson:Feature",
     "id": "@id",
     "type": "@type",

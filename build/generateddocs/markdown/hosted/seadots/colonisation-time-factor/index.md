@@ -229,7 +229,7 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <https://www.opengis.net/def/ogc-api/records/> .
-@prefix seadots: <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#> .
+@prefix seadots: <https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -326,7 +326,7 @@ properties:
           role:
             type: string
             description: Usually `coefficient (scalar)`.
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#role
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/role
           source:
             type: string
             x-jsonld-id: http://www.w3.org/ns/dcat#accessURL
@@ -351,11 +351,11 @@ properties:
               curveType:
                 type: string
                 description: e.g. `sigmoid`.
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#curveType
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/curveType
               formula:
                 type: string
                 description: Closed-form expression in plain text.
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#formula
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/formula
               parameters:
                 type: object
                 required:
@@ -367,16 +367,16 @@ properties:
                     type: number
                     minimum: 0
                     description: Sigmoid saturation level.
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#sigmoidL
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/sigmoidL
                   k:
                     type: number
                     description: Sigmoid growth rate.
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#sigmoidK
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/sigmoidK
                   t0_months:
                     type: number
                     description: Sigmoid midpoint, months since installation.
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#sigmoidT0_months
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#parameters
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/sigmoidT0_months
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/parameters
               lookup:
                 type: array
                 items:
@@ -388,7 +388,7 @@ properties:
                     t_months:
                       type: number
                       minimum: 0
-                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#t_months
+                      x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/t_months
                     C_t:
                       type: number
                       minimum: 0
@@ -396,12 +396,12 @@ properties:
                       description: Evaluated C_t at t_months.
                       x-jsonld-id: https://w3id.org/indicators/marine/parameters/colonisation-time-factor
                       x-jsonld-type: http://qudt.org/schema/qudt/DimensionlessQuantity
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#lookup
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/lookup
                 x-jsonld-container: '@list'
               saturationMonth:
                 type: number
                 minimum: 0
-                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#saturationMonth
+                x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/saturationMonth
               units:
                 type: string
                 description: Always `dimensionless`.
@@ -418,13 +418,13 @@ properties:
                     - calibrated
                     - illustrative
                     - mixed
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#provenanceValues
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/provenanceValues
                   primarySource:
                     type: object
                     properties:
                       doi:
                         type: string
-                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#doi
+                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/doi
                       url:
                         type: string
                         format: uri
@@ -435,7 +435,7 @@ properties:
                         x-jsonld-id: http://purl.org/dc/terms/bibliographicCitation
                       supportingFigure:
                         type: string
-                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#supportingFigure
+                        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/supportingFigure
                     x-jsonld-id: http://purl.org/dc/terms/source
                   nearestAuthoritativeSource:
                     type: object
@@ -448,16 +448,16 @@ properties:
                       note:
                         type: string
                         x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#nearestAuthoritativeSource
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/nearestAuthoritativeSource
                   verificationGap:
                     type: string
-                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#verificationGap
+                    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/verificationGap
                   note:
                     type: string
                     x-jsonld-id: http://www.w3.org/2004/02/skos/core#note
                 x-jsonld-id: http://www.w3.org/ns/prov#wasDerivedFrom
-            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#data
-        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#colonisationTimeFactor
+            x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/data
+        x-jsonld-id: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/colonisationTimeFactor
     x-jsonld-id: https://purl.org/geojson/vocab#properties
 x-jsonld-extra-terms:
   id: '@id'
@@ -490,12 +490,12 @@ x-jsonld-extra-terms:
     x-jsonld-id: http://purl.org/dc/terms/format
     x-jsonld-container: '@set'
   mediaType: http://purl.org/dc/terms/format
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/
 x-jsonld-prefixes:
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   skos: http://www.w3.org/2004/02/skos/core#
-  seadots: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#
+  seadots: https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/
   qudt: http://qudt.org/schema/qudt/
   indp: https://w3id.org/indicators/marine/parameters/
   prov: http://www.w3.org/ns/prov#
@@ -519,7 +519,7 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@vocab": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#",
+    "@vocab": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -795,7 +795,7 @@ Links to the schema:
     "foaf": "http://xmlns.com/foaf/0.1/",
     "thns": "https://w3id.org/ogc/stac/themes/",
     "dcterms": "http://purl.org/dc/terms/",
-    "seadots": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor#",
+    "seadots": "https://w3id.org/ogc/hosted/seadots/colonisation-time-factor/",
     "qudt": "http://qudt.org/schema/qudt/",
     "indp": "https://w3id.org/indicators/marine/parameters/",
     "indo": "https://w3id.org/indicators/marine/obs/",
