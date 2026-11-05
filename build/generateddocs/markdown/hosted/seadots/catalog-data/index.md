@@ -222,8 +222,8 @@ This block is the shared base for catalog input records, catalog output records,
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <https://w3id.org/ogc/stac/cf/> .
 @prefix ns3: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -248,11 +248,11 @@ This block is the shared base for catalog input records, catalog output records,
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Example CF-style parameter declaration." ;
             qudt:hasUnit "K" ;
-            ns1:name "sea_water_temperature" ] ;
+            ns2:name "sea_water_temperature" ] ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data <https://example.org/seadots/catalog-data.nc> ] ;
+    stac:hasAsset [ ns1:data <https://example.org/seadots/catalog-data.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
@@ -262,7 +262,7 @@ This block is the shared base for catalog input records, catalog output records,
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Example CF-style parameter declaration." ;
             qudt:hasUnit "K" ;
-            ns1:name "sea_water_temperature" ] ;
+            ns2:name "sea_water_temperature" ] ;
     stac:hasAssetroles "data"^^xsd:string .
 
 
@@ -456,9 +456,9 @@ This block is the shared base for catalog input records, catalog output records,
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/stac/cf/> .
-@prefix ns3: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns3: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -473,14 +473,14 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:title "Utsira area of interest" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs inputs" ;
             dcterms:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
+            ns3:relation <http://www.iana.org/assignments/relation/collection> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-inputs> ],
         [ dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns3:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
         [ rdfs:label "Utsira surroundings AOI" ;
             dcterms:type "application/geo+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/item> ;
+            ns3:relation <http://www.iana.org/assignments/relation/item> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -488,12 +488,12 @@ This block is the shared base for catalog input records, catalog output records,
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
             qudt:hasUnit "m2" ;
-            ns2:name "area" ] ;
+            ns1:name "area" ] ;
     seadots:collection "seadots-inputs" ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "input" ;
-    stac:hasAsset [ ns3:data <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
+    stac:hasAsset [ ns2:data <file:///area-of-interest/examples/utsira_surroundings_aoi.json> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
@@ -503,7 +503,7 @@ This block is the shared base for catalog input records, catalog output records,
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Optional CF-style parameter declaration for spatial input extent." ;
             qudt:hasUnit "m2" ;
-            ns2:name "area" ] ;
+            ns1:name "area" ] ;
     stac:hasAssetroles "data"^^xsd:string,
         "input"^^xsd:string .
 
@@ -736,21 +736,21 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:date "2026-05-26T09:03:00+00:00"^^xsd:dateTime ;
     dcterms:description "Example output product generated by a SeaDOTs execution." ;
     dcterms:title "Reef biomass result" ;
-    rdfs:seeAlso [ rdfs:label "SeaDOTs outputs" ;
-            dcterms:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-outputs> ],
+    rdfs:seeAlso [ ns1:relation <http://www.iana.org/assignments/relation/derived_from> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ],
         [ dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ],
+        [ rdfs:label "SeaDOTs outputs" ;
+            dcterms:type "application/json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
+            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/collections/seadots-outputs> ],
         [ ns1:relation <http://www.iana.org/assignments/relation/via> ;
             oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/execution/reef-effect-run-001> ],
         [ rdfs:label "Reef biomass structured result" ;
             dcterms:type "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/item> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output/examples/reef_biomass_result.json> ],
-        [ ns1:relation <http://www.iana.org/assignments/relation/derived_from> ;
-            oa:hasTarget <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.reef-effect-output/examples/reef_biomass_result.json> ] ;
     prov:wasDerivedFrom <https://w3id.org/ogc/hosted/seadots/catalog/input/aoi-utsira> ;
     geojson:bbox ( 4.7e+00 5.91e+01 5e+00 5.94e+01 ) ;
     geojson:geometry [ a geojson:Polygon ;
@@ -911,8 +911,8 @@ This block is the shared base for catalog input records, catalog output records,
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -931,7 +931,7 @@ This block is the shared base for catalog input records, catalog output records,
     dcterms:title "Harvest time series scenario Scen M3 sample catalog record" ;
     rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data bblock" ;
             dcterms:type "application/schema+json" ;
-            ns2:relation <http://www.iana.org/assignments/relation/describedby> ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data> ] ;
     geojson:bbox ( 7.642602e+00 5.439246e+01 7.680002e+00 5.43991e+01 ) ;
     geojson:geometry [ a geojson:MultiPoint ;
@@ -939,7 +939,7 @@ This block is the shared base for catalog input records, catalog output records,
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns1:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
+    stac:hasAsset [ ns2:data <file:///harvest-timeseries-scen-m3-source/examples/harvest-timeseries-scen-m3-sample.geojson> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .

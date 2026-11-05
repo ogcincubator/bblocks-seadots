@@ -234,13 +234,13 @@ There is no published closed-form sigmoid parameterisation of reef colonisation 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/colonisation-time-factor/default-sigmoid> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
-        [ rdfs:label "Colonisation Time Factor bblock" ;
+    rdfs:seeAlso [ rdfs:label "Colonisation Time Factor bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.colonisation-time-factor> ],
+        [ rdfs:label "Degraer et al. 2020 — colonisation prior" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ],
         [ rdfs:label "OIM Variables profile" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;

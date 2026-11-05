@@ -476,24 +476,24 @@ their weights, while the raw block preserves the individual point features.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
+    rdfs:seeAlso [ rdfs:label "Institute of Marine Research" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ],
+            oa:hasTarget <https://www.hi.no/> ],
         [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
-        [ rdfs:label "OIM Observations profile" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
-        [ rdfs:label "Institute of Marine Research" ;
+        [ rdfs:label "MAREANO programme" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://www.hi.no/> ],
+            oa:hasTarget <https://mareano.no/> ],
         [ rdfs:label "IMR benthic biomass observations bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr> ] ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr> ],
+        [ rdfs:label "OIM Observations profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ] ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( -5e+00 5.6e+01 ) ( 3.3e+01 5.6e+01 ) ( 3.3e+01 8.2e+01 ) ( -5e+00 8.2e+01 ) ( -5e+00 5.6e+01 ) ) ) ] ;
     geojson:properties [ a seadots:Dataset ;

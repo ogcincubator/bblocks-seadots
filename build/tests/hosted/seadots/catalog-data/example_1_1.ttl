@@ -1,8 +1,8 @@
 @prefix cf: <https://stac-extensions.github.io/cf/v0.2.0/schema.json#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://w3id.org/ogc/stac/cf/> .
-@prefix ns2: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns1: <https://w3id.org/ogc/stac/assets/> .
+@prefix ns2: <https://w3id.org/ogc/stac/cf/> .
 @prefix ns3: <http://www.iana.org/assignments/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -27,11 +27,11 @@
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Example CF-style parameter declaration." ;
             qudt:hasUnit "K" ;
-            ns1:name "sea_water_temperature" ] ;
+            ns2:name "sea_water_temperature" ] ;
     seadots:itemType "record" ;
     seadots:metadataConvention "CF-1.10" ;
     seadots:role "data" ;
-    stac:hasAsset [ ns2:data <https://example.org/seadots/catalog-data.nc> ] ;
+    stac:hasAsset [ ns1:data <https://example.org/seadots/catalog-data.nc> ] ;
     stac:hasExtension "https://stac-extensions.github.io/cf/v0.2.0/schema.json",
         "https://stac-extensions.github.io/prov/v1.0.0/schema.json" ;
     stac:version "1.0.0" .
@@ -41,6 +41,6 @@
     cf:parameter [ dcterms:conformsTo <http://vocab.nerc.ac.uk/standard_name/> ;
             dcterms:description "Example CF-style parameter declaration." ;
             qudt:hasUnit "K" ;
-            ns1:name "sea_water_temperature" ] ;
+            ns2:name "sea_water_temperature" ] ;
     stac:hasAssetroles "data"^^xsd:string .
 

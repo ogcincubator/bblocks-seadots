@@ -100,20 +100,20 @@ from the geometry or managed by a separate metadata record.
 #### ttl
 ```ttl
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://purl.org/geojson/vocab#> .
-@prefix ns2: <http://www.w3.org/ns/iana/link-relations/> .
+@prefix ns1: <http://www.w3.org/ns/iana/link-relations/> .
+@prefix ns2: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a ns1:Feature ;
-    ns2:relation <bblocks://ogc.hosted.seadots.area-of-interest> ;
-    ns1:geometry [ a ns1:Polygon ;
-            ns1:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
-    ns1:properties [ dcterms:description "Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator." ;
+<https://example.org/norwegian-ses/area-of-interest/utsira-surroundings> a ns2:Feature ;
+    ns1:relation <bblocks://ogc.hosted.seadots.area-of-interest> ;
+    ns2:geometry [ a ns2:Polygon ;
+            ns2:coordinates ( ( ( 4.2e+00 5.91e+01 ) ( 5.3e+00 5.91e+01 ) ( 5.3e+00 5.97e+01 ) ( 4.2e+00 5.97e+01 ) ( 4.2e+00 5.91e+01 ) ) ) ] ;
+    ns2:properties [ dcterms:description "Polygon delimiting the broader study area around Utsira island. Extends the Utsira Nord licence polygon outward to cover the surroundings, while preserving the western and southern boundaries used by the original demonstrator." ;
             dcterms:title "AOI — surroundings of Utsira island" ] .
 
 <bblocks://ogc.hosted.seadots.area-of-interest> a <file:///github/workspace/application/schema+json> ;
-    ns1:rel "describedby" .
+    ns2:rel "describedby" .
 
 
 ```

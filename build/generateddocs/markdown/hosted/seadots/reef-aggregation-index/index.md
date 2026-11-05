@@ -215,14 +215,14 @@ The indicator concept `indp:reef-aggregation-index` is local to the SeaDOTs indi
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/reef-aggregation-index/degraer2020-bindings> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM Variables profile" ;
-            dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
-        [ rdfs:label "Reef Aggregation Index bblock" ;
+    rdfs:seeAlso [ rdfs:label "Reef Aggregation Index bblock" ;
             dcterms:format "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.reef-aggregation-index> ],
+        [ rdfs:label "OIM Variables profile" ;
+            dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.api.features.oim-variables> ],
         [ rdfs:label "Degraer et al. 2020 — reef-effect prior" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://doi.org/10.5670/oceanog.2020.405> ] ;
