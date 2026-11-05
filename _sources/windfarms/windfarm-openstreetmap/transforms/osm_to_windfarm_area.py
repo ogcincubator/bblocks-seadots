@@ -25,6 +25,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin
 
 from pyproj import Geod
 from rdflib import Graph, Literal, Namespace, URIRef
@@ -36,6 +37,9 @@ ONTOLOGY_IRI = URIRef("https://w3id.org/ogc/hosted/seadots/osm-offshore-wind-sou
 KEY_NS = "https://www.openstreetmap.org/wiki/Key:"
 OSM = "https://www.openstreetmap.org/"
 ONTOLOGY_PATH = "_sources/windfarms/windfarm-openstreetmap/ontology.ttl"
+PUBLISHED_BLOCK_URL = ("https://ogcincubator.github.io/bblocks-seadots/build/annotated/"
+                       "hosted/seadots/windfarms/windfarm-openstreetmap/")
+TARGET_CONTEXT_REF = "../common-windfarm-designated-area/context.jsonld"
 
 FIELDS = ["name", "country", "n_turbines", "power_mw", "status", "status_detail", "status_as_of",
           "type_inst", "offshore", "year", "year_semantics", "year_is_assumed", "updateyear",
@@ -205,13 +209,22 @@ def transform_response(src: dict, alignment: dict, snapshot_date: str | None = N
     return {"type": "FeatureCollection", "features": features}
 
 
+def target_context_url() -> str:
+    """Annotated context of the target block, a sibling of this block in the build; published URL if standalone."""
+    ctx = getattr(globals().get("transform_metadata"), "context", None)
+    base, annotated = getattr(ctx, "base_url", None), getattr(ctx, "bblock_annotated_path", None)
+    block_url = urljoin(base, f"{annotated}/") if base and annotated else PUBLISHED_BLOCK_URL
+    return urljoin(block_url, TARGET_CONTEXT_REF)
+
+
 def transform(raw_json: str, meta: Any = None) -> str:
     alignment = load_alignment(find_ontology(meta))
     snapshot = None
     if meta and hasattr(meta, "get"):
         inner = meta.get("metadata") or {}
         snapshot = meta.get("source_snapshot_date") or (inner.get("source_snapshot_date") if hasattr(inner, "get") else None)
-    return json.dumps(transform_response(json.loads(raw_json), alignment, snapshot), indent=2, ensure_ascii=False)
+    out = {"@context": target_context_url(), **transform_response(json.loads(raw_json), alignment, snapshot)}
+    return json.dumps(out, indent=2, ensure_ascii=False)
 
 
 def main() -> int:
@@ -223,6 +236,6 @@ def main() -> int:
 
 
 if "input_data" in globals():
-    output_data = transform(input_data, globals().get("metadata"))  # noqa: F821
+    output_data = transform(input_data, getattr(globals().get("transform_metadata"), "metadata", None))  # noqa: F821
 elif __name__ == "__main__":
     raise SystemExit(main())

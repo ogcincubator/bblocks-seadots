@@ -8,7 +8,8 @@ transforms:
       maps OSM tags onto `owf:` properties with their value conversions. A wind
       farm relation is merged with its outer and same-name ways, which become
       `same_as` links. Geometry comes from the area way, with `area_sqkm`
-      computed geodesically. Turbines and other devices are not output.
+      computed geodesically. Turbines and other devices are not output. The
+      output's `@context` references the target block's JSON-LD context.
     type: python
     ref: transforms/osm_to_windfarm_area.py
     inputs:
@@ -35,7 +36,8 @@ transforms:
       `power=generator` nodes and `osmdata:turbineTagMappings` maps their tags onto
       `owf:` properties (rated power, hub height, rotor diameter, rotor axis,
       condition). Each turbine gets the wind farm relation it is a member of as
-      `windfarm`, and the relation name as `windfarm_name`.
+      `windfarm`, and the relation name as `windfarm_name`. The output's
+      `@context` references the target block's JSON-LD context.
     type: python
     ref: transforms/osm_to_windfarm_turbine.py
     inputs:

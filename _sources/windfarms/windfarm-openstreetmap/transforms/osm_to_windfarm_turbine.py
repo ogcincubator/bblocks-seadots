@@ -25,6 +25,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin
 
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.collection import Collection
@@ -35,6 +36,9 @@ KEY_NS = "https://www.openstreetmap.org/wiki/Key:"
 OSM = "https://www.openstreetmap.org/"
 BLOCK_DIR = "_sources/windfarms/windfarm-openstreetmap"
 TARGET_CONTEXT = "_sources/windfarms/common-windfarm-turbine/context.jsonld"
+PUBLISHED_BLOCK_URL = ("https://ogcincubator.github.io/bblocks-seadots/build/annotated/"
+                       "hosted/seadots/windfarms/windfarm-openstreetmap/")
+TARGET_CONTEXT_REF = "../common-windfarm-turbine/context.jsonld"
 
 FIELDS = ["ref", "windfarm_name", "windfarm", "manufacturer", "model", "rated_power_mw", "hub_height_m",
           "rotor_diameter_m", "rotor_axis", "offshore", "operator", "status", "last_updated"]
@@ -168,6 +172,14 @@ def transform_response(src: dict, alignment: dict, terms: dict[str, str]) -> dic
     return {"type": "FeatureCollection", "features": features}
 
 
+def target_context_url() -> str:
+    """Annotated context of the target block, a sibling of this block in the build; published URL if standalone."""
+    ctx = getattr(globals().get("transform_metadata"), "context", None)
+    base, annotated = getattr(ctx, "base_url", None), getattr(ctx, "bblock_annotated_path", None)
+    block_url = urljoin(base, f"{annotated}/") if base and annotated else PUBLISHED_BLOCK_URL
+    return urljoin(block_url, TARGET_CONTEXT_REF)
+
+
 def transform(raw_json: str, meta: Any = None) -> str:
     here = _here()
     ontology = _find(meta, "ontology", Path(BLOCK_DIR) / "ontology.ttl", *([here / "ontology.ttl"] if here else []))
@@ -176,7 +188,7 @@ def transform(raw_json: str, meta: Any = None) -> str:
     target = _find(meta, "target_context", Path(TARGET_CONTEXT),
                    *([here.parent / "common-windfarm-turbine/context.jsonld"] if here else []))
     out = transform_response(json.loads(raw_json), load_alignment(ontology), concept_terms(target))
-    return json.dumps(out, indent=2, ensure_ascii=False)
+    return json.dumps({"@context": target_context_url(), **out}, indent=2, ensure_ascii=False)
 
 
 def main() -> int:
@@ -188,6 +200,6 @@ def main() -> int:
 
 
 if "input_data" in globals():
-    output_data = transform(input_data, globals().get("metadata"))  # noqa: F821
+    output_data = transform(input_data, getattr(globals().get("transform_metadata"), "metadata", None))  # noqa: F821
 elif __name__ == "__main__":
     raise SystemExit(main())
