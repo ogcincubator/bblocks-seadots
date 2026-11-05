@@ -2,45 +2,9 @@
   "title": "Validation report for ogc.hosted.seadots.odd-protocol - ODD Protocol Description Record",
   "bblockName": "ODD Protocol Description Record",
   "bblockId": "ogc.hosted.seadots.odd-protocol",
-  "generated": "2026-11-04T23:57:51.618668+00:00",
-  "result": false,
+  "generated": "2026-11-05T01:03:09.349307+00:00",
+  "result": true,
   "items": [
-    {
-      "source": {
-        "type": "TEST_RESOURCE",
-        "requireFail": false,
-        "filename": "_sources/odd-protocol/tests/test.yaml",
-        "url": "https://ogcincubator.github.io/bblocks-seadots/_sources/odd-protocol/tests/test.yaml",
-        "language": "yaml"
-      },
-      "result": false,
-      "sections": [
-        {
-          "name": "FILES",
-          "title": "Files",
-          "entries": [
-            {
-              "isError": false,
-              "message": "Using test.yaml from test resources"
-            }
-          ]
-        },
-        {
-          "name": "JSON_SCHEMA",
-          "title": "JSON Schema",
-          "entries": [
-            {
-              "op": "validation",
-              "result": false,
-              "exception": "ValidationError",
-              "errorMessage": "'type' is a required property",
-              "isError": true,
-              "message": "ValidationError: 'type' is a required property\n\nFailed validating 'required' in schema['allOf'][0]['allOf'][0]['allOf'][0]['allOf'][0]['allOf'][0]:\n    {'$id': 'https://geojson.org/schema/Feature.json',\n     '$schema': 'http://json-schema.org/draft-07/schema#',\n     'properties': {'bbox': {'items': {'type': 'number'},\n                             'minItems': 4,\n                             'type': 'array',\n                             'x-jsonld-container': '@list',\n                             'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                    'geometry': {'oneOf': [{'type': 'null'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'type': 'number'},\n                                                                           'minItems': 2,\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['Point'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON Point',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'items': {'type': 'number'},\n                                                                                     'minItems': 2,\n                                                                                     'type': 'array'},\n                                                                           'minItems': 2,\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['LineString'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON LineString',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'items': {'items': {'type': 'number'},\n                                                                                               'minItems': 2,\n                                                                                               'type': 'array'},\n                                                                                     'minItems': 4,\n                                                                                     'type': 'array'},\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['Polygon'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON Polygon',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'items': {'type': 'number'},\n                                                                                     'minItems': 2,\n                                                                                     'type': 'array'},\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['MultiPoint'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON MultiPoint',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'items': {'items': {'type': 'number'},\n                                                                                               'minItems': 2,\n                                                                                               'type': 'array'},\n                                                                                     'minItems': 2,\n                                                                                     'type': 'array'},\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['MultiLineString'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON '\n                                                     'MultiLineString',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'coordinates': {'items': {'items': {'items': {'items': {'type': 'number'},\n                                                                                                         'minItems': 2,\n                                                                                                         'type': 'array'},\n                                                                                               'minItems': 4,\n                                                                                               'type': 'array'},\n                                                                                     'type': 'array'},\n                                                                           'type': 'array',\n                                                                           'x-jsonld-container': '@list',\n                                                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                           'type': {'enum': ['MultiPolygon'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'coordinates'],\n                                            'title': 'GeoJSON MultiPolygon',\n                                            'type': 'object'},\n                                           {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                    'minItems': 4,\n                                                                    'type': 'array',\n                                                                    'x-jsonld-container': '@list',\n                                                                    'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                           'geometries': {'items': {'oneOf': [{'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'type': 'number'},\n                                                                                                                              'minItems': 2,\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['Point'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'Point',\n                                                                                               'type': 'object'},\n                                                                                              {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'items': {'type': 'number'},\n                                                                                                                                        'minItems': 2,\n                                                                                                                                        'type': 'array'},\n                                                                                                                              'minItems': 2,\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['LineString'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'LineString',\n                                                                                               'type': 'object'},\n                                                                                              {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'items': {'items': {'type': 'number'},\n                                                                                                                                                  'minItems': 2,\n                                                                                                                                                  'type': 'array'},\n                                                                                                                                        'minItems': 4,\n                                                                                                                                        'type': 'array'},\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['Polygon'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'Polygon',\n                                                                                               'type': 'object'},\n                                                                                              {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'items': {'type': 'number'},\n                                                                                                                                        'minItems': 2,\n                                                                                                                                        'type': 'array'},\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['MultiPoint'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'MultiPoint',\n                                                                                               'type': 'object'},\n                                                                                              {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'items': {'items': {'type': 'number'},\n                                                                                                                                                  'minItems': 2,\n                                                                                                                                                  'type': 'array'},\n                                                                                                                                        'minItems': 2,\n                                                                                                                                        'type': 'array'},\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['MultiLineString'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'MultiLineString',\n                                                                                               'type': 'object'},\n                                                                                              {'properties': {'bbox': {'items': {'type': 'number'},\n                                                                                                                       'minItems': 4,\n                                                                                                                       'type': 'array',\n                                                                                                                       'x-jsonld-container': '@list',\n                                                                                                                       'x-jsonld-id': 'https://purl.org/geojson/vocab#bbox'},\n                                                                                                              'coordinates': {'items': {'items': {'items': {'items': {'type': 'number'},\n                                                                                                                                                            'minItems': 2,\n                                                                                                                                                            'type': 'array'},\n                                                                                                                                                  'minItems': 4,\n                                                                                                                                                  'type': 'array'},\n                                                                                                                                        'type': 'array'},\n                                                                                                                              'type': 'array',\n                                                                                                                              'x-jsonld-container': '@list',\n                                                                                                                              'x-jsonld-id': 'https://purl.org/geojson/vocab#coordinates'},\n                                                                                                              'type': {'enum': ['MultiPolygon'],\n                                                                                                                       'type': 'string',\n                                                                                                                       'x-jsonld-id': '@type'}},\n                                                                                               'required': ['type',\n                                                                                                            'coordinates'],\n                                                                                               'title': 'GeoJSON '\n                                                                                                        'MultiPolygon',\n                                                                                               'type': 'object'}]},\n                                                                          'type': 'array'},\n                                                           'type': {'enum': ['GeometryCollection'],\n                                                                    'type': 'string',\n                                                                    'x-jsonld-id': '@type'}},\n                                            'required': ['type',\n                                                         'geometries'],\n                                            'title': 'GeoJSON '\n                                                     'GeometryCollection',\n                                            'type': 'object'}],\n                                 'x-jsonld-id': 'https://purl.org/geojson/vocab#geometry'},\n                    'id': {'oneOf': [{'type': 'number'},\n                                     {'type': 'string'}],\n                           'x-jsonld-id': '@id'},\n                    'properties': {'oneOf': [{'type': 'null'},\n                                             {'type': 'object'}],\n                                   'x-jsonld-id': '@nest'},\n                    'type': {'enum': ['Feature'],\n                             'type': 'string',\n                             'x-jsonld-id': '@type'}},\n     'required': ['type', 'properties', 'geometry'],\n     'title': 'GeoJSON Feature',\n     'type': 'object',\n     'x-bblocks-metadata': {'dateOfLastChange': '2026-10-25',\n                            'itemIdentifier': 'ogc.geo.common.data_types.geojson',\n                            'register': 'https://opengeospatial.github.io/bblocks/register.json',\n                            'version': '1.0'},\n     'x-jsonld-extra-terms': {'Feature': 'https://purl.org/geojson/vocab#Feature',\n                              'FeatureCollection': 'https://purl.org/geojson/vocab#FeatureCollection',\n                              'GeometryCollection': 'https://purl.org/geojson/vocab#GeometryCollection',\n                              'LineString': 'https://purl.org/geojson/vocab#LineString',\n                              'MultiLineString': 'https://purl.org/geojson/vocab#MultiLineString',\n                              'MultiPoint': 'https://purl.org/geojson/vocab#MultiPoint',\n                              'MultiPolygon': 'https://purl.org/geojson/vocab#MultiPolygon',\n                              'Point': 'https://purl.org/geojson/vocab#Point',\n                              'Polygon': 'https://purl.org/geojson/vocab#Polygon',\n                              'features': {'x-jsonld-container': '@set',\n                                           'x-jsonld-id': 'https://purl.org/geojson/vocab#features'}},\n     'x-jsonld-prefixes': {'geojson': 'https://purl.org/geojson/vocab#'}}\n\nOn instance:\n    {'tests': [{'description': 'Validate the canonical JASSS paper example '\n                               'against the ODD Protocol schema. The '\n                               'record must pass GeoDCAT-Records base '\n                               'validation plus the odd extension '\n                               'properties.\\n',\n                'expected': 'valid',\n                'input': '../examples/jasss_odd_protocol_2020.json',\n                'name': 'Schema validation \u2014 JASSS example',\n                'schema': '../schema.yaml'},\n               {'contains': ['\"id\"',\n                             '\"type\"',\n                             '\"properties\"',\n                             '\"title\"',\n                             '\"contacts\"',\n                             '\"externalIds\"'],\n                'description': 'The example must contain id, type, '\n                               'geometry (may be null), and properties '\n                               'with at least title, contacts, and '\n                               'externalIds.\\n',\n                'input': '../examples/jasss_odd_protocol_2020.json',\n                'name': 'Required OGC Records fields present'},\n               {'contains': ['\"odd\"',\n                             '\"purpose\"',\n                             '\"entities\"',\n                             '\"processOverview\"',\n                             '\"designConcepts\"',\n                             '\"initialization\"',\n                             '\"inputData\"',\n                             '\"submodels\"'],\n                'description': 'The example must carry an `odd` object '\n                               'with the seven required keys.\\n',\n                'input': '../examples/jasss_odd_protocol_2020.json',\n                'name': 'ODD extension present'},\n               {'contains': ['\"doi\"', '\"10.18564/jasss.4259\"'],\n                'description': 'The record must include a DOI in '\n                               'externalIds.',\n                'input': '../examples/jasss_odd_protocol_2020.json',\n                'name': 'DOI externalId present'},\n               {'contains': ['\"basicPrinciples\"',\n                             '\"emergence\"',\n                             '\"adaptation\"',\n                             '\"objectives\"',\n                             '\"learning\"',\n                             '\"prediction\"',\n                             '\"sensing\"',\n                             '\"interaction\"',\n                             '\"stochasticity\"',\n                             '\"collectives\"',\n                             '\"observation\"'],\n                'description': 'The designConcepts object must contain all '\n                               'eleven ODD concept keys.\\n',\n                'input': '../examples/jasss_odd_protocol_2020.json',\n                'name': 'All 11 design concepts keys present'},\n               {'description': 'Validate the OSMOSE marine IBM ODD example '\n                               'against the building block schema. '\n                               'Exercises the full marine vocabulary '\n                               'annotation path (NERC P01, Darwin Core, '\n                               'CF) and multi-entity, multi-submodel '\n                               'structure.\\n',\n                'expected': 'valid',\n                'input': '../examples/osmose_odd.json',\n                'name': 'Schema validation \u2014 OSMOSE example',\n                'schema': '../schema.yaml'},\n               {'contains': ['\"id\"',\n                             '\"type\"',\n                             '\"properties\"',\n                             '\"title\"',\n                             '\"contacts\"',\n                             '\"externalIds\"'],\n                'description': 'Required OGC Records fields must be '\n                               'present in the OSMOSE record.',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 OGC Records scaffold present'},\n               {'contains': ['\"odd\"',\n                             '\"purpose\"',\n                             '\"entities\"',\n                             '\"processOverview\"',\n                             '\"designConcepts\"',\n                             '\"initialization\"',\n                             '\"inputData\"',\n                             '\"submodels\"'],\n                'description': 'The OSMOSE odd object must carry all seven '\n                               'required element keys.',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 all seven ODD elements present'},\n               {'contains': ['\"School\"',\n                             '\"Cell\"',\n                             '\"Resource\"',\n                             '\"Species\"'],\n                'description': 'The OSMOSE example must contain the '\n                               'primary entity types characterising the '\n                               'marine IBM \u2014 School (super-individual), '\n                               'Cell (grid patch), and Resource (low '\n                               'trophic level).\\n',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 marine entity types present'},\n               {'contains': ['\"http://vocab.nerc.ac.uk/collection/P01/current/OBSINDL01/\"',\n                             '\"http://vocab.nerc.ac.uk/collection/P01/current/OBSINDW01/\"',\n                             '\"http://vocab.nerc.ac.uk/collection/P01/current/OBSINDN01/\"'],\n                'description': 'State variables for length, weight, and '\n                               'abundance must carry NERC P01 vocabulary '\n                               'term URIs to validate the domain '\n                               'vocabulary annotation path.\\n',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 size-based predation vocabulary '\n                        'annotation'},\n               {'contains': ['\"Growth \u2014 Von Bertalanffy\"',\n                             '\"Predation mortality\"',\n                             '\"Starvation mortality\"',\n                             '\"Reproduction\"'],\n                'description': 'The submodels array must include entries '\n                               'for the two core quantitative processes \u2014 '\n                               'Von Bertalanffy growth and size-based '\n                               'predation.\\n',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 growth and predation submodels present'},\n               {'contains': ['\"application/x-netcdf\"',\n                             '\"Low trophic level (LTL) biogeochemical '\n                             'forcing\"'],\n                'description': 'The inputData array must reference '\n                               'biogeochemical LTL forcing (NetCDF format) '\n                               'as a required external data source.\\n',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 NetCDF LTL forcing input data present'},\n               {'contains': ['\"basicPrinciples\"',\n                             '\"emergence\"',\n                             '\"adaptation\"',\n                             '\"objectives\"',\n                             '\"learning\"',\n                             '\"prediction\"',\n                             '\"sensing\"',\n                             '\"interaction\"',\n                             '\"stochasticity\"',\n                             '\"collectives\"',\n                             '\"observation\"'],\n                'description': 'All eleven ODD design concept keys must '\n                               'appear in the OSMOSE record.',\n                'input': '../examples/osmose_odd.json',\n                'name': 'OSMOSE \u2014 all 11 design concepts present'}]}"
-            }
-          ]
-        }
-      ]
-    },
     {
       "source": {
         "type": "EXAMPLE",
@@ -104,7 +68,7 @@
             },
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -136,13 +100,13 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
-                  "nodes": []
-                },
                 "geojson:FeatureShape": {
                   "nodes": [
                     "<doi:10.18564/jasss.4259>"
                   ]
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
@@ -152,7 +116,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <doi:10.18564/jasss.4259>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <doi:10.18564/jasss.4259>\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -164,34 +128,97 @@
             {
               "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
               "focusNodes": {
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-entity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                "<https://www.ogc.org/rules/prov/#prop-agent>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-hadPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-generated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedStart>": {
@@ -200,138 +227,75 @@
                 "<https://www.ogc.org/rules/prov/#prop-hadRole>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-activity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-generated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-agent>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
-                  "nodes": []
-                },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedEnd>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#Invalidation-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-activity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
+                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#End-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
+                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -343,21 +307,21 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl",
               "focusNodes": {
-                "stac:ItemShape": {
+                "stac:AssetShape": {
                   "nodes": []
                 },
-                "stac:AssetShape": {
+                "stac:CollectionShape": {
                   "nodes": []
                 },
                 "stac:LinkShape": {
                   "nodes": []
                 },
-                "stac:CollectionShape": {
+                "stac:ItemShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:ItemShape: *none*\n - Shape stac:AssetShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:CollectionShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:AssetShape: *none*\n - Shape stac:CollectionShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:ItemShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -389,7 +353,16 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl",
               "focusNodes": {
-                "osc:MissionsShape": {
+                "osc:ProjectShape": {
+                  "nodes": []
+                },
+                "osc:RegionShape": {
+                  "nodes": []
+                },
+                "osc:ExperimentShape": {
+                  "nodes": []
+                },
+                "osc:WorkflowsShape": {
                   "nodes": []
                 },
                 "osc:VariablesShape": {
@@ -398,24 +371,15 @@
                 "osc:StatusShape": {
                   "nodes": []
                 },
-                "osc:ProjectShape": {
-                  "nodes": []
-                },
-                "osc:RegionShape": {
-                  "nodes": []
-                },
-                "osc:WorkflowsShape": {
+                "osc:MissionsShape": {
                   "nodes": []
                 },
                 "osc:TypeShape": {
                   "nodes": []
-                },
-                "osc:ExperimentShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:MissionsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:TypeShape: *none*\n - Shape osc:ExperimentShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:ExperimentShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:MissionsShape: *none*\n - Shape osc:TypeShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -427,30 +391,30 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl",
               "focusNodes": {
-                "processing:DatetimeShape": {
-                  "nodes": []
-                },
-                "processing:VersionShape": {
-                  "nodes": []
-                },
-                "processing:LevelShape": {
+                "processing:FacilityShape": {
                   "nodes": []
                 },
                 "processing:LineageShape": {
                   "nodes": []
                 },
-                "processing:FacilityShape": {
+                "processing:VersionShape": {
+                  "nodes": []
+                },
+                "processing:SoftwareShape": {
                   "nodes": []
                 },
                 "processing:ExpressionShape": {
                   "nodes": []
                 },
-                "processing:SoftwareShape": {
+                "processing:LevelShape": {
+                  "nodes": []
+                },
+                "processing:DatetimeShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:DatetimeShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:FacilityShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:SoftwareShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:FacilityShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:SoftwareShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:DatetimeShape: *none*\n"
             }
           ]
         }
@@ -519,7 +483,7 @@
             },
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -551,13 +515,13 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
-                  "nodes": []
-                },
                 "geojson:FeatureShape": {
                   "nodes": [
                     "<https://osmose-model.org/>"
                   ]
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
@@ -567,7 +531,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://osmose-model.org/>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://osmose-model.org/>\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -579,34 +543,97 @@
             {
               "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
               "focusNodes": {
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-entity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                "<https://www.ogc.org/rules/prov/#prop-agent>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-hadPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-generated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedStart>": {
@@ -615,138 +642,75 @@
                 "<https://www.ogc.org/rules/prov/#prop-hadRole>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-activity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-generated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-agent>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
-                  "nodes": []
-                },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedEnd>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#Invalidation-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-activity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
+                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#End-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
+                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -758,21 +722,21 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl",
               "focusNodes": {
-                "stac:ItemShape": {
+                "stac:AssetShape": {
                   "nodes": []
                 },
-                "stac:AssetShape": {
+                "stac:CollectionShape": {
                   "nodes": []
                 },
                 "stac:LinkShape": {
                   "nodes": []
                 },
-                "stac:CollectionShape": {
+                "stac:ItemShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:ItemShape: *none*\n - Shape stac:AssetShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:CollectionShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:AssetShape: *none*\n - Shape stac:CollectionShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:ItemShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -804,7 +768,16 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl",
               "focusNodes": {
-                "osc:MissionsShape": {
+                "osc:ProjectShape": {
+                  "nodes": []
+                },
+                "osc:RegionShape": {
+                  "nodes": []
+                },
+                "osc:ExperimentShape": {
+                  "nodes": []
+                },
+                "osc:WorkflowsShape": {
                   "nodes": []
                 },
                 "osc:VariablesShape": {
@@ -813,24 +786,15 @@
                 "osc:StatusShape": {
                   "nodes": []
                 },
-                "osc:ProjectShape": {
-                  "nodes": []
-                },
-                "osc:RegionShape": {
-                  "nodes": []
-                },
-                "osc:WorkflowsShape": {
+                "osc:MissionsShape": {
                   "nodes": []
                 },
                 "osc:TypeShape": {
                   "nodes": []
-                },
-                "osc:ExperimentShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:MissionsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:TypeShape: *none*\n - Shape osc:ExperimentShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:ExperimentShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:MissionsShape: *none*\n - Shape osc:TypeShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -842,30 +806,30 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl",
               "focusNodes": {
-                "processing:DatetimeShape": {
-                  "nodes": []
-                },
-                "processing:VersionShape": {
-                  "nodes": []
-                },
-                "processing:LevelShape": {
+                "processing:FacilityShape": {
                   "nodes": []
                 },
                 "processing:LineageShape": {
                   "nodes": []
                 },
-                "processing:FacilityShape": {
+                "processing:VersionShape": {
+                  "nodes": []
+                },
+                "processing:SoftwareShape": {
                   "nodes": []
                 },
                 "processing:ExpressionShape": {
                   "nodes": []
                 },
-                "processing:SoftwareShape": {
+                "processing:LevelShape": {
+                  "nodes": []
+                },
+                "processing:DatetimeShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:DatetimeShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:FacilityShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:SoftwareShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:FacilityShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:SoftwareShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:DatetimeShape: *none*\n"
             }
           ]
         }
@@ -934,7 +898,7 @@
             },
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/prov-o\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/processing-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/cf-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/extensions/osc-ontology/ontology.ttl\n - https://ogcincubator.github.io/bblocks-stac/build/annotated/contrib/stac/core-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -966,13 +930,13 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:GeometryShape/sh:or/rdf:first": {
-                  "nodes": []
-                },
                 "geojson:FeatureShape": {
                   "nodes": [
                     "<https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1>"
                   ]
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 },
                 "geojson:GeometryShape": {
                   "nodes": []
@@ -982,7 +946,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/odd/utsira-reef-biomass-demonstrator-v1>\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -994,34 +958,97 @@
             {
               "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
               "focusNodes": {
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-entity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                "<https://www.ogc.org/rules/prov/#prop-agent>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-hadPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-generated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedStart>": {
@@ -1030,138 +1057,75 @@
                 "<https://www.ogc.org/rules/prov/#prop-hadRole>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-activity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-generated>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-agent>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
-                  "nodes": []
-                },
-                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
-                  "nodes": []
-                },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedEnd>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#Invalidation-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-activity>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
+                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
                   "nodes": []
                 },
                 "<https://www.ogc.org/rules/prov/#End-shape>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
+                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
                   "nodes": []
                 },
-                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
+                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -1173,21 +1137,21 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl",
               "focusNodes": {
-                "stac:ItemShape": {
+                "stac:AssetShape": {
                   "nodes": []
                 },
-                "stac:AssetShape": {
+                "stac:CollectionShape": {
                   "nodes": []
                 },
                 "stac:LinkShape": {
                   "nodes": []
                 },
-                "stac:CollectionShape": {
+                "stac:ItemShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:ItemShape: *none*\n - Shape stac:AssetShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:CollectionShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/core-ontology/shapes.shacl:\n - Shape stac:AssetShape: *none*\n - Shape stac:CollectionShape: *none*\n - Shape stac:LinkShape: *none*\n - Shape stac:ItemShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -1219,7 +1183,16 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl",
               "focusNodes": {
-                "osc:MissionsShape": {
+                "osc:ProjectShape": {
+                  "nodes": []
+                },
+                "osc:RegionShape": {
+                  "nodes": []
+                },
+                "osc:ExperimentShape": {
+                  "nodes": []
+                },
+                "osc:WorkflowsShape": {
                   "nodes": []
                 },
                 "osc:VariablesShape": {
@@ -1228,24 +1201,15 @@
                 "osc:StatusShape": {
                   "nodes": []
                 },
-                "osc:ProjectShape": {
-                  "nodes": []
-                },
-                "osc:RegionShape": {
-                  "nodes": []
-                },
-                "osc:WorkflowsShape": {
+                "osc:MissionsShape": {
                   "nodes": []
                 },
                 "osc:TypeShape": {
                   "nodes": []
-                },
-                "osc:ExperimentShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:MissionsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:TypeShape: *none*\n - Shape osc:ExperimentShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/osc-ontology/shapes.shacl:\n - Shape osc:ProjectShape: *none*\n - Shape osc:RegionShape: *none*\n - Shape osc:ExperimentShape: *none*\n - Shape osc:WorkflowsShape: *none*\n - Shape osc:VariablesShape: *none*\n - Shape osc:StatusShape: *none*\n - Shape osc:MissionsShape: *none*\n - Shape osc:TypeShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -1257,30 +1221,30 @@
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl",
               "focusNodes": {
-                "processing:DatetimeShape": {
-                  "nodes": []
-                },
-                "processing:VersionShape": {
-                  "nodes": []
-                },
-                "processing:LevelShape": {
+                "processing:FacilityShape": {
                   "nodes": []
                 },
                 "processing:LineageShape": {
                   "nodes": []
                 },
-                "processing:FacilityShape": {
+                "processing:VersionShape": {
+                  "nodes": []
+                },
+                "processing:SoftwareShape": {
                   "nodes": []
                 },
                 "processing:ExpressionShape": {
                   "nodes": []
                 },
-                "processing:SoftwareShape": {
+                "processing:LevelShape": {
+                  "nodes": []
+                },
+                "processing:DatetimeShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:DatetimeShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:FacilityShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:SoftwareShape: *none*\n"
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-stac/_sources/extensions/processing-ontology/shapes.shacl:\n - Shape processing:FacilityShape: *none*\n - Shape processing:LineageShape: *none*\n - Shape processing:VersionShape: *none*\n - Shape processing:SoftwareShape: *none*\n - Shape processing:ExpressionShape: *none*\n - Shape processing:LevelShape: *none*\n - Shape processing:DatetimeShape: *none*\n"
             }
           ]
         }
@@ -1289,8 +1253,8 @@
   ],
   "globalErrors": {},
   "counts": {
-    "total": 4,
+    "total": 3,
     "passed": 3,
-    "failed": 1
+    "failed": 0
   }
 }

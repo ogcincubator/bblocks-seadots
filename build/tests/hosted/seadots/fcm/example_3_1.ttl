@@ -1,0 +1,22 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<file:///github/workspace/A> dct:description "[A] Synthetic driver concept" .
+
+<file:///github/workspace/A-B> dct:description "Synthetic edge; the value carries no empirical meaning." .
+
+<file:///github/workspace/B> dct:description "[B] Synthetic responding concept" .
+
+<file:///github/workspace/B-A> dct:description "Synthetic feedback edge; the value carries no empirical meaning." .
+
+[] dct:description "SYNTHETIC. Constructed to exercise heterogeneous activation; not derived from any survey or observation." ;
+    fcm:hasActivationSpec [ fcm:activationMode fcm:heterogeneousActivation ;
+            fcm:heterogeneousActivation ( [ fcm:activationFunction fcmact:logistic ] [ fcm:activationFunction fcmact:logistic-of-square ] ) ] ;
+    fcm:hasGraph [ dct:description "Synthetic two-concept map, the smallest graph the upstream validator accepts." ;
+            fcm:hasEdge <file:///github/workspace/A-B>,
+                <file:///github/workspace/B-A> ;
+            fcm:hasNode <file:///github/workspace/A>,
+                <file:///github/workspace/B> ] .
+

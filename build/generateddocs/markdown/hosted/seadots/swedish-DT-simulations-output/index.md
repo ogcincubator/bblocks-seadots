@@ -61341,27 +61341,27 @@ repetitions ticks current_herring_season current_management_season current_TAC_h
                                             :south_latitude -90 ;
                                             :west_longitude -180 ] ;
                                     :coordinate_system [ :axis [ ns1:unit <file:///github/workspace/degree> ;
-                                                    csvw:name "Geodetic longitude" ;
-                                                    :abbreviation "Lon" ;
-                                                    :direction "east" ],
-                                                [ ns1:unit <file:///github/workspace/degree> ;
                                                     csvw:name "Geodetic latitude" ;
                                                     :abbreviation "Lat" ;
-                                                    :direction "north" ] ;
+                                                    :direction "north" ],
+                                                [ ns1:unit <file:///github/workspace/degree> ;
+                                                    csvw:name "Geodetic longitude" ;
+                                                    :abbreviation "Lon" ;
+                                                    :direction "east" ] ;
                                             :subtype "ellipsoidal" ] ;
                                     :datum_ensemble [ csvw:name "World Geodetic System 1984 ensemble" ;
                                             :accuracy "2.0" ;
                                             :ellipsoid [ csvw:name "WGS 84" ;
                                                     :inverse_flattening 2.982572e+02 ;
                                                     :semi_major_axis 6378137 ] ;
-                                            :members [ csvw:name "World Geodetic System 1984 (G873)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1150)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G2296)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
+                                            :members [ csvw:name "World Geodetic System 1984 (G2296)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G730)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1674)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G1762)" ],
+                                                [ csvw:name "World Geodetic System 1984 (G873)" ],
                                                 [ csvw:name "World Geodetic System 1984 (G2139)" ],
                                                 [ csvw:name "World Geodetic System 1984 (Transit)" ],
-                                                [ csvw:name "World Geodetic System 1984 (G1762)" ] ] ;
+                                                [ csvw:name "World Geodetic System 1984 (G1150)" ] ] ;
                                     :scope "Not known." ] ;
                             :edges "planar" ;
                             :exampleGeometryGeoJSON [ a <http://www.opengis.net/ont/sf#Polygon> ;
@@ -62060,7 +62060,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.swedish-DT-simulations-output
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

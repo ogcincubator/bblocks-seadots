@@ -2,7 +2,7 @@
 @prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
-@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix status: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/windfarms.557> a geojson:Feature ;
@@ -11,11 +11,11 @@
     geojson:properties [ seadots:distanceToCoast 2.006722e+04 ;
             seadots:powerMW 9e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Energa MFW 1 Offshore wind farm 1" ;
-            owf:country seadots-emodnet:Poland ;
+            status: status:Planned ;
+            status:name "Energa MFW 1 Offshore wind farm 1" ;
+            owf:country status:Poland ;
             owf:installationType "Grounded" ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+    status:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.610> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -23,10 +23,10 @@
     geojson:properties [ seadots:distanceToCoast 3.384265e+04 ;
             seadots:powerMW 9.75e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltica 9" ;
-            owf:country seadots-emodnet:Poland ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+            status: status:Planned ;
+            status:name "Baltica 9" ;
+            owf:country status:Poland ] ;
+    status:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.613> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -34,19 +34,19 @@
     geojson:properties [ seadots:distanceToCoast 2.539022e+04 ;
             seadots:powerMW 9.66e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltic East" ;
-            owf:country seadots-emodnet:Poland ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+            status: status:Planned ;
+            status:name "Baltic East" ;
+            owf:country status:Poland ] ;
+    status:geometry_name "the_geom" .
 
 [] a geojson:FeatureCollection ;
     geojson:features <file:///github/workspace/windfarms.557>,
         <file:///github/workspace/windfarms.610>,
         <file:///github/workspace/windfarms.613> ;
-    seadots-emodnet:crs [ a seadots-emodnet:name ;
-            geojson:properties [ seadots-emodnet:name "urn:ogc:def:crs:EPSG::4326" ] ] ;
-    seadots-emodnet:numberMatched 26 ;
-    seadots-emodnet:numberReturned 26 ;
-    seadots-emodnet:timeStamp "2026-10-29T22:52:51.131Z" ;
-    seadots-emodnet:totalFeatures 26 .
+    status:crs [ a status:name ;
+            status:name "urn:ogc:def:crs:EPSG::4326" ] ;
+    status:numberMatched 26 ;
+    status:numberReturned 26 ;
+    status:timeStamp "2026-10-29T22:52:51.131Z" ;
+    status:totalFeatures 26 .
 

@@ -220,7 +220,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -229,7 +229,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -238,7 +238,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -247,7 +247,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -256,7 +256,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -265,7 +265,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -274,7 +274,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -283,7 +283,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -292,7 +292,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -301,7 +301,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -310,7 +310,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -319,7 +319,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -328,7 +328,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -337,7 +337,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0,
@@ -430,7 +430,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -439,7 +439,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -448,7 +448,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -457,7 +457,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -466,7 +466,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -475,7 +475,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -484,7 +484,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -493,7 +493,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -502,7 +502,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -511,7 +511,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -520,7 +520,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -529,7 +529,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -538,7 +538,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -547,7 +547,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0.2,
@@ -640,7 +640,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -649,7 +649,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -658,7 +658,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -667,7 +667,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -676,7 +676,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -685,7 +685,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -694,7 +694,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -703,7 +703,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -712,7 +712,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -721,7 +721,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -730,7 +730,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -739,7 +739,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -748,7 +748,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -757,7 +757,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0.4,
@@ -850,7 +850,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -859,7 +859,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -868,7 +868,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -877,7 +877,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -886,7 +886,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -895,7 +895,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -904,7 +904,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -913,7 +913,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -922,7 +922,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -931,7 +931,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -940,7 +940,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -949,7 +949,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -958,7 +958,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -967,7 +967,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0.7,
@@ -1060,7 +1060,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -1069,7 +1069,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -1078,7 +1078,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -1087,7 +1087,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -1096,7 +1096,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -1105,7 +1105,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -1114,7 +1114,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -1123,7 +1123,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -1132,7 +1132,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -1141,7 +1141,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -1150,7 +1150,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -1159,7 +1159,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -1168,7 +1168,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -1177,7 +1177,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0.8,
@@ -1270,7 +1270,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                 ],
                 "edges": [
                     {
-                        "id": "C5->C3",
+                        "id": "C5-C3",
                         "src": "C5",
                         "dst": "C3",
                         "weight": -0.4,
@@ -1279,7 +1279,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C10",
+                        "id": "C2-C10",
                         "src": "C2",
                         "dst": "C10",
                         "weight": 0.3,
@@ -1288,7 +1288,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C1->C2",
+                        "id": "C1-C2",
                         "src": "C1",
                         "dst": "C2",
                         "weight": 0.9,
@@ -1297,7 +1297,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C6",
+                        "id": "C3-C6",
                         "src": "C3",
                         "dst": "C6",
                         "weight": -0.5,
@@ -1306,7 +1306,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C10",
+                        "id": "C5-C10",
                         "src": "C5",
                         "dst": "C10",
                         "weight": 0.9,
@@ -1315,7 +1315,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C9->C5",
+                        "id": "C9-C5",
                         "src": "C9",
                         "dst": "C5",
                         "weight": -0.3,
@@ -1324,7 +1324,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C8->C9",
+                        "id": "C8-C9",
                         "src": "C8",
                         "dst": "C9",
                         "weight": 0.7,
@@ -1333,7 +1333,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C5->C8",
+                        "id": "C5-C8",
                         "src": "C5",
                         "dst": "C8",
                         "weight": 0.6,
@@ -1342,7 +1342,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C4->C5",
+                        "id": "C4-C5",
                         "src": "C4",
                         "dst": "C5",
                         "weight": 0.5,
@@ -1351,7 +1351,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C6->C7",
+                        "id": "C6-C7",
                         "src": "C6",
                         "dst": "C7",
                         "weight": -0.7,
@@ -1360,7 +1360,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C7",
+                        "id": "C2-C7",
                         "src": "C2",
                         "dst": "C7",
                         "weight": 0.3,
@@ -1369,7 +1369,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C7->C5",
+                        "id": "C7-C5",
                         "src": "C7",
                         "dst": "C5",
                         "weight": -0.8,
@@ -1378,7 +1378,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C3->C4",
+                        "id": "C3-C4",
                         "src": "C3",
                         "dst": "C4",
                         "weight": 0.7,
@@ -1387,7 +1387,7 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
                         }
                     },
                     {
-                        "id": "C2->C3",
+                        "id": "C2-C3",
                         "src": "C2",
                         "dst": "C3",
                         "weight": 0.9,
@@ -1606,6 +1606,1720 @@ Every field of `DeterministicFCMSequence` is present: `timespec_series`, `fcm_se
 }
 ```
 
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm-sequence/context.jsonld",
+  "timespec_series": [
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 19
+    },
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 20
+    },
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 21
+    },
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 22
+    },
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 23
+    },
+    {
+      "type": "weekofyeartimespec",
+      "year": 2026,
+      "week": 24
+    }
+  ],
+  "fcm_series": [
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0.2,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0.4,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0.8,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    {
+      "graph": {
+        "vertices": [
+          {
+            "id": "C1",
+            "metadata": {
+              "description": "[C1] Proposal Deadline Nearness"
+            }
+          },
+          {
+            "id": "C2",
+            "metadata": {
+              "description": "[C2] Stress Level"
+            }
+          },
+          {
+            "id": "C3",
+            "metadata": {
+              "description": "[C3] Dark Chocolate Consumption"
+            }
+          },
+          {
+            "id": "C4",
+            "metadata": {
+              "description": "[C4] Temporary Morale Boost"
+            }
+          },
+          {
+            "id": "C5",
+            "metadata": {
+              "description": "[C5] Proposal Progress"
+            }
+          },
+          {
+            "id": "C6",
+            "metadata": {
+              "description": "[C6] Sleep Quality"
+            }
+          },
+          {
+            "id": "C7",
+            "metadata": {
+              "description": "[C7] Overthinking / Scope Creep"
+            }
+          },
+          {
+            "id": "C8",
+            "metadata": {
+              "description": "[C8] Confidence That 'This Is a Great Idea'"
+            }
+          },
+          {
+            "id": "C9",
+            "metadata": {
+              "description": "[C9] Likelihood of Creating Yet Another Figure"
+            }
+          },
+          {
+            "id": "C10",
+            "metadata": {
+              "description": "[C10] Probability of Submitting on Time"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "C5-C3",
+            "src": "C5",
+            "dst": "C3",
+            "weight": -0.4,
+            "metadata": {
+              "description": "More progress reduces emergency dark chocolate consumption"
+            }
+          },
+          {
+            "id": "C2-C10",
+            "src": "C2",
+            "dst": "C10",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Panic can, regrettably, improve on-time submission"
+            }
+          },
+          {
+            "id": "C1-C2",
+            "src": "C1",
+            "dst": "C2",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Deadline nearness increases stress"
+            }
+          },
+          {
+            "id": "C3-C6",
+            "src": "C3",
+            "dst": "C6",
+            "weight": -0.5,
+            "metadata": {
+              "description": "Late chocolate reduces sleep quality"
+            }
+          },
+          {
+            "id": "C5-C10",
+            "src": "C5",
+            "dst": "C10",
+            "weight": 0.9,
+            "metadata": {
+              "description": "More progress increases the chance of submitting on time"
+            }
+          },
+          {
+            "id": "C9-C5",
+            "src": "C9",
+            "dst": "C5",
+            "weight": -0.3,
+            "metadata": {
+              "description": "Additional figure creation has a questionable net effect on progress"
+            }
+          },
+          {
+            "id": "C8-C9",
+            "src": "C8",
+            "dst": "C9",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Confidence encourages creation of yet another figure"
+            }
+          },
+          {
+            "id": "C5-C8",
+            "src": "C5",
+            "dst": "C8",
+            "weight": 0.6,
+            "metadata": {
+              "description": "Progress boosts confidence"
+            }
+          },
+          {
+            "id": "C4-C5",
+            "src": "C4",
+            "dst": "C5",
+            "weight": 0.5,
+            "metadata": {
+              "description": "Higher morale improves proposal progress"
+            }
+          },
+          {
+            "id": "C6-C7",
+            "src": "C6",
+            "dst": "C7",
+            "weight": -0.7,
+            "metadata": {
+              "description": "Better sleep reduces overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C2-C7",
+            "src": "C2",
+            "dst": "C7",
+            "weight": 0.3,
+            "metadata": {
+              "description": "Stress promotes overthinking and scope creep"
+            }
+          },
+          {
+            "id": "C7-C5",
+            "src": "C7",
+            "dst": "C5",
+            "weight": -0.8,
+            "metadata": {
+              "description": "Scope creep reduces genuine proposal progress"
+            }
+          },
+          {
+            "id": "C3-C4",
+            "src": "C3",
+            "dst": "C4",
+            "weight": 0.7,
+            "metadata": {
+              "description": "Dark chocolate provides a temporary morale boost"
+            }
+          },
+          {
+            "id": "C2-C3",
+            "src": "C2",
+            "dst": "C3",
+            "weight": 0.9,
+            "metadata": {
+              "description": "Stress increases dark chocolate consumption"
+            }
+          }
+        ],
+        "metadata": {
+          "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+        }
+      },
+      "metadata": {},
+      "activation_spec": {
+        "mode": "homogeneous",
+        "homogeneous": {
+          "label": "logistic",
+          "params": {
+            "b": 0,
+            "lambda": 1,
+            "a": 1
+          }
+        }
+      }
+    }
+  ],
+  "solution_series": [
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.45667766616805705,
+          0.5792448906757616,
+          0.43431236020829006,
+          0.4431620318453285,
+          0.4682872146731508,
+          0.5647806862111074,
+          0.5975690903315223,
+          0.6397024421278741
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.3654966046772188e-11,
+          1.0264566974171885e-11,
+          2.4121760144879545e-11,
+          7.42356176530734e-12,
+          1.0557110741160614e-11,
+          2.0290991109561674e-11,
+          1.5049961277213697e-11,
+          2.853928204871181e-11
+        ]
+      ],
+      "b_success": true
+    },
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.4870529858088966,
+          0.5844181353422656,
+          0.4348187071396313,
+          0.4394174858584556,
+          0.4689399279790245,
+          0.5648553618382783,
+          0.5975816608780322,
+          0.6398074694671319
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.4616363674946342e-11,
+          9.986012017293433e-12,
+          2.6247726214734257e-11,
+          7.234268739608751e-12,
+          1.0328848887297681e-11,
+          2.157030110083724e-11,
+          1.4591439168043507e-11,
+          3.033617801406763e-11
+        ]
+      ],
+      "b_success": true
+    },
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.5175242704106572,
+          0.5895890972538819,
+          0.4353247208507303,
+          0.4356680270919343,
+          0.46959360413050943,
+          0.564929985382611,
+          0.5975942225290533,
+          0.639912414320346
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.343658517782842e-11,
+          1.0514034087805157e-11,
+          2.5167146144866592e-11,
+          7.630729381702395e-12,
+          1.0438094832920797e-11,
+          1.9839241360841697e-11,
+          1.5427992217098563e-11,
+          2.789923847501541e-11
+        ]
+      ],
+      "b_success": true
+    },
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.562919090047955,
+          0.5972556765202262,
+          0.4360747117808305,
+          0.43009598553435724,
+          0.47056521926543216,
+          0.5650405836553745,
+          0.5976128397005995,
+          0.6400679342947546
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.455802145500229e-11,
+          1.0294209928929376e-11,
+          2.527777986927049e-11,
+          7.492784170892719e-12,
+          1.0007772388576086e-11,
+          2.1813106876322763e-11,
+          1.5419776566716337e-11,
+          3.067091025599211e-11
+        ]
+      ],
+      "b_success": true
+    },
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.5778572179561533,
+          0.5997683643345215,
+          0.4363204491156591,
+          0.4282661815383021,
+          0.47088433720485207,
+          0.5650768201857603,
+          0.5976189393883914,
+          0.6401188846020557
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.1699308188894975e-11,
+          1.0131562255821791e-11,
+          2.598132819997545e-11,
+          7.381872890732666e-12,
+          9.783507337601804e-12,
+          1.7680634734063005e-11,
+          1.5338175174406388e-11,
+          2.4859225788986805e-11
+        ]
+      ],
+      "b_success": true
+    },
+    {
+      "centroids": [
+        [
+          0.5,
+          0.610639233949222,
+          0.5926545242277057,
+          0.6022522020584374,
+          0.4365633284265874,
+          0.4264555590227452,
+          0.47120013332343164,
+          0.5651126345874508,
+          0.5976249679896642,
+          0.6401692392339768
+        ]
+      ],
+      "maxdists": [
+        [
+          0,
+          0,
+          1.3866574555265743e-11,
+          9.784395516021505e-12,
+          2.4658441954983346e-11,
+          7.136180535383119e-12,
+          9.71445146547012e-12,
+          2.1174062503348523e-11,
+          1.4998557951173552e-11,
+          2.97699642715088e-11
+        ]
+      ],
+      "b_success": true
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///github/workspace/C1> dct:description "[C1] Proposal Deadline Nearness" .
+
+<file:///github/workspace/C1-C2> dct:description "Deadline nearness increases stress" .
+
+<file:///github/workspace/C10> dct:description "[C10] Probability of Submitting on Time" .
+
+<file:///github/workspace/C2> dct:description "[C2] Stress Level" .
+
+<file:///github/workspace/C2-C10> dct:description "Panic can, regrettably, improve on-time submission" .
+
+<file:///github/workspace/C2-C3> dct:description "Stress increases dark chocolate consumption" .
+
+<file:///github/workspace/C2-C7> dct:description "Stress promotes overthinking and scope creep" .
+
+<file:///github/workspace/C3> dct:description "[C3] Dark Chocolate Consumption" .
+
+<file:///github/workspace/C3-C4> dct:description "Dark chocolate provides a temporary morale boost" .
+
+<file:///github/workspace/C3-C6> dct:description "Late chocolate reduces sleep quality" .
+
+<file:///github/workspace/C4> dct:description "[C4] Temporary Morale Boost" .
+
+<file:///github/workspace/C4-C5> dct:description "Higher morale improves proposal progress" .
+
+<file:///github/workspace/C5> dct:description "[C5] Proposal Progress" .
+
+<file:///github/workspace/C5-C10> dct:description "More progress increases the chance of submitting on time" .
+
+<file:///github/workspace/C5-C3> dct:description "More progress reduces emergency dark chocolate consumption" .
+
+<file:///github/workspace/C5-C8> dct:description "Progress boosts confidence" .
+
+<file:///github/workspace/C6> dct:description "[C6] Sleep Quality" .
+
+<file:///github/workspace/C6-C7> dct:description "Better sleep reduces overthinking and scope creep" .
+
+<file:///github/workspace/C7> dct:description "[C7] Overthinking / Scope Creep" .
+
+<file:///github/workspace/C7-C5> dct:description "Scope creep reduces genuine proposal progress" .
+
+<file:///github/workspace/C8> dct:description "[C8] Confidence That 'This Is a Great Idea'" .
+
+<file:///github/workspace/C8-C9> dct:description "Confidence encourages creation of yet another figure" .
+
+<file:///github/workspace/C9> dct:description "[C9] Likelihood of Creating Yet Another Figure" .
+
+<file:///github/workspace/C9-C5> dct:description "Additional figure creation has a questionable net effect on progress" .
+
+[] fcm:mapSeries ( [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] [ fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+                        fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+                fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+                        fcm:hasEdge <file:///github/workspace/C1-C2>,
+                            <file:///github/workspace/C2-C10>,
+                            <file:///github/workspace/C2-C3>,
+                            <file:///github/workspace/C2-C7>,
+                            <file:///github/workspace/C3-C4>,
+                            <file:///github/workspace/C3-C6>,
+                            <file:///github/workspace/C4-C5>,
+                            <file:///github/workspace/C5-C10>,
+                            <file:///github/workspace/C5-C3>,
+                            <file:///github/workspace/C5-C8>,
+                            <file:///github/workspace/C6-C7>,
+                            <file:///github/workspace/C7-C5>,
+                            <file:///github/workspace/C8-C9>,
+                            <file:///github/workspace/C9-C5> ;
+                        fcm:hasNode <file:///github/workspace/C1>,
+                            <file:///github/workspace/C10>,
+                            <file:///github/workspace/C2>,
+                            <file:///github/workspace/C3>,
+                            <file:///github/workspace/C4>,
+                            <file:///github/workspace/C5>,
+                            <file:///github/workspace/C6>,
+                            <file:///github/workspace/C7>,
+                            <file:///github/workspace/C8>,
+                            <file:///github/workspace/C9> ] ] ) ;
+    fcm:solutionSeries ( [ fcm:hasFiniteEquilibria true ] [ fcm:hasFiniteEquilibria true ] [ fcm:hasFiniteEquilibria true ] [ fcm:hasFiniteEquilibria true ] [ fcm:hasFiniteEquilibria true ] [ fcm:hasFiniteEquilibria true ] ) ;
+    fcm:timeSpecSeries ( [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 19 ;
+                fcm:year 2026 ] [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 20 ;
+                fcm:year 2026 ] [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 21 ;
+                fcm:year 2026 ] [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 22 ;
+                fcm:year 2026 ] [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 23 ;
+                fcm:year 2026 ] [ a fcm:WeekOfYearTimeSpec ;
+                fcm:week 24 ;
+                fcm:year 2026 ] ) .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -1785,7 +3499,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm-sequence
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

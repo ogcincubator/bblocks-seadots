@@ -1,19 +1,71 @@
 Validation report for ogc.hosted.seadots.fcm - Fuzzy Cognitive Map
-Generated 2026-11-04T23:57:21.872670+00:00
+Generated 2026-11-05T01:02:26.692490+00:00
 === Files ===
 Using examples/fcm-heterogeneous-minimal.json from examples
 JSON-LD context is present - uplifting
+Output JSON-LD example_3_1.jsonld created
+Output Turtle example_3_1.ttl created
 === End Files ===
 
 === JSON Schema ===
 Validation passed
 === End JSON Schema ===
 
-=== JSON-LD ===
+=== SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl
+ - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl
+ - /github/workspace/_sources/ontology/ontology.ttl
 
 ** Validation error **
-Error found when uplifting JSON-LD: file:///github/workspace/A->B does not look like a valid URI, trying to serialize this will break.
-file:///github/workspace/B->A does not look like a valid URI, trying to serialize this will break.
+Validation result for _sources/_staging/fcm-ontology/rules.shacl:
+  Validation Report
+  Conforms: False
+  Results (1):
+  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: fcm:NoDanglingNodeShape
+  	Focus Node: [ dct:description Literal("Synthetic two-concept map, the smallest graph the upstream validator accepts.") ; fcm:hasEdge <file:///github/workspace/A-B>, <file:///github/workspace/B-A> ; fcm:hasNode <file:///github/workspace/A>, <file:///github/workspace/B> ]
+  	Value Node: [ dct:description Literal("Synthetic two-concept map, the smallest graph the upstream validator accepts.") ; fcm:hasEdge <file:///github/workspace/A-B>, <file:///github/workspace/B-A> ; fcm:hasNode <file:///github/workspace/A>, <file:///github/workspace/B> ]
+  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
+        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
+        SELECT $this ?node WHERE {
+          $this fcm:hasNode ?node .
+          FILTER NOT EXISTS {
+            $this fcm:hasEdge ?edge .
+            ?edge fcm:sourceNode|fcm:targetNode ?node .
+          }
+        } ") ]
+  	Message: node is dangling: it is neither source nor target of any edge.
+  
+Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:
+ - Shape fcm:SolutionShape: *none*
+ - Shape fcm:NoDanglingNodeShape: _:N8c90858e1aa24264a9af4380d90c5dc7
+ - Shape fcm:MinimumNodesShape: _:N8c90858e1aa24264a9af4380d90c5dc7
+ - Shape fcm:UniqueNodeKeyShape: _:N8c90858e1aa24264a9af4380d90c5dc7
+ - Shape fcm:SequenceSeriesShape: *none*
+ - Shape fcm:SolverCapabilityShape: *none*
+ - Shape fcm:NodeStateValueShape: *none*
+ - Shape fcm:SequenceStepShape: *none*
+ - Shape fcm:EquilibriumShape: *none*
+ - Shape fcm:PolarityRuleShape: *none*
+ - Shape fcm:NodeKeyShape: *none*
+ - Shape fcm:HeterogeneousActivationShape: *none*
+ - Shape fcm:RangeTimeSpecShape: *none*
+ - Shape fcm:NodeStateShape: *none*
+ - Shape fcm:WeightMatrixShape: *none*
+ - Shape fcm:EdgeEndpointsShape: _:N8c90858e1aa24264a9af4380d90c5dc7
 
-=== End JSON-LD ===
+Validation result for _sources/ontology/rules.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/ontology/rules.shacl:
+ - Shape :ProvClosureShape: *none*
+ - Shape :IndexedTermShape: *none*
+ - Shape :EquationByteEqualityShape: *none*
+ - Shape :SymbolInEquationShape: *none*
+ - Shape :PrimaryEntryShape: *none*
+
+=== End SHACL ===
 

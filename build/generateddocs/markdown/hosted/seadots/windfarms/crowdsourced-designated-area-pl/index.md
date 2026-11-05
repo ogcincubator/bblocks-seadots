@@ -28,9 +28,9 @@ One row as reported by the national compilation; no geometry is invented at this
     "properties": {
         "farm": "MFW Baltic Power",
         "developer": "Orlen; Northland Power",
-        "capacity_mw": 1200,
+        "capacity_mw": "1200",
         "status_aug2026": "construction (first power 10 Jul 2026)",
-        "first_power_or_completion_year": 2026,
+        "first_power_or_completion_year": "2026",
         "source": "gramwzielone.pl 26 Aug 2026"
     }
 }
@@ -46,9 +46,9 @@ One row as reported by the national compilation; no geometry is invented at this
   "properties": {
     "farm": "MFW Baltic Power",
     "developer": "Orlen; Northland Power",
-    "capacity_mw": 1200,
+    "capacity_mw": "1200",
     "status_aug2026": "construction (first power 10 Jul 2026)",
-    "first_power_or_completion_year": 2026,
+    "first_power_or_completion_year": "2026",
     "source": "gramwzielone.pl 26 Aug 2026"
   }
 }
@@ -60,14 +60,13 @@ One row as reported by the national compilation; no geometry is invented at this
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <https://purl.org/dc/terms/> .
 @prefix schema: <https://schema.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/national-001> a geojson:Feature ;
     geojson:properties [ ns1:source "gramwzielone.pl 26 Aug 2026" ;
             schema:creator "Orlen; Northland Power" ;
             :projectName "MFW Baltic Power" ;
-            :reportedCapacityMW 1200 ;
-            :reportedFirstPowerOrCompletionYear 2026 ;
+            :reportedCapacityMW "1200" ;
+            :reportedFirstPowerOrCompletionYear "2026" ;
             :reportedStatusAugust2026 "construction (first power 10 Jul 2026)" ] .
 
 
@@ -137,7 +136,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.windfarms.crowdsourced-designated-area-pl
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

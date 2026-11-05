@@ -1,88 +1,105 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: EMODnet windfarm feature
 description: 'GeoJSON representation of the EMODnet Human Activities windfarms feature
-  type. Property names, optionality, nullability, and value types follow the service''s
-  published windfarms XSD.
+  type, as a single Feature or a FeatureCollection such as a WFS response. Property
+  names, optionality, nullability, and value types follow the service''s published
+  windfarms XSD.
 
   '
-allOf:
-- $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml
-- type: object
-  required:
-  - properties
-  properties:
-    properties:
-      type: object
+anyOf:
+- $ref: '#/$defs/Windfarm'
+- $ref: '#/$defs/WindfarmCollection'
+$defs:
+  WindfarmCollection:
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml
+    - type: object
+      required:
+      - features
       properties:
-        country:
-          type:
-          - string
-          - 'null'
-          description: Country name as published by EMODnet; the XSD type is nullable
-            xsd:string.
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
-          x-jsonld-type: '@vocab'
-          x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
-        n_turbines:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
-        power_mw:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status text as published by EMODnet (nullable xsd:string).
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
-          x-jsonld-type: '@vocab'
-        type_inst:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
-        updateyear:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
-        year:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
-        dist_coast:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
-        notes:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: http://purl.org/dc/terms/description
-        shape_leng:
-          type:
-          - number
-          - 'null'
-        shape_area:
-          type:
-          - number
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        area_sqkm:
-          type:
-          - number
-          - 'null'
-      x-jsonld-id: https://purl.org/geojson/vocab#properties
-    additionalProperties: {}
+        features:
+          type: array
+          items:
+            $ref: '#/$defs/Windfarm'
+  Windfarm:
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml
+    - type: object
+      required:
+      - properties
+      properties:
+        properties:
+          type: object
+          properties:
+            country:
+              type:
+              - string
+              - 'null'
+              description: Country name as published by EMODnet; the XSD type is nullable
+                xsd:string.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
+            n_turbines:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
+            power_mw:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
+            status:
+              type:
+              - string
+              - 'null'
+              description: Status text as published by EMODnet (nullable xsd:string).
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
+              x-jsonld-type: '@vocab'
+            type_inst:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
+            updateyear:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
+            year:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
+            dist_coast:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
+            notes:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: http://purl.org/dc/terms/description
+            shape_leng:
+              type:
+              - number
+              - 'null'
+            shape_area:
+              type:
+              - number
+              - 'null'
+            name:
+              type:
+              - string
+              - 'null'
+            area_sqkm:
+              type:
+              - number
+              - 'null'
+          x-jsonld-id: https://purl.org/geojson/vocab#properties
+        additionalProperties: {}
 x-jsonld-extra-terms:
   id: '@id'
   type: '@type'

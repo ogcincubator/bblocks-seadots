@@ -8952,7 +8952,6 @@ properties:
                   retrievalApiCall:
                     type: string
                     x-jsonld-id: https://w3id.org/ogc/hosted/seadots/benthic-biomass-density-mareano/retrievalApiCall
-                    x-jsonld-type: '@id'
                   verifiedOn:
                     type: string
                     format: date
@@ -9033,7 +9032,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.benthic-biomass-density-mareano
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 
@@ -9117,10 +9116,7 @@ Links to the schema:
                 "provenance": {
                   "@context": {
                     "values": "seadots:provenanceValues",
-                    "retrievalApiCall": {
-                      "@id": "seadots:retrievalApiCall",
-                      "@type": "@id"
-                    },
+                    "retrievalApiCall": "seadots:retrievalApiCall",
                     "verifiedOn": "dct:date",
                     "primarySource": "dct:source",
                     "nearestAuthoritativeSource": {

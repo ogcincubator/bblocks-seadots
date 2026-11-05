@@ -20764,7 +20764,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.windfarms.common-windfarm-turbine
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.2'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

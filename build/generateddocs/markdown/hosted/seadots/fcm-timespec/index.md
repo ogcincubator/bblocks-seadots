@@ -376,7 +376,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm-timespec
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

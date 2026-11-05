@@ -46,7 +46,7 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     "description": "Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.",
     "datetime": "2024-03-01T00:00:00Z",
     "role": "data",
-    "license": "CC BY-NC-SA 4.0",
+    "license": "CC-BY-NC-SA-4.0",
     "table:columns": [
       {
         "name": "caseid",
@@ -146,7 +146,7 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
     "description": "Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services.",
     "datetime": "2024-03-01T00:00:00Z",
     "role": "data",
-    "license": "CC BY-NC-SA 4.0",
+    "license": "CC-BY-NC-SA-4.0",
     "table:columns": [
       {
         "name": "caseid",
@@ -246,23 +246,23 @@ Use this block when the data asset is an Excel/CSV/Parquet survey export and you
 
 <file:///github/workspace/saltmarsh-perceptions-norway> dcterms:date "2024-03-01T00:00:00+00:00"^^xsd:dateTime ;
     dcterms:description "Questionnaire export describing public perceptions of saltmarsh management and coastal ecosystem services." ;
-    dcterms:license "CC BY-NC-SA 4.0" ;
+    dcterms:license "CC-BY-NC-SA-4.0" ;
     dcterms:title "Saltmarsh perceptions survey (Norway)" ;
     dcterms:type "Feature" ;
-    rdfs:seeAlso [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
-            dcterms:type "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ],
-        [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
+    rdfs:seeAlso [ rdfs:label "SeaDOTs Catalog Data Tabular Survey" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ] ;
-    survey:controlledVocabulary [ seadots:label "CESSDA controlled vocabularies" ;
-            seadots:uri "https://www.cessda.eu/" ;
-            thns:scheme "CESSDA" ],
-        [ seadots:label "European Language Social Science Thesaurus" ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.catalog-data-tabular-survey> ],
+        [ rdfs:label "Do citizens value climate change mitigation over biodiversity protection? Exploring citizen support for salt marsh management" ;
+            dcterms:type "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <https://www.sciencedirect.com/science/article/pii/S0964569124000942> ] ;
+    survey:controlledVocabulary [ seadots:label "European Language Social Science Thesaurus" ;
             seadots:uri "https://elsst.uk/" ;
-            thns:scheme "ELSST" ] ;
+            thns:scheme "ELSST" ],
+        [ seadots:label "CESSDA controlled vocabularies" ;
+            seadots:uri "https://www.cessda.eu/" ;
+            thns:scheme "CESSDA" ] ;
     survey:studyDescription "Monadic survey on attitudes toward saltmarsh management in Norway." ;
     survey:studyTitle "Saltmarsh perceptions survey" ;
     survey:variableMetadata [ ddi:variableDescription "Likert-style attitude question" ;
@@ -387,7 +387,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.catalog-data-tabular-survey
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

@@ -223,7 +223,7 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
 @prefix owf: <https://w3id.org/ogc/hosted/seadots/windfarm/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
-@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix status: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/windfarms.557> a geojson:Feature ;
@@ -232,11 +232,11 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
     geojson:properties [ seadots:distanceToCoast 2.006722e+04 ;
             seadots:powerMW 9e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Energa MFW 1 Offshore wind farm 1" ;
-            owf:country seadots-emodnet:Poland ;
+            status: status:Planned ;
+            status:name "Energa MFW 1 Offshore wind farm 1" ;
+            owf:country status:Poland ;
             owf:installationType "Grounded" ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+    status:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.610> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -244,10 +244,10 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
     geojson:properties [ seadots:distanceToCoast 3.384265e+04 ;
             seadots:powerMW 9.75e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltica 9" ;
-            owf:country seadots-emodnet:Poland ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+            status: status:Planned ;
+            status:name "Baltica 9" ;
+            owf:country status:Poland ] ;
+    status:geometry_name "the_geom" .
 
 <file:///github/workspace/windfarms.613> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -255,21 +255,21 @@ An example does not mirrors the official EMODnet windfarms XSD field names and u
     geojson:properties [ seadots:distanceToCoast 2.539022e+04 ;
             seadots:powerMW 9.66e+02 ;
             seadots:updateYear "2026" ;
-            seadots-emodnet: seadots-emodnet:Planned ;
-            seadots-emodnet:name "Baltic East" ;
-            owf:country seadots-emodnet:Poland ] ;
-    seadots-emodnet:geometry_name "the_geom" .
+            status: status:Planned ;
+            status:name "Baltic East" ;
+            owf:country status:Poland ] ;
+    status:geometry_name "the_geom" .
 
 [] a geojson:FeatureCollection ;
     geojson:features <file:///github/workspace/windfarms.557>,
         <file:///github/workspace/windfarms.610>,
         <file:///github/workspace/windfarms.613> ;
-    seadots-emodnet:crs [ a seadots-emodnet:name ;
-            geojson:properties [ seadots-emodnet:name "urn:ogc:def:crs:EPSG::4326" ] ] ;
-    seadots-emodnet:numberMatched 26 ;
-    seadots-emodnet:numberReturned 26 ;
-    seadots-emodnet:timeStamp "2026-10-29T22:52:51.131Z" ;
-    seadots-emodnet:totalFeatures 26 .
+    status:crs [ a status:name ;
+            status:name "urn:ogc:def:crs:EPSG::4326" ] ;
+    status:numberMatched 26 ;
+    status:numberReturned 26 ;
+    status:timeStamp "2026-10-29T22:52:51.131Z" ;
+    status:totalFeatures 26 .
 
 
 ```
@@ -365,19 +365,19 @@ this is real data from the
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix seadots: <https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/> .
-@prefix seadots-emodnet: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
+@prefix status: <https://w3id.org/ogc/hosted/seadots/emodnet/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <file:///github/workspace/0> a geojson:Feature ;
     geojson:geometry [ a geojson:Polygon ;
             geojson:coordinates ( ( ( 4.4e+00 5.92e+01 ) ( 5.1e+00 5.92e+01 ) ( 5.1e+00 5.955e+01 ) ( 4.4e+00 5.955e+01 ) ( 4.4e+00 5.92e+01 ) ) ) ] ;
-    geojson:properties [ seadots:distanceToCoast 2.100992e+05 ;
-            seadots:nTurbines 1 ;
-            seadots-emodnet: seadots-emodnet:Dismantled ;
-            seadots-emodnet:area_sqkm 1.959589e-01 ;
-            seadots-emodnet:name "Dogger Bank East Met Mast" ;
-            seadots-emodnet:shape_area 2.757443e-05 ;
-            seadots-emodnet:shape_leng 1.969875e-02 ] .
+    seadots:distanceToCoast 2.100992e+05 ;
+    seadots:nTurbines 1 ;
+    status: status:Dismantled ;
+    status:area_sqkm 1.959589e-01 ;
+    status:name "Dogger Bank East Met Mast" ;
+    status:shape_area 2.757443e-05 ;
+    status:shape_leng 1.969875e-02 .
 
 
 ```
@@ -388,88 +388,105 @@ this is real data from the
 $schema: https://json-schema.org/draft/2020-12/schema
 title: EMODnet windfarm feature
 description: 'GeoJSON representation of the EMODnet Human Activities windfarms feature
-  type. Property names, optionality, nullability, and value types follow the service''s
-  published windfarms XSD.
+  type, as a single Feature or a FeatureCollection such as a WFS response. Property
+  names, optionality, nullability, and value types follow the service''s published
+  windfarms XSD.
 
   '
-allOf:
-- $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml
-- type: object
-  required:
-  - properties
-  properties:
-    properties:
-      type: object
+anyOf:
+- $ref: '#/$defs/Windfarm'
+- $ref: '#/$defs/WindfarmCollection'
+$defs:
+  WindfarmCollection:
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml
+    - type: object
+      required:
+      - features
       properties:
-        country:
-          type:
-          - string
-          - 'null'
-          description: Country name as published by EMODnet; the XSD type is nullable
-            xsd:string.
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
-          x-jsonld-type: '@vocab'
-          x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
-        n_turbines:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
-        power_mw:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status text as published by EMODnet (nullable xsd:string).
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
-          x-jsonld-type: '@vocab'
-        type_inst:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
-        updateyear:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
-        year:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
-        dist_coast:
-          type:
-          - number
-          - 'null'
-          x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
-        notes:
-          type:
-          - string
-          - 'null'
-          x-jsonld-id: http://purl.org/dc/terms/description
-        shape_leng:
-          type:
-          - number
-          - 'null'
-        shape_area:
-          type:
-          - number
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        area_sqkm:
-          type:
-          - number
-          - 'null'
-      x-jsonld-id: https://purl.org/geojson/vocab#properties
-    additionalProperties: {}
+        features:
+          type: array
+          items:
+            $ref: '#/$defs/Windfarm'
+  Windfarm:
+    allOf:
+    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml
+    - type: object
+      required:
+      - properties
+      properties:
+        properties:
+          type: object
+          properties:
+            country:
+              type:
+              - string
+              - 'null'
+              description: Country name as published by EMODnet; the XSD type is nullable
+                xsd:string.
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/country
+              x-jsonld-type: '@vocab'
+              x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/emodnet/
+            n_turbines:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/nTurbines
+            power_mw:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/powerMW
+            status:
+              type:
+              - string
+              - 'null'
+              description: Status text as published by EMODnet (nullable xsd:string).
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet/
+              x-jsonld-type: '@vocab'
+            type_inst:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/windfarm/installationType
+            updateyear:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/updateYear
+            year:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/year
+            dist_coast:
+              type:
+              - number
+              - 'null'
+              x-jsonld-id: https://w3id.org/ogc/hosted/seadots/emodnet-compliant-windfarm/distanceToCoast
+            notes:
+              type:
+              - string
+              - 'null'
+              x-jsonld-id: http://purl.org/dc/terms/description
+            shape_leng:
+              type:
+              - number
+              - 'null'
+            shape_area:
+              type:
+              - number
+              - 'null'
+            name:
+              type:
+              - string
+              - 'null'
+            area_sqkm:
+              type:
+              - number
+              - 'null'
+          x-jsonld-id: https://purl.org/geojson/vocab#properties
+        additionalProperties: {}
 x-jsonld-extra-terms:
   id: '@id'
   type: '@type'
@@ -520,33 +537,14 @@ Links to the schema:
     "Polygon": "geojson:Polygon",
     "features": {
       "@container": "@set",
-      "@id": "geojson:features"
+      "@id": "geojson:features",
+      "@context": {
+        "properties": "geojson:properties"
+      }
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "country": {
-          "@context": {
-            "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
-          },
-          "@id": "owf:country",
-          "@type": "@vocab"
-        },
-        "n_turbines": "seadots:nTurbines",
-        "power_mw": "seadots:powerMW",
-        "status": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-          "@type": "@vocab"
-        },
-        "type_inst": "owf:installationType",
-        "updateyear": "seadots:updateYear",
-        "year": "seadots:year",
-        "dist_coast": "seadots:distanceToCoast",
-        "notes": "dct:description"
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": "geojson:geometry",
     "bbox": {
       "@container": "@list",
@@ -585,6 +583,24 @@ Links to the schema:
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "country": {
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
+      },
+      "@id": "owf:country",
+      "@type": "@vocab"
+    },
+    "n_turbines": "seadots:nTurbines",
+    "power_mw": "seadots:powerMW",
+    "status": {
+      "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+      "@type": "@vocab"
+    },
+    "type_inst": "owf:installationType",
+    "updateyear": "seadots:updateYear",
+    "year": "seadots:year",
+    "dist_coast": "seadots:distanceToCoast",
+    "notes": "dct:description",
     "@version": 1.1
   }
 }

@@ -341,7 +341,6 @@ a service.
 @prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix ns1: <http://www.iana.org/assignments/> .
-@prefix ns2: <https://w3id.org/ogc/hosted/seadots/catalog#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -357,13 +356,13 @@ a service.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread." ;
     dcterms:title "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)" ;
-    rdfs:seeAlso [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
+    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ],
+        [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ],
-        [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ] ;
+            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ] ;
     dcat:keyword "digital-twin",
         "fuzzy-cognitive-map",
         "open-science",
@@ -374,16 +373,16 @@ a service.
     schema:softwareVersion "0.1.0" ;
     apkg:inputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm> ;
             dcterms:description "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification." ;
-            ns2:required true ;
-            ns2:role "map" ] ;
+            seadots:required true ;
+            seadots:role "map" ] ;
     apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
             dcterms:description "Produced only when the solver is applied stepwise over a time-indexed series of maps." ;
-            ns2:required false ;
-            ns2:role "sequence" ],
+            seadots:required false ;
+            seadots:role "sequence" ],
         [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
             dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
-            ns2:required true ;
-            ns2:role "equilibria" ] ;
+            seadots:required true ;
+            seadots:role "equilibria" ] ;
     seadots:itemType "record" ;
     fcm:solverCapability [ seadots:executionParameters [ seadots:clusteringTolerance 1e-06 ;
                     seadots:convergenceTolerance 1e-10 ;
@@ -981,7 +980,7 @@ x-jsonld-extra-terms:
   softwareVersion: https://schema.org/softwareVersion
   programmingLanguage: https://schema.org/programmingLanguage
   applicationPackage:
-    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage
+    x-jsonld-id: https://w3id.org/ogc/hosted/seadots/catalog/applicationPackage
     x-jsonld-type: '@id'
   inputs:
     x-jsonld-context:
@@ -989,9 +988,9 @@ x-jsonld-extra-terms:
         '@id': http://purl.org/dc/terms/conformsTo
         '@type': '@id'
       required:
-        '@id': https://w3id.org/ogc/hosted/seadots/catalog#required
+        '@id': https://w3id.org/ogc/hosted/seadots/catalog/required
         '@type': http://www.w3.org/2001/XMLSchema#boolean
-      role: https://w3id.org/ogc/hosted/seadots/catalog#role
+      role: https://w3id.org/ogc/hosted/seadots/catalog/role
     x-jsonld-id: https://w3id.org/apkg/terms/inputs
     x-jsonld-container: '@set'
   outputs:
@@ -1000,12 +999,12 @@ x-jsonld-extra-terms:
         '@id': http://purl.org/dc/terms/conformsTo
         '@type': '@id'
       required:
-        '@id': https://w3id.org/ogc/hosted/seadots/catalog#required
+        '@id': https://w3id.org/ogc/hosted/seadots/catalog/required
         '@type': http://www.w3.org/2001/XMLSchema#boolean
-      role: https://w3id.org/ogc/hosted/seadots/catalog#role
+      role: https://w3id.org/ogc/hosted/seadots/catalog/role
     x-jsonld-id: https://w3id.org/apkg/terms/outputs
     x-jsonld-container: '@set'
-x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog#
+x-jsonld-vocab: https://w3id.org/ogc/hosted/seadots/catalog/
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -1017,7 +1016,7 @@ x-jsonld-prefixes:
   prov: http://www.w3.org/ns/prov#
   oa: http://www.w3.org/ns/oa#
   schema: https://schema.org/
-  seadots: https://w3id.org/ogc/hosted/seadots/catalog#
+  seadots: https://w3id.org/ogc/hosted/seadots/catalog/
   apkg: https://w3id.org/apkg/terms/
   fcm: https://w3id.org/ogc/hosted/seadots/fcm/
   fcmact: https://w3id.org/ogc/hosted/seadots/fcm/activation/
@@ -1033,7 +1032,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm-workflow
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 
@@ -1546,7 +1545,7 @@ Links to the schema:
     "softwareVersion": "schema:softwareVersion",
     "programmingLanguage": "schema:programmingLanguage",
     "applicationPackage": {
-      "@id": "https://w3id.org/ogc/hosted/seadots/catalog#applicationPackage",
+      "@id": "seadots:applicationPackage",
       "@type": "@id"
     },
     "inputs": {
@@ -1556,10 +1555,10 @@ Links to the schema:
           "@type": "@id"
         },
         "required": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/catalog#required",
+          "@id": "seadots:required",
           "@type": "xsd:boolean"
         },
-        "role": "https://w3id.org/ogc/hosted/seadots/catalog#role"
+        "role": "seadots:role"
       },
       "@id": "apkg:inputs",
       "@container": "@set"
@@ -1571,10 +1570,10 @@ Links to the schema:
           "@type": "@id"
         },
         "required": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/catalog#required",
+          "@id": "seadots:required",
           "@type": "xsd:boolean"
         },
-        "role": "https://w3id.org/ogc/hosted/seadots/catalog#role"
+        "role": "seadots:role"
       },
       "@id": "apkg:outputs",
       "@container": "@set"

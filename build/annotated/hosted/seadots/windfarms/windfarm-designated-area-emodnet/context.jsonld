@@ -12,33 +12,14 @@
     "Polygon": "geojson:Polygon",
     "features": {
       "@container": "@set",
-      "@id": "geojson:features"
+      "@id": "geojson:features",
+      "@context": {
+        "properties": "geojson:properties"
+      }
     },
     "type": "@type",
     "id": "@id",
-    "properties": {
-      "@context": {
-        "country": {
-          "@context": {
-            "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
-          },
-          "@id": "owf:country",
-          "@type": "@vocab"
-        },
-        "n_turbines": "seadots:nTurbines",
-        "power_mw": "seadots:powerMW",
-        "status": {
-          "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
-          "@type": "@vocab"
-        },
-        "type_inst": "owf:installationType",
-        "updateyear": "seadots:updateYear",
-        "year": "seadots:year",
-        "dist_coast": "seadots:distanceToCoast",
-        "notes": "dct:description"
-      },
-      "@id": "geojson:properties"
-    },
+    "properties": "@nest",
     "geometry": "geojson:geometry",
     "bbox": {
       "@container": "@list",
@@ -77,6 +58,24 @@
     "dcterms": "http://purl.org/dc/terms/",
     "seadots-emodnet": "https://w3id.org/ogc/hosted/seadots/emodnet/",
     "inspire-cofv": "http://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue/",
+    "country": {
+      "@context": {
+        "@vocab": "https://w3id.org/ogc/hosted/seadots/emodnet/"
+      },
+      "@id": "owf:country",
+      "@type": "@vocab"
+    },
+    "n_turbines": "seadots:nTurbines",
+    "power_mw": "seadots:powerMW",
+    "status": {
+      "@id": "https://w3id.org/ogc/hosted/seadots/emodnet/",
+      "@type": "@vocab"
+    },
+    "type_inst": "owf:installationType",
+    "updateyear": "seadots:updateYear",
+    "year": "seadots:year",
+    "dist_coast": "seadots:distanceToCoast",
+    "notes": "dct:description",
     "@version": 1.1
   }
 }

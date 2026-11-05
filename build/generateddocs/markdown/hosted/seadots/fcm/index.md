@@ -88,8 +88,8 @@ separately materialised: in this projection the key is the final segment of the 
 Directly-authored RDF should assert `fcm:nodeKey` as usual.
 
 **Edge keys stay literals.** `id` on an edge maps to `fcm:edgeKey`, not `@id`, because the
-conventional edge key `"C5->C3"` contains `>` and is not a legal IRI. Edges are blank
-nodes; they have no need for stable identity.
+edge key is a graph-local label, conventionally `SRC-DST` (e.g. `"C5-C3"`), and `src` and `dst`
+remain the authoritative endpoints. Edges are blank nodes; they have no need for stable identity.
 
 **Upstream activation labels are corrected on the way in.** `label` is `@type: @vocab`, so
 `"logistic"` → `fcmact:logistic` and `"other"` → `fcmact:offset`. Critically,
@@ -220,7 +220,7 @@ upstream as certain to change.
         ],
         "edges": [
             {
-                "id": "C5->C3",
+                "id": "C5-C3",
                 "src": "C5",
                 "dst": "C3",
                 "weight": -0.4,
@@ -229,7 +229,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C2->C10",
+                "id": "C2-C10",
                 "src": "C2",
                 "dst": "C10",
                 "weight": 0.3,
@@ -238,7 +238,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C1->C2",
+                "id": "C1-C2",
                 "src": "C1",
                 "dst": "C2",
                 "weight": 0.9,
@@ -247,7 +247,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C3->C6",
+                "id": "C3-C6",
                 "src": "C3",
                 "dst": "C6",
                 "weight": -0.5,
@@ -256,7 +256,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C5->C10",
+                "id": "C5-C10",
                 "src": "C5",
                 "dst": "C10",
                 "weight": 0.9,
@@ -265,7 +265,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C9->C5",
+                "id": "C9-C5",
                 "src": "C9",
                 "dst": "C5",
                 "weight": -0.3,
@@ -274,7 +274,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C8->C9",
+                "id": "C8-C9",
                 "src": "C8",
                 "dst": "C9",
                 "weight": 0.7,
@@ -283,7 +283,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C5->C8",
+                "id": "C5-C8",
                 "src": "C5",
                 "dst": "C8",
                 "weight": 0.6,
@@ -292,7 +292,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C4->C5",
+                "id": "C4-C5",
                 "src": "C4",
                 "dst": "C5",
                 "weight": 0.5,
@@ -301,7 +301,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C6->C7",
+                "id": "C6-C7",
                 "src": "C6",
                 "dst": "C7",
                 "weight": -0.7,
@@ -310,7 +310,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C2->C7",
+                "id": "C2-C7",
                 "src": "C2",
                 "dst": "C7",
                 "weight": 0.3,
@@ -319,7 +319,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C7->C5",
+                "id": "C7-C5",
                 "src": "C7",
                 "dst": "C5",
                 "weight": -0.8,
@@ -328,7 +328,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C3->C4",
+                "id": "C3-C4",
                 "src": "C3",
                 "dst": "C4",
                 "weight": 0.7,
@@ -337,7 +337,7 @@ upstream as certain to change.
                 }
             },
             {
-                "id": "C2->C3",
+                "id": "C2-C3",
                 "src": "C2",
                 "dst": "C3",
                 "weight": 0.2,
@@ -363,6 +363,305 @@ upstream as certain to change.
         }
     }
 }
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm/context.jsonld",
+  "graph": {
+    "vertices": [
+      {
+        "id": "C1",
+        "metadata": {
+          "description": "[C1] Proposal Deadline Nearness"
+        }
+      },
+      {
+        "id": "C2",
+        "metadata": {
+          "description": "[C2] Stress Level"
+        }
+      },
+      {
+        "id": "C3",
+        "metadata": {
+          "description": "[C3] Dark Chocolate Consumption"
+        }
+      },
+      {
+        "id": "C4",
+        "metadata": {
+          "description": "[C4] Temporary Morale Boost"
+        }
+      },
+      {
+        "id": "C5",
+        "metadata": {
+          "description": "[C5] Proposal Progress"
+        }
+      },
+      {
+        "id": "C6",
+        "metadata": {
+          "description": "[C6] Sleep Quality"
+        }
+      },
+      {
+        "id": "C7",
+        "metadata": {
+          "description": "[C7] Overthinking / Scope Creep"
+        }
+      },
+      {
+        "id": "C8",
+        "metadata": {
+          "description": "[C8] Confidence That 'This Is a Great Idea'"
+        }
+      },
+      {
+        "id": "C9",
+        "metadata": {
+          "description": "[C9] Likelihood of Creating Yet Another Figure"
+        }
+      },
+      {
+        "id": "C10",
+        "metadata": {
+          "description": "[C10] Probability of Submitting on Time"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "C5-C3",
+        "src": "C5",
+        "dst": "C3",
+        "weight": -0.4,
+        "metadata": {
+          "description": "More progress reduces emergency dark chocolate consumption"
+        }
+      },
+      {
+        "id": "C2-C10",
+        "src": "C2",
+        "dst": "C10",
+        "weight": 0.3,
+        "metadata": {
+          "description": "Panic can, regrettably, improve on-time submission"
+        }
+      },
+      {
+        "id": "C1-C2",
+        "src": "C1",
+        "dst": "C2",
+        "weight": 0.9,
+        "metadata": {
+          "description": "Deadline nearness increases stress"
+        }
+      },
+      {
+        "id": "C3-C6",
+        "src": "C3",
+        "dst": "C6",
+        "weight": -0.5,
+        "metadata": {
+          "description": "Late chocolate reduces sleep quality"
+        }
+      },
+      {
+        "id": "C5-C10",
+        "src": "C5",
+        "dst": "C10",
+        "weight": 0.9,
+        "metadata": {
+          "description": "More progress increases the chance of submitting on time"
+        }
+      },
+      {
+        "id": "C9-C5",
+        "src": "C9",
+        "dst": "C5",
+        "weight": -0.3,
+        "metadata": {
+          "description": "Additional figure creation has a questionable net effect on progress"
+        }
+      },
+      {
+        "id": "C8-C9",
+        "src": "C8",
+        "dst": "C9",
+        "weight": 0.7,
+        "metadata": {
+          "description": "Confidence encourages creation of yet another figure"
+        }
+      },
+      {
+        "id": "C5-C8",
+        "src": "C5",
+        "dst": "C8",
+        "weight": 0.6,
+        "metadata": {
+          "description": "Progress boosts confidence"
+        }
+      },
+      {
+        "id": "C4-C5",
+        "src": "C4",
+        "dst": "C5",
+        "weight": 0.5,
+        "metadata": {
+          "description": "Higher morale improves proposal progress"
+        }
+      },
+      {
+        "id": "C6-C7",
+        "src": "C6",
+        "dst": "C7",
+        "weight": -0.7,
+        "metadata": {
+          "description": "Better sleep reduces overthinking and scope creep"
+        }
+      },
+      {
+        "id": "C2-C7",
+        "src": "C2",
+        "dst": "C7",
+        "weight": 0.3,
+        "metadata": {
+          "description": "Stress promotes overthinking and scope creep"
+        }
+      },
+      {
+        "id": "C7-C5",
+        "src": "C7",
+        "dst": "C5",
+        "weight": -0.8,
+        "metadata": {
+          "description": "Scope creep reduces genuine proposal progress"
+        }
+      },
+      {
+        "id": "C3-C4",
+        "src": "C3",
+        "dst": "C4",
+        "weight": 0.7,
+        "metadata": {
+          "description": "Dark chocolate provides a temporary morale boost"
+        }
+      },
+      {
+        "id": "C2-C3",
+        "src": "C2",
+        "dst": "C3",
+        "weight": 0.2,
+        "metadata": {
+          "description": "Stress increases dark chocolate consumption"
+        }
+      }
+    ],
+    "metadata": {
+      "description": "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation"
+    }
+  },
+  "metadata": {},
+  "activation_spec": {
+    "mode": "homogeneous",
+    "homogeneous": {
+      "label": "logistic",
+      "params": {
+        "b": 0,
+        "lambda": 1,
+        "a": 1
+      }
+    }
+  }
+}
+```
+
+#### ttl
+```ttl
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+
+<file:///github/workspace/C1> dct:description "[C1] Proposal Deadline Nearness" .
+
+<file:///github/workspace/C1-C2> dct:description "Deadline nearness increases stress" .
+
+<file:///github/workspace/C10> dct:description "[C10] Probability of Submitting on Time" .
+
+<file:///github/workspace/C2> dct:description "[C2] Stress Level" .
+
+<file:///github/workspace/C2-C10> dct:description "Panic can, regrettably, improve on-time submission" .
+
+<file:///github/workspace/C2-C3> dct:description "Stress increases dark chocolate consumption" .
+
+<file:///github/workspace/C2-C7> dct:description "Stress promotes overthinking and scope creep" .
+
+<file:///github/workspace/C3> dct:description "[C3] Dark Chocolate Consumption" .
+
+<file:///github/workspace/C3-C4> dct:description "Dark chocolate provides a temporary morale boost" .
+
+<file:///github/workspace/C3-C6> dct:description "Late chocolate reduces sleep quality" .
+
+<file:///github/workspace/C4> dct:description "[C4] Temporary Morale Boost" .
+
+<file:///github/workspace/C4-C5> dct:description "Higher morale improves proposal progress" .
+
+<file:///github/workspace/C5> dct:description "[C5] Proposal Progress" .
+
+<file:///github/workspace/C5-C10> dct:description "More progress increases the chance of submitting on time" .
+
+<file:///github/workspace/C5-C3> dct:description "More progress reduces emergency dark chocolate consumption" .
+
+<file:///github/workspace/C5-C8> dct:description "Progress boosts confidence" .
+
+<file:///github/workspace/C6> dct:description "[C6] Sleep Quality" .
+
+<file:///github/workspace/C6-C7> dct:description "Better sleep reduces overthinking and scope creep" .
+
+<file:///github/workspace/C7> dct:description "[C7] Overthinking / Scope Creep" .
+
+<file:///github/workspace/C7-C5> dct:description "Scope creep reduces genuine proposal progress" .
+
+<file:///github/workspace/C8> dct:description "[C8] Confidence That 'This Is a Great Idea'" .
+
+<file:///github/workspace/C8-C9> dct:description "Confidence encourages creation of yet another figure" .
+
+<file:///github/workspace/C9> dct:description "[C9] Likelihood of Creating Yet Another Figure" .
+
+<file:///github/workspace/C9-C5> dct:description "Additional figure creation has a questionable net effect on progress" .
+
+[] fcm:hasActivationSpec [ fcm:activationMode fcm:homogeneousActivation ;
+            fcm:homogeneousActivation [ fcm:activationFunction fcmact:logistic ] ] ;
+    fcm:hasGraph [ dct:description "Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation" ;
+            fcm:hasEdge <file:///github/workspace/C1-C2>,
+                <file:///github/workspace/C2-C10>,
+                <file:///github/workspace/C2-C3>,
+                <file:///github/workspace/C2-C7>,
+                <file:///github/workspace/C3-C4>,
+                <file:///github/workspace/C3-C6>,
+                <file:///github/workspace/C4-C5>,
+                <file:///github/workspace/C5-C10>,
+                <file:///github/workspace/C5-C3>,
+                <file:///github/workspace/C5-C8>,
+                <file:///github/workspace/C6-C7>,
+                <file:///github/workspace/C7-C5>,
+                <file:///github/workspace/C8-C9>,
+                <file:///github/workspace/C9-C5> ;
+            fcm:hasNode <file:///github/workspace/C1>,
+                <file:///github/workspace/C10>,
+                <file:///github/workspace/C2>,
+                <file:///github/workspace/C3>,
+                <file:///github/workspace/C4>,
+                <file:///github/workspace/C5>,
+                <file:///github/workspace/C6>,
+                <file:///github/workspace/C7>,
+                <file:///github/workspace/C8>,
+                <file:///github/workspace/C9> ] .
+
+
 ```
 
 
@@ -736,7 +1035,7 @@ upstream as certain to change.
     ],
     "edges": [
       {
-        "id": "A->B",
+        "id": "A-B",
         "src": "A",
         "dst": "B",
         "weight": 0.5,
@@ -745,7 +1044,7 @@ upstream as certain to change.
         }
       },
       {
-        "id": "B->A",
+        "id": "B-A",
         "src": "B",
         "dst": "A",
         "weight": -0.25,
@@ -783,6 +1082,103 @@ upstream as certain to change.
     ]
   }
 }
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/fcm/context.jsonld",
+  "graph": {
+    "vertices": [
+      {
+        "id": "A",
+        "metadata": {
+          "description": "[A] Synthetic driver concept"
+        }
+      },
+      {
+        "id": "B",
+        "metadata": {
+          "description": "[B] Synthetic responding concept"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "A-B",
+        "src": "A",
+        "dst": "B",
+        "weight": 0.5,
+        "metadata": {
+          "description": "Synthetic edge; the value carries no empirical meaning."
+        }
+      },
+      {
+        "id": "B-A",
+        "src": "B",
+        "dst": "A",
+        "weight": -0.25,
+        "metadata": {
+          "description": "Synthetic feedback edge; the value carries no empirical meaning."
+        }
+      }
+    ],
+    "metadata": {
+      "description": "Synthetic two-concept map, the smallest graph the upstream validator accepts."
+    }
+  },
+  "metadata": {
+    "description": "SYNTHETIC. Constructed to exercise heterogeneous activation; not derived from any survey or observation."
+  },
+  "activation_spec": {
+    "mode": "heterogeneous",
+    "heterogeneous": [
+      {
+        "label": "logistic",
+        "params": {
+          "b": 0,
+          "lambda": 1,
+          "a": 1
+        }
+      },
+      {
+        "label": "gaussian",
+        "params": {
+          "b": 0,
+          "lambda": 1,
+          "a": 1
+        }
+      }
+    ]
+  }
+}
+```
+
+#### ttl
+```ttl
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fcm: <https://w3id.org/ogc/hosted/seadots/fcm/> .
+@prefix fcmact: <https://w3id.org/ogc/hosted/seadots/fcm/activation/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<file:///github/workspace/A> dct:description "[A] Synthetic driver concept" .
+
+<file:///github/workspace/A-B> dct:description "Synthetic edge; the value carries no empirical meaning." .
+
+<file:///github/workspace/B> dct:description "[B] Synthetic responding concept" .
+
+<file:///github/workspace/B-A> dct:description "Synthetic feedback edge; the value carries no empirical meaning." .
+
+[] dct:description "SYNTHETIC. Constructed to exercise heterogeneous activation; not derived from any survey or observation." ;
+    fcm:hasActivationSpec [ fcm:activationMode fcm:heterogeneousActivation ;
+            fcm:heterogeneousActivation ( [ fcm:activationFunction fcmact:logistic ] [ fcm:activationFunction fcmact:logistic-of-square ] ) ] ;
+    fcm:hasGraph [ dct:description "Synthetic two-concept map, the smallest graph the upstream validator accepts." ;
+            fcm:hasEdge <file:///github/workspace/A-B>,
+                <file:///github/workspace/B-A> ;
+            fcm:hasNode <file:///github/workspace/A>,
+                <file:///github/workspace/B> ] .
+
+
 ```
 
 ## Schema
@@ -922,7 +1318,8 @@ $defs:
     properties:
       id:
         type: string
-        description: Optional graph-local key of the edge, conventionally "SRC->DST".
+        description: Optional graph-local key of the edge, conventionally "SRC-DST"
+          (e.g. "C5-C3").
         x-jsonld-id: '@id'
       src:
         type: string
@@ -1124,7 +1521,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.fcm
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

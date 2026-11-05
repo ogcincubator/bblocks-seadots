@@ -92,12 +92,6 @@ Raw project records compiled from Polish national reporting. Retains the publish
 
 Source-aligned profile of the supplied Polish Baltic offshore wind GeoJSON snapshot dated 2026-10-27. It preserves OSM node, way, and relation types, numeric OSM identifiers, raw tags, relation members, supplied GeoJSON geometry including null, and source attribution.
 
-### `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` — EMODnet windfarm
-
-**Type:** schema
-
-GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.
-
 ### `ogc.hosted.seadots.linkeddata.marineProtectionProperties` — Marine Protection Properties
 
 **Type:** schema
@@ -146,11 +140,11 @@ GeoJSON representation of a wind farm as a designated area or project, without i
 
 GeoJSON representation of a single wind turbine (Feature with Point geometry) or a FeatureCollection of turbines, with harmonised properties: manufacturer, model, rated power, hub height, rotor diameter, rotor axis, operator, condition, and the wind farm it belongs to.
 
-### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
+### `ogc.hosted.seadots.windfarms.windfarm-designated-area-emodnet` — EMODnet windfarm
 
 **Type:** schema
 
-Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
+GeoJSON representation of EMODnet Human Activities windfarms, aligned with the official WFS/XSD field names and actual data cmoing from the service, optionality, nullability, and value types.
 
 ### `ogc.hosted.seadots.linkeddata.marineProtectionFeature` — Marine Protection Feature
 
@@ -175,6 +169,12 @@ GeoJSON Feature profile reproducing the 36-attribute schema of the EMODnet Human
 **Type:** schema
 
 GeoJSON Feature profile reproducing the attribute schema of the EMODnet Human Activities layer emodnet:marineprotectedareas (MPAs reported to the Regional Sea Conventions, rsc = HELCOM or OSPAR) with unchanged field names and types. Target profile for publishing HELCOM MPAs through OGC API - Features in EMODnet form.
+
+### `ogc.hosted.seadots.windfarms.emodnet-compliant-windfarm-pl` — Polish windfarm extension for EMODnet
+
+**Type:** schema
+
+Independent Polish windfarm integration block combining EMODnet fields with national project, reporting, provenance, and explicit location-crosswalk information. It supports EMODnet records and sparse national-source records, including unmatched projects with null geometry.
 
 ### `ogc.hosted.seadots.fcm-sequence` — FCM sequence
 

@@ -32,7 +32,6 @@ source data payload was provided with the generation request.
 #### json
 ```json
 {
-  "@context": "../context.jsonld",
   "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/mytilus-utsira-2026",
   "type": "Feature",
   "geometry": {
@@ -60,12 +59,77 @@ source data payload was provided with the generation request.
 
 ```
 
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld",
+  "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/mytilus-utsira-2026",
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      4.75,
+      59.38
+    ]
+  },
+  "properties": {
+    "label": {
+      "en": "Reef aggregation index for Mytilus edulis at Utsira Nord"
+    },
+    "phenomenonTime": "2026-05-13T00:00:00Z",
+    "resultTime": "2026-05-13T00:00:00Z",
+    "observedProperty": "indp:reef-aggregation-index",
+    "hasResult": {
+      "type": [
+        "Result",
+        "VariableObservationResult"
+      ],
+      "value": 1.8,
+      "unit": "http://qudt.org/vocab/unit/NUM",
+      "taxon": "Mytilus edulis",
+      "taxonConcept": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=140480",
+      "method": "screening prior for artificial reef aggregation",
+      "evidence": "https://doi.org/10.5670/oceanog.2020.405"
+    }
+  }
+}
+```
+
+#### ttl
+```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix indp: <https://w3id.org/indicators/marine/parameters/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/norwegian-ses/observations/reef-aggregation-index/mytilus-utsira-2026> a geojson:Feature ;
+    rdfs:label "Reef aggregation index for Mytilus edulis at Utsira Nord"@en ;
+    sosa:hasResult [ a sosa:Result,
+                <https://w3id.org/iliad/oim/ext/variable-observation/VariableObservationResult> ;
+            qudt:numericValue 1.8e+00 ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            schema:citation <https://doi.org/10.5670/oceanog.2020.405> ;
+            schema:measurementTechnique "screening prior for artificial reef aggregation" ;
+            schema:taxon <https://www.marinespecies.org/aphia.php?p=taxdetails&id=140480>,
+                "Mytilus edulis" ] ;
+    sosa:observedProperty indp:reef-aggregation-index ;
+    sosa:phenomenonTime "2026-05-13T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:resultTime "2026-05-13T00:00:00+00:00"^^xsd:dateTime ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 4.75e+00 5.938e+01 ) ] .
+
+
+```
+
 
 ### Utsira reef aggregation index observation features
 #### json
 ```json
 {
-  "@context": "../context.jsonld",
   "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/utsira-2026",
   "type": "FeatureCollection",
   "features": [
@@ -145,6 +209,118 @@ source data payload was provided with the generation request.
     }
   ]
 }
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://ogcincubator.github.io/bblocks-seadots/build/annotated/hosted/seadots/oim-variable-observation/context.jsonld",
+  "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/utsira-2026",
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/mytilus-utsira-2026",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.75,
+          59.38
+        ]
+      },
+      "properties": {
+        "label": {
+          "en": "Reef aggregation index for Mytilus edulis at Utsira Nord"
+        },
+        "phenomenonTime": "2026-05-13T00:00:00Z",
+        "resultTime": "2026-05-13T00:00:00Z",
+        "observedProperty": "indp:reef-aggregation-index",
+        "hasResult": {
+          "type": [
+            "Result",
+            "VariableObservationResult"
+          ],
+          "value": 1.8,
+          "unit": "http://qudt.org/vocab/unit/NUM",
+          "taxon": "Mytilus edulis",
+          "taxonConcept": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=140480",
+          "method": "screening prior for artificial reef aggregation",
+          "evidence": "https://doi.org/10.5670/oceanog.2020.405"
+        }
+      }
+    },
+    {
+      "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/buccinum-utsira-2026",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.78,
+          59.4
+        ]
+      },
+      "properties": {
+        "label": {
+          "en": "Reef aggregation index for Buccinum undatum at Utsira Nord"
+        },
+        "phenomenonTime": "2026-05-13T00:00:00Z",
+        "resultTime": "2026-05-13T00:00:00Z",
+        "observedProperty": "indp:reef-aggregation-index",
+        "hasResult": {
+          "type": [
+            "Result",
+            "VariableObservationResult"
+          ],
+          "value": 1.3,
+          "unit": "http://qudt.org/vocab/unit/NUM",
+          "taxon": "Buccinum undatum",
+          "taxonConcept": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=138878",
+          "method": "screening prior for artificial reef aggregation",
+          "evidence": "https://www.windfloat-atlantic.com/"
+        }
+      }
+    },
+    {
+      "@id": "https://example.org/norwegian-ses/observations/reef-aggregation-index/asterias-utsira-2026",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.72,
+          59.36
+        ]
+      },
+      "properties": {
+        "label": {
+          "en": "Reef aggregation index for Asterias rubens at Utsira Nord"
+        },
+        "phenomenonTime": "2026-05-13T00:00:00Z",
+        "resultTime": "2026-05-13T00:00:00Z",
+        "observedProperty": "indp:reef-aggregation-index",
+        "hasResult": {
+          "type": [
+            "Result",
+            "VariableObservationResult"
+          ],
+          "value": 1.1,
+          "unit": "http://qudt.org/vocab/unit/NUM",
+          "taxon": "Asterias rubens",
+          "taxonConcept": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=123776",
+          "method": "screening prior for artificial reef aggregation"
+        }
+      }
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+
+<https://example.org/norwegian-ses/observations/reef-aggregation-index/utsira-2026> a geojson:FeatureCollection .
+
 
 ```
 
@@ -657,7 +833,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.oim-variable-observation
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

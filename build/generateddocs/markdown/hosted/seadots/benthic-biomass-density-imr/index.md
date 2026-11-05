@@ -476,20 +476,20 @@ their weights, while the raw block preserves the individual point features.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "Institute of Marine Research" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://www.hi.no/> ],
-        [ rdfs:label "MAREANO programme" ;
+    rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://mareano.no/> ],
-        [ rdfs:label "OIM Observations profile" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
         [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
+        [ rdfs:label "OIM Observations profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
+        [ rdfs:label "Institute of Marine Research" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://www.hi.no/> ],
         [ rdfs:label "IMR benthic biomass observations bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;
@@ -549,7 +549,18 @@ their weights, while the raw block preserves the individual point features.
                                 "2024007005",
                                 "2025001009",
                                 "2026007006" ;
-                            seadots:perTaxon [ dwc:scientificName "Actiniaria" ;
+                            seadots:perTaxon [ dwc:scientificName "Aplysilla" ;
+                                    seadots:cruises "2009105",
+                                        "2009111",
+                                        "2010110",
+                                        "2010112" ;
+                                    seadots:equipment "Beamtrawl",
+                                        "VVgrab020" ;
+                                    seadots:samplesInAOI 10 ;
+                                    seadots:samplesWithWeight 1 ;
+                                    seadots:totalIndividuals 0 ;
+                                    seadots:totalWeight_kg 5e+03 ],
+                                [ dwc:scientificName "Actiniaria" ;
                                     seadots:cruises "2007105",
                                         "2007111",
                                         "2024007003",
@@ -562,18 +573,7 @@ their weights, while the raw block preserves the individual point features.
                                     seadots:samplesInAOI 476 ;
                                     seadots:samplesWithWeight 95 ;
                                     seadots:totalIndividuals 656 ;
-                                    seadots:totalWeight_kg 4.473589e+03 ],
-                                [ dwc:scientificName "Aplysilla" ;
-                                    seadots:cruises "2009105",
-                                        "2009111",
-                                        "2010110",
-                                        "2010112" ;
-                                    seadots:equipment "Beamtrawl",
-                                        "VVgrab020" ;
-                                    seadots:samplesInAOI 10 ;
-                                    seadots:samplesWithWeight 1 ;
-                                    seadots:totalIndividuals 0 ;
-                                    seadots:totalWeight_kg 5e+03 ] ;
+                                    seadots:totalWeight_kg 4.473589e+03 ] ;
                             seadots:samplingGear "Beamtrawl",
                                 "Bioboks",
                                 "Boxcorer",
@@ -835,7 +835,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.benthic-biomass-density-imr
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-04'
+  dateOfLastChange: '2026-11-05'
 
 ```
 

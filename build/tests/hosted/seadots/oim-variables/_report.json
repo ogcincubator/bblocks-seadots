@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.oim-variables - OIM Variables",
   "bblockName": "OIM Variables",
   "bblockId": "ogc.hosted.seadots.oim-variables",
-  "generated": "2026-11-04T23:57:33.302837+00:00",
+  "generated": "2026-11-05T01:02:44.177766+00:00",
   "result": false,
   "items": [
     {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "text/turtle"
       },
-      "result": false,
+      "result": true,
       "sections": [
         {
           "name": "FILES",
@@ -38,7 +38,671 @@
         {
           "name": "SHACL",
           "title": "SHACL",
-          "entries": []
+          "entries": [
+            {
+              "isError": false,
+              "message": "Error processing closure source http://purl.org/linked-data/cube#: No plugin registered for (text/plain, <class 'rdflib.parser.Parser'>) - SHACL validation will run against an incomplete closure graph"
+            },
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - http://qudt.org/2.1/schema/qudt\n - https://www.w3.org/ns/prov-o\n - https://www.w3.org/ns/dcat2.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - https://www.w3.org/ns/sosa/sosa.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/oim-variables/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/oim-variables/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/oim-variables/rules.shacl",
+              "focusNodes": {
+                "ov:ObservedPropertyShape": {
+                  "nodes": []
+                },
+                "ov:CompositeIndicatorShape": {
+                  "nodes": []
+                },
+                "ov:EdgeShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/oim-variables/rules.shacl:\n - Shape ov:ObservedPropertyShape: *none*\n - Shape ov:CompositeIndicatorShape: *none*\n - Shape ov:EdgeShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "http://qudt.org/2.1/schema/shacl/qudt",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for http://qudt.org/2.1/schema/shacl/qudt:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "http://qudt.org/2.1/schema/shacl/qudt",
+              "focusNodes": {
+                "qudt:UserQuantityKind": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb33": {
+                  "nodes": []
+                },
+                "qudt:Unit": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable": {
+                  "nodes": []
+                },
+                "qudt:RatioScale": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-EMU": {
+                  "nodes": []
+                },
+                "qudt:BinaryPrefix": {
+                  "nodes": []
+                },
+                "qudt:Enumeration": {
+                  "nodes": []
+                },
+                "qudt:AbstractQuantityKind": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_ISO": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb16": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb17": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem": {
+                  "nodes": []
+                },
+                "qudt:LatexString": {
+                  "nodes": []
+                },
+                "qudt:TransformType": {
+                  "nodes": []
+                },
+                "qudt:PlaneAngleUnit": {
+                  "nodes": []
+                },
+                "qudt:LogarithmicUnit": {
+                  "nodes": []
+                },
+                "qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:IntervalScale": {
+                  "nodes": []
+                },
+                "qudt:EnumeratedValue": {
+                  "nodes": []
+                },
+                "qudt:CurrencyUnit": {
+                  "nodes": []
+                },
+                "qudt:ScalarDatatype": {
+                  "nodes": []
+                },
+                "qudt:NIST_SP811_Comment": {
+                  "nodes": []
+                },
+                "qudt:AspectClass": {
+                  "nodes": []
+                },
+                "qudt:Comment": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-datatype/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-value/sh:node": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem-value/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:RuleType": {
+                  "nodes": []
+                },
+                "qudt:SymmetricRelation": {
+                  "nodes": []
+                },
+                "qudt:Symbol": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:AngleUnit": {
+                  "nodes": []
+                },
+                "qudt:ConstantValue": {
+                  "nodes": []
+                },
+                "qudt:Verifiable": {
+                  "nodes": []
+                },
+                "qudt:NumericListShape/sh:property/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "rdf:nil": {
+                  "nodes": []
+                },
+                "qudt:Quantity": {
+                  "nodes": []
+                },
+                "qudt:Scale": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb15": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-ESU": {
+                  "nodes": []
+                },
+                "qudt:Statement": {
+                  "nodes": []
+                },
+                "qudt:DimensionlessUnit": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb18": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-LH": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:QuantityValue": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_SI": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb8": {
+                  "nodes": []
+                },
+                "qudt:PhysicalConstant": {
+                  "nodes": []
+                },
+                "qudt:Aspect": {
+                  "nodes": []
+                },
+                "qudt:Organization": {
+                  "nodes": []
+                },
+                "qudt:EnumeratedQuantity": {
+                  "nodes": []
+                },
+                "qudt:Concept": {
+                  "nodes": []
+                },
+                "qudt:BaseDimensionMagnitude": {
+                  "nodes": []
+                },
+                "qudt:Prefix": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb14": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:DataItem": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_Imperial": {
+                  "nodes": []
+                },
+                "qudt:SolidAngleUnit": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-GAUSS": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:NominalScale": {
+                  "nodes": []
+                },
+                "qudt:OrdinalScale": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector": {
+                  "nodes": []
+                },
+                "qudt:UCUMcs": {
+                  "nodes": []
+                },
+                "qudt:ScaleType": {
+                  "nodes": []
+                },
+                "qudt:CountingUnit": {
+                  "nodes": []
+                },
+                "qudt:DerivedUnit": {
+                  "nodes": []
+                },
+                "qudt:QuantityType": {
+                  "nodes": []
+                },
+                "qudt:Citation": {
+                  "nodes": []
+                },
+                "qudt:Discipline": {
+                  "nodes": []
+                },
+                "qudt:InformativeReferencePropertyShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:SystemOfUnits": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:NumericListShape": {
+                  "nodes": []
+                },
+                "qudt:QuantityKind": {
+                  "nodes": []
+                },
+                "qudt:DecimalPrefix": {
+                  "nodes": []
+                },
+                "qudt:Datatype": {
+                  "nodes": []
+                },
+                "qudt:Rule": {
+                  "nodes": []
+                },
+                "qudt:Figure": {
+                  "nodes": []
+                },
+                "qudt:SystemOfQuantityKinds": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for http://qudt.org/2.1/schema/shacl/qudt:\n - Shape qudt:UserQuantityKind: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb33: *none*\n - Shape qudt:Unit: *none*\n - Shape qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:Quantifiable: *none*\n - Shape qudt:RatioScale: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-EMU: *none*\n - Shape qudt:BinaryPrefix: *none*\n - Shape qudt:Enumeration: *none*\n - Shape qudt:AbstractQuantityKind: *none*\n - Shape qudt:QuantityKindDimensionVector_ISO: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb16: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb17: *none*\n - Shape qudt:ScalarDataItem: *none*\n - Shape qudt:LatexString: *none*\n - Shape qudt:TransformType: *none*\n - Shape qudt:PlaneAngleUnit: *none*\n - Shape qudt:LogarithmicUnit: *none*\n - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:IntervalScale: *none*\n - Shape qudt:EnumeratedValue: *none*\n - Shape qudt:CurrencyUnit: *none*\n - Shape qudt:ScalarDatatype: *none*\n - Shape qudt:NIST_SP811_Comment: *none*\n - Shape qudt:AspectClass: *none*\n - Shape qudt:Comment: *none*\n - Shape qudt:Quantifiable-datatype/sh:or/rdf:first: *none*\n - Shape qudt:Quantifiable-value/sh:node: *none*\n - Shape qudt:ScalarDataItem-value/sh:or/rdf:first: *none*\n - Shape qudt:RuleType: *none*\n - Shape qudt:SymmetricRelation: *none*\n - Shape qudt:Symbol: *none*\n - Shape qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first: *none*\n - Shape qudt:AngleUnit: *none*\n - Shape qudt:ConstantValue: *none*\n - Shape qudt:Verifiable: *none*\n - Shape qudt:NumericListShape/sh:property/sh:or/rdf:first: *none*\n - Shape rdf:nil: *none*\n - Shape qudt:Quantity: *none*\n - Shape qudt:Scale: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb15: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-ESU: *none*\n - Shape qudt:Statement: *none*\n - Shape qudt:DimensionlessUnit: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb18: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-LH: *none*\n - Shape qudt:NumericTypeUnion/rdf:first: *none*\n - Shape qudt:QuantityValue: *none*\n - Shape qudt:QuantityKindDimensionVector_SI: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb8: *none*\n - Shape qudt:PhysicalConstant: *none*\n - Shape qudt:Aspect: *none*\n - Shape qudt:Organization: *none*\n - Shape qudt:EnumeratedQuantity: *none*\n - Shape qudt:Concept: *none*\n - Shape qudt:BaseDimensionMagnitude: *none*\n - Shape qudt:Prefix: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb14: *none*\n - Shape qudt:NumericTypeUnion/rdf:rest/rdf:first: *none*\n - Shape qudt:DataItem: *none*\n - Shape qudt:QuantityKindDimensionVector_Imperial: *none*\n - Shape qudt:SolidAngleUnit: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-GAUSS: *none*\n - Shape qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:NominalScale: *none*\n - Shape qudt:OrdinalScale: *none*\n - Shape qudt:QuantityKindDimensionVector: *none*\n - Shape qudt:UCUMcs: *none*\n - Shape qudt:ScaleType: *none*\n - Shape qudt:CountingUnit: *none*\n - Shape qudt:DerivedUnit: *none*\n - Shape qudt:QuantityType: *none*\n - Shape qudt:Citation: *none*\n - Shape qudt:Discipline: *none*\n - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:first: *none*\n - Shape qudt:SystemOfUnits: *none*\n - Shape qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first: *none*\n - Shape qudt:NumericListShape: *none*\n - Shape qudt:QuantityKind: *none*\n - Shape qudt:DecimalPrefix: *none*\n - Shape qudt:Datatype: *none*\n - Shape qudt:Rule: *none*\n - Shape qudt:Figure: *none*\n - Shape qudt:SystemOfQuantityKinds: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl",
+              "focusNodes": {
+                "<https://www.ogc.org/rules/sosa/#testResult>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testFeatureOfInterest>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testRequiredTime>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testObservedProperty>": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:\n - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedProperty>: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
+              "focusNodes": {
+                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-entity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-agent>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedUsage>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPrimarySource>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
+                  "nodes": [
+                    "indo:floating-wind-reef-biomass-effect"
+                  ]
+                },
+                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-generated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedStart>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadRole>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedEnd>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Invalidation-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-activity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#End-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: indo:floating-wind-reef-biomass-effect\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl",
+              "focusNodes": {
+                ":singlePrefLabel": {
+                  "nodes": [
+                    "ind:emodnet-bathymetry",
+                    "ind:ind-rel-scheme",
+                    "indr:number-of-jobs_2_bird-tourism",
+                    "indo:fish-stock-biomass",
+                    "indp:current_year",
+                    "indr:bird-tourism_2_bird-tourism",
+                    "indp:colonisation-time-factor-default-t0-months",
+                    "indp:even_dispersal_rate",
+                    "indo:TAC_herring_inc_SV",
+                    "indp:trawling_limit",
+                    "indo:number-of-jobs",
+                    "ind:emodnet-human-activities",
+                    "indo:yearly_growth_herring",
+                    "indp:spawning_dispersal_rate",
+                    "indp:colonisation-time-factor-default-Ct-18-months",
+                    "indo:TAC_herring_type",
+                    "indo:K_herring_reg_inc",
+                    "indp:TAC_herring_share_sv",
+                    "indo:fish-market-state",
+                    "indr:bird-tourism_2_number-of-jobs",
+                    "indp:reef-aggregation-index-buccinum",
+                    "indp:repetitions",
+                    "indo:fish-stock-carrying-capacity-increment",
+                    "indp:reserved-for-future-use",
+                    "ind:parameters-scheme",
+                    "indo:SV_herring_market",
+                    "indo:SV_fishing_radius",
+                    "indo:sprat_price",
+                    "indo:fish-ex-vessel-price",
+                    "ind:emodnet-geology",
+                    "indo:bird-tourism",
+                    "indp:herring-tac",
+                    "indo:fuel_consumption_LV",
+                    "indo:fish-landing-value",
+                    "indp:year_tick",
+                    "indp:colonisation-time-factor",
+                    "indo:benthic-biomass-density-mareano",
+                    "indo:floating-wind-reef-biomass-effect",
+                    "indo:fleet-fishing-radius",
+                    "ind:emodnet-seabed-habitats",
+                    "indr:fisheries-production_2_area-use-by-wind-park",
+                    "indp:colonisation-time-factor-default-Ct-12-months",
+                    "indp:current_TAC_herring",
+                    "indp:total-allowable-catch",
+                    "indo:TAC_herring_est_error",
+                    "indo:baseline-benthic-biomass-density",
+                    "indp:winter_dispersal_rate",
+                    "indp:area-use-by-wind-park",
+                    "indr:fisheries-production_2_number-of-jobs",
+                    "ind:emodnet-physics",
+                    "indp:colonisation-time-factor-default-k",
+                    "indo:fish-catch",
+                    "indr:area-use-by-wind-park_2_fisheries-production",
+                    "indp:colonisation-time-factor-default-L",
+                    "indo:landing_value_herring_LV",
+                    "indp:colonisation-time-factor-default-Ct-6-months",
+                    "indo:fish-stock-growth-suppression-flag",
+                    "indo:mean_biomass_herring",
+                    "indo:fisheries-production",
+                    "indo:catch_herring_SV_All",
+                    "indr:fisheries-production_2_number-of-turbines",
+                    "indp:reef-aggregation-index-asterias",
+                    "indr:crossImpact-Utsira-OWF-v1",
+                    "indo:fleet-fuel-consumption",
+                    "indp:current_month",
+                    "indo:catch_herring_LV_All",
+                    "indo:fishing-season-state",
+                    "indp:fishing_algorithm",
+                    "indo:benthic-biomass-density-imr-baseline",
+                    "indp:current_management_season",
+                    "indo:VA_LV_All",
+                    "indo:landing_value_herring_SV",
+                    "indp:spawning_closure_type",
+                    "indo:VA_SV_All",
+                    "indp:dispersal_rate_property",
+                    "indp:colonisation-time-factor-default-Ct-24-months",
+                    "ind:catalog",
+                    "indo:landing_value_sprat_LV",
+                    "indo:herring_price_fish_meal",
+                    "indp:reef-aggregation-index",
+                    "indo:catch_sprat_SV_All",
+                    "indp:ticks",
+                    "indo:TAC_herring_Sweden_impl",
+                    "indp:number-of-turbines",
+                    "ind:emodnet-chemistry",
+                    "indo:catch_sprat_LV_All",
+                    "indo:fuel_price",
+                    "indp:submerged-infrastructure-area",
+                    "indo:TAC_share_B_herring",
+                    "indo:herring-tac-increment",
+                    "indo:landing_value_sprat_SV",
+                    "indp:colonisation-time-factor-default-Ct-0-months",
+                    "indp:TAC_herring_share",
+                    "indo:fleet-value-added",
+                    "indr:number-of-turbines_2_area-use-by-wind-park",
+                    "indo:mean_biomass_sprat",
+                    "indp:colonisation-time-factor-default",
+                    "indp:closure_type_property",
+                    "indo:stop_herring_growth",
+                    "ind:indicators-scheme",
+                    "indp:submerged-infrastructure-area-utsira-design",
+                    "ind:emodnet-biology",
+                    "indo:B_herring_tot",
+                    "indp:colonisation-time-factor-default-saturation-month",
+                    "indo:fish-stock-growth-rate",
+                    "indp:winter_closure_type",
+                    "indp:reef-aggregation-index-mytilus",
+                    "indo:herring_price_human_cons",
+                    "indp:current_herring_season",
+                    "indo:implemented-herring-tac",
+                    "indo:fuel_consumption_SV",
+                    "indo:winter_closure_length"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:\n - Shape :singlePrefLabel: ind:emodnet-bathymetry,ind:ind-rel-scheme,indr:number-of-jobs_2_bird-tourism,indo:fish-stock-biomass,indp:current_year,indr:bird-tourism_2_bird-tourism,indp:colonisation-time-factor-default-t0-months,indp:even_dispersal_rate,indo:TAC_herring_inc_SV,indp:trawling_limit,indo:number-of-jobs,ind:emodnet-human-activities,indo:yearly_growth_herring,indp:spawning_dispersal_rate,indp:colonisation-time-factor-default-Ct-18-months,indo:TAC_herring_type,indo:K_herring_reg_inc,indp:TAC_herring_share_sv,indo:fish-market-state,indr:bird-tourism_2_number-of-jobs,indp:reef-aggregation-index-buccinum,indp:repetitions,indo:fish-stock-carrying-capacity-increment,indp:reserved-for-future-use,ind:parameters-scheme,indo:SV_herring_market,indo:SV_fishing_radius,indo:sprat_price,indo:fish-ex-vessel-price,ind:emodnet-geology,indo:bird-tourism,indp:herring-tac,indo:fuel_consumption_LV,indo:fish-landing-value,indp:year_tick,indp:colonisation-time-factor,indo:benthic-biomass-density-mareano,indo:floating-wind-reef-biomass-effect,indo:fleet-fishing-radius,ind:emodnet-seabed-habitats,indr:fisheries-production_2_area-use-by-wind-park,indp:colonisation-time-factor-default-Ct-12-months,indp:current_TAC_herring,indp:total-allowable-catch,indo:TAC_herring_est_error,indo:baseline-benthic-biomass-density,indp:winter_dispersal_rate,indp:area-use-by-wind-park,indr:fisheries-production_2_number-of-jobs,ind:emodnet-physics,indp:colonisation-time-factor-default-k,indo:fish-catch,indr:area-use-by-wind-park_2_fisheries-production,indp:colonisation-time-factor-default-L,indo:landing_value_herring_LV,indp:colonisation-time-factor-default-Ct-6-months,indo:fish-stock-growth-suppression-flag,indo:mean_biomass_herring,indo:fisheries-production,indo:catch_herring_SV_All,indr:fisheries-production_2_number-of-turbines,indp:reef-aggregation-index-asterias,indr:crossImpact-Utsira-OWF-v1,indo:fleet-fuel-consumption,indp:current_month,indo:catch_herring_LV_All,indo:fishing-season-state,indp:fishing_algorithm,indo:benthic-biomass-density-imr-baseline,indp:current_management_season,indo:VA_LV_All,indo:landing_value_herring_SV,indp:spawning_closure_type,indo:VA_SV_All,indp:dispersal_rate_property,indp:colonisation-time-factor-default-Ct-24-months,ind:catalog,indo:landing_value_sprat_LV,indo:herring_price_fish_meal,indp:reef-aggregation-index,indo:catch_sprat_SV_All,indp:ticks,indo:TAC_herring_Sweden_impl,indp:number-of-turbines,ind:emodnet-chemistry,indo:catch_sprat_LV_All,indo:fuel_price,indp:submerged-infrastructure-area,indo:TAC_share_B_herring,indo:herring-tac-increment,indo:landing_value_sprat_SV,indp:colonisation-time-factor-default-Ct-0-months,indp:TAC_herring_share,indo:fleet-value-added,indr:number-of-turbines_2_area-use-by-wind-park,indo:mean_biomass_sprat,indp:colonisation-time-factor-default,indp:closure_type_property,indo:stop_herring_growth,ind:indicators-scheme,indp:submerged-infrastructure-area-utsira-design,ind:emodnet-biology,indo:B_herring_tot,indp:colonisation-time-factor-default-saturation-month,indo:fish-stock-growth-rate,indp:winter_closure_type,indp:reef-aggregation-index-mytilus,indo:herring_price_human_cons,indp:current_herring_season,indo:implemented-herring-tac,indo:fuel_consumption_SV,indo:winter_closure_length\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl",
+              "focusNodes": {
+                ":relatedDisjointWithBroaderTransitive": {
+                  "nodes": [
+                    "indp:reef-aggregation-index",
+                    "indo:fish-stock-biomass"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:\n - Shape :relatedDisjointWithBroaderTransitive: indp:reef-aggregation-index,indo:fish-stock-biomass\n"
+            }
+          ]
         }
       ]
     },
@@ -75,20 +739,605 @@
         {
           "name": "SHACL",
           "title": "SHACL",
-          "entries": []
+          "entries": [
+            {
+              "isError": false,
+              "message": "Error processing closure source http://purl.org/linked-data/cube#: No plugin registered for (text/plain, <class 'rdflib.parser.Parser'>) - SHACL validation will run against an incomplete closure graph"
+            },
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - http://qudt.org/2.1/schema/qudt\n - https://www.w3.org/ns/prov-o\n - https://www.w3.org/ns/dcat2.ttl\n - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle\n - https://www.w3.org/ns/sosa/sosa.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/oim-variables/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/oim-variables/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/oim-variables/rules.shacl",
+              "focusNodes": {
+                "ov:ObservedPropertyShape": {
+                  "nodes": []
+                },
+                "ov:CompositeIndicatorShape": {
+                  "nodes": []
+                },
+                "ov:EdgeShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/oim-variables/rules.shacl:\n - Shape ov:ObservedPropertyShape: *none*\n - Shape ov:CompositeIndicatorShape: *none*\n - Shape ov:EdgeShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "http://qudt.org/2.1/schema/shacl/qudt",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for http://qudt.org/2.1/schema/shacl/qudt:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "http://qudt.org/2.1/schema/shacl/qudt",
+              "focusNodes": {
+                "qudt:UserQuantityKind": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb33": {
+                  "nodes": []
+                },
+                "qudt:Unit": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable": {
+                  "nodes": []
+                },
+                "qudt:RatioScale": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-EMU": {
+                  "nodes": []
+                },
+                "qudt:BinaryPrefix": {
+                  "nodes": []
+                },
+                "qudt:Enumeration": {
+                  "nodes": []
+                },
+                "qudt:AbstractQuantityKind": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_ISO": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb16": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb17": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem": {
+                  "nodes": []
+                },
+                "qudt:LatexString": {
+                  "nodes": []
+                },
+                "qudt:TransformType": {
+                  "nodes": []
+                },
+                "qudt:PlaneAngleUnit": {
+                  "nodes": []
+                },
+                "qudt:LogarithmicUnit": {
+                  "nodes": []
+                },
+                "qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:IntervalScale": {
+                  "nodes": []
+                },
+                "qudt:EnumeratedValue": {
+                  "nodes": []
+                },
+                "qudt:CurrencyUnit": {
+                  "nodes": []
+                },
+                "qudt:ScalarDatatype": {
+                  "nodes": []
+                },
+                "qudt:NIST_SP811_Comment": {
+                  "nodes": []
+                },
+                "qudt:AspectClass": {
+                  "nodes": []
+                },
+                "qudt:Comment": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-datatype/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-value/sh:node": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem-value/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:RuleType": {
+                  "nodes": []
+                },
+                "qudt:SymmetricRelation": {
+                  "nodes": []
+                },
+                "qudt:Symbol": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:AngleUnit": {
+                  "nodes": []
+                },
+                "qudt:ConstantValue": {
+                  "nodes": []
+                },
+                "qudt:Verifiable": {
+                  "nodes": []
+                },
+                "qudt:NumericListShape/sh:property/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "rdf:nil": {
+                  "nodes": []
+                },
+                "qudt:Quantity": {
+                  "nodes": []
+                },
+                "qudt:Scale": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb15": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-ESU": {
+                  "nodes": []
+                },
+                "qudt:Statement": {
+                  "nodes": []
+                },
+                "qudt:DimensionlessUnit": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb18": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-LH": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:QuantityValue": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_SI": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb8": {
+                  "nodes": []
+                },
+                "qudt:PhysicalConstant": {
+                  "nodes": []
+                },
+                "qudt:Aspect": {
+                  "nodes": []
+                },
+                "qudt:Organization": {
+                  "nodes": []
+                },
+                "qudt:EnumeratedQuantity": {
+                  "nodes": []
+                },
+                "qudt:Concept": {
+                  "nodes": []
+                },
+                "qudt:BaseDimensionMagnitude": {
+                  "nodes": []
+                },
+                "qudt:Prefix": {
+                  "nodes": []
+                },
+                "_:n8472700637d04cb39139b223b9e5c07eb14": {
+                  "nodes": []
+                },
+                "qudt:NumericTypeUnion/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:DataItem": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_Imperial": {
+                  "nodes": []
+                },
+                "qudt:SolidAngleUnit": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector_CGS-GAUSS": {
+                  "nodes": []
+                },
+                "qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:NominalScale": {
+                  "nodes": []
+                },
+                "qudt:OrdinalScale": {
+                  "nodes": []
+                },
+                "qudt:QuantityKindDimensionVector": {
+                  "nodes": []
+                },
+                "qudt:UCUMcs": {
+                  "nodes": []
+                },
+                "qudt:ScaleType": {
+                  "nodes": []
+                },
+                "qudt:CountingUnit": {
+                  "nodes": []
+                },
+                "qudt:DerivedUnit": {
+                  "nodes": []
+                },
+                "qudt:QuantityType": {
+                  "nodes": []
+                },
+                "qudt:Citation": {
+                  "nodes": []
+                },
+                "qudt:Discipline": {
+                  "nodes": []
+                },
+                "qudt:InformativeReferencePropertyShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:SystemOfUnits": {
+                  "nodes": []
+                },
+                "qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "qudt:NumericListShape": {
+                  "nodes": []
+                },
+                "qudt:QuantityKind": {
+                  "nodes": []
+                },
+                "qudt:DecimalPrefix": {
+                  "nodes": []
+                },
+                "qudt:Datatype": {
+                  "nodes": []
+                },
+                "qudt:Rule": {
+                  "nodes": []
+                },
+                "qudt:Figure": {
+                  "nodes": []
+                },
+                "qudt:SystemOfQuantityKinds": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for http://qudt.org/2.1/schema/shacl/qudt:\n - Shape qudt:UserQuantityKind: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb33: *none*\n - Shape qudt:Unit: *none*\n - Shape qudt:Quantifiable-datatype/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:Quantifiable: *none*\n - Shape qudt:RatioScale: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-EMU: *none*\n - Shape qudt:BinaryPrefix: *none*\n - Shape qudt:Enumeration: *none*\n - Shape qudt:AbstractQuantityKind: *none*\n - Shape qudt:QuantityKindDimensionVector_ISO: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb16: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb17: *none*\n - Shape qudt:ScalarDataItem: *none*\n - Shape qudt:LatexString: *none*\n - Shape qudt:TransformType: *none*\n - Shape qudt:PlaneAngleUnit: *none*\n - Shape qudt:LogarithmicUnit: *none*\n - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:IntervalScale: *none*\n - Shape qudt:EnumeratedValue: *none*\n - Shape qudt:CurrencyUnit: *none*\n - Shape qudt:ScalarDatatype: *none*\n - Shape qudt:NIST_SP811_Comment: *none*\n - Shape qudt:AspectClass: *none*\n - Shape qudt:Comment: *none*\n - Shape qudt:Quantifiable-datatype/sh:or/rdf:first: *none*\n - Shape qudt:Quantifiable-value/sh:node: *none*\n - Shape qudt:ScalarDataItem-value/sh:or/rdf:first: *none*\n - Shape qudt:RuleType: *none*\n - Shape qudt:SymmetricRelation: *none*\n - Shape qudt:Symbol: *none*\n - Shape qudt:NumericTypeUnion/rdf:rest/rdf:rest/rdf:first: *none*\n - Shape qudt:AngleUnit: *none*\n - Shape qudt:ConstantValue: *none*\n - Shape qudt:Verifiable: *none*\n - Shape qudt:NumericListShape/sh:property/sh:or/rdf:first: *none*\n - Shape rdf:nil: *none*\n - Shape qudt:Quantity: *none*\n - Shape qudt:Scale: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb15: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-ESU: *none*\n - Shape qudt:Statement: *none*\n - Shape qudt:DimensionlessUnit: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb18: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-LH: *none*\n - Shape qudt:NumericTypeUnion/rdf:first: *none*\n - Shape qudt:QuantityValue: *none*\n - Shape qudt:QuantityKindDimensionVector_SI: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb8: *none*\n - Shape qudt:PhysicalConstant: *none*\n - Shape qudt:Aspect: *none*\n - Shape qudt:Organization: *none*\n - Shape qudt:EnumeratedQuantity: *none*\n - Shape qudt:Concept: *none*\n - Shape qudt:BaseDimensionMagnitude: *none*\n - Shape qudt:Prefix: *none*\n - Shape _:n8472700637d04cb39139b223b9e5c07eb14: *none*\n - Shape qudt:NumericTypeUnion/rdf:rest/rdf:first: *none*\n - Shape qudt:DataItem: *none*\n - Shape qudt:QuantityKindDimensionVector_Imperial: *none*\n - Shape qudt:SolidAngleUnit: *none*\n - Shape qudt:QuantityKindDimensionVector_CGS-GAUSS: *none*\n - Shape qudt:ScalarDataItem-value/sh:or/rdf:rest/rdf:first: *none*\n - Shape qudt:NominalScale: *none*\n - Shape qudt:OrdinalScale: *none*\n - Shape qudt:QuantityKindDimensionVector: *none*\n - Shape qudt:UCUMcs: *none*\n - Shape qudt:ScaleType: *none*\n - Shape qudt:CountingUnit: *none*\n - Shape qudt:DerivedUnit: *none*\n - Shape qudt:QuantityType: *none*\n - Shape qudt:Citation: *none*\n - Shape qudt:Discipline: *none*\n - Shape qudt:InformativeReferencePropertyShape/sh:or/rdf:first: *none*\n - Shape qudt:SystemOfUnits: *none*\n - Shape qudt:Quantifiable-value/sh:node/rdf:rest/rdf:first: *none*\n - Shape qudt:NumericListShape: *none*\n - Shape qudt:QuantityKind: *none*\n - Shape qudt:DecimalPrefix: *none*\n - Shape qudt:Datatype: *none*\n - Shape qudt:Rule: *none*\n - Shape qudt:Figure: *none*\n - Shape qudt:SystemOfQuantityKinds: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl",
+              "focusNodes": {
+                "<https://www.ogc.org/rules/sosa/#testResult>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testFeatureOfInterest>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testRequiredTime>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/sosa/#testObservedProperty>": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/sosa/rules.shacl:\n - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*\n - Shape <https://www.ogc.org/rules/sosa/#testObservedProperty>: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl",
+              "focusNodes": {
+                "<https://www.ogc.org/rules/prov/#Bundle-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-entity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-agent>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Generation-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedUsage>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-influencer>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasRevisionOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-specializationOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-used>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPrimarySource>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInformedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Start-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Entity-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-atLocation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-generated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadActivity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Plan-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasStartedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedStart>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadRole>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedEnd>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Invalidation-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-activity>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasEndedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Usage-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#EmptyCollection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#End-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadUsage>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-alternateOf>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-invalidated>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadMember>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Collection-shape>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-hadPlan>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-qualifiedRevision>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#prop-wasAttributedTo>": {
+                  "nodes": []
+                },
+                "<https://www.ogc.org/rules/prov/#Activity-shape>": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/cross-domain-model/_sources/prov/shapes.shacl:\n - Shape <https://www.ogc.org/rules/prov/#Bundle-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-entity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedCommunication>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInfluence>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-agent>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Generation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-influencer>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDelegation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasRevisionOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-specializationOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-used>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasDerivedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-actedOnBehalfOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedQuotation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInformedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Start-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Entity-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-atLocation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAttribution>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-generated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadActivity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInvalidatedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Plan-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAssociatedWith>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasQuotedFrom>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasStartedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#InstantaneousEvent-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedInvalidation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedStart>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadRole>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedEnd>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Invalidation-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-activity>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasEndedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Usage-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedGeneration>: *none*\n - Shape <https://www.ogc.org/rules/prov/#EmptyCollection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedPrimarySource>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedAssociation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasGeneratedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedDerivation>: *none*\n - Shape <https://www.ogc.org/rules/prov/#End-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadUsage>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-alternateOf>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-invalidated>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasInfluencedBy>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadMember>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Collection-shape>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-hadPlan>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-qualifiedRevision>: *none*\n - Shape <https://www.ogc.org/rules/prov/#prop-wasAttributedTo>: *none*\n - Shape <https://www.ogc.org/rules/prov/#Activity-shape>: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl",
+              "focusNodes": {
+                ":singlePrefLabel": {
+                  "nodes": [
+                    "im:offshore-renewable-energy-demand",
+                    "im:EvaluationResult",
+                    "im:monitoring-and-adaptive-management",
+                    "im:ThresholdValue",
+                    "im:ScientificConcept",
+                    "im:benthic-biomass-density-state",
+                    "im:biomass-density-validation-shape",
+                    "im:IndicatorComponent",
+                    "im:DataManagement",
+                    "im:biomass-density-threshold",
+                    "im:biomass-density-evaluation-result",
+                    "im:biomass-density-assessment-protocol",
+                    "im:floating-wind-farm-development",
+                    "im:ValidationProtocol",
+                    "dapsim:Driver",
+                    "im:biomass-density-data-management",
+                    "im:reef-associated-biomass-impact",
+                    "ind:catalog",
+                    "im:PipelineStage",
+                    "im:biomass-density-policy-context",
+                    "dapsim:Activity",
+                    "im:biomass-density-scaling",
+                    "im:biomass-density-data-availability",
+                    "dapsim:Pressure",
+                    "im:good-status-threshold-availability",
+                    "im:MonitoringMethodology",
+                    "im:AssessmentProtocol",
+                    "im:biomass-density-monitoring-methodology",
+                    "im:dapsim-biomass-density-conceptual-model",
+                    "dapsim:DAPSIMElement",
+                    "im:biomass-density-scientific-concept",
+                    "im:PolicyContext",
+                    "im:biomass-density-model-definition",
+                    "dapsim:Impact",
+                    "dapsim:State",
+                    "im:hard-substrate-introduction",
+                    "dapsim:Measure",
+                    "im:biomass-density-model-binding",
+                    "im:biomass-density-test-execution",
+                    "ind:dapsim-scheme"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/common/rules.shacl:\n - Shape :singlePrefLabel: im:offshore-renewable-energy-demand,im:EvaluationResult,im:monitoring-and-adaptive-management,im:ThresholdValue,im:ScientificConcept,im:benthic-biomass-density-state,im:biomass-density-validation-shape,im:IndicatorComponent,im:DataManagement,im:biomass-density-threshold,im:biomass-density-evaluation-result,im:biomass-density-assessment-protocol,im:floating-wind-farm-development,im:ValidationProtocol,dapsim:Driver,im:biomass-density-data-management,im:reef-associated-biomass-impact,ind:catalog,im:PipelineStage,im:biomass-density-policy-context,dapsim:Activity,im:biomass-density-scaling,im:biomass-density-data-availability,dapsim:Pressure,im:good-status-threshold-availability,im:MonitoringMethodology,im:AssessmentProtocol,im:biomass-density-monitoring-methodology,im:dapsim-biomass-density-conceptual-model,dapsim:DAPSIMElement,im:biomass-density-scientific-concept,im:PolicyContext,im:biomass-density-model-definition,dapsim:Impact,dapsim:State,im:hard-substrate-introduction,dapsim:Measure,im:biomass-density-model-binding,im:biomass-density-test-execution,ind:dapsim-scheme\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl",
+              "graph": "@prefix : <http://blocks.ogc.org/skos#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <https://w3id.org/indicators/marine/indicator-model/benthic-biomass-density-state> ;\n            sh:resultMessage \"skos:related is disjoint with skos:broaderTransitive\" ;\n            sh:resultPath skos:related ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraint [ sh:message \"skos:related is disjoint with skos:broaderTransitive\" ;\n                    sh:select \"\"\"\n        prefix skos: <http://www.w3.org/2004/02/skos/core#>\n        SELECT $this (skos:related as ?path) ?target WHERE {\n          $this skos:related ?target .\n          { $this skos:broader ?target }\n          UNION\n          { $this skos:narrower ?target }\n          UNION\n          { $this skos:broaderTransitive ?target }\n          UNION\n          { $this skos:narrowerTransitive ?target }\n        }\n      \"\"\" ] ;\n            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;\n            sh:sourceShape :relatedDisjointWithBroaderTransitive ;\n            sh:value <https://w3id.org/indicators/marine/indicator-model/benthic-biomass-density-state> ] .\n\n",
+              "isError": true,
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: :relatedDisjointWithBroaderTransitive\n  \tFocus Node: im:benthic-biomass-density-state\n  \tValue Node: im:benthic-biomass-density-state\n  \tResult Path: skos:related\n  \tSource Constraint: [ sh:message Literal(\"skos:related is disjoint with skos:broaderTransitive\") ; sh:select Literal(\"\n          prefix skos: <http://www.w3.org/2004/02/skos/core#>\n          SELECT $this (skos:related as ?path) ?target WHERE {\n            $this skos:related ?target .\n            { $this skos:broader ?target }\n            UNION\n            { $this skos:narrower ?target }\n            UNION\n            { $this skos:broaderTransitive ?target }\n            UNION\n            { $this skos:narrowerTransitive ?target }\n          }\n        \") ]\n  \tMessage: skos:related is disjoint with skos:broaderTransitive\n  "
+            },
+            {
+              "shaclFile": "https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl",
+              "focusNodes": {
+                ":relatedDisjointWithBroaderTransitive": {
+                  "nodes": [
+                    "im:benthic-biomass-density-state",
+                    "im:reef-associated-biomass-impact"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://ogcincubator.github.io/bblocks-skos/_sources/concept/rules.shacl:\n - Shape :relatedDisjointWithBroaderTransitive: im:benthic-biomass-density-state,im:reef-associated-biomass-impact\n"
+            }
+          ]
         }
       ]
     }
   ],
-  "globalErrors": {
-    "SHACL": {
-      "isError": true,
-      "message": "Error processing _sources/oim-variables/rules.shacl: at line 41 of <>:\nBad syntax (Prefix \":\" not bound) at ^ in:\n\"...b' sh:minCount 1 ;\\n        sh:datatype xsd:decimal ;\\n    ] .\\n\\n'^b':CompositeIndicatorShape\\n    a sh:NodeShape ;\\n    sh:targetC'...\""
-    }
-  },
+  "globalErrors": {},
   "counts": {
     "total": 2,
-    "passed": 0,
-    "failed": 2
+    "passed": 1,
+    "failed": 1
   }
 }
