@@ -476,20 +476,20 @@ their weights, while the raw block preserves the individual point features.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate> a geojson:Feature ;
-    rdfs:seeAlso [ rdfs:label "OIM Observations profile" ;
-            dcterms:type "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
-            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
+    rdfs:seeAlso [ rdfs:label "MAREANO programme" ;
+            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
+            oa:hasTarget <https://mareano.no/> ],
         [ rdfs:label "IMR Benthic Biomass Density Observation bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
             oa:hasTarget <bblocks://ogc.hosted.seadots.benthic-biomass-density-imr> ],
+        [ rdfs:label "OIM Observations profile" ;
+            dcterms:type "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/profile> ;
+            oa:hasTarget <bblocks://ogc.hosted.iliad.api.features.oim-obs> ],
         [ rdfs:label "Institute of Marine Research" ;
             ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
             oa:hasTarget <https://www.hi.no/> ],
-        [ rdfs:label "MAREANO programme" ;
-            ns1:relation <http://www.iana.org/assignments/relation/cite-as> ;
-            oa:hasTarget <https://mareano.no/> ],
         [ rdfs:label "IMR benthic biomass observations bblock" ;
             dcterms:type "application/schema+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/derivedFrom> ;

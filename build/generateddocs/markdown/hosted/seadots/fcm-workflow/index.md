@@ -356,13 +356,13 @@ a service.
     dcterms:hasVersion "0.1.0" ;
     dcterms:method "Iterate x <- f(transpose(W) x) from num_trials random initial states; cluster the converged endpoints; report per-cluster centroids and componentwise spread." ;
     dcterms:title "Fuzzy cognitive map solver (FuzzyCognitiveMapTools.jl)" ;
-    rdfs:seeAlso [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
+    rdfs:seeAlso [ dcterms:format "application/schema+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
+            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ],
+        [ rdfs:label "FuzzyCognitiveMapTools.jl source repository" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/related> ;
-            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ],
-        [ dcterms:format "application/schema+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/describedby> ;
-            oa:hasTarget <bblocks://ogc.hosted.seadots.fcm-workflow> ] ;
+            oa:hasTarget <https://gitlab.sintef.no/seadots-eu-project/tools/fuzzycognitivemaptools.jl> ] ;
     dcat:keyword "digital-twin",
         "fuzzy-cognitive-map",
         "open-science",
@@ -375,14 +375,14 @@ a service.
             dcterms:description "The fuzzy cognitive map to solve. Self-contained: it carries its own activation specification." ;
             seadots:required true ;
             seadots:role "map" ] ;
-    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
-            dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
-            seadots:required true ;
-            seadots:role "equilibria" ],
-        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
+    apkg:outputs [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-sequence> ;
             dcterms:description "Produced only when the solver is applied stepwise over a time-indexed series of maps." ;
             seadots:required false ;
-            seadots:role "sequence" ] ;
+            seadots:role "sequence" ],
+        [ dcterms:conformsTo <file:///github/workspace/ogc.hosted.seadots.fcm-solution> ;
+            dcterms:description "Equilibria of one map. Index-aligned with that map's vertex order and uninterpretable without it." ;
+            seadots:required true ;
+            seadots:role "equilibria" ] ;
     seadots:itemType "record" ;
     fcm:solverCapability [ seadots:executionParameters [ seadots:clusteringTolerance 1e-06 ;
                     seadots:convergenceTolerance 1e-10 ;

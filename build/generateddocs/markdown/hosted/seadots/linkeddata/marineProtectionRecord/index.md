@@ -369,22 +369,22 @@ This version refines the dataset by excluding large-scale jurisdictional and fis
             dcterms:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/items> ;
             oa:hasTarget <https://api.hubocean.earth/api/features/collections/a608f54b-75c7-4df9-a3a8-cedbfa391873/items> ],
+        [ rdfs:label "CC BY 4.0" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/license> ;
+            oa:hasTarget <https://creativecommons.org/licenses/by/4.0/> ],
         [ rdfs:label "This entry as schema.org JSON-LD" ;
             dcterms:format "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
             oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
-        [ rdfs:label "ProtectedSeas Navigator - Global Marine Life Protections" ;
-            dcterms:format "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
-            oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1> ],
         [ rdfs:label "Catalog page" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/about> ;
             oa:hasTarget <https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
-        [ rdfs:label "CC BY 4.0" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/license> ;
-            oa:hasTarget <https://creativecommons.org/licenses/by/4.0/> ] ;
+        [ rdfs:label "ProtectedSeas Navigator - Global Marine Life Protections" ;
+            dcterms:format "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/collection> ;
+            oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1> ] ;
     dcat:contactPoint [ rdfs:seeAlso [ dcterms:format "text/html" ;
                     ns1:relation <http://www.iana.org/assignments/relation/about> ;
                     oa:hasTarget <https://www.hubocean.earth/> ] ;

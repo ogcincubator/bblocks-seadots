@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.fcm-solution - FCM solution",
   "bblockName": "FCM solution",
   "bblockId": "ogc.hosted.seadots.fcm-solution",
-  "generated": "2026-11-10T15:20:10.257244+00:00",
+  "generated": "2026-11-10T15:58:02.205571+00:00",
   "result": true,
   "items": [
     {
@@ -65,7 +65,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl\n - /github/workspace/_sources/ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -77,30 +77,45 @@
             {
               "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
               "focusNodes": {
-                "fcm:SolutionShape": {
-                  "nodes": [
-                    "_:N036ce0c93b79442794fdefad21534f4b"
-                  ]
-                },
-                "fcm:SequenceStepShape": {
-                  "nodes": []
-                },
-                "fcm:NodeStateShape": {
-                  "nodes": []
-                },
                 "fcm:PolarityRuleShape": {
                   "nodes": []
                 },
-                "fcm:SequenceSeriesShape": {
+                "fcm:HeterogeneousActivationShape": {
                   "nodes": []
                 },
-                "fcm:MinimumNodesShape": {
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
                   "nodes": []
                 },
                 "fcm:NodeStateValueShape": {
                   "nodes": []
                 },
+                "fcm:SolutionShape": {
+                  "nodes": [
+                    "_:N8132e0fda35d439fa614a31c283e4c94"
+                  ]
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
                 "fcm:NodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
                   "nodes": []
                 },
                 "fcm:NoDanglingNodeShape": {
@@ -109,27 +124,12 @@
                 "fcm:EquilibriumShape": {
                   "nodes": []
                 },
-                "fcm:WeightMatrixShape": {
-                  "nodes": []
-                },
-                "fcm:HeterogeneousActivationShape": {
-                  "nodes": []
-                },
-                "fcm:SolverCapabilityShape": {
-                  "nodes": []
-                },
-                "fcm:RangeTimeSpecShape": {
-                  "nodes": []
-                },
-                "fcm:UniqueNodeKeyShape": {
-                  "nodes": []
-                },
-                "fcm:EdgeEndpointsShape": {
+                "fcm:SequenceSeriesShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:SolutionShape: _:N036ce0c93b79442794fdefad21534f4b\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n"
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:SolutionShape: _:N8132e0fda35d439fa614a31c283e4c94\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -141,24 +141,24 @@
             {
               "shaclFile": "_sources/ontology/rules.shacl",
               "focusNodes": {
-                ":EquationByteEqualityShape": {
-                  "nodes": []
-                },
-                ":SymbolInEquationShape": {
+                ":ProvClosureShape": {
                   "nodes": []
                 },
                 ":IndexedTermShape": {
                   "nodes": []
                 },
-                ":ProvClosureShape": {
+                ":PrimaryEntryShape": {
                   "nodes": []
                 },
-                ":PrimaryEntryShape": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :EquationByteEqualityShape: *none*\n - Shape :SymbolInEquationShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :ProvClosureShape: *none*\n - Shape :PrimaryEntryShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :ProvClosureShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :SymbolInEquationShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n"
             }
           ]
         }
@@ -224,7 +224,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl\n - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl\n - /github/workspace/_sources/ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
@@ -236,30 +236,45 @@
             {
               "shaclFile": "_sources/_staging/fcm-ontology/rules.shacl",
               "focusNodes": {
-                "fcm:SolutionShape": {
-                  "nodes": [
-                    "_:N9ec5fb06b3ab4cb1b6fa601206d9f797"
-                  ]
-                },
-                "fcm:SequenceStepShape": {
-                  "nodes": []
-                },
-                "fcm:NodeStateShape": {
-                  "nodes": []
-                },
                 "fcm:PolarityRuleShape": {
                   "nodes": []
                 },
-                "fcm:SequenceSeriesShape": {
+                "fcm:HeterogeneousActivationShape": {
                   "nodes": []
                 },
-                "fcm:MinimumNodesShape": {
+                "fcm:EdgeEndpointsShape": {
+                  "nodes": []
+                },
+                "fcm:WeightMatrixShape": {
+                  "nodes": []
+                },
+                "fcm:UniqueNodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:SolverCapabilityShape": {
                   "nodes": []
                 },
                 "fcm:NodeStateValueShape": {
                   "nodes": []
                 },
+                "fcm:SolutionShape": {
+                  "nodes": [
+                    "_:N1f2c81bfe26f40b2847c6ac984bbd682"
+                  ]
+                },
+                "fcm:NodeStateShape": {
+                  "nodes": []
+                },
                 "fcm:NodeKeyShape": {
+                  "nodes": []
+                },
+                "fcm:MinimumNodesShape": {
+                  "nodes": []
+                },
+                "fcm:RangeTimeSpecShape": {
+                  "nodes": []
+                },
+                "fcm:SequenceStepShape": {
                   "nodes": []
                 },
                 "fcm:NoDanglingNodeShape": {
@@ -268,27 +283,12 @@
                 "fcm:EquilibriumShape": {
                   "nodes": []
                 },
-                "fcm:WeightMatrixShape": {
-                  "nodes": []
-                },
-                "fcm:HeterogeneousActivationShape": {
-                  "nodes": []
-                },
-                "fcm:SolverCapabilityShape": {
-                  "nodes": []
-                },
-                "fcm:RangeTimeSpecShape": {
-                  "nodes": []
-                },
-                "fcm:UniqueNodeKeyShape": {
-                  "nodes": []
-                },
-                "fcm:EdgeEndpointsShape": {
+                "fcm:SequenceSeriesShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:SolutionShape: _:N9ec5fb06b3ab4cb1b6fa601206d9f797\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n"
+              "message": "Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:\n - Shape fcm:PolarityRuleShape: *none*\n - Shape fcm:HeterogeneousActivationShape: *none*\n - Shape fcm:EdgeEndpointsShape: *none*\n - Shape fcm:WeightMatrixShape: *none*\n - Shape fcm:UniqueNodeKeyShape: *none*\n - Shape fcm:SolverCapabilityShape: *none*\n - Shape fcm:NodeStateValueShape: *none*\n - Shape fcm:SolutionShape: _:N1f2c81bfe26f40b2847c6ac984bbd682\n - Shape fcm:NodeStateShape: *none*\n - Shape fcm:NodeKeyShape: *none*\n - Shape fcm:MinimumNodesShape: *none*\n - Shape fcm:RangeTimeSpecShape: *none*\n - Shape fcm:SequenceStepShape: *none*\n - Shape fcm:NoDanglingNodeShape: *none*\n - Shape fcm:EquilibriumShape: *none*\n - Shape fcm:SequenceSeriesShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -300,24 +300,24 @@
             {
               "shaclFile": "_sources/ontology/rules.shacl",
               "focusNodes": {
-                ":EquationByteEqualityShape": {
-                  "nodes": []
-                },
-                ":SymbolInEquationShape": {
+                ":ProvClosureShape": {
                   "nodes": []
                 },
                 ":IndexedTermShape": {
                   "nodes": []
                 },
-                ":ProvClosureShape": {
+                ":PrimaryEntryShape": {
                   "nodes": []
                 },
-                ":PrimaryEntryShape": {
+                ":SymbolInEquationShape": {
+                  "nodes": []
+                },
+                ":EquationByteEqualityShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :EquationByteEqualityShape: *none*\n - Shape :SymbolInEquationShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :ProvClosureShape: *none*\n - Shape :PrimaryEntryShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/rules.shacl:\n - Shape :ProvClosureShape: *none*\n - Shape :IndexedTermShape: *none*\n - Shape :PrimaryEntryShape: *none*\n - Shape :SymbolInEquationShape: *none*\n - Shape :EquationByteEqualityShape: *none*\n"
             }
           ]
         }
