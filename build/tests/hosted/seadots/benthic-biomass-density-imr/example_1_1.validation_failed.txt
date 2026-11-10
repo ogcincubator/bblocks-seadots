@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.benthic-biomass-density-imr - IMR Benthic Biomass Density Observation
-Generated 2026-11-05T13:38:32.075455+00:00
+Generated 2026-11-10T15:21:15.908350+00:00
 === Files ===
 Using examples/imr_ices_iva_fallback.json from examples
 JSON-LD context is present - uplifting
@@ -13,336 +13,370 @@ Output Turtle example_1_1.ttl created
 ValidationError: {'id': 'https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate', 'type': 'Feature', 'geometry': {'type': 'Polygon', 'coordinates': [[[-5.0, 56.0], [33.0, 56.0], [33.0, 82.0], [-5.0, 82.0], [-5.0, 56.0]]]}, 'properties': {'type': 'Dataset', 'title': 'MAREANO benthic catch-sample biomass, aggregated per species over a North Sea / Norwegian Sea / Barents Sea AOI', 'description': 'Per-species sum of weighed catch-sample mass from the MAREANO Marbunn database, filtered to the AOI polygon. All numbers are real Marbunn-API responses fetched at file generation time.', 'created': '2026-05-26', 'updated': '2026-05-26', 'language': {'code': 'en'}, 'license': 'https://creativecommons.org/licenses/by/4.0/', 'attribution': 'Institute of Marine Research (IMR) / MAREANO programme. CC BY 4.0 / NLOD.', 'themes': [{'concepts': [{'id': 'benthic-biomass', 'label': 'Benthic biomass density'}], 'scheme': 'https://id3.seadots.eu/themes'}], 'keywords': ['MAREANO', 'Marbunn', 'IMR', 'benthic biomass', 'catch samples', 'Norway'], 'formats': [{'mediaType': 'application/json'}], 'conformsTo': ['http://www.w3.org/ns/sosa/Observation', 'https://ogcincubator.github.io/geodcat-ogcapi-records/'], 'benthicBiomassDensity': {'name': 'MAREANO catch-sample biomass aggregation', 'description': 'Catch weight summed across every weighed Marbunn sample whose station point falls inside the AOI polygon, grouped by species.', 'role': 'real measured baseline (catch-weight; NOT area-normalised density)', 'source': 'https%3A%2F%2Fmarbunn-ekstern.hi.no%2Fapps%2Fmarbunn%2Fv1%2Fgetmapforcatch%3Fspecies%3D%7BscientificName%7D%26cruise%3D', 'format': 'application/geo+json', 'vocabularyTerm': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline', 'observedProperty': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline', 'phenomenonTime': '2006612/2026007006', 'data': {'units': 'kg (per-sample catch weight, summed across samples; NOT kg m-2)', 'method': "For every species in MAREANO's catch-species list, fetched /getmapforcatch as GeoJSON, filtered to the AOI bbox by station coordinate, summed the per-sample Weight property (kg) and counted samples.", 'samplingGear': ['Beamtrawl', 'Bioboks', 'Boxcorer', 'Large VV grab', 'RP-sledge', 'Small VV grab', 'VVgrab020', 'Videograb'], 'cruisesContributing': ['2006612', '2007105', '2007111', '2024007005', '2025001009', '2026007006', '2009105', '2009111', '2010110', '2010112'], 'timeBoundaries': None, 'speciesQueried': 3620, 'speciesWithRecordsInAOI': 988, 'speciesWithWeighedSamples': 481, 'totalRecordsInAOI': 23438, 'totalWeight_kg': 25405.761, 'perTaxon': [{'scientificName': 'Aplysilla', 'totalWeight_kg': 5000.0, 'samplesWithWeight': 1, 'samplesInAOI': 10, 'totalIndividuals': 0, 'cruises': ['2009105', '2009111', '2010110', '2010112'], 'equipment': ['Beamtrawl', 'VVgrab020']}, {'scientificName': 'Actiniaria', 'totalWeight_kg': 4473.589, 'samplesWithWeight': 95, 'samplesInAOI': 476, 'totalIndividuals': 656, 'cruises': ['2007105', '2007111', '2024007003', '2024007005'], 'equipment': ['Beamtrawl', 'Large VV grab', 'RP-sledge', 'Small VV grab', 'VVgrab020']}], 'provenance': {'values': 'real', 'source': {'name': 'MAREANO Marbunn (IMR catch-samples viewer)', 'api': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/', 'speciesListEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/catchspecies', 'perSpeciesEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/getmapforcatch?species={name}&cruise=', 'portal': 'https://mareano.no/', 'license': 'CC BY 4.0 / NLOD'}, 'fetched_utc': '2026-05-26T11:11:24Z', 'generator': 'build_example.py', 'timeBoundaryNote': 'No explicit --time-boundaries supplied; phenomenonTime falls back to the min/max contributing cruise identifiers.', 'caveats': ['Marbunn returns catch-sample weights in kilograms; the values here are SUMS of those per-sample weights — not areal densities. Converting to kg m-2 would require the swept area of every sample, which Marbunn does not expose.', 'Many catch records have Weight=null (sample identified but not weighed); they are excluded from totalWeight_kg but counted in samplesInAOI so coverage gaps stay visible.', 'Cruise IDs are MAREANO/IMR internal cruise codes; the same physical cruise may use multiple gear types.', 'The AOI polygon is a wide bbox; it overlaps but does not equal any single ICES Division.'], 'rawCollectionBlock': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr'}}}}, 'links': [{'rel': 'describedby', 'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-density-imr', 'type': 'application/schema+json', 'title': 'IMR Benthic Biomass Density Observation bblock'}, {'rel': 'derivedFrom', 'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr', 'type': 'application/schema+json', 'title': 'IMR benthic biomass observations bblock'}, {'rel': 'profile', 'href': 'bblocks://ogc.hosted.iliad.api.features.oim-obs', 'type': 'application/schema+json', 'title': 'OIM Observations profile'}, {'rel': 'cite-as', 'href': 'https://mareano.no/', 'title': 'MAREANO programme'}, {'rel': 'cite-as', 'href': 'https://www.hi.no/', 'title': 'Institute of Marine Research'}]} is not valid under any of the given schemas
 
 Failed validating 'anyOf' in schema['allOf'][0]:
-    {'$defs': {'OIMObsCollection': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/features/observationCollection/schema.yaml'},
-                                              {'properties': {'features': {'items': {'allOf': [{'$ref': '#/$defs/OIMObsFeature'}]},
-                                                                           'type': 'array'}}}]},
-               'OIMObsFeature': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/features/observation/schema.yaml'},
-                                           {'properties': {'observedProperty': {'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml',
-                                                                                'x-jsonld-base': 'https://w3id.org/iliad/jellyfish/property/',
-                                                                                'x-jsonld-id': 'http://www.w3.org/ns/sosa/observedProperty',
-                                                                                'x-jsonld-type': '@id'},
-                                                           'properties': {'$ref': '#/$defs/OIMObsProps'}}}]},
-               'OIMObsProps': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/properties/observation/schema.yaml'},
+    {'$schema': 'https://json-schema.org/draft/2020-12/schema',
+     'description': 'Schemas for Observations',
+     '$defs': {'OIMObsProps': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/properties/observation/schema.yaml'},
                                          {'properties': {'label': {'oneOf': [{'type': 'string'},
                                                                              {'type': 'object'}],
-                                                                   'x-jsonld-container': '@language',
-                                                                   'x-jsonld-id': 'http://www.w3.org/2000/01/rdf-schema#label'}}}]}},
-     '$schema': 'https://json-schema.org/draft/2020-12/schema',
+                                                                   'x-jsonld-id': 'http://www.w3.org/2000/01/rdf-schema#label',
+                                                                   'x-jsonld-container': '@language'}}}]},
+               'OIMObsFeature': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/features/observation/schema.yaml'},
+                                           {'properties': {'properties': {'$ref': '#/$defs/OIMObsProps'},
+                                                           'observedProperty': {'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml',
+                                                                                'x-jsonld-id': 'http://www.w3.org/ns/sosa/observedProperty',
+                                                                                'x-jsonld-type': '@id',
+                                                                                'x-jsonld-base': 'https://w3id.org/iliad/jellyfish/property/'}}}]},
+               'OIMObsCollection': {'allOf': [{'$ref': 'https://opengeospatial.github.io/ogcapi-sosa/build/annotated/sosa/features/observationCollection/schema.yaml'},
+                                              {'properties': {'features': {'type': 'array',
+                                                                           'items': {'allOf': [{'$ref': '#/$defs/OIMObsFeature'}]}}}}]}},
      'anyOf': [{'$ref': '#/$defs/OIMObsProps'},
                {'$ref': '#/$defs/OIMObsFeature'},
                {'$ref': '#/$defs/OIMObsCollection'}],
-     'description': 'Schemas for Observations',
-     'x-jsonld-extra-terms': {'Acceleration': 'http://purl.oclc.org/NET/ssnx/qu/dim#Acceleration',
-                              'ActuatableProperty': 'http://www.w3.org/ns/sosa/ActuatableProperty',
-                              'Actuation': 'http://www.w3.org/ns/sosa/Actuation',
-                              'Agent': 'http://xmlns.com/foaf/0.1/Agent',
-                              'Angle': 'http://purl.oclc.org/NET/ssnx/qu/dim#Angle',
-                              'Area': 'http://purl.oclc.org/NET/ssnx/qu/dim#Area',
-                              'Attachable': 'http://purl.org/linked-data/cube#Attachable',
-                              'AttributeProperty': 'http://purl.org/linked-data/cube#AttributeProperty',
-                              'Class': 'http://www.w3.org/2000/01/rdf-schema#Class',
-                              'CodedProperty': 'http://purl.org/linked-data/cube#CodedProperty',
-                              'ComponentProperty': 'http://purl.org/linked-data/cube#ComponentProperty',
-                              'ComponentSet': 'http://purl.org/linked-data/cube#ComponentSet',
-                              'ComponentSpecification': 'http://purl.org/linked-data/cube#ComponentSpecification',
-                              'Compressibility': 'http://purl.oclc.org/NET/ssnx/qu/dim#Compressibility',
-                              'Concentration': 'http://purl.oclc.org/NET/ssnx/qu/dim#Concentration',
-                              'Concept': 'http://www.w3.org/2004/02/skos/core#Concept',
-                              'Curve': 'http://www.opengis.net/ont/sf#Curve',
-                              'DataSet': 'http://purl.org/linked-data/cube#DataSet',
-                              'DataStructureDefinition': 'http://purl.org/linked-data/cube#DataStructureDefinition',
-                              'Density': 'http://purl.oclc.org/NET/ssnx/qu/dim#Density',
-                              'Deployment': 'http://www.w3.org/ns/ssn/Deployment',
-                              'DiffusionCoefficient': 'http://purl.oclc.org/NET/ssnx/qu/dim#DiffusionCoefficient',
-                              'DimensionProperty': 'http://purl.org/linked-data/cube#DimensionProperty',
-                              'Dimensionless': 'http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless',
-                              'Distance': 'http://purl.oclc.org/NET/ssnx/qu/dim#Distance',
-                              'Duration': 'http://www.w3.org/2006/time#Duration',
-                              'ElectricConductivity': 'http://purl.oclc.org/NET/ssnx/qu/dim#ElectricConductivity',
-                              'Energy': 'http://purl.oclc.org/NET/ssnx/qu/dim#Energy',
-                              'EnergyDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#EnergyDensity',
-                              'EnergyFlux': 'http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux',
-                              'Feature': 'http://www.opengis.net/ont/geosparql#Feature',
-                              'FeatureCollection': 'http://www.opengis.net/ont/geosparql#FeatureCollection',
-                              'FeatureOfInterest': 'http://www.w3.org/ns/sosa/FeatureOfInterest',
-                              'GFI_DomainFeature': 'http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#GFI_DomainFeature',
-                              'GFI_Feature': 'http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#GFI_Feature',
-                              'Geometry': 'http://www.opengis.net/ont/geosparql#Geometry',
-                              'GeometryCollection': 'http://www.opengis.net/ont/sf#GeometryCollection',
-                              'Instant': 'http://www.w3.org/2006/time#Instant',
-                              'Interval': 'http://www.w3.org/2006/time#Interval',
-                              'Line': 'http://www.opengis.net/ont/sf#Line',
-                              'LineString': 'http://www.opengis.net/ont/sf#LineString',
-                              'LinearRing': 'http://www.opengis.net/ont/sf#LinearRing',
-                              'Mass': 'http://purl.oclc.org/NET/ssnx/qu/dim#Mass',
-                              'MassFlowRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#MassFlowRate',
-                              'MassPerTimePerArea': 'http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea',
-                              'Measure': 'http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Measure',
-                              'MeasureProperty': 'http://purl.org/linked-data/cube#MeasureProperty',
-                              'Molality': 'http://purl.oclc.org/NET/ssnx/qu/dim#Molality',
-                              'MultiCurve': 'http://www.opengis.net/ont/sf#MultiCurve',
-                              'MultiLineString': 'http://www.opengis.net/ont/sf#MultiLineString',
-                              'MultiPoint': 'http://www.opengis.net/ont/sf#MultiPoint',
-                              'MultiPolygon': 'http://www.opengis.net/ont/sf#MultiPolygon',
-                              'MultiSurface': 'http://www.opengis.net/ont/sf#MultiSurface',
-                              'NumberPerArea': 'http://purl.oclc.org/NET/ssnx/qu/dim#NumberPerArea',
-                              'NumberPerLength': 'http://purl.oclc.org/NET/ssnx/qu/dim#NumberPerLength',
-                              'OM_Observation': 'http://def.isotc211.org/iso19156/2011/Observation#OM_Observation',
-                              'ObservableProperty': 'http://www.w3.org/ns/sosa/ObservableProperty',
-                              'Observation': 'http://www.w3.org/ns/sosa/Observation',
-                              'ObservationCollection': 'http://www.w3.org/ns/sosa/ObservationCollection',
-                              'ObservationGroup': 'http://purl.org/linked-data/cube#ObservationGroup',
-                              'Organization': 'https://schema.org/Organization',
-                              'Person': 'http://xmlns.com/foaf/0.1/Person',
-                              'PhotonFluxDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#PhotonFluxDensity',
-                              'Platform': 'http://www.w3.org/ns/sosa/Platform',
-                              'Point': 'http://www.opengis.net/ont/sf#Point',
-                              'Polygon': 'http://www.opengis.net/ont/sf#Polygon',
-                              'PolyhedralSurface': 'http://www.opengis.net/ont/sf#PolyhedralSurface',
-                              'Power': 'http://purl.oclc.org/NET/ssnx/qu/dim#Power',
-                              'Procedure': 'http://www.w3.org/ns/sosa/Procedure',
-                              'PropertyKind': 'http://purl.oclc.org/NET/ssnx/qu/qu#PropertyKind',
-                              'Quantity': 'http://qudt.org/schema/qudt/Quantity',
-                              'QuantityKind': 'http://qudt.org/schema/qudt/QuantityKind',
-                              'QuantityValue': 'http://qudt.org/schema/qudt/QuantityValue',
-                              'Radiance': 'http://purl.oclc.org/NET/ssnx/qu/dim#Radiance',
-                              'RadianceExposure': 'http://purl.oclc.org/NET/ssnx/qu/dim#RadianceExposure',
-                              'Result': 'http://www.w3.org/ns/sosa/Result',
-                              'Role': 'https://schema.org/Role',
-                              'RotationalSpeed': 'http://purl.oclc.org/NET/ssnx/qu/dim#RotationalSpeed',
-                              'SF_SamplingFeature': 'http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeature',
-                              'SF_SamplingFeature.sampledFeature': {'x-jsonld-id': 'http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeature.sampledFeature',
-                                                                    'x-jsonld-type': '@id'},
-                              'Sample': 'http://www.w3.org/ns/sosa/Sample',
-                              'Sampling': 'http://www.w3.org/ns/sosa/Sampling',
-                              'Scheme': 'http://www.w3.org/2004/02/skos/core#Scheme',
-                              'Sensor': 'http://www.w3.org/ns/sosa/Sensor',
-                              'Slice': 'http://purl.org/linked-data/cube#Slice',
-                              'SliceKey': 'http://purl.org/linked-data/cube#SliceKey',
-                              'SpatialObject': 'http://www.opengis.net/ont/geosparql#SpatialObject',
-                              'SpatialObjectCollection': 'http://www.opengis.net/ont/geosparql#SpatialObjectCollection',
-                              'SpecificEntropy': 'http://purl.oclc.org/NET/ssnx/qu/dim#SpecificEntropy',
-                              'StressOrPressure': 'http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure',
-                              'Surface': 'http://www.opengis.net/ont/sf#Surface',
-                              'SurfaceDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity',
-                              'System': 'http://www.w3.org/ns/ssn/System',
-                              'TIN': 'http://www.opengis.net/ont/sf#TIN',
-                              'Temperature': 'http://purl.oclc.org/NET/ssnx/qu/dim#Temperature',
-                              'TemperatureDrift': 'http://purl.oclc.org/NET/ssnx/qu/dim#TemperatureDrift',
-                              'TemporalDuration': 'http://www.w3.org/2006/time#TemporalDuration',
-                              'TemporalEntity': 'http://www.w3.org/2006/time#TemporalEntity',
-                              'TemporalUnit': 'http://www.w3.org/2006/time#TemporalUnit',
-                              'ThermalConductivity': 'http://purl.oclc.org/NET/ssnx/qu/dim#ThermalConductivity',
-                              'Thing': 'http://www.w3.org/2002/07/owl#Thing',
-                              'Triangle': 'http://www.opengis.net/ont/sf#Triangle',
-                              'Unit': 'http://qudt.org/schema/qudt/Unit',
-                              'VelocityOrSpeed': 'http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed',
-                              'Volume': 'http://purl.oclc.org/NET/ssnx/qu/dim#Volume',
-                              'VolumeDensityRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#VolumeDensityRate',
-                              'VolumeFlowRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#VolumeFlowRate',
-                              'affiliation': 'https://schema.org/affiliation',
-                              'alt': 'http://www.w3.org/2003/01/geo/wgs84_pos#alt',
-                              'asGeoJSON': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#asGeoJSON',
-                                            'x-jsonld-type': 'http://www.opengis.net/ont/geosparql#geoJSONLiteral'},
-                              'asWKT': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#asWKT',
-                                        'x-jsonld-type': 'http://www.opengis.net/ont/geosparql#wktLiteral'},
-                              'attribute': {'x-jsonld-id': 'http://purl.org/linked-data/cube#attribute',
-                                            'x-jsonld-type': '@id'},
-                              'comment': 'http://www.w3.org/2000/01/rdf-schema#comment',
-                              'component': {'x-jsonld-id': 'http://purl.org/linked-data/cube#component',
-                                            'x-jsonld-type': '@id'},
-                              'componentAttachment': {'x-jsonld-id': 'http://purl.org/linked-data/cube#componentAttachment',
-                                                      'x-jsonld-type': '@id'},
-                              'componentProperty': {'x-jsonld-id': 'http://purl.org/linked-data/cube#componentProperty',
-                                                    'x-jsonld-type': '@id'},
-                              'concept': {'x-jsonld-id': 'http://purl.org/linked-data/cube#concept',
-                                          'x-jsonld-type': '@id'},
-                              'contributor': 'http://purl.org/dc/terms/contributor',
-                              'creator': 'http://purl.org/dc/terms/creator',
-                              'dataSet': {'x-jsonld-id': 'http://purl.org/linked-data/cube#dataSet',
-                                          'x-jsonld-type': '@id'},
-                              'date': 'http://purl.org/dc/terms/date',
-                              'dct.description': 'http://purl.org/dc/terms/description',
-                              'definition': 'http://www.w3.org/2004/02/skos/core#definition',
-                              'depiction': 'http://xmlns.com/foaf/0.1/depiction',
-                              'deployedOnPlatform': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/deployedOnPlatform',
-                                                     'x-jsonld-type': '@id'},
-                              'deployedSystem': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/deployedSystem',
-                                                 'x-jsonld-type': '@id'},
-                              'deprecated': 'http://www.w3.org/2002/07/owl#deprecated',
-                              'dimension': {'x-jsonld-id': 'http://purl.org/linked-data/cube#dimension',
-                                            'x-jsonld-type': '@id'},
-                              'domainIncludes': 'https://schema.org/domainIncludes',
-                              'editorialNote': 'http://www.w3.org/2004/02/skos/core#editorialNote',
-                              'example': 'http://www.w3.org/2004/02/skos/core#example',
-                              'foaf.name': 'http://xmlns.com/foaf/0.1/name',
-                              'generatedAtTime': {'x-jsonld-id': 'http://www.w3.org/ns/prov#generatedAtTime',
-                                                  'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTime'},
-                              'hasBeginning': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasBeginning',
-                                               'x-jsonld-type': '@id'},
-                              'hasBoundingBox': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasBoundingBox',
-                                                 'x-jsonld-type': '@id'},
-                              'hasDeployment': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasDeployment',
-                                                'x-jsonld-type': '@id'},
-                              'hasEnd': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasEnd',
-                                         'x-jsonld-type': '@id'},
-                              'hasFeatureOfInterest': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasFeatureOfInterest',
-                                                       'x-jsonld-type': '@id'},
-                              'hasGeometry': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasGeometry',
-                                              'x-jsonld-type': '@id'},
-                              'hasInput': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasInput',
-                                           'x-jsonld-type': '@id'},
-                              'hasMember': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasMember',
-                                            'x-jsonld-type': '@id'},
-                              'hasOutput': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasOutput',
-                                            'x-jsonld-type': '@id'},
-                              'hasProperty': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasProperty',
-                                              'x-jsonld-type': '@id'},
-                              'hasQuantityKind': {'x-jsonld-id': 'http://qudt.org/schema/qudt/hasQuantityKind',
-                                                  'x-jsonld-type': '@id'},
-                              'hasResult': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasResult',
-                                            'x-jsonld-type': '@id'},
-                              'hasSerialization': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasSerialization',
-                                                   'x-jsonld-type': 'http://www.w3.org/2000/01/rdf-schema#Literal'},
-                              'hasSimpleResult': 'http://www.w3.org/ns/sosa/hasSimpleResult',
-                              'hasSubSystem': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasSubSystem',
-                                               'x-jsonld-type': '@id'},
-                              'hasTime': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasTime',
-                                          'x-jsonld-type': '@id'},
-                              'hasUltimateFeatureOfInterest': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasUltimateFeatureOfInterest',
-                                                               'x-jsonld-type': '@id'},
-                              'homepage': 'http://xmlns.com/foaf/0.1/homepage',
-                              'hosts': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hosts',
-                                        'x-jsonld-type': '@id'},
-                              'identifier': 'http://purl.org/dc/terms/identifier',
-                              'implementedBy': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/implementedBy',
-                                                'x-jsonld-type': '@id'},
+     'x-jsonld-extra-terms': {'PhotonFluxDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#PhotonFluxDensity',
                               'implements': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/implements',
                                              'x-jsonld-type': '@id'},
-                              'inDeployment': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/inDeployment',
-                                               'x-jsonld-type': '@id'},
-                              'inScheme': 'http://www.w3.org/2004/02/skos/core#inScheme',
-                              'inXSDDate': {'x-jsonld-id': 'http://www.w3.org/2006/time#inXSDDate',
-                                            'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#date'},
-                              'inXSDDateTimeStamp': {'x-jsonld-id': 'http://www.w3.org/2006/time#inXSDDateTimeStamp',
-                                                     'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTimeStamp'},
                               'invalidatedAtTime': {'x-jsonld-id': 'http://www.w3.org/ns/prov#invalidatedAtTime',
                                                     'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTime'},
-                              'isDefinedBy': 'http://www.w3.org/2000/01/rdf-schema#isDefinedBy',
-                              'isFeatureOfInterestOf': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/isFeatureOfInterestOf',
-                                                        'x-jsonld-type': '@id'},
+                              'MultiLineString': 'http://www.opengis.net/ont/sf#MultiLineString',
+                              'Attachable': 'http://purl.org/linked-data/cube#Attachable',
+                              'QuantityValue': 'http://qudt.org/schema/qudt/QuantityValue',
+                              'affiliation': 'https://schema.org/affiliation',
+                              'Unit': 'http://qudt.org/schema/qudt/Unit',
+                              'Line': 'http://www.opengis.net/ont/sf#Line',
+                              'member': {'x-jsonld-id': 'http://xmlns.com/foaf/0.1/member',
+                                         'x-jsonld-type': '@id'},
+                              'versionInfo': 'http://www.w3.org/2002/07/owl#versionInfo',
+                              'generatedAtTime': {'x-jsonld-id': 'http://www.w3.org/ns/prov#generatedAtTime',
+                                                  'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTime'},
+                              'example': 'http://www.w3.org/2004/02/skos/core#example',
+                              'Slice': 'http://purl.org/linked-data/cube#Slice',
+                              'Concentration': 'http://purl.oclc.org/NET/ssnx/qu/dim#Concentration',
+                              'dataSet': {'x-jsonld-id': 'http://purl.org/linked-data/cube#dataSet',
+                                          'x-jsonld-type': '@id'},
+                              'componentAttachment': {'x-jsonld-id': 'http://purl.org/linked-data/cube#componentAttachment',
+                                                      'x-jsonld-type': '@id'},
+                              'Platform': 'http://www.w3.org/ns/sosa/Platform',
+                              'concept': {'x-jsonld-id': 'http://purl.org/linked-data/cube#concept',
+                                          'x-jsonld-type': '@id'},
+                              'Deployment': 'http://www.w3.org/ns/ssn/Deployment',
+                              'MultiSurface': 'http://www.opengis.net/ont/sf#MultiSurface',
+                              'TemporalDuration': 'http://www.w3.org/2006/time#TemporalDuration',
+                              'Procedure': 'http://www.w3.org/ns/sosa/Procedure',
+                              'DiffusionCoefficient': 'http://purl.oclc.org/NET/ssnx/qu/dim#DiffusionCoefficient',
+                              'asGeoJSON': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#asGeoJSON',
+                                            'x-jsonld-type': 'http://www.opengis.net/ont/geosparql#geoJSONLiteral'},
+                              'Organization': 'https://schema.org/Organization',
+                              'Volume': 'http://purl.oclc.org/NET/ssnx/qu/dim#Volume',
+                              'Thing': 'http://www.w3.org/2002/07/owl#Thing',
+                              'GFI_Feature': 'http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#GFI_Feature',
+                              'AttributeProperty': 'http://purl.org/linked-data/cube#AttributeProperty',
+                              'quantityValue': {'x-jsonld-id': 'http://qudt.org/schema/qudt/quantityValue',
+                                                'x-jsonld-type': '@id'},
+                              'TemporalUnit': 'http://www.w3.org/2006/time#TemporalUnit',
+                              'hosts': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hosts',
+                                        'x-jsonld-type': '@id'},
+                              'asWKT': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#asWKT',
+                                        'x-jsonld-type': 'http://www.opengis.net/ont/geosparql#wktLiteral'},
+                              'hasOutput': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasOutput',
+                                            'x-jsonld-type': '@id'},
+                              'Angle': 'http://purl.oclc.org/NET/ssnx/qu/dim#Angle',
+                              'TemperatureDrift': 'http://purl.oclc.org/NET/ssnx/qu/dim#TemperatureDrift',
+                              'RotationalSpeed': 'http://purl.oclc.org/NET/ssnx/qu/dim#RotationalSpeed',
+                              'FeatureOfInterest': 'http://www.w3.org/ns/sosa/FeatureOfInterest',
+                              'ComponentProperty': 'http://purl.org/linked-data/cube#ComponentProperty',
+                              'Class': 'http://www.w3.org/2000/01/rdf-schema#Class',
+                              'ObservationCollection': 'http://www.w3.org/ns/sosa/ObservationCollection',
+                              'Geometry': 'http://www.opengis.net/ont/geosparql#Geometry',
+                              'NumberPerArea': 'http://purl.oclc.org/NET/ssnx/qu/dim#NumberPerArea',
+                              'depiction': 'http://xmlns.com/foaf/0.1/depiction',
+                              'Curve': 'http://www.opengis.net/ont/sf#Curve',
+                              'Instant': 'http://www.w3.org/2006/time#Instant',
+                              'maker': 'http://xmlns.com/foaf/0.1/maker',
+                              'sfWithin': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#sfWithin',
+                                           'x-jsonld-type': '@id'},
+                              'hasBoundingBox': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasBoundingBox',
+                                                 'x-jsonld-type': '@id'},
+                              'ThermalConductivity': 'http://purl.oclc.org/NET/ssnx/qu/dim#ThermalConductivity',
+                              'hasUltimateFeatureOfInterest': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasUltimateFeatureOfInterest',
+                                                               'x-jsonld-type': '@id'},
+                              'domainIncludes': 'https://schema.org/domainIncludes',
+                              'madeBySensor': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/madeBySensor',
+                                               'x-jsonld-type': '@id'},
+                              'long': 'http://www.w3.org/2003/01/geo/wgs84_pos#long',
+                              'ActuatableProperty': 'http://www.w3.org/ns/sosa/ActuatableProperty',
+                              'Feature': 'http://www.opengis.net/ont/geosparql#Feature',
+                              'LineString': 'http://www.opengis.net/ont/sf#LineString',
+                              'numericValue': 'http://qudt.org/schema/qudt/numericValue',
+                              'Concept': 'http://www.w3.org/2004/02/skos/core#Concept',
+                              'component': {'x-jsonld-id': 'http://purl.org/linked-data/cube#component',
+                                            'x-jsonld-type': '@id'},
+                              'measure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#measure',
+                                          'x-jsonld-type': '@id'},
+                              'attribute': {'x-jsonld-id': 'http://purl.org/linked-data/cube#attribute',
+                                            'x-jsonld-type': '@id'},
+                              'structure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#structure',
+                                            'x-jsonld-type': '@id'},
+                              'SliceKey': 'http://purl.org/linked-data/cube#SliceKey',
+                              'Result': 'http://www.w3.org/ns/sosa/Result',
                               'isHostedBy': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/isHostedBy',
                                              'x-jsonld-type': '@id'},
-                              'isPropertyOf': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/isPropertyOf',
+                              'Compressibility': 'http://purl.oclc.org/NET/ssnx/qu/dim#Compressibility',
+                              'inDeployment': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/inDeployment',
+                                               'x-jsonld-type': '@id'},
+                              'ComponentSet': 'http://purl.org/linked-data/cube#ComponentSet',
+                              'MassPerTimePerArea': 'http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea',
+                              'numericDuration': {'x-jsonld-id': 'http://www.w3.org/2006/time#numericDuration',
+                                                  'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
+                              'ElectricConductivity': 'http://purl.oclc.org/NET/ssnx/qu/dim#ElectricConductivity',
+                              'Temperature': 'http://purl.oclc.org/NET/ssnx/qu/dim#Temperature',
+                              'homepage': 'http://xmlns.com/foaf/0.1/homepage',
+                              'hasProperty': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasProperty',
+                                              'x-jsonld-type': '@id'},
+                              'Measure': 'http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Measure',
+                              'Person': 'http://xmlns.com/foaf/0.1/Person',
+                              'Triangle': 'http://www.opengis.net/ont/sf#Triangle',
+                              'note': 'http://www.w3.org/2004/02/skos/core#note',
+                              'observationGroup': {'x-jsonld-id': 'http://purl.org/linked-data/cube#observationGroup',
+                                                   'x-jsonld-type': '@id'},
+                              'Interval': 'http://www.w3.org/2006/time#Interval',
+                              'EnergyFlux': 'http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux',
+                              'StressOrPressure': 'http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure',
+                              'resultTime': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/resultTime',
+                                             'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTime'},
+                              'VolumeDensityRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#VolumeDensityRate',
+                              'Agent': 'http://xmlns.com/foaf/0.1/Agent',
+                              'creator': 'http://purl.org/dc/terms/creator',
+                              'phenomenonTime': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/phenomenonTime',
+                                                 'x-jsonld-type': '@id'},
+                              'Energy': 'http://purl.oclc.org/NET/ssnx/qu/dim#Energy',
+                              'foaf.name': 'http://xmlns.com/foaf/0.1/name',
+                              'Role': 'https://schema.org/Role',
+                              'hasSerialization': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasSerialization',
+                                                   'x-jsonld-type': 'http://www.w3.org/2000/01/rdf-schema#Literal'},
+                              'hasTime': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasTime',
+                                          'x-jsonld-type': '@id'},
+                              'SF_SamplingFeature.sampledFeature': {'x-jsonld-id': 'http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeature.sampledFeature',
+                                                                    'x-jsonld-type': '@id'},
+                              'hasMember': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasMember',
+                                            'x-jsonld-type': '@id'},
+                              'rangeIncludes': 'https://schema.org/rangeIncludes',
+                              'hasInput': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasInput',
+                                           'x-jsonld-type': '@id'},
+                              'Mass': 'http://purl.oclc.org/NET/ssnx/qu/dim#Mass',
+                              'implementedBy': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/implementedBy',
+                                                'x-jsonld-type': '@id'},
+                              'location': {'x-jsonld-id': 'http://www.w3.org/2003/01/geo/wgs84_pos#location',
+                                           'x-jsonld-type': '@id'},
+                              'ComponentSpecification': 'http://purl.org/linked-data/cube#ComponentSpecification',
+                              'Scheme': 'http://www.w3.org/2004/02/skos/core#Scheme',
+                              'hasEnd': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasEnd',
+                                         'x-jsonld-type': '@id'},
+                              'GeometryCollection': 'http://www.opengis.net/ont/sf#GeometryCollection',
+                              'rights': 'http://purl.org/dc/terms/rights',
+                              'TemporalEntity': 'http://www.w3.org/2006/time#TemporalEntity',
+                              'hasBeginning': {'x-jsonld-id': 'http://www.w3.org/2006/time#hasBeginning',
                                                'x-jsonld-type': '@id'},
                               'isResultOf': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/isResultOf',
                                              'x-jsonld-type': '@id'},
-                              'lat': 'http://www.w3.org/2003/01/geo/wgs84_pos#lat',
-                              'location': {'x-jsonld-id': 'http://www.w3.org/2003/01/geo/wgs84_pos#location',
-                                           'x-jsonld-type': '@id'},
-                              'long': 'http://www.w3.org/2003/01/geo/wgs84_pos#long',
-                              'madeBySensor': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/madeBySensor',
+                              'SF_SamplingFeature': 'http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeature',
+                              'DimensionProperty': 'http://purl.org/linked-data/cube#DimensionProperty',
+                              'alt': 'http://www.w3.org/2003/01/geo/wgs84_pos#alt',
+                              'Acceleration': 'http://purl.oclc.org/NET/ssnx/qu/dim#Acceleration',
+                              'identifier': 'http://purl.org/dc/terms/identifier',
+                              'hasSubSystem': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasSubSystem',
                                                'x-jsonld-type': '@id'},
-                              'madeObservation': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/madeObservation',
-                                                  'x-jsonld-type': '@id'},
-                              'maker': 'http://xmlns.com/foaf/0.1/maker',
-                              'measure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#measure',
-                                          'x-jsonld-type': '@id'},
-                              'member': {'x-jsonld-id': 'http://xmlns.com/foaf/0.1/member',
-                                         'x-jsonld-type': '@id'},
-                              'note': 'http://www.w3.org/2004/02/skos/core#note',
-                              'numericDuration': {'x-jsonld-id': 'http://www.w3.org/2006/time#numericDuration',
-                                                  'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#decimal'},
-                              'numericValue': 'http://qudt.org/schema/qudt/numericValue',
-                              'observation': {'x-jsonld-id': 'http://purl.org/linked-data/cube#observation',
-                                              'x-jsonld-type': '@id'},
-                              'observationGroup': {'x-jsonld-id': 'http://purl.org/linked-data/cube#observationGroup',
-                                                   'x-jsonld-type': '@id'},
+                              'Quantity': 'http://qudt.org/schema/qudt/Quantity',
+                              'MassFlowRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#MassFlowRate',
+                              'qu.QuantityKind': 'http://purl.oclc.org/NET/ssnx/qu/qu#QuantityKind',
+                              'SpatialObjectCollection': 'http://www.opengis.net/ont/geosparql#SpatialObjectCollection',
+                              'Distance': 'http://purl.oclc.org/NET/ssnx/qu/dim#Distance',
+                              'deprecated': 'http://www.w3.org/2002/07/owl#deprecated',
+                              'Radiance': 'http://purl.oclc.org/NET/ssnx/qu/dim#Radiance',
+                              'Duration': 'http://www.w3.org/2006/time#Duration',
+                              'TIN': 'http://www.opengis.net/ont/sf#TIN',
+                              'SurfaceDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity',
+                              'isDefinedBy': 'http://www.w3.org/2000/01/rdf-schema#isDefinedBy',
+                              'wgs84.Point': 'http://www.w3.org/2003/01/geo/wgs84_pos#Point',
+                              'definition': 'http://www.w3.org/2004/02/skos/core#definition',
+                              'editorialNote': 'http://www.w3.org/2004/02/skos/core#editorialNote',
                               'observes': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/observes',
                                            'x-jsonld-type': '@id'},
+                              'hasDeployment': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/hasDeployment',
+                                                'x-jsonld-type': '@id'},
+                              'hasResult': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasResult',
+                                            'x-jsonld-type': '@id'},
                               'order': {'x-jsonld-id': 'http://purl.org/linked-data/cube#order',
                                         'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#int'},
-                              'phenomenonTime': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/phenomenonTime',
-                                                 'x-jsonld-type': '@id'},
-                              'prefLabel': 'http://www.w3.org/2004/02/skos/core#prefLabel',
-                              'qb.Observation': 'http://purl.org/linked-data/cube#Observation',
-                              'qu.QuantityKind': 'http://purl.oclc.org/NET/ssnx/qu/qu#QuantityKind',
-                              'quantityValue': {'x-jsonld-id': 'http://qudt.org/schema/qudt/quantityValue',
-                                                'x-jsonld-type': '@id'},
-                              'rangeIncludes': 'https://schema.org/rangeIncludes',
-                              'resultTime': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/resultTime',
-                                             'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTime'},
-                              'rights': 'http://purl.org/dc/terms/rights',
-                              'schema.Person': 'https://schema.org/Person',
-                              'schema.name': 'https://schema.org/name',
-                              'seeAlso': 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
-                              'sf.Geometry': 'http://www.opengis.net/ont/sf#Geometry',
-                              'sfContains': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#sfContains',
-                                             'x-jsonld-type': '@id'},
-                              'sfWithin': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#sfWithin',
-                                           'x-jsonld-type': '@id'},
-                              'slice': {'x-jsonld-id': 'http://purl.org/linked-data/cube#slice',
-                                        'x-jsonld-type': '@id'},
-                              'sliceKey': {'x-jsonld-id': 'http://purl.org/linked-data/cube#sliceKey',
-                                           'x-jsonld-type': '@id'},
-                              'sliceStructure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#sliceStructure',
-                                                 'x-jsonld-type': '@id'},
-                              'ssn.Property': 'http://www.w3.org/ns/ssn/Property',
-                              'structure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#structure',
-                                            'x-jsonld-type': '@id'},
-                              'title': 'http://purl.org/dc/terms/title',
-                              'unit': {'x-jsonld-id': 'http://qudt.org/schema/qudt/unit',
-                                       'x-jsonld-type': '@id'},
-                              'unitKind': {'x-jsonld-id': 'http://purl.oclc.org/NET/ssnx/qu/qu#unitKind',
-                                           'x-jsonld-type': '@id'},
-                              'unitType': {'x-jsonld-id': 'http://www.w3.org/2006/time#unitType',
-                                           'x-jsonld-type': '@id'},
+                              'hasGeometry': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#hasGeometry',
+                                              'x-jsonld-type': '@id'},
                               'usedProcedure': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/usedProcedure',
                                                 'x-jsonld-type': '@id'},
-                              'versionInfo': 'http://www.w3.org/2002/07/owl#versionInfo',
-                              'wgs84.Point': 'http://www.w3.org/2003/01/geo/wgs84_pos#Point'},
-     'x-jsonld-prefixes': {'iliad': 'https://w3id.org/iliad/property/',
+                              'ssn.Property': 'http://www.w3.org/ns/ssn/Property',
+                              'sfContains': {'x-jsonld-id': 'http://www.opengis.net/ont/geosparql#sfContains',
+                                             'x-jsonld-type': '@id'},
+                              'title': 'http://purl.org/dc/terms/title',
+                              'Density': 'http://purl.oclc.org/NET/ssnx/qu/dim#Density',
+                              'LinearRing': 'http://www.opengis.net/ont/sf#LinearRing',
+                              'Molality': 'http://purl.oclc.org/NET/ssnx/qu/dim#Molality',
+                              'inXSDDateTimeStamp': {'x-jsonld-id': 'http://www.w3.org/2006/time#inXSDDateTimeStamp',
+                                                     'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#dateTimeStamp'},
+                              'MeasureProperty': 'http://purl.org/linked-data/cube#MeasureProperty',
+                              'PropertyKind': 'http://purl.oclc.org/NET/ssnx/qu/qu#PropertyKind',
+                              'SpatialObject': 'http://www.opengis.net/ont/geosparql#SpatialObject',
+                              'sliceStructure': {'x-jsonld-id': 'http://purl.org/linked-data/cube#sliceStructure',
+                                                 'x-jsonld-type': '@id'},
+                              'hasFeatureOfInterest': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/hasFeatureOfInterest',
+                                                       'x-jsonld-type': '@id'},
+                              'NumberPerLength': 'http://purl.oclc.org/NET/ssnx/qu/dim#NumberPerLength',
+                              'lat': 'http://www.w3.org/2003/01/geo/wgs84_pos#lat',
+                              'VolumeFlowRate': 'http://purl.oclc.org/NET/ssnx/qu/dim#VolumeFlowRate',
+                              'SpecificEntropy': 'http://purl.oclc.org/NET/ssnx/qu/dim#SpecificEntropy',
+                              'CodedProperty': 'http://purl.org/linked-data/cube#CodedProperty',
+                              'slice': {'x-jsonld-id': 'http://purl.org/linked-data/cube#slice',
+                                        'x-jsonld-type': '@id'},
+                              'madeObservation': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/madeObservation',
+                                                  'x-jsonld-type': '@id'},
+                              'FeatureCollection': 'http://www.opengis.net/ont/geosparql#FeatureCollection',
+                              'unit': {'x-jsonld-id': 'http://qudt.org/schema/qudt/unit',
+                                       'x-jsonld-type': '@id'},
+                              'date': 'http://purl.org/dc/terms/date',
+                              'isPropertyOf': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/isPropertyOf',
+                                               'x-jsonld-type': '@id'},
+                              'seeAlso': 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
+                              'ObservationGroup': 'http://purl.org/linked-data/cube#ObservationGroup',
+                              'Sample': 'http://www.w3.org/ns/sosa/Sample',
+                              'DataSet': 'http://purl.org/linked-data/cube#DataSet',
+                              'comment': 'http://www.w3.org/2000/01/rdf-schema#comment',
+                              'PolyhedralSurface': 'http://www.opengis.net/ont/sf#PolyhedralSurface',
+                              'Polygon': 'http://www.opengis.net/ont/sf#Polygon',
+                              'MultiPolygon': 'http://www.opengis.net/ont/sf#MultiPolygon',
+                              'ObservableProperty': 'http://www.w3.org/ns/sosa/ObservableProperty',
+                              'contributor': 'http://purl.org/dc/terms/contributor',
+                              'deployedSystem': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/deployedSystem',
+                                                 'x-jsonld-type': '@id'},
+                              'System': 'http://www.w3.org/ns/ssn/System',
+                              'unitKind': {'x-jsonld-id': 'http://purl.oclc.org/NET/ssnx/qu/qu#unitKind',
+                                           'x-jsonld-type': '@id'},
+                              'dimension': {'x-jsonld-id': 'http://purl.org/linked-data/cube#dimension',
+                                            'x-jsonld-type': '@id'},
+                              'RadianceExposure': 'http://purl.oclc.org/NET/ssnx/qu/dim#RadianceExposure',
+                              'VelocityOrSpeed': 'http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed',
+                              'deployedOnPlatform': {'x-jsonld-id': 'http://www.w3.org/ns/ssn/deployedOnPlatform',
+                                                     'x-jsonld-type': '@id'},
+                              'inXSDDate': {'x-jsonld-id': 'http://www.w3.org/2006/time#inXSDDate',
+                                            'x-jsonld-type': 'http://www.w3.org/2001/XMLSchema#date'},
+                              'GFI_DomainFeature': 'http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#GFI_DomainFeature',
+                              'Actuation': 'http://www.w3.org/ns/sosa/Actuation',
+                              'observation': {'x-jsonld-id': 'http://purl.org/linked-data/cube#observation',
+                                              'x-jsonld-type': '@id'},
+                              'Dimensionless': 'http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless',
+                              'Area': 'http://purl.oclc.org/NET/ssnx/qu/dim#Area',
+                              'Sampling': 'http://www.w3.org/ns/sosa/Sampling',
+                              'Power': 'http://purl.oclc.org/NET/ssnx/qu/dim#Power',
+                              'OM_Observation': 'http://def.isotc211.org/iso19156/2011/Observation#OM_Observation',
+                              'prefLabel': 'http://www.w3.org/2004/02/skos/core#prefLabel',
+                              'Surface': 'http://www.opengis.net/ont/sf#Surface',
+                              'sliceKey': {'x-jsonld-id': 'http://purl.org/linked-data/cube#sliceKey',
+                                           'x-jsonld-type': '@id'},
+                              'inScheme': 'http://www.w3.org/2004/02/skos/core#inScheme',
+                              'dct.description': 'http://purl.org/dc/terms/description',
+                              'MultiCurve': 'http://www.opengis.net/ont/sf#MultiCurve',
+                              'hasQuantityKind': {'x-jsonld-id': 'http://qudt.org/schema/qudt/hasQuantityKind',
+                                                  'x-jsonld-type': '@id'},
+                              'DataStructureDefinition': 'http://purl.org/linked-data/cube#DataStructureDefinition',
+                              'MultiPoint': 'http://www.opengis.net/ont/sf#MultiPoint',
+                              'qb.Observation': 'http://purl.org/linked-data/cube#Observation',
+                              'EnergyDensity': 'http://purl.oclc.org/NET/ssnx/qu/dim#EnergyDensity',
+                              'Sensor': 'http://www.w3.org/ns/sosa/Sensor',
+                              'hasSimpleResult': 'http://www.w3.org/ns/sosa/hasSimpleResult',
+                              'unitType': {'x-jsonld-id': 'http://www.w3.org/2006/time#unitType',
+                                           'x-jsonld-type': '@id'},
+                              'componentProperty': {'x-jsonld-id': 'http://purl.org/linked-data/cube#componentProperty',
+                                                    'x-jsonld-type': '@id'},
+                              'isFeatureOfInterestOf': {'x-jsonld-id': 'http://www.w3.org/ns/sosa/isFeatureOfInterestOf',
+                                                        'x-jsonld-type': '@id'},
+                              'sf.Geometry': 'http://www.opengis.net/ont/sf#Geometry',
+                              'schema.Person': 'https://schema.org/Person',
+                              'Observation': 'http://www.w3.org/ns/sosa/Observation',
+                              'Point': 'http://www.opengis.net/ont/sf#Point',
+                              'schema.name': 'https://schema.org/name',
+                              'QuantityKind': 'http://qudt.org/schema/qudt/QuantityKind'},
+     'x-jsonld-prefixes': {'sosa': 'http://www.w3.org/ns/sosa/',
                            'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
-                           'sosa': 'http://www.w3.org/ns/sosa/'}}
+                           'iliad': 'https://w3id.org/iliad/property/'}}
 
 On instance:
-    {'geometry': {'coordinates': [[[-5.0, 56.0],
+    {'id': 'https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate',
+     'type': 'Feature',
+     'geometry': {'type': 'Polygon',
+                  'coordinates': [[[-5.0, 56.0],
                                    [33.0, 56.0],
                                    [33.0, 82.0],
                                    [-5.0, 82.0],
-                                   [-5.0, 56.0]]],
-                  'type': 'Polygon'},
-     'id': 'https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate',
-     'links': [{'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-density-imr',
-                'rel': 'describedby',
-                'title': 'IMR Benthic Biomass Density Observation bblock',
-                'type': 'application/schema+json'},
-               {'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr',
-                'rel': 'derivedFrom',
-                'title': 'IMR benthic biomass observations bblock',
-                'type': 'application/schema+json'},
-               {'href': 'bblocks://ogc.hosted.iliad.api.features.oim-obs',
-                'rel': 'profile',
-                'title': 'OIM Observations profile',
-                'type': 'application/schema+json'},
-               {'href': 'https://mareano.no/',
-                'rel': 'cite-as',
-                'title': 'MAREANO programme'},
-               {'href': 'https://www.hi.no/',
-                'rel': 'cite-as',
-                'title': 'Institute of Marine Research'}],
-     'properties': {'attribution': 'Institute of Marine Research (IMR) / '
+                                   [-5.0, 56.0]]]},
+     'properties': {'type': 'Dataset',
+                    'title': 'MAREANO benthic catch-sample biomass, '
+                             'aggregated per species over a North Sea / '
+                             'Norwegian Sea / Barents Sea AOI',
+                    'description': 'Per-species sum of weighed '
+                                   'catch-sample mass from the MAREANO '
+                                   'Marbunn database, filtered to the AOI '
+                                   'polygon. All numbers are real '
+                                   'Marbunn-API responses fetched at file '
+                                   'generation time.',
+                    'created': '2026-05-26',
+                    'updated': '2026-05-26',
+                    'language': {'code': 'en'},
+                    'license': 'https://creativecommons.org/licenses/by/4.0/',
+                    'attribution': 'Institute of Marine Research (IMR) / '
                                    'MAREANO programme. CC BY 4.0 / NLOD.',
-                    'benthicBiomassDensity': {'data': {'cruisesContributing': ['2006612',
-                                                                               '2007105',
-                                                                               '2007111',
-                                                                               '2024007005',
-                                                                               '2025001009',
-                                                                               '2026007006',
-                                                                               '2009105',
-                                                                               '2009111',
-                                                                               '2010110',
-                                                                               '2010112'],
+                    'themes': [{'concepts': [{'id': 'benthic-biomass',
+                                              'label': 'Benthic biomass '
+                                                       'density'}],
+                                'scheme': 'https://id3.seadots.eu/themes'}],
+                    'keywords': ['MAREANO',
+                                 'Marbunn',
+                                 'IMR',
+                                 'benthic biomass',
+                                 'catch samples',
+                                 'Norway'],
+                    'formats': [{'mediaType': 'application/json'}],
+                    'conformsTo': ['http://www.w3.org/ns/sosa/Observation',
+                                   'https://ogcincubator.github.io/geodcat-ogcapi-records/'],
+                    'benthicBiomassDensity': {'name': 'MAREANO '
+                                                      'catch-sample '
+                                                      'biomass aggregation',
+                                              'description': 'Catch weight '
+                                                             'summed '
+                                                             'across every '
+                                                             'weighed '
+                                                             'Marbunn '
+                                                             'sample whose '
+                                                             'station '
+                                                             'point falls '
+                                                             'inside the '
+                                                             'AOI polygon, '
+                                                             'grouped by '
+                                                             'species.',
+                                              'role': 'real measured '
+                                                      'baseline '
+                                                      '(catch-weight; NOT '
+                                                      'area-normalised '
+                                                      'density)',
+                                              'source': 'https%3A%2F%2Fmarbunn-ekstern.hi.no%2Fapps%2Fmarbunn%2Fv1%2Fgetmapforcatch%3Fspecies%3D%7BscientificName%7D%26cruise%3D',
+                                              'format': 'application/geo+json',
+                                              'vocabularyTerm': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline',
+                                              'observedProperty': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline',
+                                              'phenomenonTime': '2006612/2026007006',
+                                              'data': {'units': 'kg '
+                                                                '(per-sample '
+                                                                'catch '
+                                                                'weight, '
+                                                                'summed '
+                                                                'across '
+                                                                'samples; '
+                                                                'NOT kg '
+                                                                'm-2)',
                                                        'method': 'For '
                                                                  'every '
                                                                  'species '
@@ -368,18 +402,51 @@ On instance:
                                                                  '(kg) and '
                                                                  'counted '
                                                                  'samples.',
-                                                       'perTaxon': [{'cruises': ['2009105',
+                                                       'samplingGear': ['Beamtrawl',
+                                                                        'Bioboks',
+                                                                        'Boxcorer',
+                                                                        'Large '
+                                                                        'VV '
+                                                                        'grab',
+                                                                        'RP-sledge',
+                                                                        'Small '
+                                                                        'VV '
+                                                                        'grab',
+                                                                        'VVgrab020',
+                                                                        'Videograb'],
+                                                       'cruisesContributing': ['2006612',
+                                                                               '2007105',
+                                                                               '2007111',
+                                                                               '2024007005',
+                                                                               '2025001009',
+                                                                               '2026007006',
+                                                                               '2009105',
+                                                                               '2009111',
+                                                                               '2010110',
+                                                                               '2010112'],
+                                                       'timeBoundaries': None,
+                                                       'speciesQueried': 3620,
+                                                       'speciesWithRecordsInAOI': 988,
+                                                       'speciesWithWeighedSamples': 481,
+                                                       'totalRecordsInAOI': 23438,
+                                                       'totalWeight_kg': 25405.761,
+                                                       'perTaxon': [{'scientificName': 'Aplysilla',
+                                                                     'totalWeight_kg': 5000.0,
+                                                                     'samplesWithWeight': 1,
+                                                                     'samplesInAOI': 10,
+                                                                     'totalIndividuals': 0,
+                                                                     'cruises': ['2009105',
                                                                                  '2009111',
                                                                                  '2010110',
                                                                                  '2010112'],
                                                                      'equipment': ['Beamtrawl',
-                                                                                   'VVgrab020'],
-                                                                     'samplesInAOI': 10,
-                                                                     'samplesWithWeight': 1,
-                                                                     'scientificName': 'Aplysilla',
-                                                                     'totalIndividuals': 0,
-                                                                     'totalWeight_kg': 5000.0},
-                                                                    {'cruises': ['2007105',
+                                                                                   'VVgrab020']},
+                                                                    {'scientificName': 'Actiniaria',
+                                                                     'totalWeight_kg': 4473.589,
+                                                                     'samplesWithWeight': 95,
+                                                                     'samplesInAOI': 476,
+                                                                     'totalIndividuals': 656,
+                                                                     'cruises': ['2007105',
                                                                                  '2007111',
                                                                                  '2024007003',
                                                                                  '2024007005'],
@@ -391,13 +458,38 @@ On instance:
                                                                                    'Small '
                                                                                    'VV '
                                                                                    'grab',
-                                                                                   'VVgrab020'],
-                                                                     'samplesInAOI': 476,
-                                                                     'samplesWithWeight': 95,
-                                                                     'scientificName': 'Actiniaria',
-                                                                     'totalIndividuals': 656,
-                                                                     'totalWeight_kg': 4473.589}],
-                                                       'provenance': {'caveats': ['Marbunn '
+                                                                                   'VVgrab020']}],
+                                                       'provenance': {'values': 'real',
+                                                                      'source': {'name': 'MAREANO '
+                                                                                         'Marbunn '
+                                                                                         '(IMR '
+                                                                                         'catch-samples '
+                                                                                         'viewer)',
+                                                                                 'api': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/',
+                                                                                 'speciesListEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/catchspecies',
+                                                                                 'perSpeciesEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/getmapforcatch?species={name}&cruise=',
+                                                                                 'portal': 'https://mareano.no/',
+                                                                                 'license': 'CC '
+                                                                                            'BY '
+                                                                                            '4.0 '
+                                                                                            '/ '
+                                                                                            'NLOD'},
+                                                                      'fetched_utc': '2026-05-26T11:11:24Z',
+                                                                      'generator': 'build_example.py',
+                                                                      'timeBoundaryNote': 'No '
+                                                                                          'explicit '
+                                                                                          '--time-boundaries '
+                                                                                          'supplied; '
+                                                                                          'phenomenonTime '
+                                                                                          'falls '
+                                                                                          'back '
+                                                                                          'to '
+                                                                                          'the '
+                                                                                          'min/max '
+                                                                                          'contributing '
+                                                                                          'cruise '
+                                                                                          'identifiers.',
+                                                                      'caveats': ['Marbunn '
                                                                                   'returns '
                                                                                   'catch-sample '
                                                                                   'weights '
@@ -490,170 +582,63 @@ On instance:
                                                                                   'single '
                                                                                   'ICES '
                                                                                   'Division.'],
-                                                                      'fetched_utc': '2026-05-26T11:11:24Z',
-                                                                      'generator': 'build_example.py',
-                                                                      'rawCollectionBlock': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr',
-                                                                      'source': {'api': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/',
-                                                                                 'license': 'CC '
-                                                                                            'BY '
-                                                                                            '4.0 '
-                                                                                            '/ '
-                                                                                            'NLOD',
-                                                                                 'name': 'MAREANO '
-                                                                                         'Marbunn '
-                                                                                         '(IMR '
-                                                                                         'catch-samples '
-                                                                                         'viewer)',
-                                                                                 'perSpeciesEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/getmapforcatch?species={name}&cruise=',
-                                                                                 'portal': 'https://mareano.no/',
-                                                                                 'speciesListEndpoint': 'https://marbunn-ekstern.hi.no/apps/marbunn/v1/catchspecies'},
-                                                                      'timeBoundaryNote': 'No '
-                                                                                          'explicit '
-                                                                                          '--time-boundaries '
-                                                                                          'supplied; '
-                                                                                          'phenomenonTime '
-                                                                                          'falls '
-                                                                                          'back '
-                                                                                          'to '
-                                                                                          'the '
-                                                                                          'min/max '
-                                                                                          'contributing '
-                                                                                          'cruise '
-                                                                                          'identifiers.',
-                                                                      'values': 'real'},
-                                                       'samplingGear': ['Beamtrawl',
-                                                                        'Bioboks',
-                                                                        'Boxcorer',
-                                                                        'Large '
-                                                                        'VV '
-                                                                        'grab',
-                                                                        'RP-sledge',
-                                                                        'Small '
-                                                                        'VV '
-                                                                        'grab',
-                                                                        'VVgrab020',
-                                                                        'Videograb'],
-                                                       'speciesQueried': 3620,
-                                                       'speciesWithRecordsInAOI': 988,
-                                                       'speciesWithWeighedSamples': 481,
-                                                       'timeBoundaries': None,
-                                                       'totalRecordsInAOI': 23438,
-                                                       'totalWeight_kg': 25405.761,
-                                                       'units': 'kg '
-                                                                '(per-sample '
-                                                                'catch '
-                                                                'weight, '
-                                                                'summed '
-                                                                'across '
-                                                                'samples; '
-                                                                'NOT kg '
-                                                                'm-2)'},
-                                              'description': 'Catch weight '
-                                                             'summed '
-                                                             'across every '
-                                                             'weighed '
-                                                             'Marbunn '
-                                                             'sample whose '
-                                                             'station '
-                                                             'point falls '
-                                                             'inside the '
-                                                             'AOI polygon, '
-                                                             'grouped by '
-                                                             'species.',
-                                              'format': 'application/geo+json',
-                                              'name': 'MAREANO '
-                                                      'catch-sample '
-                                                      'biomass aggregation',
-                                              'observedProperty': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline',
-                                              'phenomenonTime': '2006612/2026007006',
-                                              'role': 'real measured '
-                                                      'baseline '
-                                                      '(catch-weight; NOT '
-                                                      'area-normalised '
-                                                      'density)',
-                                              'source': 'https%3A%2F%2Fmarbunn-ekstern.hi.no%2Fapps%2Fmarbunn%2Fv1%2Fgetmapforcatch%3Fspecies%3D%7BscientificName%7D%26cruise%3D',
-                                              'vocabularyTerm': 'https://w3id.org/indicators/marine/obs/benthic-biomass-density-imr-baseline'},
-                    'conformsTo': ['http://www.w3.org/ns/sosa/Observation',
-                                   'https://ogcincubator.github.io/geodcat-ogcapi-records/'],
-                    'created': '2026-05-26',
-                    'description': 'Per-species sum of weighed '
-                                   'catch-sample mass from the MAREANO '
-                                   'Marbunn database, filtered to the AOI '
-                                   'polygon. All numbers are real '
-                                   'Marbunn-API responses fetched at file '
-                                   'generation time.',
-                    'formats': [{'mediaType': 'application/json'}],
-                    'keywords': ['MAREANO',
-                                 'Marbunn',
-                                 'IMR',
-                                 'benthic biomass',
-                                 'catch samples',
-                                 'Norway'],
-                    'language': {'code': 'en'},
-                    'license': 'https://creativecommons.org/licenses/by/4.0/',
-                    'themes': [{'concepts': [{'id': 'benthic-biomass',
-                                              'label': 'Benthic biomass '
-                                                       'density'}],
-                                'scheme': 'https://id3.seadots.eu/themes'}],
-                    'title': 'MAREANO benthic catch-sample biomass, '
-                             'aggregated per species over a North Sea / '
-                             'Norwegian Sea / Barents Sea AOI',
-                    'type': 'Dataset',
-                    'updated': '2026-05-26'},
-     'type': 'Feature'}
+                                                                      'rawCollectionBlock': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr'}}}},
+     'links': [{'rel': 'describedby',
+                'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-density-imr',
+                'type': 'application/schema+json',
+                'title': 'IMR Benthic Biomass Density Observation bblock'},
+               {'rel': 'derivedFrom',
+                'href': 'bblocks://ogc.hosted.seadots.benthic-biomass-observations-imr',
+                'type': 'application/schema+json',
+                'title': 'IMR benthic biomass observations bblock'},
+               {'rel': 'profile',
+                'href': 'bblocks://ogc.hosted.iliad.api.features.oim-obs',
+                'type': 'application/schema+json',
+                'title': 'OIM Observations profile'},
+               {'rel': 'cite-as',
+                'href': 'https://mareano.no/',
+                'title': 'MAREANO programme'},
+               {'rel': 'cite-as',
+                'href': 'https://www.hi.no/',
+                'title': 'Institute of Marine Research'}]}
 === End JSON Schema ===
 
 === SHACL ===
-Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl: no results
 Focus nodes for https://ogcincubator.github.io/iliad-apis-features/_sources/oim-obs/rules.shacl:
  - Shape :force-linked-data-observedProperty: <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate>/geojson:properties/seadots:benthicBiomassDensity
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate>
  - Shape geojson:LinkShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: <https://example.org/norwegian-ses/benthic-biomass-density-imr/mareano-aoi-aggregate>
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
 
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/execution/shapes.shacl:
- - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
  - Shape <https://www.ogc.org/rules/sosa/#testRequiredTime>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
  - Shape <https://www.ogc.org/rules/sosa/#testSimpleResultLiteral>: *none*
- - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
  - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValues>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testCollectionPropertyValuesInterval>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testFeatureOfInterest>: *none*
+ - Shape <https://www.ogc.org/rules/sosa/#testResult>: *none*
 
-Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/ogcapi-sosa/_sources/properties/observation/shapes.shacl:
  - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyPresent>: *none*
  - Shape <https://www.ogc.org/rules/sosa/#testObservedPropertyConsistent>: *none*
  - Shape <https://www.ogc.org/rules/sosa/#testResultNotEmptyNode>: *none*
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:GeometryShape: *none*
+ - Shape geojson:FeatureCollectionShape: *none*
  - Shape geojson:FeatureShape: *none*
  - Shape geojson:LinkShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape geojson:FeatureCollectionShape: *none*
 
 === End SHACL ===
 

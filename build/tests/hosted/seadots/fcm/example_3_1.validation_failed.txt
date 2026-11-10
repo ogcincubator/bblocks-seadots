@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.fcm - Fuzzy Cognitive Map
-Generated 2026-11-05T13:37:36.979256+00:00
+Generated 2026-11-10T15:18:51.746507+00:00
 === Files ===
 Using examples/fcm-heterogeneous-minimal.json from examples
 JSON-LD context is present - uplifting
@@ -13,59 +13,49 @@ Validation passed
 
 === SHACL ===
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
- - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl
- - /github/workspace/_sources/ontology/ontology.ttl
  - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl
+ - /github/workspace/_sources/ontology/ontology.ttl
+ - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl
+Validation result for _sources/_staging/fcm-ontology/rules.shacl: 2 violations
 
 ** Validation error **
-Validation result for _sources/_staging/fcm-ontology/rules.shacl:
-  Validation Report
-  Conforms: False
-  Results (1):
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Synthetic two-concept map, the smallest graph the upstream validator accepts.") ; fcm:hasEdge <file:///github/workspace/A-B>, <file:///github/workspace/B-A> ; fcm:hasNode <file:///github/workspace/A>, <file:///github/workspace/B> ]
-  	Value Node: [ dct:description Literal("Synthetic two-concept map, the smallest graph the upstream validator accepts.") ; fcm:hasEdge <file:///github/workspace/A-B>, <file:///github/workspace/B-A> ; fcm:hasNode <file:///github/workspace/A>, <file:///github/workspace/B> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N91e3ec0b08d6405586151e4462e0c033
+  Value: _:N91e3ec0b08d6405586151e4462e0c033
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N91e3ec0b08d6405586151e4462e0c033
+  Value: _:N91e3ec0b08d6405586151e4462e0c033
+  Message: node is dangling: it is neither source nor target of any edge.
 Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:
- - Shape fcm:NodeKeyShape: *none*
- - Shape fcm:PolarityRuleShape: *none*
- - Shape fcm:NodeStateValueShape: *none*
- - Shape fcm:SequenceSeriesShape: *none*
- - Shape fcm:SolverCapabilityShape: *none*
- - Shape fcm:RangeTimeSpecShape: *none*
- - Shape fcm:UniqueNodeKeyShape: _:Nd4a1b2a7884c4df5af3fdea1938bbc1c
- - Shape fcm:WeightMatrixShape: *none*
- - Shape fcm:NoDanglingNodeShape: _:Nd4a1b2a7884c4df5af3fdea1938bbc1c
- - Shape fcm:HeterogeneousActivationShape: *none*
- - Shape fcm:EquilibriumShape: *none*
- - Shape fcm:EdgeEndpointsShape: _:Nd4a1b2a7884c4df5af3fdea1938bbc1c
- - Shape fcm:MinimumNodesShape: _:Nd4a1b2a7884c4df5af3fdea1938bbc1c
- - Shape fcm:NodeStateShape: *none*
  - Shape fcm:SolutionShape: *none*
  - Shape fcm:SequenceStepShape: *none*
+ - Shape fcm:NodeStateShape: *none*
+ - Shape fcm:PolarityRuleShape: *none*
+ - Shape fcm:SequenceSeriesShape: *none*
+ - Shape fcm:MinimumNodesShape: _:N91e3ec0b08d6405586151e4462e0c033
+ - Shape fcm:NodeStateValueShape: *none*
+ - Shape fcm:NodeKeyShape: *none*
+ - Shape fcm:NoDanglingNodeShape: _:N91e3ec0b08d6405586151e4462e0c033
+ - Shape fcm:EquilibriumShape: *none*
+ - Shape fcm:WeightMatrixShape: *none*
+ - Shape fcm:HeterogeneousActivationShape: *none*
+ - Shape fcm:SolverCapabilityShape: *none*
+ - Shape fcm:RangeTimeSpecShape: *none*
+ - Shape fcm:UniqueNodeKeyShape: _:N91e3ec0b08d6405586151e4462e0c033
+ - Shape fcm:EdgeEndpointsShape: _:N91e3ec0b08d6405586151e4462e0c033
 
-Validation result for _sources/ontology/rules.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for _sources/ontology/rules.shacl: no results
 Focus nodes for _sources/ontology/rules.shacl:
- - Shape :IndexedTermShape: *none*
- - Shape :PrimaryEntryShape: *none*
- - Shape :ProvClosureShape: *none*
  - Shape :EquationByteEqualityShape: *none*
  - Shape :SymbolInEquationShape: *none*
+ - Shape :IndexedTermShape: *none*
+ - Shape :ProvClosureShape: *none*
+ - Shape :PrimaryEntryShape: *none*
 
 === End SHACL ===
 

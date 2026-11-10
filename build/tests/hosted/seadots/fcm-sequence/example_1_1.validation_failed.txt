@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.fcm-sequence - FCM sequence
-Generated 2026-11-05T13:37:47.018977+00:00
+Generated 2026-11-10T15:20:13.855464+00:00
 === Files ===
 Using examples/sequence-researcher-proposal.json from examples
 JSON-LD context is present - uplifting
@@ -13,134 +13,455 @@ Validation passed
 
 === SHACL ===
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
- - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl
- - /github/workspace/_sources/ontology/ontology.ttl
  - /github/workspace/_sources/_staging/fcm-ontology/ontology.ttl
+ - /github/workspace/_sources/ontology/ontology.ttl
+ - /github/workspace/_sources/_staging/fcm-activation-scheme/ontology.ttl
+Validation result for _sources/_staging/fcm-ontology/rules.shacl: 60 violations
 
 ** Validation error **
-Validation result for _sources/_staging/fcm-ontology/rules.shacl:
-  Validation Report
-  Conforms: False
-  Results (6):
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: fcm:NoDanglingNodeShape
-  	Focus Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Value Node: [ dct:description Literal("Proposal-time scientist FCM with dark chocolate, stress, progress, and figure proliferation") ; fcm:hasEdge <file:///github/workspace/C1-C2>, <file:///github/workspace/C2-C10>, <file:///github/workspace/C2-C3>, <file:///github/workspace/C2-C7>, <file:///github/workspace/C3-C4>, <file:///github/workspace/C3-C6>, <file:///github/workspace/C4-C5>, <file:///github/workspace/C5-C10>, <file:///github/workspace/C5-C3>, <file:///github/workspace/C5-C8>, <file:///github/workspace/C6-C7>, <file:///github/workspace/C7-C5>, <file:///github/workspace/C8-C9>, <file:///github/workspace/C9-C5> ; fcm:hasNode <file:///github/workspace/C10>, <file:///github/workspace/C1>, <file:///github/workspace/C2>, <file:///github/workspace/C3>, <file:///github/workspace/C4>, <file:///github/workspace/C5>, <file:///github/workspace/C6>, <file:///github/workspace/C7>, <file:///github/workspace/C8>, <file:///github/workspace/C9> ]
-  	Source Constraint: [ sh:message Literal("node is dangling: it is neither source nor target of any edge.") ; sh:select Literal("
-        PREFIX fcm: <https://w3id.org/ogc/hosted/seadots/fcm/>
-        SELECT $this ?node WHERE {
-          $this fcm:hasNode ?node .
-          FILTER NOT EXISTS {
-            $this fcm:hasEdge ?edge .
-            ?edge fcm:sourceNode|fcm:targetNode ?node .
-          }
-        } ") ]
-  	Message: node is dangling: it is neither source nor target of any edge.
-  
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N51c1def82ed4403bb70316b0946200da
+  Value: _:N51c1def82ed4403bb70316b0946200da
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N865f6d33b1ba433ab1d540561b3feb50
+  Value: _:N865f6d33b1ba433ab1d540561b3feb50
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:N95f8132fc3c34648b305f1afe67e26bb
+  Value: _:N95f8132fc3c34648b305f1afe67e26bb
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Value: _:Na9f9d5f5f5394502bab20b5fd8c0f122
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Value: _:Nb925b9b8045a4115a838a18ad4b79b38
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
+
+** Validation error **
+Violation (sh:SPARQLConstraintComponent):
+  Source shape: fcm:NoDanglingNodeShape
+  Focus node: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Value: _:Nfc2042bcad2144b4a32a9c9f941cf57c
+  Message: node is dangling: it is neither source nor target of any edge.
 Focus nodes for _sources/_staging/fcm-ontology/rules.shacl:
- - Shape fcm:NodeKeyShape: *none*
+ - Shape fcm:SolutionShape: _:N6ebb230244304cf58bd95f32e6852834,_:Nb7147094612a47baa64b1ee933c33035,_:N0011c8c7f75646ab8a39b783468d97fe,_:N27e46156c6e848b6a50380ea3f6010e2,_:Ncdf03d9627f146d3996b3b480c618396,_:Nb8a573376a654303875cc3213767491b
+ - Shape fcm:SequenceStepShape: *none*
+ - Shape fcm:NodeStateShape: *none*
  - Shape fcm:PolarityRuleShape: *none*
+ - Shape fcm:SequenceSeriesShape: _:N4f1785a7e5874df399b393a5445a9903
+ - Shape fcm:MinimumNodesShape: _:Nfc2042bcad2144b4a32a9c9f941cf57c,_:Na9f9d5f5f5394502bab20b5fd8c0f122,_:N95f8132fc3c34648b305f1afe67e26bb,_:N865f6d33b1ba433ab1d540561b3feb50,_:Nb925b9b8045a4115a838a18ad4b79b38,_:N51c1def82ed4403bb70316b0946200da
  - Shape fcm:NodeStateValueShape: *none*
- - Shape fcm:SequenceSeriesShape: _:N273bc8f5db9e4bd38dbd76664e655d23
+ - Shape fcm:NodeKeyShape: *none*
+ - Shape fcm:NoDanglingNodeShape: _:Nfc2042bcad2144b4a32a9c9f941cf57c,_:Na9f9d5f5f5394502bab20b5fd8c0f122,_:N95f8132fc3c34648b305f1afe67e26bb,_:N865f6d33b1ba433ab1d540561b3feb50,_:Nb925b9b8045a4115a838a18ad4b79b38,_:N51c1def82ed4403bb70316b0946200da
+ - Shape fcm:EquilibriumShape: *none*
+ - Shape fcm:WeightMatrixShape: *none*
+ - Shape fcm:HeterogeneousActivationShape: *none*
  - Shape fcm:SolverCapabilityShape: *none*
  - Shape fcm:RangeTimeSpecShape: *none*
- - Shape fcm:UniqueNodeKeyShape: _:N0edf4160ef1948bf9212f9fe822bb888,_:N90e1a15a9b9b4b349022ac8c459212e1,_:N6eb41204b72048a88aa522ab87105451,_:Nd37481877fe34f98a6c4103f6cd5a920,_:N3f2e9cd789db425b8931349357f0ce79,_:N6b076c662dd248149a65aed2172856ab
- - Shape fcm:WeightMatrixShape: *none*
- - Shape fcm:NoDanglingNodeShape: _:N0edf4160ef1948bf9212f9fe822bb888,_:N90e1a15a9b9b4b349022ac8c459212e1,_:N6eb41204b72048a88aa522ab87105451,_:Nd37481877fe34f98a6c4103f6cd5a920,_:N3f2e9cd789db425b8931349357f0ce79,_:N6b076c662dd248149a65aed2172856ab
- - Shape fcm:HeterogeneousActivationShape: *none*
- - Shape fcm:EquilibriumShape: *none*
- - Shape fcm:EdgeEndpointsShape: _:N0edf4160ef1948bf9212f9fe822bb888,_:N90e1a15a9b9b4b349022ac8c459212e1,_:N6eb41204b72048a88aa522ab87105451,_:Nd37481877fe34f98a6c4103f6cd5a920,_:N3f2e9cd789db425b8931349357f0ce79,_:N6b076c662dd248149a65aed2172856ab
- - Shape fcm:MinimumNodesShape: _:N0edf4160ef1948bf9212f9fe822bb888,_:N90e1a15a9b9b4b349022ac8c459212e1,_:N6eb41204b72048a88aa522ab87105451,_:Nd37481877fe34f98a6c4103f6cd5a920,_:N3f2e9cd789db425b8931349357f0ce79,_:N6b076c662dd248149a65aed2172856ab
- - Shape fcm:NodeStateShape: *none*
- - Shape fcm:SolutionShape: _:Nd53dbf60dea640cca6f6785ddc039f46,_:N0b74cc0a1bb645c79cce0de7f49f4e71,_:N51eb9b0c13314af6960028041819e80f,_:N8e005efde8f2491d9cb2522ce9ba9838,_:Nde0aa80414eb449db23c06105bdf1d7e,_:N42dbe90ec8e94e56a3c0a2c294d02ffa
- - Shape fcm:SequenceStepShape: *none*
+ - Shape fcm:UniqueNodeKeyShape: _:Nfc2042bcad2144b4a32a9c9f941cf57c,_:Na9f9d5f5f5394502bab20b5fd8c0f122,_:N95f8132fc3c34648b305f1afe67e26bb,_:N865f6d33b1ba433ab1d540561b3feb50,_:Nb925b9b8045a4115a838a18ad4b79b38,_:N51c1def82ed4403bb70316b0946200da
+ - Shape fcm:EdgeEndpointsShape: _:Nfc2042bcad2144b4a32a9c9f941cf57c,_:Na9f9d5f5f5394502bab20b5fd8c0f122,_:N95f8132fc3c34648b305f1afe67e26bb,_:N865f6d33b1ba433ab1d540561b3feb50,_:Nb925b9b8045a4115a838a18ad4b79b38,_:N51c1def82ed4403bb70316b0946200da
 
-Validation result for _sources/ontology/rules.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for _sources/ontology/rules.shacl: no results
 Focus nodes for _sources/ontology/rules.shacl:
- - Shape :IndexedTermShape: *none*
- - Shape :PrimaryEntryShape: *none*
- - Shape :ProvClosureShape: *none*
  - Shape :EquationByteEqualityShape: *none*
  - Shape :SymbolInEquationShape: *none*
+ - Shape :IndexedTermShape: *none*
+ - Shape :ProvClosureShape: *none*
+ - Shape :PrimaryEntryShape: *none*
 
 === End SHACL ===
 

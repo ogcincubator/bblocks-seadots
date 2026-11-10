@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.linkeddata.marineProtectionFeature - Marine Protection Feature
-Generated 2026-11-05T13:37:44.534154+00:00
+Generated 2026-11-10T15:20:09.485304+00:00
 === General ===
 Test was expected to fail and it did.
 === End General ===
@@ -20,8 +20,8 @@ Failed validating 'enum' in schema['allOf'][1]['properties']['properties']['prop
     {'description': 'An indicator of the strength of fishing regulations, '
                     'coded on a 1-5 scale, with higher scores indicating '
                     'more restrictions and more protection.',
-     'enum': [0, 1, 2, 3, 4, 5],
      'type': 'integer',
+     'enum': [0, 1, 2, 3, 4, 5],
      'x-jsonld-id': 'https://w3id.org/ogc/hosted/demo/marine-protections/levelOfFishingProtection'}
 
 On instance['properties']['level_fishing_protection']:
@@ -30,36 +30,28 @@ On instance['properties']['level_fishing_protection']:
 
 === SHACL ===
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
- - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl
- - http://pav-ontology.github.io/pav/pav.rdf
- - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle
  - /github/workspace/_sources/linkeddata/marine-protection-ontology/ontology.ttl
+ - http://pav-ontology.github.io/pav/pav.rdf
+ - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl
+ - https://defs.opengis.net/prez-backend/object?uri=http://www.opengis.net/ont/geosparql&_mediatype=text/turtle
+Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl: 1 violation
 
 ** Validation error **
-Validation result for _sources/linkeddata/marine-protection-ontology/shapes.shacl:
-  Validation Report
-  Conforms: False
-  Results (1):
-  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: [ sh:in ( Literal("0", datatype=xsd:integer) Literal("1", datatype=xsd:integer) Literal("2", datatype=xsd:integer) Literal("3", datatype=xsd:integer) Literal("4", datatype=xsd:integer) Literal("5", datatype=xsd:integer) ) ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("mpr:levelOfFishingProtection must be a single integer from 0 to 5.") ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path mpr:levelOfFishingProtection ]
-  	Focus Node: <file:///github/workspace/AICOL29>
-  	Value Node: Literal("9", datatype=xsd:integer)
-  	Result Path: mpr:levelOfFishingProtection
-  	Message: mpr:levelOfFishingProtection must be a single integer from 0 to 5.
-  
+Violation (sh:InConstraintComponent):
+  Source shape: mpr:MarineManagedAreaShape/sh:property (path mpr:levelOfFishingProtection)
+  Focus node: <file:///github/workspace/AICOL29>
+  Result path: mpr:levelOfFishingProtection
+  Value: "9"^^xsd:integer
+  Message: mpr:levelOfFishingProtection must be a single integer from 0 to 5.
 Focus nodes for _sources/linkeddata/marine-protection-ontology/shapes.shacl:
  - Shape mpr:MarineManagedAreaShape: <file:///github/workspace/AICOL29>
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: <file:///github/workspace/AICOL29>
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: <file:///github/workspace/AICOL29>
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
 
 === End SHACL ===

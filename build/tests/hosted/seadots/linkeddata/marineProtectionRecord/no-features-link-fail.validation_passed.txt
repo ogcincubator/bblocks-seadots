@@ -1,5 +1,5 @@
 Validation report for ogc.hosted.seadots.linkeddata.marineProtectionRecord - Marine Protection Dataset Record
-Generated 2026-11-05T13:38:03.192330+00:00
+Generated 2026-11-10T15:20:32.004578+00:00
 === General ===
 Test was expected to fail and it did.
 === End General ===
@@ -17,54 +17,48 @@ Output Turtle no-features-link-fail.ttl created
 ValidationError: [{'rel': 'alternate', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'This entry as schema.org JSON-LD'}, {'rel': 'about', 'type': 'text/html', 'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'Catalog page'}, {'rel': 'license', 'type': 'text/html', 'href': 'https://creativecommons.org/licenses/by/4.0/', 'title': 'CC BY 4.0'}, {'rel': 'collection', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1', 'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}] does not contain items matching the given schema
 
 Failed validating 'contains' in schema['allOf'][1]['properties']['links']:
-    {'contains': {'properties': {'rel': {'const': 'items'},
-                                 'type': {'const': 'application/geo+json'}},
+    {'description': 'At least one link must give access to the features of '
+                    'the dataset.',
+     'contains': {'type': 'object',
                   'required': ['rel', 'type'],
-                  'type': 'object'},
-     'description': 'At least one link must give access to the features of '
-                    'the dataset.'}
+                  'properties': {'rel': {'const': 'items'},
+                                 'type': {'const': 'application/geo+json'}}}}
 
 On instance['links']:
-    [{'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873',
-      'rel': 'alternate',
-      'title': 'This entry as schema.org JSON-LD',
-      'type': 'application/ld+json'},
-     {'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873',
-      'rel': 'about',
-      'title': 'Catalog page',
-      'type': 'text/html'},
-     {'href': 'https://creativecommons.org/licenses/by/4.0/',
-      'rel': 'license',
-      'title': 'CC BY 4.0',
-      'type': 'text/html'},
-     {'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1',
-      'rel': 'collection',
-      'title': 'ProtectedSeas Navigator - Global Marine Life Protections',
-      'type': 'application/ld+json'}]
+    [{'rel': 'alternate',
+      'type': 'application/ld+json',
+      'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873',
+      'title': 'This entry as schema.org JSON-LD'},
+     {'rel': 'about',
+      'type': 'text/html',
+      'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873',
+      'title': 'Catalog page'},
+     {'rel': 'license',
+      'type': 'text/html',
+      'href': 'https://creativecommons.org/licenses/by/4.0/',
+      'title': 'CC BY 4.0'},
+     {'rel': 'collection',
+      'type': 'application/ld+json',
+      'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1',
+      'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}]
 === End JSON Schema ===
 
 === SHACL ===
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
- - https://www.w3.org/ns/dcat3.ttl
  - https://www.w3.org/ns/dcat2.ttl
+ - https://www.w3.org/ns/dcat3.ttl
  - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl
-Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl: no results
 Focus nodes for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:
  - Shape rec:testAllVarsInTemplate: *none*
 
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl: no results
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:FeatureShape: <file:///github/workspace/a608f54b-75c7-4df9-a3a8-cedbfa391873>
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureShape: <file:///github/workspace/a608f54b-75c7-4df9-a3a8-cedbfa391873>
+ - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
 
 === End SHACL ===
 

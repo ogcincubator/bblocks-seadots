@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.hosted.seadots.linkeddata.marineProtectionRecord - Marine Protection Dataset Record",
   "bblockName": "Marine Protection Dataset Record",
   "bblockId": "ogc.hosted.seadots.linkeddata.marineProtectionRecord",
-  "generated": "2026-11-05T13:38:03.357767+00:00",
+  "generated": "2026-11-10T15:20:33.651241+00:00",
   "result": true,
   "items": [
     {
@@ -14,6 +14,7 @@
         "language": "json"
       },
       "result": true,
+      "hasWarnings": false,
       "sections": [
         {
           "name": "GENERAL",
@@ -65,7 +66,7 @@
               "exception": "ValidationError",
               "errorMessage": "[{'rel': 'alternate', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'This entry as schema.org JSON-LD'}, {'rel': 'about', 'type': 'text/html', 'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'Catalog page'}, {'rel': 'license', 'type': 'text/html', 'href': 'https://creativecommons.org/licenses/by/4.0/', 'title': 'CC BY 4.0'}, {'rel': 'collection', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1', 'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}] does not contain items matching the given schema",
               "isError": true,
-              "message": "ValidationError: [{'rel': 'alternate', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'This entry as schema.org JSON-LD'}, {'rel': 'about', 'type': 'text/html', 'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'Catalog page'}, {'rel': 'license', 'type': 'text/html', 'href': 'https://creativecommons.org/licenses/by/4.0/', 'title': 'CC BY 4.0'}, {'rel': 'collection', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1', 'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}] does not contain items matching the given schema\n\nFailed validating 'contains' in schema['allOf'][1]['properties']['links']:\n    {'contains': {'properties': {'rel': {'const': 'items'},\n                                 'type': {'const': 'application/geo+json'}},\n                  'required': ['rel', 'type'],\n                  'type': 'object'},\n     'description': 'At least one link must give access to the features of '\n                    'the dataset.'}\n\nOn instance['links']:\n    [{'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873',\n      'rel': 'alternate',\n      'title': 'This entry as schema.org JSON-LD',\n      'type': 'application/ld+json'},\n     {'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873',\n      'rel': 'about',\n      'title': 'Catalog page',\n      'type': 'text/html'},\n     {'href': 'https://creativecommons.org/licenses/by/4.0/',\n      'rel': 'license',\n      'title': 'CC BY 4.0',\n      'type': 'text/html'},\n     {'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1',\n      'rel': 'collection',\n      'title': 'ProtectedSeas Navigator - Global Marine Life Protections',\n      'type': 'application/ld+json'}]"
+              "message": "ValidationError: [{'rel': 'alternate', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'This entry as schema.org JSON-LD'}, {'rel': 'about', 'type': 'text/html', 'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873', 'title': 'Catalog page'}, {'rel': 'license', 'type': 'text/html', 'href': 'https://creativecommons.org/licenses/by/4.0/', 'title': 'CC BY 4.0'}, {'rel': 'collection', 'type': 'application/ld+json', 'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1', 'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}] does not contain items matching the given schema\n\nFailed validating 'contains' in schema['allOf'][1]['properties']['links']:\n    {'description': 'At least one link must give access to the features of '\n                    'the dataset.',\n     'contains': {'type': 'object',\n                  'required': ['rel', 'type'],\n                  'properties': {'rel': {'const': 'items'},\n                                 'type': {'const': 'application/geo+json'}}}}\n\nOn instance['links']:\n    [{'rel': 'alternate',\n      'type': 'application/ld+json',\n      'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873',\n      'title': 'This entry as schema.org JSON-LD'},\n     {'rel': 'about',\n      'type': 'text/html',\n      'href': 'https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873',\n      'title': 'Catalog page'},\n     {'rel': 'license',\n      'type': 'text/html',\n      'href': 'https://creativecommons.org/licenses/by/4.0/',\n      'title': 'CC BY 4.0'},\n     {'rel': 'collection',\n      'type': 'application/ld+json',\n      'href': 'https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1',\n      'title': 'ProtectedSeas Navigator - Global Marine Life Protections'}]"
             }
           ]
         },
@@ -75,14 +76,14 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat2.ttl\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
               "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
-              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl: no results"
             },
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
@@ -99,15 +100,12 @@
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
-              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl: no results"
             },
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
@@ -115,15 +113,18 @@
                     "<file:///github/workspace/a608f54b-75c7-4df9-a3a8-cedbfa391873>"
                   ]
                 },
-                "geojson:LinkShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/a608f54b-75c7-4df9-a3a8-cedbfa391873>\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/a608f54b-75c7-4df9-a3a8-cedbfa391873>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
             }
           ]
         }
@@ -140,6 +141,7 @@
         "language": "application/json"
       },
       "result": true,
+      "hasWarnings": false,
       "sections": [
         {
           "name": "FILES",
@@ -188,14 +190,14 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat3.ttl\n - https://www.w3.org/ns/dcat2.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - https://www.w3.org/ns/dcat2.ttl\n - https://www.w3.org/ns/dcat3.ttl\n - https://ogcincubator.github.io/bblocks-ogcapi-records/build/annotated/api/records/records-ontology/ontology.ttl"
             },
             {
               "op": "shacl-report",
               "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
-              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl:\n  Validation Report\n  Conforms: True\n  "
+              "message": "Validation result for https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl: no results"
             },
             {
               "shaclFile": "https://ogcincubator.github.io/bblocks-ogcapi-records/_sources/v1/schemas/linkTemplate/rules.shacl",
@@ -212,15 +214,12 @@
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
-              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl: no results"
             },
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:first": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
@@ -228,15 +227,18 @@
                     "<https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873>"
                   ]
                 },
-                "geojson:LinkShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: <https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873>\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:LinkShape: *none*\n - Shape geojson:FeatureShape: <https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n"
             }
           ]
         }
@@ -244,6 +246,7 @@
     }
   ],
   "globalErrors": {},
+  "hasWarnings": false,
   "counts": {
     "total": 2,
     "passed": 2,

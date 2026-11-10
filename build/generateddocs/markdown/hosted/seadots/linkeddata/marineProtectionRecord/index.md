@@ -365,38 +365,38 @@ This version refines the dataset by excluding large-scale jurisdictional and fis
     dcterms:title "ProtectedSeas Navigator V2 — Focused: Area-Based Protections" ;
     schema1:citation "Navigator Data Download, ProtectedSeas®. Accessed [date] from Ocean Data Platform: https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873/protectedseas-navigator-v2-focused-area-based-protections" ;
     schema1:isAccessibleForFree true ;
-    rdfs:seeAlso [ rdfs:label "This entry as schema.org JSON-LD" ;
-            dcterms:format "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
-            oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
-        [ rdfs:label "Features of this dataset" ;
+    rdfs:seeAlso [ rdfs:label "Features of this dataset" ;
             dcterms:format "application/geo+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/items> ;
             oa:hasTarget <https://api.hubocean.earth/api/features/collections/a608f54b-75c7-4df9-a3a8-cedbfa391873/items> ],
-        [ rdfs:label "Catalog page" ;
-            dcterms:format "text/html" ;
-            ns1:relation <http://www.iana.org/assignments/relation/about> ;
-            oa:hasTarget <https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
+        [ rdfs:label "This entry as schema.org JSON-LD" ;
+            dcterms:format "application/ld+json" ;
+            ns1:relation <http://www.iana.org/assignments/relation/alternate> ;
+            oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/datasets/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
         [ rdfs:label "ProtectedSeas Navigator - Global Marine Life Protections" ;
             dcterms:format "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/collection> ;
             oa:hasTarget <https://api.hubocean.earth/api/public/catalog/v2/jsonld/data-collections/a8228453-d089-433b-90e1-92fe9c2aa7e1> ],
+        [ rdfs:label "Catalog page" ;
+            dcterms:format "text/html" ;
+            ns1:relation <http://www.iana.org/assignments/relation/about> ;
+            oa:hasTarget <https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873> ],
         [ rdfs:label "CC BY 4.0" ;
             dcterms:format "text/html" ;
             ns1:relation <http://www.iana.org/assignments/relation/license> ;
             oa:hasTarget <https://creativecommons.org/licenses/by/4.0/> ] ;
     dcat:contactPoint [ rdfs:seeAlso [ dcterms:format "text/html" ;
                     ns1:relation <http://www.iana.org/assignments/relation/about> ;
-                    oa:hasTarget <https://protectedseas.net/> ] ;
-            vcard:organization-name "ProtectedSeas" ;
-            vcard:role "creator",
-                "provider" ],
-        [ rdfs:seeAlso [ dcterms:format "text/html" ;
-                    ns1:relation <http://www.iana.org/assignments/relation/about> ;
                     oa:hasTarget <https://www.hubocean.earth/> ] ;
             vcard:hasEmail "info@oceandata.earth" ;
             vcard:organization-name "HUB Ocean" ;
-            vcard:role "maintainer" ] ;
+            vcard:role "maintainer" ],
+        [ rdfs:seeAlso [ dcterms:format "text/html" ;
+                    ns1:relation <http://www.iana.org/assignments/relation/about> ;
+                    oa:hasTarget <https://protectedseas.net/> ] ;
+            vcard:organization-name "ProtectedSeas" ;
+            vcard:role "creator",
+                "provider" ] ;
     dcat:keyword "MPA",
         "MPAs",
         "conservation",
@@ -494,7 +494,7 @@ x-bblocks-metadata:
   itemIdentifier: ogc.hosted.seadots.linkeddata.marineProtectionRecord
   register: https://ogcincubator.github.io/bblocks-seadots/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-05'
+  dateOfLastChange: '2026-11-10'
 
 ```
 
